@@ -22,10 +22,18 @@ export function getApprovedVideosForProfile(videos: Video[], assignments: Active
   });
 }
 
-export function canProfilePlayVideo(assignments: ActiveAssignment[], profileId: string, videoId: string) {
-  return assignments.some(
+export function canProfilePlayVideo(videos: Video[], assignments: ActiveAssignment[], profileId: string, videoId: string) {
+  const video = videos.find((item) => item.id === videoId);
+  const hasActiveAssignment = assignments.some(
     (assignment) => assignment.profile_id === profileId && assignment.video_id === videoId && assignment.removed_at === null,
   );
+
+  if (!video || !hasActiveAssignment) return false;
+
+  const isAvailable = video.availability_status === 'available';
+  const canEmbed = video.embeddable_status === 'embeddable' || video.embeddable_status === 'unknown';
+
+  return isAvailable && canEmbed;
 }
 
 export function assertNoDuplicateActiveAssignments(assignments: ActiveAssignment[]) {
