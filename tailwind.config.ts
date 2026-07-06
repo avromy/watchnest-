@@ -1,24 +1,28 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}"
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        nest: {
-          50: "#f4fbf8",
-          100: "#def7ed",
-          500: "#25a979",
-          700: "#157055",
-          900: "#0c3b31"
-        }
-      }
-    }
+        watchnest: {
+          background: '#f8fbff',
+          foreground: '#17212b',
+          muted: '#607083',
+          primary: '#315ef6',
+          surface: '#ffffff',
+          border: '#d9e2ec',
+          softBlue: '#ddeaf6',
+          softGreen: '#d8f3dc',
+          softPink: '#f8d7da',
+        },
+      },
+      borderRadius: {
+        card: '1.5rem',
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 
 export default config;
