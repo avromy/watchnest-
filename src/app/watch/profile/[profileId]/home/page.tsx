@@ -35,9 +35,12 @@ export default function ViewerHomePage({ params }: { params: { profileId: string
         </header>
 
         <section className="mt-6 rounded-card border border-watchnest-border bg-white p-5 shadow-sm">
-          <div className="rounded-2xl border border-[#c9d8f2] bg-watchnest-background px-5 py-4 text-watchnest-muted">
+          <Link
+            className="block rounded-2xl border border-[#c9d8f2] bg-watchnest-background px-5 py-4 font-semibold text-watchnest-primary transition hover:bg-white"
+            href={`/watch/profile/${profile.id}/search`}
+          >
             Search my videos
-          </div>
+          </Link>
         </section>
 
         <section className="mt-8">
