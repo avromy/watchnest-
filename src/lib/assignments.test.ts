@@ -45,6 +45,19 @@ const videos: Video[] = [
     metadata_last_checked_at: null,
     created_at: '2026-07-06T00:00:00.000Z',
   },
+  {
+    id: 'video-d',
+    youtube_video_id: 'd',
+    title: 'Video D',
+    channel_id: null,
+    channel_title: null,
+    thumbnail_url: null,
+    duration_seconds: null,
+    availability_status: 'available',
+    embeddable_status: 'not_embeddable',
+    metadata_last_checked_at: null,
+    created_at: '2026-07-06T00:00:00.000Z',
+  },
 ];
 
 const assignments: ActiveAssignment[] = [
@@ -52,6 +65,7 @@ const assignments: ActiveAssignment[] = [
   { profile_id: 'noah', video_id: 'video-b', removed_at: null },
   { profile_id: 'emma', video_id: 'video-c', removed_at: null },
   { profile_id: 'emma', video_id: 'video-b', removed_at: '2026-07-06T00:00:00.000Z' },
+  { profile_id: 'emma', video_id: 'video-d', removed_at: null },
 ];
 
 describe('profile assignment authorization helpers', () => {
@@ -59,12 +73,24 @@ describe('profile assignment authorization helpers', () => {
     expect(getApprovedVideosForProfile(videos, assignments, 'emma').map((video) => video.id)).toEqual(['video-a']);
   });
 
-  it('denies playback for unassigned videos', () => {
-    expect(canProfilePlayVideo(assignments, 'emma', 'video-b')).toBe(false);
+  it('allows playback for an assigned available video', () => {
+    expect(canProfilePlayVideo(videos, assignments, 'noah', 'video-b')).toBe(true);
   });
 
-  it('allows playback for active assignments', () => {
-    expect(canProfilePlayVideo(assignments, 'noah', 'video-b')).toBe(true);
+  it('denies playback for unassigned videos', () => {
+    expect(canProfilePlayVideo(videos, assignments, 'emma', 'video-b')).toBe(false);
+  });
+
+  it('denies playback for removed assignments', () => {
+    expect(canProfilePlayVideo(videos, assignments, 'emma', 'video-b')).toBe(false);
+  });
+
+  it('denies playback for unavailable videos', () => {
+    expect(canProfilePlayVideo(videos, assignments, 'emma', 'video-c')).toBe(false);
+  });
+
+  it('denies playback for non-embeddable videos', () => {
+    expect(canProfilePlayVideo(videos, assignments, 'emma', 'video-d')).toBe(false);
   });
 
   it('allows a removed assignment to coexist with an active assignment', () => {

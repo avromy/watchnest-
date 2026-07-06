@@ -1,10 +1,16 @@
 # Backlog
 
-## Next: Issue #3
+## Next: Issue #3 YouTube iframe/player POC
 
-- Add server-side playback route/page that checks profile/video authorization before rendering any player shell.
-- Keep the player minimal and avoid custom controls over the YouTube iframe.
-- Return a denial state for unassigned, removed, unavailable, or non-embeddable videos.
+- Add the actual YouTube iframe/player proof of concept inside the guarded playback route.
+- Keep custom controls out of scope until the iframe boundary is proven.
+- Continue to preserve the rule that unauthorized, removed, unavailable, or non-embeddable videos never render an iframe.
+
+## Completed foundation
+
+- Guarded viewer playback route now exists at `/watch/profile/[profileId]/player/[videoId]`.
+- The route checks server-side playback authorization before rendering the placeholder player shell.
+- The denial state is used for unassigned, removed, unavailable, or non-embeddable videos and links back to the profile library.
 
 ## Later
 
