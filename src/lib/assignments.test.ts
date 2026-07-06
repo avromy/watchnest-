@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { assertNoDuplicateActiveAssignments, canProfilePlayVideo, getApprovedVideosForProfile } from './assignments';
 import type { ActiveAssignment } from './assignments';
@@ -65,6 +67,15 @@ describe('profile assignment authorization helpers', () => {
     expect(canProfilePlayVideo(assignments, 'noah', 'video-b')).toBe(true);
   });
 
+  it('allows a removed assignment to coexist with an active assignment', () => {
+    expect(() =>
+      assertNoDuplicateActiveAssignments([
+        { profile_id: 'emma', video_id: 'video-a', removed_at: '2026-07-06T00:00:00.000Z' },
+        { profile_id: 'emma', video_id: 'video-a', removed_at: null },
+      ]),
+    ).not.toThrow();
+  });
+
   it('detects duplicate active assignments', () => {
     expect(() =>
       assertNoDuplicateActiveAssignments([
@@ -72,5 +83,15 @@ describe('profile assignment authorization helpers', () => {
         { profile_id: 'emma', video_id: 'video-a', removed_at: null },
       ]),
     ).toThrow('Duplicate active assignment detected');
+  });
+});
+
+describe('database assignment constraints', () => {
+  it('documents duplicate active assignment prevention with a partial unique index', () => {
+    const migration = readFileSync(join(process.cwd(), 'supabase/migrations/202607060001_initial_schema.sql'), 'utf8');
+
+    expect(migration).toContain('profile_video_assignments_one_active_assignment');
+    expect(migration).toContain('on public.profile_video_assignments(profile_id, video_id)');
+    expect(migration).toContain('where removed_at is null');
   });
 });
