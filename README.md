@@ -1,49 +1,65 @@
 # WatchNest
 
-WatchNest is a family-first streaming safety app for parents who want quick visibility into what their kids want to watch, what is appropriate, and what needs a closer look.
+Parent-curated video library MVP for approved-only child viewing.
 
-The first version is focused on a clean parent workflow:
+## Core Promise
 
-1. Search or enter a movie, show, channel, or video.
-2. Review a simple safety summary.
-3. See concern areas such as language, violence, sexual content, fear intensity, mature themes, and ads or platform risks.
-4. Save items to a family watchlist.
-5. Make a clear approve, block, or review-later decision.
+Only caregiver-approved videos are available inside WatchNest. The viewer does not get WatchNest-provided YouTube browsing, YouTube search, comments, Shorts feeds, or open recommendation surfaces.
 
-## Product direction
+## MVP Scope
 
-WatchNest should feel calm, practical, and trustworthy. Parents should not need a media-studies degree, a spreadsheet, or a second cup of coffee to decide whether something is safe.
+WatchNest is a responsive web app optimized for iPad Safari and desktop browsers.
 
-### MVP scope
+Parents can:
+- Create profiles.
+- Search YouTube from the parent area.
+- Paste YouTube URLs.
+- Preview videos.
+- Approve individual videos.
+- Assign videos to one, multiple, or all profiles.
+- Remove videos from profiles.
 
-- Parent dashboard
-- Search/review flow
-- Watch item detail page
-- Safety rating summary
-- Concern category breakdown
-- Family watchlist
-- Decision states: Approved, Blocked, Needs Review
-- Basic environment configuration
+Viewers can:
+- Select their profile.
+- Browse approved videos only.
+- Search within approved videos only.
+- Watch approved videos.
+- Continue watching.
+- Use Next Up.
 
-### Later scope
-
-- Browser extension or share-sheet intake
-- Kid profiles
-- Age-based recommendations
-- AI-generated review summaries
-- Community notes
-- Source links and confidence levels
-- Notifications for newly released episodes or changed ratings
-
-## Tech stack
+## Recommended Stack
 
 - Next.js App Router
+- React
 - TypeScript
 - Tailwind CSS
-- React Server Components by default
-- Environment variables through `.env.local`
+- Supabase Postgres
+- Supabase Auth
+- YouTube Data API, server-side only
+- YouTube IFrame Player API
+- Vercel
 
-## Getting started
+## Important Architecture Rules
+
+- Keep YouTube Data API calls server-side.
+- Never expose the YouTube API key in the browser.
+- Viewer search must only search approved local metadata.
+- Viewer playback must be authorized server-side.
+- Never return unassigned videos to a viewer profile.
+- Store YouTube metadata, not video files.
+- Do not download, proxy, or cache YouTube audiovisual content.
+- Do not overlay custom controls on top of the YouTube iframe.
+
+## Initial Engineering Priorities
+
+1. Database schema.
+2. Profile-specific assignment logic.
+3. Viewer library filtering.
+4. Server-side playback authorization.
+5. YouTube player shell POC.
+6. Search/cache/quota POC.
+
+## Getting Started
 
 Install dependencies:
 
@@ -63,7 +79,7 @@ Open the local app:
 http://localhost:3000
 ```
 
-## Environment variables
+## Environment Variables
 
 Copy `.env.example` to `.env.local` and fill in real values as services are added.
 
@@ -71,21 +87,26 @@ Copy `.env.example` to `.env.local` and fill in real values as services are adde
 cp .env.example .env.local
 ```
 
-## Project structure
+Required variables:
 
 ```text
-app/
-  globals.css
-  layout.tsx
-  page.tsx
-components/
-  watch-card.tsx
-lib/
-  sample-data.ts
-public/
-  icon.svg
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+YOUTUBE_API_KEY=
+NEXT_PUBLIC_APP_URL=
 ```
 
-## Development notes
+Optional later:
 
-This repository starts as a lightweight product scaffold. The goal is to keep the app easy to build, easy to reason about, and ready for real product decisions before adding database, auth, or AI service complexity.
+```text
+POSTHOG_KEY=
+POSTHOG_HOST=
+SENTRY_DSN=
+```
+
+## Development Notes
+
+The first technical priority is the approved-only data model. A pretty product that leaks videos across profiles is not WatchNest.
+
+Planning, product requirements, technical POCs, Figma design, and build prompts live in the WatchNest Notion workspace.
