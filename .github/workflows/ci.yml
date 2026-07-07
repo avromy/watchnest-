@@ -5,36 +5,44 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
-  ci:
-    name: Typecheck, test, and build
+  quality-checks:
+    name: Typecheck, tests, and build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Cache npm dependencies
+      - name: Cache npm package downloads
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('package.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json', 'package.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
-      - name: Install dependencies
+      - name: Install dependencies with npm ci
+        if: ${{ hashFiles('package-lock.json') != '' }}
+        run: npm ci
+
+      - name: Install dependencies with npm install
+        if: ${{ hashFiles('package-lock.json') == '' }}
         run: npm install
 
-      - name: Typecheck
+      - name: Run TypeScript typecheck
         run: npm run typecheck
 
-      - name: Run tests
+      - name: Run test suite
         run: npm run test -- --run
 
-      - name: Build
+      - name: Build production application
         run: npm run build
