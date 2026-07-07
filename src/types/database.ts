@@ -52,3 +52,26 @@ export type WatchProgress = {
   completed_at: string | null;
   updated_at: string;
 };
+
+export type YoutubeSearchCache = {
+  id: string;
+  cache_key: string;
+  normalized_query: string;
+  raw_query: string;
+  result_json: Json;
+  created_at: string;
+  expires_at: string;
+};
+
+export type YoutubeSearchLog = {
+  id: string;
+  raw_query: string;
+  normalized_query: string;
+  cache_hit: boolean;
+  youtube_api_called: boolean;
+  response_status: string | null;
+  error_code: string | null;
+  result_count: number | null;
+  estimated_quota_cost: number;
+  created_at: string;
+};
