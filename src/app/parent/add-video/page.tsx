@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { BackLink, PageHeader } from '@/components/ui/navigation';
-
-const assignmentPlaceholders = ['Emma', 'Noah', 'Ava'];
+import { profiles } from '@/lib/sample-data';
 
 export default function ParentAddVideoPage() {
   return (
@@ -66,17 +65,31 @@ export default function ParentAddVideoPage() {
             <div className="rounded-card border border-watchnest-border bg-white p-6 shadow-sm">
               <h2 className="text-2xl font-bold">Assign to Profiles</h2>
               <p className="mt-2 text-watchnest-muted">
-                After previewing a video, choose which child profiles can see it in their approved library.
+                After previewing a video, choose one, multiple, or all child profiles that can see it in their approved library. WatchNest remains approved-only: unassigned videos stay out of viewer libraries.
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                {assignmentPlaceholders.map((profile) => (
-                  <div key={profile} className="rounded-3xl border border-dashed border-watchnest-border bg-watchnest-background p-4 opacity-70">
-                    <div className="mb-3 h-10 w-10 rounded-full bg-watchnest-softBlue" />
-                    <p className="font-semibold">{profile}</p>
-                    <p className="mt-1 text-sm text-watchnest-muted">Profile selector placeholder</p>
+                {profiles.map((profile) => (
+                  <div key={profile.id} className="rounded-3xl border border-dashed border-watchnest-border bg-watchnest-background p-4 opacity-70">
+                    <div className="mb-3 h-10 w-10 rounded-full" style={{ backgroundColor: profile.avatarColor }} />
+                    <p className="font-semibold">{profile.displayName}</p>
+                    <p className="mt-1 text-sm text-watchnest-muted">Assignment selector placeholder</p>
                   </div>
                 ))}
               </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <button className="rounded-2xl bg-watchnest-primary px-4 py-3 text-sm font-semibold text-white opacity-50" disabled type="button">
+                  Assign selected
+                </button>
+                <button className="rounded-2xl bg-watchnest-primary px-4 py-3 text-sm font-semibold text-white opacity-50" disabled type="button">
+                  Assign all profiles
+                </button>
+                <button className="rounded-2xl border border-watchnest-border bg-white px-4 py-3 text-sm font-semibold text-watchnest-primary opacity-50" disabled type="button">
+                  Remove from all
+                </button>
+              </div>
+              <p className="mt-3 text-sm text-watchnest-muted">
+                Disabled preview controls show the future assignment flow without saving or changing playback authorization.
+              </p>
             </div>
           </section>
 

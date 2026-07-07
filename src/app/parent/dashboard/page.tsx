@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { PageHeader } from '@/components/ui/navigation';
 import { EmptyState } from '@/components/ui/states';
-import { profiles, videos } from '@/lib/sample-data';
+import { AssignmentManagementShell } from '@/components/parent/assignment-management-shell';
+import { assignments, profiles, videos } from '@/lib/sample-data';
 
 export default function ParentDashboardPage() {
   return (
@@ -27,6 +28,8 @@ export default function ParentDashboardPage() {
             </div>
           ))}
         </section>
+
+        <AssignmentManagementShell initialAssignments={assignments} profiles={profiles} videos={videos} />
 
         <section className="mt-8 rounded-card border border-watchnest-border bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-bold">Known videos</h2>
