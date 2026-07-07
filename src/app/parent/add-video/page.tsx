@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BackLink, PageHeader } from '@/components/ui/navigation';
 
 const assignmentPlaceholders = ['Emma', 'Noah', 'Ava'];
 
@@ -7,18 +8,14 @@ export default function ParentAddVideoPage() {
     <main className="min-h-screen bg-watchnest-background px-6 py-8 text-watchnest-foreground">
       <div className="mx-auto max-w-5xl">
         <div className="mb-6">
-          <Link className="text-sm font-semibold text-watchnest-primary" href="/parent/dashboard">
-            ← Back to Dashboard
-          </Link>
+          <BackLink href="/parent/dashboard">Back to Dashboard</BackLink>
         </div>
 
-        <header className="rounded-card border border-watchnest-border bg-white p-6 shadow-sm">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-watchnest-primary">Parent-only approval</p>
-          <h1 className="mt-2 text-3xl font-bold">Add Video</h1>
-          <p className="mt-3 max-w-3xl text-watchnest-muted">
-            This page is a calm setup space for parents to find or paste a YouTube video before assigning it to approved profiles. It is not viewer search, and nothing here is available to child profiles until a parent confirms an assignment.
-          </p>
-        </header>
+        <PageHeader
+          eyebrow="Parent-only approval"
+          title="Add Video"
+          description="This page is a calm setup space for parents to find or paste a YouTube video before assigning it to approved profiles. It is not viewer search, and nothing here is available to child profiles until a parent confirms an assignment."
+        />
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <section className="space-y-6">
