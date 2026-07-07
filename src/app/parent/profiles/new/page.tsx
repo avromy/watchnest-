@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BackLink } from '@/components/ui/navigation';
 
 const avatarOptions = ['#f8d7da', '#d8f3dc', '#ddeaf6', '#fff3b0'];
 
@@ -6,9 +7,7 @@ export default function NewParentProfilePage() {
   return (
     <main className="min-h-screen bg-watchnest-background px-6 py-8 text-watchnest-foreground">
       <div className="mx-auto max-w-3xl">
-        <Link className="text-sm font-semibold text-watchnest-primary" href="/parent/dashboard">
-          ← Back to Parent Dashboard
-        </Link>
+        <BackLink href="/parent/dashboard">Back to Parent Dashboard</BackLink>
 
         <section className="mt-4 rounded-card border border-watchnest-border bg-white p-6 shadow-sm">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-watchnest-primary">Create Profile</p>

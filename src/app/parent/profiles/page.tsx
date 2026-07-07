@@ -1,26 +1,25 @@
 import Link from 'next/link';
+import { BackLink, PageHeader } from '@/components/ui/navigation';
+import { EmptyState } from '@/components/ui/states';
 import { profiles } from '@/lib/sample-data';
 
 export default function ParentProfilesPage() {
   return (
     <main className="min-h-screen bg-watchnest-background px-6 py-8 text-watchnest-foreground">
       <div className="mx-auto max-w-6xl">
-        <Link className="text-sm font-semibold text-watchnest-primary" href="/parent/dashboard">
-          ← Back to Parent Dashboard
-        </Link>
+        <BackLink href="/parent/dashboard">Back to Parent Dashboard</BackLink>
 
-        <header className="mt-4 flex flex-col justify-between gap-4 rounded-card border border-watchnest-border bg-white p-6 shadow-sm md:flex-row md:items-center">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-watchnest-primary">Profiles</p>
-            <h1 className="mt-2 text-3xl font-bold">Manage child profiles.</h1>
-            <p className="mt-2 max-w-2xl text-watchnest-muted">
-              Review the sample profiles available in WatchNest. Profile management is a UI preview and does not save changes yet.
-            </p>
-          </div>
-          <Link className="rounded-2xl bg-watchnest-primary px-5 py-3 text-center font-semibold text-white" href="/parent/profiles/new">
-            Create Profile
-          </Link>
-        </header>
+        <PageHeader
+          className="mt-4"
+          eyebrow="Profiles"
+          title="Manage child profiles."
+          description="Review the sample profiles available in WatchNest. Profile management is a UI preview and does not save changes yet."
+          actions={
+            <Link className="rounded-2xl bg-watchnest-primary px-5 py-3 text-center font-semibold text-white" href="/parent/profiles/new">
+              Create Profile
+            </Link>
+          }
+        />
 
         {profiles.length > 0 ? (
           <section className="mt-8 grid gap-4 md:grid-cols-3">
@@ -42,14 +41,13 @@ export default function ParentProfilesPage() {
             ))}
           </section>
         ) : (
-          <section className="mt-8 rounded-card border border-dashed border-watchnest-border bg-white p-10 text-center shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-watchnest-primary">No profiles yet</p>
-            <h2 className="mt-2 text-2xl font-bold">Create a child profile to start assigning videos.</h2>
-            <p className="mx-auto mt-2 max-w-xl text-watchnest-muted">This empty state appears when there are no sample profiles to display.</p>
-            <Link className="mt-6 inline-block rounded-2xl bg-watchnest-primary px-5 py-3 font-semibold text-white" href="/parent/profiles/new">
-              Create Profile
-            </Link>
-          </section>
+          <EmptyState
+            className="mt-8"
+            eyebrow="No profiles yet"
+            title="Create a child profile to start assigning videos."
+            description="This empty state appears when there are no sample profiles to display."
+            action={{ href: '/parent/profiles/new', label: 'Create Profile' }}
+          />
         )}
       </div>
     </main>
