@@ -12,9 +12,14 @@ export default function ParentDashboardPage() {
           title="Build each profile's approved library."
           description="Search or paste a video, preview it, then assign it to one or more profiles. Viewer screens only use profile-specific approved assignments."
           actions={
-            <Link className="rounded-2xl bg-watchnest-primary px-5 py-3 text-center font-semibold text-white" href="/parent/add-video">
-              Add Video
-            </Link>
+            <>
+              <Link className="rounded-2xl border border-watchnest-border bg-white px-5 py-3 text-center font-semibold text-watchnest-primary" href="/parent/assignments">
+                Manage Assignments
+              </Link>
+              <Link className="rounded-2xl bg-watchnest-primary px-5 py-3 text-center font-semibold text-white" href="/parent/add-video">
+                Add Video
+              </Link>
+            </>
           }
         />
 
