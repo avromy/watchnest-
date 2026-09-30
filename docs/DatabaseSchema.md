@@ -1,25 +1,13 @@
-# Database Schema
+# Database — current checkpoint
 
-Initial schema: `supabase/migrations/202607060001_initial_schema.sql`.
+Apply migrations in order:
+1. `202607060001_initial_schema.sql`
+2. `20260930192030_secure_family_product.sql`
 
-## Core tables
+The second migration preserves baseline tables and adds verified parent linkage/family code, profile passcode hashes/modes, video audience status, family library links, child sessions, collections, requests, viewing events and distributed rate limits. All 14 tables enable RLS and revoke anon/authenticated access. Five SECURITY INVOKER RPCs are service-role-only: rate limit, atomic approval, atomic assignment, removal and authorized progress recording.
 
-- `parents`: caregiver accounts.
-- `profiles`: child viewer profiles owned by a parent.
-- `videos`: YouTube metadata for caregiver-approved candidates. WatchNest stores metadata only, not video files.
-- `profile_video_assignments`: active or removed approvals linking profiles to videos.
-- `watch_progress`: per-profile progress for assigned videos.
-- `youtube_search_cache` and `youtube_search_logs`: future server-side YouTube Data API support; no child browsing UI exists yet.
-- `audit_events`: future caregiver/audit trail events.
+Active assignment uniqueness is enforced with a partial unique index. Household foreign-key/validation checks prevent cross-family assignment and collection linkage. Progress remains unique per profile/video; recording additionally requires an active assignment, playable status and explicit non-made-for-kids classification. Child cookies contain random credentials whose SHA-256 hashes, expiration and revocation state are stored in the database; raw child credentials are never stored.
 
-## Integrity rules
+`supabase/seed.sql` is a historical test fixture with placeholder video IDs and three unrelated scaffold profiles. **Never run it in production.** Founder initialization creates Miri, Ari, Benny and Eli. These rows are not live until real migrations and verified sign-in run.
 
-- Profiles cascade delete with their parent.
-- Assignments cascade delete with parent, profile, or video.
-- Duplicate active assignments are prevented at the database level by the `profile_video_assignments_one_active_assignment` partial unique index on `profile_id` and `video_id` where `removed_at is null`.
-- Removed historical assignments may coexist with one active assignment because they have `removed_at` set.
-- Watch progress is unique per `profile_id` and `video_id`.
-
-## Seed data
-
-`supabase/seed.sql` creates one parent, three profiles (Emma, Noah, Olivia), sample YouTube metadata rows, sample active assignments, and one unassigned sample video for authorization-denial checks.
+Integration coverage uses PGlite PostgreSQL with test-only auth schema/roles and pgcrypto adaptation. This validates SQL syntax, constraints, RLS/grants, RPC denial, assignments and progress, but does not substitute for deployed Supabase Auth/RLS/advisor checks.

@@ -1,31 +1,24 @@
-# Backlog
+# Dependency-aware execution queue — 2026-09-30
 
-## Next
+## Release gates first
 
-- Wire parent Add Video shell to YouTube search and URL import with server-side quota/cache handling.
-- Add parent assignment management UI for approving and removing videos per viewer profile.
-- Implement Supabase Auth and row-level security policies.
-- Persist watch progress and build Next Up behavior.
-- Keep custom controls out of scope while the product relies on the native YouTube iframe controls.
-- Continue to preserve the rule that unauthorized, removed, unavailable, or non-embeddable videos never render an iframe.
+1. Restore Supabase project creation access/cost visibility and server credentials; use a separate WatchNest project in avromy's Org, no new paid plan without approval.
+2. Enable/reuse YouTube Data API v3 under the Founder's Google account; securely configure restricted server key.
+3. Restore Vercel deployment capability in team Avromy and configure environment/Auth URLs/email templates.
+4. Apply both migrations; verify production grants/RLS, advisors and verified Founder auth. Create the four live profiles and set personal passcodes through the UI securely.
+5. Configure automated metadata retention maintenance and verify no API-derived metadata survives its retention deadline.
+6. Run first real product spine, cross-child and cross-household attacks, revocation, progress and analytics integrity, unavailable/error states; repair all failures.
+7. Real official-player surface review and actual iPad Safari Founder device check.
+8. Human-Eye V2.0, fresh Stranger Test, adversarial security and Founder Ready on actual live app. Update Notion exact deployed commit, URL, tests, limitations and secure access instructions.
 
-## Completed foundation
+## Implemented, awaiting live validation
 
-- App foundation exists as a Next.js App Router project with TypeScript, Tailwind CSS, and the initial parent/viewer route structure.
-- Supabase schema and seed data exist for the core WatchNest data model.
-- CI exists for type checking, tests, and production builds.
-- Guarded viewer playback route exists at `/watch/profile/[profileId]/player/[videoId]`.
-- The route checks server-side playback authorization before rendering any player shell.
-- Authorized playback renders a minimal YouTube iframe POC using the approved video’s `youtube_video_id`.
-- The POC relies on YouTube’s native iframe controls and does not add WatchNest custom-control overlays.
-- The denial state is used for unassigned, removed, unavailable, or non-embeddable videos and links back to the profile library.
-- Parent Add Video shell exists for the future search/import workflow.
-- Parent Profiles shell exists, including create and edit profile scaffolds.
-- Viewer approved-library search exists and searches only approved local metadata.
-- Reusable UI states exist for loading, empty, unavailable, and library/profile shell states.
+Server identity/authorization, individual-video ingestion, bulk approval/assignment/removal, local approved library search, collections, simple/standard UX, child requests, unified Inbox, eligible viewing analytics, official player, resume/completion/Next Up, account recovery, private beta controls, responsive design and accessible controls. Automated tests and actual rendered fixture screenshots are evidence, not live readiness.
 
-## Later
+## Later opportunities
 
-- Improve parent dashboard insights once assignment and progress data are fully connected.
-- Add richer viewer home personalization based on assigned videos and progress.
-- Add operational monitoring for YouTube quota/cache behavior after import is implemented.
+More collection analytics/completion summaries, improved bulk organization, constrained profile artwork, parent onboarding tips, availability scheduling efficiency, monitoring and family-level policies after real usage. Multi-caregiver membership requires explicit schema and session design before extending the one-parent beta.
+
+## Rejected
+
+Channel/future-upload auto approval, unrestricted child search, infinite feeds, hidden sibling-only frontend filtering, player-link blocking overlays, audiovisual scraping/proxying, new paid infrastructure without approval.

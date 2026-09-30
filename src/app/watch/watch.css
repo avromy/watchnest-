@@ -1,0 +1,75 @@
+.child-experience .shell > .topbar {
+  padding: 8px 0 22px;
+  margin-bottom: 24px;
+}
+.child-experience label.field {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 20px;
+  min-height: 0;
+}
+.child-experience label.field input,
+.child-experience label.field select,
+.child-experience label.field textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  min-height: 52px;
+  padding: 13px 16px;
+  border: 1px solid #a8b8ac;
+  border-radius: 14px;
+  background: #fff;
+  font-weight: 400;
+  color: #19332c;
+}
+.child-experience label.field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+.child-experience nav {
+  margin: 8px 0 32px;
+  gap: 8px;
+}
+.child-experience nav button[aria-current="page"] {
+  background: #193f35;
+  color: white;
+}
+.child-experience .simple-mode .video-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.child-experience .simple-mode .video-card h3 {
+  font-size: 22px;
+}
+.child-experience .simple-mode button,
+.child-experience .simple-mode .button {
+  min-height: 56px;
+}
+@media (max-width: 600px) {
+  .child-experience .shell > .topbar {
+    gap: 12px;
+  }
+  .child-experience .topbar .form-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .child-experience .topbar .form-row > * {
+    width: auto;
+  }
+  .child-experience .topbar .avatar {
+    display: none !important;
+  }
+  .child-experience .topbar strong {
+    font-size: 14px;
+  }
+  .child-experience .topbar .button {
+    padding: 10px 12px;
+  }
+  .child-experience .simple-mode .video-grid {
+    grid-template-columns: 1fr;
+  }
+  .child-experience .simple-mode .video-card h3 {
+    font-size: 22px;
+  }
+}
