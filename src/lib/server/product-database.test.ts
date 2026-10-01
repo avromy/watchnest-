@@ -30,7 +30,13 @@ beforeAll(async () => {
     ),
   );
   await db.exec(
-    `insert into parents(id,email) values('${a}','a@test.local'),('${b}','b@test.local');insert into profiles(id,parent_id,display_name) values('${ari}','${a}','Ari'),('${benny}','${a}','Benny'),('${foreign}','${b}','Other');insert into videos(id,youtube_video_id,title,duration_seconds,embeddable_status,made_for_kids) values('${video}','abcdefghijk','Video',100,'embeddable',false);insert into child_sessions(id,profile_id,token_hash,created_at,expires_at) values('${session}','${ari}','hash',now()-interval '1 minute',now()+interval '1 hour');`,
+    readFileSync(
+      "supabase/migrations/20260930235307_progress_metadata_freshness.sql",
+      "utf8",
+    ),
+  );
+  await db.exec(
+    `insert into parents(id,email) values('${a}','a@test.local'),('${b}','b@test.local');insert into profiles(id,parent_id,display_name) values('${ari}','${a}','Ari'),('${benny}','${a}','Benny'),('${foreign}','${b}','Other');insert into videos(id,youtube_video_id,title,duration_seconds,embeddable_status,made_for_kids,metadata_last_checked_at) values('${video}','abcdefghijk','Video',100,'embeddable',false,now());insert into child_sessions(id,profile_id,token_hash,created_at,expires_at) values('${session}','${ari}','hash',now()-interval '1 minute',now()+interval '1 hour');`,
   );
 }, 20000);
 afterAll(async () => {

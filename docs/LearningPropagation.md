@@ -1,0 +1,25 @@
+# Learning propagation — resumed run
+
+## PROJECT — status changes invalidate historical playback reporting
+
+Problem: write/player guards suppressed Made-for-Kids/unknown activity, but Parent Dashboard still summed old rows after a status change. Correction: filter every history-derived surface using current approved ownership, explicit non-MFK status, fresh past metadata and playable eligibility. No own UI timer/click/request substitutes are used for restricted playback. Prevention: actual-handler regression coverage for totals, trends, child/recent/popular/never-watched and removed approvals. Independent dashboard tests challenge parent-scoped queries. This policy-specific rule belongs in WatchNest authority, not unrelated brands/apps.
+
+## PROJECT — final integrity boundary repeats freshness gate
+
+Problem: privileged progress SQL relied on the caller's freshness guard. Correction: transactional shared video lock and nonnull/past/less-than-one-day eligibility before storing any event. Prevention: actual PostgreSQL stale/null/future/exact-age boundary tests, plus anonymous/authenticated function denial. Migrations are append-only and separately reversible before release.
+
+## DOMAIN proposal — security exit does not share anonymous admission budget
+
+Problem: an invalid public family lookup consumed the global authentication throttle, preventing logout and leaving browser cookies intact. Correction: local-cookie clearing in finally, remote failure reported accurately, logout excluded from admission throttles; deployment-qualified per-network budget plus existing per-account/profile limits. Evidence: independent actual-handler regression; Vercel header semantics are source documentation, not deployed proof. Broader promotion awaits another platform calibration; do not trust arbitrary proxy headers elsewhere.
+
+## PROCESS — connected capability is operation-specific and time-sensitive
+
+Previously some setup tools were unavailable. Current evidence: Supabase list_projects/list_organizations and Vercel list_teams/list_projects succeed, while Supabase get_cost and Vercel deploy_to_vercel remain unavailable. Prevention: qualify the exact next operation, not the whole provider from one success/failure; recover safe configured connector access first, then already-authorized browser fallback. Existing unrelated projects are not spare WatchNest infrastructure.
+
+## ROUTING — current final visual protocol is not its historical parent title
+
+Registry/current protocol identifies Human-Eye V2.0 production-certified, even though an ancestor page title still says V1.1. V2.1 is testing. Prevention: current status/version/chronology governs; no historical parent title or similarly named cached package substitutes for current mandatory instructions. Current exact visual source completion and evidence receipts remain open, not silently waived.
+
+## Propagation and scope
+
+These findings are filed in repository evidence and current WatchNest Notion authority. DOMAIN/PROCESS candidates are recorded as reusable proposals, not uncalibrated global mandates. No 5T colors, geometry, artwork, copy or layout authority was imported. No paid service or unrelated infrastructure mutation was made. No deployed/real-device/YouTube legal certification is inferred from tests.

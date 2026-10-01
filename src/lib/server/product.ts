@@ -284,7 +284,7 @@ async function metadata(videoIds: string[], force = false) {
       !cached.some(
         (r: any) =>
           r.youtube_video_id === v &&
-          Date.parse(r.metadata_last_checked_at) > Date.now() - 86400000,
+          metadataFresh(r),
       ),
   );
   if (missing.length) {
@@ -457,8 +457,46 @@ export async function handle(request: globalThis.Request, path: string[]) {
       } catch {}
       return reply({ role: null, configured: true });
     }
+    // Session exit must never depend on an anonymous caller's rate budget.
+    // Always clear this browser's cookies, even when remote revocation fails.
+    if (route === "auth/logout" && method === "POST") {
+      try {
+        if (!client)
+          throw new Failure("Server sign-out could not be confirmed.", 503);
+        const jar = await cookies();
+        const token = jar.get("wn_child")?.value;
+        if (token)
+          check(
+            await client
+              .from("child_sessions")
+              .update({ revoked_at: new Date().toISOString() })
+              .eq("token_hash", digest(token)),
+          );
+        const parentToken = jar.get("wn_parent")?.value;
+        if (parentToken)
+          check(await client.auth.admin.signOut(parentToken, "local"));
+        return reply({ ok: true });
+      } finally {
+        await cookie("wn_child", "", 0);
+        await cookie("wn_parent", "", 0);
+        await cookie("wn_refresh", "", 0);
+      }
+    }
     if (!client) throw new Failure("WatchNest setup is not complete.", 503);
-    if (route.startsWith("auth/")) await limit("public-auth-global", 150, 60);
+    // Trust only the deployment platform's overwritten network header, and only
+    // inside Vercel. Other hosts retain account/profile limits and need their own
+    // verified edge protection; arbitrary forwarded headers are not trusted.
+    const network =
+      process.env.VERCEL === "1"
+        ? request.headers.get("x-vercel-forwarded-for")
+        : null;
+    if (route.startsWith("auth/") && network)
+      await limit(
+        "auth-network:" +
+          digest(process.env.SUPABASE_SERVICE_ROLE_KEY + ":" + network),
+        150,
+        60,
+      );
     if (route === "auth/callback" && method === "POST") {
       const b = z
         .object({
@@ -567,22 +605,6 @@ export async function handle(request: globalThis.Request, path: string[]) {
           ? { ok: true }
           : { ok: true, message: "Confirm your email, then sign in." },
       );
-    }
-    if (route === "auth/logout" && method === "POST") {
-      const token = (await cookies()).get("wn_child")?.value;
-      if (token)
-        check(
-          await client
-            .from("child_sessions")
-            .update({ revoked_at: new Date().toISOString() })
-            .eq("token_hash", digest(token)),
-        );
-      const parentToken = (await cookies()).get("wn_parent")?.value;
-      if (parentToken) await client.auth.admin.signOut(parentToken, "local");
-      await cookie("wn_child", "", 0);
-      await cookie("wn_parent", "", 0);
-      await cookie("wn_refresh", "", 0);
-      return reply({ ok: true });
     }
     if (route === "auth/children" && method === "GET") {
       const code = z
@@ -1023,13 +1045,26 @@ async function parentRoute(
         .eq("parent_id", p.id)
         .is("removed_at", null),
     );
+    const eligibleIds = new Set(
+      own
+        .filter(
+          (v: any) =>
+            v.made_for_kids === false &&
+            metadataFresh(v) &&
+            v.availability_status === "available" &&
+            v.embeddable_status === "embeddable",
+        )
+        .map((v: any) => v.id),
+    );
+    // A later MFK/unknown/stale status must suppress historical reporting too.
+    // Never infer restricted playback from library clicks, requests or timers.
     const events = check(
       await client
         .from("viewing_events")
         .select("*")
         .eq("parent_id", p.id)
         .gte("created_at", new Date(Date.now() - 7 * 86400000).toISOString()),
-    );
+    ).filter((event: any) => eligibleIds.has(event.video_id));
     const localDate = (date: Date) =>
       new Intl.DateTimeFormat("en-CA", {
         timeZone: "America/Toronto",
@@ -1105,6 +1140,29 @@ async function parentRoute(
           ?.display_name,
       })),
       familyCode: p.family_code,
+      // These are WatchNest's own approval/assignment/request records, not
+      // YouTube popularity, viewing or engagement metrics.
+      workflow: {
+        approvedVideos: own.length,
+        activeChildren: profiles.length,
+        assignedVideos: new Set(assignments.map((a: any) => a.video_id)).size,
+        unassignedVideos: own.filter(
+          (v: any) => !assignments.some((a: any) => a.video_id === v.id),
+        ).length,
+        openRequests: requests.filter((r: any) => r.status === "pending")
+          .length,
+        byChild: profiles.map((profile: any) => ({
+          profile_id: profile.id,
+          assignedVideos: assignments.filter(
+            (a: any) => a.profile_id === profile.id,
+          ).length,
+          openRequests: requests.filter(
+            (r: any) => r.profile_id === profile.id && r.status === "pending",
+          ).length,
+        })),
+        source:
+          "WatchNest approval, assignment and request activity. Not YouTube watch or engagement metrics.",
+      },
       analytics: {
         todaySeconds: sum(
           events.filter(
@@ -1124,7 +1182,7 @@ async function parentRoute(
         daily,
         neverWatched: own.filter(
           (v: any) =>
-            v.made_for_kids === false &&
+            eligibleIds.has(v.id) &&
             !lifetimeProgress.some((e: any) => e.video_id === v.id),
         ).length,
       },
