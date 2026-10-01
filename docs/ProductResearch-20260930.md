@@ -80,7 +80,7 @@ If MFK/unknown policy gating means a requested metric cannot be truthful, show e
 All entries below are **NOT YET OBSERVED** in actual iPad Safari. Chromium responsive testing proves layout in that browser only. Record device, iPadOS/Safari version, orientation, account state, video IDs/MFK status, timestamp, exact action, and fresh screen evidence for each run.
 
 1. Parent sign-in and approval on desktop/tablet. Keyboard never covers important actions; errors remain actionable. Child cannot reuse leftover parent session after entering child mode.
-2. Child login for each exact profile; wrong passcode, change profile, Back, reload, expired session, direct sibling video route/API ID, and cross-family IDs. Parent Mode requires protected reauthentication.
+2. Child login for each exact profile in PIN-off and PIN-on states; wrong PIN, change profile, Back, reload, expired session, direct sibling video route/API ID, and cross-family IDs. Parent Mode requires protected reauthentication.
 3. Portrait/landscape library at zero, one, and hundreds of assigned entries. Search matches assigned title/creator/collection only; no-result Ask Parent retains request context. Large artwork/targets in Simple mode; Standard mode remains readable without tiny horizontal shelves.
 4. Tap play, pause, seek, captions, fullscreen, rotate, native PiP if offered, return from fullscreen/PiP, Safari chrome changes, app background/foreground. Label external links/menus/recommendations actually visible and reachable; do not infer containment from layout alone.
 5. Let video end; inspect transient YouTube end screen and WatchNest replacement behavior; tap Next Up; test autoplay denial and clear manual Play fallback. Return to library without confusing reloads.
