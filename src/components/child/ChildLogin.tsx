@@ -172,7 +172,7 @@ export default function ChildLogin() {
               />
             </label>
           ) : (
-            <p>Ask your parent to open this profile on this device.</p>
+            <p>No passcode needed. Open your own library when you’re ready.</p>
           )}
           <div className="form-row">
             <button className="button" disabled={busy}>
@@ -224,6 +224,9 @@ export default function ChildLogin() {
                 <h2 style={{ fontSize: 28 }}>{p.display_name}</h2>
                 {p.pin_enabled && (
                   <span className="muted">Your own passcode</span>
+                )}
+                {!p.pin_enabled && (
+                  <span className="muted">No passcode needed</span>
                 )}
               </button>
             ))}
