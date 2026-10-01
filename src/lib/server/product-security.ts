@@ -32,17 +32,6 @@ export function sameOrigin(request: Request) {
     request.headers.get("sec-fetch-site") !== "cross-site"
   );
 }
-export function credibleProgress(
-  current: number,
-  duration: number,
-  watched: number,
-  elapsed: number,
-) {
-  return {
-    current: Math.max(0, Math.min(current, duration)),
-    watched: Math.max(0, Math.min(watched, elapsed, 60)),
-  };
-}
 export function metadataFresh(
   video: { metadata_last_checked_at?: string | null },
   maxAgeDays = 1,
@@ -59,7 +48,10 @@ export function metadataFresh(
 export function childVideoView(video: any) {
   const fresh = metadataFresh(video, 30);
   const progress =
-    fresh && video.made_for_kids === false && video.progress
+    metadataFresh(video) &&
+    video.made_for_kids === false &&
+    video.progress?.raw_resume === true &&
+    metadataFresh({ metadata_last_checked_at: video.progress.updated_at }, 29)
       ? {
           current_time_seconds: video.progress.current_time_seconds,
           duration_seconds: video.progress.duration_seconds,

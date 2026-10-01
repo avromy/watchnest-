@@ -35,6 +35,18 @@ beforeAll(async () => {
       "utf8",
     ),
   );
+  for (const migration of [
+    "20260930235928_metadata_retention_maintenance.sql",
+    "20261001030558_hosted_security_indexes.sql",
+  ]) {
+    await db.exec(readFileSync(`supabase/migrations/${migration}`, "utf8"));
+  }
+  await db.exec(
+    readFileSync(
+      "supabase/migrations/20261001053047_raw_resume_only.sql",
+      "utf8",
+    ),
+  );
   await db.exec(
     `insert into parents(id,email) values('${a}','a@test.local'),('${b}','b@test.local');insert into profiles(id,parent_id,display_name) values('${ari}','${a}','Ari'),('${benny}','${a}','Benny'),('${foreign}','${b}','Other');insert into videos(id,youtube_video_id,title,duration_seconds,embeddable_status,made_for_kids,metadata_last_checked_at) values('${video}','abcdefghijk','Video',100,'embeddable',false,now());insert into child_sessions(id,profile_id,token_hash,created_at,expires_at) values('${session}','${ari}','hash',now()-interval '1 minute',now()+interval '1 hour');`,
   );
@@ -73,7 +85,7 @@ describe("real PostgreSQL household integrity", () => {
   });
   it("records bounded progress only for session child and preserves sibling isolation", async () => {
     await db.exec(
-      `select wn_record_progress('${session}','${video}',40,60,false)`,
+      `select wn_record_progress('${session}','${video}',40,0,false)`,
     );
     const progress = await db.query<{
       profile_id: string;
@@ -85,11 +97,11 @@ describe("real PostgreSQL household integrity", () => {
     const ev = await db.query<{ watched_seconds: number }>(
       `select watched_seconds from viewing_events`,
     );
-    expect(ev.rows[0].watched_seconds).toBeLessThanOrEqual(60);
+    expect(ev.rows).toEqual([]);
   });
   it("turns off made-for-kids tracking", async () => {
     await db.exec(
-      `update videos set made_for_kids=true where id='${video}';select wn_record_progress('${session}','${video}',80,60,false)`,
+      `update videos set made_for_kids=true where id='${video}';select wn_record_progress('${session}','${video}',80,0,false)`,
     );
     const result = await db.query<{ current_time_seconds: number }>(
       "select current_time_seconds from watch_progress",
@@ -102,7 +114,7 @@ describe("real PostgreSQL household integrity", () => {
       `select wn_assign_video('${a}','${video}',array['${benny}']::uuid[],null)`,
     );
     await expect(
-      db.exec(`select wn_record_progress('${session}','${video}',50,5,false)`),
+      db.exec(`select wn_record_progress('${session}','${video}',50,0,false)`),
     ).rejects.toThrow("Not assigned");
   });
   it("RLS and grants deny authenticated and anon secrets, data and RPC", async () => {

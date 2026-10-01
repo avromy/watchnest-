@@ -30,7 +30,11 @@ export type Collection = {
   description?: string;
   video_ids: string[];
 };
-export async function api<T>(url: string, body?: unknown, options?: {keepalive?: boolean}): Promise<T> {
+export async function api<T>(
+  url: string,
+  body?: unknown,
+  options?: { keepalive?: boolean },
+): Promise<T> {
   const res = await fetch(url, {
     method: body ? "POST" : "GET",
     headers: body ? { "Content-Type": "application/json" } : undefined,
@@ -55,23 +59,17 @@ export function duration(seconds: number) {
     : "";
 }
 
-/** Count real forward playback, never a seek or a suspended/background timer. */
-export function playedSeconds(
-  current: number,
-  previous: number,
-  elapsed: number,
-  playing: boolean,
-  hidden: boolean,
-): number {
-  const delta = current - previous;
-  return playing &&
-    !hidden &&
-    Number.isFinite(delta) &&
-    Number.isFinite(elapsed) &&
-    delta > 0 &&
-    elapsed > 0 &&
-    elapsed < 3 &&
-    delta <= elapsed * 2.2 + 0.2
-    ? Math.min(delta, elapsed)
-    : 0;
+// Shared across player component lifecycles in this browser app. Replays must
+// wait for cleanup/ENDED writes from the prior instance. This does not sequence
+// independent tabs; the database's final valid arriving write is authoritative.
+let bookmarkQueue: Promise<void> = Promise.resolve();
+export function serializeBookmark(write: () => Promise<void>): Promise<void> {
+  const next = bookmarkQueue.then(write, write);
+  bookmarkQueue = next.catch(() => {});
+  return next;
+}
+
+/** Await already-queued lifecycle cleanup before requesting a resume snapshot. */
+export function waitForBookmarks(): Promise<void> {
+  return bookmarkQueue;
 }

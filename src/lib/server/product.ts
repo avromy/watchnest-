@@ -9,7 +9,6 @@ import {
   hashPin,
   verifyPin,
   sameOrigin,
-  credibleProgress,
   metadataFresh,
   childVideoView,
 } from "./product-security";
@@ -220,7 +219,9 @@ async function videos(parentId: string, profileId?: string) {
       await client
         .from("watch_progress")
         .select("*")
-        .eq("profile_id", profileId),
+        .eq("profile_id", profileId)
+        .eq("raw_resume", true)
+        .gt("updated_at", new Date(Date.now() - 29 * 86400000).toISOString()),
     );
   }
   const collections = check(
@@ -281,11 +282,7 @@ async function metadata(videoIds: string[], force = false) {
   const missing = videoIds.filter(
     (v) =>
       force ||
-      !cached.some(
-        (r: any) =>
-          r.youtube_video_id === v &&
-          metadataFresh(r),
-      ),
+      !cached.some((r: any) => r.youtube_video_id === v && metadataFresh(r)),
   );
   if (missing.length) {
     const result = await youtube("videos", {
@@ -1092,47 +1089,6 @@ async function parentRoute(
         .eq("parent_id", p.id)
         .is("removed_at", null),
     );
-    const eligibleIds = new Set(
-      own
-        .filter(
-          (v: any) =>
-            v.made_for_kids === false &&
-            metadataFresh(v) &&
-            v.availability_status === "available" &&
-            v.embeddable_status === "embeddable",
-        )
-        .map((v: any) => v.id),
-    );
-    // A later MFK/unknown/stale status must suppress historical reporting too.
-    // Never infer restricted playback from library clicks, requests or timers.
-    const events = check(
-      await client
-        .from("viewing_events")
-        .select("*")
-        .eq("parent_id", p.id)
-        .gte("created_at", new Date(Date.now() - 7 * 86400000).toISOString()),
-    ).filter((event: any) => eligibleIds.has(event.video_id));
-    const localDate = (date: Date) =>
-      new Intl.DateTimeFormat("en-CA", {
-        timeZone: "America/Toronto",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      }).format(date);
-    const lifetimeProgress = profiles.length
-      ? check(
-          await client
-            .from("watch_progress")
-            .select("video_id")
-            .in(
-              "profile_id",
-              profiles.map((x: any) => x.id),
-            ),
-        )
-      : [];
-    const today = localDate(new Date());
-    const sum = (rows: any[]) =>
-      rows.reduce((s, e) => s + e.watched_seconds, 0);
     const requests = check(
       await client
         .from("child_requests")
@@ -1140,36 +1096,6 @@ async function parentRoute(
         .eq("parent_id", p.id)
         .order("created_at", { ascending: false }),
     );
-    const byChild = [];
-    for (const profile of profiles) {
-      const ev = events.filter((e: any) => e.profile_id === profile.id);
-      const recentIds = [
-        ...new Set(
-          ev
-            .slice()
-            .reverse()
-            .map((e: any) => e.video_id),
-        ),
-      ].slice(0, 5);
-      byChild.push({
-        profile_id: profile.id,
-        display_name: profile.display_name,
-        todaySeconds: sum(
-          ev.filter((e: any) => localDate(new Date(e.created_at)) === today),
-        ),
-        weekSeconds: sum(ev),
-        recent: own.filter((v: any) => recentIds.includes(v.id)),
-      });
-    }
-    const daily = Array.from({ length: 7 }, (_, i) => {
-      const date = localDate(new Date(Date.now() - (6 - i) * 86400000));
-      return {
-        date,
-        seconds: sum(
-          events.filter((e: any) => localDate(new Date(e.created_at)) === date),
-        ),
-      };
-    });
     return reply({
       profiles,
       videos: own.map((v: any) => ({
@@ -1210,28 +1136,18 @@ async function parentRoute(
         source:
           "WatchNest approval, assignment and request activity. Not YouTube watch or engagement metrics.",
       },
+      // Compatibility shape is disabled. Never query or report historical
+      // player-derived metrics, including explicit non-MFK videos.
       analytics: {
-        todaySeconds: sum(
-          events.filter(
-            (e: any) => localDate(new Date(e.created_at)) === today,
-          ),
-        ),
-        weekSeconds: sum(events),
-        byChild,
-        popular: own
-          .map((v: any) => ({
-            title: metadataFresh(v, 30) ? v.title : "Video needs refresh",
-            seconds: sum(events.filter((e: any) => e.video_id === v.id)),
-          }))
-          .sort((a: any, b: any) => b.seconds - a.seconds)
-          .filter((v: any) => v.seconds)
-          .slice(0, 5),
-        daily,
-        neverWatched: own.filter(
-          (v: any) =>
-            eligibleIds.has(v.id) &&
-            !lifetimeProgress.some((e: any) => e.video_id === v.id),
-        ).length,
+        enabled: false,
+        source:
+          "YouTube-derived viewing metrics are not collected or reported.",
+        todaySeconds: 0,
+        weekSeconds: 0,
+        byChild: [],
+        popular: [],
+        daily: [],
+        neverWatched: 0,
       },
       attention: own
         .filter(
@@ -1323,8 +1239,8 @@ async function childRoute(
       .object({
         videoId: id,
         currentTimeSeconds: z.number().finite().min(0).max(86400),
-        durationSeconds: z.number().finite().min(0).max(86400),
-        watchedSeconds: z.number().finite().min(0).max(60),
+        durationSeconds: z.number().finite().min(0).max(86400).optional(),
+        watchedSeconds: z.literal(0).optional().default(0),
         completed: z.boolean(),
       })
       .parse(body);
@@ -1337,27 +1253,15 @@ async function childRoute(
       throw new Failure("This video is unavailable.", 409);
     if (!metadataFresh(video) || video.made_for_kids !== false)
       return reply({ ok: true, trackingDisabled: true });
-    const elapsed = Math.max(
-      0,
-      (Date.now() -
-        Date.parse(c.session.last_progress_at || c.session.created_at)) /
-        1000,
-    );
-    const val = credibleProgress(
-      b.currentTimeSeconds,
-      video.duration_seconds || b.durationSeconds,
-      b.watchedSeconds,
-      elapsed,
-    );
+    // Store a raw player position only, for the child's functional resume.
+    // Ended is the player's raw state, not calculated completion or watch time.
     check(
       await client.rpc("wn_record_progress", {
         p_session: c.session.id,
         p_video: b.videoId,
-        p_current: Math.floor(val.current),
-        p_watched: Math.floor(val.watched),
-        p_completed:
-          b.completed &&
-          val.current >= (video.duration_seconds || b.durationSeconds) * 0.95,
+        p_current: Math.floor(b.currentTimeSeconds),
+        p_watched: 0,
+        p_completed: b.completed,
       }),
     );
     return reply({ ok: true });

@@ -1,7 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { api, playedSeconds, Profile, Video } from "./model";
+import {
+  api,
+  Profile,
+  Video,
+  serializeBookmark,
+  waitForBookmarks,
+} from "./model";
 type Player = {
   getCurrentTime: () => number;
   getDuration: () => number;
@@ -110,7 +116,12 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     setBlocked(false);
     setHelpSent(false);
     setHelpError("");
-    api<Playback>(`/api/child/player?videoId=${encodeURIComponent(videoId)}`)
+    waitForBookmarks()
+      .then(() =>
+        api<Playback>(
+          `/api/child/player?videoId=${encodeURIComponent(videoId)}`,
+        ),
+      )
       .then((d) => {
         if (!cancelled) setData(d);
       })
@@ -124,66 +135,37 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   useEffect(() => {
     if (!data || !mount.current) return;
     let disposed = false;
-    let watched = 0;
-    let lastTime = 0;
-    let lastAt = performance.now();
-    let lastSave = performance.now();
     let completed = false;
-    let saving = false;
     active.current = true;
-    const historyAllowed = data.video.made_for_kids === false;
-    async function save(force = false) {
+    let historyAllowed = data.video.made_for_kids === false;
+    function save() {
       const p = player.current;
-      if (!p || !historyAllowed || (!force && (saving || watched < 1))) return;
+      if (!p || !historyAllowed) return;
       const current = p.getCurrentTime();
-      const length = p.getDuration();
-      const increment = Math.floor(watched);
-      watched -= increment;
-      saving = true;
-      try {
-        await api(
-          "/api/child/progress",
-          {
-            videoId,
-            currentTimeSeconds: Math.max(0, current || 0),
-            durationSeconds: Math.max(
-              0,
-              length || data!.video.duration_seconds,
-            ),
-            watchedSeconds: Math.max(0, Math.floor(increment)),
-            completed,
-          },
-          { keepalive: true },
-        );
-      } catch (e) {
-        if (!disposed) {
-          p.pauseVideo();
-          active.current = false;
-          setError((e as Error).message);
+      const rawEnded = completed;
+      // Capture before destroying the iframe; serialize to prevent a delayed
+      // position response/write from resurrecting an ended bookmark.
+      void serializeBookmark(async () => {
+        try {
+          await api(
+            "/api/child/progress",
+            {
+              videoId,
+              currentTimeSeconds:
+                Number.isFinite(current) && current >= 0 ? current : 0,
+              watchedSeconds: 0,
+              completed: rawEnded,
+            },
+            { keepalive: true },
+          );
+        } catch (e) {
+          if (!disposed) {
+            player.current?.pauseVideo();
+            active.current = false;
+            setError((e as Error).message);
+          }
         }
-      } finally {
-        saving = false;
-      }
-    }
-    function tick() {
-      const p = player.current;
-      if (!p || !active.current) return;
-      const now = performance.now();
-      const current = p.getCurrentTime() || 0;
-      const elapsed = (now - lastAt) / 1000;
-      watched += playedSeconds(
-        current,
-        lastTime,
-        elapsed,
-        p.getPlayerState() === 1,
-        document.hidden,
-      );
-      lastTime = current;
-      lastAt = now;
-      if (now - lastSave >= 15000) {
-        lastSave = now;
-        void save();
-      }
+      });
     }
     const host = document.createElement("div");
     mount.current.replaceChildren(host);
@@ -209,17 +191,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             },
             onStateChange: (e) => {
               if (disposed) return;
-              lastTime = e.target.getCurrentTime() || 0;
-              lastAt = performance.now();
               if (e.data === 1) {
                 setBlocked(false);
                 setEnded(false);
               }
-              if (e.data === 2) void save(true);
+              if (e.data === 2) void save();
               if (e.data === 0) {
                 completed = true;
                 setEnded(true);
-                void save(true);
+                void save();
                 active.current = false;
                 e.target.destroy();
                 player.current = null;
@@ -242,38 +222,40 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       .catch((e) => {
         if (!disposed) setError(e.message);
       });
-    const ticker = setInterval(tick, 1000);
+    const bookmark = historyAllowed
+      ? setInterval(() => void save(), 15000)
+      : undefined;
     const check = setInterval(() => {
-      api<Playback>(
-        `/api/child/player?videoId=${encodeURIComponent(videoId)}`,
-      ).catch((e) => {
-        if (!disposed) {
-          active.current = false;
-          player.current?.pauseVideo();
-          player.current?.destroy();
-          player.current = null;
-          setError((e as Error).message);
-        }
-      });
+      api<Playback>(`/api/child/player?videoId=${encodeURIComponent(videoId)}`)
+        .then((fresh) => {
+          historyAllowed = fresh.video.made_for_kids === false;
+        })
+        .catch((e) => {
+          if (!disposed) {
+            active.current = false;
+            player.current?.pauseVideo();
+            player.current?.destroy();
+            player.current = null;
+            setError((e as Error).message);
+          }
+        });
     }, 20000);
     function visibility() {
       if (document.hidden) {
         player.current?.pauseVideo();
-        void save(true);
+        void save();
       }
-      lastAt = performance.now();
-      lastTime = player.current?.getCurrentTime() || 0;
     }
     function pagehide() {
-      void save(true);
+      void save();
     }
     document.addEventListener("visibilitychange", visibility);
     window.addEventListener("pagehide", pagehide);
     return () => {
-      void save(true);
+      void save();
       disposed = true;
       active.current = false;
-      clearInterval(ticker);
+      clearInterval(bookmark);
       clearInterval(check);
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("pagehide", pagehide);
@@ -347,7 +329,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           {ended ? (
             <section className="panel" aria-live="polite">
               <p className="eyebrow">All finished</p>
-              <h2>You watched {data.video.title}</h2>
+              <h2>{data.video.title} has ended</h2>
               <p className="muted">
                 Pick another video from your library, or enjoy this one again.
               </p>
@@ -389,7 +371,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           )}
           {data.video.made_for_kids !== false && (
             <p className="muted" style={{ fontSize: 13 }}>
-              Watch history is off for this video.
+              Resume is off for this video.
             </p>
           )}
           <section className="panel" style={{ marginTop: 24 }}>

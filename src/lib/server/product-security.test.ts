@@ -5,7 +5,6 @@ import {
   hashPin,
   verifyPin,
   sameOrigin,
-  credibleProgress,
   childVideoView,
   metadataFresh,
 } from "./product-security";
@@ -41,16 +40,6 @@ describe("child security primitives", () => {
       ),
     ).toBe(true);
   });
-  it("clamps analytics to elapsed time and bounds playback progress", () => {
-    expect(credibleProgress(200, 100, 60, 5)).toEqual({
-      current: 100,
-      watched: 5,
-    });
-    expect(credibleProgress(-10, 100, -5, 1)).toEqual({
-      current: 0,
-      watched: 0,
-    });
-  });
 });
 
 describe("child metadata and tracking projection", () => {
@@ -64,7 +53,8 @@ describe("child metadata and tracking projection", () => {
         current_time_seconds: 12,
         duration_seconds: 30,
         completed_at: null,
-        updated_at: "today",
+        updated_at: new Date().toISOString(),
+        raw_resume: true,
       },
     };
     for (const made_for_kids of [true, null, undefined])
@@ -83,16 +73,60 @@ describe("child metadata and tracking projection", () => {
         current_time_seconds: 12,
         duration_seconds: 30,
         completed_at: null,
-        updated_at: "today",
+        updated_at: new Date().toISOString(),
+        raw_resume: true,
       },
     });
     expect(view.progress).toEqual({
       current_time_seconds: 12,
       duration_seconds: 30,
       completed_at: null,
-      updated_at: "today",
+      updated_at: expect.any(String),
     });
     expect(JSON.stringify(view)).not.toContain("sibling");
+  });
+  it("requires one-day classification freshness for raw resume independently of title retention", () => {
+    const now = Date.now();
+    for (const age of [86400000, 2 * 86400000, 28 * 86400000]) {
+      const view = childVideoView({
+        title: "Retained title",
+        made_for_kids: false,
+        metadata_last_checked_at: new Date(now - age).toISOString(),
+        progress: {
+          raw_resume: true,
+          updated_at: new Date(now).toISOString(),
+          current_time_seconds: 12,
+        },
+      });
+      expect(view.title).toBe("Retained title");
+      expect(view).not.toHaveProperty("progress");
+    }
+    expect(
+      childVideoView({
+        made_for_kids: false,
+        metadata_last_checked_at: new Date(now - 3600000).toISOString(),
+        progress: {
+          raw_resume: true,
+          updated_at: new Date(now).toISOString(),
+          current_time_seconds: 12,
+        },
+      }),
+    ).toHaveProperty("progress.current_time_seconds", 12);
+  });
+  it("suppresses legacy, future and expired raw bookmarks without refreshing their TTL", () => {
+    for (const [raw_resume, updated_at] of [
+      [false, new Date().toISOString()],
+      [true, new Date(Date.now() - 29 * 86400000).toISOString()],
+      [true, new Date(Date.now() + 1000).toISOString()],
+    ]) {
+      expect(
+        childVideoView({
+          made_for_kids: false,
+          metadata_last_checked_at: new Date().toISOString(),
+          progress: { raw_resume, updated_at, current_time_seconds: 12 },
+        }),
+      ).not.toHaveProperty("progress");
+    }
   });
   it("does not serve cached title or image past 30 days and treats missing checks as stale", () => {
     const view = childVideoView({

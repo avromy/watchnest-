@@ -63,20 +63,9 @@ function VideoGrid({ videos }: { videos: Video[] }) {
               v.progress &&
               !v.progress.completed_at &&
               v.progress.current_time_seconds > 0 && (
-                <div
-                  className="progress-track"
-                  aria-label={`${Math.round((v.progress.current_time_seconds / Math.max(v.duration_seconds, 1)) * 100)} percent watched`}
-                  style={{ marginTop: 12 }}
-                >
-                  <span
-                    style={{
-                      display: "block",
-                      height: 4,
-                      background: "#193F35",
-                      width: `${Math.min(100, (v.progress.current_time_seconds / Math.max(v.duration_seconds, 1)) * 100)}%`,
-                    }}
-                  />
-                </div>
+                <p className="muted" style={{ marginTop: 12 }}>
+                  Resume at {duration(v.progress.current_time_seconds)}
+                </p>
               )}
           </div>
         </Link>
@@ -158,7 +147,7 @@ export default function ChildLibrary() {
       (v) =>
         v.made_for_kids === false &&
         v.progress &&
-        v.progress.current_time_seconds > 10 &&
+        v.progress.current_time_seconds > 0 &&
         !v.progress.completed_at,
     )
     .sort((a, b) =>

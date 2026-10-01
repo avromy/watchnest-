@@ -126,11 +126,7 @@ describe("dashboard policy boundary: actual handler, mocked database", () => {
         popular: [],
         neverWatched: 0,
       });
-      expect(result.analytics.byChild[0]).toMatchObject({
-        todaySeconds: 0,
-        weekSeconds: 0,
-        recent: [],
-      });
+      expect(result.analytics.byChild).toEqual([]);
       expect(
         result.analytics.daily.every((day: any) => day.seconds === 0),
       ).toBe(true);
@@ -155,8 +151,8 @@ describe("dashboard policy boundary: actual handler, mocked database", () => {
     });
   it("excludes removed/foreign video events and keeps eligible scope distinct from own workflow", async () => {
     const result = await dashboard();
-    expect(result.analytics.weekSeconds).toBe(90);
-    expect(result.analytics.neverWatched).toBe(1);
+    expect(result.analytics.weekSeconds).toBe(0);
+    expect(result.analytics.neverWatched).toBe(0);
     expect(result.workflow.source).toContain("Not YouTube watch");
   });
 });
