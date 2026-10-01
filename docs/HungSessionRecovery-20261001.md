@@ -1,3 +1,29 @@
+# CURRENT reconciliation — successor56045d0 — 2026-10-01
+
+This section supersedes the initial snapshot below. Fresh recovery test correctly FAILED when newer durable state appeared during source recovery. Do not treat initial0194083 receipt as current product identity.
+
+Current product source56045d02326ae24d26747bc830b3420a50600c8f/treec26e8b852e8626c3c33a2f4b283419c73dbe5139, branchproduct-completion-20260930/PR26. CI36824792268 and36824790115SUCCESS. Native productiondpl_9PuL98GQ7GzuDaZvQYPAy9LrXMEsREADY exactsource/ref with watchnest-rho.vercel.app alias. Automatic Git deployment completed; no duplicate deployment needed. Docs-only recovery branch has an incidental preview; it is NOT production authority.
+
+Changes sinceee60e7e: both public Parent links go to protected/parent; shared decorative ProfileIdentity SVG renders storedLeaf/Sun/Star/Moon onParentChildren/ChildLogin/ChildLibrary header. Source diff inspected: no player/bookmark/analytics/server/schema change. App/UI affected visual evidence becomesSTALE until boundedrecheck; technicalreview remains scoped to unchanged backend/player bytes, changedParentAppcomposition not carriedforward.
+ReviewCheckpoint-20261001.md at exact56045d0 preserves currentpackage provenance and historical reviewscope. Original Independent Human-Eye A02 completed8regions/1asset/1readableview/1structuralrecord/4edges, zero conflicts/confirmeddefects on ee60e7e emptydesktopDashboard; not fullproduct acceptance. New currentcheckpoint overrides earlier missing-report hypothesis; our earlier UNVERIFIED label was based on firstsnapshot, not evidence of reviewerfailure.
+Frozen actualStranger21step report retrieved FULL (68lines) fromLibrarylibfile_7075f3a6c6748191a526f392b3a7e628/file_0000000013e481f59d84621978ca7825, returning-parent-stranger-frozen.md. Sourcecommit notknown toreviewer; boundhistoricaldiagnostic, notnewcandidatePASS.
+Affected signed-in entryrecheck retrievedFULL fromlibfile_c55fba6907fc81918cfdc467c6b1cd41/file_000000007fa881f584c6536f745c81b2, returning-parent-rp01-live-recheck-frozen.md. Exact56045d0/dpl9Pu identitycontrollerbound; independent retainedsession homepageheader→protectedParent→dashboardPASS, no credentialentry. Hero linkdestinationobserved, notclicked. No globalgate.
+Actual current safeChildidentityraster locatedlibfile_641cf9a80dec8191a7cc065112f3dba8/file_00000000de0881f5883edfba616e4a5d, watchnest-live-child-identities-safe-56045d0.jpg. Historical A02 cleanrasterlibfile_ce994d4e67bc8191b023304b9720f56e/file_00000000206081f58ecb75d4d90503ec; containmentJSONlibfile_f48c2c48f2cc819182aafb421cd27bfe/file_00000000fa1881f58aa5fbd1e0e5698e. Iconladderlibfile_a0e83513876081918cd86590aef0578d/file_000000003d2c81f59f6a7e812990f0f4 isderivedrendering, notliveproof.
+Nine originalStranger screenshot identities:
+- accessentrylibfile_33811a85ad54819188e443878374c04f
+- recoverylibfile_d1e359c52a94819187e64be862039a47
+- setuplibfile_9dbfdfa993008191882bc3a2cd5a0805
+- householdlibfile_8566aaf887388191bbfc397ce3df4642
+- overviewlibfile_f7b821e4e4708191b9e37b2004bf706a
+- librarylibfile_9b9bd36f981081918458f7877b3ad367
+- collectionslibfile_c804e8a53ca08191bd0754a720bb5b0d
+- inboxlibfile_b7842200ccc88191bef752f6c2f7c8fc
+- addvideolibfile_8532253fb2cc8191a255fe8781572391.
+All metadata located via targeted title search, not all pixels reinspected. No falseassetconsumptionclaim.
+
+This rootbrowser lacks priorParentsession; direct protectedChildren route redirected/login, unlike the retainedindependentbrowser session. Do not infer allbrowser sessions lost or request account recreation. Currentpublichomepageactuallyshowsboth/parentlinks. Newchildcredentialentry requiresownermanualentry/submission. GoogleCloud currentrootbrowserSiteUnavailableafteroneordinaryreload, no evasion. One consolidatedFounderpacket follows boundedindependentreview/readback; no productReadyclaim.
+Independent recovery retest must use this correction, liveNotion and exactGit, notinitialsnapshot. Do notdependonpreviousconversation.
+
 # WatchNest hung-session recovery — 2026-10-01
 
 ## Current authority and immutable live candidate
