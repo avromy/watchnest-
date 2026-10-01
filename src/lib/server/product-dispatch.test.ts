@@ -15,6 +15,7 @@ const state = vi.hoisted(() => ({
   verifiedTokens: [] as string[],
   refreshCalls: [] as any[],
   cookieWrites: [] as any[],
+  childAuthPin: null as null | boolean,
 }));
 vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({
@@ -105,9 +106,17 @@ vi.mock("@supabase/supabase-js", () => ({
             ? { id: "family", email: "Avromy@gmail.com" }
             : table === "child_sessions"
               ? { id: "session", profile_id: "child" }
-              : table === "profiles"
-                ? state.role === "child"
-                  ? { id: "child", parent_id: "family" }
+            : table === "profiles"
+                ? state.childAuthPin !== null
+                  ? {
+                      id: "22222222-2222-4222-8222-222222222222",
+                      parent_id: "family",
+                      display_name: "Miri",
+                      pin_enabled: state.childAuthPin,
+                      pin_hash: null,
+                    }
+                  : state.role === "child"
+                    ? { id: "child", parent_id: "family" }
                   : []
                 : state.video && table === "family_videos"
                   ? [
@@ -189,8 +198,52 @@ afterEach(() => {
   state.verifiedTokens = [];
   state.refreshCalls = [];
   state.cookieWrites = [];
+  state.childAuthPin = null;
 });
 describe("authenticated route dispatch regression", () => {
+  it("opens a PIN-off profile from its family link without parent authentication", async () => {
+    configured();
+    state.role = "none";
+    state.childAuthPin = false;
+    const response = await handle(
+      new Request("https://test.local/api/auth/child", {
+        method: "POST",
+        headers: { origin: "https://test.local" },
+        body: JSON.stringify({
+          family: "family-code-long-enough",
+          profileId: "22222222-2222-4222-8222-222222222222",
+        }),
+      }),
+      ["auth", "child"],
+    );
+    expect(response.status).toBe(200);
+    expect(state.getUserCalls).toBe(0);
+    expect(state.cookieWrites.map(([name]) => name)).toEqual([
+      "wn_child",
+      "wn_parent",
+      "wn_refresh",
+    ]);
+    expect(JSON.stringify(await response.json())).not.toContain("pin_hash");
+  });
+  it("keeps a PIN-on profile closed when the child credential is absent", async () => {
+    configured();
+    state.role = "none";
+    state.childAuthPin = true;
+    const response = await handle(
+      new Request("https://test.local/api/auth/child", {
+        method: "POST",
+        headers: { origin: "https://test.local" },
+        body: JSON.stringify({
+          family: "family-code-long-enough",
+          profileId: "22222222-2222-4222-8222-222222222222",
+        }),
+      }),
+      ["auth", "child"],
+    );
+    expect(response.status).toBe(401);
+    expect(state.cookieWrites).toEqual([]);
+    expect(state.tables).not.toContain("child_sessions");
+  });
   it("returns JSON 403 for unapproved parent deletion instead of uncaught async failure", async () => {
     configured();
     const response = await handle(
