@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import ProfileIdentity from "../ProfileIdentity";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -202,7 +203,7 @@ export default function ChildLibrary() {
             }}
             aria-hidden="true"
           >
-            {profile.display_name[0]}
+            <ProfileIdentity identity={profile.avatar_key} />
           </span>
           <strong>{profile.display_name}</strong>
           <button

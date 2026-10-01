@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { api, avatarColors, Profile } from "./model";
+import ProfileIdentity from "../ProfileIdentity";
 export default function ChildLogin() {
   const router = useRouter();
   const [family, setFamily] = useState("");
@@ -218,7 +219,7 @@ export default function ChildLogin() {
                   }}
                   aria-hidden="true"
                 >
-                  {p.display_name[0]}
+                  <ProfileIdentity identity={p.avatar_key} />
                 </span>
                 <h2 style={{ fontSize: 28 }}>{p.display_name}</h2>
                 {p.pin_enabled && (
