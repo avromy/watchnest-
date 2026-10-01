@@ -534,8 +534,9 @@ export async function handle(request: globalThis.Request, path: string[]) {
           process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
           { auth: { persistSession: false, autoRefreshToken: false } },
         );
-        result = await auth.auth.setSession({
-          access_token: b.access_token,
+        // setSession accepts an unexpired access token without validating the
+        // accompanying refresh token. Refresh explicitly to verify and rotate it.
+        result = await auth.auth.refreshSession({
           refresh_token: b.refresh_token,
         });
         if (result.error || !result.data.session)

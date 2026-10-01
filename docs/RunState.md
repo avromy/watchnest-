@@ -4,6 +4,8 @@ Dedicated WatchNest database is configured; see [Hosted database receipts](Hoste
 
 # Durable run-state / deliverable contract
 
+Recovery successor in this commit verifies refresh credentials with an explicit server refresh grant and real-SDK handler regression coverage. Local150tests/19files plus lint/typecheck/build pass. Independent original review in RecoveryAuthReview-20261001.md; current Notion handoff binds successor rereview/CI/deployment rather than carrying60673a acceptance forward. Current practical owner action is Parent credential creation, not Supabase project creation.
+
 Project: WatchNest; Product/App; avromy/watchnest-. State: IN PROGRESS — account-owner access pending. Not a shipping/Founder Ready terminal. Latest implementation is the commit containing this file on product-completion-20260930, draft PR26. Parent source candidate8bc07527dbe5eac5e4c194aaa327b5a36440f690; main baselinefdb0de994e81b81e92b596332d3fcfc68eb53334 preserved. Notion CTO handoff records exact successor SHA/tree/CI after remote readback.
 
 ## Completed / preserved

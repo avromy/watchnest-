@@ -9,10 +9,11 @@ const state = vi.hoisted(() => ({
   updates: [] as any[],
   email: "Avromy@gmail.com",
   authInvalid: false,
-  sessionInvalid: false,
-  restoredOtherUser: false,
+  refreshInvalid: false,
+  refreshedOtherUser: false,
   getUserCalls: 0,
-  sessionCalls: [] as any[],
+  verifiedTokens: [] as string[],
+  refreshCalls: [] as any[],
   cookieWrites: [] as any[],
 }));
 vi.mock("server-only", () => ({}));
@@ -41,7 +42,8 @@ vi.mock("@supabase/supabase-js", () => ({
         },
         error: null,
       }),
-      getUser: async () => {
+      getUser: async (token: string) => {
+        state.verifiedTokens.push(token);
         state.getUserCalls++;
         return {
           data: {
@@ -49,7 +51,7 @@ vi.mock("@supabase/supabase-js", () => ({
               ? null
               : {
                   id:
-                    state.restoredOtherUser && state.getUserCalls > 1
+                    state.refreshedOtherUser && state.getUserCalls > 1
                       ? "other-owner"
                       : "owner",
                   email: state.email,
@@ -59,20 +61,20 @@ vi.mock("@supabase/supabase-js", () => ({
           error: state.authInvalid ? { message: "invalid" } : null,
         };
       },
-      setSession: async (tokens: any) => {
-        state.sessionCalls.push(tokens);
+      refreshSession: async (tokens: any) => {
+        state.refreshCalls.push(tokens);
         return {
           data: {
             user: { id: "owner", email: state.email },
-            session: state.sessionInvalid
+            session: state.refreshInvalid
               ? null
               : {
-                  access_token: "restored-token",
-                  refresh_token: "restored-refresh",
+                  access_token: "refreshed-token",
+                  refresh_token: "rotated-refresh",
                   expires_in: 3600,
                 },
           },
-          error: state.sessionInvalid ? { message: "invalid" } : null,
+          error: state.refreshInvalid ? { message: "invalid" } : null,
         };
       },
       signInWithPassword: async () => ({
@@ -181,10 +183,11 @@ afterEach(() => {
   state.updates = [];
   state.email = "Avromy@gmail.com";
   state.authInvalid = false;
-  state.sessionInvalid = false;
-  state.restoredOtherUser = false;
+  state.refreshInvalid = false;
+  state.refreshedOtherUser = false;
   state.getUserCalls = 0;
-  state.sessionCalls = [];
+  state.verifiedTokens = [];
+  state.refreshCalls = [];
   state.cookieWrites = [];
 });
 describe("authenticated route dispatch regression", () => {
@@ -341,31 +344,32 @@ describe("default Supabase recovery session callback", () => {
       ["auth", "callback"],
     );
   }
-  it("verifies and restores a confirmed Founder session before issuing private cookies", async () => {
+  it("verifies the Founder access token and refreshes credentials before issuing private cookies", async () => {
     configured();
     const response = await callback();
     expect(response.status).toBe(200);
     expect(state.getUserCalls).toBe(2);
-    expect(state.sessionCalls).toEqual([
-      { access_token: "a".repeat(40), refresh_token: "r".repeat(40) },
+    expect(state.verifiedTokens).toEqual(["a".repeat(40), "refreshed-token"]);
+    expect(state.refreshCalls).toEqual([
+      { refresh_token: "r".repeat(40) },
     ]);
     expect(state.cookieWrites).toContainEqual([
       "wn_parent",
-      "restored-token",
+      "refreshed-token",
       expect.objectContaining({ httpOnly: true, sameSite: "strict" }),
     ]);
     expect(state.cookieWrites).toContainEqual([
       "wn_refresh",
-      "restored-refresh",
+      "rotated-refresh",
       expect.objectContaining({ httpOnly: true }),
     ]);
-    expect(JSON.stringify(await response.json())).not.toContain("restored");
+    expect(JSON.stringify(await response.json())).not.toContain("refreshed");
   });
-  it("rejects invalid access tokens before restoring a session or writing cookies", async () => {
+  it("rejects invalid access tokens before refreshing credentials or writing cookies", async () => {
     configured();
     state.authInvalid = true;
     expect((await callback()).status).toBe(401);
-    expect(state.sessionCalls).toEqual([]);
+    expect(state.refreshCalls).toEqual([]);
     expect(state.cookieWrites).toEqual([]);
     expect(state.tables).toEqual([]);
   });
@@ -375,7 +379,7 @@ describe("default Supabase recovery session callback", () => {
       configured();
       state.email = email;
       expect((await callback()).status).toBe(403);
-      expect(state.sessionCalls).toEqual([]);
+      expect(state.refreshCalls).toEqual([]);
       expect(state.cookieWrites).toEqual([]);
       expect(state.tables).toEqual([]);
     },
@@ -385,18 +389,18 @@ describe("default Supabase recovery session callback", () => {
     state.unconfirmed = true;
     expect((await callback()).status).toBe(403);
     expect(state.cookieWrites).toEqual([]);
-    expect(state.sessionCalls).toEqual([]);
+    expect(state.refreshCalls).toEqual([]);
   });
-  it("rejects failed session restoration without granting cookies", async () => {
+  it("rejects an invalid refresh token without granting cookies", async () => {
     configured();
-    state.sessionInvalid = true;
+    state.refreshInvalid = true;
     expect((await callback()).status).toBe(401);
     expect(state.cookieWrites).toEqual([]);
     expect(state.tables).toEqual([]);
   });
-  it("rejects a restored session for a different identity", async () => {
+  it("rejects refreshed credentials for a different identity", async () => {
     configured();
-    state.restoredOtherUser = true;
+    state.refreshedOtherUser = true;
     expect((await callback()).status).toBe(401);
     expect(state.cookieWrites).toEqual([]);
     expect(state.tables).toEqual([]);

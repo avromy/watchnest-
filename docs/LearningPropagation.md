@@ -28,6 +28,10 @@ Actual hosted Supabase free settings prevent custom recovery templates without S
 
 Vercel production-branch save reported no deployments for the branch, but subsequent deployment validation and native deployment source showed the exact branch was persisted. Reconcile contradictory evidence with an authoritative operation readback; do not repeat writes or infer success/failure solely from a toast. Bounded to this observation; no general permission to ignore warnings.
 
+## PROJECT — session setters do not necessarily verify refresh credentials
+
+Independent review of source60673a reproduced installed auth-js2.101.1 setSession accepting a garbage refresh token with an unexpired valid access token. A second getUser rechecks the access token and cannot establish refresh correspondence. Use a real server refresh grant, remotely verify returned access and compare identity against independently verified original Founder before cookies. Mocked session restoration tests concealed the SDK behavior; coverage must exercise the actual exchange boundary. No non-Founder bypass was demonstrated. This is a specific integration lesson, not a claim of live provider certification.
+
 ## Propagation and scope
 
 These findings are filed in repository evidence and current WatchNest Notion authority. DOMAIN/PROCESS candidates are recorded as reusable proposals, not uncalibrated global mandates. No 5T colors, geometry, artwork, copy or layout authority was imported. No paid service or unrelated infrastructure mutation was made. No deployed/real-device/YouTube legal certification is inferred from tests.
