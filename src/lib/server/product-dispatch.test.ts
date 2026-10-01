@@ -7,13 +7,20 @@ const state = vi.hoisted(() => ({
   stale: false,
   unconfirmed: false,
   updates: [] as any[],
+  email: "Avromy@gmail.com",
+  authInvalid: false,
+  sessionInvalid: false,
+  restoredOtherUser: false,
+  getUserCalls: 0,
+  sessionCalls: [] as any[],
+  cookieWrites: [] as any[],
 }));
 vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({
   cookies: async () => ({
     get: (name: string) =>
       name === `wn_${state.role}` ? { value: "token" } : undefined,
-    set: vi.fn(),
+    set: (...args: any[]) => state.cookieWrites.push(args),
   }),
 }));
 vi.mock("@supabase/supabase-js", () => ({
@@ -34,16 +41,40 @@ vi.mock("@supabase/supabase-js", () => ({
         },
         error: null,
       }),
-      getUser: async () => ({
-        data: {
-          user: {
-            id: "owner",
-            email: "Avromy@gmail.com",
-            email_confirmed_at: state.unconfirmed ? null : "2026-09-30",
+      getUser: async () => {
+        state.getUserCalls++;
+        return {
+          data: {
+            user: state.authInvalid
+              ? null
+              : {
+                  id:
+                    state.restoredOtherUser && state.getUserCalls > 1
+                      ? "other-owner"
+                      : "owner",
+                  email: state.email,
+                  email_confirmed_at: state.unconfirmed ? null : "2026-09-30",
+                },
           },
-        },
-        error: null,
-      }),
+          error: state.authInvalid ? { message: "invalid" } : null,
+        };
+      },
+      setSession: async (tokens: any) => {
+        state.sessionCalls.push(tokens);
+        return {
+          data: {
+            user: { id: "owner", email: state.email },
+            session: state.sessionInvalid
+              ? null
+              : {
+                  access_token: "restored-token",
+                  refresh_token: "restored-refresh",
+                  expires_in: 3600,
+                },
+          },
+          error: state.sessionInvalid ? { message: "invalid" } : null,
+        };
+      },
       signInWithPassword: async () => ({
         data: {
           user: { id: "owner", email: "Avromy@gmail.com" },
@@ -73,7 +104,9 @@ vi.mock("@supabase/supabase-js", () => ({
             : table === "child_sessions"
               ? { id: "session", profile_id: "child" }
               : table === "profiles"
-                ? { id: "child", parent_id: "family" }
+                ? state.role === "child"
+                  ? { id: "child", parent_id: "family" }
+                  : []
                 : state.video && table === "family_videos"
                   ? [
                       {
@@ -146,6 +179,13 @@ afterEach(() => {
   state.stale = false;
   state.unconfirmed = false;
   state.updates = [];
+  state.email = "Avromy@gmail.com";
+  state.authInvalid = false;
+  state.sessionInvalid = false;
+  state.restoredOtherUser = false;
+  state.getUserCalls = 0;
+  state.sessionCalls = [];
+  state.cookieWrites = [];
 });
 describe("authenticated route dispatch regression", () => {
   it("returns JSON 403 for unapproved parent deletion instead of uncaught async failure", async () => {
@@ -283,4 +323,105 @@ it("recovery callback cannot bind an unconfirmed Founder email", async () => {
   );
   expect(response.status).toBe(403);
   expect(state.tables).toEqual([]);
+});
+
+describe("default Supabase recovery session callback", () => {
+  function callback(overrides = {}) {
+    return handle(
+      new Request("https://test.local/api/auth/callback", {
+        method: "POST",
+        headers: { origin: "https://test.local" },
+        body: JSON.stringify({
+          type: "recovery",
+          access_token: "a".repeat(40),
+          refresh_token: "r".repeat(40),
+          ...overrides,
+        }),
+      }),
+      ["auth", "callback"],
+    );
+  }
+  it("verifies and restores a confirmed Founder session before issuing private cookies", async () => {
+    configured();
+    const response = await callback();
+    expect(response.status).toBe(200);
+    expect(state.getUserCalls).toBe(2);
+    expect(state.sessionCalls).toEqual([
+      { access_token: "a".repeat(40), refresh_token: "r".repeat(40) },
+    ]);
+    expect(state.cookieWrites).toContainEqual([
+      "wn_parent",
+      "restored-token",
+      expect.objectContaining({ httpOnly: true, sameSite: "strict" }),
+    ]);
+    expect(state.cookieWrites).toContainEqual([
+      "wn_refresh",
+      "restored-refresh",
+      expect.objectContaining({ httpOnly: true }),
+    ]);
+    expect(JSON.stringify(await response.json())).not.toContain("restored");
+  });
+  it("rejects invalid access tokens before restoring a session or writing cookies", async () => {
+    configured();
+    state.authInvalid = true;
+    expect((await callback()).status).toBe(401);
+    expect(state.sessionCalls).toEqual([]);
+    expect(state.cookieWrites).toEqual([]);
+    expect(state.tables).toEqual([]);
+  });
+  it.each(["other@example.com", "Avromy+other@gmail.com"])(
+    "rejects a confirmed non-Founder account %s",
+    async (email) => {
+      configured();
+      state.email = email;
+      expect((await callback()).status).toBe(403);
+      expect(state.sessionCalls).toEqual([]);
+      expect(state.cookieWrites).toEqual([]);
+      expect(state.tables).toEqual([]);
+    },
+  );
+  it("rejects an unconfirmed Founder without granting cookies", async () => {
+    configured();
+    state.unconfirmed = true;
+    expect((await callback()).status).toBe(403);
+    expect(state.cookieWrites).toEqual([]);
+    expect(state.sessionCalls).toEqual([]);
+  });
+  it("rejects failed session restoration without granting cookies", async () => {
+    configured();
+    state.sessionInvalid = true;
+    expect((await callback()).status).toBe(401);
+    expect(state.cookieWrites).toEqual([]);
+    expect(state.tables).toEqual([]);
+  });
+  it("rejects a restored session for a different identity", async () => {
+    configured();
+    state.restoredOtherUser = true;
+    expect((await callback()).status).toBe(401);
+    expect(state.cookieWrites).toEqual([]);
+    expect(state.tables).toEqual([]);
+  });
+  it("does not accept arbitrary callback types on implicit sessions", async () => {
+    configured();
+    expect((await callback({ type: "signup" })).status).toBe(400);
+    expect(state.getUserCalls).toBe(0);
+    expect(state.cookieWrites).toEqual([]);
+  });
+  it("retains token-hash recovery support for configured templates", async () => {
+    configured();
+    const response = await handle(
+      new Request("https://test.local/api/auth/callback", {
+        method: "POST",
+        headers: { origin: "https://test.local" },
+        body: JSON.stringify({ type: "recovery", token_hash: "x".repeat(30) }),
+      }),
+      ["auth", "callback"],
+    );
+    expect(response.status).toBe(200);
+    expect(state.cookieWrites).toContainEqual([
+      "wn_parent",
+      "test",
+      expect.objectContaining({ httpOnly: true }),
+    ]);
+  });
 });

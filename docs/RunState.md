@@ -1,6 +1,6 @@
 # Current hosted checkpoint — 2026-10-01
 
-Dedicated WatchNest database is now configured; see [Hosted database receipts](HostedDatabase-20261001.md). This supersedes historical account-owner database-access pending language below. Five source migrations and the separate retention scheduling operation applied. Live RLS/grants inspected; no app accounts, private server environment, deployment or family usability proof yet. Continue with Vercel/YouTube setup and actual end-to-end acceptance. Existing safe code and history preserved.
+Dedicated WatchNest database is configured; see [Hosted database receipts](HostedDatabase-20261001.md). Five source migrations and the separate retention scheduling operation applied. Hourly job1 actually succeeded at 2026-10-01T03:17:00Z. Live RLS/grants inspected. Production is READY at https://watchnest-rho.vercel.app on candidate `12c7051351ebde40fd7ce3ca674bea97be87d920`, deployment `dpl_93GTqMsTLZfpXGxRVb4L6RfouG9q`. Existing Supabase private production environment and exact authentication URLs are saved. This overrides historical unconfigured/pending text below. No Parent account, live child profiles, YouTube key or family usability proof yet. Default Supabase recovery-link compatibility is being repaired; affected tests/deployment must rerun before acceptance.
 
 # Durable run-state / deliverable contract
 

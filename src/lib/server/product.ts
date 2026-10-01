@@ -499,16 +499,63 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
     if (route === "auth/callback" && method === "POST") {
       const b = z
-        .object({
-          token_hash: z.string().min(20).max(200),
-          type: z.enum(["recovery", "signup", "email"]),
-        })
+        .union([
+          z
+            .object({
+              token_hash: z.string().min(20).max(200),
+              type: z.enum(["recovery", "signup", "email"]),
+            })
+            .strict(),
+          z
+            .object({
+              access_token: z.string().min(20).max(8192),
+              refresh_token: z.string().min(20).max(1024),
+              type: z.literal("recovery"),
+            })
+            .strict(),
+        ])
         .parse(body);
-      await limit("callback:" + digest(b.token_hash), 5);
-      const result = await client.auth.verifyOtp(b);
-      if (result.error || !result.data.session)
+      await limit(
+        "callback:" + digest("token_hash" in b ? b.token_hash : b.access_token),
+        5,
+      );
+      let result;
+      if ("token_hash" in b) {
+        result = await client.auth.verifyOtp(b);
+      } else {
+        // Default Supabase email links return an implicit session in the URL
+        // fragment. The browser's tokens and type are not authentication proof.
+        const verified = await client.auth.getUser(b.access_token);
+        if (verified.error || !verified.data.user)
+          throw new Failure("Recovery link expired.", 401);
+        requireConfirmedFounder(verified.data.user);
+        const auth = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+          { auth: { persistSession: false, autoRefreshToken: false } },
+        );
+        result = await auth.auth.setSession({
+          access_token: b.access_token,
+          refresh_token: b.refresh_token,
+        });
+        if (result.error || !result.data.session)
+          throw new Failure("Recovery link expired.", 401);
+        const restored = await client.auth.getUser(
+          result.data.session.access_token,
+        );
+        if (
+          restored.error ||
+          !restored.data.user ||
+          restored.data.user.id !== verified.data.user.id
+        )
+          throw new Failure("Recovery session invalid.", 401);
+        requireConfirmedFounder(restored.data.user);
+        result.data.user = restored.data.user;
+      }
+      if (result.error || !result.data.session || !result.data.user)
         throw new Failure("Recovery link expired.", 401);
       requireConfirmedFounder(result.data.user);
+      await initialize(result.data.user);
       await cookie(
         "wn_parent",
         result.data.session.access_token,
@@ -516,7 +563,6 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
       await cookie("wn_refresh", result.data.session.refresh_token, 2592000);
       await cookie("wn_child", "", 0);
-      await initialize(result.data.user);
       return reply({ ok: true });
     }
     if (route === "auth/parent" && method === "POST") {

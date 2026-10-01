@@ -20,6 +20,14 @@ Previously some setup tools were unavailable. Current evidence: Supabase list_pr
 
 Registry/current protocol identifies Human-Eye V2.0 production-certified, even though an ancestor page title still says V1.1. V2.1 is testing. Prevention: current status/version/chronology governs; no historical parent title or similarly named cached package substitutes for current mandatory instructions. Current exact visual source completion and evidence receipts remain open, not silently waived.
 
+## PROJECT — provider defaults are part of authentication acceptance
+
+Actual hosted Supabase free settings prevent custom recovery templates without SMTP/Pro. The application expected a token_hash link while the default provider emits session tokens in the fragment. Preserve confirmation and verified Founder authorization; support the default provider through server verification instead of lowering security or buying infrastructure. Source tests alone do not prove email delivery or deployed recovery. Inspect actual plan/settings before claiming an integration complete.
+
+## PROCESS proposal — save error messages can conflict with persisted state
+
+Vercel production-branch save reported no deployments for the branch, but subsequent deployment validation and native deployment source showed the exact branch was persisted. Reconcile contradictory evidence with an authoritative operation readback; do not repeat writes or infer success/failure solely from a toast. Bounded to this observation; no general permission to ignore warnings.
+
 ## Propagation and scope
 
 These findings are filed in repository evidence and current WatchNest Notion authority. DOMAIN/PROCESS candidates are recorded as reusable proposals, not uncalibrated global mandates. No 5T colors, geometry, artwork, copy or layout authority was imported. No paid service or unrelated infrastructure mutation was made. No deployed/real-device/YouTube legal certification is inferred from tests.
