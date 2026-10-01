@@ -1,6 +1,6 @@
 # Metadata maintenance release contract
 
-This operation is prepared, not enabled or certified on a hosted database.
+This operation is now enabled on the dedicated WatchNest hosted database; see [exact receipts](HostedDatabase-20261001.md). Immediate execution succeeded and the hourly job is active; an actual scheduled run and ongoing monitoring still need verification.
 
 Current migrations add service-only `wn_metadata_maintenance()`. It clears API metadata at 29 days (one-day safety margin), null/future freshness states and expired search-cache payloads. It preserves WatchNest approval IDs, assignment records, parent tags, collections and requests. Expired/revoked child sessions older than a day and rate-limit buckets older than two days are also removed. It never polls player activity or reconstructs Made-for-Kids tracking.
 

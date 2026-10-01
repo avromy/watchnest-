@@ -1,3 +1,7 @@
+# Current hosted checkpoint — 2026-10-01
+
+Dedicated WatchNest database is now configured; see [Hosted database receipts](HostedDatabase-20261001.md). This supersedes historical account-owner database-access pending language below. Five source migrations and the separate retention scheduling operation applied. Live RLS/grants inspected; no app accounts, private server environment, deployment or family usability proof yet. Continue with Vercel/YouTube setup and actual end-to-end acceptance. Existing safe code and history preserved.
+
 # Durable run-state / deliverable contract
 
 Project: WatchNest; Product/App; avromy/watchnest-. State: IN PROGRESS — account-owner access pending. Not a shipping/Founder Ready terminal. Latest implementation is the commit containing this file on product-completion-20260930, draft PR26. Parent source candidate8bc07527dbe5eac5e4c194aaa327b5a36440f690; main baselinefdb0de994e81b81e92b596332d3fcfc68eb53334 preserved. Notion CTO handoff records exact successor SHA/tree/CI after remote readback.

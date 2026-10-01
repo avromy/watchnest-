@@ -1,6 +1,6 @@
 # Database — current checkpoint
 
-Apply all four migrations in order:
+Apply all five migrations in order. For the already configured hosted project, inspect [hosted receipts](HostedDatabase-20261001.md) first and do not replay applied files:
 
 1. `202607060001_initial_schema.sql`
 2. `20260930192030_secure_family_product.sql`
@@ -16,3 +16,5 @@ Active assignment uniqueness is enforced with a partial unique index. Household 
 `supabase/seed.sql` is a historical test fixture with placeholder video IDs and three unrelated scaffold profiles. **Never run it in production.** Founder initialization creates Miri, Ari, Benny and Eli. These rows are not live until real migrations and verified sign-in run.
 
 Integration coverage uses PGlite PostgreSQL with test-only auth schema/roles and pgcrypto adaptation. This validates SQL syntax, constraints, RLS/grants, RPC denial, assignments and progress, but does not substitute for deployed Supabase Auth/RLS/advisor checks.
+
+5. `20261001030558_hosted_security_indexes.sql` conditionally removes client execution of the platform automatic-RLS function and adds foreign-key indexes.

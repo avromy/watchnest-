@@ -12,7 +12,7 @@ Child: personal passcode or parent-authorized shared-device entry, Simple/Standa
 
 ## Development
 
-Node 24 recommended. `npm ci`, copy `.env.example` to `.env.local`, configure secrets through deployment settings, then `npm run dev`. Never commit credentials. Apply **all four migrations** in timestamp order to a dedicated Supabase project; see [Schema](docs/DatabaseSchema.md). **Do not apply `supabase/seed.sql` to production**. Only the verified Founder sign-in creates the locked family profiles. Metadata scheduling is a separate verified release action, not implied by applying SQL.
+Node 24 recommended. `npm ci`, copy `.env.example` to `.env.local`, configure secrets through deployment settings, then `npm run dev`. Never commit credentials. Apply **all five migrations** in timestamp order to a dedicated Supabase project; see [Schema](docs/DatabaseSchema.md). **Do not apply `supabase/seed.sql` to production**. Only the verified Founder sign-in creates the locked family profiles. Metadata scheduling is a separate verified release action, not implied by applying SQL.
 
 Checks: `npm run lint`, `npm run typecheck`, `npm run test -- --run`, `npm run build`, `npm run test:e2e`. Browser tests require a production build. Synthetic UI tests are explicitly separate from real HTTP fail-closed checks and database integration tests.
 
