@@ -5,7 +5,7 @@
 1. Restore Supabase project creation access/cost visibility and server credentials; use a separate WatchNest project in avromy's Org, no new paid plan without approval.
 2. Enable/reuse YouTube Data API v3 under the Founder's Google account; securely configure restricted server key.
 3. Restore Vercel deployment capability in team Avromy and configure environment/Auth URLs/email templates.
-4. Apply both migrations; verify production grants/RLS, advisors and verified Founder auth. Create the four live profiles and set personal passcodes through the UI securely.
+4. Apply all four chronological migrations; verify production grants/RLS, advisors and verified Founder auth. Create the four live profiles and set personal passcodes through the UI securely. Enable and verify only the dedicated metadata job after recording rollback/recovery.
 5. Configure automated metadata retention maintenance and verify no API-derived metadata survives its retention deadline.
 6. Run first real product spine, cross-child and cross-household attacks, revocation, progress and analytics integrity, unavailable/error states; repair all failures.
 7. Real official-player surface review and actual iPad Safari Founder device check.
