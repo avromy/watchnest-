@@ -16,6 +16,7 @@ const state = vi.hoisted(() => ({
   refreshCalls: [] as any[],
   cookieWrites: [] as any[],
   childAuthPin: null as null | boolean,
+  parentProfileMutation: false,
 }));
 vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({
@@ -107,7 +108,13 @@ vi.mock("@supabase/supabase-js", () => ({
             : table === "child_sessions"
               ? { id: "session", profile_id: "child" }
             : table === "profiles"
-                ? state.childAuthPin !== null
+                ? state.parentProfileMutation
+                  ? Object.assign([{ id: "22222222-2222-4222-8222-222222222222" }], {
+                      id: "22222222-2222-4222-8222-222222222222",
+                      display_name: "Miri",
+                      pin_hash: null,
+                    })
+                  : state.childAuthPin !== null
                   ? {
                       id: "22222222-2222-4222-8222-222222222222",
                       parent_id: "family",
@@ -199,8 +206,33 @@ afterEach(() => {
   state.refreshCalls = [];
   state.cookieWrites = [];
   state.childAuthPin = null;
+  state.parentProfileMutation = false;
 });
 describe("authenticated route dispatch regression", () => {
+  it("honors an explicit PIN-off toggle while replacing the stored PIN", async () => {
+    configured();
+    state.parentProfileMutation = true;
+    const response = await handle(
+      new Request("https://test.local/api/parent/profiles", {
+        method: "PATCH",
+        headers: { origin: "https://test.local" },
+        body: JSON.stringify({
+          id: "22222222-2222-4222-8222-222222222222",
+          passcode: "123456",
+          pin_enabled: false,
+        }),
+      }),
+      ["parent", "profiles"],
+    );
+    expect(response.status).toBe(200);
+    expect(state.updates).toContainEqual({
+      table: "profiles",
+      values: expect.objectContaining({
+        pin_enabled: false,
+        pin_hash: expect.any(String),
+      }),
+    });
+  });
   it("opens a PIN-off profile from its family link without parent authentication", async () => {
     configured();
     state.role = "none";
