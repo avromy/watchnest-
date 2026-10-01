@@ -15,7 +15,7 @@ GET /api/session -> {role:'parent'|'child'|null,profile?:Profile,parent?:{email:
 POST /api/auth/parent {email,password,action:'login'|'signup'|'reset'} -> {ok,message?}; parent setup creates locked profiles; signup only FOUNDER_EMAIL (defaults Avromy@gmail.com); no arbitrary open signup.
 POST /api/auth/logout {} clears both sessions.
 GET /api/auth/children?family=publicHouseholdCode -> {profiles:Profile[]} (no library); parent obtains code through dashboard.
-POST /api/auth/child {family,profileId,passcode} -> {profile:Profile}; optional parent-authorized no-pin access, NEVER generic sibling switching from an existing child session. 6 digit minimum pin configurable by parent.
+POST /api/auth/child {family,profileId,passcode} -> {profile:Profile}; a PIN-off profile opens directly from the private family link, while a PIN-on profile requires its 6–12 digit PIN. The issued opaque session is bound to that exact profile. Existing child sessions never authorize a different profile, and every child library/player operation derives identity and assignments server-side.
 GET /api/parent/dashboard -> {profiles, videos:LibraryVideo[],collections:Collection[],requests:Request[], familyCode:string, analytics:{todaySeconds:number,weekSeconds:number,byChild:{profile_id,display_name,todaySeconds,weekSeconds,recent:LibraryVideo[]}[],popular:{title,seconds}[],daily:{date,seconds}[],neverWatched:number},attention:{id,title,detail}[]}
 GET/POST/PATCH /api/parent/profiles; POST {display_name,experience_mode,avatar_key,color_key}; PATCH {id,...,passcode?,pin_enabled?}. Profile creation preserves four locked names.
 POST /api/parent/videos/lookup {urls:string[]} -> {videos:LibraryVideo[],errors:{url,error}[]}
