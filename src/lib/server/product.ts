@@ -705,13 +705,6 @@ export async function handle(request: globalThis.Request, path: string[]) {
       if (p.pin_enabled) {
         if (!b.passcode || !verifyPin(b.passcode, p.pin_hash || ""))
           throw new Failure("Incorrect passcode.", 401);
-      } else {
-        const admin = await parent();
-        if (admin.id !== household.id)
-          throw new Failure(
-            "Parent must open profiles without passcodes.",
-            403,
-          );
       }
       const token = opaque();
       check(
