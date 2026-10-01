@@ -813,7 +813,7 @@ async function parentRoute(
     delete values.passcode;
     if (fields.passcode) {
       values.pin_hash = hashPin(fields.passcode);
-      values.pin_enabled = true;
+      if (fields.pin_enabled === undefined) values.pin_enabled = true;
     }
     if (fields.pin_enabled === true && !fields.passcode) {
       const old = check(
