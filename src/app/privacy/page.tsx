@@ -72,7 +72,8 @@ export default function Privacy() {
           </p>
           <h2>Parent control</h2>
           <p>
-            Parents can revoke video access, change child passcodes, and resolve
+            Parents can revoke video access, turn each child PIN on or off,
+            change or reset child PINs, and resolve
             child requests. Requests stay in the family’s Parent Inbox; they do
             not return open YouTube results to a child. Private viewing
             information is not publicly shared. WatchNest does not use
@@ -81,9 +82,11 @@ export default function Privacy() {
           <h2>Shared devices</h2>
           <p>
             Keep the parent password private. Sign out of Parent Mode before
-            giving a shared device to a child. Use a separate passcode for each
-            child when sibling libraries need to stay private. A profile without
-            a passcode requires a parent to sign in on that device to open it.
+            giving a shared device to a child. A child profile can open from the
+            private family link while its PIN protection is off. Turn protection
+            on and use a separate PIN for each child when profile entry must be
+            private. Each child session remains limited to that profile’s
+            assigned library in either mode.
           </p>
           <h2>Data questions</h2>
           <p>
