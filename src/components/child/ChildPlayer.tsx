@@ -319,7 +319,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             {error}
           </p>
           <Link className="button" href="/watch/home">
-            Back to my videos
+            Back to Library
           </Link>
           {data && (
             <div style={{ marginTop: 16 }}>
@@ -416,11 +416,6 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             </div>
           )}
           {playerNotice && <p className="notice">{playerNotice}</p>}
-          {data.video.made_for_kids !== false && (
-            <p className="muted" style={{ fontSize: 13 }}>
-              Resume is off for this video.
-            </p>
-          )}
           <section className="panel" style={{ marginTop: 24 }}>
             {data.next ? (
               <>
@@ -440,16 +435,11 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               <>
                 <h2>Want to pick something else?</h2>
                 <Link className="button button-secondary" href="/watch/home">
-                  Explore my videos
+                  Explore Library
                 </Link>
               </>
             )}
           </section>
-          <p className="muted" style={{ fontSize: 13, marginTop: 24 }}>
-            YouTube supplies this player and may show its own links or related
-            videos. Stay in WatchNest to choose from your library.{" "}
-            <Link href="/privacy">Privacy & player details</Link>
-          </p>
         </>
       )}
     </main>
