@@ -4,7 +4,18 @@ vi.mock("next/headers", () => ({
   cookies: async () => ({ get: () => undefined, set: vi.fn() }),
 }));
 import { handle } from "./product";
+import { cleanProviderText } from "./product-security";
 afterEach(() => vi.unstubAllEnvs());
+describe("provider display text", () => {
+  it("removes unsupported pictographs without changing useful title text", () => {
+    expect(
+      cleanProviderText(
+        "Work It Out Wombats! The Mighty Zeke 🦸🚲  | PBS KIDS",
+      ),
+    ).toBe("Work It Out Wombats! The Mighty Zeke | PBS KIDS");
+  });
+});
+
 describe("API fail closed", () => {
   it("reports configuration absence without production sample data", async () => {
     vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "");

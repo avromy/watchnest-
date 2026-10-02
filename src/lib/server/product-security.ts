@@ -44,6 +44,16 @@ export function metadataFresh(
     checked > now - maxAgeDays * 86400000
   );
 }
+export function cleanProviderText(value: string) {
+  return value
+    .normalize("NFKC")
+    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, "")
+    .replace(/[\uFE0E\uFE0F\u200D]/g, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([|:;,.!?])/g, "$1")
+    .trim();
+}
+
 /** Explicit child projection prevents DB row identifiers/secrets leaking via joins. */
 export function childVideoView(video: any) {
   const fresh = metadataFresh(video, 30);
@@ -62,7 +72,9 @@ export function childVideoView(video: any) {
   return {
     id: video.id,
     youtube_video_id: video.youtube_video_id,
-    title: fresh ? video.title : "Ask Parent to refresh this video",
+    title: fresh
+      ? cleanProviderText(video.title)
+      : "Ask Parent to refresh this video",
     channel_title: fresh ? video.channel_title || "" : "",
     thumbnail_url: fresh ? video.thumbnail_url || "" : "",
     duration_seconds: fresh ? video.duration_seconds || 0 : 0,

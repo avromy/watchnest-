@@ -153,6 +153,17 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
       expect(overflow).toBe(false);
     }
   }
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await page.goto("/parent/children");
+  const dashboardBox = await page
+    .getByRole("link", { name: "Dashboard", exact: true })
+    .boundingBox();
+  const settingsBox = await page
+    .getByRole("link", { name: "Settings", exact: true })
+    .boundingBox();
+  expect(dashboardBox).not.toBeNull();
+  expect(settingsBox).not.toBeNull();
+  expect(Math.abs(settingsBox!.y - dashboardBox!.y)).toBeLessThan(3);
 });
 
 test("synthetic UI: Made-for-Kids playback uses a direct identified embed", async ({
@@ -197,11 +208,8 @@ test("synthetic UI: optional resume bootstrap failure falls back to playback", a
   );
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
-  await expect(
-    page.getByText(
-      "The YouTube player is shown below. Press Play to begin; resume is temporarily unavailable.",
-    ),
-  ).toBeVisible();
+  await expect(page.getByText("Press Play to begin.", { exact: true })).toBeVisible();
+  await expect(page.getByText(/YouTube player|resume is/i)).toHaveCount(0);
   await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "This video is unavailable" }),

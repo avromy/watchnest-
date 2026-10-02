@@ -242,7 +242,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           );
           setStaticFallback(true);
           setPlayerNotice(
-            "The YouTube player is shown below. Press Play to begin; resume is temporarily unavailable.",
+            "Press Play to begin.",
           );
         }
       });

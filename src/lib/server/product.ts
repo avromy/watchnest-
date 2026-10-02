@@ -13,6 +13,7 @@ import {
   sameOrigin,
   metadataFresh,
   childVideoView,
+  cleanProviderText,
 } from "./product-security";
 import { extractYouTubeVideoId } from "../youtube";
 const id = z.string().uuid();
@@ -371,6 +372,7 @@ async function videos(parentId: string, profileId?: string) {
     .filter((r: any) => r.videos && (!allowed || allowed.has(r.video_id)))
     .map((r: any) => ({
       ...r.videos,
+      title: cleanProviderText(r.videos.title),
       tags: r.tags,
       added_at: r.created_at,
       progress:
@@ -436,7 +438,7 @@ async function metadata(videoIds: string[], force = false) {
       const row: any = item
         ? {
             youtube_video_id: v,
-            title: item.snippet.title,
+            title: cleanProviderText(item.snippet.title),
             channel_id: item.snippet.channelId,
             channel_title: item.snippet.channelTitle,
             thumbnail_url: normalizeYouTubeThumbnailUrl(
@@ -480,7 +482,11 @@ async function metadata(videoIds: string[], force = false) {
   }
   return check(
     await client.from("videos").select("*").in("youtube_video_id", videoIds),
-  ).map((r: any) => ({ ...r, tags: [] }));
+  ).map((r: any) => ({
+    ...r,
+    title: cleanProviderText(r.title),
+    tags: [],
+  }));
 }
 function requireConfirmedFounder(user: any) {
   if (!user?.email_confirmed_at || user.email?.toLowerCase() !== founder())
