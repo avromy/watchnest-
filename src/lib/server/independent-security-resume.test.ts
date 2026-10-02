@@ -263,3 +263,62 @@ describe("independent security resume: actual PostgreSQL boundaries", () => {
     // competing-session blocking guarantee. Hosted PostgreSQL review is separate.
   });
 });
+
+describe("Parent Mode session-chain regression", () => {
+  const source = readFileSync("src/lib/server/product.ts", "utf8");
+  const between = (start: string, end: string) =>
+    source.slice(source.indexOf(start), source.indexOf(end));
+
+  it("binds Parent Mode to its current active household device", () => {
+    const block = between(
+      "async function parentFromModeSession()",
+      "export async function parent(",
+    );
+    expect(block).toContain('jar.get("wn_parent_mode")');
+    expect(block).toContain('jar.get("wn_device")');
+    expect(block).toContain('.select("parent_id,device_id")');
+    expect(block).toContain('.from("household_devices")');
+    expect(block).toContain('.eq("id", session.device_id)');
+    expect(block).toContain('.eq("parent_id", session.parent_id)');
+    expect(block).toContain('.eq("token_hash", digest(deviceToken))');
+    expect(block).toContain('.is("revoked_at", null)');
+  });
+
+  it("does not let Parent Mode bootstrap a replacement device", () => {
+    const block = between(
+      'if (route === "auth/device"',
+      'if (route === "auth/parent-lock"',
+    );
+    expect(block).toContain("await parent(false)");
+    expect(block).not.toContain("await parent()");
+  });
+
+  it("revokes server-side Parent Mode and device sessions on exit", () => {
+    const logout = between(
+      'if (route === "auth/logout"',
+      'if (!client)',
+    );
+    expect(logout).toContain('.from("parent_mode_sessions")');
+    expect(logout).toContain('.from("household_devices")');
+    expect(logout.match(/revoked_at/g)?.length).toBeGreaterThanOrEqual(2);
+
+    const lock = between(
+      'if (route === "auth/parent-lock"',
+      'if (route === "auth/profile-exit"',
+    );
+    expect(lock).toContain('.from("parent_mode_sessions")');
+    expect(lock).toContain('.eq("device_id", linked.id)');
+    expect(lock).toContain("revoked_at");
+  });
+
+  it("requires full Parent authentication to change the Parent PIN", () => {
+    const settings = between(
+      'if (route === "parent/settings")',
+      'if (route === "parent/videos/lookup")',
+    );
+    expect(settings).toContain("await parent(false)");
+    expect(settings).toContain(
+      "Sign in with email and password to change the Parent PIN.",
+    );
+  });
+});
