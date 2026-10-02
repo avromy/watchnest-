@@ -1,3 +1,33 @@
+# Final closeout — exact production evidence
+
+## Candidate
+
+- Application commit: `dfa009cdebb181173108f8a6ab636ff2ab0d4771`
+- Deployment: `dpl_J8apogrsymnFPYvPTvtT8kVrPv5Q`
+- URL: https://watchnest-rho.vercel.app
+- CI run 74: PASS
+- Human-Eye / Stranger / security: PASS / PASS / PASS
+- Founder playback: picture and sound played.
+
+## Delivered recurring experience
+
+- Shared-device launch resolves to the profile picker while the household session is valid.
+- Kids: choose profile → optional PIN → Home / Library / Ask Parent.
+- Parent Mode: separately protected; jobs organized as Dashboard, Children, Add Videos, Library, Collections, Inbox, Controls, Settings.
+- Photos/avatars, four-digit child PINs, View as Child, Parent video preview, approved-only Favorites, Recently Added, non-MFK Continue Watching, channel/playlist discovery, multi-URL intake, duplicate intelligence, bulk collection work, access windows, and PWA launch support are live.
+- Individual-video approval remains the authorization boundary; sibling assignment checks remain server-enforced.
+
+## Opportunity classification
+
+- **CORE NOW:** profile picker, protected Parent Mode, simplified Kids/Parent IA, Collections taxonomy, photos/avatars, four-digit PIN lifecycle, View as Child, duplicate/broken-content states, search, shared-device persistence.
+- **HIGH-VALUE NOW:** approved-only Favorites, Recently Added, multi-URL intake, channel/playlist discovery, bulk collection assignment, schedule windows, PWA presentation.
+- **LATER:** richer collection ordering and additional low-risk constrained personalization after observed family use.
+- **REJECT:** open recommendations, auto-approving channels/playlists, social/gamified features, general parental-control expansion, and prohibited MFK telemetry reconstruction.
+
+## Time-control limitation
+
+Wall-clock access windows are enforceable without player telemetry. WatchNest intentionally does not claim exact daily watch-minute or per-Collection minute enforcement for Made-for-Kids or unknown-classification content because doing so would require reconstructing duration telemetry that this release prohibits.
+
 # WatchNest recurring-family UX redesign — 2026-10-02
 
 ## Product decision
