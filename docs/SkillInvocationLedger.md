@@ -1,3 +1,24 @@
+# Final UX redesign invocation receipt — 2026-10-02
+
+**Candidate:** application commit `dfa009cdebb181173108f8a6ab636ff2ab0d4771`; production deployment `dpl_J8apogrsymnFPYvPTvtT8kVrPv5Q`.
+
+| Required intelligence / gate | Invocation outcome |
+|---|---|
+| Product Intelligence | Recurring-use jobs and feature classifications drove the two-product Kids/Parent IA and zero-hoop default. |
+| Autonomous Brand / Visual Production | Established and inspected the warm family-library / premium-streaming system. |
+| Website Production principles adapted to app UI | Applied recognition, progressive disclosure, responsive hierarchy, accessibility, and deterministic route checks. |
+| Typography / spacing / rhythm | Human-Eye PASS on exact 1024 Parent and child screens. |
+| Icon system | Coherent application icon family verified; no emoji used as interface chrome. |
+| Responsive / tablet / component consistency | One-row Parent navigation at 1024; no clipping, overlap, accidental wrap, or horizontal overflow. |
+| Human-Eye | PASS; 0 confirmed application-controlled defects. |
+| Stranger / cold review | PASS; recurring paths are understandable without architecture exposition. |
+| Independent security | PASS; prior authorization/session/MFK controls unchanged and exact diff rechecked. |
+| Founder Ready | Gate satisfied only after CI, deployment, real playback evidence, visual/cold/security passes, and durable binding. |
+| Continuous Learning | Propagated cold-path noun/step review, capability-token binding, and text-integrity/tablet-wrap regression rules. |
+| Supabase / Vercel / Notion | Production persistence, deployment, logs, cleanup, and durable handoff evidence updated. |
+
+**Qualification receipts:** CI run 74 PASS; production READY; zero final runtime errors; synthetic verification sessions deleted and verified absent. Founder-set Parent PIN was exercised successfully but its value is intentionally excluded from evidence.
+
 # WatchNest skill invocation and coverage receipt
 
 ## Recurring-family UX redesign receipt — 2026-10-02
