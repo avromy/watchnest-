@@ -1,3 +1,22 @@
+# UX redesign learning propagation — 2026-10-02
+
+## Calibration event
+
+The product passed technical qualification while recurring family paths still exposed architecture, overlapping taxonomy, and avoidable decision steps. The earlier review system over-weighted route correctness and component presence; it under-weighted a cold user's first recurring path and the question “why must the user see or do this?”
+
+## Reusable rules
+
+1. **Recurring-path cold test:** Review the already-onboarded default path separately from onboarding. Every screen, noun, and action must justify itself through security, comprehension, or a core job.
+2. **One concept, one name:** Add a release gate for overlapping user concepts and implementation nouns across navigation, headings, empty states, and errors.
+3. **Trusted capability binding:** A short-lived elevated capability derived from a longer-lived household credential must remain server-bound to that credential and be revoked server-side on lock/logout.
+4. **Tablet wrap quality:** “No horizontal overflow” is insufficient. Deterministic checks must also reject orphan navigation rows and unintended label wraps at target widths.
+5. **Text integrity:** Provider text must be normalized at ingestion and every response projection, including nullish legacy records; screenshots must be checked for replacement glyphs.
+6. **Evidence separation:** A managed proxy's inability to render third-party image pixels is an evidence limitation, not automatic product failure; application containers, source reachability, and real-device observation must be reported separately.
+
+## Narrow propagation
+
+These rules belong in universal Product/App review calibration, not in WatchNest-specific business logic. WatchNest regression coverage now exercises the concrete tablet-nav, child-copy, title-integrity, session-binding, sibling-isolation, and MFK boundaries.
+
 # Learning propagation — resumed run
 
 ## PROCESS proposal — qualify recurring use before architecture-aware review
