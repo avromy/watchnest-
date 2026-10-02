@@ -334,16 +334,16 @@ export function Overview() {
             </small>
           </div>
           <div className="stat">
-            <span className="muted">Assigned videos</span>
+            <span className="muted">Shared with children</span>
             <strong>{workflow.assignedVideos}</strong>
-            <small className="muted">Assigned to at least one child</small>
+            <small className="muted">Available to at least one child</small>
           </div>
           <div className="stat">
-            <span className="muted">Unassigned videos</span>
+            <span className="muted">Not shared yet</span>
             <strong>{workflow.unassignedVideos}</strong>
             <small className="muted">Approved, with no child access yet</small>
             {workflow.unassignedVideos > 0 && (
-              <Link href="/parent/library">Manage assignments</Link>
+              <Link href="/parent/library">Choose who can watch</Link>
             )}
           </div>
           <div className="stat">
@@ -409,10 +409,6 @@ export function Overview() {
             );
           })}
         </div>
-        <p className={`muted ${styles.dataNote}`}>
-          WatchNest reports approvals, assignments and requests. It does not
-          report YouTube watch time.
-        </p>
       </section>
     </>
   );
@@ -719,7 +715,7 @@ export function AddVideos() {
                             ?.profile_ids?.includes(profile.id),
                         )
                         .map((profile) => profile.display_name)
-                        .join(" · ") || "Not assigned yet"}
+                        .join(" · ") || "Not shared yet"}
                     </p>
                   )}
                   <label className={styles.check}>
@@ -907,7 +903,7 @@ export function Library() {
         </div>
         {selected.length > 0 && (
           <div className={styles.bulk}>
-            <h3>{selected.length} selected · Replace assignments</h3>
+            <h3>{selected.length} selected · Choose who can watch</h3>
             <Choices
               profiles={data.profiles}
               value={profiles}
@@ -928,7 +924,7 @@ export function Library() {
               </label>
             )}
             <button className="button" disabled={busy} onClick={save}>
-              Save assignments
+              Save
             </button>{" "}
             <button
               className="button-quiet"
@@ -968,7 +964,7 @@ export function Library() {
                   {data.profiles
                     .filter((p) => v.profile_ids?.includes(p.id))
                     .map((p) => p.display_name)
-                    .join(" · ") || "No child assignments"}
+                    .join(" · ") || "Not shared with a child"}
                 </p>
                 <div className={styles.row}>
                   <button
@@ -1080,17 +1076,17 @@ export function Library() {
             <p className="muted">
               Source: {preview.channel_title || "YouTube"}. Audience status:{" "}
               {preview.made_for_kids === true
-                ? "Made for Kids — WatchNest resume is off"
+                ? "Made for Kids — progress isn’t saved"
                 : preview.made_for_kids === false
                   ? "not marked Made for Kids"
-                  : "not confirmed — WatchNest resume stays off"}
+                  : "not confirmed — progress isn’t saved"}
               .
             </p>
             <p className="muted">
               A loaded player is not proof that the video plays in every region.
               If YouTube shows an availability or embedding message, do not
-              assign this video. Child access still follows the assignments
-              shown on the card.
+              share this video. Child access still follows “Who can watch?”
+              on the card.
             </p>
           </section>
         </div>
@@ -1171,7 +1167,7 @@ export function Collections() {
                       setSaved(true);
                   }}
                 >
-                  Assign collection
+                  Share collection
                 </button>
               </div>
             ))
