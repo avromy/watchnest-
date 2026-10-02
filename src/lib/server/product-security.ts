@@ -44,13 +44,13 @@ export function metadataFresh(
     checked > now - maxAgeDays * 86400000
   );
 }
-export function cleanProviderText(value: string) {
-  return value
+export function cleanProviderText(value: unknown) {
+  return String(value ?? "")
     .normalize("NFKC")
-    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, "")
-    .replace(/[\uFE0E\uFE0F\u200D]/g, "")
-    .replace(/\s{2,}/g, " ")
-    .replace(/\s+([|:;,.!?])/g, "$1")
+    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, " ")
+    .replace(/[\uFE0E\uFE0F\u200D]/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([:;,.!?])/g, "$1")
     .trim();
 }
 

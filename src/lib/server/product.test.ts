@@ -14,6 +14,9 @@ describe("provider display text", () => {
       ),
     ).toBe("Work It Out Wombats! The Mighty Zeke | PBS KIDS");
   });
+  it("handles missing legacy provider text without throwing", () => {
+    expect(cleanProviderText(undefined)).toBe("");
+  });
 });
 
 describe("API fail closed", () => {
