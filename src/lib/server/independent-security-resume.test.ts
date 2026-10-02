@@ -266,8 +266,10 @@ describe("independent security resume: actual PostgreSQL boundaries", () => {
 
 describe("Parent Mode session-chain regression", () => {
   const source = readFileSync("src/lib/server/product.ts", "utf8");
-  const between = (start: string, end: string) =>
-    source.slice(source.indexOf(start), source.indexOf(end));
+  const between = (start: string, end: string) => {
+    const from = source.indexOf(start);
+    return source.slice(from, source.indexOf(end, from + start.length));
+  };
 
   it("binds Parent Mode to its current active household device", () => {
     const block = between(
@@ -296,7 +298,7 @@ describe("Parent Mode session-chain regression", () => {
   it("revokes server-side Parent Mode and device sessions on exit", () => {
     const logout = between(
       'if (route === "auth/logout"',
-      'if (!client)',
+      'if (!client) throw new Failure',
     );
     expect(logout).toContain('.from("parent_mode_sessions")');
     expect(logout).toContain('.from("household_devices")');
