@@ -64,19 +64,33 @@ export async function cookie(name: string, value: string, maxAge: number) {
   });
 }
 async function parentFromModeSession() {
-  const token = (await cookies()).get("wn_parent_mode")?.value;
-  if (!token) return null;
+  const jar = await cookies();
+  const token = jar.get("wn_parent_mode")?.value;
+  const deviceToken = jar.get("wn_device")?.value;
+  if (!token || !deviceToken) return null;
   const client = db();
   const session = check(
     await client
       .from("parent_mode_sessions")
-      .select("parent_id")
+      .select("parent_id,device_id")
       .eq("token_hash", digest(token))
       .is("revoked_at", null)
       .gt("expires_at", new Date().toISOString())
       .maybeSingle(),
   );
   if (!session) return null;
+  const linked = check(
+    await client
+      .from("household_devices")
+      .select("id")
+      .eq("id", session.device_id)
+      .eq("parent_id", session.parent_id)
+      .eq("token_hash", digest(deviceToken))
+      .is("revoked_at", null)
+      .gt("expires_at", new Date().toISOString())
+      .maybeSingle(),
+  );
+  if (!linked) return null;
   return check(
     await client
       .from("parents")
@@ -86,13 +100,15 @@ async function parentFromModeSession() {
   );
 }
 
-export async function parent() {
+export async function parent(allowMode = true) {
   const token =
     (await cookies()).get("wn_parent")?.value ||
     (await cookies()).get("wn_refresh")?.value;
   if (!token) {
-    const modeParent = await parentFromModeSession();
-    if (modeParent) return modeParent;
+    if (allowMode) {
+      const modeParent = await parentFromModeSession();
+      if (modeParent) return modeParent;
+    }
     throw new Failure("Parent sign-in required.", 401);
   }
   const client = db();
@@ -599,6 +615,22 @@ export async function handle(request: globalThis.Request, path: string[]) {
               .update({ revoked_at: new Date().toISOString() })
               .eq("token_hash", digest(token)),
           );
+        const modeToken = jar.get("wn_parent_mode")?.value;
+        if (modeToken)
+          check(
+            await client
+              .from("parent_mode_sessions")
+              .update({ revoked_at: new Date().toISOString() })
+              .eq("token_hash", digest(modeToken)),
+          );
+        const deviceToken = jar.get("wn_device")?.value;
+        if (deviceToken)
+          check(
+            await client
+              .from("household_devices")
+              .update({ revoked_at: new Date().toISOString() })
+              .eq("token_hash", digest(deviceToken)),
+          );
         const parentToken = jar.get("wn_parent")?.value;
         if (parentToken)
           check(await client.auth.admin.signOut(parentToken, "local"));
@@ -789,7 +821,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       try {
         linked = await device();
       } catch {
-        const p = await parent();
+        const p = await parent(false);
         linked = await issueDevice(p.id);
       }
       const household = check(
@@ -813,7 +845,16 @@ export async function handle(request: globalThis.Request, path: string[]) {
       });
     }
     if (route === "auth/parent-lock" && method === "POST") {
-      await device();
+      const linked = await device();
+      const modeToken = (await cookies()).get("wn_parent_mode")?.value;
+      if (modeToken)
+        check(
+          await client
+            .from("parent_mode_sessions")
+            .update({ revoked_at: new Date().toISOString() })
+            .eq("token_hash", digest(modeToken))
+            .eq("device_id", linked.id),
+        );
       await cookie("wn_child", "", 0);
       await cookie("wn_parent", "", 0);
       await cookie("wn_refresh", "", 0);
@@ -1162,6 +1203,16 @@ async function parentRoute(
         })
         .parse(body);
       if (b.parent_pin) {
+        try {
+          const signedInParent = await parent(false);
+          if (signedInParent.id !== p.id)
+            throw new Failure("Parent sign-in required.", 401);
+        } catch {
+          throw new Failure(
+            "Sign in with email and password to change the Parent PIN.",
+            401,
+          );
+        }
         const updated = check(
           await client.rpc("wn_set_parent_pin", {
             p_parent: p.id,
