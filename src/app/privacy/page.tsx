@@ -73,11 +73,11 @@ export default function Privacy() {
           <h2>Parent control</h2>
           <p>
             Parents can revoke video access, turn each child PIN on or off,
-            change or reset child PINs, and resolve
-            child requests. Requests stay in the family’s Parent Inbox; they do
-            not return open YouTube results to a child. Private viewing
-            information is not publicly shared. WatchNest does not use
-            advertising profiles or third-party analytics SDKs.
+            change or reset child PINs, and resolve child requests. Requests
+            stay in the family’s Parent Inbox; they do not return open YouTube
+            results to a child. Private viewing information is not publicly
+            shared. WatchNest does not use advertising profiles or third-party
+            analytics SDKs.
           </p>
           <h2>Shared devices</h2>
           <p>

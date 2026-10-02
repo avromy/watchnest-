@@ -1,5 +1,11 @@
 # WatchNest skill invocation and coverage receipt
 
+## Recurring-family UX redesign receipt — 2026-10-02
+
+Current Product Intelligence, Autonomous Brand Identity, Autonomous Visual Production & Review (including independent acceptance/review-loop references), Color/Typography, Icon Systems, reusable Website Production intelligence adapted to app UI, Stranger Test, Founder Ready, Supabase and Vercel deployment/verification guidance were consumed before mutation. Current official YouTube, YouTube Kids, Netflix, PBS KIDS and Supabase primary documentation informed profile selection, protected Parent Mode, discovery boundaries, Made-for-Kids limits and private photo storage. Sites was used for reusable production principles only; WatchNest remains its existing Next.js/Vercel application.
+
+Bounded result: revised IA/design system and implementation are present; hosted additive migration is applied and verified; typecheck/lint/170 tests/build/11 browser flows pass. Current Human-Eye authority, final Icon production references, Match Check, deployed verification, independent Stranger/security rereview and Founder Ready verdict remain deliberately unclaimed until the exact deployed candidate exists. This receipt does not convert builder screenshots into independent acceptance.
+
 ## Playback failure continuation receipt — 2026-10-02
 
 Post-deploy continuation consumed the same governing Product Intelligence, V008 visual/product acceptance, Match Check, Stranger Test, Founder Ready, Supabase, Next.js/React, Vercel verification and official YouTube authority against exact repair commit `267828ded150d4a565e9548458d4127f9d2a8f06`. Supabase was used for readback and a bounded auditable data repair after YouTube's native country-restriction evidence: no rows were deleted, the rejected item's assignments were soft-removed, and the replacement remains an individual Miri-only approval with unknown-audience tracking suppression. Separate cold Stranger and security reviewers returned FAIL rather than carrying earlier acceptance. Their deterministic product findings were incorporated into the successor commit containing this ledger; their real-device/provider-boundary concerns remain open. No skill receipt is promoted beyond observed evidence.

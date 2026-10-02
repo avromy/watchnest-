@@ -111,24 +111,27 @@ vi.mock("@supabase/supabase-js", () => ({
             ? { id: "family", email: "Avromy@gmail.com" }
             : table === "child_sessions"
               ? { id: "session", profile_id: "child" }
-            : table === "profiles"
+              : table === "profiles"
                 ? state.parentProfileMutation
-                  ? Object.assign([{ id: "22222222-2222-4222-8222-222222222222" }], {
-                      id: "22222222-2222-4222-8222-222222222222",
-                      display_name: "Miri",
-                      pin_hash: null,
-                    })
+                  ? Object.assign(
+                      [{ id: "22222222-2222-4222-8222-222222222222" }],
+                      {
+                        id: "22222222-2222-4222-8222-222222222222",
+                        display_name: "Miri",
+                        pin_hash: null,
+                      },
+                    )
                   : state.childAuthPin !== null
-                  ? {
-                      id: "22222222-2222-4222-8222-222222222222",
-                      parent_id: "family",
-                      display_name: "Miri",
-                      pin_enabled: state.childAuthPin,
-                      pin_hash: null,
-                    }
-                  : state.role === "child"
-                    ? { id: "child", parent_id: "family" }
-                  : []
+                    ? {
+                        id: "22222222-2222-4222-8222-222222222222",
+                        parent_id: "family",
+                        display_name: "Miri",
+                        pin_enabled: state.childAuthPin,
+                        pin_hash: null,
+                      }
+                    : state.role === "child"
+                      ? { id: "child", parent_id: "family" }
+                      : []
                 : state.video && table === "family_videos"
                   ? [
                       {
@@ -223,7 +226,7 @@ describe("authenticated route dispatch regression", () => {
         headers: { origin: "https://test.local" },
         body: JSON.stringify({
           id: "22222222-2222-4222-8222-222222222222",
-          passcode: "123456",
+          passcode: "1234",
           pin_enabled: false,
         }),
       }),
@@ -260,6 +263,7 @@ describe("authenticated route dispatch regression", () => {
       "wn_child",
       "wn_parent",
       "wn_refresh",
+      "wn_parent_mode",
     ]);
     expect(JSON.stringify(await response.json())).not.toContain("pin_hash");
   });
@@ -441,9 +445,7 @@ describe("default Supabase recovery session callback", () => {
     expect(response.status).toBe(200);
     expect(state.getUserCalls).toBe(2);
     expect(state.verifiedTokens).toEqual(["a".repeat(40), "refreshed-token"]);
-    expect(state.refreshCalls).toEqual([
-      { refresh_token: "r".repeat(40) },
-    ]);
+    expect(state.refreshCalls).toEqual([{ refresh_token: "r".repeat(40) }]);
     expect(state.cookieWrites).toContainEqual([
       "wn_parent",
       "refreshed-token",

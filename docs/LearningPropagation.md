@@ -1,5 +1,17 @@
 # Learning propagation — resumed run
 
+## PROCESS proposal — qualify recurring use before architecture-aware review
+
+Problem: WatchNest passed route, policy, security and limited visual checks while ordinary users still encountered family codes, marketing copy, implementation taxonomy and avoidable intermediate decisions. Reviewers followed the product's existing structure instead of challenging why each recurring step existed. Correction: separate Kids and Parent experiences, make the authenticated household-device home the profile picker, remove Simple/Standard and Shows/My Videos duplication, and test the shortest recurring paths explicitly. Prevention: before consuming implementation taxonomy, a cold app reviewer performs the two most frequent recurring jobs, counts required decisions/taps, and flags architecture nouns or slogans on authenticated surfaces. Proposed for the Product/App review system; not promoted to unrelated brand-production systems without calibration.
+
+## PROJECT — access schedules use authorization time, not viewing telemetry
+
+Made-for-Kids restrictions make exact watch-duration budgets unsafe to promise when they depend on player telemetry. WatchNest implements wall-clock schedule windows as authorization checks at profile entry and on every child API request; the active player revalidates every 20 seconds, including restricted content, without recording watch duration. Exact daily/Collection minute quotas remain deferred rather than being reconstructed from prohibited or misleading signals.
+
+## PROJECT — child photos are private identity, not public media
+
+Parent-uploaded child photos are authoritative only after explicit upload. Storage is private, service-only, MIME/size bounded and served through ten-minute signed URLs; avatars/initials remain the no-photo path. No public bucket/policy or client-side storage credential is introduced.
+
 ## PROJECT — provider metadata is not regional playback proof
 
 Problem: YouTube Data API availability/embeddable metadata and an iframe load were promoted too close to playback acceptance, while the selected PBS KIDS upload still produced a native country-restriction failure. Correction: Parent Preview now requires an actual Play check and explicitly warns that load is not proof; production qualification rejects the affected individual video, soft-removes assignments, and retests a fresh individually approved item. Prevention: acceptance must distinguish metadata eligibility, iframe initialization, provider Play controls, sustained audiovisual playback and device-specific behavior. This defect class can affect every approved provider video, so availability review belongs per individual item rather than per channel.

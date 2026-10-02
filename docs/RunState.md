@@ -1,3 +1,11 @@
+# Product/UX acceptance reopened — 2026-10-02
+
+CURRENT: the exact qualified playback baseline remains the parent of branch `ux-redesign-20261002`; Founder real-device evidence confirms picture and sound played. Playback/security evidence remains valid where unaffected. Product/UX/visual acceptance is reopened because recurring family use exposed setup architecture, internal taxonomy and unnecessary steps.
+
+The successor candidate in this branch implements the recurring-device profile picker, Parent Mode protection, private photos/avatars, four-digit child PIN UX, one adaptive child experience, Collections-only taxonomy, Home/Library/Ask Parent, approved-only Favorites, Parent Preview/View as Child, channel/playlist discovery, bulk Collection assignment, multi-URL intake, duplicate intelligence, policy-safe access windows and PWA launch. Hosted additive migration `20261002035922_household_device_ux` is applied to project `ysukwpeowpcixdzkexky`; post-write counts remain 1 Parent / 4 profiles / 35 videos / 5 assignments / 1 Collection. No production application deployment has yet been changed.
+
+Local gate: typecheck PASS; lint PASS; 170 tests/22 files PASS; production build PASS; 11 Playwright flows PASS across desktop/tablet/mobile. Generated visual evidence is diagnostic until exact deployed Human-Eye/Stranger review. Exact commit/tree/deployment/CI will replace this paragraph after remote readback. See [UXRedesign-20261002.md](UXRedesign-20261002.md).
+
 # Playback acceptance reopened — 2026-10-02
 
 CURRENT: repair commit `267828ded150d4a565e9548458d4127f9d2a8f06`, tree `962e823767d0613a8283303ca3958db42fac3313`, CI run 61 and deployment `dpl_3qW2FtxMorGVUpCYqhdSuZmeskaZ` are exact and READY. Live inspection proved the direct production embed architecture but rejected the original PBS KIDS asset for a YouTube country restriction. That asset is unavailable with soft-removed assignments. Replacement official PBS KIDS upload `bfYpGhz1zdY` is assigned only to Miri; Ari is empty/denied and Miri receives a normal embedded Play surface. Audience status is unknown, so tracking/resume fails closed.

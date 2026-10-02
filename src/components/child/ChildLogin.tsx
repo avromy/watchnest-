@@ -1,247 +1,223 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { api, avatarColors, Profile } from "./model";
-import ProfileIdentity from "../ProfileIdentity";
+import { api, Profile } from "./model";
+import ProfileImage from "../ProfileImage";
+import Icon from "../ui/Icon";
+
 export default function ChildLogin() {
   const router = useRouter();
-  const [family, setFamily] = useState("");
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [selected, setSelected] = useState<Profile | null>(null);
-  const [passcode, setPasscode] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [parentMode, setParentMode] = useState(false);
+  const [parentPinSet, setParentPinSet] = useState(false);
+  const [pin, setPin] = useState("");
+  const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
+
   useEffect(() => {
     let cancelled = false;
-    const supplied =
-      new URLSearchParams(window.location.search).get("family")?.trim() || "";
-    let remembered = "";
-    try {
-      remembered = localStorage.getItem("watchnest-household") || "";
-    } catch {
-      /* Private browsing may disable storage. */
-    }
-    const code = supplied || remembered;
-    setFamily(code);
-    if (supplied) setBusy(true);
-    async function initialize() {
+    async function openPicker() {
       try {
-        const session = await api<{ role: string | null }>("/api/session");
+        await api("/api/auth/profile-exit", {});
+        const result = await api<{
+          profiles: Profile[];
+          parent_pin_set: boolean;
+        }>("/api/auth/device");
         if (cancelled) return;
-        if (session.role === "child") {
-          router.replace("/watch/home");
-          return;
-        }
-        if (supplied) {
-          const result = await api<{ profiles: Profile[] }>(
-            `/api/auth/children?family=${encodeURIComponent(supplied)}`,
-          );
-          if (cancelled) return;
-          setProfiles(result.profiles);
-          if (!result.profiles.length)
-            setError(
-              "No profiles found. Check your household code with a parent.",
-            );
-          try {
-            localStorage.setItem("watchnest-household", supplied);
-          } catch {
-            /* Optional convenience only. */
-          }
-        }
-      } catch (err) {
-        if (!cancelled) setError((err as Error).message);
+        setProfiles(result.profiles);
+        setParentPinSet(result.parent_pin_set);
+        await api("/api/auth/parent-lock", {});
+      } catch {
+        if (!cancelled) router.replace("/login");
       } finally {
         if (!cancelled) setBusy(false);
       }
     }
-    void initialize();
+    void openPicker();
     return () => {
       cancelled = true;
     };
   }, [router]);
-  async function load(e: FormEvent) {
-    e.preventDefault();
-    setBusy(true);
-    setError("");
-    try {
-      const d = await api<{ profiles: Profile[] }>(
-        `/api/auth/children?family=${encodeURIComponent(family.trim())}`,
-      );
-      setProfiles(d.profiles);
-      try {
-        localStorage.setItem("watchnest-household", family.trim());
-      } catch {
-        /* Optional convenience only. */
-      }
-      if (!d.profiles.length)
-        setError("No profiles found. Check your household code with a parent.");
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setBusy(false);
-    }
-  }
-  async function login(e: FormEvent) {
-    e.preventDefault();
-    if (!selected) return;
+
+  async function enterChild(profile: Profile, enteredPin = "") {
     setBusy(true);
     setError("");
     try {
       await api("/api/auth/child", {
-        family: family.trim(),
-        profileId: selected.id,
-        passcode,
+        profileId: profile.id,
+        passcode: enteredPin || undefined,
       });
       router.replace("/watch/home");
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
+    } catch (reason) {
+      setError((reason as Error).message);
       setBusy(false);
     }
   }
+
+  async function submitPin(event: FormEvent) {
+    event.preventDefault();
+    if (!selected) return;
+    await enterChild(selected, pin);
+  }
+
+  async function enterParent(event: FormEvent) {
+    event.preventDefault();
+    setBusy(true);
+    setError("");
+    try {
+      await api("/api/auth/parent-mode", { pin });
+      router.replace("/parent/dashboard");
+    } catch (reason) {
+      setError((reason as Error).message);
+      setBusy(false);
+    }
+  }
+
+  if (busy && !profiles.length)
+    return (
+      <main id="main-content" className="profile-picker">
+        <div className="picker-loading" role="status">
+          <img src="/icon.svg" alt="" width="58" height="58" />
+          <span>Opening WatchNest…</span>
+        </div>
+      </main>
+    );
+
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="shell"
-      style={{ maxWidth: 900 }}
-    >
-      <header className="topbar">
-        <Link className="brand" href="/">
+    <main id="main-content" className="profile-picker">
+      <header className="picker-header">
+        <span className="brand">
+          <img src="/icon.svg" alt="" width="42" height="42" />
           WatchNest
-        </Link>
-        <Link className="button button-quiet" href="/parent">
-          Parent sign in
-        </Link>
+        </span>
       </header>
-      <div
-        className="page-heading"
-        style={{ textAlign: "center", marginTop: 40 }}
-      >
-        <p className="eyebrow">Your own little library</p>
-        <h1>
-          {selected ? `Hi, ${selected.display_name}!` : "Who’s watching?"}
-        </h1>
-        <p className="muted">
-          Pick your profile to find the videos chosen for you.
-        </p>
-      </div>
-      {error && (
-        <p role="alert" className="error">
-          {error}
-        </p>
-      )}
-      {!profiles.length ? (
-        <form
-          className="panel"
-          onSubmit={load}
-          style={{ maxWidth: 440, margin: "24px auto" }}
-        >
-          <label className="field">
-            Household code
-            <input
-              autoComplete="off"
-              value={family}
-              onChange={(e) => setFamily(e.target.value)}
-              required
-              placeholder="Ask a parent for your code"
-            />
-          </label>
-          <button className="button" disabled={busy}>
-            {busy ? "Finding your family…" : "Find my family"}
-          </button>
-        </form>
-      ) : selected ? (
-        <form
-          className="panel"
-          onSubmit={login}
-          style={{ maxWidth: 440, margin: "24px auto" }}
-        >
-          {selected.pin_enabled ? (
-            <label className="field">
-              Your passcode
-              <input
-                type="password"
-                inputMode="numeric"
-                autoComplete="current-password"
-                value={passcode}
-                onChange={(e) => setPasscode(e.target.value)}
-                required
-                autoFocus
+      <section className="picker-content" aria-labelledby="picker-title">
+        <div className="picker-heading">
+          <h1 id="picker-title">Who’s watching?</h1>
+        </div>
+        {error && (
+          <p role="alert" className="error picker-error">
+            {error}
+          </p>
+        )}
+        <div className="profile-grid">
+          {profiles.map((profile) => (
+            <button
+              key={profile.id}
+              className="profile-choice"
+              disabled={busy}
+              onClick={() => {
+                setError("");
+                setPin("");
+                if (profile.pin_enabled) setSelected(profile);
+                else void enterChild(profile);
+              }}
+            >
+              <ProfileImage
+                name={profile.display_name}
+                avatar={profile.avatar_key}
+                photoUrl={profile.photo_url}
+                size="large"
               />
+              <strong>{profile.display_name}</strong>
+              {profile.pin_enabled && (
+                <span className="profile-lock">
+                  <Icon name="lock" width="15" /> PIN
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+        <button
+          className="parent-entry"
+          onClick={() => {
+            setError("");
+            setPin("");
+            if (parentPinSet) setParentMode(true);
+            else router.push("/login?parent=1");
+          }}
+        >
+          <Icon name="lock" width="18" /> Parent Mode
+        </button>
+      </section>
+      {(selected || parentMode) && (
+        <div
+          className="picker-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="pin-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelected(null);
+              setParentMode(false);
+              setPin("");
+              setError("");
+            }
+          }}
+        >
+          <form
+            className="pin-card"
+            onSubmit={parentMode ? enterParent : submitPin}
+          >
+            {selected && (
+              <ProfileImage
+                name={selected.display_name}
+                avatar={selected.avatar_key}
+                photoUrl={selected.photo_url}
+                size="medium"
+              />
+            )}
+            <h2 id="pin-title">
+              {parentMode ? "Parent Mode" : `${selected?.display_name}’s PIN`}
+            </h2>
+            <p>
+              {parentMode
+                ? "Enter the 4-digit Parent PIN."
+                : "Enter the 4-digit PIN."}
+            </p>
+            <label className="sr-only" htmlFor="profile-pin">
+              4-digit PIN
             </label>
-          ) : (
-            <p>No passcode needed. Open your own library when you’re ready.</p>
-          )}
-          <div className="form-row">
-            <button className="button" disabled={busy}>
-              {busy ? "Opening…" : "Open my library"}
+            <input
+              id="profile-pin"
+              className="pin-input"
+              type="password"
+              inputMode="numeric"
+              autoComplete="off"
+              pattern="[0-9]{4}"
+              minLength={4}
+              maxLength={4}
+              value={pin}
+              onChange={(event) =>
+                setPin(event.target.value.replace(/\D/g, "").slice(0, 4))
+              }
+              placeholder="••••"
+              autoFocus
+              required
+            />
+            {error && (
+              <p role="alert" className="error">
+                {error}
+              </p>
+            )}
+            <button className="button" disabled={busy || pin.length !== 4}>
+              {busy ? "Opening…" : "Continue"}
             </button>
             <button
               type="button"
-              className="button button-secondary"
+              className="button-quiet"
               onClick={() => {
                 setSelected(null);
-                setPasscode("");
+                setParentMode(false);
+                setPin("");
                 setError("");
               }}
             >
-              Go back
+              Cancel
             </button>
-          </div>
-        </form>
-      ) : (
-        <>
-          <div className="grid grid-2">
-            {profiles.map((p) => (
-              <button
-                key={p.id}
-                className="panel"
-                style={{
-                  cursor: "pointer",
-                  textAlign: "center",
-                  padding: 32,
-                  minHeight: 200,
-                }}
-                onClick={() => setSelected(p)}
-              >
-                <span
-                  className="avatar"
-                  style={{
-                    background: avatarColors[p.color_key] || avatarColors.mint,
-                    display: "inline-flex",
-                    fontSize: 36,
-                    width: 88,
-                    height: 88,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  aria-hidden="true"
-                >
-                  <ProfileIdentity identity={p.avatar_key} />
-                </span>
-                <h2 style={{ fontSize: 28 }}>{p.display_name}</h2>
-                {p.pin_enabled && (
-                  <span className="muted">Your own passcode</span>
-                )}
-                {!p.pin_enabled && (
-                  <span className="muted">No passcode needed</span>
-                )}
-              </button>
-            ))}
-          </div>
-          <button
-            className="button button-quiet"
-            style={{ marginTop: 24 }}
-            onClick={() => {
-              setProfiles([]);
-              setError("");
-            }}
-          >
-            Use a different household code
-          </button>
-        </>
+          </form>
+        </div>
       )}
     </main>
   );

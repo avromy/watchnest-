@@ -1,4 +1,10 @@
-export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[];
 
 export type Parent = {
   id: string;
@@ -26,8 +32,8 @@ export type Video = {
   channel_title: string | null;
   thumbnail_url: string | null;
   duration_seconds: number | null;
-  availability_status: 'available' | 'unavailable' | 'needs_review';
-  embeddable_status: 'embeddable' | 'not_embeddable' | 'unknown';
+  availability_status: "available" | "unavailable" | "needs_review";
+  embeddable_status: "embeddable" | "not_embeddable" | "unknown";
   metadata_last_checked_at: string | null;
   created_at: string;
 };
