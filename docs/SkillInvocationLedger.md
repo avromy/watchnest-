@@ -1,5 +1,13 @@
 # WatchNest skill invocation and coverage receipt
 
+## Playback failure continuation receipt — 2026-10-02
+
+Current App Dev/WatchNest authority, Product Intelligence, Autonomous Visual Production & Review V008, Match Check, Stranger Test, Founder Ready, Supabase, Next.js, React Best Practices, Vercel deployment/verification/investigation/observability and current official YouTube primary documentation were consumed for this bounded repair.
+
+The Founder-found iPad failure invalidated playback acceptance. Vercel runtime evidence separated the successful server authorization boundary from the browser bootstrap failure. Official YouTube requirements preserved privacy-enhanced embedding, Referer/client identity, platform error codes and Made-for-Kids limits. Product/UX review selected a direct per-video Parent Library Preview rather than an ambiguous “View as child” shortcut. React/Next.js review kept the official embed client-only without exposing secrets or moving authorization client-side. Automated evidence: lint, typecheck, 167 tests, production build and ten browser tests PASS. Deployment, live audiovisual/iPad, affected visual comparison, independent Stranger recheck and Founder Ready remain UNRESOLVED until exact-candidate evidence exists.
+
+Learning propagated to [PlaybackFailure-20261002.md](PlaybackFailure-20261002.md): primary outcomes must not depend on optional telemetry/control SDK bootstrap; timeout copy may not claim connectivity without evidence; environment explanations must not suppress architecture-level challenge after a real-device failure.
+
 ## Current continuation receipt — 2026-10-02
 
 The recovered App Dev/Founder/CTO authority remained controlling. Supabase guidance was applied to the hosted transactional child-admission repair, privilege verification and rollback-safe database checks. Vercel environment/deployment guidance was applied to private YouTube configuration, exact source/deployment binding and client-secret inspection. Product Intelligence and current YouTube policy boundaries preserved Made-for-Kids analytics suppression and official-embed limits. Autonomous visual/Human-Eye criteria informed measured desktop evidence without promoting a partial screen review to whole-product acceptance. Stranger Test produced a separate cold traversal; an independent security reviewer challenged and rechecked the exact repaired candidate. Notion research/capture guidance is used to reconcile the existing Founder Workspace and CTO Handoff rather than create duplicates. No skill invocation is treated as evidence beyond its recorded boundary.

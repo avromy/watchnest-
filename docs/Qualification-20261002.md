@@ -1,5 +1,11 @@
 # WatchNest qualification checkpoint — 2026-10-02
 
+## Playback correction — superseding evidence boundary
+
+Founder real-device evidence proves that the deployed player failed after successful authentication, child-profile entry, library navigation and player-route authorization. The prior statement that no P0 was known is superseded for playback. Real playback, native/escape behavior and iPad Safari are not accepted.
+
+The repair candidate is the commit containing this document. Made-for-Kids playback now uses a direct official privacy-enhanced embed and no longer depends on the optional IFrame JavaScript API. Non-MFK resume degrades to direct playback when that API cannot initialize. Parent Library has an obvious Preview action, and actual YouTube player error codes receive distinct safe classifications. Local lint, typecheck, 167 tests, build and ten browser tests pass. These are not real audiovisual evidence. Exact deployment and post-deploy gates remain required. Full diagnosis and regression learning: [PlaybackFailure-20261002.md](PlaybackFailure-20261002.md).
+
 ## Exact authority
 
 - Runtime candidate: `abd02f0a95e4fc6dc4d52acc86feea8e9b5b7132`; tree `21a4410e020d3a113554121ed7aadbaa51c0a494`.

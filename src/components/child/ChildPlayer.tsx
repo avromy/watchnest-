@@ -8,6 +8,8 @@ import {
   serializeBookmark,
   waitForBookmarks,
 } from "./model";
+import YouTubeEmbed from "../YouTubeEmbed";
+import { classifyYouTubePlayerError } from "@/lib/youtube-player";
 type Player = {
   getCurrentTime: () => number;
   getDuration: () => number;
@@ -27,7 +29,7 @@ type YouTube = {
       events: {
         onReady: (event: { target: Player }) => void;
         onStateChange: (event: PlayerEvent) => void;
-        onError: () => void;
+        onError: (event: { data: number }) => void;
         onAutoplayBlocked: () => void;
       };
     },
@@ -59,7 +61,7 @@ function loadPlayer(): Promise<YouTube> {
         script.onerror = () => {
           apiPromise = undefined;
           script?.remove();
-          reject(new Error("The video player could not load."));
+          reject(new Error("youtube-api-script-error"));
         };
         document.head.appendChild(script);
       }
@@ -67,11 +69,7 @@ function loadPlayer(): Promise<YouTube> {
         if (!window.YT?.Player) {
           apiPromise = undefined;
           script?.remove();
-          reject(
-            new Error(
-              "The video player could not load. Check your connection.",
-            ),
-          );
+          reject(new Error("youtube-api-timeout"));
         }
       }, 15000);
     });
@@ -84,6 +82,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [blocked, setBlocked] = useState(false);
   const [ended, setEnded] = useState(false);
   const [ready, setReady] = useState(false);
+  const [staticFallback, setStaticFallback] = useState(false);
+  const [playerNotice, setPlayerNotice] = useState("");
   const [replay, setReplay] = useState(0);
   const [helpSent, setHelpSent] = useState(false);
   const [helpBusy, setHelpBusy] = useState(false);
@@ -114,6 +114,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     setEnded(false);
     setReady(false);
     setBlocked(false);
+    setStaticFallback(false);
+    setPlayerNotice("");
     setHelpSent(false);
     setHelpError("");
     waitForBookmarks()
@@ -133,11 +135,17 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     };
   }, [videoId, replay]);
   useEffect(() => {
-    if (!data || !mount.current) return;
+    if (
+      !data ||
+      data.video.made_for_kids !== false ||
+      staticFallback ||
+      !mount.current
+    )
+      return;
     let disposed = false;
     let completed = false;
     active.current = true;
-    let historyAllowed = data.video.made_for_kids === false;
+    const historyAllowed = data.video.made_for_kids === false;
     function save() {
       const p = player.current;
       if (!p || !historyAllowed) return;
@@ -205,11 +213,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 player.current = null;
               }
             },
-            onError: () => {
+            onError: (event) => {
               if (!disposed) {
-                setError(
-                  "This video can’t play here right now. Choose another video from your library.",
-                );
+                const failure = classifyYouTubePlayerError(event.data);
+                console.warn("[watchnest-player] YouTube playback failed", {
+                  kind: failure.kind,
+                  code: failure.code,
+                  videoId: data.video.id,
+                });
+                setError(failure.childMessage);
                 active.current = false;
               }
             },
@@ -220,26 +232,23 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         });
       })
       .catch((e) => {
-        if (!disposed) setError(e.message);
+        if (!disposed) {
+          console.warn(
+            "[watchnest-player] IFrame API unavailable; using direct embed",
+            {
+              reason: e instanceof Error ? e.message : "unknown",
+              videoId: data.video.id,
+            },
+          );
+          setStaticFallback(true);
+          setPlayerNotice(
+            "Your video is ready. Resume is temporarily unavailable.",
+          );
+        }
       });
     const bookmark = historyAllowed
       ? setInterval(() => void save(), 15000)
       : undefined;
-    const check = setInterval(() => {
-      api<Playback>(`/api/child/player?videoId=${encodeURIComponent(videoId)}`)
-        .then((fresh) => {
-          historyAllowed = fresh.video.made_for_kids === false;
-        })
-        .catch((e) => {
-          if (!disposed) {
-            active.current = false;
-            player.current?.pauseVideo();
-            player.current?.destroy();
-            player.current = null;
-            setError((e as Error).message);
-          }
-        });
-    }, 20000);
     function visibility() {
       if (document.hidden) {
         player.current?.pauseVideo();
@@ -256,11 +265,31 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       disposed = true;
       active.current = false;
       clearInterval(bookmark);
-      clearInterval(check);
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("pagehide", pagehide);
       player.current?.destroy();
       player.current = null;
+    };
+  }, [data, videoId, staticFallback]);
+  useEffect(() => {
+    if (!data) return;
+    let disposed = false;
+    const check = setInterval(() => {
+      api<Playback>(
+        `/api/child/player?videoId=${encodeURIComponent(videoId)}`,
+      ).catch((e) => {
+        if (!disposed) {
+          active.current = false;
+          player.current?.pauseVideo();
+          player.current?.destroy();
+          player.current = null;
+          setError((e as Error).message);
+        }
+      });
+    }, 20000);
+    return () => {
+      disposed = true;
+      clearInterval(check);
     };
   }, [data, videoId]);
   return (
@@ -340,6 +369,19 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 Watch again
               </button>
             </section>
+          ) : data.video.made_for_kids !== false || staticFallback ? (
+            <YouTubeEmbed
+              className="watchnest-player"
+              videoId={data.video.youtube_video_id}
+              title={data.video.title}
+              startSeconds={
+                data.video.made_for_kids === false &&
+                !data.video.progress?.completed_at
+                  ? data.video.progress?.current_time_seconds || 0
+                  : 0
+              }
+              onLoad={() => setReady(true)}
+            />
           ) : (
             <div
               ref={mount}
@@ -352,7 +394,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               }}
             />
           )}
-          <style>{`.watchnest-player iframe{width:100%;height:100%;display:block;border:0}`}</style>
+          <style>{`.watchnest-player{width:100%;aspect-ratio:16/9;background:#15251F;border:0;border-radius:16px;overflow:hidden;display:block}.watchnest-player iframe{width:100%;height:100%;display:block;border:0}`}</style>
           {!ended && !ready && (
             <p role="status" className="muted">
               Loading the video player…
@@ -369,6 +411,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               </button>
             </div>
           )}
+          {playerNotice && <p className="notice">{playerNotice}</p>}
           {data.video.made_for_kids !== false && (
             <p className="muted" style={{ fontSize: 13 }}>
               Resume is off for this video.

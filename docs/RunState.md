@@ -1,4 +1,10 @@
-# Current hosted checkpoint — 2026-10-02
+# Playback acceptance reopened — 2026-10-02
+
+Founder real-device evidence confirms authentication, Miri's populated library and player-route navigation but shows playback failure. The prior real-playback gate is STALE/FAIL. Exact pre-repair deployment `dpl_5TTgS86tuebcM48Q8PHUQJVEojKZ` at source `5482e56842d0dc3dd7945030dcf934b44130a125` remains the rollback target.
+
+The repair candidate is the commit containing this checkpoint. It removes the unnecessary YouTube IFrame JavaScript API dependency from Made-for-Kids playback, preserves direct official privacy-enhanced embedding and explicit client identity, falls back to direct playback when optional non-MFK resume bootstrap fails, classifies actual player errors, and adds Parent Library Preview. Local lint, typecheck, 167 tests, production build and ten browser tests pass. Deployment/live audiovisual/iPad/visual/independent evidence remains pending and must bind the repaired candidate. See [PlaybackFailure-20261002.md](PlaybackFailure-20261002.md).
+
+# Previous hosted checkpoint — 2026-10-02
 
 LATEST: runtime candidate `abd02f0a95e4fc6dc4d52acc86feea8e9b5b7132`, tree `21a4410e020d3a113554121ed7aadbaa51c0a494`, CI run 57 successful and production deployment `dpl_RmmefptK3oaJcbiKQDtKhjNBCAYk` READY. Hosted migration `20261002020000_atomic_child_admission` is applied. A private server-only YouTube key is configured and real production metadata resolution succeeds without client exposure. All four child profiles intentionally default PIN protection OFF; optional Parent-controlled PINs remain implemented. A real official PBS KIDS Made-for-Kids video is assigned only to Miri; Miri access succeeds, sibling access is denied, and restricted per-child tracking stays disabled with zero rows. See [Qualification-20261002.md](Qualification-20261002.md) for exact evidence and limits.
 
