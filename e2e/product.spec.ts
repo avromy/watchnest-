@@ -73,12 +73,8 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
   await expect(
     page.getByRole("region", { name: "Miri library status" }),
   ).toContainText("0 approved videos");
-  await expect(
-    page.getByText(
-      "WatchNest reports approvals, assignments and requests. It does not report YouTube watch time.",
-      { exact: true },
-    ),
-  ).toBeVisible();
+  await expect(page.getByText("Shared with children", { exact: true })).toBeVisible();
+  await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await page.getByRole("link", { name: "Children", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Miri", exact: true }),
@@ -186,7 +182,7 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
   expect(src.searchParams.get("enablejsapi")).toBeNull();
-  await expect(page.getByText("Resume is off for this video.")).toBeVisible();
+  await expect(page.getByText(/resume is off/i)).toHaveCount(0);
 });
 
 test("synthetic UI: optional resume bootstrap failure falls back to playback", async ({
@@ -230,7 +226,7 @@ test("synthetic UI: Parent Library offers an obvious playback preview", async ({
     dialog.locator('iframe[title="Build a paper rocket"]'),
   ).toBeVisible();
   await expect(
-    dialog.getByText(/Child access still follows the assignments/),
+    dialog.getByText(/Child access still follows.*Who can watch/),
   ).toBeVisible();
   await expect(
     dialog.getByText(/Press Play and confirm the approved video still starts/),
@@ -249,12 +245,8 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
   await expect(
     page.getByRole("region", { name: "Ari library status" }),
   ).toContainText("3 approved videos");
-  await expect(
-    page.getByText(
-      "WatchNest reports approvals, assignments and requests. It does not report YouTube watch time.",
-      { exact: true },
-    ),
-  ).toBeVisible();
+  await expect(page.getByText("Shared with children", { exact: true })).toBeVisible();
+  await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await expect(
     page.getByRole("heading", { name: "Eligible viewing insights" }),
   ).toHaveCount(0);
