@@ -1,4 +1,10 @@
-# Current hosted checkpoint — 2026-10-01
+# Current hosted checkpoint — 2026-10-02
+
+LATEST: runtime candidate `abd02f0a95e4fc6dc4d52acc86feea8e9b5b7132`, tree `21a4410e020d3a113554121ed7aadbaa51c0a494`, CI run 57 successful and production deployment `dpl_RmmefptK3oaJcbiKQDtKhjNBCAYk` READY. Hosted migration `20261002020000_atomic_child_admission` is applied. A private server-only YouTube key is configured and real production metadata resolution succeeds without client exposure. All four child profiles intentionally default PIN protection OFF; optional Parent-controlled PINs remain implemented. A real official PBS KIDS Made-for-Kids video is assigned only to Miri; Miri access succeeds, sibling access is denied, and restricted per-child tracking stays disabled with zero rows. See [Qualification-20261002.md](Qualification-20261002.md) for exact evidence and limits.
+
+Independent review found no confirmed P0. The child-session/security-settings race was repaired transactionally and independently rechecked. The remaining release gates are a securely authenticated real Parent UI traversal, live PIN-ON rotation, successful audiovisual playback/escape-path observation, real iPad Safari and complete Human-Eye/Stranger acceptance. Cloud-browser playback is not promotable because its proxy strips the Referer YouTube requires and produces Error 153. Current first unfinished action is secure Parent-session establishment; child PIN creation and Google Cloud setup are not blockers.
+
+## Previous hosted checkpoint — 2026-10-01
 
 LATEST: owner has completed confirmed Parent sign-in and all four locked profiles exist live. LiveParent-20261001.md records bounded authenticated-render, persisted identity and anonymous HTTP denial evidence. Four personal PINs and YouTube key still require owner-only credential actions. RawResumePolicy-20261001.md controls all earlier analytics statements: derived viewing metrics are disabled for all videos; only bounded raw functional resume under fresh non-Made-for-Kids classification remains. Dashboard shows WatchNest-owned library/request records. Sixth compatible migration must precede successor deployment. Current Notion handoff binds exact candidate/schema/CI/deployment; older setup/account-count/metrics language below is historical and superseded.
 

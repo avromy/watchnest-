@@ -4,15 +4,15 @@ A private family video library: **Only the videos I approve. Nothing else.** Wat
 
 ## Current status
 
-Production-build implementation checkpoint, **not a deployed family-ready release**. Resume with [Recovery](docs/Recovery-20260930.md). Live Supabase, YouTube access, deployment, real family accounts, and live acceptance remain outstanding. Historical scaffold code and seed fixtures are not live accounts.
+Advanced private-beta qualification is deployed at <https://watchnest-rho.vercel.app>, but **final Founder Review Ready is not yet claimed**. Supabase, four locked child profiles and a private server-only YouTube API connection are live. Real Parent-session, audiovisual/iPad Safari and whole-product visual acceptance remain outstanding. See [current qualification](docs/Qualification-20261002.md).
 
 Parent: protected sign-in, YouTube search/URL lookup, previews, individual approval, bulk assignment, library maintenance, collections, four child profiles, Inbox and eligible-video viewing insights.
 
-Child: personal passcode or parent-authorized shared-device entry, Simple/Standard modes, own assigned library, local search, Shows, requests, authorized player, eligible progress/resume and approved Next Up.
+Child: optional Parent-controlled PIN protection (OFF by default per profile), Simple/Standard modes, own assigned library, local search, Shows, requests, authorized player, eligible progress/resume and approved Next Up. PIN-OFF never broadens content authorization; sibling isolation remains server-side.
 
 ## Development
 
-Node 24 recommended. `npm ci`, copy `.env.example` to `.env.local`, configure secrets through deployment settings, then `npm run dev`. Never commit credentials. Apply **all five migrations** in timestamp order to a dedicated Supabase project; see [Schema](docs/DatabaseSchema.md). **Do not apply `supabase/seed.sql` to production**. Only the verified Founder sign-in creates the locked family profiles. Metadata scheduling is a separate verified release action, not implied by applying SQL.
+Node 24 recommended. `npm ci`, copy `.env.example` to `.env.local`, configure secrets through deployment settings, then `npm run dev`. Never commit credentials. Apply **every migration** in timestamp order to a dedicated Supabase project; see [Schema](docs/DatabaseSchema.md). **Do not apply `supabase/seed.sql` to production**. Only the verified Founder sign-in creates the locked family profiles. Metadata scheduling is a separate verified release action, not implied by applying SQL.
 
 Checks: `npm run lint`, `npm run typecheck`, `npm run test -- --run`, `npm run build`, `npm run test:e2e`. Browser tests require a production build. Synthetic UI tests are explicitly separate from real HTTP fail-closed checks and database integration tests.
 

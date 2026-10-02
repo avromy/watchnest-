@@ -1,4 +1,10 @@
-# First production checkpoint — 2026-10-01
+# Current production update — 2026-10-02
+
+Production remains <https://watchnest-rho.vercel.app>. Runtime candidate `abd02f0a95e4fc6dc4d52acc86feea8e9b5b7132`, tree `21a4410e020d3a113554121ed7aadbaa51c0a494`, deployment `dpl_RmmefptK3oaJcbiKQDtKhjNBCAYk` and CI run 57 are exact and green. The private server-only YouTube credential is configured; real production metadata lookup succeeds and client-bundle scans contain no credential. Hosted migration `20261002020000_atomic_child_admission` coordinates PIN-setting mutation and child-session admission transactionally. Full state and evidence limits: [Qualification-20261002.md](Qualification-20261002.md).
+
+The preceding 2026-10-01 text is historical. Mandatory child PIN setup and missing YouTube configuration are superseded. Final release still requires secure Parent UI traversal, successful real-device playback/escape-path observation, iPad Safari and complete visual/cold acceptance.
+
+## First production checkpoint — 2026-10-01
 
 URL: https://watchnest-rho.vercel.app
 
