@@ -274,7 +274,13 @@ describe("independent route security resume (mocked DB/Auth, actual handle)", ()
       ["auth", "logout"],
     );
     expect(result.status).toBe(200);
-    expect(state.cookieWrites).toEqual(["wn_child", "wn_parent", "wn_refresh"]);
+    expect(state.cookieWrites).toEqual([
+      "wn_child",
+      "wn_parent",
+      "wn_refresh",
+      "wn_parent_mode",
+      "wn_device",
+    ]);
     expect(state.rpc).toEqual([]);
   });
   for (const role of ["child", "parent"]) {
@@ -294,6 +300,8 @@ describe("independent route security resume (mocked DB/Auth, actual handle)", ()
         "wn_child",
         "wn_parent",
         "wn_refresh",
+        "wn_parent_mode",
+        "wn_device",
       ]);
     });
   }
@@ -308,7 +316,13 @@ describe("independent route security resume (mocked DB/Auth, actual handle)", ()
       ["auth", "logout"],
     );
     expect(result.status).toBe(503);
-    expect(state.cookieWrites).toEqual(["wn_child", "wn_parent", "wn_refresh"]);
+    expect(state.cookieWrites).toEqual([
+      "wn_child",
+      "wn_parent",
+      "wn_refresh",
+      "wn_parent_mode",
+      "wn_device",
+    ]);
   });
   it("cross-origin logout remains rejected and cannot clear cookies", async () => {
     const result = await handle(

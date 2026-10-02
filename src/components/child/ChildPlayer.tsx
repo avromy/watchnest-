@@ -310,7 +310,11 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       {error ? (
         <section className="panel" style={{ marginTop: 32 }}>
           <p className="eyebrow">Let’s pick something else</p>
-          <h1>This video is unavailable</h1>
+          <h1>
+            {error.includes("not available for this profile right now")
+              ? "WatchNest is closed right now"
+              : "This video is unavailable"}
+          </h1>
           <p role="alert" className="error">
             {error}
           </p>

@@ -1,12 +1,12 @@
-import 'server-only';
+import "server-only";
 
-import type { Video } from '@/types/database';
-import { normalizeYouTubeThumbnailUrl } from '@/lib/youtube-thumbnail';
+import type { Video } from "@/types/database";
+import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 
-const YOUTUBE_VIDEOS_API_URL = 'https://www.googleapis.com/youtube/v3/videos';
+const YOUTUBE_VIDEOS_API_URL = "https://www.googleapis.com/youtube/v3/videos";
 
-export type YouTubeAvailabilityStatus = Video['availability_status'];
-export type YouTubeEmbeddableStatus = Video['embeddable_status'];
+export type YouTubeAvailabilityStatus = Video["availability_status"];
+export type YouTubeEmbeddableStatus = Video["embeddable_status"];
 
 export type YouTubeVideoMetadata = {
   youtube_video_id: string;
@@ -38,7 +38,10 @@ type YouTubeVideoListItem = {
     title?: string;
     channelId?: string;
     channelTitle?: string;
-    thumbnails?: Record<string, { url?: string; width?: number; height?: number }>;
+    thumbnails?: Record<
+      string,
+      { url?: string; width?: number; height?: number }
+    >;
   };
   contentDetails?: {
     duration?: string;
@@ -57,30 +60,33 @@ export async function fetchYouTubeVideoMetadata(
   const videoId = youtubeVideoId.trim();
 
   if (!videoId) {
-    return { ok: false, error: 'YouTube video ID is required.' };
+    return { ok: false, error: "YouTube video ID is required." };
   }
 
   const apiKey = options.apiKey ?? process.env.YOUTUBE_API_KEY;
 
   if (!apiKey) {
-    return { ok: false, error: 'YOUTUBE_API_KEY is not configured.' };
+    return { ok: false, error: "YOUTUBE_API_KEY is not configured." };
   }
 
   const url = new URL(YOUTUBE_VIDEOS_API_URL);
-  url.searchParams.set('part', 'snippet,contentDetails,status');
-  url.searchParams.set('id', videoId);
-  url.searchParams.set('key', apiKey);
-  url.searchParams.set('maxResults', '1');
+  url.searchParams.set("part", "snippet,contentDetails,status");
+  url.searchParams.set("id", videoId);
+  url.searchParams.set("key", apiKey);
+  url.searchParams.set("maxResults", "1");
 
   try {
     const fetchImpl = options.fetchImpl ?? fetch;
-    const response = await fetchImpl(url, { cache: 'no-store' });
-    const payload = (await response.json().catch(() => ({}))) as YouTubeVideoListResponse;
+    const response = await fetchImpl(url, { cache: "no-store" });
+    const payload = (await response
+      .json()
+      .catch(() => ({}))) as YouTubeVideoListResponse;
 
     if (!response.ok) {
       return {
         ok: false,
-        error: payload.error?.message ?? 'Unable to fetch YouTube video metadata.',
+        error:
+          payload.error?.message ?? "Unable to fetch YouTube video metadata.",
         status: response.status,
       };
     }
@@ -92,13 +98,13 @@ export async function fetchYouTubeVideoMetadata(
         ok: true,
         metadata: {
           youtube_video_id: videoId,
-          title: '',
+          title: "",
           channel_id: null,
           channel_title: null,
           thumbnail_url: null,
           duration: null,
-          embeddable_status: 'unknown',
-          availability_status: 'unavailable',
+          embeddable_status: "unknown",
+          availability_status: "unavailable",
         },
       };
     }
@@ -107,15 +113,21 @@ export async function fetchYouTubeVideoMetadata(
   } catch (error) {
     return {
       ok: false,
-      error: error instanceof Error ? error.message : 'Unable to fetch YouTube video metadata.',
+      error:
+        error instanceof Error
+          ? error.message
+          : "Unable to fetch YouTube video metadata.",
     };
   }
 }
 
-function normalizeYouTubeVideoItem(requestedVideoId: string, item: YouTubeVideoListItem): YouTubeVideoMetadata {
+function normalizeYouTubeVideoItem(
+  requestedVideoId: string,
+  item: YouTubeVideoListItem,
+): YouTubeVideoMetadata {
   return {
     youtube_video_id: item.id ?? requestedVideoId,
-    title: item.snippet?.title ?? '',
+    title: item.snippet?.title ?? "",
     channel_id: item.snippet?.channelId ?? null,
     channel_title: item.snippet?.channelTitle ?? null,
     thumbnail_url: selectBestThumbnailUrl(item.snippet?.thumbnails),
@@ -125,12 +137,16 @@ function normalizeYouTubeVideoItem(requestedVideoId: string, item: YouTubeVideoL
   };
 }
 
-type YouTubeThumbnailMap = NonNullable<YouTubeVideoListItem['snippet']>['thumbnails'];
+type YouTubeThumbnailMap = NonNullable<
+  YouTubeVideoListItem["snippet"]
+>["thumbnails"];
 
-function selectBestThumbnailUrl(thumbnails: YouTubeThumbnailMap): string | null {
+function selectBestThumbnailUrl(
+  thumbnails: YouTubeThumbnailMap,
+): string | null {
   if (!thumbnails) return null;
 
-  const preferredNames = ['maxres', 'standard', 'high', 'medium', 'default'];
+  const preferredNames = ["maxres", "standard", "high", "medium", "default"];
 
   for (const name of preferredNames) {
     const url = thumbnails[name]?.url;
@@ -142,15 +158,20 @@ function selectBestThumbnailUrl(thumbnails: YouTubeThumbnailMap): string | null 
   );
 }
 
-function normalizeEmbeddableStatus(embeddable: boolean | undefined): YouTubeEmbeddableStatus {
-  if (embeddable === true) return 'embeddable';
-  if (embeddable === false) return 'not_embeddable';
-  return 'unknown';
+function normalizeEmbeddableStatus(
+  embeddable: boolean | undefined,
+): YouTubeEmbeddableStatus {
+  if (embeddable === true) return "embeddable";
+  if (embeddable === false) return "not_embeddable";
+  return "unknown";
 }
 
-function normalizeAvailabilityStatus(status: YouTubeVideoListItem['status']): YouTubeAvailabilityStatus {
-  if (!status) return 'needs_review';
-  if (status.uploadStatus === 'deleted' || status.uploadStatus === 'rejected') return 'unavailable';
-  if (status.privacyStatus === 'private') return 'unavailable';
-  return 'available';
+function normalizeAvailabilityStatus(
+  status: YouTubeVideoListItem["status"],
+): YouTubeAvailabilityStatus {
+  if (!status) return "needs_review";
+  if (status.uploadStatus === "deleted" || status.uploadStatus === "rejected")
+    return "unavailable";
+  if (status.privacyStatus === "private") return "unavailable";
+  return "available";
 }

@@ -5,6 +5,9 @@ export type Profile = {
   color_key: string;
   experience_mode: "simple" | "standard";
   pin_enabled: boolean;
+  photo_url?: string | null;
+  available_from_minute?: number | null;
+  available_until_minute?: number | null;
 };
 export type LibraryVideo = {
   id: string;
@@ -24,12 +27,14 @@ export type LibraryVideo = {
     updated_at: string;
   };
   collections?: { id: string; title: string }[];
+  favorite?: boolean;
 };
 export type Collection = {
   id: string;
   title: string;
   description?: string;
   video_ids: string[];
+  profile_ids?: string[];
 };
 export type Request = {
   id: string;

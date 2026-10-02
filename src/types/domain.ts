@@ -19,8 +19,9 @@ export type Profile = {
   archivedAt: IsoDateTime | null;
 };
 
-export type VideoAvailabilityStatus = 'available' | 'unavailable' | 'needs_review';
-export type VideoEmbeddableStatus = 'embeddable' | 'not_embeddable' | 'unknown';
+export type VideoAvailabilityStatus =
+  "available" | "unavailable" | "needs_review";
+export type VideoEmbeddableStatus = "embeddable" | "not_embeddable" | "unknown";
 
 export type Video = {
   id: Uuid;

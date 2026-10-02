@@ -47,9 +47,8 @@ test("real HTTP: public entry, protected parent redirect, and unknown page", asy
   page,
 }) => {
   await page.goto("/");
-  await expect(
-    page.getByRole("heading", { name: "Their favorites. Your peace of mind." }),
-  ).toBeVisible();
+  await expect(page).toHaveURL(/\/login$/);
+  await expect(page.getByRole("heading", { name: "Sign in" })).toBeVisible();
   await page.goto("/parent/dashboard");
   await expect(page).toHaveURL(/\/login$/);
   await page.goto("/this-page-does-not-exist");
@@ -63,12 +62,10 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
   await fixture(page, "parent");
   await page.goto("/parent/dashboard");
   await expect(
-    page.getByRole("heading", {
-      name: "A little watching. A lot of curiosity.",
-    }),
+    page.getByRole("heading", { name: "Family overview" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Your library & requests" }),
+    page.getByRole("heading", { name: "Library and requests" }),
   ).toBeVisible();
   await expect(
     page.getByRole("region", { name: "Ari library status" }),
@@ -94,7 +91,7 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
     page.getByRole("heading", { name: "Lego trains" }),
   ).toBeVisible();
   await page.getByRole("link", { name: "Find a video" }).click();
-  await expect(page.getByLabel("Video, show, creator or topic")).toHaveValue(
+  await expect(page.getByRole("searchbox", { name: "Search" })).toHaveValue(
     "Lego trains",
   );
 });
@@ -103,22 +100,20 @@ test("synthetic UI: child searches local library and asks parent on no match", a
 }) => {
   const changes = await fixture(page, "child");
   await page.goto("/watch/home");
-  await expect(page.getByRole("heading", { name: /Ari/ })).toBeVisible();
-  const search = page.getByPlaceholder("Try a video, show, or topic");
+  await expect(page.getByText("Hi, Ari", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Library", exact: true }).click();
+  const search = page.getByPlaceholder("Search your library");
   await search.fill("no matching dinosaur");
   await expect(
-    page.getByRole("heading", { name: "No videos found yet" }),
+    page.getByRole("heading", { name: "Nothing found" }),
   ).toBeVisible();
-  await page
-    .locator(".empty")
-    .getByRole("button", { name: "Ask Parent", exact: true })
-    .click();
+  await page.getByRole("button", { name: /Ask Parent for/ }).click();
   await expect(
     page.getByRole("heading", { name: "Ask Parent", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Send to Parent" }).click();
+  await page.getByRole("button", { name: "Send request" }).click();
   await expect(
-    page.getByRole("heading", { name: "Your request is on its way!" }),
+    page.getByRole("heading", { name: "Sent to Parent" }),
   ).toBeVisible();
   expect(
     changes.some(
@@ -126,6 +121,28 @@ test("synthetic UI: child searches local library and asks parent on no match", a
         c.path === "/api/child/requests" && c.body.message.includes("dinosaur"),
     ),
   ).toBe(true);
+});
+
+test("synthetic UI: shared device opens the profile picker and Parent Mode stays protected", async ({
+  page,
+}) => {
+  const changes = await fixture(page, "parent");
+  await page.goto("/watch");
+  await expect(
+    page.getByRole("heading", { name: "Who’s watching?" }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: /Miri/ })).toBeVisible();
+  await page.getByRole("button", { name: "Parent Mode" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Parent Mode" }),
+  ).toBeVisible();
+  await page.getByLabel("4-digit PIN").fill("1234");
+  await page.getByRole("button", { name: "Continue" }).click();
+  await expect
+    .poll(() =>
+      changes.some((change) => change.path === "/api/auth/parent-mode"),
+    )
+    .toBe(true);
 });
 test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await fixture(page, "parent");

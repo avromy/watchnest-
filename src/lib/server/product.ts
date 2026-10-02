@@ -1,4 +1,5 @@
 import "server-only";
+import { isWithinAccessWindow } from "@/lib/access-window";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -21,7 +22,7 @@ const youtubeId = z.string().regex(/^[A-Za-z0-9_-]{11}$/);
 const founder = () =>
   (process.env.FOUNDER_EMAIL || "Avromy@gmail.com").toLowerCase();
 const selectProfile =
-  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled";
+  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute";
 export function configured() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -29,7 +30,7 @@ export function configured() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );
 }
-function db() {
+export function db() {
   if (!configured()) throw new Failure("WatchNest setup is not complete.", 503);
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -53,7 +54,7 @@ function check(result: any) {
     );
   return result.data;
 }
-async function cookie(name: string, value: string, maxAge: number) {
+export async function cookie(name: string, value: string, maxAge: number) {
   (await cookies()).set(name, value, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -62,11 +63,38 @@ async function cookie(name: string, value: string, maxAge: number) {
     maxAge,
   });
 }
-async function parent() {
+async function parentFromModeSession() {
+  const token = (await cookies()).get("wn_parent_mode")?.value;
+  if (!token) return null;
+  const client = db();
+  const session = check(
+    await client
+      .from("parent_mode_sessions")
+      .select("parent_id")
+      .eq("token_hash", digest(token))
+      .is("revoked_at", null)
+      .gt("expires_at", new Date().toISOString())
+      .maybeSingle(),
+  );
+  if (!session) return null;
+  return check(
+    await client
+      .from("parents")
+      .select("*")
+      .eq("id", session.parent_id)
+      .single(),
+  );
+}
+
+export async function parent() {
   const token =
     (await cookies()).get("wn_parent")?.value ||
     (await cookies()).get("wn_refresh")?.value;
-  if (!token) throw new Failure("Parent sign-in required.", 401);
+  if (!token) {
+    const modeParent = await parentFromModeSession();
+    if (modeParent) return modeParent;
+    throw new Failure("Parent sign-in required.", 401);
+  }
   const client = db();
   let { data, error } = await client.auth.getUser(token);
   if (error) {
@@ -102,6 +130,80 @@ async function parent() {
   );
   return row;
 }
+
+async function issueDevice(parentId: string) {
+  const client = db();
+  const current = (await cookies()).get("wn_device")?.value;
+  if (current) {
+    const row = check(
+      await client
+        .from("household_devices")
+        .select("id,parent_id")
+        .eq("token_hash", digest(current))
+        .eq("parent_id", parentId)
+        .is("revoked_at", null)
+        .gt("expires_at", new Date().toISOString())
+        .maybeSingle(),
+    );
+    if (row) {
+      check(
+        await client
+          .from("household_devices")
+          .update({ last_used_at: new Date().toISOString() })
+          .eq("id", row.id),
+      );
+      return row;
+    }
+  }
+  const token = opaque();
+  const row = check(
+    await client
+      .from("household_devices")
+      .insert({
+        parent_id: parentId,
+        token_hash: digest(token),
+        expires_at: new Date(Date.now() + 180 * 86400000).toISOString(),
+      })
+      .select("id,parent_id")
+      .single(),
+  );
+  await cookie("wn_device", token, 180 * 86400);
+  return row;
+}
+
+async function device() {
+  const token = (await cookies()).get("wn_device")?.value;
+  if (!token) throw new Failure("Sign in to connect this family device.", 401);
+  const row = check(
+    await db()
+      .from("household_devices")
+      .select("id,parent_id")
+      .eq("token_hash", digest(token))
+      .is("revoked_at", null)
+      .gt("expires_at", new Date().toISOString())
+      .maybeSingle(),
+  );
+  if (!row)
+    throw new Failure(
+      "This family device session expired. Sign in again.",
+      401,
+    );
+  return row;
+}
+
+async function profileViews(rows: any[]) {
+  const client = db();
+  return Promise.all(
+    rows.map(async (profile) => {
+      if (!profile.photo_path) return { ...profile, photo_url: null };
+      const signed = await client.storage
+        .from("watchnest-profile-photos")
+        .createSignedUrl(profile.photo_path, 600);
+      return { ...profile, photo_url: signed.data?.signedUrl || null };
+    }),
+  );
+}
+
 async function child() {
   const token = (await cookies()).get("wn_child")?.value;
   if (!token) throw new Failure("Child sign-in required.", 401);
@@ -125,6 +227,18 @@ async function child() {
       .maybeSingle(),
   );
   if (!profile) throw new Failure("Profile unavailable.", 401);
+  const household = check(
+    await client
+      .from("parents")
+      .select("timezone")
+      .eq("id", profile.parent_id)
+      .single(),
+  );
+  if (!isWithinAccessWindow(profile, household.timezone || "America/New_York"))
+    throw new Failure(
+      "WatchNest is not available for this profile right now.",
+      403,
+    );
   return { profile, session };
 }
 async function metadataMaintenance(client: ReturnType<typeof db>) {
@@ -205,6 +319,7 @@ async function videos(parentId: string, profileId?: string) {
   );
   let allowed: Set<string> | undefined;
   let progress: any[] = [];
+  let favorites = new Set<string>();
   if (profileId) {
     allowed = new Set(
       check(
@@ -224,6 +339,14 @@ async function videos(parentId: string, profileId?: string) {
         .eq("raw_resume", true)
         .gt("updated_at", new Date(Date.now() - 29 * 86400000).toISOString()),
     );
+    favorites = new Set(
+      check(
+        await client
+          .from("profile_favorites")
+          .select("video_id")
+          .eq("profile_id", profileId),
+      ).map((v: any) => v.video_id),
+    );
   }
   const collections = check(
     await client.from("collections").select("*").eq("parent_id", parentId),
@@ -241,6 +364,7 @@ async function videos(parentId: string, profileId?: string) {
       collections: collections
         .filter((c: any) => c.video_ids.includes(r.video_id))
         .map((c: any) => ({ id: c.id, title: c.title })),
+      favorite: favorites.has(r.video_id),
     }));
 }
 async function youtube(endpoint: string, params: Record<string, string>) {
@@ -444,9 +568,13 @@ export async function handle(request: globalThis.Request, path: string[]) {
       if (!configured()) return reply({ role: null, configured: false });
       try {
         const p = await parent();
+        await issueDevice(p.id);
         return reply({
           role: "parent",
-          parent: { email: p.email },
+          parent: {
+            email: p.email,
+            parent_pin_set: Boolean(p.parent_pin_hash),
+          },
           configured: true,
         });
       } catch {}
@@ -479,6 +607,8 @@ export async function handle(request: globalThis.Request, path: string[]) {
         await cookie("wn_child", "", 0);
         await cookie("wn_parent", "", 0);
         await cookie("wn_refresh", "", 0);
+        await cookie("wn_parent_mode", "", 0);
+        await cookie("wn_device", "", 0);
       }
     }
     if (!client) throw new Failure("WatchNest setup is not complete.", 503);
@@ -555,7 +685,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       if (result.error || !result.data.session || !result.data.user)
         throw new Failure("Recovery link expired.", 401);
       requireConfirmedFounder(result.data.user);
-      await initialize(result.data.user);
+      const callbackHousehold = await initialize(result.data.user);
       await cookie(
         "wn_parent",
         result.data.session.access_token,
@@ -563,6 +693,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
       await cookie("wn_refresh", result.data.session.refresh_token, 2592000);
       await cookie("wn_child", "", 0);
+      await issueDevice(callbackHousehold.id);
       return reply({ ok: true });
     }
     if (route === "auth/parent" && method === "POST") {
@@ -635,7 +766,8 @@ export async function handle(request: globalThis.Request, path: string[]) {
         if (verified.error || !verified.data.user)
           throw new Failure("Account verification failed.", 401);
         requireConfirmedFounder(verified.data.user);
-        await initialize(verified.data.user);
+        const household = await initialize(verified.data.user);
+        await issueDevice(household.id);
       }
       if (result.data.session) {
         await cookie(
@@ -652,6 +784,84 @@ export async function handle(request: globalThis.Request, path: string[]) {
           : { ok: true, message: "Confirm your email, then sign in." },
       );
     }
+    if (route === "auth/device" && method === "GET") {
+      let linked;
+      try {
+        linked = await device();
+      } catch {
+        const p = await parent();
+        linked = await issueDevice(p.id);
+      }
+      const household = check(
+        await client
+          .from("parents")
+          .select("parent_pin_hash")
+          .eq("id", linked.parent_id)
+          .single(),
+      );
+      const profiles = check(
+        await client
+          .from("profiles")
+          .select(selectProfile)
+          .eq("parent_id", linked.parent_id)
+          .is("archived_at", null)
+          .order("created_at"),
+      );
+      return reply({
+        profiles: await profileViews(profiles),
+        parent_pin_set: Boolean(household.parent_pin_hash),
+      });
+    }
+    if (route === "auth/parent-lock" && method === "POST") {
+      await device();
+      await cookie("wn_child", "", 0);
+      await cookie("wn_parent", "", 0);
+      await cookie("wn_refresh", "", 0);
+      await cookie("wn_parent_mode", "", 0);
+      return reply({ ok: true });
+    }
+    if (route === "auth/profile-exit" && method === "POST") {
+      const jar = await cookies();
+      const token = jar.get("wn_child")?.value;
+      if (token)
+        check(
+          await client
+            .from("child_sessions")
+            .update({ revoked_at: new Date().toISOString() })
+            .eq("token_hash", digest(token)),
+        );
+      await cookie("wn_child", "", 0);
+      return reply({ ok: true });
+    }
+    if (route === "auth/parent-mode" && method === "POST") {
+      const linked = await device();
+      const b = z.object({ pin: z.string().regex(/^\d{4}$/) }).parse(body);
+      await limit("parent-mode:" + linked.id, 5);
+      const household = check(
+        await client
+          .from("parents")
+          .select("id,parent_pin_hash")
+          .eq("id", linked.parent_id)
+          .single(),
+      );
+      if (
+        !household.parent_pin_hash ||
+        !verifyPin(b.pin, household.parent_pin_hash)
+      )
+        throw new Failure("That Parent PIN is not correct.", 401);
+      const token = opaque();
+      check(
+        await client.from("parent_mode_sessions").insert({
+          parent_id: household.id,
+          device_id: linked.id,
+          token_hash: digest(token),
+          expires_at: new Date(Date.now() + 30 * 60000).toISOString(),
+        }),
+      );
+      await cookie("wn_parent_mode", token, 30 * 60);
+      await cookie("wn_child", "", 0);
+      return reply({ ok: true });
+    }
     if (route === "auth/children" && method === "GET") {
       const code = z
         .string()
@@ -667,31 +877,36 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
       if (!household) throw new Failure("Family link unavailable.", 404);
       return reply({
-        profiles: check(
-          await client
-            .from("profiles")
-            .select(selectProfile)
-            .eq("parent_id", household.id)
-            .is("archived_at", null),
+        profiles: await profileViews(
+          check(
+            await client
+              .from("profiles")
+              .select(selectProfile)
+              .eq("parent_id", household.id)
+              .is("archived_at", null),
+          ),
         ),
       });
     }
     if (route === "auth/child" && method === "POST") {
       const b = z
         .object({
-          family: z.string().min(12).max(64),
+          family: z.string().min(12).max(64).optional(),
           profileId: id,
           passcode: z.string().max(100).optional(),
         })
         .parse(body);
-      await limit("child:" + b.family + ":" + b.profileId, 5);
-      const household = check(
-        await client
-          .from("parents")
-          .select("id")
-          .eq("family_code", b.family)
-          .maybeSingle(),
-      );
+      const linked = b.family ? null : await device();
+      await limit("child:" + (b.family || linked!.id) + ":" + b.profileId, 5);
+      const household = b.family
+        ? check(
+            await client
+              .from("parents")
+              .select("id")
+              .eq("family_code", b.family)
+              .maybeSingle(),
+          )
+        : { id: linked!.parent_id };
       const p =
         household &&
         check(
@@ -704,6 +919,20 @@ export async function handle(request: globalThis.Request, path: string[]) {
             .maybeSingle(),
         );
       if (!p) throw new Failure("Unable to sign in.", 401);
+      const parentSettings = check(
+        await client
+          .from("parents")
+          .select("timezone")
+          .eq("id", household.id)
+          .single(),
+      );
+      if (
+        !isWithinAccessWindow(p, parentSettings.timezone || "America/New_York")
+      )
+        throw new Failure(
+          "WatchNest is not available for this profile right now.",
+          403,
+        );
       if (p.pin_enabled) {
         if (!b.passcode || !verifyPin(b.passcode, p.pin_hash || ""))
           throw new Failure("Incorrect passcode.", 401);
@@ -723,8 +952,10 @@ export async function handle(request: globalThis.Request, path: string[]) {
       await cookie("wn_child", token, 86400);
       await cookie("wn_parent", "", 0);
       await cookie("wn_refresh", "", 0);
+      await cookie("wn_parent_mode", "", 0);
       delete p.pin_hash;
-      return reply({ profile: p });
+      const [view] = await profileViews([p]);
+      return reply({ profile: view });
     }
     if (route.startsWith("parent/")) {
       const p = await parent();
@@ -767,6 +998,23 @@ async function parentRoute(
   request: globalThis.Request,
 ) {
   const client = db();
+  if (route === "parent/view-as-child" && method === "POST") {
+    const profileId = id.parse(body.profile_id);
+    await ownedProfiles(p.id, [profileId]);
+    const token = opaque();
+    check(
+      await client.from("child_sessions").insert({
+        profile_id: profileId,
+        token_hash: digest(token),
+        expires_at: new Date(Date.now() + 86400000).toISOString(),
+      }),
+    );
+    await cookie("wn_child", token, 86400);
+    await cookie("wn_parent", "", 0);
+    await cookie("wn_refresh", "", 0);
+    await cookie("wn_parent_mode", "", 0);
+    return reply({ ok: true });
+  }
   if (route === "parent/profiles") {
     if (method === "GET")
       return reply({
@@ -810,9 +1058,23 @@ async function parentRoute(
           .optional(),
         passcode: z
           .string()
-          .regex(/^\d{6,12}$/)
+          .regex(/^\d{4}$/)
           .optional(),
         pin_enabled: z.boolean().optional(),
+        available_from_minute: z
+          .number()
+          .int()
+          .min(0)
+          .max(1439)
+          .nullable()
+          .optional(),
+        available_until_minute: z
+          .number()
+          .int()
+          .min(0)
+          .max(1439)
+          .nullable()
+          .optional(),
       })
       .parse(body);
     const values: any = { ...fields };
@@ -883,6 +1145,47 @@ async function parentRoute(
     } else throw new Failure("Method not allowed.", 405);
     return reply({ ok: true });
   }
+  if (route === "parent/settings") {
+    if (method === "GET")
+      return reply({
+        parent_pin_set: Boolean(p.parent_pin_hash),
+        timezone: p.timezone || "America/New_York",
+      });
+    if (method === "PATCH") {
+      const b = z
+        .object({
+          parent_pin: z
+            .string()
+            .regex(/^\d{4}$/)
+            .optional(),
+          timezone: z.string().min(1).max(80).optional(),
+        })
+        .parse(body);
+      if (b.parent_pin) {
+        const updated = check(
+          await client.rpc("wn_set_parent_pin", {
+            p_parent: p.id,
+            p_pin_hash: hashPin(b.parent_pin),
+          }),
+        );
+        if (!updated) throw new Failure("Parent settings unavailable.", 404);
+      }
+      if (b.timezone) {
+        try {
+          new Intl.DateTimeFormat("en", { timeZone: b.timezone }).format();
+        } catch {
+          throw new Failure("Choose a valid time zone.");
+        }
+        check(
+          await client
+            .from("parents")
+            .update({ timezone: b.timezone })
+            .eq("id", p.id),
+        );
+      }
+      return reply({ ok: true });
+    }
+  }
   if (route === "parent/videos/lookup" && method === "POST") {
     const b = z
       .object({ urls: z.array(z.string().max(2000)).min(1).max(20) })
@@ -914,8 +1217,23 @@ async function parentRoute(
     return reply({ videos: result, errors });
   }
   if (route === "parent/videos/search" && method === "GET") {
-    const query = text.parse(new URL(request.url).searchParams.get("q"));
-    const cacheKey = digest(query.toLowerCase());
+    const params = new URL(request.url).searchParams;
+    const kind = z
+      .enum(["video", "channel", "playlist"])
+      .parse(params.get("type") || "video");
+    const sourceId = z
+      .string()
+      .trim()
+      .min(1)
+      .max(200)
+      .optional()
+      .parse(params.get("source") || undefined);
+    const query = sourceId
+      ? (params.get("q") || "").slice(0, 200)
+      : text.parse(params.get("q"));
+    const cacheKey = digest(
+      `${kind}:${sourceId || "search"}:${query.toLowerCase()}`,
+    );
     const cached = check(
       await client
         .from("youtube_search_cache")
@@ -924,17 +1242,72 @@ async function parentRoute(
         .gt("expires_at", new Date().toISOString())
         .maybeSingle(),
     );
-    if (cached) return reply({ videos: cached.result_json });
+    if (cached)
+      return reply(
+        kind === "video" || sourceId
+          ? { videos: cached.result_json }
+          : { items: cached.result_json },
+      );
     await limit("ytsearch:" + p.id, 30, 86400);
-    const result = await youtube("search", {
-      part: "snippet",
-      q: query,
-      type: "video",
-      videoEmbeddable: "true",
-      safeSearch: "strict",
-      maxResults: "12",
-    });
-    const found = await metadata(result.items.map((i: any) => i.id.videoId));
+    if (!sourceId && kind !== "video") {
+      const result = await youtube("search", {
+        part: "snippet",
+        q: query,
+        type: kind,
+        safeSearch: "strict",
+        maxResults: "12",
+      });
+      const items = result.items.map((item: any) => ({
+        id: kind === "channel" ? item.id.channelId : item.id.playlistId,
+        type: kind,
+        title: item.snippet.title,
+        description: item.snippet.description || "",
+        thumbnail_url:
+          item.snippet.thumbnails?.medium?.url ||
+          item.snippet.thumbnails?.default?.url ||
+          "",
+        channel_title: item.snippet.channelTitle || "",
+      }));
+      check(
+        await client.from("youtube_search_cache").upsert(
+          {
+            cache_key: cacheKey,
+            normalized_query: `${kind}:${query.toLowerCase()}`,
+            raw_query: query,
+            result_json: items,
+            expires_at: new Date(Date.now() + 3600000).toISOString(),
+          },
+          { onConflict: "cache_key" },
+        ),
+      );
+      return reply({ items });
+    }
+    let videoIds: string[];
+    if (sourceId && kind === "playlist") {
+      const result = await youtube("playlistItems", {
+        part: "snippet",
+        playlistId: sourceId,
+        maxResults: "25",
+      });
+      videoIds = result.items
+        .map((item: any) => item.snippet?.resourceId?.videoId)
+        .filter(Boolean);
+    } else {
+      const result = await youtube("search", {
+        part: "snippet",
+        ...(query ? { q: query } : {}),
+        type: "video",
+        ...(sourceId && kind === "channel"
+          ? { channelId: sourceId, order: "date" }
+          : {}),
+        videoEmbeddable: "true",
+        videoSyndicated: "true",
+        safeSearch: "strict",
+        maxResults: sourceId ? "25" : "12",
+      });
+      videoIds = result.items.map((i: any) => i.id.videoId);
+    }
+    const found = await metadata(videoIds);
     const usable = found.filter(
       (v: any) =>
         v.availability_status === "available" &&
@@ -1027,6 +1400,31 @@ async function parentRoute(
       return reply({ ok: true });
     }
   }
+  if (route === "parent/collections/assign" && method === "POST") {
+    const b = z.object({ collection_id: id, profile_ids: ids }).parse(body);
+    await ownedProfiles(p.id, b.profile_ids);
+    const collection = check(
+      await client
+        .from("collections")
+        .select("video_ids")
+        .eq("id", b.collection_id)
+        .eq("parent_id", p.id)
+        .maybeSingle(),
+    );
+    if (!collection) throw new Failure("Collection unavailable.", 404);
+    await approved(p.id, collection.video_ids);
+    for (const videoId of collection.video_ids) {
+      check(
+        await client.rpc("wn_assign_video", {
+          p_parent: p.id,
+          p_video: videoId,
+          p_profiles: b.profile_ids,
+          p_tags: null,
+        }),
+      );
+    }
+    return reply({ ok: true });
+  }
   if (route === "parent/collections") {
     if (method === "GET")
       return reply({
@@ -1085,13 +1483,14 @@ async function parentRoute(
     return reply({ ok: true });
   }
   if (route === "parent/dashboard" && method === "GET") {
-    const profiles = check(
+    const profilesRaw = check(
       await client
         .from("profiles")
         .select(selectProfile)
         .eq("parent_id", p.id)
         .is("archived_at", null),
     );
+    const profiles = await profileViews(profilesRaw);
     const own = await videos(p.id);
     const assignments = check(
       await client
@@ -1201,7 +1600,12 @@ async function childRoute(
         ),
       }))
       .filter((v: any) => v.video_ids.length);
-    return reply({ profile, videos: own.map(childVideoView), collections });
+    const [profileView] = await profileViews([profile]);
+    return reply({
+      profile: profileView,
+      videos: own.map(childVideoView),
+      collections,
+    });
   }
   if (route === "child/requests" && method === "POST") {
     const b = z
@@ -1216,6 +1620,30 @@ async function childRoute(
         .from("child_requests")
         .insert({ ...b, parent_id: profile.parent_id, profile_id: profile.id }),
     );
+    return reply({ ok: true });
+  }
+  if (route === "child/favorites" && method === "POST") {
+    const b = z.object({ videoId: id, favorite: z.boolean() }).parse(body);
+    if (!own.some((video: any) => video.id === b.videoId))
+      throw new Failure("This video is not in your library.", 403);
+    if (b.favorite) {
+      check(
+        await client
+          .from("profile_favorites")
+          .upsert(
+            { profile_id: profile.id, video_id: b.videoId },
+            { onConflict: "profile_id,video_id" },
+          ),
+      );
+    } else {
+      check(
+        await client
+          .from("profile_favorites")
+          .delete()
+          .eq("profile_id", profile.id)
+          .eq("video_id", b.videoId),
+      );
+    }
     return reply({ ok: true });
   }
   if (route === "child/player" && method === "GET") {
@@ -1239,8 +1667,9 @@ async function childRoute(
         metadataFresh(v, 30) &&
         !v.progress?.completed_at,
     );
+    const [profileView] = await profileViews([profile]);
     return reply({
-      profile,
+      profile: profileView,
       video: childVideoView(video),
       next: next ? childVideoView(next) : null,
     });

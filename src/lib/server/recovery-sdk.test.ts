@@ -99,6 +99,7 @@ it.each(["valid", "invalid", "different-identity"])(
             email: "avromy@gmail.com",
           });
         if (url.pathname === "/rest/v1/profiles") return json([]);
+        if (url.pathname === "/rest/v1/household_devices") return json(null);
         throw Error("Unexpected controlled HTTP route");
       }),
     );
