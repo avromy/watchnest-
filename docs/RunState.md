@@ -1,3 +1,31 @@
+# WatchNest UX redesign — Founder Review Ready (2026-10-02)
+
+## Terminal state
+
+`WATCHNEST_UX_REDESIGN_FOUNDER_REVIEW_READY`
+
+- Working URL: https://watchnest-rho.vercel.app
+- Exact application commit: `dfa009cdebb181173108f8a6ab636ff2ab0d4771`
+- Exact production deployment: `dpl_J8apogrsymnFPYvPTvtT8kVrPv5Q` (READY)
+- CI: GitHub Actions run 74 / `37048418159` — PASS (lint, typecheck, unit, build, E2E, high-severity production dependency audit)
+- Rollback candidate: `dpl_5U6Pybp2tVLLKj9FyeXtYwtzzxhs` / `0f0269a2954948edb54680ad68c4a3680e7e8862`
+- Runtime errors: none in final observation window.
+- Temporary verification device, Parent Mode, and child sessions: exact token hashes deleted; post-cleanup counts all zero.
+
+## Final acceptance binding
+
+- Founder real-device playback evidence: picture and sound played.
+- Founder-set Parent PIN: verified through the real Parent Mode flow without recording the PIN value in project evidence.
+- Human-Eye: PASS on the exact candidate; 0 confirmed application-controlled defects.
+- Stranger/cold review: PASS; prior tablet-nav, implementation-copy, and title-glyph blockers closed.
+- Security/regression: PASS; household-device binding, Parent Mode revocation, sibling isolation, Parent PIN mutation protection, and MFK safeguards remain intact.
+- Exact 1024 evidence: Parent navigation is one intentional row; Miri Home titles contain no replacement glyphs and no horizontal overflow.
+- Managed verification proxy does not render cross-origin YouTube thumbnail pixels; production player playback and real-device audio/video evidence remain separately valid.
+
+## Policy boundary
+
+WatchNest enforces optional access windows with wall-clock authorization. It does not reconstruct watch-duration telemetry for Made-for-Kids or unknown-classification content. Exact daily minute accounting is therefore intentionally not claimed.
+
 # Product/UX acceptance reopened — 2026-10-02
 
 CURRENT: the exact qualified playback baseline remains the parent of branch `ux-redesign-20261002`; Founder real-device evidence confirms picture and sound played. Playback/security evidence remains valid where unaffected. Product/UX/visual acceptance is reopened because recurring family use exposed setup architecture, internal taxonomy and unnecessary steps.
