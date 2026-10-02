@@ -418,6 +418,7 @@ export function Overview() {
 }
 export function AddVideos() {
   const { data, act, busy } = useParent();
+  const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
   const [query, setQuery] = useState(""),
     [urls, setUrls] = useState(""),
     [results, setResults] = useState<Video[]>([]),
@@ -425,10 +426,15 @@ export function AddVideos() {
     [profiles, setProfiles] = useState<string[]>([]),
     [collection, setCollection] = useState(""),
     [preview, setPreview] = useState<Video | null>(null),
+    [previewLoaded, setPreviewLoaded] = useState(false),
     [error, setError] = useState(""),
     [loading, setLoading] = useState(false),
     [message, setMessage] = useState(""),
     [searched, setSearched] = useState(false);
+  function closePreview() {
+    setPreview(null);
+    requestAnimationFrame(() => previewReturnFocus.current?.focus());
+  }
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("q");
     if (requested) setQuery(requested);
@@ -604,7 +610,11 @@ export function AddVideos() {
                   </label>
                   <button
                     className="button-secondary"
-                    onClick={() => setPreview(v)}
+                    onClick={(event) => {
+                      previewReturnFocus.current = event.currentTarget;
+                      setPreviewLoaded(false);
+                      setPreview(v);
+                    }}
                   >
                     Preview
                   </button>
@@ -621,7 +631,7 @@ export function AddVideos() {
           aria-modal="true"
           aria-labelledby="preview-title"
           onKeyDown={(e) => {
-            if (e.key === "Escape") setPreview(null);
+            if (e.key === "Escape") closePreview();
             if (e.key === "Tab") {
               const controls = Array.from(
                 e.currentTarget.querySelectorAll<HTMLElement>("button, iframe"),
@@ -644,7 +654,7 @@ export function AddVideos() {
               <button
                 className="button-secondary"
                 autoFocus
-                onClick={() => setPreview(null)}
+                onClick={closePreview}
               >
                 Close preview
               </button>
@@ -653,10 +663,30 @@ export function AddVideos() {
               className={styles.player}
               videoId={preview.youtube_video_id}
               title={preview.title}
+              onLoad={() => setPreviewLoaded(true)}
             />
+            <p role="status" className="muted">
+              {previewLoaded
+                ? "YouTube’s player frame loaded."
+                : "Loading YouTube’s player…"}
+            </p>
+            <p className="notice">
+              Press Play and confirm this exact video starts before approving
+              it. A loaded player alone is not playback proof.
+            </p>
+            <p className="muted">
+              Source: {preview.channel_title || "YouTube"}. Audience status:{" "}
+              {preview.made_for_kids === true
+                ? "Made for Kids — WatchNest resume will stay off"
+                : preview.made_for_kids === false
+                  ? "not marked Made for Kids"
+                  : "not confirmed — WatchNest resume will stay off"}
+              .
+            </p>
             <p className="muted">
               Parent preview uses YouTube’s player. YouTube controls its
-              branding, links and some recommendations.
+              branding, links and some recommendations. If YouTube shows an
+              availability or embedding message, do not approve the video.
             </p>
           </section>
         </div>
@@ -666,6 +696,7 @@ export function AddVideos() {
 }
 export function Library() {
   const { data, act, busy } = useParent();
+  const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
   const [query, setQuery] = useState(""),
     [filter, setFilter] = useState(""),
     [selected, setSelected] = useState<string[]>([]),
@@ -701,6 +732,10 @@ export function Library() {
     }
     setSelected([]);
     setEdit(null);
+  }
+  function closePreview() {
+    setPreview(null);
+    requestAnimationFrame(() => previewReturnFocus.current?.focus());
   }
   return (
     <>
@@ -810,7 +845,8 @@ export function Library() {
                 <div className={styles.row}>
                   <button
                     className="button-secondary"
-                    onClick={() => {
+                    onClick={(event) => {
+                      previewReturnFocus.current = event.currentTarget;
                       setPreviewLoaded(false);
                       setPreview(v);
                     }}
@@ -870,7 +906,7 @@ export function Library() {
           aria-modal="true"
           aria-labelledby="library-preview-title"
           onKeyDown={(e) => {
-            if (e.key === "Escape") setPreview(null);
+            if (e.key === "Escape") closePreview();
             if (e.key === "Tab") {
               const controls = Array.from(
                 e.currentTarget.querySelectorAll<HTMLElement>("button, iframe"),
@@ -893,7 +929,7 @@ export function Library() {
               <button
                 className="button-secondary"
                 autoFocus
-                onClick={() => setPreview(null)}
+                onClick={closePreview}
               >
                 Close preview
               </button>
@@ -904,10 +940,14 @@ export function Library() {
               title={preview.title}
               onLoad={() => setPreviewLoaded(true)}
             />
-            <p role="status" className={previewLoaded ? "notice" : "muted"}>
+            <p role="status" className="muted">
               {previewLoaded
-                ? "YouTube’s player loaded. Press Play and confirm the video starts before assigning it."
+                ? "YouTube’s player frame loaded."
                 : "Loading YouTube’s player…"}
+            </p>
+            <p className="notice">
+              Press Play and confirm the approved video still starts before
+              relying on it. A loaded player alone is not playback proof.
             </p>
             <p className="muted">
               Source: {preview.channel_title || "YouTube"}. Audience status:{" "}

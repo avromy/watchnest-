@@ -10,6 +10,8 @@ Live production authorization regression then showed Ari's library empty, the ol
 
 Cold Stranger and security reviews correctly withheld acceptance. Their actionable product findings produced a successor: Parent Preview now says that iframe load is not playback proof, instructs the Parent to press Play, shows source/audience status, and warns against assigning provider-rejected videos; fallback copy no longer claims readiness; protected Parent chrome no longer flashes before authentication; the duplicate skip link is removed; and narrow/tablet min-content overflow is repaired and regression-tested on Parent Library and Children at 390/768/1024 px.
 
+The final deterministic rereview follow-up applies the same qualification guidance to Add Videos, and both Preview dialogs restore keyboard focus to their invoking button after close. Fresh build and all ten browser checks pass after that change.
+
 YouTube's current player rules do not permit WatchNest to obscure or disable native player links. `rel=0` limits recommendations to the same channel but cannot remove them. Therefore approved-only is an enforceable WatchNest library/API/assignment boundary, not a claim that YouTube's own iframe is a tamper-proof allowlist. The product discloses this boundary and the real-device acceptance must observe it honestly.
 
 ## Reopened acceptance

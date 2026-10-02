@@ -16,6 +16,8 @@ Production evidence on the deployed repair:
 
 Two independent cold reviews returned FAIL for the first repair. Their concrete UX/responsive findings are repaired in the successor, but the real-device playback result and final exact-candidate cold rereviews remain mandatory. State remains **not Founder Review Ready**.
 
+Successor security rereview found no P0/P1 authorization defect. The final UX follow-up also aligns Add Videos Preview with Library Preview and restores dialog return focus. The independent Stranger gate still withholds release solely for unobserved authenticated live Parent Preview and real Miri/iPad playback/escape behavior; automated evidence is not promoted into those observations.
+
 ## Playback correction — superseding evidence boundary
 
 Founder real-device evidence proves that the deployed player failed after successful authentication, child-profile entry, library navigation and player-route authorization. The prior statement that no P0 was known is superseded for playback. Real playback, native/escape behavior and iPad Safari are not accepted.

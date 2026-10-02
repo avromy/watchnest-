@@ -200,10 +200,11 @@ test("synthetic UI: Parent Library offers an obvious playback preview", async ({
 }) => {
   await fixture(page, "parent");
   await page.route("https://www.youtube-nocookie.com/**", (route) =>
-    route.abort(),
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
   );
   await page.goto("/parent/library");
-  await page.getByRole("button", { name: "Preview" }).first().click();
+  const previewButton = page.getByRole("button", { name: "Preview" }).first();
+  await previewButton.click();
   const dialog = page.getByRole("dialog");
   await expect(
     dialog.getByRole("heading", { name: "Build a paper rocket" }),
@@ -215,8 +216,10 @@ test("synthetic UI: Parent Library offers an obvious playback preview", async ({
     dialog.getByText(/Child access still follows the assignments/),
   ).toBeVisible();
   await expect(
-    dialog.getByText(/Press Play and confirm the video starts/),
+    dialog.getByText(/Press Play and confirm the approved video still starts/),
   ).toBeVisible();
+  await dialog.getByRole("button", { name: "Close preview" }).click();
+  await expect(previewButton).toBeFocused();
 });
 
 test("synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics", async ({
