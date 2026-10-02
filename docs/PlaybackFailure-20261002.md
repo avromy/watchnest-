@@ -1,5 +1,17 @@
 # Founder-found playback failure and repair — 2026-10-02
 
+## Live post-deploy finding and successor correction
+
+Repair commit `267828ded150d4a565e9548458d4127f9d2a8f06` (tree `962e823767d0613a8283303ca3958db42fac3313`) passed GitHub CI run 61 and deployed READY as `dpl_3qW2FtxMorGVUpCYqhdSuZmeskaZ` behind the production alias. Production inspection proved that the Made-for-Kids/unknown path now renders a direct `youtube-nocookie.com` iframe with the exact production `origin`, `strict-origin-when-cross-origin`, and no dependency on `iframe_api`.
+
+That repair exposed a separate content defect. The previously selected PBS KIDS upload `JZW3fNvqGIA` returned YouTube's native country-restriction message. It is now marked unavailable/region-restricted and every active assignment was soft-removed with an audit reason. A current official PBS KIDS upload, `bfYpGhz1zdY`, was checked on the official channel page (`playabilityStatus=OK`, `playableInEmbed=true`, family-safe Education metadata), added as a fresh individual approval, and assigned only to Miri. Its audience classification remains unknown and therefore fails closed: WatchNest resume/progress stays disabled.
+
+Live production authorization regression then showed Ari's library empty, the old direct player URL denied as not in Ari's library, and Miri's library containing only the replacement. The replacement production iframe rendered normal YouTube Play controls rather than an availability/embedding error. Cloud media delivery did not yield promotable audiovisual progress, so actual iPad playback remains open.
+
+Cold Stranger and security reviews correctly withheld acceptance. Their actionable product findings produced a successor: Parent Preview now says that iframe load is not playback proof, instructs the Parent to press Play, shows source/audience status, and warns against assigning provider-rejected videos; fallback copy no longer claims readiness; protected Parent chrome no longer flashes before authentication; the duplicate skip link is removed; and narrow/tablet min-content overflow is repaired and regression-tested on Parent Library and Children at 390/768/1024 px.
+
+YouTube's current player rules do not permit WatchNest to obscure or disable native player links. `rel=0` limits recommendations to the same channel but cannot remove them. Therefore approved-only is an enforceable WatchNest library/API/assignment boundary, not a claim that YouTube's own iframe is a tamper-proof allowlist. The product discloses this boundary and the real-device acceptance must observe it honestly.
+
 ## Reopened acceptance
 
 The Founder successfully authenticated on the real device, entered Miri's profile, opened the assigned real PBS KIDS video and reached the WatchNest player route. WatchNest then showed `This video is unavailable` and `The video player could not load. Check your connection.`
@@ -39,6 +51,8 @@ New tests require:
 2. IFrame API bootstrap failure to fall back to playback instead of showing an unavailable/connectivity error.
 3. Parent Library to expose an obvious playback Preview.
 4. Every documented YouTube error code to map to a distinct safe classification.
+5. Parent protected chrome to remain absent until authenticated data exists.
+6. Parent Library and Children to fit 390, 768 and 1024 px without horizontal overflow.
 
 ## Current official authority consumed
 

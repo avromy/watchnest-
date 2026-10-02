@@ -131,14 +131,14 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await fixture(page, "parent");
   for (const width of [390, 768, 1024]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/parent/children");
-    await expect(
-      page.getByRole("heading", { name: "Their space. Your peace of mind." }),
-    ).toBeVisible();
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth > innerWidth + 1,
-    );
-    expect(overflow).toBe(false);
+    for (const path of ["/parent/children", "/parent/library"]) {
+      await page.goto(path);
+      await expect(page.locator("main h1")).toBeVisible();
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth + 1,
+      );
+      expect(overflow).toBe(false);
+    }
   }
 });
 
@@ -185,7 +185,9 @@ test("synthetic UI: optional resume bootstrap failure falls back to playback", a
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
   await expect(
-    page.getByText("Your video is ready. Resume is temporarily unavailable."),
+    page.getByText(
+      "The YouTube player is shown below. Press Play to begin; resume is temporarily unavailable.",
+    ),
   ).toBeVisible();
   await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
   await expect(
@@ -211,6 +213,9 @@ test("synthetic UI: Parent Library offers an obvious playback preview", async ({
   ).toBeVisible();
   await expect(
     dialog.getByText(/Child access still follows the assignments/),
+  ).toBeVisible();
+  await expect(
+    dialog.getByText(/Press Play and confirm the video starts/),
   ).toBeVisible();
 });
 

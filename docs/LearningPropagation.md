@@ -1,5 +1,17 @@
 # Learning propagation — resumed run
 
+## PROJECT — provider metadata is not regional playback proof
+
+Problem: YouTube Data API availability/embeddable metadata and an iframe load were promoted too close to playback acceptance, while the selected PBS KIDS upload still produced a native country-restriction failure. Correction: Parent Preview now requires an actual Play check and explicitly warns that load is not proof; production qualification rejects the affected individual video, soft-removes assignments, and retests a fresh individually approved item. Prevention: acceptance must distinguish metadata eligibility, iframe initialization, provider Play controls, sustained audiovisual playback and device-specific behavior. This defect class can affect every approved provider video, so availability review belongs per individual item rather than per channel.
+
+## PROCESS — environment explanations do not close a Founder-reproduced defect
+
+Problem: cloud Error 153 was treated as an automation limitation even though primary playback unnecessarily depended on the same optional SDK bootstrap. Correction: after the Founder reproduced failure on a real device, playback acceptance was revoked, the architecture was decoupled, and cold reviewers were rerun. Prevention: a tool-specific explanation may bound that tool's evidence but cannot certify the product; exact-candidate real outcome evidence remains controlling.
+
+## PROJECT — production data must be reread before sibling claims
+
+Problem: durable notes said the test item was Miri-only, but live readback found active assignments for all four profiles. Correction: the rejected item was soft-removed for every profile and the replacement was created as a single Miri assignment; live Ari empty/direct-route denial and Miri presence were rechecked. Prevention: bind authorization claims to current hosted rows and separate cookie jars immediately before release, never to an earlier narrative alone.
+
 ## PROJECT — status changes invalidate historical playback reporting
 
 Problem: write/player guards suppressed Made-for-Kids/unknown activity, but Parent Dashboard still summed old rows after a status change. Correction: filter every history-derived surface using current approved ownership, explicit non-MFK status, fresh past metadata and playable eligibility. No own UI timer/click/request substitutes are used for restricted playback. Prevention: actual-handler regression coverage for totals, trends, child/recent/popular/never-watched and removed approvals. Independent dashboard tests challenge parent-scoped queries. This policy-specific rule belongs in WatchNest authority, not unrelated brands/apps.

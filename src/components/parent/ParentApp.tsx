@@ -127,50 +127,50 @@ export function ParentShell({ children }: { children: ReactNode }) {
   ];
   return (
     <div className="shell">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-      <header className="topbar">
-        <Link href="/parent/dashboard" className="brand">
-          WatchNest <span className="badge">Parent</span>
-        </Link>
-        <button
-          className="button-quiet"
-          onClick={async () => {
-            try {
-              await api("/api/auth/logout", "POST", {});
-              router.replace("/login");
-            } catch (e) {
-              setError(
-                e instanceof Error
-                  ? e.message
-                  : "Could not sign out. Try again.",
-              );
-            }
-          }}
-        >
-          Sign out
-        </button>
-      </header>
-      <nav
-        className={`nav ${styles.navigation}`}
-        aria-label="Parent navigation"
-      >
-        {nav.map(([label, href]) => (
-          <Link
-            key={href}
-            href={href}
-            aria-current={path === href ? "page" : undefined}
+      {data && (
+        <>
+          <header className="topbar">
+            <Link href="/parent/dashboard" className="brand">
+              WatchNest <span className="badge">Parent</span>
+            </Link>
+            <button
+              className="button-quiet"
+              onClick={async () => {
+                try {
+                  await api("/api/auth/logout", "POST", {});
+                  router.replace("/login");
+                } catch (e) {
+                  setError(
+                    e instanceof Error
+                      ? e.message
+                      : "Could not sign out. Try again.",
+                  );
+                }
+              }}
+            >
+              Sign out
+            </button>
+          </header>
+          <nav
+            className={`nav ${styles.navigation}`}
+            aria-label="Parent navigation"
           >
-            {label}
-            {label === "Inbox" &&
-            data &&
-            data.requests.filter((r) => r.status === "pending").length > 0
-              ? ` (${data.requests.filter((r) => r.status === "pending").length})`
-              : ""}
-          </Link>
-        ))}
-      </nav>
+            {nav.map(([label, href]) => (
+              <Link
+                key={href}
+                href={href}
+                aria-current={path === href ? "page" : undefined}
+              >
+                {label}
+                {label === "Inbox" &&
+                data.requests.filter((r) => r.status === "pending").length > 0
+                  ? ` (${data.requests.filter((r) => r.status === "pending").length})`
+                  : ""}
+              </Link>
+            ))}
+          </nav>
+        </>
+      )}
       <main id="main-content" className={styles.main}>
         {error && (
           <div className="error" role="alert">
@@ -672,6 +672,7 @@ export function Library() {
     [profiles, setProfiles] = useState<string[]>([]),
     [edit, setEdit] = useState<Video | null>(null),
     [preview, setPreview] = useState<Video | null>(null),
+    [previewLoaded, setPreviewLoaded] = useState(false),
     [tags, setTags] = useState("");
   const videos = data.videos.filter(
     (v) =>
@@ -809,7 +810,10 @@ export function Library() {
                 <div className={styles.row}>
                   <button
                     className="button-secondary"
-                    onClick={() => setPreview(v)}
+                    onClick={() => {
+                      setPreviewLoaded(false);
+                      setPreview(v);
+                    }}
                   >
                     Preview
                   </button>
@@ -898,10 +902,27 @@ export function Library() {
               className={styles.player}
               videoId={preview.youtube_video_id}
               title={preview.title}
+              onLoad={() => setPreviewLoaded(true)}
             />
+            <p role="status" className={previewLoaded ? "notice" : "muted"}>
+              {previewLoaded
+                ? "YouTube’s player loaded. Press Play and confirm the video starts before assigning it."
+                : "Loading YouTube’s player…"}
+            </p>
             <p className="muted">
-              Parent preview checks this approved video in WatchNest. Child
-              access still follows the assignments shown on the card.
+              Source: {preview.channel_title || "YouTube"}. Audience status:{" "}
+              {preview.made_for_kids === true
+                ? "Made for Kids — WatchNest resume is off"
+                : preview.made_for_kids === false
+                  ? "not marked Made for Kids"
+                  : "not confirmed — WatchNest resume stays off"}
+              .
+            </p>
+            <p className="muted">
+              A loaded player is not proof that the video plays in every region.
+              If YouTube shows an availability or embedding message, do not
+              assign this video. Child access still follows the assignments
+              shown on the card.
             </p>
           </section>
         </div>

@@ -1,5 +1,21 @@
 # WatchNest qualification checkpoint — 2026-10-02
 
+## Current exact qualification boundary
+
+The first playback repair is deployed at commit `267828ded150d4a565e9548458d4127f9d2a8f06`, tree `962e823767d0613a8283303ca3958db42fac3313`, CI run 61 successful, production deployment `dpl_3qW2FtxMorGVUpCYqhdSuZmeskaZ` READY at <https://watchnest-rho.vercel.app>. A successor UI/acceptance correction is the commit containing this section; it must receive its own CI/deployment/readback before superseding the deployed candidate.
+
+Production evidence on the deployed repair:
+
+- the old PBS KIDS upload produced YouTube's native country-restriction message and is no longer a valid test asset;
+- the old item is unavailable and its assignments are soft-removed with audit evidence;
+- replacement official PBS KIDS upload `bfYpGhz1zdY` is individually approved only for Miri, with unknown audience status failing closed for tracking;
+- Ari's production library is empty and Ari's old direct player route denies access;
+- Miri's production library exposes the replacement and its official privacy-enhanced iframe renders Play controls without the earlier unavailable/embedding message;
+- YouTube native links and same-channel recommendations are present by provider design and are disclosed; WatchNest does not claim iframe confinement;
+- no promoted evidence yet proves sustained audiovisual progress on iPad Safari.
+
+Two independent cold reviews returned FAIL for the first repair. Their concrete UX/responsive findings are repaired in the successor, but the real-device playback result and final exact-candidate cold rereviews remain mandatory. State remains **not Founder Review Ready**.
+
 ## Playback correction — superseding evidence boundary
 
 Founder real-device evidence proves that the deployed player failed after successful authentication, child-profile entry, library navigation and player-route authorization. The prior statement that no P0 was known is superseded for playback. Real playback, native/escape behavior and iPad Safari are not accepted.
