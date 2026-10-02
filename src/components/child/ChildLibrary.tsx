@@ -11,6 +11,7 @@ import {
   Profile,
   Video,
 } from "./model";
+import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 type Tab = "home" | "videos" | "shows" | "request";
 function VideoGrid({ videos }: { videos: Video[] }) {
   return (
@@ -22,9 +23,9 @@ function VideoGrid({ videos }: { videos: Video[] }) {
           href={`/watch/player/${encodeURIComponent(v.id)}`}
         >
           <div style={{ position: "relative" }}>
-            {v.thumbnail_url ? (
+            {normalizeYouTubeThumbnailUrl(v.thumbnail_url) ? (
               <img
-                src={v.thumbnail_url}
+                src={normalizeYouTubeThumbnailUrl(v.thumbnail_url) || undefined}
                 alt=""
                 style={{
                   width: "100%",

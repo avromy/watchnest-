@@ -28,8 +28,8 @@ describe('fetchYouTubeVideoMetadata', () => {
               channelId: 'channel-1',
               channelTitle: 'Science Nest',
               thumbnails: {
-                default: { url: 'https://img.youtube.com/default.jpg' },
-                high: { url: 'https://img.youtube.com/high.jpg' },
+                default: { url: 'https://i.ytimg.com/default.jpg' },
+                high: { url: 'https://i.ytimg.com/high.jpg' },
               },
             },
             contentDetails: { duration: 'PT4M12S' },

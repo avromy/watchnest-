@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useRef, useState, ReactNode, Form
 import styles from './Parent.module.css';
 import ProfileIdentity from '../ProfileIdentity';
 import type {Profile,LibraryVideo as Video,Collection,Request} from '@/types/product';
+import {normalizeYouTubeThumbnailUrl} from '@/lib/youtube-thumbnail';
 
 type Dashboard = {profiles:Profile[];videos:Video[];collections:Collection[];requests:Request[];familyCode:string;workflow:{approvedVideos:number;activeChildren:number;assignedVideos:number;unassignedVideos:number;openRequests:number;byChild:{profile_id:string;assignedVideos:number;openRequests:number}[];source:string};attention:{id:string;title:string;detail:string}[]};
 async function api<T>(path:string,method='GET',body?:unknown):Promise<T>{const response=await fetch(path,{method,headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,cache:'no-store'});const data=await response.json();if(!response.ok)throw new Error(data.error||'Something went wrong. Please try again.');return data as T;}
@@ -21,7 +22,7 @@ export function ParentShell({children}:{children:ReactNode}){
 function Heading({eyebrow,title,description,action}:{eyebrow:string;title:string;description:string;action?:ReactNode}){return <div className={`page-heading ${styles.heading}`}><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="muted">{description}</p></div>{action}</div>;}
 function minutes(seconds:number){return `${Math.round(seconds/60)} min`;}
 function Choices({profiles,value,setValue}:{profiles:Profile[];value:string[];setValue:(v:string[])=>void}){return <fieldset className={styles.choices}><legend>Who can watch?</legend><button type="button" className="button-quiet" onClick={()=>setValue(profiles.map(p=>p.id))}>Select all children</button>{profiles.map(p=><label key={p.id}><input type="checkbox" checked={value.includes(p.id)} onChange={()=>setValue(value.includes(p.id)?value.filter(id=>id!==p.id):[...value,p.id])}/>{p.display_name}</label>)}</fieldset>;}
-function Thumb({video}:{video:Video}){return <div className={styles.thumbnail}>{video.thumbnail_url?<img src={video.thumbnail_url} alt="" loading="lazy"/>:<span>Video thumbnail unavailable</span>}<span>{minutes(video.duration_seconds)}</span></div>;}
+function Thumb({video}:{video:Video}){const thumbnail=normalizeYouTubeThumbnailUrl(video.thumbnail_url);return <div className={styles.thumbnail}>{thumbnail?<img src={thumbnail} alt="" loading="lazy"/>:<span>Video thumbnail unavailable</span>}<span>{minutes(video.duration_seconds)}</span></div>;}
 export function Overview(){
  const {data}=useParent();
  const {workflow}=data;

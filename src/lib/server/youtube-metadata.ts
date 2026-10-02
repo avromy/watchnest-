@@ -1,6 +1,7 @@
 import 'server-only';
 
 import type { Video } from '@/types/database';
+import { normalizeYouTubeThumbnailUrl } from '@/lib/youtube-thumbnail';
 
 const YOUTUBE_VIDEOS_API_URL = 'https://www.googleapis.com/youtube/v3/videos';
 
@@ -133,10 +134,12 @@ function selectBestThumbnailUrl(thumbnails: YouTubeThumbnailMap): string | null 
 
   for (const name of preferredNames) {
     const url = thumbnails[name]?.url;
-    if (url) return url;
+    if (url) return normalizeYouTubeThumbnailUrl(url);
   }
 
-  return Object.values(thumbnails).find((thumbnail) => Boolean(thumbnail.url))?.url ?? null;
+  return normalizeYouTubeThumbnailUrl(
+    Object.values(thumbnails).find((thumbnail) => Boolean(thumbnail.url))?.url,
+  );
 }
 
 function normalizeEmbeddableStatus(embeddable: boolean | undefined): YouTubeEmbeddableStatus {

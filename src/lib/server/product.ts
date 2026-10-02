@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 import {
   digest,
   opaque,
@@ -298,9 +299,10 @@ async function metadata(videoIds: string[], force = false) {
             title: item.snippet.title,
             channel_id: item.snippet.channelId,
             channel_title: item.snippet.channelTitle,
-            thumbnail_url:
+            thumbnail_url: normalizeYouTubeThumbnailUrl(
               item.snippet.thumbnails.high?.url ||
-              item.snippet.thumbnails.default?.url,
+                item.snippet.thumbnails.default?.url,
+            ),
             duration_seconds: duration(item.contentDetails.duration),
             made_for_kids:
               item.status.madeForKids === true
