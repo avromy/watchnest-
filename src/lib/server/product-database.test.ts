@@ -48,6 +48,12 @@ beforeAll(async () => {
     ),
   );
   await db.exec(
+    readFileSync(
+      "supabase/migrations/20261002020000_atomic_child_admission.sql",
+      "utf8",
+    ),
+  );
+  await db.exec(
     `insert into parents(id,email) values('${a}','a@test.local'),('${b}','b@test.local');insert into profiles(id,parent_id,display_name) values('${ari}','${a}','Ari'),('${benny}','${a}','Benny'),('${foreign}','${b}','Other');insert into videos(id,youtube_video_id,title,duration_seconds,embeddable_status,made_for_kids,metadata_last_checked_at) values('${video}','abcdefghijk','Video',100,'embeddable',false,now());insert into child_sessions(id,profile_id,token_hash,created_at,expires_at) values('${session}','${ari}','hash',now()-interval '1 minute',now()+interval '1 hour');`,
   );
 }, 20000);
@@ -60,6 +66,33 @@ describe("real PostgreSQL household integrity", () => {
       "select wn_rate_limit('key',2,900) as allowed from generate_series(1,3)",
     );
     expect(r.rows.map((x) => x.allowed)).toEqual([true, true, false]);
+  });
+  it("serializes child admission with PIN changes and revokes prior sessions", async () => {
+    const admitted = await db.query<{ session_id: string | null }>(
+      `select wn_admit_child_session('${ari}',false,null,'atomic-before',now()+interval '1 hour') as session_id`,
+    );
+    expect(admitted.rows[0].session_id).toBeTruthy();
+    await db.query(
+      `select wn_update_profile_security('${a}','${ari}',true,'new-hash',true)`,
+    );
+    const stale = await db.query<{ session_id: string | null }>(
+      `select wn_admit_child_session('${ari}',false,null,'atomic-after',now()+interval '1 hour') as session_id`,
+    );
+    expect(stale.rows[0].session_id).toBeNull();
+    expect(
+      (
+        await db.query<{ count: number }>(
+          `select count(*)::integer as count from child_sessions where profile_id='${ari}' and revoked_at is null`,
+        )
+      ).rows[0].count,
+    ).toBe(0);
+    const current = await db.query<{ session_id: string | null }>(
+      `select wn_admit_child_session('${ari}',true,'new-hash','atomic-current',now()+interval '1 hour') as session_id`,
+    );
+    expect(current.rows[0].session_id).toBeTruthy();
+    await db.exec(
+      `delete from child_sessions where token_hash like 'atomic-%'; update profiles set pin_enabled=false,pin_hash=null where id='${ari}'; update child_sessions set revoked_at=null where id='${session}';`,
+    );
   });
   it("prevents cross-family profile approval and direct writes", async () => {
     await expect(

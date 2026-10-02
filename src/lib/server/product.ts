@@ -709,13 +709,17 @@ export async function handle(request: globalThis.Request, path: string[]) {
           throw new Failure("Incorrect passcode.", 401);
       }
       const token = opaque();
-      check(
-        await client.from("child_sessions").insert({
-          profile_id: p.id,
-          token_hash: digest(token),
-          expires_at: new Date(Date.now() + 86400000).toISOString(),
+      const admitted = check(
+        await client.rpc("wn_admit_child_session", {
+          p_profile: p.id,
+          p_expected_pin_enabled: p.pin_enabled,
+          p_expected_pin_hash: p.pin_enabled ? p.pin_hash : null,
+          p_token_hash: digest(token),
+          p_expires: new Date(Date.now() + 86400000).toISOString(),
         }),
       );
+      if (!admitted)
+        throw new Failure("Profile settings changed. Please try again.", 409);
       await cookie("wn_child", token, 86400);
       await cookie("wn_parent", "", 0);
       await cookie("wn_refresh", "", 0);
@@ -817,19 +821,10 @@ async function parentRoute(
       values.pin_hash = hashPin(fields.passcode);
       if (fields.pin_enabled === undefined) values.pin_enabled = true;
     }
-    if (fields.pin_enabled === true && !fields.passcode) {
-      const old = check(
-        await client
-          .from("profiles")
-          .select("pin_hash")
-          .eq("id", id.parse(body.id))
-          .eq("parent_id", p.id)
-          .single(),
-      );
-      if (!old.pin_hash) throw new Failure("Set a passcode first.");
-    }
     if (method === "POST") {
       if (!fields.display_name) throw new Failure("Child name required.");
+      if (fields.pin_enabled === true && !fields.passcode)
+        throw new Failure("Set a passcode first.");
       check(
         await client.from("profiles").insert({ ...values, parent_id: p.id }),
       );
@@ -851,19 +846,40 @@ async function parentRoute(
         )
           throw new Failure("The four family profile names are fixed.");
       }
-      check(
-        await client
-          .from("profiles")
-          .update(values)
-          .eq("id", profileId)
-          .eq("parent_id", p.id),
-      );
-      check(
-        await client
-          .from("child_sessions")
-          .update({ revoked_at: new Date().toISOString() })
-          .eq("profile_id", profileId),
-      );
+      if (fields.passcode !== undefined || fields.pin_enabled !== undefined) {
+        const old = check(
+          await client
+            .from("profiles")
+            .select("pin_enabled,pin_hash")
+            .eq("id", profileId)
+            .eq("parent_id", p.id)
+            .single(),
+        );
+        const pinEnabled =
+          fields.pin_enabled ?? (fields.passcode ? true : old.pin_enabled);
+        if (pinEnabled && !fields.passcode && !old.pin_hash)
+          throw new Failure("Set a passcode first.");
+        const updated = check(
+          await client.rpc("wn_update_profile_security", {
+            p_parent: p.id,
+            p_profile: profileId,
+            p_pin_enabled: pinEnabled,
+            p_pin_hash: fields.passcode ? hashPin(fields.passcode) : null,
+            p_replace_hash: fields.passcode !== undefined,
+          }),
+        );
+        if (!updated) throw new Failure("Child profile unavailable.", 404);
+      }
+      delete values.pin_enabled;
+      delete values.pin_hash;
+      if (Object.keys(values).length)
+        check(
+          await client
+            .from("profiles")
+            .update(values)
+            .eq("id", profileId)
+            .eq("parent_id", p.id),
+        );
     } else throw new Failure("Method not allowed.", 405);
     return reply({ ok: true });
   }

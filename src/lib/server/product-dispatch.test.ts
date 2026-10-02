@@ -17,6 +17,7 @@ const state = vi.hoisted(() => ({
   cookieWrites: [] as any[],
   childAuthPin: null as null | boolean,
   parentProfileMutation: false,
+  rpcs: [] as { name: string; args: any }[],
 }));
 vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({
@@ -98,7 +99,10 @@ vi.mock("@supabase/supabase-js", () => ({
         error: null,
       }),
     },
-    rpc: async () => ({ data: true, error: null }),
+    rpc: async (name: string, args: any) => {
+      state.rpcs.push({ name, args });
+      return { data: true, error: null };
+    },
     from: (table: string) => {
       state.tables.push(table);
       const result = {
@@ -207,6 +211,7 @@ afterEach(() => {
   state.cookieWrites = [];
   state.childAuthPin = null;
   state.parentProfileMutation = false;
+  state.rpcs = [];
 });
 describe("authenticated route dispatch regression", () => {
   it("honors an explicit PIN-off toggle while replacing the stored PIN", async () => {
@@ -225,11 +230,12 @@ describe("authenticated route dispatch regression", () => {
       ["parent", "profiles"],
     );
     expect(response.status).toBe(200);
-    expect(state.updates).toContainEqual({
-      table: "profiles",
-      values: expect.objectContaining({
-        pin_enabled: false,
-        pin_hash: expect.any(String),
+    expect(state.rpcs).toContainEqual({
+      name: "wn_update_profile_security",
+      args: expect.objectContaining({
+        p_pin_enabled: false,
+        p_pin_hash: expect.any(String),
+        p_replace_hash: true,
       }),
     });
   });

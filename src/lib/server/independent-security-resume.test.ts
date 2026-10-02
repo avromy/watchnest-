@@ -46,6 +46,12 @@ beforeAll(async () => {
     ),
   );
   await db.exec(
+    readFileSync(
+      "supabase/migrations/20261002020000_atomic_child_admission.sql",
+      "utf8",
+    ),
+  );
+  await db.exec(
     `insert into parents(id,email) values('${parent}','security@example.invalid'); insert into profiles(id,parent_id,display_name) values('${profile}','${parent}','Synthetic'); insert into videos(id,youtube_video_id,title,duration_seconds,availability_status,embeddable_status,made_for_kids,metadata_last_checked_at) values('${video}','abcdefghijk','Synthetic',100,'available','embeddable',false,now()); insert into child_sessions(id,profile_id,token_hash,created_at,expires_at) values('${session}','${profile}','synthetic',now()-interval '2 minutes',now()+interval '1 hour'); select wn_approve_videos('${parent}',array['${video}']::uuid[],array['${profile}']::uuid[],'{}',null);`,
   );
 }, 20000);
@@ -89,6 +95,8 @@ describe("independent security resume: actual PostgreSQL boundaries", () => {
         `wn_assign_video('${parent}','${video}','{}',null)`,
         `wn_remove_video('${parent}','${video}')`,
         `wn_record_progress('${session}','${video}',90,0,false)`,
+        `wn_admit_child_session('${profile}',false,null,'stolen',now()+interval '1 hour')`,
+        `wn_update_profile_security('${parent}','${profile}',false,null,false)`,
       ];
       try {
         await db.exec(`set role ${role}`);
