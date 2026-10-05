@@ -49,6 +49,14 @@ Required Minimum Functionality [20] forbids overlays or visual elements over any
 
 Build consequence: visible official player, no click-catching masks, no concealment of logo/links/ads, no background player. Next Up is a WatchNest list of newly authorized assigned videos, not a YouTube recommendation source. Keep Back to Library outside the iframe. An app-owned finished state can replace a destroyed player after a documented end event; it must not overlay required controls or be represented as eliminating all transient YouTube end surfaces. Test this behavior before accepting it.
 
+Current implementation decision (2026-10-05): use `controls=1`,
+`iv_load_policy=3`, `playsinline=1`, and `rel=0`, with `origin`,
+`enablejsapi`, and `start` only when applicable. Do not set `controls=0`, `fs=0`,
+or `disablekb=1`, because WatchNest must retain reliable child play/pause,
+volume/seek, fullscreen, captions and keyboard accessibility. Do not send
+deprecated `modestbranding` or `showinfo`. This is a minimal supported
+configuration, not a claim that YouTube branding or related surfaces disappear.
+
 ### Privacy, MFK, metadata, and child-directed notice
 
 Developer Policies [22] require per-embed Made For Kids checks, disabled tracking for MFK players, privacy/terms disclosures, child-directed notification, no personalized ads, no YouTube write actions by child-directed clients, metadata refresh/deletion within 30 days, and no interference with links, ads, or branding. The policy does not document a parent-consent or local-progress exception to its MFK tracking instruction. Additional derived-metric allowances require explicit audited permission; do not assume WatchNest has it.

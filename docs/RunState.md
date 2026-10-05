@@ -1,14 +1,14 @@
-# Final family beta — deployed; one real-device containment observation pending (2026-10-05)
+# Final family beta — iPhone containment passed; iPad observation pending (2026-10-05)
 
 ## Exact binding
 
 - Working URL: https://watchnest-rho.vercel.app
-- Application commit: `de1e82f5443fbfe6e315eb47e5f30014d1d1b653`
-- Application tree: `42923eb8db6e518e0ff13702714e37fb7dc861b2`
-- Production deployment: `dpl_HF2fKpkNVKTwEy1C2ZBTJg2r9jYq` (READY)
-- Rollback deployment: `dpl_BNRgFx8MrkGx86cjsNpjevMVk9Qd` / application commit `7da6d0ba0f9c96b8c195723cc5f9a758aed867ec`
+- Production commit: `646d67b6e1b0bd15bcd01888cba93fb4daf6892d`
+- Production tree: `feebbaf8336b5e26b96901a3d6462ab7f10c1ab1`
+- Production deployment: `dpl_HjEH8DasFG4adQ1UqEt4r7pJ2hPS` (READY, target `production`, alias confirmed)
+- Rollback deployment: `dpl_EYQ26gv4KazVkMiLsarYiWGe8mG8` / commit `d9df9a81637a2b23c6def20bfda78d73e2863580`
 - Hosted schema: `20261005000000_final_family_beta` plus follow-up hidden-video FK index; Safe Playback is ON for the Founder household.
-- GitHub: branch `final-family-beta`, draft PR #34. Vercel status SUCCESS; local exact-tree equivalent passed typecheck, lint, 181 tests, production build, and 12/12 browser flows.
+- GitHub: PR #35 merged into the configured production branch `product-completion-20260930`. The exact successor passed typecheck, lint, 182 tests, production build, and 12/12 browser flows.
 - Independent security: PASS. Independent Stranger: PASS. Human-Eye V2.0: PASS for six exact rendered product rasters, with the synthetic-fixture limitation preserved.
 
 ## Current OS / infrastructure-autonomy refresh
@@ -20,20 +20,52 @@ Control Layer; and Autonomous Infrastructure & Credential Operations V1.1
 (effective 2026-10-05). This project remains an EXISTING GOVERNED PROJECT in
 Builder (Work), with HQ-owned acceptance and independent reviewer separation.
 
-V1.1 escalation check: there is no unreadable-secret incident or credential
-failure to repair. Safe discovery verified the dedicated WatchNest Vercel
-project, the expected five production environment-variable consumers by name
-only, the dedicated Supabase project `ysukwpeowpcixdzkexky` as
-`ACTIVE_HEALTHY`, production alias binding to the exact READY deployment, and
-GitHub PR #34 at durable head `8ebca886d4db331c5e535fba6cd93a8e98283b5d`.
-No secret was decrypted, exposed, rotated, or needlessly invalidated. No
-redeploy/restart is required because the hosted application and configuration
-are healthy. The remaining iPad observation is a physical interaction/evidence
-boundary, not an infrastructure or credential blocker.
+V1.1 incident response found no unreadable or invalid secret. The live failure
+was configuration **scope**, not credential value: the public production domain
+had been manually assigned to preview deployment `dpl_HF2fKpkNVKTwEy1C2ZBTJg2r9jYq`
+(`target: null`), while all five required variables were correctly restricted
+to the `production` target. Live `/api/session` returned `configured:false` and
+Founder login POSTs returned 503 before Supabase Auth or household lookup.
+
+Repair: merge the already-qualified PR into Vercel's configured production
+branch, producing deployment `dpl_EYQ26gv4KazVkMiLsarYiWGe8mG8` at merge commit
+`d9df9a81637a2b23c6def20bfda78d73e2863580`. Vercel moved
+`watchnest-rho.vercel.app` to that production-target artifact. Post-repair
+`/api/session` returns `configured:true`; a same-origin negative login reaches
+Supabase Auth and returns the normal generic 400 response rather than setup 503;
+runtime errors are empty. No secret was decrypted, exposed, rotated, or copied.
+
+Read-only hosted integrity proves one confirmed, password-backed, non-banned
+Auth user linked to the one Parent/household; family code, configured Parent PIN,
+Safe Playback ON, four active profiles, 18 approved videos, 18 active assignments,
+one Collection, and Miri's two assignments are preserved. No family data was
+recreated or mutated.
+
+## Founder real-device evidence and player refinement
+
+The Founder reached an approved video on an iPhone with Safe Playback ON, tapped
+the YouTube external/exit control once, and no external destination opened. The
+Founder remained in WatchNest. This is real-device iPhone evidence bound only to
+the preceding production candidate `d9df9a81637a2b23c6def20bfda78d73e2863580`,
+deployment `dpl_EYQ26gv4KazVkMiLsarYiWGe8mG8`, production household configuration,
+and Safe Playback ON. Browser/version was not separately reported. It is not
+iPad certification and is not promoted to the successor's audiovisual evidence.
+
+The successor centralizes direct-embed and IFrame API parameters. It keeps
+native controls, fullscreen, keyboard controls, captions preference and volume;
+adds supported `iv_load_policy=3`; and preserves `playsinline=1` plus `rel=0`.
+It deliberately omits deprecated `modestbranding`/`showinfo` and does not set
+`controls=0`, `fs=0`, or `disablekb=1`. Prior player-chrome screenshots and
+parameter assertions are stale for this successor. Fresh exact-source regression
+proves the parameter contract and Safe Playback ON/OFF inverse; responsive player
+rasters were regenerated at 390×844 and 1024×768 and passed deterministic visual
+inspection. Hosted `/api/session` returns `configured:true`, the public HTML is
+bound to deployment `dpl_HjEH8DasFG4adQ1UqEt4r7pJ2hPS`, and the deployment has no
+runtime errors in the observed post-release window.
 
 ## Release state
 
-The final family beta is deployed. Safe Playback is Parent-controlled and default ON. The browser regression executes title, logo, app/deep-link, and `window.open` attempts inside the exact sandbox and proves that the child page does not navigate and no tab opens. Safe Playback OFF is separately verified to remove containment without changing video authorization.
+The final family beta successor is deployed and the production setup defect remains repaired. Safe Playback is Parent-controlled and default ON. The exact-source browser regression executes title, logo, app/deep-link, and `window.open` attempts inside the exact sandbox and proves that the child page does not navigate and no tab opens. Safe Playback OFF is separately verified to remove containment without changing video authorization.
 
 One evidence item remains genuinely device-bound: on the authenticated family iPad, confirm that a normal YouTube-player exit tap cannot leave the production WatchNest child player. The cloud browser cannot receive the temporary HttpOnly child-session cookie, while the terminal browser cannot reach Vercel; neither limitation is promoted to real-device proof. Terminal state remains pending only this minimum Founder observation. No routine QA is delegated to the Founder.
 
