@@ -27,6 +27,7 @@ export type Video = {
   };
   collections?: { id: string; title: string }[];
   favorite?: boolean;
+  hidden?: boolean;
 };
 export type Collection = {
   id: string;

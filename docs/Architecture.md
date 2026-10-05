@@ -16,7 +16,7 @@ Parent metadata lookup/search → individual preview/selection → approve and a
 
 Child home fetches session-bound assignments and locally searches approved metadata. Player API checks household, assignment, availability and embeddability before returning a public YouTube identifier. Missing/older-24h metadata is refreshed before playback; failure denies playback. Client rechecks authorization every 20 seconds and destroys the iframe on denial. Revocation does not control YouTube outside WatchNest and is not instantaneous inside an already loaded iframe.
 
-Progress records incremental played time rather than seeks/hidden time, checks current assignments in SQL, and restores incomplete eligible videos. Made-for-kids or unknown classification suppresses telemetry/resume and historical progress in responses. Ended playback destroys the iframe and offers WatchNest's approved next video, but cannot guarantee no brief native end surface.
+Progress records incremental played time rather than seeks/hidden time, checks current assignments in SQL, and restores incomplete eligible videos. Made-for-kids or unknown classification suppresses telemetry/resume and historical progress in responses. Ended playback destroys the iframe and offers WatchNest's approved next video. On this project, Safe Playback is a server-owned, Parent-only household setting, default on. It attaches a navigation-restricting sandbox before child iframe playback loads while preserving official player rendering and controls; it is independent of content authorization.
 
 ## Operations
 

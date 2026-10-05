@@ -67,6 +67,12 @@ Registry/current protocol identifies Human-Eye V2.0 production-certified, even t
 
 Actual hosted Supabase free settings prevent custom recovery templates without SMTP/Pro. The application expected a token_hash link while the default provider emits session tokens in the fragment. Preserve confirmation and verified Founder authorization; support the default provider through server verification instead of lowering security or buying infrastructure. Source tests alone do not prove email delivery or deployed recovery. Inspect actual plan/settings before claiming an integration complete.
 
+## Final family-beta calibration — 2026-10-05
+
+Project-level only: WatchNest proceeds with Founder-authorized external-navigation containment. Do not generalize that authorization to another YouTube API client and do not retain its private evidence.
+
+Reusable product/process lesson: resolve existential provider constraints before expensive product completion. For recurring family products, run an appliance-path review (open → recognize profile → optional protection → task) in addition to technical qualification. Every extra recurring decision step must have a security or comprehension justification. Prefer bounded child autonomy and near-zero Parent maintenance; hide architecture and taxonomy behind obvious behavior.
+
 ## PROCESS proposal — save error messages can conflict with persisted state
 
 Vercel production-branch save reported no deployments for the branch, but subsequent deployment validation and native deployment source showed the exact branch was persisted. Reconcile contradictory evidence with an authoritative operation readback; do not repeat writes or infer success/failure solely from a toast. Bounded to this observation; no general permission to ignore warnings.

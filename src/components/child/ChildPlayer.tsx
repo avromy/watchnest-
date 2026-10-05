@@ -9,13 +9,18 @@ import {
   waitForBookmarks,
 } from "./model";
 import YouTubeEmbed from "../YouTubeEmbed";
-import { classifyYouTubePlayerError } from "@/lib/youtube-player";
+import {
+  classifyYouTubePlayerError,
+  youtubeEmbedUrl,
+} from "@/lib/youtube-player";
 type Player = {
   getCurrentTime: () => number;
   getDuration: () => number;
   getPlayerState: () => number;
   playVideo: () => void;
   pauseVideo: () => void;
+  setVolume: (volume: number) => void;
+  getIframe: () => HTMLIFrameElement;
   destroy: () => void;
 };
 type PlayerEvent = { target: Player; data: number };
@@ -23,9 +28,9 @@ type YouTube = {
   Player: new (
     element: HTMLElement,
     options: {
-      videoId: string;
-      host: string;
-      playerVars: Record<string, string | number>;
+      videoId?: string;
+      host?: string;
+      playerVars?: Record<string, string | number>;
       events: {
         onReady: (event: { target: Player }) => void;
         onStateChange: (event: PlayerEvent) => void;
@@ -75,7 +80,14 @@ function loadPlayer(): Promise<YouTube> {
     });
   return apiPromise;
 }
-type Playback = { profile: Profile; video: Video; next: Video | null };
+type Playback = {
+  profile: Profile;
+  video: Video;
+  next: Video | null;
+  safe_playback_enabled: boolean;
+};
+
+const SAFE_PLAYER_SANDBOX = "allow-scripts allow-same-origin allow-presentation";
 export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [data, setData] = useState<Playback | null>(null);
   const [error, setError] = useState("");
@@ -88,6 +100,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [helpSent, setHelpSent] = useState(false);
   const [helpBusy, setHelpBusy] = useState(false);
   const [helpError, setHelpError] = useState("");
+  const [volume, setVolume] = useState(60);
+  const volumeRef = useRef(60);
+  useEffect(() => {
+    const saved = Number(window.localStorage.getItem("watchnest-player-volume"));
+    if (Number.isFinite(saved) && saved >= 0 && saved <= 100) {
+      volumeRef.current = saved;
+      setVolume(saved);
+    }
+  }, []);
   async function askForHelp() {
     if (!data || helpSent || helpBusy) return;
     setHelpBusy(true);
@@ -175,27 +196,60 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         }
       });
     }
-    const host = document.createElement("div");
+    const host = data.safe_playback_enabled
+      ? document.createElement("iframe")
+      : document.createElement("div");
+    if (host instanceof HTMLIFrameElement) {
+      const startSeconds =
+        historyAllowed && !data.video.progress?.completed_at
+          ? Math.floor(data.video.progress?.current_time_seconds || 0)
+          : 0;
+      host.src = youtubeEmbedUrl(data.video.youtube_video_id, window.location.origin, {
+        enableJsApi: true,
+        startSeconds,
+      });
+      host.title = data.video.title;
+      host.allow =
+        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+      host.allowFullscreen = true;
+      host.referrerPolicy = "strict-origin-when-cross-origin";
+      host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
+    }
     mount.current.replaceChildren(host);
     loadPlayer()
       .then((YT) => {
         if (disposed) return;
         player.current = new YT.Player(host, {
-          videoId: data.video.youtube_video_id,
-          host: "https://www.youtube-nocookie.com",
-          playerVars: {
-            controls: 1,
-            playsinline: 1,
-            rel: 0,
-            origin: window.location.origin,
-            start:
-              historyAllowed && !data.video.progress?.completed_at
-                ? Math.floor(data.video.progress?.current_time_seconds || 0)
-                : 0,
-          },
+          ...(data.safe_playback_enabled
+            ? {}
+            : {
+                videoId: data.video.youtube_video_id,
+                host: "https://www.youtube-nocookie.com",
+                playerVars: {
+                  controls: 1,
+                  playsinline: 1,
+                  rel: 0,
+                  origin: window.location.origin,
+                  start:
+                    historyAllowed && !data.video.progress?.completed_at
+                      ? Math.floor(
+                          data.video.progress?.current_time_seconds || 0,
+                        )
+                      : 0,
+                },
+              }),
           events: {
-            onReady: () => {
-              if (!disposed) setReady(true);
+            onReady: (event) => {
+              if (!disposed) {
+                if (data.safe_playback_enabled) {
+                  event.target.getIframe().setAttribute(
+                    "sandbox",
+                    SAFE_PLAYER_SANDBOX,
+                  );
+                }
+                event.target.setVolume(volumeRef.current);
+                setReady(true);
+              }
             },
             onStateChange: (e) => {
               if (disposed) return;
@@ -385,6 +439,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   : 0
               }
               onLoad={() => setReady(true)}
+              safePlayback={data.safe_playback_enabled}
             />
           ) : (
             <div
@@ -416,6 +471,32 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             </div>
           )}
           {playerNotice && <p className="notice">{playerNotice}</p>}
+          {data.video.made_for_kids === false && !staticFallback && (
+            <label className="player-volume">
+              Volume
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={volume}
+                onChange={(event) => {
+                  const next = Number(event.target.value);
+                  volumeRef.current = next;
+                  setVolume(next);
+                  player.current?.setVolume(next);
+                  window.localStorage.setItem(
+                    "watchnest-player-volume",
+                    String(next),
+                  );
+                }}
+              />
+            </label>
+          )}
+          {data.safe_playback_enabled && (
+            <p className="safe-playback-note" role="status">
+              Safe Playback is on. External links stay blocked in Child Mode.
+            </p>
+          )}
           <section className="panel" style={{ marginTop: 24 }}>
             {data.next ? (
               <>

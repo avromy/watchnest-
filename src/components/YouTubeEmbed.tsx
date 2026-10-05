@@ -8,12 +8,14 @@ export default function YouTubeEmbed({
   title,
   className,
   startSeconds = 0,
+  safePlayback = false,
   onLoad,
 }: {
   videoId: string;
   title: string;
   className?: string;
   startSeconds?: number;
+  safePlayback?: boolean;
   onLoad?: () => void;
 }) {
   const [origin, setOrigin] = useState("");
@@ -39,6 +41,11 @@ export default function YouTubeEmbed({
       allowFullScreen
       loading="eager"
       referrerPolicy="strict-origin-when-cross-origin"
+      sandbox={
+        safePlayback
+          ? "allow-scripts allow-same-origin allow-presentation"
+          : undefined
+      }
       onLoad={onLoad}
     />
   );
