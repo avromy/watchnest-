@@ -1,3 +1,51 @@
++# Final family beta — deployed; one real-device containment observation pending (2026-10-05)
+
+## Exact binding
+
+- Working URL: https://watchnest-rho.vercel.app
+- Application commit: `de1e82f5443fbfe6e315eb47e5f30014d1d1b653`
+- Application tree: `42923eb8db6e518e0ff13702714e37fb7dc861b2`
+- Production deployment: `dpl_HF2fKpkNVKTwEy1C2ZBTJg2r9jYq` (READY)
+- Rollback deployment: `dpl_BNRgFx8MrkGx86cjsNpjevMVk9Qd` / application commit `7da6d0ba0f9c96b8c195723cc5f9a758aed867ec`
+- Hosted schema: `20261005000000_final_family_beta` plus follow-up hidden-video FK index; Safe Playback is ON for the Founder household.
+- GitHub: branch `final-family-beta`, draft PR #34. Vercel status SUCCESS; local exact-tree equivalent passed typecheck, lint, 181 tests, production build, and 12/12 browser flows.
+- Independent security: PASS. Independent Stranger: PASS. Human-Eye V2.0: PASS for six exact rendered product rasters, with the synthetic-fixture limitation preserved.
+
+## Release state
+
+The final family beta is deployed. Safe Playback is Parent-controlled and default ON. The browser regression executes title, logo, app/deep-link, and `window.open` attempts inside the exact sandbox and proves that the child page does not navigate and no tab opens. Safe Playback OFF is separately verified to remove containment without changing video authorization.
+
+One evidence item remains genuinely device-bound: on the authenticated family iPad, confirm that a normal YouTube-player exit tap cannot leave the production WatchNest child player. The cloud browser cannot receive the temporary HttpOnly child-session cookie, while the terminal browser cannot reach Vercel; neither limitation is promoted to real-device proof. Terminal state remains pending only this minimum Founder observation. No routine QA is delegated to the Founder.
+
+## Human-Eye V2.0 coverage receipt
+
+- SOURCE_IDENTITY: `de1e82f5443fbfe6e315eb47e5f30014d1d1b653` / production deployment above
+- REGION_COVERAGE: 6/6
+- BOUNDED_ASSETS: 6/6 — A01 profile picker, A02 child Home, A03 Parent overview, A04 Children, A05 Settings, A06 Add Videos
+- ASSET_EVIDENCE_CONSUMED: A01–A06
+- READABLE_VIEWS: 6 required / 6 consumed
+- STRUCTURAL_RECORDS: 6 required / 6 consumed
+- EDGE_GATES: 24 resolved / 24 required
+- APPLICATION_BINDING: exact rendered Next.js candidate with synthetic API fixtures; not claimed as authenticated-device or YouTube-thumbnail evidence
+- UNRESOLVED_CONFLICTS: 0
+- HUMAN_GATES: alignment, optical centering, spacing/rhythm, grouping, hierarchy, contrast, crop/story, and gestalt PASS
+- CONFIRMED_DEFECTS: 0 after Hide placement, Privacy Safe-state copy, and Dashboard grammar repairs
+- POSSIBLE_CONCERNS: sparse approved libraries naturally produce open space; no functional or hierarchy defect
+- FINAL_RESULT: PASS for product visual acceptance
+
+## Honest platform limits
+
+- YouTube Premium/ad entitlement is not exposed to WatchNest; ad-free playback is not promised. Parent OAuth is not treated as Premium transfer.
+- Initial player volume is 60% where the IFrame API honors it; iPad system volume remains authoritative.
+- Ordinary YouTube media is not downloaded, cached, proxied, or rehosted; offline/Travel Mode is platform-limited.
+- No official YouTube Kids approved-library import API was found. WatchNest provides assisted multi-link migration without scraping.
+- Exact minute budgets are not claimed for Made-for-Kids/unknown content; access windows remain the compliant control.
+- Shorts are excluded for explicit Shorts URLs; official search provides no authoritative Shorts flag for perfect classification.
+- `npm audit` reports an upstream high-severity `braces` advisory through development-only Tailwind 3 tooling with no non-breaking patched release. It is not in the production runtime; no forced Tailwind 4 migration was introduced.
+
+---
+
+
 # WatchNest UX redesign — Founder Review Ready (2026-10-02)
 
 ## Terminal state
