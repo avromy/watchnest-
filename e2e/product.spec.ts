@@ -133,7 +133,6 @@ test("synthetic UI: shared device opens the profile picker and Parent Mode stays
     page.getByRole("heading", { name: "Parent Mode" }),
   ).toBeVisible();
   await page.getByLabel("4-digit PIN").fill("1234");
-  await page.getByRole("button", { name: "Continue" }).click();
   await expect
     .poll(() =>
       changes.some((change) => change.path === "/api/auth/parent-mode"),
@@ -179,6 +178,7 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
         profile: dashboard.profiles[1],
         video: madeForKids,
         next: null,
+        safe_playback_enabled: true,
       }),
     }),
   );
@@ -193,6 +193,10 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
   expect(src.searchParams.get("enablejsapi")).toBeNull();
+  expect(await iframe.getAttribute("sandbox")).toBe(
+    "allow-scripts allow-same-origin allow-presentation",
+  );
+  await expect(page.getByText(/Safe Playback is on/i)).toBeVisible();
   await expect(page.getByText(/resume is off/i)).toHaveCount(0);
 });
 

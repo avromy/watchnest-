@@ -127,7 +127,18 @@ export async function fixture(
         collections,
       };
     else if (path === "/api/child/player")
-      response = { profile: profiles[1], video: videos[0], next: videos[1] };
+      response = {
+        profile: profiles[1],
+        video: videos[0],
+        next: videos[1],
+        safe_playback_enabled: true,
+      };
+    else if (path === "/api/parent/settings")
+      response = {
+        parent_pin_set: true,
+        timezone: "America/New_York",
+        safe_playback_enabled: true,
+      };
     else if (
       path === "/api/parent/videos/search" ||
       path === "/api/parent/videos/lookup"
