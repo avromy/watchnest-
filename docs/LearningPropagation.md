@@ -1,5 +1,18 @@
 # UX redesign learning propagation — 2026-10-02
 
+## PROCESS — production domains must bind production-target artifacts
+
+Failure: a READY preview deployment was manually assigned to the public
+production domain while required runtime variables were correctly scoped only
+to `production`. Static pages looked healthy, but server configuration was absent
+and Parent login failed before authentication. Prevention: release acceptance
+must verify deployment target as well as URL/commit/readiness, then call a
+non-secret hosted health surface and require `configured:true` after every alias
+movement. A successful build or domain response is insufficient. Do not solve
+this by broadening privileged secrets to previews; rebuild the exact candidate
+for the intended environment. This is a reusable deployment-process lesson;
+family records and credential values remain project-private.
+
 ## Calibration event
 
 The product passed technical qualification while recurring family paths still exposed architecture, overlapping taxonomy, and avoidable decision steps. The earlier review system over-weighted route correctness and component presence; it under-weighted a cold user's first recurring path and the question “why must the user see or do this?”
@@ -72,6 +85,17 @@ Actual hosted Supabase free settings prevent custom recovery templates without S
 Project-level only: WatchNest proceeds with Founder-authorized external-navigation containment. Do not generalize that authorization to another YouTube API client and do not retain its private evidence.
 
 Reusable product/process lesson: resolve existential provider constraints before expensive product completion. For recurring family products, run an appliance-path review (open → recognize profile → optional protection → task) in addition to technical qualification. Every extra recurring decision step must have a security or comprehension justification. Prefer bounded child autonomy and near-zero Parent maintenance; hide architecture and taxonomy behind obvious behavior.
+
+## PROJECT — minimal player chrome must preserve the playback job
+
+The supported-parameter review found that hiding all native controls would remove
+reliable play/pause, seek, volume, captions and fullscreen behavior, while
+deprecated branding parameters provide no legitimate benefit. WatchNest now
+shares one explicit player-parameter contract across direct and API-backed
+embeds: annotations default off, inline iOS playback on, related results narrowed
+to the same channel, and native accessibility/playback controls retained. Future
+chrome changes must rerun the Safe Playback inverse, responsive player evidence
+and exact-candidate device binding; an iPhone result never certifies iPad.
 
 ## PROCESS proposal — save error messages can conflict with persisted state
 
