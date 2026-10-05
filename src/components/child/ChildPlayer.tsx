@@ -12,6 +12,7 @@ import YouTubeEmbed from "../YouTubeEmbed";
 import {
   classifyYouTubePlayerError,
   youtubeEmbedUrl,
+  youtubePlayerVars,
 } from "@/lib/youtube-player";
 type Player = {
   getCurrentTime: () => number;
@@ -225,18 +226,12 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             : {
                 videoId: data.video.youtube_video_id,
                 host: "https://www.youtube-nocookie.com",
-                playerVars: {
-                  controls: 1,
-                  playsinline: 1,
-                  rel: 0,
-                  origin: window.location.origin,
-                  start:
+                playerVars: youtubePlayerVars(window.location.origin, {
+                  startSeconds:
                     historyAllowed && !data.video.progress?.completed_at
-                      ? Math.floor(
-                          data.video.progress?.current_time_seconds || 0,
-                        )
+                      ? data.video.progress?.current_time_seconds || 0
                       : 0,
-                },
+                }),
               }),
           events: {
             onReady: (event) => {

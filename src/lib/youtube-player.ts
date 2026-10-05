@@ -64,20 +64,38 @@ export function classifyYouTubePlayerError(code: number): YouTubePlayerFailure {
   };
 }
 
+type YouTubePlayerOptions = {
+  enableJsApi?: boolean;
+  startSeconds?: number;
+};
+
+export function youtubePlayerVars(
+  origin: string,
+  options: YouTubePlayerOptions = {},
+) {
+  const variables: Record<string, string> = {
+    controls: "1",
+    iv_load_policy: "3",
+    playsinline: "1",
+    rel: "0",
+  };
+  if (origin) variables.origin = origin;
+  if (options.enableJsApi) variables.enablejsapi = "1";
+  if (options.startSeconds && options.startSeconds > 0)
+    variables.start = String(Math.floor(options.startSeconds));
+  return variables;
+}
+
 export function youtubeEmbedUrl(
   videoId: string,
   origin: string,
-  options: { enableJsApi?: boolean; startSeconds?: number } = {},
+  options: YouTubePlayerOptions = {},
 ) {
   const url = new URL(
     `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`,
   );
-  url.searchParams.set("controls", "1");
-  url.searchParams.set("playsinline", "1");
-  url.searchParams.set("rel", "0");
-  if (origin) url.searchParams.set("origin", origin);
-  if (options.enableJsApi) url.searchParams.set("enablejsapi", "1");
-  if (options.startSeconds && options.startSeconds > 0)
-    url.searchParams.set("start", String(Math.floor(options.startSeconds)));
+  Object.entries(youtubePlayerVars(origin, options)).forEach(([key, value]) =>
+    url.searchParams.set(key, value),
+  );
   return url.toString();
 }

@@ -222,6 +222,14 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
   expect(src.searchParams.get("enablejsapi")).toBeNull();
+  expect(src.searchParams.get("controls")).toBe("1");
+  expect(src.searchParams.get("iv_load_policy")).toBe("3");
+  expect(src.searchParams.get("playsinline")).toBe("1");
+  expect(src.searchParams.get("rel")).toBe("0");
+  expect(src.searchParams.get("fs")).toBeNull();
+  expect(src.searchParams.get("disablekb")).toBeNull();
+  expect(src.searchParams.get("modestbranding")).toBeNull();
+  expect(src.searchParams.get("showinfo")).toBeNull();
   expect(await iframe.getAttribute("sandbox")).toBe(
     "allow-scripts allow-same-origin allow-presentation",
   );

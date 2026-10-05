@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { classifyYouTubePlayerError, youtubeEmbedUrl } from "./youtube-player";
+import {
+  classifyYouTubePlayerError,
+  youtubeEmbedUrl,
+  youtubePlayerVars,
+} from "./youtube-player";
 
 describe("YouTube player helpers", () => {
   it.each([
@@ -26,6 +30,26 @@ describe("YouTube player helpers", () => {
     expect(url.searchParams.get("origin")).toBe("https://watchnest.example");
     expect(url.searchParams.get("enablejsapi")).toBe("1");
     expect(url.searchParams.get("start")).toBe("12");
+    expect(url.searchParams.get("controls")).toBe("1");
+    expect(url.searchParams.get("iv_load_policy")).toBe("3");
     expect(url.searchParams.get("playsinline")).toBe("1");
+    expect(url.searchParams.get("rel")).toBe("0");
+    expect(url.searchParams.get("fs")).toBeNull();
+    expect(url.searchParams.get("disablekb")).toBeNull();
+    expect(url.searchParams.get("modestbranding")).toBeNull();
+    expect(url.searchParams.get("showinfo")).toBeNull();
+  });
+
+  it("uses the same supported minimal chrome settings for the IFrame API", () => {
+    expect(
+      youtubePlayerVars("https://watchnest.example", { startSeconds: 8.8 }),
+    ).toEqual({
+      controls: "1",
+      iv_load_policy: "3",
+      playsinline: "1",
+      rel: "0",
+      origin: "https://watchnest.example",
+      start: "8",
+    });
   });
 });
