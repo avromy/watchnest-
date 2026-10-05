@@ -1,4 +1,4 @@
-+# Final family beta — deployed; one real-device containment observation pending (2026-10-05)
+# Final family beta — deployed; one real-device containment observation pending (2026-10-05)
 
 ## Exact binding
 
@@ -10,6 +10,26 @@
 - Hosted schema: `20261005000000_final_family_beta` plus follow-up hidden-video FK index; Safe Playback is ON for the Founder household.
 - GitHub: branch `final-family-beta`, draft PR #34. Vercel status SUCCESS; local exact-tree equivalent passed typecheck, lint, 181 tests, production build, and 12/12 browser flows.
 - Independent security: PASS. Independent Stranger: PASS. Human-Eye V2.0: PASS for six exact rendered product rasters, with the synthetic-fixture limitation preserved.
+
+## Current OS / infrastructure-autonomy refresh
+
+Consumed live on 2026-10-05: AI Project Operating System — START HERE; Existing
+Project OS Migration; Operating-System Router — Universal; HQ + Builder Project
+Launch System; Current Skill & System Registry; AI Operating System — Master
+Control Layer; and Autonomous Infrastructure & Credential Operations V1.1
+(effective 2026-10-05). This project remains an EXISTING GOVERNED PROJECT in
+Builder (Work), with HQ-owned acceptance and independent reviewer separation.
+
+V1.1 escalation check: there is no unreadable-secret incident or credential
+failure to repair. Safe discovery verified the dedicated WatchNest Vercel
+project, the expected five production environment-variable consumers by name
+only, the dedicated Supabase project `ysukwpeowpcixdzkexky` as
+`ACTIVE_HEALTHY`, production alias binding to the exact READY deployment, and
+GitHub PR #34 at durable head `8ebca886d4db331c5e535fba6cd93a8e98283b5d`.
+No secret was decrypted, exposed, rotated, or needlessly invalidated. No
+redeploy/restart is required because the hosted application and configuration
+are healthy. The remaining iPad observation is a physical interaction/evidence
+boundary, not an infrastructure or credential blocker.
 
 ## Release state
 

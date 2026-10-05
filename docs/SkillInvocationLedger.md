@@ -1,4 +1,4 @@
-+# Final family beta invocation receipt — 2026-10-05
+# Final family beta invocation receipt — 2026-10-05
 
 **Exact application candidate:** `de1e82f5443fbfe6e315eb47e5f30014d1d1b653`, tree `42923eb8db6e518e0ff13702714e37fb7dc861b2`, production `dpl_HF2fKpkNVKTwEy1C2ZBTJg2r9jYq`.
 
@@ -16,6 +16,16 @@
 | Vercel verification/deployment | Exact GitHub commit built READY and production alias was atomically assigned; previous deployment remains rollback. Public sign-in and protected-route redirect observed on exact previews. |
 | Founder Ready | All autonomous gates pass. Terminal declaration is intentionally withheld until the one exact authenticated family-iPad containment observation recorded in RunState. |
 | Continuous Learning | Recorded project-only Founder authorization without generalizing it; retained existential-platform-risk, appliance-flow, near-zero-maintenance, bounded autonomy, and hidden-architecture lessons. |
+
+## Current-authority refresh receipt — 2026-10-05
+
+| Capability | Current authority / bounded outcome | Result |
+|---|---|---|
+| Project OS / Operating-System Router | Live Notion authorities refreshed after the V1.1 update. Existing governed WatchNest state recovered; deterministic-next-action and Builder (Work) routing preserved. | PASS |
+| HQ + Builder Launch | Live launch system refreshed. HQ retains acceptance; Builder executed authenticated inspection; independent reviewers remain separate. | PASS |
+| Master Registry | Live registry refreshed; Infrastructure Autonomy V1.1 is the current universal control and Human-Eye V2.0 remains the current visual authority. | PASS |
+| Autonomous Infrastructure & Credential Operations V1.1 | Dedicated Vercel/Supabase/GitHub identities and known environment consumers were inspected without decrypting values. Hosted state is healthy; no rotation/replacement or redeploy is justified. Physical iPad containment observation correctly remains outside this control. | PASS |
+| Project-handoff / Founder Ready package handles | Previously invoked exact-candidate receipts remain durable. The prior executor package handles were unavailable during this refresh, so they are not falsely claimed as newly invoked. Live OS/registry/project authority was consumed directly and terminal status remains fail-closed pending real-device evidence. | PASS for honest routing; terminal still pending |
 
 No skill name is counted as invocation without consumed instructions and a bounded outcome. Synthetic screenshots are not promoted to real-device evidence.
 
