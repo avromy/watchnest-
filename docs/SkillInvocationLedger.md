@@ -1,3 +1,15 @@
+# Production setup incident receipt — 2026-10-05
+
+**Exact repaired candidate:** commit `d9df9a81637a2b23c6def20bfda78d73e2863580`, tree `6d1f2a37e3aae4f58362300812e18247abeac2c3`, production `dpl_EYQ26gv4KazVkMiLsarYiWGe8mG8`.
+
+| Capability | Current authority consumed | Trigger and work | Evidence / result |
+|---|---|---|---|
+| Project Handoff | Installed `project-handoff` v1.0; all eight WatchNest project-source controls; current repository/run state | Continue exact candidate, preserve locks, candidate/evidence identity and rollback | PASS — no restart; prior runtime work preserved; old preview deployment retained as incident evidence and `dpl_BNRg...` as rollback |
+| Supabase | Installed `supabase` v0.1.2 including Auth/RLS checklist; current official Auth documentation | Investigate setup 503, migration state, Auth-to-household link, profiles and assignments without credentials or destructive writes | PASS — project ACTIVE_HEALTHY; final migrations present; confirmed password-backed Auth user linked to intact household; Miri/Ari/Benny/Eli and assignments preserved; no data mutation |
+| Vercel Investigation / CI | Installed `investigation-mode` and `deployments-cicd`; live deployment, env-target, logs and alias state | Trace exact 503 and repair deployment/config binding | PASS — root cause was production alias on preview-target artifact with production-only env scope; PR #34 merged into configured production branch; new production deployment READY; `/api/session` is configured and auth route reaches Supabase |
+| Security / regression | Existing independent security acceptance plus exact local regression suite | Confirm repair did not weaken auth, sibling isolation or data | PASS — typecheck, lint, 181 tests, build; generic same-origin invalid login response; no runtime errors; no secret read/rotation |
+| Founder Ready | Existing current Founder Ready receipt; terminal evidence hierarchy retained | Determine whether incident closes terminal gate | BLOCKED only on the same minimum real-device Safe Playback exit tap; production setup is no longer a blocker |
+
 # Final family beta invocation receipt — 2026-10-05
 
 **Exact application candidate:** `de1e82f5443fbfe6e315eb47e5f30014d1d1b653`, tree `42923eb8db6e518e0ff13702714e37fb7dc861b2`, production `dpl_HF2fKpkNVKTwEy1C2ZBTJg2r9jYq`.
