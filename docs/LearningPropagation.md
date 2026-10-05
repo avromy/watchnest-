@@ -1,5 +1,18 @@
 # UX redesign learning propagation — 2026-10-02
 
+## PROCESS — production domains must bind production-target artifacts
+
+Failure: a READY preview deployment was manually assigned to the public
+production domain while required runtime variables were correctly scoped only
+to `production`. Static pages looked healthy, but server configuration was absent
+and Parent login failed before authentication. Prevention: release acceptance
+must verify deployment target as well as URL/commit/readiness, then call a
+non-secret hosted health surface and require `configured:true` after every alias
+movement. A successful build or domain response is insufficient. Do not solve
+this by broadening privileged secrets to previews; rebuild the exact candidate
+for the intended environment. This is a reusable deployment-process lesson;
+family records and credential values remain project-private.
+
 ## Calibration event
 
 The product passed technical qualification while recurring family paths still exposed architecture, overlapping taxonomy, and avoidable decision steps. The earlier review system over-weighted route correctness and component presence; it under-weighted a cold user's first recurring path and the question “why must the user see or do this?”
