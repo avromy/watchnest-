@@ -317,7 +317,7 @@
   color: #6c7c76;
 }
 .child-video-copy {
-  padding: 17px 52px 18px 18px;
+  padding: 17px 142px 18px 18px;
 }
 .child-video-copy h3 {
   font-size: 1.05rem;
@@ -355,14 +355,14 @@
 }
 .hide-video-button {
   position: absolute;
-  left: 10px;
-  top: 10px;
+  right: 58px;
+  bottom: 14px;
   min-height: 34px;
   padding: 6px 11px;
-  border: 1px solid #ffffff99;
+  border: 1px solid #d8dfda;
   border-radius: 999px;
-  background: #102822d9;
-  color: #fff;
+  background: #fff;
+  color: #527067;
   font: inherit;
   font-size: 12px;
   font-weight: 800;

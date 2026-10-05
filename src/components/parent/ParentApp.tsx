@@ -1693,7 +1693,7 @@ function ChildSettings({ profile }: { profile: Profile }) {
           )}
           <p className="muted">
             Photos are cropped and compressed on this device, then stored
-            privately. JPG, PNG or WebP, up to 25 MB before processing.
+            privately. JPG, PNG, or WebP; up to 25 MB before processing.
           </p>
         </fieldset>
         <label className={styles.toggle}>
