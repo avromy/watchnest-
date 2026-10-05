@@ -247,7 +247,7 @@ async function child() {
   const household = check(
     await client
       .from("parents")
-      .select("timezone")
+      .select("timezone,safe_playback_enabled")
       .eq("id", profile.parent_id)
       .single(),
   );
@@ -256,7 +256,7 @@ async function child() {
       "WatchNest is not available for this profile right now.",
       403,
     );
-  return { profile, session };
+  return { profile, session, parent: household };
 }
 async function metadataMaintenance(client: ReturnType<typeof db>) {
   // Request-driven cleanup is complemented by a release-time daily scheduler.
@@ -1197,6 +1197,7 @@ async function parentRoute(
       return reply({
         parent_pin_set: Boolean(p.parent_pin_hash),
         timezone: p.timezone || "America/New_York",
+        safe_playback_enabled: p.safe_playback_enabled !== false,
       });
     if (method === "PATCH") {
       const b = z
@@ -1206,6 +1207,7 @@ async function parentRoute(
             .regex(/^\d{4}$/)
             .optional(),
           timezone: z.string().min(1).max(80).optional(),
+          safe_playback_enabled: z.boolean().optional(),
         })
         .parse(body);
       if (b.parent_pin) {
@@ -1240,6 +1242,14 @@ async function parentRoute(
             .eq("id", p.id),
         );
       }
+      if (b.safe_playback_enabled !== undefined) {
+        check(
+          await client
+            .from("parents")
+            .update({ safe_playback_enabled: b.safe_playback_enabled })
+            .eq("id", p.id),
+        );
+      }
       return reply({ ok: true });
     }
   }
@@ -1251,6 +1261,14 @@ async function parentRoute(
     const result: any[] = [];
     const errors: any[] = [];
     for (const url of b.urls) {
+      let parsedUrl: URL | null = null;
+      try {
+        parsedUrl = new URL(url);
+      } catch {}
+      if (parsedUrl?.pathname.startsWith("/shorts/")) {
+        errors.push({ url, error: "YouTube Shorts are not supported." });
+        continue;
+      }
       const videoId = extractYouTubeVideoId(url);
       if (!videoId) {
         errors.push({ url, error: "Enter a valid YouTube video URL." });
@@ -1285,11 +1303,18 @@ async function parentRoute(
       .max(200)
       .optional()
       .parse(params.get("source") || undefined);
+    const pageToken = z
+      .string()
+      .trim()
+      .min(1)
+      .max(500)
+      .optional()
+      .parse(params.get("pageToken") || undefined);
     const query = sourceId
       ? (params.get("q") || "").slice(0, 200)
       : text.parse(params.get("q"));
     const cacheKey = digest(
-      `${kind}:${sourceId || "search"}:${query.toLowerCase()}`,
+      `${kind}:${sourceId || "search"}:${query.toLowerCase()}:${pageToken || "first"}`,
     );
     const cached = check(
       await client
@@ -1302,8 +1327,12 @@ async function parentRoute(
     if (cached)
       return reply(
         kind === "video" || sourceId
-          ? { videos: cached.result_json }
-          : { items: cached.result_json },
+          ? Array.isArray(cached.result_json)
+            ? { videos: cached.result_json, nextPageToken: null }
+            : cached.result_json
+          : Array.isArray(cached.result_json)
+            ? { items: cached.result_json, nextPageToken: null }
+            : cached.result_json,
       );
     await limit("ytsearch:" + p.id, 30, 86400);
     if (!sourceId && kind !== "video") {
@@ -1312,7 +1341,8 @@ async function parentRoute(
         q: query,
         type: kind,
         safeSearch: "strict",
-        maxResults: "12",
+        maxResults: "20",
+        ...(pageToken ? { pageToken } : {}),
       });
       const items = result.items.map((item: any) => ({
         id: kind === "channel" ? item.id.channelId : item.id.playlistId,
@@ -1331,21 +1361,27 @@ async function parentRoute(
             cache_key: cacheKey,
             normalized_query: `${kind}:${query.toLowerCase()}`,
             raw_query: query,
-            result_json: items,
+            result_json: {
+              items,
+              nextPageToken: result.nextPageToken || null,
+            },
             expires_at: new Date(Date.now() + 3600000).toISOString(),
           },
           { onConflict: "cache_key" },
         ),
       );
-      return reply({ items });
+      return reply({ items, nextPageToken: result.nextPageToken || null });
     }
     let videoIds: string[];
+    let nextPageToken: string | null = null;
     if (sourceId && kind === "playlist") {
       const result = await youtube("playlistItems", {
         part: "snippet",
         playlistId: sourceId,
-        maxResults: "25",
+        maxResults: "50",
+        ...(pageToken ? { pageToken } : {}),
       });
+      nextPageToken = result.nextPageToken || null;
       videoIds = result.items
         .map((item: any) => item.snippet?.resourceId?.videoId)
         .filter(Boolean);
@@ -1360,8 +1396,10 @@ async function parentRoute(
         videoEmbeddable: "true",
         videoSyndicated: "true",
         safeSearch: "strict",
-        maxResults: sourceId ? "25" : "12",
+        maxResults: sourceId ? "50" : "24",
+        ...(pageToken ? { pageToken } : {}),
       });
+      nextPageToken = result.nextPageToken || null;
       videoIds = result.items.map((i: any) => i.id.videoId);
     }
     const found = await metadata(videoIds);
@@ -1376,13 +1414,16 @@ async function parentRoute(
           cache_key: cacheKey,
           normalized_query: query.toLowerCase(),
           raw_query: query,
-          result_json: usable,
+          result_json: {
+            videos: usable,
+            nextPageToken,
+          },
           expires_at: new Date(Date.now() + 3600000).toISOString(),
         },
         { onConflict: "cache_key" },
       ),
     );
-    return reply({ videos: usable });
+    return reply({ videos: usable, nextPageToken });
   }
   if (route === "parent/videos/check" && method === "POST") {
     await limit("ytcheck:" + p.id, 4, 3600);
@@ -1644,6 +1685,14 @@ async function childRoute(
     profile = c.profile;
   const own = await videos(profile.parent_id, profile.id);
   if (route === "child/library" && method === "GET") {
+    const hiddenIds = new Set(
+      check(
+        await client
+          .from("profile_hidden_videos")
+          .select("video_id")
+          .eq("profile_id", profile.id),
+      ).map((row: any) => row.video_id),
+    );
     const collections = check(
       await client
         .from("collections")
@@ -1660,9 +1709,34 @@ async function childRoute(
     const [profileView] = await profileViews([profile]);
     return reply({
       profile: profileView,
-      videos: own.map(childVideoView),
+      videos: own.map((video: any) => ({
+        ...childVideoView(video),
+        hidden: hiddenIds.has(video.id),
+      })),
       collections,
     });
+  }
+  if (route === "child/hidden" && method === "POST") {
+    const b = z.object({ videoId: id, hidden: z.boolean() }).parse(body);
+    if (!own.some((video: any) => video.id === b.videoId))
+      throw new Failure("This video is not in your library.", 403);
+    if (b.hidden) {
+      check(
+        await client.from("profile_hidden_videos").upsert(
+          { profile_id: profile.id, video_id: b.videoId },
+          { onConflict: "profile_id,video_id" },
+        ),
+      );
+    } else {
+      check(
+        await client
+          .from("profile_hidden_videos")
+          .delete()
+          .eq("profile_id", profile.id)
+          .eq("video_id", b.videoId),
+      );
+    }
+    return reply({ ok: true });
   }
   if (route === "child/requests" && method === "POST") {
     const b = z
@@ -1729,6 +1803,7 @@ async function childRoute(
       profile: profileView,
       video: childVideoView(video),
       next: next ? childVideoView(next) : null,
+      safe_playback_enabled: c.parent.safe_playback_enabled !== false,
     });
   }
   if (route === "child/progress" && method === "POST") {

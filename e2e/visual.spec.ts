@@ -23,6 +23,19 @@ test("synthetic visual evidence: parent and child surfaces", async ({
     path: "docs/evidence/parent-children-synthetic.png",
     fullPage: true,
   });
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await page.goto("/parent/settings");
+  await expect(page.getByRole("heading", { name: "Safe Playback" })).toBeVisible();
+  await page.screenshot({
+    path: "docs/evidence/parent-settings-tablet-synthetic.png",
+    fullPage: true,
+  });
+  await page.goto("/parent/add-video");
+  await expect(page.getByRole("heading", { name: "Find videos" })).toBeVisible();
+  await page.screenshot({
+    path: "docs/evidence/parent-add-videos-tablet-synthetic.png",
+    fullPage: true,
+  });
   await page.unroute("**/api/**");
   await fixture(page, "child");
   await page.setViewportSize({ width: 1024, height: 768 });

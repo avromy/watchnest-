@@ -27,10 +27,17 @@ export default function Privacy() {
           <p>
             Videos play through YouTube’s official embedded player. YouTube
             controls branding, links, ads, menus, fullscreen behavior, and some
-            recommendation surfaces. Those surfaces can lead outside WatchNest.
-            “Approved only” describes WatchNest’s library and navigation; it is
-            not a guarantee that every YouTube-controlled click path is
-            contained.
+            recommendation surfaces. Safe Playback is on by default. In Child
+            Mode, it keeps player links from opening another website, app, tab,
+            or top-level page. If a parent turns Safe Playback off, those
+            YouTube-controlled links may lead outside WatchNest.
+          </p>
+          <p>
+            Safe Playback is a WatchNest browser control, not an iPad system
+            lock. Parents who want another layer can use the iPad protections
+            listed in Parent Settings. “Approved only” always describes the
+            child’s WatchNest library; turning Safe Playback off never changes
+            video assignments or sibling access.
           </p>
           <p>
             WatchNest uses the privacy-enhanced YouTube player where possible.

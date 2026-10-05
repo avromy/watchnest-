@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api, Profile } from "./model";
 import ProfileImage from "../ProfileImage";
@@ -14,6 +14,7 @@ export default function ChildLogin() {
   const [pin, setPin] = useState("");
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
+  const submittedPin = useRef("");
 
   useEffect(() => {
     let cancelled = false;
@@ -51,28 +52,34 @@ export default function ChildLogin() {
       router.replace("/watch/home");
     } catch (reason) {
       setError((reason as Error).message);
+      setPin("");
+      submittedPin.current = "";
       setBusy(false);
     }
   }
 
-  async function submitPin(event: FormEvent) {
-    event.preventDefault();
-    if (!selected) return;
-    await enterChild(selected, pin);
-  }
-
-  async function enterParent(event: FormEvent) {
-    event.preventDefault();
+  async function enterParent(enteredPin: string) {
     setBusy(true);
     setError("");
     try {
-      await api("/api/auth/parent-mode", { pin });
+      await api("/api/auth/parent-mode", { pin: enteredPin });
       router.replace("/parent/dashboard");
     } catch (reason) {
       setError((reason as Error).message);
+      setPin("");
+      submittedPin.current = "";
       setBusy(false);
     }
   }
+
+  useEffect(() => {
+    if (pin.length !== 4 || busy || submittedPin.current === pin) return;
+    submittedPin.current = pin;
+    if (parentMode) void enterParent(pin);
+    else if (selected) void enterChild(selected, pin);
+    // Entry is intentionally triggered by the completed four-digit value.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pin, parentMode, selected, busy]);
 
   if (busy && !profiles.length)
     return (
@@ -110,6 +117,7 @@ export default function ChildLogin() {
               onClick={() => {
                 setError("");
                 setPin("");
+                submittedPin.current = "";
                 if (profile.pin_enabled) setSelected(profile);
                 else void enterChild(profile);
               }}
@@ -134,6 +142,7 @@ export default function ChildLogin() {
           onClick={() => {
             setError("");
             setPin("");
+            submittedPin.current = "";
             if (parentPinSet) setParentMode(true);
             else router.push("/login?parent=1");
           }}
@@ -156,9 +165,8 @@ export default function ChildLogin() {
             }
           }}
         >
-          <form
+          <div
             className="pin-card"
-            onSubmit={parentMode ? enterParent : submitPin}
           >
             {selected && (
               <ProfileImage
@@ -201,9 +209,7 @@ export default function ChildLogin() {
                 {error}
               </p>
             )}
-            <button className="button" disabled={busy || pin.length !== 4}>
-              {busy ? "Opening…" : "Continue"}
-            </button>
+            {busy && <p role="status">Opening…</p>}
             <button
               type="button"
               className="button-quiet"
@@ -211,12 +217,13 @@ export default function ChildLogin() {
                 setSelected(null);
                 setParentMode(false);
                 setPin("");
+                submittedPin.current = "";
                 setError("");
               }}
             >
               Cancel
             </button>
-          </form>
+          </div>
         </div>
       )}
     </main>

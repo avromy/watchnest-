@@ -304,8 +304,9 @@ export function Overview() {
           <div>
             <p className="eyebrow">Needs your attention</p>
             <h2>
-              {pending.length} child requests · {data.attention.length} library
-              issues
+              {pending.length} child {pending.length === 1 ? "request" : "requests"} ·{" "}
+              {data.attention.length} library{" "}
+              {data.attention.length === 1 ? "issue" : "issues"}
             </h2>
             <p className="muted">
               {pending[0]
@@ -414,8 +415,10 @@ export function Overview() {
   );
 }
 export function AddVideos() {
-  const { data, act, busy } = useParent();
+  const { data, act, busy, reload } = useParent();
   const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
+  const urlInput = useRef<HTMLTextAreaElement | null>(null);
+  const autoResolved = useRef("");
   const [query, setQuery] = useState(""),
     [urls, setUrls] = useState(""),
     [results, setResults] = useState<Video[]>([]),
@@ -440,6 +443,9 @@ export function AddVideos() {
     [selected, setSelected] = useState<string[]>([]),
     [profiles, setProfiles] = useState<string[]>([]),
     [collection, setCollection] = useState(""),
+    [creatingCollection, setCreatingCollection] = useState(false),
+    [newCollectionTitle, setNewCollectionTitle] = useState(""),
+    [nextPageToken, setNextPageToken] = useState<string | null>(null),
     [preview, setPreview] = useState<Video | null>(null),
     [previewLoaded, setPreviewLoaded] = useState(false),
     [error, setError] = useState(""),
@@ -451,11 +457,17 @@ export function AddVideos() {
     requestAnimationFrame(() => previewReturnFocus.current?.focus());
   }
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("q");
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("q");
+    const sharedUrl = params.get("url");
     if (requested) setQuery(requested);
+    if (sharedUrl) setUrls(sharedUrl);
   }, []);
-  async function find(e: FormEvent, lookup: boolean) {
-    e.preventDefault();
+  async function runFind(
+    lookup: boolean,
+    pageToken?: string,
+    append = false,
+  ) {
     const links = urls
       .split(/[\n,]+/)
       .map((v) => v.trim())
@@ -474,19 +486,31 @@ export function AddVideos() {
             videos: Video[];
             errors: { url: string; error: string }[];
           }>("/api/parent/videos/lookup", "POST", { urls: links })
-        : await api<{ videos?: Video[]; items?: typeof discoveries }>(
-            `/api/parent/videos/search?q=${encodeURIComponent(query)}&type=${source?.type || resultType}${source ? `&source=${encodeURIComponent(source.id)}` : ""}`,
+        : await api<{
+            videos?: Video[];
+            items?: typeof discoveries;
+            nextPageToken?: string | null;
+          }>(
+            `/api/parent/videos/search?q=${encodeURIComponent(query)}&type=${source?.type || resultType}${source ? `&source=${encodeURIComponent(source.id)}` : ""}${pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : ""}`,
           );
+      setNextPageToken("nextPageToken" in result ? result.nextPageToken || null : null);
       if (!lookup && !source && resultType !== "video") {
-        setDiscoveries("items" in result ? result.items || [] : []);
+        setDiscoveries((current) =>
+          append
+            ? [...current, ...(("items" in result ? result.items : []) || [])]
+            : (("items" in result ? result.items : []) || []),
+        );
         setResults([]);
         setSelected([]);
         return;
       }
-      setResults(
+      setResults((current) =>
         Array.from(
           new Map(
-            (result.videos || []).map((v) => [v.youtube_video_id, v]),
+            [...(append ? current : []), ...(result.videos || [])].map((v) => [
+              v.youtube_video_id,
+              v,
+            ]),
           ).values(),
         ),
       );
@@ -504,6 +528,30 @@ export function AddVideos() {
       setLoading(false);
     }
   }
+  function find(e: FormEvent, lookup: boolean) {
+    e.preventDefault();
+    void runFind(lookup);
+  }
+  useEffect(() => {
+    const value = urls.trim();
+    if (!value || value === autoResolved.current) return;
+    const links = value
+      .split(/[\n,]+/)
+      .map((item) => item.trim())
+      .filter(Boolean);
+    if (
+      links.length > 20 ||
+      !links.every((link) => /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(link))
+    )
+      return;
+    const timer = window.setTimeout(() => {
+      autoResolved.current = value;
+      void runFind(true);
+    }, 450);
+    return () => window.clearTimeout(timer);
+    // runFind intentionally uses the latest form state after this short debounce.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urls]);
   async function approve() {
     if (
       await act("/api/parent/videos", "POST", {
@@ -516,6 +564,9 @@ export function AddVideos() {
         `${selected.length} individually selected video${selected.length === 1 ? "" : "s"} approved.`,
       );
       setSelected([]);
+      setUrls("");
+      autoResolved.current = "";
+      requestAnimationFrame(() => urlInput.current?.focus());
     }
   }
   return (
@@ -589,6 +640,7 @@ export function AddVideos() {
           <h2>Already have links?</h2>
           <label htmlFor="yt-urls">Paste one YouTube video link per line</label>
           <textarea
+            ref={urlInput}
             className="field"
             id="yt-urls"
             value={urls}
@@ -597,12 +649,7 @@ export function AddVideos() {
             required
             placeholder="https://www.youtube.com/watch?v=…"
           />
-          <button
-            className="button-secondary"
-            disabled={loading || !urls.trim()}
-          >
-            Look up videos
-          </button>
+          <p className="muted">Valid links load automatically. Paste several at once.</p>
         </form>
       </div>
       {error && (
@@ -610,6 +657,15 @@ export function AddVideos() {
           {error}
         </div>
       )}
+      <details className="panel">
+        <summary><strong>Move existing family picks</strong></summary>
+        <p className="muted">
+          YouTube Kids does not provide WatchNest with an official approved-content
+          import. Use Share or Copy link for the videos you want to keep, then paste
+          all the links above. WatchNest resolves them together, marks duplicates,
+          and still requires individual approval.
+        </p>
+      </details>
       {message && (
         <div className="notice" role="status">
           {message}
@@ -681,10 +737,57 @@ export function AddVideos() {
                   {c.title}
                 </option>
               ))}
+              <option value="__new">+ New Collection</option>
             </select>
+            {collection === "__new" && (
+              <div className="form-row">
+                <input
+                  className="field"
+                  value={newCollectionTitle}
+                  onChange={(event) => setNewCollectionTitle(event.target.value)}
+                  placeholder="Collection name"
+                  maxLength={120}
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  className="button-secondary"
+                  disabled={creatingCollection || !newCollectionTitle.trim()}
+                  onClick={async () => {
+                    setCreatingCollection(true);
+                    setError("");
+                    try {
+                      const result = await api<{ collection: Collection }>(
+                        "/api/parent/collections",
+                        "POST",
+                        { title: newCollectionTitle.trim(), video_ids: [] },
+                      );
+                      await reload();
+                      setCollection(result.collection.id);
+                      setNewCollectionTitle("");
+                    } catch (reason) {
+                      setError(
+                        reason instanceof Error
+                          ? reason.message
+                          : "Could not create the Collection.",
+                      );
+                    } finally {
+                      setCreatingCollection(false);
+                    }
+                  }}
+                >
+                  Create
+                </button>
+              </div>
+            )}
             <button
               className="button"
-              disabled={!selected.length || !profiles.length || busy}
+              disabled={
+                !selected.length ||
+                !profiles.length ||
+                busy ||
+                collection === "__new"
+              }
               onClick={approve}
             >
               Approve {selected.length || ""} selected videos
@@ -746,6 +849,16 @@ export function AddVideos() {
               </article>
             ))}
           </div>
+          {nextPageToken && (
+            <button
+              type="button"
+              className="button-secondary"
+              disabled={loading}
+              onClick={() => void runFind(false, nextPageToken, true)}
+            >
+              {loading ? "Loading…" : "Load more"}
+            </button>
+          )}
         </>
       )}
       {preview && (
@@ -819,7 +932,7 @@ export function AddVideos() {
   );
 }
 export function Library() {
-  const { data, act, busy } = useParent();
+  const { data, act, busy, reload } = useParent();
   const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
   const [query, setQuery] = useState(""),
     [filter, setFilter] = useState(""),
@@ -828,7 +941,8 @@ export function Library() {
     [edit, setEdit] = useState<Video | null>(null),
     [preview, setPreview] = useState<Video | null>(null),
     [previewLoaded, setPreviewLoaded] = useState(false),
-    [tags, setTags] = useState("");
+    [tags, setTags] = useState(""),
+    [bulkCollection, setBulkCollection] = useState("");
   const videos = data.videos.filter(
     (v) =>
       (!filter || v.profile_ids?.includes(filter)) &&
@@ -923,8 +1037,64 @@ export function Library() {
                 />
               </label>
             )}
+            <label>
+              Add to Collection
+              <select
+                className="field"
+                value={bulkCollection}
+                onChange={(event) => setBulkCollection(event.target.value)}
+              >
+                <option value="">Choose a Collection</option>
+                {data.collections.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              className="button-secondary"
+              disabled={busy || !bulkCollection}
+              onClick={async () => {
+                const target = data.collections.find(
+                  (item) => item.id === bulkCollection,
+                );
+                if (!target) return;
+                await api("/api/parent/collections", "PATCH", {
+                  id: target.id,
+                  video_ids: Array.from(
+                    new Set([...target.video_ids, ...selected]),
+                  ),
+                });
+                await reload();
+                setSelected([]);
+                setBulkCollection("");
+              }}
+            >
+              Add selected to Collection
+            </button>{" "}
             <button className="button" disabled={busy} onClick={save}>
               Save
+            </button>{" "}
+            <button
+              className="button-quiet"
+              disabled={busy}
+              onClick={async () => {
+                if (
+                  !window.confirm(
+                    `Remove ${selected.length} selected video${selected.length === 1 ? "" : "s"} from every child library?`,
+                  )
+                )
+                  return;
+                for (const videoId of selected)
+                  await api("/api/parent/videos", "DELETE", {
+                    video_id: videoId,
+                  });
+                await reload();
+                setSelected([]);
+              }}
+            >
+              Remove selected
             </button>{" "}
             <button
               className="button-quiet"
@@ -1251,6 +1421,60 @@ export function Collections() {
     </>
   );
 }
+
+async function imageBitmapFromFile(file: File) {
+  return await createImageBitmap(file, { imageOrientation: "from-image" });
+}
+
+async function suggestedPhotoFocus(file: File) {
+  const bitmap = await imageBitmapFromFile(file);
+  try {
+    const Detector = (
+      window as unknown as {
+        FaceDetector?: new (options: { maxDetectedFaces: number }) => {
+          detect: (source: ImageBitmap) => Promise<
+            { boundingBox: { x: number; y: number; width: number; height: number } }[]
+          >;
+        };
+      }
+    ).FaceDetector;
+    if (!Detector) return { x: 50, y: 42 };
+    const faces = await new Detector({ maxDetectedFaces: 1 }).detect(bitmap);
+    const face = faces[0]?.boundingBox;
+    if (!face) return { x: 50, y: 42 };
+    return {
+      x: Math.round(((face.x + face.width / 2) / bitmap.width) * 100),
+      y: Math.round(((face.y + face.height / 2) / bitmap.height) * 100),
+    };
+  } finally {
+    bitmap.close();
+  }
+}
+
+async function optimizedProfilePhoto(file: File, focusX: number, focusY: number) {
+  const bitmap = await imageBitmapFromFile(file);
+  try {
+    const side = Math.min(bitmap.width, bitmap.height);
+    const centerX = (focusX / 100) * bitmap.width;
+    const centerY = (focusY / 100) * bitmap.height;
+    const sourceX = Math.max(0, Math.min(bitmap.width - side, centerX - side / 2));
+    const sourceY = Math.max(0, Math.min(bitmap.height - side, centerY - side / 2));
+    const canvas = document.createElement("canvas");
+    canvas.width = 1024;
+    canvas.height = 1024;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("This browser could not prepare the photo.");
+    context.drawImage(bitmap, sourceX, sourceY, side, side, 0, 0, 1024, 1024);
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve, "image/jpeg", 0.82),
+    );
+    if (!blob) throw new Error("This browser could not prepare the photo.");
+    return new File([blob], "profile-photo.jpg", { type: "image/jpeg" });
+  } finally {
+    bitmap.close();
+  }
+}
+
 function ChildSettings({ profile }: { profile: Profile }) {
   const { act, busy, reload } = useParent();
   const router = useRouter();
@@ -1260,14 +1484,24 @@ function ChildSettings({ profile }: { profile: Profile }) {
     [avatar, setAvatar] = useState(profile.avatar_key || "leaf"),
     [message, setMessage] = useState(""),
     [error, setError] = useState(""),
+    [photoFile, setPhotoFile] = useState<File | null>(null),
+    [photoPreview, setPhotoPreview] = useState(""),
+    [focusX, setFocusX] = useState(50),
+    [focusY, setFocusY] = useState(42),
     [photoBusy, setPhotoBusy] = useState(false);
+  useEffect(() => {
+    return () => {
+      if (photoPreview) URL.revokeObjectURL(photoPreview);
+    };
+  }, [photoPreview]);
   async function uploadPhoto(file: File) {
     setPhotoBusy(true);
     setError("");
     setMessage("");
-    const form = new FormData();
-    form.set("photo", file);
     try {
+      const prepared = await optimizedProfilePhoto(file, focusX, focusY);
+      const form = new FormData();
+      form.set("photo", prepared);
       const response = await fetch(`/api/parent/profile-photo/${profile.id}`, {
         method: "POST",
         body: form,
@@ -1275,6 +1509,8 @@ function ChildSettings({ profile }: { profile: Profile }) {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
       await reload();
+      setPhotoFile(null);
+      setPhotoPreview("");
       setMessage("Photo updated.");
     } catch (reason) {
       setError(
@@ -1388,10 +1624,64 @@ function ChildSettings({ profile }: { profile: Profile }) {
               disabled={photoBusy}
               onChange={(event) => {
                 const file = event.target.files?.[0];
-                if (file) void uploadPhoto(file);
+                if (!file) return;
+                if (file.size > 25 * 1024 * 1024) {
+                  setError("Choose a photo smaller than 25 MB.");
+                  return;
+                }
+                setError("");
+                if (photoPreview) URL.revokeObjectURL(photoPreview);
+                setPhotoFile(file);
+                setPhotoPreview(URL.createObjectURL(file));
+                void suggestedPhotoFocus(file)
+                  .then((focus) => {
+                    setFocusX(focus.x);
+                    setFocusY(focus.y);
+                  })
+                  .catch(() => {
+                    setFocusX(50);
+                    setFocusY(42);
+                  });
               }}
             />
           </label>
+          {photoFile && photoPreview && (
+            <div className={styles.photoEditor}>
+              <img
+                src={photoPreview}
+                alt="Profile photo preview"
+                style={{ objectPosition: `${focusX}% ${focusY}%` }}
+              />
+              <label>
+                Move left or right
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={focusX}
+                  onChange={(event) => setFocusX(Number(event.target.value))}
+                />
+              </label>
+              <label>
+                Move up or down
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={focusY}
+                  onChange={(event) => setFocusY(Number(event.target.value))}
+                />
+              </label>
+              <button
+                className="button"
+                type="button"
+                disabled={photoBusy}
+                onClick={() => void uploadPhoto(photoFile)}
+              >
+                {photoBusy ? "Saving…" : "Use this photo"}
+              </button>
+            </div>
+          )}
           {profile.photo_url && (
             <button
               className="button-quiet"
@@ -1403,7 +1693,8 @@ function ChildSettings({ profile }: { profile: Profile }) {
             </button>
           )}
           <p className="muted">
-            Photos are stored privately. JPG, PNG or WebP, up to 2 MB.
+            Photos are cropped and compressed on this device, then stored
+            privately. JPG, PNG, or WebP; up to 25 MB before processing.
           </p>
         </fieldset>
         <label className={styles.toggle}>
@@ -1732,7 +2023,27 @@ export function Settings() {
     [confirmPin, setConfirmPin] = useState(""),
     [message, setMessage] = useState(""),
     [error, setError] = useState(""),
-    [busy, setBusy] = useState(false);
+    [busy, setBusy] = useState(false),
+    [safePlayback, setSafePlayback] = useState(true),
+    [setupResult, setSetupResult] = useState("");
+  useEffect(() => {
+    let active = true;
+    api<{ safe_playback_enabled: boolean }>("/api/parent/settings")
+      .then((settings) => {
+        if (active) setSafePlayback(settings.safe_playback_enabled !== false);
+      })
+      .catch((reason) => {
+        if (active)
+          setError(
+            reason instanceof Error
+              ? reason.message
+              : "Could not load device settings.",
+          );
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
   return (
     <>
       <Heading
@@ -1741,6 +2052,46 @@ export function Settings() {
         description="Protect Parent Mode and manage this device."
       />
       <div className="grid grid-2">
+        <section className="panel">
+          <h2>Safe Playback</h2>
+          <p className="muted">
+            Keep children inside WatchNest when they use the video player.
+          </p>
+          <label className={styles.switchRow}>
+            <input
+              type="checkbox"
+              checked={safePlayback}
+              disabled={busy}
+              onChange={async (event) => {
+                const next = event.target.checked;
+                setSafePlayback(next);
+                setBusy(true);
+                setError("");
+                try {
+                  await api("/api/parent/settings", "PATCH", {
+                    safe_playback_enabled: next,
+                  });
+                  setMessage(
+                    next ? "Safe Playback is on." : "Safe Playback is off.",
+                  );
+                } catch (reason) {
+                  setSafePlayback(!next);
+                  setError(
+                    reason instanceof Error
+                      ? reason.message
+                      : "Could not update Safe Playback.",
+                  );
+                } finally {
+                  setBusy(false);
+                }
+              }}
+            />
+            <span>
+              <strong>Keep children inside WatchNest</strong>
+              <small>Recommended for every child profile</small>
+            </span>
+          </label>
+        </section>
         <form
           className="panel"
           onSubmit={async (event) => {
@@ -1843,6 +2194,70 @@ export function Settings() {
           >
             Sign out of this device
           </button>
+        </section>
+        <section className="panel">
+          <h2>Extra device protection</h2>
+          <p className="muted">Using a family iPad?</p>
+          <ol className={styles.setupList}>
+            <li>Add WatchNest to the Home Screen and open it there.</li>
+            <li>Remove or restrict the YouTube app for the child.</li>
+            <li>
+              In Screen Time, turn on Content &amp; Privacy Restrictions and
+              limit adult websites. Add youtube.com to Never Allow.
+            </li>
+            <li>
+              For focused viewing, triple-click the side or Home button and
+              start Guided Access in WatchNest.
+            </li>
+          </ol>
+          <p className="muted">
+            Apple restrictions are extra protection. Safe Playback remains the
+            WatchNest control.
+          </p>
+          <button
+            type="button"
+            className="button-secondary"
+            onClick={() => {
+              const standalone =
+                window.matchMedia("(display-mode: standalone)").matches ||
+                (navigator as Navigator & { standalone?: boolean }).standalone;
+              const touch = navigator.maxTouchPoints > 0;
+              setSetupResult(
+                `${safePlayback ? "Safe Playback is on" : "Turn on Safe Playback"}. ${standalone ? "Home Screen mode is active" : "Open the Home Screen app for the most app-like experience"}. ${touch ? "Touch input detected" : "No touch input detected"}. Screen Time and Guided Access must be confirmed in iPad Settings.`,
+              );
+            }}
+          >
+            Test my setup
+          </button>
+          {setupResult && <p className="notice" role="status">{setupResult}</p>}
+        </section>
+        <section className="panel">
+          <h2>Playback on this device</h2>
+          <details>
+            <summary>Ads and YouTube Premium</summary>
+            <p className="muted">
+              YouTube may show ads in embedded playback. WatchNest does not receive
+              or transfer Premium entitlement through Google OAuth, so it cannot
+              promise ad-free playback or a one-time Premium connection.
+            </p>
+          </details>
+          <details>
+            <summary>Volume</summary>
+            <p className="muted">
+              WatchNest starts supported player sessions at a comfortable 60% and
+              remembers changes in this browser. On iPad, the physical volume
+              buttons remain the reliable control; some embedded videos use the
+              device volume directly.
+            </p>
+          </details>
+          <details>
+            <summary>Offline and travel</summary>
+            <p className="muted">
+              Offline YouTube downloads stay inside YouTube’s own signed-in apps
+              and website. WatchNest does not copy or cache videos, so an internet
+              connection is required for this beta.
+            </p>
+          </details>
         </section>
       </div>
     </>

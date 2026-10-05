@@ -12,9 +12,11 @@ type Tab = "home" | "library" | "request";
 function VideoGrid({
   videos,
   onFavorite,
+  onHide,
 }: {
   videos: Video[];
   onFavorite: (video: Video) => void;
+  onHide: (video: Video) => void;
 }) {
   return (
     <div className="child-video-grid">
@@ -78,6 +80,17 @@ function VideoGrid({
               fill={video.favorite ? "currentColor" : "none"}
             />
           </button>
+          <button
+            className="hide-video-button"
+            aria-label={
+              video.hidden
+                ? `Restore ${video.title} to your library`
+                : `Hide ${video.title} from your library`
+            }
+            onClick={() => onHide(video)}
+          >
+            {video.hidden ? "Restore" : "Hide"}
+          </button>
         </article>
       ))}
     </div>
@@ -93,6 +106,8 @@ export default function ChildLibrary() {
   const [query, setQuery] = useState("");
   const [collection, setCollection] = useState<Collection | null>(null);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [hiddenOnly, setHiddenOnly] = useState(false);
+  const [undoVideo, setUndoVideo] = useState<Video | null>(null);
   const [error, setError] = useState("");
   const [kind, setKind] = useState("topic");
   const [message, setMessage] = useState("");
@@ -115,17 +130,19 @@ export default function ChildLibrary() {
     () =>
       videos.filter(
         (video) =>
+          (hiddenOnly ? video.hidden : !video.hidden) &&
           (!collection || collection.video_ids.includes(video.id)) &&
           (!favoritesOnly || video.favorite) &&
           `${video.title} ${video.channel_title} ${(video.tags || []).join(" ")} ${(video.collections || []).map((item) => item.title).join(" ")}`
             .toLocaleLowerCase()
             .includes(query.trim().toLocaleLowerCase()),
       ),
-    [videos, collection, favoritesOnly, query],
+    [videos, collection, favoritesOnly, hiddenOnly, query],
   );
   const continuing = videos
     .filter(
       (video) =>
+        !video.hidden &&
         video.made_for_kids === false &&
         video.progress &&
         video.progress.current_time_seconds > 0 &&
@@ -136,15 +153,16 @@ export default function ChildLibrary() {
         a.progress?.updated_at || "",
       ),
     );
-  const recent = [...videos].sort((a, b) =>
+  const recent = videos.filter((video) => !video.hidden).sort((a, b) =>
     (b.added_at || "").localeCompare(a.added_at || ""),
   );
-  const favorites = videos.filter((video) => video.favorite);
+  const favorites = videos.filter((video) => video.favorite && !video.hidden);
 
   function navigate(next: Tab) {
     setTab(next);
     setCollection(null);
     setFavoritesOnly(false);
+    setHiddenOnly(false);
     setQuery("");
     setSent(false);
     setError("");
@@ -179,6 +197,24 @@ export default function ChildLibrary() {
           item.id === video.id ? { ...item, favorite: !favorite } : item,
         ),
       );
+      setError((reason as Error).message);
+    }
+  }
+  async function toggleHidden(video: Video) {
+    const hidden = !video.hidden;
+    setUndoVideo(hidden ? video : null);
+    setVideos((items) =>
+      items.map((item) => (item.id === video.id ? { ...item, hidden } : item)),
+    );
+    try {
+      await api("/api/child/hidden", { videoId: video.id, hidden });
+    } catch (reason) {
+      setVideos((items) =>
+        items.map((item) =>
+          item.id === video.id ? { ...item, hidden: !hidden } : item,
+        ),
+      );
+      setUndoVideo(null);
       setError((reason as Error).message);
     }
   }
@@ -265,6 +301,20 @@ export default function ChildLibrary() {
           {error}
         </p>
       )}
+      {undoVideo && (
+        <div className="notice child-undo" role="status">
+          Hidden from your library.
+          <button
+            className="button-quiet"
+            onClick={() => {
+              void toggleHidden({ ...undoVideo, hidden: true });
+              setUndoVideo(null);
+            }}
+          >
+            Undo
+          </button>
+        </div>
+      )}
       {tab === "request" ? (
         <section className="request-card">
           <div className="request-icon">
@@ -342,13 +392,24 @@ export default function ChildLibrary() {
               aria-pressed={favoritesOnly}
               onClick={() => {
                 setFavoritesOnly(!favoritesOnly);
+                setHiddenOnly(false);
                 setCollection(null);
               }}
             >
               <Icon name="heart" width="19" /> Favorites
             </button>
+            <button
+              aria-pressed={hiddenOnly}
+              onClick={() => {
+                setHiddenOnly(!hiddenOnly);
+                setFavoritesOnly(false);
+                setCollection(null);
+              }}
+            >
+              Hidden
+            </button>
           </div>
-          {!collection && !favoritesOnly && collections.length > 0 && (
+          {!collection && !favoritesOnly && !hiddenOnly && collections.length > 0 && (
             <section>
               <div className="row-heading">
                 <h2>Collections</h2>
@@ -364,19 +425,24 @@ export default function ChildLibrary() {
               </div>
             </section>
           )}
-          {(collection || favoritesOnly) && (
+          {(collection || favoritesOnly || hiddenOnly) && (
             <button
               className="back-button"
               onClick={() => {
                 setCollection(null);
                 setFavoritesOnly(false);
+                setHiddenOnly(false);
               }}
             >
               ← All videos
             </button>
           )}
           {filtered.length ? (
-            <VideoGrid videos={filtered} onFavorite={toggleFavorite} />
+            <VideoGrid
+              videos={filtered}
+              onFavorite={toggleFavorite}
+              onHide={toggleHidden}
+            />
           ) : (
             <div className="child-empty">
               <h2>
@@ -384,6 +450,8 @@ export default function ChildLibrary() {
                   ? "Nothing found"
                   : favoritesOnly
                     ? "No Favorites yet"
+                    : hiddenOnly
+                      ? "Nothing hidden"
                     : "Nothing here yet"}
               </h2>
               <p>
@@ -391,6 +459,8 @@ export default function ChildLibrary() {
                   ? "Try another word or ask Parent."
                   : favoritesOnly
                     ? "Tap the heart on a video to save it here."
+                    : hiddenOnly
+                      ? "Videos you hide will appear here."
                     : "Ask Parent to add something."}
               </p>
               {query && (
@@ -424,6 +494,7 @@ export default function ChildLibrary() {
               <VideoGrid
                 videos={continuing.slice(0, 6)}
                 onFavorite={toggleFavorite}
+                onHide={toggleHidden}
               />
             </section>
           )}
@@ -443,6 +514,7 @@ export default function ChildLibrary() {
               <VideoGrid
                 videos={favorites.slice(0, 6)}
                 onFavorite={toggleFavorite}
+                onHide={toggleHidden}
               />
             </section>
           )}
@@ -478,6 +550,7 @@ export default function ChildLibrary() {
               <VideoGrid
                 videos={recent.slice(0, 9)}
                 onFavorite={toggleFavorite}
+                onHide={toggleHidden}
               />
             </section>
           ) : (

@@ -133,7 +133,6 @@ test("synthetic UI: shared device opens the profile picker and Parent Mode stays
     page.getByRole("heading", { name: "Parent Mode" }),
   ).toBeVisible();
   await page.getByLabel("4-digit PIN").fill("1234");
-  await page.getByRole("button", { name: "Continue" }).click();
   await expect
     .poll(() =>
       changes.some((change) => change.path === "/api/auth/parent-mode"),
@@ -142,9 +141,14 @@ test("synthetic UI: shared device opens the profile picker and Parent Mode stays
 });
 test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await fixture(page, "parent");
-  for (const width of [390, 768, 1024]) {
+  for (const width of [360, 390, 412, 520, 640, 768, 900, 1024, 1180, 1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const path of ["/parent/children", "/parent/library"]) {
+    for (const path of [
+      "/parent/children",
+      "/parent/library",
+      "/parent/add-video",
+      "/parent/settings",
+    ]) {
       await page.goto(path);
       await expect(page.locator("main h1")).toBeVisible();
       const overflow = await page.evaluate(
@@ -153,6 +157,21 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
       expect(overflow).toBe(false);
     }
   }
+  await page.unroute("**/api/**");
+  await fixture(page, "child");
+  for (const width of [360, 390, 768, 1024, 1180]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const path of ["/watch", "/watch/home"]) {
+      await page.goto(path);
+      await expect(page.locator("main h1")).toBeVisible();
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth + 1,
+      );
+      expect(overflow).toBe(false);
+    }
+  }
+  await page.unroute("**/api/**");
+  await fixture(page, "parent");
   await page.setViewportSize({ width: 1024, height: 900 });
   await page.goto("/parent/children");
   const dashboardBox = await page
@@ -168,6 +187,7 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
 
 test("synthetic UI: Made-for-Kids playback uses a direct identified embed", async ({
   page,
+  context,
 }) => {
   await fixture(page, "child");
   const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
@@ -179,11 +199,20 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
         profile: dashboard.profiles[1],
         video: madeForKids,
         next: null,
+        safe_playback_enabled: true,
       }),
     }),
   );
   await page.route("https://www.youtube-nocookie.com/**", (route) =>
-    route.abort(),
+    route.fulfill({
+      status: 200,
+      contentType: "text/html",
+      body: `<!doctype html>
+        <a id="title" href="https://www.youtube.com/watch?v=escape" target="_top">Title</a>
+        <a id="logo" href="https://www.youtube.com/" target="_blank">YouTube</a>
+        <a id="deep" href="youtube://watch?v=escape" target="_top">App</a>
+        <button id="popup" onclick="window.open('https://www.youtube.com/watch?v=escape')">Watch on YouTube</button>`,
+    }),
   );
   await page.goto(`/watch/player/${madeForKids.id}`);
   const iframe = page.locator('iframe[title="A gentle piano lesson"]');
@@ -193,7 +222,45 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
   expect(src.searchParams.get("enablejsapi")).toBeNull();
+  expect(await iframe.getAttribute("sandbox")).toBe(
+    "allow-scripts allow-same-origin allow-presentation",
+  );
+  const provider = page.frameLocator('iframe[title="A gentle piano lesson"]');
+  for (const selector of ["#title", "#logo", "#deep", "#popup"]) {
+    await provider.locator(selector).click();
+    await page.waitForTimeout(100);
+    expect(page.url()).toContain("/watch/player/");
+    expect(context.pages()).toHaveLength(1);
+  }
+  await expect(page.getByText(/Safe Playback is on/i)).toBeVisible();
   await expect(page.getByText(/resume is off/i)).toHaveCount(0);
+});
+
+test("synthetic UI: Safe Playback off preserves authorization but removes containment", async ({
+  page,
+}) => {
+  await fixture(page, "child");
+  const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
+  await page.route("**/api/child/player?**", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        profile: dashboard.profiles[1],
+        video: madeForKids,
+        next: null,
+        safe_playback_enabled: false,
+      }),
+    }),
+  );
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
+  );
+  await page.goto(`/watch/player/${madeForKids.id}`);
+  const iframe = page.locator('iframe[title="A gentle piano lesson"]');
+  await expect(iframe).toBeVisible();
+  expect(await iframe.getAttribute("sandbox")).toBeNull();
+  await expect(page.getByText(/Safe Playback is on/i)).toHaveCount(0);
 });
 
 test("synthetic UI: optional resume bootstrap failure falls back to playback", async ({

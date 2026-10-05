@@ -1,3 +1,37 @@
+# Final family beta invocation receipt — 2026-10-05
+
+**Exact application candidate:** `de1e82f5443fbfe6e315eb47e5f30014d1d1b653`, tree `42923eb8db6e518e0ff13702714e37fb7dc861b2`, production `dpl_HF2fKpkNVKTwEy1C2ZBTJg2r9jYq`.
+
+| Required capability | Actual invocation and bounded outcome |
+|---|---|
+| Product Intelligence | Classified the family backlog by core job and platform legality; preserved Collections, Favorites, Hide/Restore, bulk workflows, assisted migration, access windows, and progressive disclosure while rejecting fake minute precision, unauthorized offline media, and Premium-transfer claims. |
+| Autonomous Visual Production V008 / Website Production adapted to app UI | Consumed current core, authority, convergence, responsive, independent-review, Stranger, Founder-firewall, and handoff references. Repaired artwork-overlay chrome and converged the six-screen product system. |
+| Typography / spacing / icon / component consistency | Reviewed exact current rasters; warm family-library hierarchy, coherent icon system, touch spacing, typography, card system, and restrained chrome PASS. |
+| Match Check | Compared the exact rasters against the locked “Warm Family Library + Premium Streaming Sophistication” authority; no pixel-identical external brand was used or claimed. |
+| Responsive stress | 360/390/412/520/640/768/900/1024/1180/1280/1440 Parent widths plus representative child/profile widths pass without horizontal overflow. |
+| Human-Eye V2.0 | Current production-certified blind protocol consumed. Exact A01–A06 receipt is in RunState; PASS with 0 unresolved conflicts. |
+| Stranger Test | Independent cold reviewer returned PASS on the exact final candidate after Privacy/grammar/evidence repairs. |
+| Independent security | Independent reviewer returned PASS on exact final candidate; sibling isolation, Parent/child session binding, PIN gates, service-only hidden state, sandbox-before-navigation, CSP, search/bulk ownership, and photo signature/size boundaries verified. |
+| Supabase | Applied append-only final-family migration, fixed the new FK index, confirmed RLS/service-only posture, Safe default, and advisors. No temporary verification session remains. |
+| Vercel verification/deployment | Exact GitHub commit built READY and production alias was atomically assigned; previous deployment remains rollback. Public sign-in and protected-route redirect observed on exact previews. |
+| Founder Ready | All autonomous gates pass. Terminal declaration is intentionally withheld until the one exact authenticated family-iPad containment observation recorded in RunState. |
+| Continuous Learning | Recorded project-only Founder authorization without generalizing it; retained existential-platform-risk, appliance-flow, near-zero-maintenance, bounded autonomy, and hidden-architecture lessons. |
+
+## Current-authority refresh receipt — 2026-10-05
+
+| Capability | Current authority / bounded outcome | Result |
+|---|---|---|
+| Project OS / Operating-System Router | Live Notion authorities refreshed after the V1.1 update. Existing governed WatchNest state recovered; deterministic-next-action and Builder (Work) routing preserved. | PASS |
+| HQ + Builder Launch | Live launch system refreshed. HQ retains acceptance; Builder executed authenticated inspection; independent reviewers remain separate. | PASS |
+| Master Registry | Live registry refreshed; Infrastructure Autonomy V1.1 is the current universal control and Human-Eye V2.0 remains the current visual authority. | PASS |
+| Autonomous Infrastructure & Credential Operations V1.1 | Dedicated Vercel/Supabase/GitHub identities and known environment consumers were inspected without decrypting values. Hosted state is healthy; no rotation/replacement or redeploy is justified. Physical iPad containment observation correctly remains outside this control. | PASS |
+| Project-handoff / Founder Ready package handles | Previously invoked exact-candidate receipts remain durable. The prior executor package handles were unavailable during this refresh, so they are not falsely claimed as newly invoked. Live OS/registry/project authority was consumed directly and terminal status remains fail-closed pending real-device evidence. | PASS for honest routing; terminal still pending |
+
+No skill name is counted as invocation without consumed instructions and a bounded outcome. Synthetic screenshots are not promoted to real-device evidence.
+
+---
+
+
 # Final UX redesign invocation receipt — 2026-10-02
 
 **Candidate:** application commit `dfa009cdebb181173108f8a6ab636ff2ab0d4771`; production deployment `dpl_J8apogrsymnFPYvPTvtT8kVrPv5Q`.

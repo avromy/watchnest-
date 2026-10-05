@@ -8,6 +8,23 @@ const types: Record<string, string> = {
   "image/png": "png",
   "image/webp": "webp",
 };
+const maxPhotoBytes = 2 * 1024 * 1024;
+const maxMultipartBytes = maxPhotoBytes + 128 * 1024;
+
+function hasImageSignature(type: string, bytes: Uint8Array) {
+  if (type === "image/jpeg")
+    return bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  if (type === "image/png")
+    return [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a].every(
+      (value, index) => bytes[index] === value,
+    );
+  if (type === "image/webp")
+    return (
+      String.fromCharCode(...bytes.slice(0, 4)) === "RIFF" &&
+      String.fromCharCode(...bytes.slice(8, 12)) === "WEBP"
+    );
+  return false;
+}
 
 function response(data: unknown, status = 200) {
   return NextResponse.json(data, {
@@ -23,6 +40,9 @@ export async function POST(
   try {
     if (!sameOrigin(request))
       return response({ error: "Open this action from WatchNest." }, 403);
+    const contentLength = Number(request.headers.get("content-length") || 0);
+    if (contentLength > maxMultipartBytes)
+      return response({ error: "Choose a photo smaller than 2 MB." }, 413);
     const owner = await parent();
     const { profileId } = await context.params;
     const client = db();
@@ -41,8 +61,11 @@ export async function POST(
       return response({ error: "Choose a photo to upload." }, 400);
     if (!types[file.type])
       return response({ error: "Use a JPG, PNG, or WebP photo." }, 400);
-    if (file.size > 2 * 1024 * 1024)
+    if (file.size > maxPhotoBytes)
       return response({ error: "Choose a photo smaller than 2 MB." }, 400);
+    const signature = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+    if (!hasImageSignature(file.type, signature))
+      return response({ error: "Use a valid JPG, PNG, or WebP photo." }, 400);
     const path = `${owner.id}/${profileId}.${types[file.type]}`;
     const upload = await client.storage
       .from(bucket)

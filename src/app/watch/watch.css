@@ -317,7 +317,7 @@
   color: #6c7c76;
 }
 .child-video-copy {
-  padding: 17px 52px 18px 18px;
+  padding: 17px 142px 18px 18px;
 }
 .child-video-copy h3 {
   font-size: 1.05rem;
@@ -352,6 +352,48 @@
   color: #c75f58;
   background: #fff1ed;
   border-color: #efc4b9;
+}
+.hide-video-button {
+  position: absolute;
+  right: 58px;
+  bottom: 14px;
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 1px solid #d8dfda;
+  border-radius: 999px;
+  background: #fff;
+  color: #527067;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+}
+.child-undo {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.safe-playback-note {
+  margin: 12px 0 0;
+  color: #526861;
+  font-size: 0.9rem;
+}
+.player-volume {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(320px, 100%);
+  margin-top: 12px;
+  color: #526861;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+.player-volume input {
+  flex: 1;
+  accent-color: #286052;
 }
 .resume-line {
   height: 4px;
