@@ -304,8 +304,9 @@ export function Overview() {
           <div>
             <p className="eyebrow">Needs your attention</p>
             <h2>
-              {pending.length} child requests · {data.attention.length} library
-              issues
+              {pending.length} child {pending.length === 1 ? "request" : "requests"} ·{" "}
+              {data.attention.length} library{" "}
+              {data.attention.length === 1 ? "issue" : "issues"}
             </h2>
             <p className="muted">
               {pending[0]
