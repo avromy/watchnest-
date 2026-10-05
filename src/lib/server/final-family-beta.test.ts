@@ -68,4 +68,14 @@ describe("final family beta boundaries", () => {
     expect(embed).not.toContain("allow-top-navigation");
     expect(player).toContain('host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX)');
   });
+
+  it("bounds photo multipart input and verifies file signatures", () => {
+    const route = readFileSync(
+      "src/app/api/parent/profile-photo/[profileId]/route.ts",
+      "utf8",
+    );
+    expect(route).toContain('request.headers.get("content-length")');
+    expect(route).toContain("maxMultipartBytes");
+    expect(route).toContain("hasImageSignature(file.type, signature)");
+  });
 });

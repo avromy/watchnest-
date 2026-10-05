@@ -187,6 +187,7 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
 
 test("synthetic UI: Made-for-Kids playback uses a direct identified embed", async ({
   page,
+  context,
 }) => {
   await fixture(page, "child");
   const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
@@ -203,7 +204,15 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
     }),
   );
   await page.route("https://www.youtube-nocookie.com/**", (route) =>
-    route.abort(),
+    route.fulfill({
+      status: 200,
+      contentType: "text/html",
+      body: `<!doctype html>
+        <a id="title" href="https://www.youtube.com/watch?v=escape" target="_top">Title</a>
+        <a id="logo" href="https://www.youtube.com/" target="_blank">YouTube</a>
+        <a id="deep" href="youtube://watch?v=escape" target="_top">App</a>
+        <button id="popup" onclick="window.open('https://www.youtube.com/watch?v=escape')">Watch on YouTube</button>`,
+    }),
   );
   await page.goto(`/watch/player/${madeForKids.id}`);
   const iframe = page.locator('iframe[title="A gentle piano lesson"]');
@@ -216,8 +225,42 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   expect(await iframe.getAttribute("sandbox")).toBe(
     "allow-scripts allow-same-origin allow-presentation",
   );
+  const provider = page.frameLocator('iframe[title="A gentle piano lesson"]');
+  for (const selector of ["#title", "#logo", "#deep", "#popup"]) {
+    await provider.locator(selector).click();
+    await page.waitForTimeout(100);
+    expect(page.url()).toContain("/watch/player/");
+    expect(context.pages()).toHaveLength(1);
+  }
   await expect(page.getByText(/Safe Playback is on/i)).toBeVisible();
   await expect(page.getByText(/resume is off/i)).toHaveCount(0);
+});
+
+test("synthetic UI: Safe Playback off preserves authorization but removes containment", async ({
+  page,
+}) => {
+  await fixture(page, "child");
+  const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
+  await page.route("**/api/child/player?**", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        profile: dashboard.profiles[1],
+        video: madeForKids,
+        next: null,
+        safe_playback_enabled: false,
+      }),
+    }),
+  );
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
+  );
+  await page.goto(`/watch/player/${madeForKids.id}`);
+  const iframe = page.locator('iframe[title="A gentle piano lesson"]');
+  await expect(iframe).toBeVisible();
+  expect(await iframe.getAttribute("sandbox")).toBeNull();
+  await expect(page.getByText(/Safe Playback is on/i)).toHaveCount(0);
 });
 
 test("synthetic UI: optional resume bootstrap failure falls back to playback", async ({
