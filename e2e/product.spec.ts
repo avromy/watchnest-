@@ -141,9 +141,14 @@ test("synthetic UI: shared device opens the profile picker and Parent Mode stays
 });
 test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await fixture(page, "parent");
-  for (const width of [390, 768, 1024]) {
+  for (const width of [360, 390, 412, 520, 640, 768, 900, 1024, 1180, 1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const path of ["/parent/children", "/parent/library"]) {
+    for (const path of [
+      "/parent/children",
+      "/parent/library",
+      "/parent/add-video",
+      "/parent/settings",
+    ]) {
       await page.goto(path);
       await expect(page.locator("main h1")).toBeVisible();
       const overflow = await page.evaluate(
@@ -152,6 +157,21 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
       expect(overflow).toBe(false);
     }
   }
+  await page.unroute("**/api/**");
+  await fixture(page, "child");
+  for (const width of [360, 390, 768, 1024, 1180]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const path of ["/watch", "/watch/home"]) {
+      await page.goto(path);
+      await expect(page.locator("main h1")).toBeVisible();
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth + 1,
+      );
+      expect(overflow).toBe(false);
+    }
+  }
+  await page.unroute("**/api/**");
+  await fixture(page, "parent");
   await page.setViewportSize({ width: 1024, height: 900 });
   await page.goto("/parent/children");
   const dashboardBox = await page
