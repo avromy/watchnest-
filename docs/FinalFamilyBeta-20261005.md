@@ -1,4 +1,4 @@
-# Final family beta implementation — 2026-10-05
+# Final family beta implementation — updated 2026-10-06
 
 ## Candidate scope
 
@@ -6,6 +6,11 @@ This run resumes the qualified `product-completion-20260930` implementation at
 `7da6d0ba0f9c96b8c195723cc5f9a758aed867ec`. It does not restart the product or
 replace the working authentication, individual approval, sibling isolation,
 Made-for-Kids suppression, profile-picker, Parent Mode, playback, or PWA spine.
+
+The device-protection/immersive-playback successor is deployed as commit
+`c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`, tree
+`9f1ef6a38b95d13738cc8bf814066ed5839f3871`, production deployment
+`dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7`.
 
 The project-specific controlling decision is that WatchNest may enforce
 Founder-authorized external-navigation containment. The private authorization
@@ -19,7 +24,8 @@ other YouTube API clients.
 | Trusted-device profile picker, direct child entry, protected Parent Mode | DONE / preserved                                                                                                                                                              |
 | Four-digit child and Parent entry                                        | DONE; fourth digit submits, concise retry, server rate limits remain                                                                                                          |
 | Safe Playback                                                            | DONE; default on, Parent-only toggle, sandbox attached before direct/API iframe navigation                                                                                    |
-| iPad extra protection                                                    | DONE; ordinary-family Screen Time, app restriction, Home Screen and Guided Access guide plus setup check                                                                      |
+| Device protection levels                                                 | DONE; Safe Playback recommended, Enhanced YouTube protection honestly limited, optional Dedicated WatchNest Device instructions, and browser setup check                      |
+| Immediate / immersive playback                                           | DONE where permitted; non-MFK autoplay attempt, MFK-safe one Play action, best-effort true fullscreen from the original tap, and full-viewport fallback                       |
 | Photo/avatar                                                             | DONE; private storage, browser-side orientation-aware crop/compression, FaceDetector focus when available, manual x/y crop, 25 MB source allowance                            |
 | Home / Library / Ask Parent; Collections; Favorites; Recently Added      | DONE / preserved                                                                                                                                                              |
 | Child Hide / Restore / Undo                                              | DONE; profile-specific and never revokes approval or affects siblings                                                                                                         |
