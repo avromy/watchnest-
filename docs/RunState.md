@@ -15,6 +15,13 @@ Affected prior player and containment acceptance is stale for the successor
 until its exact commit and deployment pass local, hosted, independent, and final
 physical-iPad acceptance. Unaffected data/auth/security evidence remains valid.
 
+The first fresh-context Stranger review rejected the frozen candidate for two
+mobile Parent Settings defects: displaced Safe Playback feedback and an
+offscreen active Settings navigation item. Both are repaired in the successor;
+new 390 px regression checks verify adjacent status and visible active
+navigation. The first FAIL remains recorded and cannot be promoted to PASS
+without a fresh review of the repaired commit.
+
 ## Exact binding
 
 - Working URL: https://watchnest-rho.vercel.app

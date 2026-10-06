@@ -74,6 +74,7 @@ function useParent() {
 export function ParentShell({ children }: { children: ReactNode }) {
   const router = useRouter(),
     path = usePathname();
+  const navRef = useRef<HTMLElement>(null);
   const [data, setData] = useState<Dashboard | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
@@ -105,6 +106,23 @@ export function ParentShell({ children }: { children: ReactNode }) {
       active = false;
     };
   }, [router]);
+  useEffect(() => {
+    const navigation = navRef.current;
+    const activeLink = navigation?.querySelector<HTMLElement>(
+      '[aria-current="page"]',
+    );
+    if (!navigation || !activeLink) return;
+    const navigationBox = navigation.getBoundingClientRect();
+    const activeBox = activeLink.getBoundingClientRect();
+    navigation.scrollTo({
+      left:
+        navigation.scrollLeft +
+        activeBox.left -
+        navigationBox.left -
+        (navigation.clientWidth - activeBox.width) / 2,
+      behavior: "auto",
+    });
+  }, [path, data]);
   async function act(endpoint: string, method: string, body?: unknown) {
     setBusy(true);
     setError("");
@@ -157,6 +175,7 @@ export function ParentShell({ children }: { children: ReactNode }) {
             </button>
           </header>
           <nav
+            ref={navRef}
             className={`nav ${styles.navigation}`}
             aria-label="Parent navigation"
           >
@@ -1439,9 +1458,7 @@ async function suggestedPhotoFocus(file: File) {
     const Detector = (
       window as unknown as {
         FaceDetector?: new (options: { maxDetectedFaces: number }) => {
-          detect: (
-            source: ImageBitmap,
-          ) => Promise<
+          detect: (source: ImageBitmap) => Promise<
             {
               boundingBox: {
                 x: number;
@@ -2047,8 +2064,10 @@ export function Settings() {
   const router = useRouter();
   const [pin, setPin] = useState(""),
     [confirmPin, setConfirmPin] = useState(""),
-    [message, setMessage] = useState(""),
-    [error, setError] = useState(""),
+    [pinMessage, setPinMessage] = useState(""),
+    [pinError, setPinError] = useState(""),
+    [safeMessage, setSafeMessage] = useState(""),
+    [safeError, setSafeError] = useState(""),
     [busy, setBusy] = useState(false),
     [safePlayback, setSafePlayback] = useState(true),
     [setupResult, setSetupResult] = useState("");
@@ -2060,7 +2079,7 @@ export function Settings() {
       })
       .catch((reason) => {
         if (active)
-          setError(
+          setSafeError(
             reason instanceof Error
               ? reason.message
               : "Could not load device settings.",
@@ -2080,9 +2099,9 @@ export function Settings() {
       <div className="grid grid-2">
         <section className="panel" style={{ gridColumn: "1 / -1" }}>
           <p className="eyebrow">Protection levels</p>
-          <h2>Choose what fits this device</h2>
+          <h2>Protection options</h2>
           <p className="muted">
-            Safe Playback works by itself. The iPad options add another layer.
+            Start with Safe Playback. Add an iPad option if it fits your family.
           </p>
           <div className={styles.protectionGrid}>
             <article className={styles.protectionCard}>
@@ -2098,17 +2117,18 @@ export function Settings() {
                     const next = event.target.checked;
                     setSafePlayback(next);
                     setBusy(true);
-                    setError("");
+                    setSafeError("");
+                    setSafeMessage("");
                     try {
                       await api("/api/parent/settings", "PATCH", {
                         safe_playback_enabled: next,
                       });
-                      setMessage(
+                      setSafeMessage(
                         next ? "Safe Playback is on." : "Safe Playback is off.",
                       );
                     } catch (reason) {
                       setSafePlayback(!next);
-                      setError(
+                      setSafeError(
                         reason instanceof Error
                           ? reason.message
                           : "Could not update Safe Playback.",
@@ -2123,6 +2143,16 @@ export function Settings() {
                   <small>No special iPad setup needed</small>
                 </span>
               </label>
+              {safeError && (
+                <p className="error" role="alert">
+                  {safeError}
+                </p>
+              )}
+              {safeMessage && (
+                <p className="notice" role="status">
+                  {safeMessage}
+                </p>
+              )}
             </article>
             <article className={styles.protectionCard}>
               <span className={styles.protectionBadge}>Optional</span>
@@ -2174,7 +2204,7 @@ export function Settings() {
               );
             }}
           >
-            Test my setup
+            Check this browser
           </button>
           {setupResult && (
             <p className="notice" role="status">
@@ -2186,14 +2216,14 @@ export function Settings() {
           className="panel"
           onSubmit={async (event) => {
             event.preventDefault();
-            setError("");
-            setMessage("");
+            setPinError("");
+            setPinMessage("");
             if (pin.length !== 4) {
-              setError("Enter a 4-digit Parent PIN.");
+              setPinError("Enter a 4-digit Parent PIN.");
               return;
             }
             if (pin !== confirmPin) {
-              setError("The PINs do not match.");
+              setPinError("The PINs do not match.");
               return;
             }
             setBusy(true);
@@ -2201,9 +2231,9 @@ export function Settings() {
               await api("/api/parent/settings", "PATCH", { parent_pin: pin });
               setPin("");
               setConfirmPin("");
-              setMessage("Parent PIN saved.");
+              setPinMessage("Parent PIN saved.");
             } catch (reason) {
-              setError(
+              setPinError(
                 reason instanceof Error
                   ? reason.message
                   : "Could not save the PIN.",
@@ -2249,14 +2279,14 @@ export function Settings() {
               required
             />
           </label>
-          {error && (
+          {pinError && (
             <p className="error" role="alert">
-              {error}
+              {pinError}
             </p>
           )}
-          {message && (
+          {pinMessage && (
             <p className="notice" role="status">
-              {message}
+              {pinMessage}
             </p>
           )}
           <button className="button" disabled={busy}>

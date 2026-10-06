@@ -15,6 +15,19 @@ verification; preceding production remains `5e23aeb` / `dpl_Fpj3GZH6nuXx9yX4Ut1J
 | Stranger / Founder Ready                               | Current installed gates consumed                                                                                                                                                     | Intentionally pending frozen candidate, fresh-context review, hosted verification, and at most one final physical-iPad observation                                                |
 | Continuous Learning                                    | Existing WatchNest project calibration plus this amendment                                                                                                                           | Record MFK-autoplay privacy conflict, honest unsupported protection tiers, and gesture-to-transition fullscreen degradation without generalizing project authorization            |
 
+### First cold-review repair loop
+
+The fresh-context Stranger pass found two confirmed mobile Parent Settings
+defects: Safe Playback save/error feedback rendered in the unrelated PIN panel,
+and the active Settings navigation item opened outside the visible horizontal
+navigation viewport. The repaired candidate gives Safe Playback its own adjacent
+status/error state and centers the active Parent navigation item on route
+change. It also changes “Choose what fits this device” to the clearer
+“Protection options” and renames the limited diagnostic from “Test my setup” to
+“Check this browser.” Exact regression now asserts adjacent feedback and visible
+active navigation at 390 px. The initial Stranger FAIL is retained as evidence;
+the repair requires a fresh review rather than self-upgrading the result.
+
 # Player chrome and iPhone containment receipt — 2026-10-05
 
 **Exact successor:** commit `646d67b6e1b0bd15bcd01888cba93fb4daf6892d`, tree `feebbaf8336b5e26b96901a3d6462ab7f10c1ab1`, production `dpl_HjEH8DasFG4adQ1UqEt4r7pJ2hPS`.

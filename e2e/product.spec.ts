@@ -231,6 +231,41 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
     page.getByRole("heading", { name: "3. Dedicated WatchNest device" }),
   ).toBeVisible();
   await expect(page.getByText("Limited on iPad")).toBeVisible();
+  const settingsLink = page.getByRole("link", {
+    name: "Settings",
+    exact: true,
+  });
+  const settingsBoxAfterScroll = await settingsLink.boundingBox();
+  expect(settingsBoxAfterScroll).not.toBeNull();
+  expect(settingsBoxAfterScroll!.x).toBeGreaterThanOrEqual(0);
+  expect(
+    settingsBoxAfterScroll!.x + settingsBoxAfterScroll!.width,
+  ).toBeLessThanOrEqual(1024);
+});
+
+test("synthetic UI: Safe Playback reports beside its own control", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/parent/settings");
+  const toggle = page.getByRole("checkbox");
+  await toggle.uncheck();
+  const status = page.getByText("Safe Playback is off.", { exact: true });
+  await expect(status).toBeVisible();
+  const toggleBox = await toggle.boundingBox();
+  const statusBox = await status.boundingBox();
+  expect(toggleBox).not.toBeNull();
+  expect(statusBox).not.toBeNull();
+  expect(statusBox!.y - toggleBox!.y).toBeLessThan(260);
+  const activeSettings = page.getByRole("link", {
+    name: "Settings",
+    exact: true,
+  });
+  const activeBox = await activeSettings.boundingBox();
+  expect(activeBox).not.toBeNull();
+  expect(activeBox!.x).toBeGreaterThanOrEqual(0);
+  expect(activeBox!.x + activeBox!.width).toBeLessThanOrEqual(390);
 });
 
 test("synthetic UI: Made-for-Kids playback uses a direct identified embed", async ({
