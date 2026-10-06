@@ -433,7 +433,7 @@
 .child-player-shell > .player-volume,
 .child-player-shell > .safe-playback-note,
 .child-player-shell > .child-player-next {
-  max-width: min(1500px, calc((100dvh - 210px) * 16 / 9));
+  max-width: min(1500px, calc((100dvh - 270px) * 16 / 9));
   margin-left: auto;
   margin-right: auto;
 }
@@ -448,7 +448,7 @@
     font-size: 0.95rem;
   }
   .child-player-topbar .button {
-    min-height: 42px;
+    min-height: 44px;
     padding: 9px 12px;
   }
   .child-player-heading {

@@ -28,6 +28,14 @@ change. It also changes “Choose what fits this device” to the clearer
 active navigation at 390 px. The initial Stranger FAIL is retained as evidence;
 the repair requires a fresh review rather than self-upgrading the result.
 
+The independent Human-Eye pass on the same initial candidate separately found
+the two mobile defects and a third tablet defect: at 1024×768 the player route
+was 808 px tall, placing the Safe Playback reassurance below the initial
+viewport. The repaired viewport formula reserves the complete player heading,
+status, and bottom spacing; the exact regenerated tablet raster is now
+1024×768, and a browser assertion fails if the player document exceeds the
+viewport. The initial visual FAIL remains recorded pending fresh review.
+
 # Player chrome and iPhone containment receipt — 2026-10-05
 
 **Exact successor:** commit `646d67b6e1b0bd15bcd01888cba93fb4daf6892d`, tree `feebbaf8336b5e26b96901a3d6462ab7f10c1ab1`, production `dpl_HjEH8DasFG4adQ1UqEt4r7pJ2hPS`.

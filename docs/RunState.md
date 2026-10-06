@@ -22,6 +22,13 @@ new 390 px regression checks verify adjacent status and visible active
 navigation. The first FAIL remains recorded and cannot be promoted to PASS
 without a fresh review of the repaired commit.
 
+The first Human-Eye review independently found the same two defects plus a
+1024×768 player overflow: the route rendered 808 px tall and pushed its Safe
+Playback note below the initial viewport. The repaired viewport reservation
+keeps the complete immersive surface at 1024×768; the exact raster and an
+automated scroll-height assertion now cover the regression. The original
+Human-Eye FAIL is preserved until the repaired commit receives a fresh pass.
+
 ## Exact binding
 
 - Working URL: https://watchnest-rho.vercel.app

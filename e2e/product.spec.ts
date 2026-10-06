@@ -273,6 +273,7 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   context,
 }) => {
   await fixture(page, "child");
+  await page.setViewportSize({ width: 1024, height: 768 });
   const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
   await page.route("**/api/child/player?**", (route) =>
     route.fulfill({
@@ -300,6 +301,11 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   await page.goto(`/watch/player/${madeForKids.id}`);
   const iframe = page.locator('iframe[title="A gentle piano lesson"]');
   await expect(iframe).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollHeight <= innerHeight + 1,
+    ),
+  ).toBe(true);
   const src = new URL((await iframe.getAttribute("src"))!);
   expect(src.origin).toBe("https://www.youtube-nocookie.com");
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
