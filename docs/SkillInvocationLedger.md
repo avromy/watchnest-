@@ -1,7 +1,9 @@
 # Device protection and immersive playback receipt — 2026-10-06
 
-**Candidate:** exact successor commit/deployment pending final merge and hosted
-verification; preceding production remains `5e23aeb` / `dpl_Fpj3GZH6nuXx9yX4Ut1JLiYUX8Tw`.
+**Exact application candidate:** commit
+`c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`, tree
+`9f1ef6a38b95d13738cc8bf814066ed5839f3871`, production
+`dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7`. Rollback remains `dpl_Fpj3GZH6nuXx9yX4Ut1JLiYUX8Tw`.
 
 | Capability                                             | Current authority consumed                                                                                                                                                           | Bounded result                                                                                                                                                                    |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10,9 +12,9 @@ verification; preceding production remains `5e23aeb` / `dpl_Fpj3GZH6nuXx9yX4Ut1J
 | Autonomous Visual Production V008 / Website Production | Current core, preflight, comparator, authority, convergence, reporter, independent review, Stranger, Founder firewall, handoff, website, responsive, and runtime references consumed | Implemented full-viewport immersive child player and restrained three-tier Parent settings; exact raster convergence pending frozen candidate                                     |
 | YouTube official authority                             | Current player parameters and current MFK guide                                                                                                                                      | Eligible non-MFK autoplay only; MFK/unknown retains one Play action; native controls/accessibility preserved; “More videos” classified PARTIALLY reducible and not removable      |
 | Match Check                                            | Installed current Match Check                                                                                                                                                        | Locked warm family-library / premium-streaming direction applied without copying another player or brand; final exact-raster result pending                                       |
-| Responsive / deterministic acceptance                  | Exact local candidate at 390×844, 1024×768, and Parent tablet settings                                                                                                               | Initial PASS; full suite and hosted acceptance pending                                                                                                                            |
-| Security / functional QA                               | Safe Playback sandbox and assignment authorization reviewed separately from fullscreen                                                                                               | No security boundary moved; exact full regression pending after candidate freeze                                                                                                  |
-| Stranger / Founder Ready                               | Current installed gates consumed                                                                                                                                                     | Intentionally pending frozen candidate, fresh-context review, hosted verification, and at most one final physical-iPad observation                                                |
+| Responsive / deterministic acceptance                  | Exact local candidate at 390×844, 1024×768, and Parent tablet settings                                                                                                               | PASS — final player fits both exact viewports; 360–1440 responsive suite and adjacent-settings feedback regressions pass                                                          |
+| Security / functional QA                               | Safe Playback sandbox and assignment authorization reviewed separately from fullscreen                                                                                               | PASS — exact final candidate; 87 focused security tests and 5 focused browser flows passed in independent review                                                                  |
+| Stranger / Founder Ready                               | Current installed gates consumed                                                                                                                                                     | Stranger PASS and Human-Eye PASS on exact final tree; Founder Ready remains pending only the final physical-iPad observation                                                      |
 | Continuous Learning                                    | Existing WatchNest project calibration plus this amendment                                                                                                                           | Record MFK-autoplay privacy conflict, honest unsupported protection tiers, and gesture-to-transition fullscreen degradation without generalizing project authorization            |
 
 ### First cold-review repair loop
@@ -35,6 +37,16 @@ viewport. The repaired viewport formula reserves the complete player heading,
 status, and bottom spacing; the exact regenerated tablet raster is now
 1024×768, and a browser assertion fails if the player document exceeds the
 viewport. The initial visual FAIL remains recorded pending fresh review.
+
+### Final convergence receipt
+
+After both repair loops, exact commit `42056bc` / tree `9f1ef6a` passed fresh
+Human-Eye with zero confirmed visual defects, fresh Stranger with zero confirmed
+product defects, and exact-candidate independent security. Production commit
+`c01979c` carries that identical tree. Hosted deployment `dpl_96b...` is READY,
+production aliases are attached, configuration is healthy, and no runtime
+errors were observed. These synthetic/deployed checks do not replace the one
+remaining physical-iPad playback/containment observation.
 
 # Player chrome and iPhone containment receipt — 2026-10-05
 

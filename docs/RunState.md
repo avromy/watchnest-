@@ -1,19 +1,37 @@
-# Final family beta — device protection and immersive playback candidate (2026-10-06)
+# Final family beta — device protection and immersive playback deployed (2026-10-06)
 
 ## Current amendment state
 
-The exact preceding production candidate remains live and recoverable while the
-device-protection/immersive-playback successor is being qualified. The successor
-adds three Parent-facing protection levels, best-effort fullscreen from the
-original child card tap, a deterministic full-viewport WatchNest player,
-eligible non-MFK immediate playback, and a one-tap fallback. It does not change
-the Safe Playback sandbox or authorization boundary. Exact decisions and the
-pre-amendment iPad evidence binding are in
+The repaired successor is deployed at https://watchnest-rho.vercel.app.
+
+- Application commit: `c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`
+- Application tree: `9f1ef6a38b95d13738cc8bf814066ed5839f3871`
+- Production deployment: `dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7` (READY,
+  production aliases confirmed)
+- Rollback: `dpl_Fpj3GZH6nuXx9yX4Ut1JLiYUX8Tw` / evidence commit `5e23aeb`
+- Pull request: GitHub #37, merged only after exact-candidate Security,
+  Human-Eye, and Stranger PASS
+
+The successor adds three Parent-facing protection levels, best-effort
+fullscreen from the original child card tap, a deterministic full-viewport
+WatchNest player, eligible non-MFK immediate playback, and a one-tap fallback.
+It does not change the Safe Playback sandbox or authorization boundary. Exact
+decisions and the pre-amendment iPad evidence binding are in
 `docs/DeviceProtectionPlaybackAmendment-20261006.md`.
 
-Affected prior player and containment acceptance is stale for the successor
-until its exact commit and deployment pass local, hosted, independent, and final
-physical-iPad acceptance. Unaffected data/auth/security evidence remains valid.
+Exact local verification: lint PASS, typecheck PASS, 183 tests PASS, production
+build PASS, 14/14 browser flows PASS, and production dependency audit reports
+zero vulnerabilities. Exact independent review: security PASS, Human-Eye PASS,
+and Stranger PASS. Hosted readback binds the production HTML to the deployment,
+`/api/session` returns `configured:true`, and no runtime errors were observed.
+Read-only production data integrity remains Safe Playback ON, Miri/Ari/Benny/Eli
+active, 18 approved videos, 18 active assignments, one Collection, and Miri's
+two assignments.
+
+Affected pre-amendment real-device playback evidence remains stale for the new
+entry/autoplay/layout behavior. One final physical-iPad observation is still
+required before the terminal Founder Ready state can be declared. Unaffected
+data/auth/security evidence remains valid.
 
 The first fresh-context Stranger review rejected the frozen candidate for two
 mobile Parent Settings defects: displaced Safe Playback feedback and an

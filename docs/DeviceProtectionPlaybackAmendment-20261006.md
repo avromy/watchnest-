@@ -1,5 +1,10 @@
 # Device protection and immersive playback amendment — 2026-10-06
 
+**Deployed application:** `c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de` /
+tree `9f1ef6a38b95d13738cc8bf814066ed5839f3871` /
+`dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7` at
+https://watchnest-rho.vercel.app.
+
 ## Product decision
 
 WatchNest presents three protection levels in Parent Settings without making a
