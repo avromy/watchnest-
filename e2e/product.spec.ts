@@ -73,7 +73,9 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
   await expect(
     page.getByRole("region", { name: "Miri library status" }),
   ).toContainText("0 approved videos");
-  await expect(page.getByText("Shared with children", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText("Shared with children", { exact: true }),
+  ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await page.getByRole("link", { name: "Children", exact: true }).click();
   await expect(
@@ -119,6 +121,38 @@ test("synthetic UI: child searches local library and asks parent on no match", a
   ).toBe(true);
 });
 
+test("synthetic UI: a video-card tap requests immersive playback before navigation", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(Element.prototype, "requestFullscreen", {
+      configurable: true,
+      value: () => {
+        window.sessionStorage.setItem("immersive-requested", "yes");
+        return Promise.reject(new Error("synthetic fullscreen denial"));
+      },
+    });
+  });
+  await fixture(page, "child");
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.abort(),
+  );
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
+  );
+  await page.goto("/watch/home");
+  await page
+    .getByRole("link", { name: "Play Build a paper rocket" })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/watch\/player\//);
+  expect(
+    await page.evaluate(() =>
+      window.sessionStorage.getItem("immersive-requested"),
+    ),
+  ).toBe("yes");
+});
+
 test("synthetic UI: shared device opens the profile picker and Parent Mode stays protected", async ({
   page,
 }) => {
@@ -141,7 +175,9 @@ test("synthetic UI: shared device opens the profile picker and Parent Mode stays
 });
 test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await fixture(page, "parent");
-  for (const width of [360, 390, 412, 520, 640, 768, 900, 1024, 1180, 1280, 1440]) {
+  for (const width of [
+    360, 390, 412, 520, 640, 768, 900, 1024, 1180, 1280, 1440,
+  ]) {
     await page.setViewportSize({ width, height: 900 });
     for (const path of [
       "/parent/children",
@@ -183,6 +219,53 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   expect(dashboardBox).not.toBeNull();
   expect(settingsBox).not.toBeNull();
   expect(Math.abs(settingsBox!.y - dashboardBox!.y)).toBeLessThan(3);
+
+  await page.goto("/parent/settings");
+  await expect(
+    page.getByRole("heading", { name: "1. Safe Playback" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "2. Enhanced YouTube protection" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "3. Dedicated WatchNest device" }),
+  ).toBeVisible();
+  await expect(page.getByText("Limited on iPad")).toBeVisible();
+  const settingsLink = page.getByRole("link", {
+    name: "Settings",
+    exact: true,
+  });
+  const settingsBoxAfterScroll = await settingsLink.boundingBox();
+  expect(settingsBoxAfterScroll).not.toBeNull();
+  expect(settingsBoxAfterScroll!.x).toBeGreaterThanOrEqual(0);
+  expect(
+    settingsBoxAfterScroll!.x + settingsBoxAfterScroll!.width,
+  ).toBeLessThanOrEqual(1024);
+});
+
+test("synthetic UI: Safe Playback reports beside its own control", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/parent/settings");
+  const toggle = page.getByRole("checkbox");
+  await toggle.uncheck();
+  const status = page.getByText("Safe Playback is off.", { exact: true });
+  await expect(status).toBeVisible();
+  const toggleBox = await toggle.boundingBox();
+  const statusBox = await status.boundingBox();
+  expect(toggleBox).not.toBeNull();
+  expect(statusBox).not.toBeNull();
+  expect(statusBox!.y - toggleBox!.y).toBeLessThan(260);
+  const activeSettings = page.getByRole("link", {
+    name: "Settings",
+    exact: true,
+  });
+  const activeBox = await activeSettings.boundingBox();
+  expect(activeBox).not.toBeNull();
+  expect(activeBox!.x).toBeGreaterThanOrEqual(0);
+  expect(activeBox!.x + activeBox!.width).toBeLessThanOrEqual(390);
 });
 
 test("synthetic UI: Made-for-Kids playback uses a direct identified embed", async ({
@@ -190,6 +273,7 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   context,
 }) => {
   await fixture(page, "child");
+  await page.setViewportSize({ width: 1024, height: 768 });
   const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
   await page.route("**/api/child/player?**", (route) =>
     route.fulfill({
@@ -217,11 +301,17 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   await page.goto(`/watch/player/${madeForKids.id}`);
   const iframe = page.locator('iframe[title="A gentle piano lesson"]');
   await expect(iframe).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollHeight <= innerHeight + 1,
+    ),
+  ).toBe(true);
   const src = new URL((await iframe.getAttribute("src"))!);
   expect(src.origin).toBe("https://www.youtube-nocookie.com");
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
   expect(src.searchParams.get("enablejsapi")).toBeNull();
+  expect(src.searchParams.get("autoplay")).toBeNull();
   expect(src.searchParams.get("controls")).toBe("1");
   expect(src.searchParams.get("iv_load_policy")).toBe("3");
   expect(src.searchParams.get("playsinline")).toBe("1");
@@ -283,7 +373,9 @@ test("synthetic UI: optional resume bootstrap failure falls back to playback", a
   );
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
-  await expect(page.getByText("Press Play to begin.", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText("Press Play to begin.", { exact: true }),
+  ).toBeVisible();
   await expect(page.getByText(/YouTube player|resume is/i)).toHaveCount(0);
   await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
   await expect(
@@ -328,7 +420,9 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
   await expect(
     page.getByRole("region", { name: "Ari library status" }),
   ).toContainText("3 approved videos");
-  await expect(page.getByText("Shared with children", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText("Shared with children", { exact: true }),
+  ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await expect(
     page.getByRole("heading", { name: "Eligible viewing insights" }),

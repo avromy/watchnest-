@@ -65,6 +65,7 @@ export function classifyYouTubePlayerError(code: number): YouTubePlayerFailure {
 }
 
 type YouTubePlayerOptions = {
+  autoplay?: boolean;
   enableJsApi?: boolean;
   startSeconds?: number;
 };
@@ -79,6 +80,7 @@ export function youtubePlayerVars(
     playsinline: "1",
     rel: "0",
   };
+  if (options.autoplay) variables.autoplay = "1";
   if (origin) variables.origin = origin;
   if (options.enableJsApi) variables.enablejsapi = "1";
   if (options.startSeconds && options.startSeconds > 0)

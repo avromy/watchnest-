@@ -14,6 +14,10 @@ import {
   youtubeEmbedUrl,
   youtubePlayerVars,
 } from "@/lib/youtube-player";
+import {
+  leaveImmersivePlayback,
+  requestImmersivePlayback,
+} from "@/lib/immersive-playback";
 type Player = {
   getCurrentTime: () => number;
   getDuration: () => number;
@@ -88,7 +92,8 @@ type Playback = {
   safe_playback_enabled: boolean;
 };
 
-const SAFE_PLAYER_SANDBOX = "allow-scripts allow-same-origin allow-presentation";
+const SAFE_PLAYER_SANDBOX =
+  "allow-scripts allow-same-origin allow-presentation";
 export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [data, setData] = useState<Playback | null>(null);
   const [error, setError] = useState("");
@@ -103,8 +108,11 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [helpError, setHelpError] = useState("");
   const [volume, setVolume] = useState(60);
   const volumeRef = useRef(60);
+  useEffect(() => () => leaveImmersivePlayback(), []);
   useEffect(() => {
-    const saved = Number(window.localStorage.getItem("watchnest-player-volume"));
+    const saved = Number(
+      window.localStorage.getItem("watchnest-player-volume"),
+    );
     if (Number.isFinite(saved) && saved >= 0 && saved <= 100) {
       volumeRef.current = saved;
       setVolume(saved);
@@ -205,10 +213,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         historyAllowed && !data.video.progress?.completed_at
           ? Math.floor(data.video.progress?.current_time_seconds || 0)
           : 0;
-      host.src = youtubeEmbedUrl(data.video.youtube_video_id, window.location.origin, {
-        enableJsApi: true,
-        startSeconds,
-      });
+      host.src = youtubeEmbedUrl(
+        data.video.youtube_video_id,
+        window.location.origin,
+        {
+          autoplay: true,
+          enableJsApi: true,
+          startSeconds,
+        },
+      );
       host.title = data.video.title;
       host.allow =
         "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
@@ -227,6 +240,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 videoId: data.video.youtube_video_id,
                 host: "https://www.youtube-nocookie.com",
                 playerVars: youtubePlayerVars(window.location.origin, {
+                  autoplay: true,
                   startSeconds:
                     historyAllowed && !data.video.progress?.completed_at
                       ? data.video.progress?.current_time_seconds || 0
@@ -237,13 +251,13 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             onReady: (event) => {
               if (!disposed) {
                 if (data.safe_playback_enabled) {
-                  event.target.getIframe().setAttribute(
-                    "sandbox",
-                    SAFE_PLAYER_SANDBOX,
-                  );
+                  event.target
+                    .getIframe()
+                    .setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
                 }
                 event.target.setVolume(volumeRef.current);
                 setReady(true);
+                event.target.playVideo();
               }
             },
             onStateChange: (e) => {
@@ -290,9 +304,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             },
           );
           setStaticFallback(true);
-          setPlayerNotice(
-            "Press Play to begin.",
-          );
+          setPlayerNotice("Press Play to begin.");
         }
       });
     const bookmark = historyAllowed
@@ -342,13 +354,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     };
   }, [data, videoId]);
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="shell"
-      style={{ maxWidth: 1180 }}
-    >
-      <header className="topbar">
+    <main id="main-content" tabIndex={-1} className="child-player-shell">
+      <header className="child-player-topbar">
         <Link className="brand" href="/watch/home">
           WatchNest
         </Link>
@@ -399,7 +406,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         </p>
       ) : (
         <>
-          <div className="page-heading">
+          <div className="child-player-heading">
             <p className="eyebrow">
               From {data.profile.display_name}’s library
             </p>
@@ -433,6 +440,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   ? data.video.progress?.current_time_seconds || 0
                   : 0
               }
+              autoplay={data.video.made_for_kids === false}
               onLoad={() => setReady(true)}
               safePlayback={data.safe_playback_enabled}
             />
@@ -448,7 +456,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               }}
             />
           )}
-          <style>{`.watchnest-player{width:100%;aspect-ratio:16/9;background:#15251F;border:0;border-radius:16px;overflow:hidden;display:block}.watchnest-player iframe{width:100%;height:100%;display:block;border:0}`}</style>
+          <style>{`.watchnest-player{width:100%;aspect-ratio:16/9;background:#06120f;border:0;border-radius:18px;overflow:hidden;display:block;box-shadow:0 24px 80px #0008}.watchnest-player iframe{width:100%;height:100%;display:block;border:0}`}</style>
           {!ended && !ready && (
             <p role="status" className="muted">
               Loading the video player…
@@ -492,7 +500,10 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               Safe Playback is on. External links stay blocked in Child Mode.
             </p>
           )}
-          <section className="panel" style={{ marginTop: 24 }}>
+          <section
+            className={`panel child-player-next ${ended ? "is-visible" : ""}`}
+            style={{ marginTop: 24 }}
+          >
             {data.next ? (
               <>
                 <p className="eyebrow">
@@ -503,6 +514,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 <Link
                   className="button"
                   href={`/watch/player/${encodeURIComponent(data.next.id)}`}
+                  onClick={requestImmersivePlayback}
                 >
                   Watch next →
                 </Link>

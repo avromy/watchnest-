@@ -393,6 +393,46 @@
   display: grid;
   gap: 0.65rem;
 }
+.protectionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  margin: 24px 0 18px;
+}
+.protectionCard {
+  border: 1px solid #d9e0da;
+  border-radius: 18px;
+  padding: 20px;
+  background: #fbfcfa;
+}
+.protectionCard h3 {
+  margin: 12px 0 8px;
+}
+.protectionCard p {
+  line-height: 1.55;
+}
+.protectionBadge {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #e6f0eb;
+  color: #286052;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.protectionStatus {
+  display: block;
+  margin: 18px 0 8px;
+  color: #8b563f;
+}
+@media (max-width: 900px) {
+  .protectionGrid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .photoEditor {
   display: grid;

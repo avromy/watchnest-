@@ -8,6 +8,7 @@ export default function YouTubeEmbed({
   title,
   className,
   startSeconds = 0,
+  autoplay = false,
   safePlayback = false,
   onLoad,
 }: {
@@ -15,6 +16,7 @@ export default function YouTubeEmbed({
   title: string;
   className?: string;
   startSeconds?: number;
+  autoplay?: boolean;
   safePlayback?: boolean;
   onLoad?: () => void;
 }) {
@@ -35,7 +37,7 @@ export default function YouTubeEmbed({
   return (
     <iframe
       className={className}
-      src={youtubeEmbedUrl(videoId, origin, { startSeconds })}
+      src={youtubeEmbedUrl(videoId, origin, { autoplay, startSeconds })}
       title={title}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
       allowFullScreen
