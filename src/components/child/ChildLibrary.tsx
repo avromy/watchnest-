@@ -6,6 +6,7 @@ import { api, Collection, duration, Profile, Video } from "./model";
 import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 import ProfileImage from "../ProfileImage";
 import Icon from "../ui/Icon";
+import { requestImmersivePlayback } from "@/lib/immersive-playback";
 
 type Tab = "home" | "library" | "request";
 
@@ -25,6 +26,7 @@ function VideoGrid({
           <Link
             href={`/watch/player/${encodeURIComponent(video.id)}`}
             aria-label={`Play ${video.title}`}
+            onClick={requestImmersivePlayback}
           >
             <div className="child-artwork">
               {normalizeYouTubeThumbnailUrl(video.thumbnail_url) ? (
@@ -153,9 +155,9 @@ export default function ChildLibrary() {
         a.progress?.updated_at || "",
       ),
     );
-  const recent = videos.filter((video) => !video.hidden).sort((a, b) =>
-    (b.added_at || "").localeCompare(a.added_at || ""),
-  );
+  const recent = videos
+    .filter((video) => !video.hidden)
+    .sort((a, b) => (b.added_at || "").localeCompare(a.added_at || ""));
   const favorites = videos.filter((video) => video.favorite && !video.hidden);
 
   function navigate(next: Tab) {
@@ -409,22 +411,25 @@ export default function ChildLibrary() {
               Hidden
             </button>
           </div>
-          {!collection && !favoritesOnly && !hiddenOnly && collections.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Collections</h2>
-              </div>
-              <div className="collection-row">
-                {collections.map((item) => (
-                  <button key={item.id} onClick={() => setCollection(item)}>
-                    <span>{item.video_ids.length} videos</span>
-                    <strong>{item.title}</strong>
-                    <small>{item.description || "Open Collection"}</small>
-                  </button>
-                ))}
-              </div>
-            </section>
-          )}
+          {!collection &&
+            !favoritesOnly &&
+            !hiddenOnly &&
+            collections.length > 0 && (
+              <section>
+                <div className="row-heading">
+                  <h2>Collections</h2>
+                </div>
+                <div className="collection-row">
+                  {collections.map((item) => (
+                    <button key={item.id} onClick={() => setCollection(item)}>
+                      <span>{item.video_ids.length} videos</span>
+                      <strong>{item.title}</strong>
+                      <small>{item.description || "Open Collection"}</small>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
           {(collection || favoritesOnly || hiddenOnly) && (
             <button
               className="back-button"
@@ -452,7 +457,7 @@ export default function ChildLibrary() {
                     ? "No Favorites yet"
                     : hiddenOnly
                       ? "Nothing hidden"
-                    : "Nothing here yet"}
+                      : "Nothing here yet"}
               </h2>
               <p>
                 {query
@@ -461,7 +466,7 @@ export default function ChildLibrary() {
                     ? "Tap the heart on a video to save it here."
                     : hiddenOnly
                       ? "Videos you hide will appear here."
-                    : "Ask Parent to add something."}
+                      : "Ask Parent to add something."}
               </p>
               {query && (
                 <button className="button" onClick={askFromSearch}>

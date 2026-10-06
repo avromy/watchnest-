@@ -21,6 +21,7 @@ describe("YouTube player helpers", () => {
   it("builds a privacy-enhanced embed with explicit client identity", () => {
     const url = new URL(
       youtubeEmbedUrl("JZW3fNvqGIA", "https://watchnest.example", {
+        autoplay: true,
         enableJsApi: true,
         startSeconds: 12.9,
       }),
@@ -29,6 +30,7 @@ describe("YouTube player helpers", () => {
     expect(url.pathname).toBe("/embed/JZW3fNvqGIA");
     expect(url.searchParams.get("origin")).toBe("https://watchnest.example");
     expect(url.searchParams.get("enablejsapi")).toBe("1");
+    expect(url.searchParams.get("autoplay")).toBe("1");
     expect(url.searchParams.get("start")).toBe("12");
     expect(url.searchParams.get("controls")).toBe("1");
     expect(url.searchParams.get("iv_load_policy")).toBe("3");
@@ -51,5 +53,13 @@ describe("YouTube player helpers", () => {
       origin: "https://watchnest.example",
       start: "8",
     });
+  });
+
+  it("does not autoplay parent previews unless it is explicitly requested", () => {
+    expect(
+      new URL(
+        youtubeEmbedUrl("JZW3fNvqGIA", "https://watchnest.example"),
+      ).searchParams.get("autoplay"),
+    ).toBeNull();
   });
 });

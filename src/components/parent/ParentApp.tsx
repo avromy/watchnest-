@@ -304,7 +304,8 @@ export function Overview() {
           <div>
             <p className="eyebrow">Needs your attention</p>
             <h2>
-              {pending.length} child {pending.length === 1 ? "request" : "requests"} ·{" "}
+              {pending.length} child{" "}
+              {pending.length === 1 ? "request" : "requests"} ·{" "}
               {data.attention.length} library{" "}
               {data.attention.length === 1 ? "issue" : "issues"}
             </h2>
@@ -463,11 +464,7 @@ export function AddVideos() {
     if (requested) setQuery(requested);
     if (sharedUrl) setUrls(sharedUrl);
   }, []);
-  async function runFind(
-    lookup: boolean,
-    pageToken?: string,
-    append = false,
-  ) {
+  async function runFind(lookup: boolean, pageToken?: string, append = false) {
     const links = urls
       .split(/[\n,]+/)
       .map((v) => v.trim())
@@ -493,12 +490,14 @@ export function AddVideos() {
           }>(
             `/api/parent/videos/search?q=${encodeURIComponent(query)}&type=${source?.type || resultType}${source ? `&source=${encodeURIComponent(source.id)}` : ""}${pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : ""}`,
           );
-      setNextPageToken("nextPageToken" in result ? result.nextPageToken || null : null);
+      setNextPageToken(
+        "nextPageToken" in result ? result.nextPageToken || null : null,
+      );
       if (!lookup && !source && resultType !== "video") {
         setDiscoveries((current) =>
           append
             ? [...current, ...(("items" in result ? result.items : []) || [])]
-            : (("items" in result ? result.items : []) || []),
+            : ("items" in result ? result.items : []) || [],
         );
         setResults([]);
         setSelected([]);
@@ -541,7 +540,9 @@ export function AddVideos() {
       .filter(Boolean);
     if (
       links.length > 20 ||
-      !links.every((link) => /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(link))
+      !links.every((link) =>
+        /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(link),
+      )
     )
       return;
     const timer = window.setTimeout(() => {
@@ -649,7 +650,9 @@ export function AddVideos() {
             required
             placeholder="https://www.youtube.com/watch?v=…"
           />
-          <p className="muted">Valid links load automatically. Paste several at once.</p>
+          <p className="muted">
+            Valid links load automatically. Paste several at once.
+          </p>
         </form>
       </div>
       {error && (
@@ -658,12 +661,14 @@ export function AddVideos() {
         </div>
       )}
       <details className="panel">
-        <summary><strong>Move existing family picks</strong></summary>
+        <summary>
+          <strong>Move existing family picks</strong>
+        </summary>
         <p className="muted">
-          YouTube Kids does not provide WatchNest with an official approved-content
-          import. Use Share or Copy link for the videos you want to keep, then paste
-          all the links above. WatchNest resolves them together, marks duplicates,
-          and still requires individual approval.
+          YouTube Kids does not provide WatchNest with an official
+          approved-content import. Use Share or Copy link for the videos you
+          want to keep, then paste all the links above. WatchNest resolves them
+          together, marks duplicates, and still requires individual approval.
         </p>
       </details>
       {message && (
@@ -744,7 +749,9 @@ export function AddVideos() {
                 <input
                   className="field"
                   value={newCollectionTitle}
-                  onChange={(event) => setNewCollectionTitle(event.target.value)}
+                  onChange={(event) =>
+                    setNewCollectionTitle(event.target.value)
+                  }
                   placeholder="Collection name"
                   maxLength={120}
                   autoFocus
@@ -1255,8 +1262,8 @@ export function Library() {
             <p className="muted">
               A loaded player is not proof that the video plays in every region.
               If YouTube shows an availability or embedding message, do not
-              share this video. Child access still follows “Who can watch?”
-              on the card.
+              share this video. Child access still follows “Who can watch?” on
+              the card.
             </p>
           </section>
         </div>
@@ -1432,8 +1439,17 @@ async function suggestedPhotoFocus(file: File) {
     const Detector = (
       window as unknown as {
         FaceDetector?: new (options: { maxDetectedFaces: number }) => {
-          detect: (source: ImageBitmap) => Promise<
-            { boundingBox: { x: number; y: number; width: number; height: number } }[]
+          detect: (
+            source: ImageBitmap,
+          ) => Promise<
+            {
+              boundingBox: {
+                x: number;
+                y: number;
+                width: number;
+                height: number;
+              };
+            }[]
           >;
         };
       }
@@ -1451,14 +1467,24 @@ async function suggestedPhotoFocus(file: File) {
   }
 }
 
-async function optimizedProfilePhoto(file: File, focusX: number, focusY: number) {
+async function optimizedProfilePhoto(
+  file: File,
+  focusX: number,
+  focusY: number,
+) {
   const bitmap = await imageBitmapFromFile(file);
   try {
     const side = Math.min(bitmap.width, bitmap.height);
     const centerX = (focusX / 100) * bitmap.width;
     const centerY = (focusY / 100) * bitmap.height;
-    const sourceX = Math.max(0, Math.min(bitmap.width - side, centerX - side / 2));
-    const sourceY = Math.max(0, Math.min(bitmap.height - side, centerY - side / 2));
+    const sourceX = Math.max(
+      0,
+      Math.min(bitmap.width - side, centerX - side / 2),
+    );
+    const sourceY = Math.max(
+      0,
+      Math.min(bitmap.height - side, centerY - side / 2),
+    );
     const canvas = document.createElement("canvas");
     canvas.width = 1024;
     canvas.height = 1024;
@@ -2052,45 +2078,109 @@ export function Settings() {
         description="Protect Parent Mode and manage this device."
       />
       <div className="grid grid-2">
-        <section className="panel">
-          <h2>Safe Playback</h2>
+        <section className="panel" style={{ gridColumn: "1 / -1" }}>
+          <p className="eyebrow">Protection levels</p>
+          <h2>Choose what fits this device</h2>
           <p className="muted">
-            Keep children inside WatchNest when they use the video player.
+            Safe Playback works by itself. The iPad options add another layer.
           </p>
-          <label className={styles.switchRow}>
-            <input
-              type="checkbox"
-              checked={safePlayback}
-              disabled={busy}
-              onChange={async (event) => {
-                const next = event.target.checked;
-                setSafePlayback(next);
-                setBusy(true);
-                setError("");
-                try {
-                  await api("/api/parent/settings", "PATCH", {
-                    safe_playback_enabled: next,
-                  });
-                  setMessage(
-                    next ? "Safe Playback is on." : "Safe Playback is off.",
-                  );
-                } catch (reason) {
-                  setSafePlayback(!next);
-                  setError(
-                    reason instanceof Error
-                      ? reason.message
-                      : "Could not update Safe Playback.",
-                  );
-                } finally {
-                  setBusy(false);
-                }
-              }}
-            />
-            <span>
-              <strong>Keep children inside WatchNest</strong>
-              <small>Recommended for every child profile</small>
-            </span>
-          </label>
+          <div className={styles.protectionGrid}>
+            <article className={styles.protectionCard}>
+              <span className={styles.protectionBadge}>Recommended</span>
+              <h3>1. Safe Playback</h3>
+              <p>Keeps video-player exits inside WatchNest.</p>
+              <label className={styles.switchRow}>
+                <input
+                  type="checkbox"
+                  checked={safePlayback}
+                  disabled={busy}
+                  onChange={async (event) => {
+                    const next = event.target.checked;
+                    setSafePlayback(next);
+                    setBusy(true);
+                    setError("");
+                    try {
+                      await api("/api/parent/settings", "PATCH", {
+                        safe_playback_enabled: next,
+                      });
+                      setMessage(
+                        next ? "Safe Playback is on." : "Safe Playback is off.",
+                      );
+                    } catch (reason) {
+                      setSafePlayback(!next);
+                      setError(
+                        reason instanceof Error
+                          ? reason.message
+                          : "Could not update Safe Playback.",
+                      );
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                />
+                <span>
+                  <strong>{safePlayback ? "On" : "Off"}</strong>
+                  <small>No special iPad setup needed</small>
+                </span>
+              </label>
+            </article>
+            <article className={styles.protectionCard}>
+              <span className={styles.protectionBadge}>Optional</span>
+              <h3>2. Enhanced YouTube protection</h3>
+              <p>
+                Keep normal web access while trying to restrict unrestricted
+                YouTube.
+              </p>
+              <strong className={styles.protectionStatus}>
+                Limited on iPad
+              </strong>
+              <p className="muted">
+                Apple does not currently provide a reliable family setting that
+                blocks only YouTube pages while guaranteeing embedded playback.
+                Do not use Approved Websites Only; it can stop videos from
+                playing.
+              </p>
+              <p className="muted">
+                Removing the YouTube app still adds useful protection.
+              </p>
+            </article>
+            <article className={styles.protectionCard}>
+              <span className={styles.protectionBadge}>Maximum</span>
+              <h3>3. Dedicated WatchNest device</h3>
+              <p>For an iPad used mainly for WatchNest.</p>
+              <ol className={styles.setupList}>
+                <li>In Safari, add WatchNest to the Home Screen.</li>
+                <li>Open the new WatchNest icon and confirm a video plays.</li>
+                <li>Remove or restrict the YouTube app.</li>
+                <li>Turn Safari off in Screen Time.</li>
+                <li>Optional: use Guided Access for a focused session.</li>
+              </ol>
+            </article>
+          </div>
+          <p className="muted">
+            Device restrictions are extra protection. Safe Playback remains the
+            WatchNest control.
+          </p>
+          <button
+            type="button"
+            className="button-secondary"
+            onClick={() => {
+              const standalone =
+                window.matchMedia("(display-mode: standalone)").matches ||
+                (navigator as Navigator & { standalone?: boolean }).standalone;
+              const touch = navigator.maxTouchPoints > 0;
+              setSetupResult(
+                `${safePlayback ? "Safe Playback is on" : "Turn on Safe Playback"}. ${standalone ? "Home Screen mode is active" : "Open the Home Screen app for the strongest device setup"}. ${touch ? "Touch input detected" : "No touch input detected"}. YouTube app and Safari restrictions must be confirmed in iPad Settings.`,
+              );
+            }}
+          >
+            Test my setup
+          </button>
+          {setupResult && (
+            <p className="notice" role="status">
+              {setupResult}
+            </p>
+          )}
         </section>
         <form
           className="panel"
@@ -2196,66 +2286,31 @@ export function Settings() {
           </button>
         </section>
         <section className="panel">
-          <h2>Extra device protection</h2>
-          <p className="muted">Using a family iPad?</p>
-          <ol className={styles.setupList}>
-            <li>Add WatchNest to the Home Screen and open it there.</li>
-            <li>Remove or restrict the YouTube app for the child.</li>
-            <li>
-              In Screen Time, turn on Content &amp; Privacy Restrictions and
-              limit adult websites. Add youtube.com to Never Allow.
-            </li>
-            <li>
-              For focused viewing, triple-click the side or Home button and
-              start Guided Access in WatchNest.
-            </li>
-          </ol>
-          <p className="muted">
-            Apple restrictions are extra protection. Safe Playback remains the
-            WatchNest control.
-          </p>
-          <button
-            type="button"
-            className="button-secondary"
-            onClick={() => {
-              const standalone =
-                window.matchMedia("(display-mode: standalone)").matches ||
-                (navigator as Navigator & { standalone?: boolean }).standalone;
-              const touch = navigator.maxTouchPoints > 0;
-              setSetupResult(
-                `${safePlayback ? "Safe Playback is on" : "Turn on Safe Playback"}. ${standalone ? "Home Screen mode is active" : "Open the Home Screen app for the most app-like experience"}. ${touch ? "Touch input detected" : "No touch input detected"}. Screen Time and Guided Access must be confirmed in iPad Settings.`,
-              );
-            }}
-          >
-            Test my setup
-          </button>
-          {setupResult && <p className="notice" role="status">{setupResult}</p>}
-        </section>
-        <section className="panel">
           <h2>Playback on this device</h2>
           <details>
             <summary>Ads and YouTube Premium</summary>
             <p className="muted">
-              YouTube may show ads in embedded playback. WatchNest does not receive
-              or transfer Premium entitlement through Google OAuth, so it cannot
-              promise ad-free playback or a one-time Premium connection.
+              YouTube may show ads in embedded playback. WatchNest does not
+              receive or transfer Premium entitlement through Google OAuth, so
+              it cannot promise ad-free playback or a one-time Premium
+              connection.
             </p>
           </details>
           <details>
             <summary>Volume</summary>
             <p className="muted">
-              WatchNest starts supported player sessions at a comfortable 60% and
-              remembers changes in this browser. On iPad, the physical volume
-              buttons remain the reliable control; some embedded videos use the
-              device volume directly.
+              WatchNest starts supported player sessions at a comfortable 60%
+              and remembers changes in this browser. On iPad, the physical
+              volume buttons remain the reliable control; some embedded videos
+              use the device volume directly.
             </p>
           </details>
           <details>
             <summary>Offline and travel</summary>
             <p className="muted">
               Offline YouTube downloads stay inside YouTube’s own signed-in apps
-              and website. WatchNest does not copy or cache videos, so an internet
-              connection is required for this beta.
+              and website. WatchNest does not copy or cache videos, so an
+              internet connection is required for this beta.
             </p>
           </details>
         </section>

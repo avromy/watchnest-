@@ -1,4 +1,19 @@
-# Final family beta — iPhone containment passed; iPad observation pending (2026-10-05)
+# Final family beta — device protection and immersive playback candidate (2026-10-06)
+
+## Current amendment state
+
+The exact preceding production candidate remains live and recoverable while the
+device-protection/immersive-playback successor is being qualified. The successor
+adds three Parent-facing protection levels, best-effort fullscreen from the
+original child card tap, a deterministic full-viewport WatchNest player,
+eligible non-MFK immediate playback, and a one-tap fallback. It does not change
+the Safe Playback sandbox or authorization boundary. Exact decisions and the
+pre-amendment iPad evidence binding are in
+`docs/DeviceProtectionPlaybackAmendment-20261006.md`.
+
+Affected prior player and containment acceptance is stale for the successor
+until its exact commit and deployment pass local, hosted, independent, and final
+physical-iPad acceptance. Unaffected data/auth/security evidence remains valid.
 
 ## Exact binding
 
@@ -97,7 +112,6 @@ One evidence item remains genuinely device-bound: on the authenticated family iP
 
 ---
 
-
 # WatchNest UX redesign — Founder Review Ready (2026-10-02)
 
 ## Terminal state
@@ -168,22 +182,22 @@ Prior end-to-end implementation, product research, UI and tests retained. Resume
 
 ## Deliverable and acceptance ledger
 
-| Obligation | State / evidence | Next exact action |
-|---|---|---|
-| Current authority /8projectfiles /AppDevinstructions | COMPLETE recovery; SkillInvocationLedger | Continue designated hierarchy, never old permission request or .old package. |
-| Repaired code/migrations/tests | COMPLETE locally; remote durability requires readback | Persist existing branch, check same tree/CI. Never reset good work. |
-| Independent source security | COMPLETE bounded report,52independent tests | Hosted provider/cookie/two-household denial/revocation validation after setup. |
-| Parent Dashboard policy safety | COMPLETE source/history filtering and own-workflow backend counts | Review/qualify applicable non-MFK metrics and privacy disclosures; present own workflow clearly in real parent UI. No restricted watch reconstruction. |
-| Metadata schedule | PREPARED, not live | Verify dedicated project/cost/extensions/jobs/backup, apply4migrations, activate named job, inspect real run. |
-| Supabase /Vercel /YouTube | PENDING external account access; partial connector operations qualified | Secure sign-in/consent handoff. Inspect plan cost; no paid creation. Existing unrelated projects untouched. |
-| Parent +Miri/Ari/Benny/Eli live access | LIVE profiles; PINs intentionally OFF by default | Verify direct PIN-off entry, server-bound identity and sibling assignment isolation on the current deployment. PIN configuration remains available later in protected Parent controls. |
-| Real complete product spine | MISSING hosted evidence | Ingest/preview/approve/assign/login/search/embed/permitted progress/resume/NextUp plus unauthorized denials against exact deployment. |
-| Visual package /current specialist coverage | UNRESOLVED qualification; currentV2.0 protocol retrieved | Finish current exact packages and app adaptation; do not silently replace incomplete source with older package. Preserve existing UI while resolving. |
-| Human-Eye /Match /Blind Jury /cold Stranger | MISSING current full evidence | Bind complete actual screens/assets/states to exact source/deployment/schema; independent firewalls and explicit evidence consumption. |
-| Actual YouTube player /Safari | MISSING | Observe branding/links/pause/end/fullscreen/PiP/autoplay; Founder real-device check only when product ready. Chromium is not iPad. |
-| Founder package /release | MISSING | No working URL/credentials claim until real usable family access and acceptance; then concise package. |
-| Continuous Learning | COMPLETE project capture; broader proposals unpromoted | Propagate bounded lessons to current Notion project authority; do not mutate unrelated universal manuals blindly. |
-| Recovery/deletion | PENDING durable readback/recovery test | Verify GitHub tree, Notion checkpoint, invocation/learning links and continuation; CLEAR only after no unique material remains in chat. |
+| Obligation                                           | State / evidence                                                        | Next exact action                                                                                                                                                                      |
+| ---------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Current authority /8projectfiles /AppDevinstructions | COMPLETE recovery; SkillInvocationLedger                                | Continue designated hierarchy, never old permission request or .old package.                                                                                                           |
+| Repaired code/migrations/tests                       | COMPLETE locally; remote durability requires readback                   | Persist existing branch, check same tree/CI. Never reset good work.                                                                                                                    |
+| Independent source security                          | COMPLETE bounded report,52independent tests                             | Hosted provider/cookie/two-household denial/revocation validation after setup.                                                                                                         |
+| Parent Dashboard policy safety                       | COMPLETE source/history filtering and own-workflow backend counts       | Review/qualify applicable non-MFK metrics and privacy disclosures; present own workflow clearly in real parent UI. No restricted watch reconstruction.                                 |
+| Metadata schedule                                    | PREPARED, not live                                                      | Verify dedicated project/cost/extensions/jobs/backup, apply4migrations, activate named job, inspect real run.                                                                          |
+| Supabase /Vercel /YouTube                            | PENDING external account access; partial connector operations qualified | Secure sign-in/consent handoff. Inspect plan cost; no paid creation. Existing unrelated projects untouched.                                                                            |
+| Parent +Miri/Ari/Benny/Eli live access               | LIVE profiles; PINs intentionally OFF by default                        | Verify direct PIN-off entry, server-bound identity and sibling assignment isolation on the current deployment. PIN configuration remains available later in protected Parent controls. |
+| Real complete product spine                          | MISSING hosted evidence                                                 | Ingest/preview/approve/assign/login/search/embed/permitted progress/resume/NextUp plus unauthorized denials against exact deployment.                                                  |
+| Visual package /current specialist coverage          | UNRESOLVED qualification; currentV2.0 protocol retrieved                | Finish current exact packages and app adaptation; do not silently replace incomplete source with older package. Preserve existing UI while resolving.                                  |
+| Human-Eye /Match /Blind Jury /cold Stranger          | MISSING current full evidence                                           | Bind complete actual screens/assets/states to exact source/deployment/schema; independent firewalls and explicit evidence consumption.                                                 |
+| Actual YouTube player /Safari                        | MISSING                                                                 | Observe branding/links/pause/end/fullscreen/PiP/autoplay; Founder real-device check only when product ready. Chromium is not iPad.                                                     |
+| Founder package /release                             | MISSING                                                                 | No working URL/credentials claim until real usable family access and acceptance; then concise package.                                                                                 |
+| Continuous Learning                                  | COMPLETE project capture; broader proposals unpromoted                  | Propagate bounded lessons to current Notion project authority; do not mutate unrelated universal manuals blindly.                                                                      |
+| Recovery/deletion                                    | PENDING durable readback/recovery test                                  | Verify GitHub tree, Notion checkpoint, invocation/learning links and continuation; CLEAR only after no unique material remains in chat.                                                |
 
 ## Mutation / rollback / recovery
 

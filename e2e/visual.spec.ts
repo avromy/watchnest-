@@ -25,13 +25,17 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   });
   await page.setViewportSize({ width: 1024, height: 900 });
   await page.goto("/parent/settings");
-  await expect(page.getByRole("heading", { name: "Safe Playback" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "1. Safe Playback" }),
+  ).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/parent-settings-tablet-synthetic.png",
     fullPage: true,
   });
   await page.goto("/parent/add-video");
-  await expect(page.getByRole("heading", { name: "Find videos" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Find videos" }),
+  ).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/parent-add-videos-tablet-synthetic.png",
     fullPage: true,
@@ -67,7 +71,9 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   );
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`/watch/player/${playerVideo.id}`);
-  await expect(page.locator(`iframe[title="${playerVideo.title}"]`)).toBeVisible();
+  await expect(
+    page.locator(`iframe[title="${playerVideo.title}"]`),
+  ).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/child-player-mobile-synthetic.png",
     fullPage: true,

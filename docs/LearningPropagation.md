@@ -97,6 +97,33 @@ to the same channel, and native accessibility/playback controls retained. Future
 chrome changes must rerun the Safe Playback inverse, responsive player evidence
 and exact-candidate device binding; an iPhone result never certifies iPad.
 
+## PROJECT — immediate playback must not bypass MFK privacy controls
+
+Current YouTube documentation says `autoplay=1` begins playback-data collection
+when the page loads, while its Made-for-Kids guide requires tracking to be
+disabled. WatchNest therefore attempts autoplay only for videos classified
+non-MFK. MFK and unknown-status videos retain one obvious native Play action.
+Do not convert a product preference for fewer taps into an undocumented
+child-privacy exception.
+
+## PRODUCT — protection levels must name unsupported gaps honestly
+
+The appealing middle tier—normal Safari plus complete denial of unrestricted
+YouTube while every embed resource continues to work—cannot be expressed
+reliably by current ordinary-family Apple controls. Present the supported Safe
+Playback baseline and optional dedicated-device maximum, but label the middle
+tier limited instead of prescribing brittle domain/path rules. A graduated
+protection UI is useful only when each tier has a truthful enforcement boundary.
+
+## PRODUCT — preserve the initiating gesture across immersive transitions
+
+Playback and fullscreen privileges are transient browser capabilities. Request
+fullscreen synchronously from the original approved-video card tap, then let
+the route transition continue; if the platform denies it, provide a polished
+full-viewport in-app fallback. Never describe best-effort browser fullscreen as
+the containment control, and rebind device evidence after changing the entry
+transition.
+
 ## PROCESS proposal — save error messages can conflict with persisted state
 
 Vercel production-branch save reported no deployments for the branch, but subsequent deployment validation and native deployment source showed the exact branch was persisted. Reconcile contradictory evidence with an authoritative operation readback; do not repeat writes or infer success/failure solely from a toast. Bounded to this observation; no general permission to ignore warnings.
