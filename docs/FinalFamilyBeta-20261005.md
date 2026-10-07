@@ -1,3 +1,22 @@
+# Founder Ready closeout — 2026-10-07
+
+`WATCHNEST_FINAL_FAMILY_BETA_FOUNDER_REVIEW_READY`
+
+The final real-family-device observation passed against application commit
+`c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`, tree
+`9f1ef6a38b95d13738cc8bf814066ed5839f3871`, deployment
+`dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7`, and Safe Playback ON.
+
+- iPad: assigned playback worked, true fullscreen engaged, audible autoplay was
+  blocked and required the intended one-Play fallback, and a YouTube exit tap
+  did not leave WatchNest.
+- iPhone: playback stayed inside WatchNest; true fullscreen did not engage and
+  the immersive in-app player remained the fallback.
+- No application mutation followed the test, so prior exact-candidate automated,
+  security, visual, responsive, Human-Eye, and Stranger evidence remains valid.
+
+---
+
 # Final family beta implementation — updated 2026-10-06
 
 ## Candidate scope
