@@ -1,3 +1,25 @@
+# Final family beta — Founder Ready (2026-10-07)
+
+## Terminal state
+
+`WATCHNEST_FINAL_FAMILY_BETA_FOUNDER_REVIEW_READY`
+
+The final physical-device gate passed against the frozen application candidate:
+
+- Working URL: https://watchnest-rho.vercel.app
+- Application commit: `c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`
+- Application tree: `9f1ef6a38b95d13738cc8bf814066ed5839f3871`
+- Application deployment: `dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7`
+- Safe Playback: ON for the Founder household
+- iPad: Miri's assigned video played, true fullscreen engaged, the YouTube exit control did not open an external page/app, and the Founder remained in WatchNest.
+- iPad autoplay: audible autoplay did not begin; the platform-required Play action was used. This is the supported one-tap fallback, not a containment failure.
+- iPhone: playback stayed in WatchNest; true fullscreen did not engage, so the immersive in-app viewing mode remained the fallback.
+- No further application mutation followed this observation. Existing exact-candidate automated, security, responsive, Human-Eye, and Stranger PASS evidence remains current.
+
+Founder attention is no longer required for qualification. The family beta is ready for Founder use. Genuine platform limits remain documented below.
+
+---
+
 # Final family beta — device protection and immersive playback deployed (2026-10-06)
 
 ## Current amendment state
