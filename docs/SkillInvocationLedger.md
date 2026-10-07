@@ -1,3 +1,32 @@
+# Final device acceptance and Founder Ready receipt — 2026-10-07
+
+**Exact candidate:** application commit
+`c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`, tree
+`9f1ef6a38b95d13738cc8bf814066ed5839f3871`, production
+`dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7`, Safe Playback ON.
+
+| Gate | Evidence | Result |
+| --- | --- | --- |
+| Real iPad playback | Founder reported Miri's assigned video played | PASS |
+| Real iPad viewing mode | True fullscreen engaged from the video selection flow | PASS |
+| Real iPad autoplay | Audible autoplay did not begin; one Play action remained | ACCEPTED PLATFORM FALLBACK |
+| Real iPad containment | YouTube external/exit control opened no external page/app; Founder remained in WatchNest | PASS |
+| Real iPhone playback/containment | Playback stayed in WatchNest | PASS |
+| Real iPhone fullscreen | True fullscreen did not engage; immersive WatchNest view remained | ACCEPTED PLATFORM FALLBACK |
+| Evidence freshness | No application mutation followed the observation | CURRENT |
+| Founder Ready | All autonomous tests/reviews had already passed; final device gate now passed | READY |
+
+The final receipt preserves the distinction between application behavior and
+Apple browser policy: WatchNest requests eligible audible autoplay and true
+fullscreen, but does not claim either where the device denies it. The one-Play
+fallback and immersive in-app player satisfy the locked fallback hierarchy.
+Safe Playback remains the independent containment control.
+
+Terminal state:
+`WATCHNEST_FINAL_FAMILY_BETA_FOUNDER_REVIEW_READY`.
+
+---
+
 # Device protection and immersive playback receipt — 2026-10-06
 
 **Exact application candidate:** commit

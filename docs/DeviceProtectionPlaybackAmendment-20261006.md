@@ -1,3 +1,28 @@
+# Final physical-device acceptance — 2026-10-07
+
+Bound to the frozen application candidate `c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`,
+tree `9f1ef6a38b95d13738cc8bf814066ed5839f3871`, deployment
+`dpl_96bDGJEnZqSn2tdKR1Sfc7fpAWQ7`, production URL
+https://watchnest-rho.vercel.app, and Founder household Safe Playback ON.
+
+- **Real family iPad:** WatchNest opened; Miri's assigned video played; true
+  fullscreen engaged; audible autoplay did not begin; the Founder used the
+  platform-required Play action; tapping the YouTube external/exit control did
+  not open an external page/app; the Founder remained in WatchNest.
+- **Real iPhone:** video playback stayed in WatchNest; true fullscreen did not
+  engage, so the WatchNest immersive in-app view remained the fallback.
+- **Acceptance:** PASS for the intended hierarchy. Fullscreen is best-effort,
+  Safe Playback—not fullscreen—is the containment boundary, and Apple-platform
+  audible autoplay may require one clear Play action.
+- **Evidence discipline:** the earlier pre-amendment iPad result remains
+  historical baseline evidence. This post-amendment observation is the
+  controlling real-iPad acceptance for the frozen final candidate.
+
+No application change followed this observation. Terminal state:
+`WATCHNEST_FINAL_FAMILY_BETA_FOUNDER_REVIEW_READY`.
+
+---
+
 # Device protection and immersive playback amendment — 2026-10-06
 
 **Deployed application:** `c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de` /
