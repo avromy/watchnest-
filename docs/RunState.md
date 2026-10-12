@@ -1,5 +1,14 @@
 # Final family beta — Founder Ready (2026-10-07)
 
+## Production family-data incident — 2026-10-12
+
+- Production deployment under investigation: `dpl_DAYHkXShUT2ouVpeMVB6LyY8t2qk` at `https://watchnest-rho.vercel.app`.
+- Founder authentication succeeded at the Auth service, but the first post-login family-data operation returned the product's generic database error.
+- Production data remained intact: one linked Parent, four active profiles (Miri, Ari, Benny, Eli), 88 videos, 18 active assignments, one Collection, and two active Miri assignments.
+- The `parent_policy_acceptance` migration was present, but the new columns had not yet been exercised successfully through the cached PostgREST schema after deployment. A supported PostgREST schema-cache reload was issued; a public REST schema probe then recognized both new policy columns.
+- A rollback-only database transaction verified the exact policy write (one row), four-profile household load, and Miri assignment load without retaining a synthetic acceptance record.
+- Final status remains pending one authenticated production login because no authorized Parent credential/session is available to autonomous tooling. No password, household, profile, PIN, assignment, Collection, or authorization state was reset or recreated.
+
 ## Terminal state
 
 `WATCHNEST_FINAL_FAMILY_BETA_FOUNDER_REVIEW_READY`
