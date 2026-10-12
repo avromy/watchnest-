@@ -1,5 +1,12 @@
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
+## 2026-10-12 — Urgent production login/family-data repair
+
+- `supabase:supabase`: PASS — traced successful Auth login followed by the generic family-data failure; reconciled migrations, grants, account linkage, four profiles, assignments, Collections, and active device records; issued the supported PostgREST schema-cache reload; verified the policy write and family read in a rollback-only transaction.
+- `vercel:verification`: PARTIAL — bound the incident to production deployment `dpl_DAYHkXShUT2ouVpeMVB6LyY8t2qk`, confirmed READY state and the absence of application-level diagnostic logs; exact authenticated production verification awaits an authorized Parent session.
+- `project-handoff`: UPDATED — durable incident state and minimum remaining verification recorded without changing the product candidate.
+- `founder-ready`: REOPENED — authentication/family-data gate remains open until the repaired production path is exercised with the existing Parent account.
+
 **Exact candidate:** application commit
 `c01979cac34bd713b4db0eeb9b7f3f9a1e32e8de`, tree
 `9f1ef6a38b95d13738cc8bf814066ed5839f3871`, production
