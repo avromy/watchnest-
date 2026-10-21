@@ -18,6 +18,8 @@ const state = vi.hoisted(() => ({
   childAuthPin: null as null | boolean,
   parentProfileMutation: false,
   trustedDevice: false,
+  renewalFailure: false,
+  cacheFailure: false,
   rpcs: [] as { name: string; args: any }[],
 }));
 vi.mock("server-only", () => ({}));
@@ -171,6 +173,8 @@ vi.mock("@supabase/supabase-js", () => ({
                         : [],
         error: null,
       };
+      if (table === "youtube_search_cache" && state.cacheFailure)
+        result.error = { code: "CACHE_UNAVAILABLE" } as any;
       const chain: any = {
         then: (resolve: any) => Promise.resolve(result).then(resolve),
       };
@@ -191,6 +195,9 @@ vi.mock("@supabase/supabase-js", () => ({
         chain[method] = () => chain;
       chain.update = (values: any) => {
         state.updates.push({ table, values });
+        if (table === "household_devices" && state.renewalFailure) {
+          result.error = { code: "TRANSIENT" } as any;
+        }
         return chain;
       };
       return chain;
@@ -205,6 +212,7 @@ function configured() {
 }
 afterEach(() => {
   vi.unstubAllEnvs();
+  vi.unstubAllGlobals();
   state.tables = [];
   state.role = "parent";
   state.video = false;
@@ -222,6 +230,8 @@ afterEach(() => {
   state.childAuthPin = null;
   state.parentProfileMutation = false;
   state.trustedDevice = false;
+  state.renewalFailure = false;
+  state.cacheFailure = false;
   state.rpcs = [];
 });
 describe("authenticated route dispatch regression", () => {
@@ -247,6 +257,19 @@ describe("authenticated route dispatch regression", () => {
       "token",
       expect.objectContaining({ httpOnly: true, maxAge: 180 * 86400 }),
     ]);
+  });
+  it("keeps an already-valid trusted device signed in when renewal storage is temporarily unavailable", async () => {
+    configured();
+    state.role = "device";
+    state.trustedDevice = true;
+    state.renewalFailure = true;
+    const response = await handle(
+      new Request("https://test.local/api/session"),
+      ["session"],
+    );
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ role: "device", configured: true });
+    expect(state.cookieWrites).toEqual([]);
   });
   it("honors an explicit PIN-off toggle while replacing the stored PIN", async () => {
     configured();
@@ -395,6 +418,49 @@ describe("child playback metadata gates", () => {
 });
 
 describe("verified parent ownership and cache retention", () => {
+  it("returns YouTube search results even when the optional search cache is unavailable", async () => {
+    configured();
+    vi.stubEnv("YOUTUBE_API_KEY", "youtube-key");
+    state.cacheFailure = true;
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL) => {
+        const url = new URL(String(input));
+        return new Response(
+          JSON.stringify(
+            url.pathname.endsWith("/search")
+              ? { items: [{ id: { videoId: "abcdefghijk" } }] }
+              : {
+                  items: [
+                    {
+                      id: "abcdefghijk",
+                      snippet: {
+                        title: "A safe result",
+                        channelId: "channel",
+                        channelTitle: "Creator",
+                        thumbnails: { default: { url: "https://i.ytimg.com/x.jpg" } },
+                      },
+                      contentDetails: { duration: "PT2M" },
+                      status: {
+                        privacyStatus: "public",
+                        embeddable: true,
+                        madeForKids: false,
+                      },
+                    },
+                  ],
+                },
+          ),
+          { status: 200, headers: { "content-type": "application/json" } },
+        );
+      }),
+    );
+    const response = await handle(
+      new Request("https://test.local/api/parent/videos/search?q=science&type=video"),
+      ["parent", "videos", "search"],
+    );
+    expect(response.status).toBe(200);
+    expect(state.tables).toContain("youtube_search_cache");
+  });
   it("cannot initialize or bind an unconfirmed parent even if auth issues a session", async () => {
     configured();
     state.unconfirmed = true;

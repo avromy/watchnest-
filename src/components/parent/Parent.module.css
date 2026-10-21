@@ -330,6 +330,7 @@
 .segmented button {
   border: 0;
   background: transparent;
+  min-height: 44px;
   padding: 9px 13px;
   border-radius: 10px;
   font-weight: 750;

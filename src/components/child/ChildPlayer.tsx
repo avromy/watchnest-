@@ -426,11 +426,23 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         `/api/child/player?videoId=${encodeURIComponent(videoId)}`,
       ).catch((e) => {
         if (!disposed) {
+          const message = e instanceof Error ? e.message : "";
           active.current = false;
           player.current?.pauseVideo();
           player.current?.destroy();
           player.current = null;
-          setError((e as Error).message);
+          setErrorKind(
+            /not in your library|no longer assigned|sign in|session/i.test(
+              message,
+            )
+              ? "authorization"
+              : /unavailable|removed|private/i.test(message)
+                ? "unavailable"
+                : /reach|network|connection/i.test(message)
+                  ? "network"
+                  : "unknown",
+          );
+          setError(message || "WatchNest could not continue this video.");
         }
       });
     }, 20000);

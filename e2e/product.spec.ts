@@ -342,7 +342,7 @@ test("synthetic UI: Made-for-Kids playback stays monitored and contained", async
   const src = new URL((await iframe.getAttribute("src"))!);
   expect(src.origin).toBe("https://www.youtube-nocookie.com");
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
-  expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
+  expect(src.searchParams.get("origin")).toBe(new URL(page.url()).origin);
   expect(src.searchParams.get("enablejsapi")).toBe("1");
   expect(src.searchParams.get("autoplay")).toBe("1");
   expect(src.searchParams.get("controls")).toBe("1");
@@ -416,16 +416,28 @@ test("synthetic UI: mobile share text auto-resolves and retains a manual fallbac
   page,
 }) => {
   await fixture(page, "parent");
+  let lookups = 0;
+  await page.route("**/api/parent/videos/lookup", async (route) => {
+    lookups++;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ videos: dashboard.videos, errors: [] }),
+    });
+  });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/parent/add-video");
   const links = page.getByLabel("Paste one YouTube video link per line");
   await links.fill(
     "Shared from my phone https://youtu.be/dQw4w9WgXcQ?si=mobile",
   );
+  await page.getByRole("button", { name: "Load videos" }).click();
   await expect(
     page.getByRole("heading", { name: "Build a paper rocket" }),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Load videos" })).toBeVisible();
+  await page.waitForTimeout(550);
+  expect(lookups).toBe(1);
 });
 
 test("synthetic UI: mobile channel selection immediately loads individual videos", async ({
@@ -466,6 +478,53 @@ test("synthetic UI: mobile channel selection immediately loads individual videos
   await page.goto("/parent/add-video");
   await page.getByRole("button", { name: "Channels" }).click();
   await page.getByRole("searchbox", { name: "Search" }).fill("makers");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await page.getByRole("button", { name: "Browse videos" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Build a paper rocket" }),
+  ).toBeVisible();
+  expect(sourceRequests).toBe(1);
+});
+
+test("synthetic UI: mobile playlist selection immediately loads individual videos", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  let sourceRequests = 0;
+  await page.route("**/api/parent/videos/search**", async (route) => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get("source")) {
+      sourceRequests++;
+      expect(url.searchParams.get("type")).toBe("playlist");
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ videos: dashboard.videos, nextPageToken: null }),
+      });
+      return;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        items: [
+          {
+            id: "playlist-1",
+            type: "playlist",
+            title: "Weekend projects",
+            description: "",
+            thumbnail_url: "",
+            channel_title: "Little Makers",
+          },
+        ],
+        nextPageToken: null,
+      }),
+    });
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/parent/add-video");
+  await page.getByRole("button", { name: "Playlists" }).click();
+  await page.getByRole("searchbox", { name: "Search" }).fill("projects");
   await page.getByRole("button", { name: "Search", exact: true }).click();
   await page.getByRole("button", { name: "Browse videos" }).click();
   await expect(

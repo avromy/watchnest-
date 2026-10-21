@@ -61,6 +61,53 @@ async function api<T>(
     throw new Error(data.error || "Something went wrong. Please try again.");
   return data as T;
 }
+type LookupResult = {
+  videos: Video[];
+  errors: { url: string; error: string }[];
+};
+type RecentVideoLookup = {
+  key: string;
+  at: number;
+  promise: Promise<LookupResult>;
+};
+type WatchNestBrowserWindow = typeof window & {
+  __watchnestRecentVideoLookup?: RecentVideoLookup;
+  __watchnestAutoResolvedKey?: string;
+};
+function lookupVideoUrls(links: string[]) {
+  const key = links.join("|");
+  const now = Date.now();
+  const scope = window as WatchNestBrowserWindow;
+  try {
+    const cached = JSON.parse(
+      window.sessionStorage.getItem("watchnest-recent-video-lookup") || "null",
+    ) as { key: string; at: number; result: LookupResult } | null;
+    if (cached?.key === key && now - cached.at < 1500)
+      return Promise.resolve(cached.result);
+  } catch {
+    // The in-memory request coalescer below remains available when storage is
+    // disabled or contains an invalid value.
+  }
+  const recentVideoLookup = scope.__watchnestRecentVideoLookup;
+  if (
+    recentVideoLookup?.key === key &&
+    now - recentVideoLookup.at < 1500
+  )
+    return recentVideoLookup.promise;
+  const promise = api<LookupResult>("/api/parent/videos/lookup", "POST", {
+    urls: links,
+  }).then((result) => {
+    try {
+      window.sessionStorage.setItem(
+        "watchnest-recent-video-lookup",
+        JSON.stringify({ key, at: Date.now(), result }),
+      );
+    } catch {}
+    return result;
+  });
+  scope.__watchnestRecentVideoLookup = { key, at: now, promise };
+  return promise;
+}
 const Context = createContext<{
   data: Dashboard;
   reload: () => Promise<void>;
@@ -439,7 +486,6 @@ export function AddVideos() {
   const { data, act, busy, reload } = useParent();
   const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
   const urlInput = useRef<HTMLTextAreaElement | null>(null);
-  const autoResolved = useRef("");
   const [query, setQuery] = useState(""),
     [urls, setUrls] = useState(""),
     [results, setResults] = useState<Video[]>([]),
@@ -514,10 +560,7 @@ export function AddVideos() {
     setSearched(true);
     try {
       const result = lookup
-        ? await api<{
-            videos: Video[];
-            errors: { url: string; error: string }[];
-          }>("/api/parent/videos/lookup", "POST", { urls: links })
+        ? await lookupVideoUrls(links)
         : await api<{
             videos?: Video[];
             items?: typeof discoveries;
@@ -564,21 +607,27 @@ export function AddVideos() {
   }
   function find(e: FormEvent, lookup: boolean) {
     e.preventDefault();
+    if (lookup) {
+      const scope = window as WatchNestBrowserWindow;
+      const currentValue = urlInput.current?.value.trim() || urls.trim();
+      const key = extractYouTubeVideoUrls(currentValue).join("|");
+      if (key && scope.__watchnestAutoResolvedKey === key) return;
+      scope.__watchnestAutoResolvedKey = key;
+      void runFind(true, undefined, false, { pastedText: currentValue });
+      return;
+    }
     void runFind(lookup);
   }
-  useEffect(() => {
-    const value = urls.trim();
-    if (!value || value === autoResolved.current) return;
+  function acceptUrlText(value: string) {
+    setUrls(value);
+    const scope = window as WatchNestBrowserWindow;
     const links = extractYouTubeVideoUrls(value);
     if (!links.length || links.length > 20) return;
-    const timer = window.setTimeout(() => {
-      autoResolved.current = value;
-      void runFind(true, undefined, false, { pastedText: value });
-    }, 450);
-    return () => window.clearTimeout(timer);
-    // runFind intentionally uses the latest form state after this short debounce.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [urls]);
+    const key = links.join("|");
+    if (scope.__watchnestAutoResolvedKey === key) return;
+    scope.__watchnestAutoResolvedKey = key;
+    void runFind(true, undefined, false, { pastedText: value });
+  }
   async function approve() {
     if (
       await act("/api/parent/videos", "POST", {
@@ -592,7 +641,7 @@ export function AddVideos() {
       );
       setSelected([]);
       setUrls("");
-      autoResolved.current = "";
+      delete (window as WatchNestBrowserWindow).__watchnestAutoResolvedKey;
       requestAnimationFrame(() => urlInput.current?.focus());
     }
   }
@@ -671,14 +720,13 @@ export function AddVideos() {
             className="field"
             id="yt-urls"
             value={urls}
-            onChange={(e) => setUrls(e.target.value)}
-            onInput={(e) => setUrls(e.currentTarget.value)}
+            onChange={(e) => acceptUrlText(e.target.value)}
             onPaste={(event) => {
               const pasted = event.clipboardData.getData("text");
               if (!pasted) return;
               event.preventDefault();
               const next = `${urls}${urls ? "\n" : ""}${pasted}`;
-              setUrls(next);
+              acceptUrlText(next);
             }}
             rows={3}
             required

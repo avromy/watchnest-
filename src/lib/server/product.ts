@@ -215,19 +215,24 @@ async function device() {
   // A trusted household device is the appliance-like family entry point. Keep
   // an actively used device alive without making the token permanent.
   const renewedExpiry = new Date(Date.now() + 180 * 86400000).toISOString();
-  check(
-    await db()
-      .from("household_devices")
-      .update({
-        last_used_at: new Date().toISOString(),
-        expires_at: renewedExpiry,
-      })
-      .eq("id", row.id)
-      .eq("token_hash", digest(token)),
-    "trusted-device-renewal",
-    "This family device could not be refreshed. Please retry.",
-  );
-  await cookie("wn_device", token, 180 * 86400);
+  const renewal = await db()
+    .from("household_devices")
+    .update({
+      last_used_at: new Date().toISOString(),
+      expires_at: renewedExpiry,
+    })
+    .eq("id", row.id)
+    .eq("token_hash", digest(token));
+  if (renewal.error) {
+    // Renewal is maintenance, not authorization. The already-validated token
+    // remains usable until its existing server-side expiry.
+    console.warn("[watchnest-device] renewal skipped", {
+      code: renewal.error.code || "unknown",
+      status: renewal.status || 503,
+    });
+  } else {
+    await cookie("wn_device", token, 180 * 86400);
+  }
   return row;
 }
 
@@ -303,12 +308,15 @@ async function metadataMaintenance(client: ReturnType<typeof db>) {
         new Date(Date.now() - 30 * 86400000).toISOString(),
       ),
   );
-  check(
-    await client
-      .from("youtube_search_cache")
-      .delete()
-      .lt("expires_at", new Date().toISOString()),
-  );
+  const expiredCache = await client
+    .from("youtube_search_cache")
+    .delete()
+    .lt("expires_at", new Date().toISOString());
+  if (expiredCache.error)
+    console.warn("[watchnest-search] expired cache cleanup skipped", {
+      code: expiredCache.error.code || "unknown",
+      status: expiredCache.status || 503,
+    });
 }
 async function limit(key: string, max: number, seconds = 900) {
   const allowed = check(
