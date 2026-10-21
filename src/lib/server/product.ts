@@ -47,12 +47,19 @@ class Failure extends Error {
     super(message);
   }
 }
-function check(result: any) {
-  if (result.error)
-    throw new Failure(
-      "Unable to save or load your family data. Please retry.",
-      503,
-    );
+function check(
+  result: any,
+  context = "family-data",
+  message = "Unable to save or load your family data. Please retry.",
+) {
+  if (result.error) {
+    console.error("[watchnest-data] operation failed", {
+      context,
+      code: result.error.code || "unknown",
+      status: result.status || 503,
+    });
+    throw new Failure(message, 503);
+  }
   return result.data;
 }
 export async function cookie(name: string, value: string, maxAge: number) {
@@ -194,7 +201,7 @@ async function device() {
   const row = check(
     await db()
       .from("household_devices")
-      .select("id,parent_id")
+      .select("id,parent_id,expires_at")
       .eq("token_hash", digest(token))
       .is("revoked_at", null)
       .gt("expires_at", new Date().toISOString())
@@ -205,6 +212,22 @@ async function device() {
       "This family device session expired. Sign in again.",
       401,
     );
+  // A trusted household device is the appliance-like family entry point. Keep
+  // an actively used device alive without making the token permanent.
+  const renewedExpiry = new Date(Date.now() + 180 * 86400000).toISOString();
+  check(
+    await db()
+      .from("household_devices")
+      .update({
+        last_used_at: new Date().toISOString(),
+        expires_at: renewedExpiry,
+      })
+      .eq("id", row.id)
+      .eq("token_hash", digest(token)),
+    "trusted-device-renewal",
+    "This family device could not be refreshed. Please retry.",
+  );
+  await cookie("wn_device", token, 180 * 86400);
   return row;
 }
 
@@ -421,6 +444,8 @@ async function metadata(videoIds: string[], force = false) {
   const client = db();
   const cached = check(
     await client.from("videos").select("*").in("youtube_video_id", videoIds),
+    "video-metadata-read",
+    "Video details could not be loaded. Please retry.",
   );
   const missing = videoIds.filter(
     (v) =>
@@ -477,11 +502,15 @@ async function metadata(videoIds: string[], force = false) {
         await client
           .from("videos")
           .upsert(row, { onConflict: "youtube_video_id" }),
+        "video-metadata-write",
+        "Video details could not be saved. Please retry.",
       );
     }
   }
   return check(
     await client.from("videos").select("*").in("youtube_video_id", videoIds),
+    "video-metadata-refresh-read",
+    "Video details could not be loaded. Please retry.",
   ).map((r: any) => ({
     ...r,
     title: cleanProviderText(r.title),
@@ -603,6 +632,10 @@ export async function handle(request: globalThis.Request, path: string[]) {
       try {
         const c = await child();
         return reply({ role: "child", profile: c.profile, configured: true });
+      } catch {}
+      try {
+        await device();
+        return reply({ role: "device", configured: true });
       } catch {}
       return reply({ role: null, configured: true });
     }
@@ -1316,14 +1349,17 @@ async function parentRoute(
     const cacheKey = digest(
       `${kind}:${sourceId || "search"}:${query.toLowerCase()}:${pageToken || "first"}`,
     );
-    const cached = check(
-      await client
-        .from("youtube_search_cache")
-        .select("result_json")
-        .eq("cache_key", cacheKey)
-        .gt("expires_at", new Date().toISOString())
-        .maybeSingle(),
-    );
+    const cacheLookup = await client
+      .from("youtube_search_cache")
+      .select("result_json")
+      .eq("cache_key", cacheKey)
+      .gt("expires_at", new Date().toISOString())
+      .maybeSingle();
+    if (cacheLookup.error)
+      console.warn("[watchnest-search] cache read skipped", {
+        code: cacheLookup.error.code || "unknown",
+      });
+    const cached = cacheLookup.error ? null : cacheLookup.data;
     if (cached)
       return reply(
         kind === "video" || sourceId
@@ -1355,21 +1391,23 @@ async function parentRoute(
           "",
         channel_title: item.snippet.channelTitle || "",
       }));
-      check(
-        await client.from("youtube_search_cache").upsert(
-          {
-            cache_key: cacheKey,
-            normalized_query: `${kind}:${query.toLowerCase()}`,
-            raw_query: query,
-            result_json: {
-              items,
-              nextPageToken: result.nextPageToken || null,
-            },
-            expires_at: new Date(Date.now() + 3600000).toISOString(),
+      const cacheWrite = await client.from("youtube_search_cache").upsert(
+        {
+          cache_key: cacheKey,
+          normalized_query: `${kind}:${query.toLowerCase()}`,
+          raw_query: query,
+          result_json: {
+            items,
+            nextPageToken: result.nextPageToken || null,
           },
-          { onConflict: "cache_key" },
-        ),
+          expires_at: new Date(Date.now() + 3600000).toISOString(),
+        },
+        { onConflict: "cache_key" },
       );
+      if (cacheWrite.error)
+        console.warn("[watchnest-search] cache write skipped", {
+          code: cacheWrite.error.code || "unknown",
+        });
       return reply({ items, nextPageToken: result.nextPageToken || null });
     }
     let videoIds: string[];
@@ -1408,21 +1446,23 @@ async function parentRoute(
         v.availability_status === "available" &&
         v.embeddable_status === "embeddable",
     );
-    check(
-      await client.from("youtube_search_cache").upsert(
-        {
-          cache_key: cacheKey,
-          normalized_query: query.toLowerCase(),
-          raw_query: query,
-          result_json: {
-            videos: usable,
-            nextPageToken,
-          },
-          expires_at: new Date(Date.now() + 3600000).toISOString(),
+    const cacheWrite = await client.from("youtube_search_cache").upsert(
+      {
+        cache_key: cacheKey,
+        normalized_query: query.toLowerCase(),
+        raw_query: query,
+        result_json: {
+          videos: usable,
+          nextPageToken,
         },
-        { onConflict: "cache_key" },
-      ),
+        expires_at: new Date(Date.now() + 3600000).toISOString(),
+      },
+      { onConflict: "cache_key" },
     );
+    if (cacheWrite.error)
+      console.warn("[watchnest-search] cache write skipped", {
+        code: cacheWrite.error.code || "unknown",
+      });
     return reply({ videos: usable, nextPageToken });
   }
   if (route === "parent/videos/check" && method === "POST") {
@@ -1722,10 +1762,12 @@ async function childRoute(
       throw new Failure("This video is not in your library.", 403);
     if (b.hidden) {
       check(
-        await client.from("profile_hidden_videos").upsert(
-          { profile_id: profile.id, video_id: b.videoId },
-          { onConflict: "profile_id,video_id" },
-        ),
+        await client
+          .from("profile_hidden_videos")
+          .upsert(
+            { profile_id: profile.id, video_id: b.videoId },
+            { onConflict: "profile_id,video_id" },
+          ),
       );
     } else {
       check(

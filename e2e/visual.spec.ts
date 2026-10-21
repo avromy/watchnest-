@@ -5,6 +5,39 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   page,
 }) => {
   await mkdir("docs/evidence", { recursive: true });
+  await page.addInitScript(() => {
+    class MockPlayer {
+      frame: HTMLIFrameElement;
+      events: any;
+      constructor(frame: HTMLIFrameElement, options: any) {
+        this.frame = frame;
+        this.events = options.events;
+        window.setTimeout(() => this.events.onReady({ target: this }), 0);
+      }
+      getIframe() {
+        return this.frame;
+      }
+      getVideoData() {
+        return { video_id: this.frame.src.split("/embed/")[1]?.split("?")[0] };
+      }
+      playVideo() {
+        this.events.onStateChange({ target: this, data: 1 });
+      }
+      pauseVideo() {}
+      setVolume() {}
+      getCurrentTime() {
+        return 0;
+      }
+      getDuration() {
+        return 180;
+      }
+      getPlayerState() {
+        return 1;
+      }
+      destroy() {}
+    }
+    (window as any).YT = { Player: MockPlayer };
+  });
   await fixture(page, "parent");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/parent/dashboard");

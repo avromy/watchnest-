@@ -428,6 +428,11 @@
 .child-player-shell .safe-playback-note {
   color: #bad0c8;
 }
+.child-player-shell .error {
+  background: #fff0ec;
+  border-color: #e3b9ac;
+  color: #7f2c1d;
+}
 .child-player-shell .watchnest-player,
 .child-player-shell > .notice,
 .child-player-shell > .player-volume,

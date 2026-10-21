@@ -26,6 +26,7 @@ type Player = {
   pauseVideo: () => void;
   setVolume: (volume: number) => void;
   getIframe: () => HTMLIFrameElement;
+  getVideoData: () => { video_id?: string };
   destroy: () => void;
 };
 type PlayerEvent = { target: Player; data: number };
@@ -97,6 +98,15 @@ const SAFE_PLAYER_SANDBOX =
 export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [data, setData] = useState<Playback | null>(null);
   const [error, setError] = useState("");
+  const [errorKind, setErrorKind] = useState<
+    | "authorization"
+    | "unavailable"
+    | "embedding"
+    | "initialization"
+    | "provider"
+    | "network"
+    | "unknown"
+  >("unknown");
   const [blocked, setBlocked] = useState(false);
   const [ended, setEnded] = useState(false);
   const [ready, setReady] = useState(false);
@@ -141,6 +151,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     let cancelled = false;
     setData(null);
     setError("");
+    setErrorKind("unknown");
     setEnded(false);
     setReady(false);
     setBlocked(false);
@@ -158,20 +169,28 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         if (!cancelled) setData(d);
       })
       .catch((e) => {
-        if (!cancelled) setError(e.message);
+        if (!cancelled) {
+          const message = e instanceof Error ? e.message : "";
+          setError(message || "WatchNest could not open this video.");
+          setErrorKind(
+            /not in your library|no longer assigned/i.test(message)
+              ? "authorization"
+              : /sign in|session/i.test(message)
+                ? "authorization"
+                : /unavailable|removed|private/i.test(message)
+                  ? "unavailable"
+                  : /reach|network|connection/i.test(message)
+                    ? "network"
+                    : "unknown",
+          );
+        }
       });
     return () => {
       cancelled = true;
     };
   }, [videoId, replay]);
   useEffect(() => {
-    if (
-      !data ||
-      data.video.made_for_kids !== false ||
-      staticFallback ||
-      !mount.current
-    )
-      return;
+    if (!data || staticFallback || !mount.current) return;
     let disposed = false;
     let completed = false;
     active.current = true;
@@ -229,9 +248,26 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       host.referrerPolicy = "strict-origin-when-cross-origin";
       host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
     }
+    const iframeReady =
+      host instanceof HTMLIFrameElement
+        ? new Promise<void>((resolve, reject) => {
+            const timer = window.setTimeout(
+              () => reject(new Error("youtube-iframe-timeout")),
+              15000,
+            );
+            host.addEventListener(
+              "load",
+              () => {
+                window.clearTimeout(timer);
+                resolve();
+              },
+              { once: true },
+            );
+          })
+        : Promise.resolve();
     mount.current.replaceChildren(host);
-    loadPlayer()
-      .then((YT) => {
+    Promise.all([loadPlayer(), iframeReady])
+      .then(([YT]) => {
         if (disposed) return;
         player.current = new YT.Player(host, {
           ...(data.safe_playback_enabled
@@ -250,10 +286,19 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           events: {
             onReady: (event) => {
               if (!disposed) {
+                const frame = event.target.getIframe();
+                if (
+                  new URL(frame.src).hostname !== "www.youtube-nocookie.com"
+                ) {
+                  event.target.destroy();
+                  player.current = null;
+                  active.current = false;
+                  setErrorKind("authorization");
+                  setError("WatchNest stopped a video that was not approved.");
+                  return;
+                }
                 if (data.safe_playback_enabled) {
-                  event.target
-                    .getIframe()
-                    .setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
+                  frame.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
                 }
                 event.target.setVolume(volumeRef.current);
                 setReady(true);
@@ -262,6 +307,25 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             },
             onStateChange: (e) => {
               if (disposed) return;
+              if (e.data === 1 || e.data === 2 || e.data === 3) {
+                const currentVideoId = e.target.getVideoData()?.video_id;
+                if (
+                  !currentVideoId ||
+                  currentVideoId !== data.video.youtube_video_id
+                ) {
+                  console.warn(
+                    "[watchnest-player] blocked unexpected player identity",
+                    { videoId: data.video.id },
+                  );
+                  e.target.pauseVideo();
+                  e.target.destroy();
+                  player.current = null;
+                  active.current = false;
+                  setErrorKind("authorization");
+                  setError("WatchNest stopped a video that was not approved.");
+                  return;
+                }
+              }
               if (e.data === 1) {
                 setBlocked(false);
                 setEnded(false);
@@ -284,6 +348,17 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   code: failure.code,
                   videoId: data.video.id,
                 });
+                setErrorKind(
+                  failure.kind === "video-unavailable"
+                    ? "unavailable"
+                    : failure.kind === "embedding-disabled"
+                      ? "embedding"
+                      : failure.kind === "client-identity"
+                        ? "initialization"
+                        : failure.kind === "player-service"
+                          ? "provider"
+                          : "unknown",
+                );
                 setError(failure.childMessage);
                 active.current = false;
               }
@@ -303,8 +378,19 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               videoId: data.video.id,
             },
           );
-          setStaticFallback(true);
-          setPlayerNotice("Press Play to begin.");
+          player.current?.destroy();
+          player.current = null;
+          mount.current?.replaceChildren();
+          if (data.safe_playback_enabled) {
+            setErrorKind("initialization");
+            setError(
+              "The video player could not start safely. Please try again.",
+            );
+            active.current = false;
+          } else {
+            setStaticFallback(true);
+            setPlayerNotice("Press Play to begin.");
+          }
         }
       });
     const bookmark = historyAllowed
@@ -369,7 +455,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           <h1>
             {error.includes("not available for this profile right now")
               ? "WatchNest is closed right now"
-              : "This video is unavailable"}
+              : errorKind === "authorization"
+                ? "This video isn’t approved"
+                : errorKind === "unavailable"
+                  ? "This video is unavailable"
+                  : errorKind === "embedding"
+                    ? "This video can’t play here"
+                    : errorKind === "network"
+                      ? "WatchNest can’t reach the video"
+                      : "The video player didn’t start"}
           </h1>
           <p role="alert" className="error">
             {error}
@@ -429,7 +523,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 Watch again
               </button>
             </section>
-          ) : data.video.made_for_kids !== false || staticFallback ? (
+          ) : staticFallback ? (
             <YouTubeEmbed
               className="watchnest-player"
               videoId={data.video.youtube_video_id}
