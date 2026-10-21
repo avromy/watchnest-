@@ -17,6 +17,7 @@ const state = vi.hoisted(() => ({
   cookieWrites: [] as any[],
   childAuthPin: null as null | boolean,
   parentProfileMutation: false,
+  trustedDevice: false,
   rpcs: [] as { name: string; args: any }[],
 }));
 vi.mock("server-only", () => ({}));
@@ -111,57 +112,63 @@ vi.mock("@supabase/supabase-js", () => ({
             ? { id: "family", email: "Avromy@gmail.com" }
             : table === "child_sessions"
               ? { id: "session", profile_id: "child" }
-              : table === "profiles"
-                ? state.parentProfileMutation
-                  ? Object.assign(
-                      [{ id: "22222222-2222-4222-8222-222222222222" }],
-                      {
-                        id: "22222222-2222-4222-8222-222222222222",
-                        display_name: "Miri",
-                        pin_hash: null,
-                      },
-                    )
-                  : state.childAuthPin !== null
-                    ? {
-                        id: "22222222-2222-4222-8222-222222222222",
-                        parent_id: "family",
-                        display_name: "Miri",
-                        pin_enabled: state.childAuthPin,
-                        pin_hash: null,
-                      }
-                    : state.role === "child"
-                      ? { id: "child", parent_id: "family" }
-                      : []
-                : state.video && table === "family_videos"
-                  ? [
-                      {
-                        video_id: "11111111-1111-4111-8111-111111111111",
-                        tags: [],
-                        videos: {
-                          id: "11111111-1111-4111-8111-111111111111",
-                          youtube_video_id: "abcdefghijk",
-                          title: "Video",
-                          made_for_kids: true,
-                          availability_status: "available",
-                          embeddable_status: "embeddable",
-                          metadata_last_checked_at: new Date(
-                            Date.now() - (state.stale ? 2 * 86400000 : 0),
-                          ).toISOString(),
+              : table === "household_devices" && state.trustedDevice
+                ? {
+                    id: "device",
+                    parent_id: "family",
+                    expires_at: "2027-01-01T00:00:00.000Z",
+                  }
+                : table === "profiles"
+                  ? state.parentProfileMutation
+                    ? Object.assign(
+                        [{ id: "22222222-2222-4222-8222-222222222222" }],
+                        {
+                          id: "22222222-2222-4222-8222-222222222222",
+                          display_name: "Miri",
+                          pin_hash: null,
                         },
-                      },
-                    ]
-                  : state.video && table === "profile_video_assignments"
-                    ? [{ video_id: "11111111-1111-4111-8111-111111111111" }]
-                    : state.video && table === "watch_progress"
-                      ? [
-                          {
-                            video_id: "11111111-1111-4111-8111-111111111111",
-                            profile_id: "child",
-                            current_time_seconds: 40,
-                            duration_seconds: 100,
+                      )
+                    : state.childAuthPin !== null
+                      ? {
+                          id: "22222222-2222-4222-8222-222222222222",
+                          parent_id: "family",
+                          display_name: "Miri",
+                          pin_enabled: state.childAuthPin,
+                          pin_hash: null,
+                        }
+                      : state.role === "child"
+                        ? { id: "child", parent_id: "family" }
+                        : []
+                  : state.video && table === "family_videos"
+                    ? [
+                        {
+                          video_id: "11111111-1111-4111-8111-111111111111",
+                          tags: [],
+                          videos: {
+                            id: "11111111-1111-4111-8111-111111111111",
+                            youtube_video_id: "abcdefghijk",
+                            title: "Video",
+                            made_for_kids: true,
+                            availability_status: "available",
+                            embeddable_status: "embeddable",
+                            metadata_last_checked_at: new Date(
+                              Date.now() - (state.stale ? 2 * 86400000 : 0),
+                            ).toISOString(),
                           },
-                        ]
-                      : [],
+                        },
+                      ]
+                    : state.video && table === "profile_video_assignments"
+                      ? [{ video_id: "11111111-1111-4111-8111-111111111111" }]
+                      : state.video && table === "watch_progress"
+                        ? [
+                            {
+                              video_id: "11111111-1111-4111-8111-111111111111",
+                              profile_id: "child",
+                              current_time_seconds: 40,
+                              duration_seconds: 100,
+                            },
+                          ]
+                        : [],
         error: null,
       };
       const chain: any = {
@@ -214,9 +221,33 @@ afterEach(() => {
   state.cookieWrites = [];
   state.childAuthPin = null;
   state.parentProfileMutation = false;
+  state.trustedDevice = false;
   state.rpcs = [];
 });
 describe("authenticated route dispatch regression", () => {
+  it("recognizes and renews a trusted household device without reopening Parent Mode", async () => {
+    configured();
+    state.role = "device";
+    state.trustedDevice = true;
+    const response = await handle(
+      new Request("https://test.local/api/session"),
+      ["session"],
+    );
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ role: "device", configured: true });
+    expect(state.updates).toContainEqual({
+      table: "household_devices",
+      values: expect.objectContaining({
+        last_used_at: expect.any(String),
+        expires_at: expect.any(String),
+      }),
+    });
+    expect(state.cookieWrites).toContainEqual([
+      "wn_device",
+      "token",
+      expect.objectContaining({ httpOnly: true, maxAge: 180 * 86400 }),
+    ]);
+  });
   it("honors an explicit PIN-off toggle while replacing the stored PIN", async () => {
     configured();
     state.parentProfileMutation = true;

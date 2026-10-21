@@ -39,7 +39,7 @@ test("real HTTP: absent infrastructure fails closed; no sample family or iframe"
   expect(cross.status()).toBe(403);
   await page.goto("/watch/player/10000000-0000-4000-8000-000000000001");
   await expect(
-    page.getByRole("heading", { name: "This video is unavailable" }),
+    page.getByRole("heading", { name: "The video player didn’t start" }),
   ).toBeVisible();
   expect(await page.locator("iframe").count()).toBe(0);
 });
@@ -268,10 +268,43 @@ test("synthetic UI: Safe Playback reports beside its own control", async ({
   expect(activeBox!.x + activeBox!.width).toBeLessThanOrEqual(390);
 });
 
-test("synthetic UI: Made-for-Kids playback uses a direct identified embed", async ({
+test("synthetic UI: Made-for-Kids playback stays monitored and contained", async ({
   page,
   context,
 }) => {
+  await page.addInitScript(() => {
+    class MockPlayer {
+      frame: HTMLIFrameElement;
+      events: any;
+      constructor(frame: HTMLIFrameElement, options: any) {
+        this.frame = frame;
+        this.events = options.events;
+        window.setTimeout(() => this.events.onReady({ target: this }), 0);
+      }
+      getIframe() {
+        return this.frame;
+      }
+      getVideoData() {
+        return { video_id: this.frame.src.split("/embed/")[1]?.split("?")[0] };
+      }
+      playVideo() {
+        this.events.onStateChange({ target: this, data: 1 });
+      }
+      pauseVideo() {}
+      setVolume() {}
+      getCurrentTime() {
+        return 0;
+      }
+      getDuration() {
+        return 180;
+      }
+      getPlayerState() {
+        return 1;
+      }
+      destroy() {}
+    }
+    (window as any).YT = { Player: MockPlayer };
+  });
   await fixture(page, "child");
   await page.setViewportSize({ width: 1024, height: 768 });
   const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
@@ -310,8 +343,8 @@ test("synthetic UI: Made-for-Kids playback uses a direct identified embed", asyn
   expect(src.origin).toBe("https://www.youtube-nocookie.com");
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe("http://127.0.0.1:3001");
-  expect(src.searchParams.get("enablejsapi")).toBeNull();
-  expect(src.searchParams.get("autoplay")).toBeNull();
+  expect(src.searchParams.get("enablejsapi")).toBe("1");
+  expect(src.searchParams.get("autoplay")).toBe("1");
   expect(src.searchParams.get("controls")).toBe("1");
   expect(src.searchParams.get("iv_load_policy")).toBe("3");
   expect(src.searchParams.get("playsinline")).toBe("1");
@@ -361,7 +394,7 @@ test("synthetic UI: Safe Playback off preserves authorization but removes contai
   await expect(page.getByText(/Safe Playback is on/i)).toHaveCount(0);
 });
 
-test("synthetic UI: optional resume bootstrap failure falls back to playback", async ({
+test("synthetic UI: Safe Playback fails closed when player identity cannot be monitored", async ({
   page,
 }) => {
   await fixture(page, "child");
@@ -374,13 +407,71 @@ test("synthetic UI: optional resume bootstrap failure falls back to playback", a
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
   await expect(
-    page.getByText("Press Play to begin.", { exact: true }),
+    page.getByRole("heading", { name: "The video player didn’t start" }),
   ).toBeVisible();
-  await expect(page.getByText(/YouTube player|resume is/i)).toHaveCount(0);
-  await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
+  await expect(page.locator(`iframe[title="${video.title}"]`)).toHaveCount(0);
+});
+
+test("synthetic UI: mobile share text auto-resolves and retains a manual fallback", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/parent/add-video");
+  const links = page.getByLabel("Paste one YouTube video link per line");
+  await links.fill(
+    "Shared from my phone https://youtu.be/dQw4w9WgXcQ?si=mobile",
+  );
   await expect(
-    page.getByRole("heading", { name: "This video is unavailable" }),
-  ).toHaveCount(0);
+    page.getByRole("heading", { name: "Build a paper rocket" }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Load videos" })).toBeVisible();
+});
+
+test("synthetic UI: mobile channel selection immediately loads individual videos", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  let sourceRequests = 0;
+  await page.route("**/api/parent/videos/search**", async (route) => {
+    const url = new URL(route.request().url());
+    if (url.searchParams.get("source")) {
+      sourceRequests++;
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ videos: dashboard.videos, nextPageToken: null }),
+      });
+      return;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        items: [
+          {
+            id: "channel-1",
+            type: "channel",
+            title: "Little Makers",
+            description: "",
+            thumbnail_url: "",
+            channel_title: "Little Makers",
+          },
+        ],
+        nextPageToken: null,
+      }),
+    });
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/parent/add-video");
+  await page.getByRole("button", { name: "Channels" }).click();
+  await page.getByRole("searchbox", { name: "Search" }).fill("makers");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await page.getByRole("button", { name: "Browse videos" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Build a paper rocket" }),
+  ).toBeVisible();
+  expect(sourceRequests).toBe(1);
 });
 
 test("synthetic UI: Parent Library offers an obvious playback preview", async ({

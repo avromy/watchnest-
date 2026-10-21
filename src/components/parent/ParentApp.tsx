@@ -22,6 +22,7 @@ import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 import YouTubeEmbed from "../YouTubeEmbed";
 import ProfileImage from "../ProfileImage";
 import Icon, { type IconName } from "../ui/Icon";
+import { extractYouTubeVideoUrls } from "@/lib/youtube";
 
 type Dashboard = {
   profiles: Profile[];
@@ -87,7 +88,7 @@ export function ParentShell({ children }: { children: ReactNode }) {
     api<{ role: string | null }>("/api/session")
       .then(async (session) => {
         if (session.role !== "parent") {
-          router.replace("/login");
+          router.replace(session.role === "device" ? "/watch" : "/login");
           return;
         }
         const result = await api<Dashboard>("/api/parent/dashboard");
@@ -483,11 +484,26 @@ export function AddVideos() {
     if (requested) setQuery(requested);
     if (sharedUrl) setUrls(sharedUrl);
   }, []);
-  async function runFind(lookup: boolean, pageToken?: string, append = false) {
-    const links = urls
-      .split(/[\n,]+/)
-      .map((v) => v.trim())
-      .filter(Boolean);
+  async function runFind(
+    lookup: boolean,
+    pageToken?: string,
+    append = false,
+    options?: {
+      pastedText?: string;
+      selectedSource?: typeof source;
+      selectedType?: typeof resultType;
+      searchQuery?: string;
+    },
+  ) {
+    const sourceForRequest = options?.selectedSource ?? source;
+    const typeForRequest = options?.selectedType ?? resultType;
+    const queryForRequest = options?.searchQuery ?? query;
+    const pastedText = options?.pastedText ?? urls;
+    const links = extractYouTubeVideoUrls(pastedText);
+    if (lookup && !links.length) {
+      setError("Paste a YouTube video link, then choose Load videos.");
+      return;
+    }
     if (lookup && links.length > 20) {
       setError("Please look up up to 20 video links at a time.");
       return;
@@ -507,12 +523,12 @@ export function AddVideos() {
             items?: typeof discoveries;
             nextPageToken?: string | null;
           }>(
-            `/api/parent/videos/search?q=${encodeURIComponent(query)}&type=${source?.type || resultType}${source ? `&source=${encodeURIComponent(source.id)}` : ""}${pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : ""}`,
+            `/api/parent/videos/search?q=${encodeURIComponent(queryForRequest)}&type=${sourceForRequest?.type || typeForRequest}${sourceForRequest ? `&source=${encodeURIComponent(sourceForRequest.id)}` : ""}${pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : ""}`,
           );
       setNextPageToken(
         "nextPageToken" in result ? result.nextPageToken || null : null,
       );
-      if (!lookup && !source && resultType !== "video") {
+      if (!lookup && !sourceForRequest && typeForRequest !== "video") {
         setDiscoveries((current) =>
           append
             ? [...current, ...(("items" in result ? result.items : []) || [])]
@@ -553,20 +569,11 @@ export function AddVideos() {
   useEffect(() => {
     const value = urls.trim();
     if (!value || value === autoResolved.current) return;
-    const links = value
-      .split(/[\n,]+/)
-      .map((item) => item.trim())
-      .filter(Boolean);
-    if (
-      links.length > 20 ||
-      !links.every((link) =>
-        /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//i.test(link),
-      )
-    )
-      return;
+    const links = extractYouTubeVideoUrls(value);
+    if (!links.length || links.length > 20) return;
     const timer = window.setTimeout(() => {
       autoResolved.current = value;
-      void runFind(true);
+      void runFind(true, undefined, false, { pastedText: value });
     }, 450);
     return () => window.clearTimeout(timer);
     // runFind intentionally uses the latest form state after this short debounce.
@@ -665,13 +672,28 @@ export function AddVideos() {
             id="yt-urls"
             value={urls}
             onChange={(e) => setUrls(e.target.value)}
+            onInput={(e) => setUrls(e.currentTarget.value)}
+            onPaste={(event) => {
+              const pasted = event.clipboardData.getData("text");
+              if (!pasted) return;
+              event.preventDefault();
+              const next = `${urls}${urls ? "\n" : ""}${pasted}`;
+              setUrls(next);
+            }}
             rows={3}
             required
+            inputMode="url"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
             placeholder="https://www.youtube.com/watch?v=…"
           />
           <p className="muted">
             Valid links load automatically. Paste several at once.
           </p>
+          <button className="button-secondary" type="submit" disabled={loading}>
+            {loading ? "Loading…" : "Load videos"}
+          </button>
         </form>
       </div>
       {error && (
@@ -721,17 +743,24 @@ export function AddVideos() {
               <h2>{item.title}</h2>
               <p className="muted">{item.channel_title || item.description}</p>
               <button
+                type="button"
                 className="button"
                 onClick={() => {
-                  setSource({
+                  const selectedSource = {
                     id: item.id,
                     type: item.type,
                     title: item.title,
-                  });
+                  };
+                  setSource(selectedSource);
                   setResultType(item.type);
                   setQuery("");
                   setDiscoveries([]);
-                  setSearched(false);
+                  setSearched(true);
+                  void runFind(false, undefined, false, {
+                    selectedSource,
+                    selectedType: item.type,
+                    searchQuery: "",
+                  });
                 }}
               >
                 Browse videos
@@ -927,6 +956,7 @@ export function AddVideos() {
               videoId={preview.youtube_video_id}
               title={preview.title}
               onLoad={() => setPreviewLoaded(true)}
+              safePlayback
             />
             <p role="status" className="muted">
               {previewLoaded
@@ -1259,6 +1289,7 @@ export function Library() {
               videoId={preview.youtube_video_id}
               title={preview.title}
               onLoad={() => setPreviewLoaded(true)}
+              safePlayback
             />
             <p role="status" className="muted">
               {previewLoaded

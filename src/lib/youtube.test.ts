@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractYouTubeVideoId } from "./youtube";
+import { extractYouTubeVideoId, extractYouTubeVideoUrls } from "./youtube";
 
 const videoId = "dQw4w9WgXcQ";
 
@@ -36,5 +36,23 @@ describe("extractYouTubeVideoId", () => {
     ["non-web protocol", `ftp://www.youtube.com/watch?v=${videoId}`],
   ])("rejects an invalid URL: %s", (_label, url) => {
     expect(extractYouTubeVideoId(url)).toBeNull();
+  });
+});
+
+describe("extractYouTubeVideoUrls", () => {
+  it("accepts mobile share text and deduplicates video IDs", () => {
+    expect(
+      extractYouTubeVideoUrls(
+        "A video to add https://youtu.be/dQw4w9WgXcQ?si=mobile\nhttps://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      ),
+    ).toEqual(["https://youtu.be/dQw4w9WgXcQ?si=mobile"]);
+  });
+
+  it("ignores non-YouTube text and playlist-only URLs", () => {
+    expect(
+      extractYouTubeVideoUrls(
+        "Try this https://example.com/video https://youtube.com/playlist?list=PL123",
+      ),
+    ).toEqual([]);
   });
 });
