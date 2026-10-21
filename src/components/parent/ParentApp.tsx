@@ -104,6 +104,10 @@ function lookupVideoUrls(links: string[]) {
       );
     } catch {}
     return result;
+  }).catch((error) => {
+    if (scope.__watchnestRecentVideoLookup?.promise === promise)
+      delete scope.__watchnestRecentVideoLookup;
+    throw error;
   });
   scope.__watchnestRecentVideoLookup = { key, at: now, promise };
   return promise;
@@ -611,7 +615,6 @@ export function AddVideos() {
       const scope = window as WatchNestBrowserWindow;
       const currentValue = urlInput.current?.value.trim() || urls.trim();
       const key = extractYouTubeVideoUrls(currentValue).join("|");
-      if (key && scope.__watchnestAutoResolvedKey === key) return;
       scope.__watchnestAutoResolvedKey = key;
       void runFind(true, undefined, false, { pastedText: currentValue });
       return;
