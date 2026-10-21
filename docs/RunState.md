@@ -1,5 +1,21 @@
 # Final family beta — Founder Ready (2026-10-07)
 
+## 2026-10-21 — consolidated cross-device production repair
+
+Exact successor: GitHub `887835604d058b3c603d55575549b52d0fa70cf3`,
+Vercel `dpl_68jy2Bm4JUYEWTDdJfA2rN88XG2C`, production alias
+`https://watchnest-rho.vercel.app`. No database/schema/family-data mutation.
+Rollback deployments `dpl_AkYHejJ4FbdpD69Vw5tkpJh9cemf` and
+`dpl_773c7k6mCR2D6biY24RGDkw6Q989` remain available. The bounded repair covers
+desktop IFrame API readiness, precise player errors, fail-closed approved-video
+identity, best-effort search caching, mobile URL ingestion/coalescing,
+immediate channel/playlist browse, contained Parent preview, and secure
+trusted-device persistence. Automated gates: 188 tests, typecheck, lint,
+production build, 17 isolated Playwright flows. Independent security, visual,
+and Stranger reviews pass after their findings were repaired. Final real-iPad
+acceptance is PENDING when the device is available; it is not inferred from
+synthetic viewports or older material player candidates.
+
 ## Production family-data incident — 2026-10-12
 
 - Production deployment under investigation: `dpl_DAYHkXShUT2ouVpeMVB6LyY8t2qk` at `https://watchnest-rho.vercel.app`.
