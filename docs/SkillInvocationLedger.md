@@ -7,10 +7,10 @@
 | App Dev / WatchNest project authority and handoff | Recovered exact production, database, rollback, Founder Workspace and current run state before mutation | PASS |
 | Product Intelligence / App UX | Preserved appliance flow; removed misleading failure classification and repaired cross-device Parent intake without unrelated expansion | PASS |
 | Supabase / Postgres | Reconciled migrations, household linkage and preserved four profiles, assignments, Collections and device sessions; no hosted data mutation | PASS |
-| Vercel verification / deployment | Bound GitHub successor `8878356` to deployment `dpl_68jy...`; preserved two rollback deployments | PASS |
+| Vercel verification / deployment | Bound GitHub successor `9c873e5` / tree `7e55b40` to deployment `dpl_Ggst...`; public alias configured and exact-deployment warning/error/fatal logs empty; preserved rollback | PASS |
 | Security / functional QA | Approved-only identity and iframe sandbox retained; sibling/Parent authorization unchanged; trusted renewal made non-critical after validation | PASS |
 | Responsive / visual / Human-Eye | Desktop/mobile/tablet synthetic inspection; error contrast and 44px segmented targets repaired | PASS (synthetic) |
-| Stranger / independent review | Duplicate mobile lookup, playlist coverage, cache failure and renewal critical-path findings repaired and rerun | PASS |
+| Stranger / independent review | Duplicate mobile lookup, transient failure retry, playlist coverage, cache failure and renewal critical-path findings repaired; 18 isolated browser flows rerun | PASS |
 | Founder Ready | Cross-device repair qualifies autonomously; physical iPad evidence deliberately remains pending | CONDITIONAL |
 | Continuous Learning | Recorded cache/renewal critical-path rule, mobile fallback race coverage, and isolated fresh-build evidence requirement | PASS |
 

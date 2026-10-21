@@ -6,12 +6,12 @@ performed.
 
 ## Candidate and recovery
 
-- GitHub release commit: `887835604d058b3c603d55575549b52d0fa70cf3`
-- Application tree reviewed locally: `13d2d3a88ac53919dbd9b4230ba9f1168f3cf0b9`
-- Production deployment: `dpl_68jy2Bm4JUYEWTDdJfA2rN88XG2C`
+- GitHub release commit: `9c873e5fd339fcc512aca33697c6d13b6f8b5e2e`
+- Application tree reviewed locally: `7e55b408baee4b2683946975696f8ed5816b87f9`
+- Production deployment: `dpl_GgstPwCnUtCaxW6oZJP9Zf7aR5BN`
 - Public alias: `https://watchnest-rho.vercel.app`
-- Immediate rollback: `dpl_AkYHejJ4FbdpD69Vw5tkpJh9cemf`
-- Pre-run rollback: `dpl_773c7k6mCR2D6biY24RGDkw6Q989`
+- Immediate rollback: `dpl_89kqGMxDf55gwTi4yQqDDzYgJgDn`
+- Earlier application rollback: `dpl_68jy2Bm4JUYEWTDdJfA2rN88XG2C`
 
 ## Verified root causes and repairs
 
@@ -24,7 +24,8 @@ performed.
   logged.
 - Mobile URL intake relied on a delayed state effect. It now resolves complete
   URLs directly from change/paste input, coalesces a rapid fallback tap, and
-  retains an explicit Load videos action.
+  retains an explicit Load videos action. A rejected automatic lookup is
+  evicted from the coalescer so the unchanged URL can be retried immediately.
 - Channel and playlist result selection previously changed state without
   immediately loading source videos. It now issues the explicit source request.
 - Parent preview iframes were less contained than Child Mode. They now use the
@@ -41,7 +42,8 @@ performed.
 - 188 unit/integration tests pass.
 - TypeScript and ESLint pass.
 - Optimized production build passes.
-- 17 isolated Playwright flows pass, including mobile URL coalescing, channel
+- 18 isolated Playwright flows pass, including mobile URL coalescing, transient
+  automatic-failure retry, channel
   and playlist browsing, responsive widths, Safe Playback fail-closed behavior,
   and Parent preview containment.
 - Independent security review: PASS with non-blocking provider-signal caveat.
