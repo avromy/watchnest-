@@ -1,5 +1,19 @@
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
+## 2026-10-21 — consolidated cross-device production repair receipts
+
+| Authority / capability | Application | Result |
+| --- | --- | --- |
+| App Dev / WatchNest project authority and handoff | Recovered exact production, database, rollback, Founder Workspace and current run state before mutation | PASS |
+| Product Intelligence / App UX | Preserved appliance flow; removed misleading failure classification and repaired cross-device Parent intake without unrelated expansion | PASS |
+| Supabase / Postgres | Reconciled migrations, household linkage and preserved four profiles, assignments, Collections and device sessions; no hosted data mutation | PASS |
+| Vercel verification / deployment | Bound GitHub successor `8878356` to deployment `dpl_68jy...`; preserved two rollback deployments | PASS |
+| Security / functional QA | Approved-only identity and iframe sandbox retained; sibling/Parent authorization unchanged; trusted renewal made non-critical after validation | PASS |
+| Responsive / visual / Human-Eye | Desktop/mobile/tablet synthetic inspection; error contrast and 44px segmented targets repaired | PASS (synthetic) |
+| Stranger / independent review | Duplicate mobile lookup, playlist coverage, cache failure and renewal critical-path findings repaired and rerun | PASS |
+| Founder Ready | Cross-device repair qualifies autonomously; physical iPad evidence deliberately remains pending | CONDITIONAL |
+| Continuous Learning | Recorded cache/renewal critical-path rule, mobile fallback race coverage, and isolated fresh-build evidence requirement | PASS |
+
 ## 2026-10-12 — Urgent production login/family-data repair
 
 - `supabase:supabase`: PASS — traced successful Auth login followed by the generic family-data failure; reconciled migrations, grants, account linkage, four profiles, assignments, Collections, and active device records; issued the supported PostgREST schema-cache reload; verified the policy write and family read in a rollback-only transaction.
