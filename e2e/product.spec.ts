@@ -440,6 +440,35 @@ test("synthetic UI: mobile share text auto-resolves and retains a manual fallbac
   expect(lookups).toBe(1);
 });
 
+test("synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  let lookups = 0;
+  await page.route("**/api/parent/videos/lookup", async (route) => {
+    lookups++;
+    await route.fulfill({
+      status: lookups === 1 ? 503 : 200,
+      contentType: "application/json",
+      body: JSON.stringify(
+        lookups === 1
+          ? { error: "YouTube is temporarily unavailable." }
+          : { videos: dashboard.videos, errors: [] },
+      ),
+    });
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/parent/add-video");
+  const links = page.getByLabel("Paste one YouTube video link per line");
+  await links.fill("https://youtu.be/dQw4w9WgXcQ");
+  await expect(page.getByText("YouTube is temporarily unavailable.")).toBeVisible();
+  await page.getByRole("button", { name: "Load videos" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Build a paper rocket" }),
+  ).toBeVisible();
+  expect(lookups).toBe(2);
+});
+
 test("synthetic UI: mobile channel selection immediately loads individual videos", async ({
   page,
 }) => {
