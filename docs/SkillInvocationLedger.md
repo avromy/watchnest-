@@ -1,5 +1,18 @@
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
+## 2026-10-22 — emergency iPad playback repair receipts
+
+| Authority / capability | Application | Result |
+| --- | --- | --- |
+| App Dev / WatchNest authority and handoff | Recovered exact production, rollback, last real-iPad-working candidate, live assignments and current code before mutation | PASS |
+| Project Handoff | Bound the repair to the current production successor and preserved the one remaining physical-device gate | PASS |
+| YouTube official player authority | Kept native controls and manual fullscreen; restored the MFK/unknown one-Play fallback while preserving identity monitoring | PASS |
+| Supabase / security | Read-only reconciliation of the Founder household, four profiles and active assignments; no data/schema/auth mutation | PASS |
+| Functional / browser QA | 188 tests, typecheck, lint, build and 20 isolated browser flows, including transient/permanent-empty identity and related-ID regressions | PASS |
+| Independent repair review | Initial FAIL found direct-path related-video and persistent-unknown identity gaps; both were repaired, tests added, and the corrected candidate independently re-reviewed | PASS FOR DEPLOYMENT / PHYSICAL IPAD PENDING |
+| Founder Ready | Physical family-iPad playback is not inferred from simulation; one final frozen-candidate observation remains | OPEN |
+| Continuous Learning | Recorded device-path regression, unknown-vs-mismatch enforcement and exact-device evidence rule | PASS |
+
 ## 2026-10-21 — consolidated cross-device production repair receipts
 
 | Authority / capability | Application | Result |

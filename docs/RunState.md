@@ -1,5 +1,27 @@
 # Final family beta — Founder Ready (2026-10-07)
 
+## 2026-10-22 — emergency real-iPad playback repair
+
+Founder physical-device evidence reopened playback: the current production
+candidate did not play approved videos on the family iPad. Comparison with the
+last real-iPad-working commit `c01979c` verified an application regression: the
+October 21 repair replaced the proven manual MFK/unknown behavior with autoplay
+and could reject an approved video while WebKit temporarily returned no player
+video ID.
+
+The bounded successor restores one native Play action for MFK/unknown, preserves
+manual fullscreen and containment, rejects an explicit mismatching identity,
+and gives a transiently empty WebKit identity one bounded 2.5-second grace
+period before failing closed. Every Safe Playback video remains identity
+monitored, including related/end-screen replacement attempts. No hosted
+family-data or schema mutation occurred.
+
+Exact local gates: typecheck, lint, production build, 188/188 tests, 20/20
+isolated browser flows, and diff integrity PASS. Physical iPad playback remains
+PENDING for the frozen repaired production candidate. Responsive Chromium is
+not promoted to physical-iPad evidence. Full repair evidence and rollback
+identity are recorded in `docs/EmergencyIPadPlaybackRepair-20261022.md`.
+
 ## 2026-10-21 — consolidated cross-device production repair
 
 Exact successor: GitHub `9c873e5fd339fcc512aca33697c6d13b6f8b5e2e`,

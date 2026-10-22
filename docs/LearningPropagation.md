@@ -135,3 +135,23 @@ Independent review of source60673a reproduced installed auth-js2.101.1 setSessio
 ## Propagation and scope
 
 These findings are filed in repository evidence and current WatchNest Notion authority. DOMAIN/PROCESS candidates are recorded as reusable proposals, not uncalibrated global mandates. No 5T colors, geometry, artwork, copy or layout authority was imported. No paid service or unrelated infrastructure mutation was made. No deployed/real-device/YouTube legal certification is inferred from tests.
+
+## 2026-10-22 — PROJECT / PROCESS: preserve distinct device playback paths
+
+Problem: a desktop playback repair generalized autoplay to the MFK/unknown path
+that had been proven on the family iPad with native controls and one manual Play
+action. Browser automation passed while the physical iPad regressed. The same
+change treated a temporarily missing player identity as if it were an explicit
+unauthorized identity.
+
+Correction: restore manual MFK/unknown playback, retain monitored identity
+enforcement for every Safe Playback item, and distinguish a bounded unknown
+initialization state from an explicit mismatch. Preserve fail-closed behavior
+for actual mismatches, persistent unknown identity and initialization failures.
+
+Prevention: a repair that changes player initialization, autoplay, iframe/API
+selection or identity timing invalidates affected exact-device evidence. Test
+the direct and monitored paths separately, including empty-to-approved identity
+transitions. Synthetic tablet coverage can prevent layout and state regressions;
+it cannot certify physical iPad playback. This is a WatchNest project/process
+calibration, not a general relaxation of approved-only enforcement.

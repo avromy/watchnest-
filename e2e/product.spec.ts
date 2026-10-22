@@ -268,7 +268,7 @@ test("synthetic UI: Safe Playback reports beside its own control", async ({
   expect(activeBox!.x + activeBox!.width).toBeLessThanOrEqual(390);
 });
 
-test("synthetic UI: Made-for-Kids playback stays monitored and contained", async ({
+test("synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored", async ({
   page,
   context,
 }) => {
@@ -276,18 +276,26 @@ test("synthetic UI: Made-for-Kids playback stays monitored and contained", async
     class MockPlayer {
       frame: HTMLIFrameElement;
       events: any;
+      currentId: string;
       constructor(frame: HTMLIFrameElement, options: any) {
         this.frame = frame;
         this.events = options.events;
+        this.currentId = frame.src.split("/embed/")[1]?.split("?")[0] || "";
+        (window as any).__watchnestMockPlayer = this;
         window.setTimeout(() => this.events.onReady({ target: this }), 0);
       }
       getIframe() {
         return this.frame;
       }
       getVideoData() {
-        return { video_id: this.frame.src.split("/embed/")[1]?.split("?")[0] };
+        return { video_id: this.currentId };
+      }
+      getVideoUrl() {
+        return `https://www.youtube.com/watch?v=${this.currentId}`;
       }
       playVideo() {
+        (window as any).__watchnestPlayCalls =
+          ((window as any).__watchnestPlayCalls || 0) + 1;
         this.events.onStateChange({ target: this, data: 1 });
       }
       pauseVideo() {}
@@ -301,7 +309,9 @@ test("synthetic UI: Made-for-Kids playback stays monitored and contained", async
       getPlayerState() {
         return 1;
       }
-      destroy() {}
+      destroy() {
+        this.frame.remove();
+      }
     }
     (window as any).YT = { Player: MockPlayer };
   });
@@ -344,7 +354,7 @@ test("synthetic UI: Made-for-Kids playback stays monitored and contained", async
   expect(src.pathname).toBe(`/embed/${madeForKids.youtube_video_id}`);
   expect(src.searchParams.get("origin")).toBe(new URL(page.url()).origin);
   expect(src.searchParams.get("enablejsapi")).toBe("1");
-  expect(src.searchParams.get("autoplay")).toBe("1");
+  expect(src.searchParams.get("autoplay")).toBeNull();
   expect(src.searchParams.get("controls")).toBe("1");
   expect(src.searchParams.get("iv_load_policy")).toBe("3");
   expect(src.searchParams.get("playsinline")).toBe("1");
@@ -365,11 +375,46 @@ test("synthetic UI: Made-for-Kids playback stays monitored and contained", async
   }
   await expect(page.getByText(/Safe Playback is on/i)).toBeVisible();
   await expect(page.getByText(/resume is off/i)).toHaveCount(0);
+  expect(await page.evaluate(() => (window as any).__watchnestPlayCalls || 0)).toBe(0);
+  await page.evaluate(() => {
+    const player = (window as any).__watchnestMockPlayer;
+    player.currentId = "unapproved-related-video";
+    player.events.onStateChange({ target: player, data: 1 });
+  });
+  await expect(
+    page.getByRole("heading", { name: "This video isn’t approved" }),
+  ).toBeVisible();
+  await expect(iframe).toHaveCount(0);
 });
 
 test("synthetic UI: Safe Playback off preserves authorization but removes containment", async ({
   page,
 }) => {
+  await page.addInitScript(() => {
+    class MockPlayer {
+      frame: HTMLIFrameElement;
+      events: any;
+      constructor(element: HTMLElement, options: any) {
+        const frame = document.createElement("iframe");
+        frame.src = `https://www.youtube-nocookie.com/embed/${options.videoId}`;
+        element.replaceWith(frame);
+        this.frame = frame;
+        this.events = options.events;
+        window.setTimeout(() => this.events.onReady({ target: this }), 0);
+      }
+      getIframe() { return this.frame; }
+      getVideoData() { return { video_id: this.frame.src.split("/embed/")[1] }; }
+      getVideoUrl() { return `https://www.youtube.com/watch?v=${this.frame.src.split("/embed/")[1]}`; }
+      playVideo() { this.events.onStateChange({ target: this, data: 1 }); }
+      pauseVideo() {}
+      setVolume() {}
+      getCurrentTime() { return 0; }
+      getDuration() { return 180; }
+      getPlayerState() { return 1; }
+      destroy() { this.frame.remove(); }
+    }
+    (window as any).YT = { Player: MockPlayer };
+  });
   await fixture(page, "child");
   const madeForKids = { ...dashboard.videos[1], made_for_kids: true };
   await page.route("**/api/child/player?**", (route) =>
@@ -388,13 +433,13 @@ test("synthetic UI: Safe Playback off preserves authorization but removes contai
     route.fulfill({ status: 200, contentType: "text/html", body: "" }),
   );
   await page.goto(`/watch/player/${madeForKids.id}`);
-  const iframe = page.locator('iframe[title="A gentle piano lesson"]');
+  const iframe = page.locator("iframe");
   await expect(iframe).toBeVisible();
   expect(await iframe.getAttribute("sandbox")).toBeNull();
   await expect(page.getByText(/Safe Playback is on/i)).toHaveCount(0);
 });
 
-test("synthetic UI: Safe Playback fails closed when player identity cannot be monitored", async ({
+test("synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize", async ({
   page,
 }) => {
   await fixture(page, "child");
@@ -402,13 +447,108 @@ test("synthetic UI: Safe Playback fails closed when player identity cannot be mo
     route.abort(),
   );
   await page.route("https://www.youtube-nocookie.com/**", (route) =>
-    route.abort(),
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
   );
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
   await expect(
     page.getByRole("heading", { name: "The video player didn’t start" }),
   ).toBeVisible();
+  await expect(page.locator(`iframe[title="${video.title}"]`)).toHaveCount(0);
+});
+
+test("synthetic UI: transiently missing iPad player identity does not reject the approved video", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    class MockPlayer {
+      frame: HTMLIFrameElement;
+      events: any;
+      identityReads = 0;
+      constructor(frame: HTMLIFrameElement, options: any) {
+        this.frame = frame;
+        this.events = options.events;
+        window.setTimeout(() => this.events.onReady({ target: this }), 0);
+      }
+      getIframe() {
+        return this.frame;
+      }
+      getVideoData() {
+        this.identityReads++;
+        return this.identityReads === 1
+          ? {}
+          : { video_id: this.frame.src.split("/embed/")[1]?.split("?")[0] };
+      }
+      getVideoUrl() {
+        return this.identityReads === 1
+          ? ""
+          : `https://www.youtube.com/watch?v=${this.frame.src.split("/embed/")[1]?.split("?")[0]}`;
+      }
+      playVideo() {
+        this.events.onStateChange({ target: this, data: 3 });
+        this.events.onStateChange({ target: this, data: 1 });
+      }
+      pauseVideo() {}
+      setVolume() {}
+      getCurrentTime() {
+        return 0;
+      }
+      getDuration() {
+        return 180;
+      }
+      getPlayerState() {
+        return 1;
+      }
+      destroy() {}
+    }
+    (window as any).YT = { Player: MockPlayer };
+  });
+  await fixture(page, "child");
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
+  );
+  const video = dashboard.videos[0];
+  await page.goto(`/watch/player/${video.id}`);
+  await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "This video isn’t approved" }),
+  ).toHaveCount(0);
+});
+
+test("synthetic UI: permanently unreadable player identity fails closed", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    class MockPlayer {
+      frame: HTMLIFrameElement;
+      events: any;
+      constructor(frame: HTMLIFrameElement, options: any) {
+        this.frame = frame;
+        this.events = options.events;
+        window.setTimeout(() => this.events.onReady({ target: this }), 0);
+      }
+      getIframe() { return this.frame; }
+      getVideoData() { return {}; }
+      getVideoUrl() { return ""; }
+      playVideo() { this.events.onStateChange({ target: this, data: 1 }); }
+      pauseVideo() {}
+      setVolume() {}
+      getCurrentTime() { return 0; }
+      getDuration() { return 180; }
+      getPlayerState() { return 1; }
+      destroy() { this.frame.remove(); }
+    }
+    (window as any).YT = { Player: MockPlayer };
+  });
+  await fixture(page, "child");
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "" }),
+  );
+  const video = dashboard.videos[0];
+  await page.goto(`/watch/player/${video.id}`);
+  await expect(
+    page.getByRole("heading", { name: "This video isn’t approved" }),
+  ).toBeVisible({ timeout: 5000 });
   await expect(page.locator(`iframe[title="${video.title}"]`)).toHaveCount(0);
 });
 
