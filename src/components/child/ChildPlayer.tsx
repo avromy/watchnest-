@@ -118,7 +118,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     | "network"
     | "unknown"
   >("unknown");
-  const [blocked, setBlocked] = useState(false);
+  const [started, setStarted] = useState(false);
   const [ended, setEnded] = useState(false);
   const [ready, setReady] = useState(false);
   const [staticFallback, setStaticFallback] = useState(false);
@@ -165,7 +165,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     setErrorKind("unknown");
     setEnded(false);
     setReady(false);
-    setBlocked(false);
+    setStarted(false);
     setStaticFallback(false);
     setPlayerNotice("");
     setHelpSent(false);
@@ -288,7 +288,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         data.video.youtube_video_id,
         window.location.origin,
         {
-          autoplay: historyAllowed,
+          autoplay: false,
           enableJsApi: true,
           startSeconds,
         },
@@ -328,7 +328,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 videoId: data.video.youtube_video_id,
                 host: "https://www.youtube-nocookie.com",
                 playerVars: youtubePlayerVars(window.location.origin, {
-                  autoplay: historyAllowed,
+                  autoplay: false,
                   startSeconds:
                     historyAllowed && !data.video.progress?.completed_at
                       ? data.video.progress?.current_time_seconds || 0
@@ -354,7 +354,6 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 }
                 event.target.setVolume(volumeRef.current);
                 setReady(true);
-                if (historyAllowed) event.target.playVideo();
               }
             },
             onStateChange: (e) => {
@@ -363,7 +362,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 verifyIdentity(e.target);
               }
               if (e.data === 1) {
-                setBlocked(false);
+                setStarted(true);
                 setEnded(false);
               }
               if (e.data === 2) void save();
@@ -401,9 +400,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 active.current = false;
               }
             },
-            onAutoplayBlocked: () => {
-              if (!disposed) setBlocked(true);
-            },
+            onAutoplayBlocked: () => {},
           },
         });
       })
@@ -496,9 +493,19 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         <Link className="brand" href="/watch/home">
           WatchNest
         </Link>
-        <Link className="button button-secondary" href="/watch/home">
-          ← Back to Library
-        </Link>
+        <div className="child-player-topbar-actions">
+          {data && !ended && ready && !started && (
+            <button
+              className="button"
+              onClick={() => player.current?.playVideo()}
+            >
+              ▶ Play video
+            </button>
+          )}
+          <Link className="button button-secondary" href="/watch/home">
+            ← Back to Library
+          </Link>
+        </div>
       </header>
       {error ? (
         <section className="panel" style={{ marginTop: 32 }}>
@@ -607,17 +614,6 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               Loading the video player…
             </p>
           )}
-          {!ended && blocked && (
-            <div className="notice">
-              <p>Tap to start your video.</p>
-              <button
-                className="button"
-                onClick={() => player.current?.playVideo()}
-              >
-                Play video
-              </button>
-            </div>
-          )}
           {playerNotice && <p className="notice">{playerNotice}</p>}
           {data.video.made_for_kids === false && !staticFallback && (
             <label className="player-volume">
@@ -645,34 +641,36 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               Safe Playback is on. External links stay blocked in Child Mode.
             </p>
           )}
-          <section
-            className={`panel child-player-next ${ended ? "is-visible" : ""}`}
-            style={{ marginTop: 24 }}
-          >
-            {data.next ? (
-              <>
-                <p className="eyebrow">
-                  {ended ? "Ready for another?" : "Next in your library"}
-                </p>
-                <h2>{data.next.title}</h2>
-                <p className="muted">{data.next.channel_title}</p>
-                <Link
-                  className="button"
-                  href={`/watch/player/${encodeURIComponent(data.next.id)}`}
-                  onClick={requestImmersivePlayback}
-                >
-                  Watch next →
-                </Link>
-              </>
-            ) : (
-              <>
-                <h2>Want to pick something else?</h2>
-                <Link className="button button-secondary" href="/watch/home">
-                  Explore Library
-                </Link>
-              </>
-            )}
-          </section>
+          {(started || ended || staticFallback) && (
+            <section
+              className={`panel child-player-next ${ended ? "is-visible" : ""}`}
+              style={{ marginTop: 24 }}
+            >
+              {data.next ? (
+                <>
+                  <p className="eyebrow">
+                    {ended ? "Ready for another?" : "Next in your library"}
+                  </p>
+                  <h2>{data.next.title}</h2>
+                  <p className="muted">{data.next.channel_title}</p>
+                  <Link
+                    className="button"
+                    href={`/watch/player/${encodeURIComponent(data.next.id)}`}
+                    onClick={requestImmersivePlayback}
+                  >
+                    Watch next →
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <h2>Want to pick something else?</h2>
+                  <Link className="button button-secondary" href="/watch/home">
+                    Explore Library
+                  </Link>
+                </>
+              )}
+            </section>
+          )}
         </>
       )}
     </main>

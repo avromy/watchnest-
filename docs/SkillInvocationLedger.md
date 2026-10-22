@@ -20,6 +20,14 @@ configuration and exact-deployment runtime-log checks PASS. Physical family-iPad
 picture-and-sound acceptance remains PENDING and is not inferred from the
 browser suite.
 
+Founder physical-iPad retest of that receipt: FAIL — player surface opened but
+playback did not start. The second bounded correction removes all autoplay and
+asynchronous ready-callback starts, adds one explicit ready-player Play action,
+and retains monitored approved identity plus native fullscreen. Exact local
+gates remain 188 tests and 20 browser flows PASS. Independent review: PASS for
+deployment; the direct user gesture, approved-ID checks, containment and native
+fullscreen affordance are preserved. Final physical-iPad evidence remains open.
+
 ## 2026-10-21 — consolidated cross-device production repair receipts
 
 | Authority / capability | Application | Result |
