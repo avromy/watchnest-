@@ -414,6 +414,12 @@
 .child-player-topbar .brand {
   color: #fff;
 }
+.child-player-topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
 .child-player-heading {
   max-width: 1500px;
   margin: 18px auto 14px;
@@ -455,6 +461,9 @@
   .child-player-topbar .button {
     min-height: 44px;
     padding: 9px 12px;
+  }
+  .child-player-topbar-actions {
+    gap: 6px;
   }
   .child-player-heading {
     margin-top: 10px;

@@ -155,3 +155,23 @@ the direct and monitored paths separately, including empty-to-approved identity
 transitions. Synthetic tablet coverage can prevent layout and state regressions;
 it cannot certify physical iPad playback. This is a WatchNest project/process
 calibration, not a general relaxation of approved-only enforcement.
+
+## 2026-10-22 — PROJECT: do not equate an opened player with an iPad play gesture
+
+Problem: the first repair removed autoplay for MFK/unknown content but retained
+`autoplay=1` and an asynchronous `onReady → playVideo()` call for explicitly
+non-MFK videos. The real family iPad opened the player surface yet did not start
+picture/sound. Browser success could not prove Apple preserved the original
+card-tap gesture through route transition and provider readiness.
+
+Correction: remove autoplay and asynchronous starts for every audience class;
+after player readiness, expose one obvious WatchNest Play action that invokes
+the player synchronously from the child's tap. Keep native controls, manual
+fullscreen and approved-only identity monitoring independent of the start
+mechanism.
+
+Prevention: player-route rendering, readiness and actual audiovisual start are
+separate gates. For Apple-device playback, qualification must record the direct
+gesture that starts media; an opened iframe or provider-ready event is not a
+playback PASS. This remains a WatchNest-specific calibration until another
+product reproduces the same integration boundary.

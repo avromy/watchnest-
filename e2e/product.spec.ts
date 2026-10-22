@@ -376,6 +376,12 @@ test("synthetic UI: Made-for-Kids playback is manual, contained, and identity-mo
   await expect(page.getByText(/Safe Playback is on/i)).toBeVisible();
   await expect(page.getByText(/resume is off/i)).toHaveCount(0);
   expect(await page.evaluate(() => (window as any).__watchnestPlayCalls || 0)).toBe(0);
+  await expect(page.getByRole("button", { name: "Play video" })).toBeVisible();
+  await page.getByRole("button", { name: "Play video" }).click();
+  expect(await page.evaluate(() => (window as any).__watchnestPlayCalls || 0)).toBe(1);
+  await expect(
+    page.getByRole("heading", { name: "This video isn’t approved" }),
+  ).toHaveCount(0);
   await page.evaluate(() => {
     const player = (window as any).__watchnestMockPlayer;
     player.currentId = "unapproved-related-video";
@@ -510,6 +516,7 @@ test("synthetic UI: transiently missing iPad player identity does not reject the
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
   await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
+  await page.getByRole("button", { name: "Play video" }).click();
   await expect(
     page.getByRole("heading", { name: "This video isn’t approved" }),
   ).toHaveCount(0);
@@ -546,6 +553,7 @@ test("synthetic UI: permanently unreadable player identity fails closed", async 
   );
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
+  await page.getByRole("button", { name: "Play video" }).click();
   await expect(
     page.getByRole("heading", { name: "This video isn’t approved" }),
   ).toBeVisible({ timeout: 5000 });

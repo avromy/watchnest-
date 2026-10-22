@@ -85,3 +85,27 @@ identity. Both were corrected before publication. The corrected exact candidate
 received independent PASS for deployment; physical-iPad playback remains the
 only open evidence gate.
 
+## Founder retest and second bounded correction
+
+The Founder tested production `dpl_BQeAryXhBukqfCyw3jjSf4u5NYCY` on the actual
+family iPad. The player route and video surface opened, but playback did not
+start. This is a FAIL and supersedes the first repair's unverified playback
+expectation.
+
+The remaining affected path was the explicitly non-MFK path: it still supplied
+`autoplay=1` and called `playVideo()` asynchronously from `onReady`. On iPadOS,
+that callback is no longer the original user gesture, so an apparently opened
+player can remain stopped without producing an application error. The final
+bounded correction removes autoplay and asynchronous programmatic start for
+every audience class. Once the provider reports ready, WatchNest exposes one
+compact top-bar **Play video** control; that direct child tap calls
+`playVideo()`. Native player controls and manual fullscreen remain available.
+
+Approved-only enforcement is unchanged: every Safe Playback item remains
+identity-monitored, explicit mismatches stop immediately, and persistently
+unreadable identity fails closed after the bounded grace. The Play-button
+regression test proves an approved identity starts, then an unapproved related
+identity is stopped. Exact gates after the change: typecheck, lint, production
+build, 188/188 tests, and 20/20 isolated browser flows PASS. A new deployment
+and one final physical-iPad picture-and-sound observation remain required.
+

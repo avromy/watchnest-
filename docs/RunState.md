@@ -30,6 +30,15 @@ warning/error/fatal logs followed the probe. The initial independent safety
 FAIL was repaired; corrected-candidate independent review is PASS. One real
 family-iPad picture-and-sound observation remains open.
 
+Founder physical-iPad retest against the published candidate: FAIL. The player
+opened but playback did not start. The successor removes `autoplay=1` and the
+asynchronous `onReady → playVideo()` path for all videos, then supplies one
+visible top-bar Play action whose direct tap invokes the ready player. This
+preserves native controls/manual fullscreen and leaves Safe Playback identity,
+related-video, sibling and server authorization enforcement unchanged. Updated
+gates: typecheck, lint, build, 188/188 tests and 20/20 browser flows PASS. Final
+deployment identity and one physical-family-iPad observation remain PENDING.
+
 ## 2026-10-21 — consolidated cross-device production repair
 
 Exact successor: GitHub `9c873e5fd339fcc512aca33697c6d13b6f8b5e2e`,
