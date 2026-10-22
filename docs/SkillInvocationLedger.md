@@ -13,6 +13,13 @@
 | Founder Ready | Physical family-iPad playback is not inferred from simulation; one final frozen-candidate observation remains | OPEN |
 | Continuous Learning | Recorded device-path regression, unknown-vs-mismatch enforcement and exact-device evidence rule | PASS |
 
+Published application receipt: GitHub `5d968de4cea7770644d49eb40eb83e8bbcef70d4`,
+merge `35b55363d8d85e35642a9f8195afd0addffca977`, production
+`dpl_J6xyvBLYiqwssQd8qQz8aYPCcxVz` READY at the canonical alias. Hosted
+configuration and exact-deployment runtime-log checks PASS. Physical family-iPad
+picture-and-sound acceptance remains PENDING and is not inferred from the
+browser suite.
+
 ## 2026-10-21 — consolidated cross-device production repair receipts
 
 | Authority / capability | Application | Result |

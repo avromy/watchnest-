@@ -70,3 +70,18 @@ because the player implementation materially changed after that observation.
 One final physical-family-iPad playback observation is therefore required only
 after the repaired production candidate is frozen.
 
+## Published application candidate
+
+- GitHub application commit: `5d968de4cea7770644d49eb40eb83e8bbcef70d4`
+- GitHub merge commit: `35b55363d8d85e35642a9f8195afd0addffca977`
+- Vercel production deployment: `dpl_J6xyvBLYiqwssQd8qQz8aYPCcxVz` (`READY`)
+- Production alias: `https://watchnest-rho.vercel.app`
+- Hosted session probe: `{"role":null,"configured":true}`
+- Exact-deployment runtime warning/error/fatal logs after the probe: none
+
+The independent review initially rejected the repair for two approved-only
+gaps: unmonitored in-frame related navigation and an indefinitely unreadable
+identity. Both were corrected before publication. The corrected exact candidate
+received independent PASS for deployment; physical-iPad playback remains the
+only open evidence gate.
+

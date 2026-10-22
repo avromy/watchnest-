@@ -22,6 +22,14 @@ PENDING for the frozen repaired production candidate. Responsive Chromium is
 not promoted to physical-iPad evidence. Full repair evidence and rollback
 identity are recorded in `docs/EmergencyIPadPlaybackRepair-20261022.md`.
 
+Published application commit `5d968de4cea7770644d49eb40eb83e8bbcef70d4`
+was merged as `35b55363d8d85e35642a9f8195afd0addffca977` and deployed
+READY as `dpl_J6xyvBLYiqwssQd8qQz8aYPCcxVz` to the production alias. Public
+hosted configuration returns `configured:true`; no exact-deployment runtime
+warning/error/fatal logs followed the probe. The initial independent safety
+FAIL was repaired; corrected-candidate independent review is PASS. One real
+family-iPad picture-and-sound observation remains open.
+
 ## 2026-10-21 — consolidated cross-device production repair
 
 Exact successor: GitHub `9c873e5fd339fcc512aca33697c6d13b6f8b5e2e`,
