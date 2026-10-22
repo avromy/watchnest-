@@ -27,6 +27,7 @@ type Player = {
   setVolume: (volume: number) => void;
   getIframe: () => HTMLIFrameElement;
   getVideoData: () => { video_id?: string };
+  getVideoUrl: () => string;
   destroy: () => void;
 };
 type PlayerEvent = { target: Player; data: number };
@@ -95,6 +96,16 @@ type Playback = {
 
 const SAFE_PLAYER_SANDBOX =
   "allow-scripts allow-same-origin allow-presentation";
+
+function currentPlayerVideoId(player: Player) {
+  const reported = player.getVideoData()?.video_id;
+  if (reported) return reported;
+  try {
+    return new URL(player.getVideoUrl()).searchParams.get("v") || undefined;
+  } catch {
+    return undefined;
+  }
+}
 export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [data, setData] = useState<Playback | null>(null);
   const [error, setError] = useState("");
@@ -193,8 +204,49 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     if (!data || staticFallback || !mount.current) return;
     let disposed = false;
     let completed = false;
+    let identityTimer: number | undefined;
     active.current = true;
+    const approvedVideoId = data.video.youtube_video_id;
     const historyAllowed = data.video.made_for_kids === false;
+    function stopUnauthorized(target: Player) {
+      window.clearTimeout(identityTimer);
+      identityTimer = undefined;
+      console.warn("[watchnest-player] blocked unexpected player identity", {
+        videoId: data?.video.id,
+      });
+      target.pauseVideo();
+      target.destroy();
+      player.current = null;
+      active.current = false;
+      setErrorKind("authorization");
+      setError("WatchNest stopped a video that was not approved.");
+    }
+    function verifyIdentity(target: Player) {
+      const currentVideoId = currentPlayerVideoId(target);
+      if (currentVideoId === approvedVideoId) {
+        window.clearTimeout(identityTimer);
+        identityTimer = undefined;
+        return;
+      }
+      if (currentVideoId) {
+        stopUnauthorized(target);
+        return;
+      }
+      // WebKit can briefly expose no identity while the iframe is buffering.
+      // Give that initialization state one bounded grace period; an identity
+      // that remains unreadable still fails closed.
+      if (identityTimer === undefined) {
+        identityTimer = window.setTimeout(() => {
+          identityTimer = undefined;
+          if (!disposed) {
+            const settledVideoId = currentPlayerVideoId(target);
+            if (settledVideoId !== approvedVideoId) {
+              stopUnauthorized(target);
+            }
+          }
+        }, 2500);
+      }
+    }
     function save() {
       const p = player.current;
       if (!p || !historyAllowed) return;
@@ -236,7 +288,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         data.video.youtube_video_id,
         window.location.origin,
         {
-          autoplay: true,
+          autoplay: historyAllowed,
           enableJsApi: true,
           startSeconds,
         },
@@ -276,7 +328,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 videoId: data.video.youtube_video_id,
                 host: "https://www.youtube-nocookie.com",
                 playerVars: youtubePlayerVars(window.location.origin, {
-                  autoplay: true,
+                  autoplay: historyAllowed,
                   startSeconds:
                     historyAllowed && !data.video.progress?.completed_at
                       ? data.video.progress?.current_time_seconds || 0
@@ -302,29 +354,13 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 }
                 event.target.setVolume(volumeRef.current);
                 setReady(true);
-                event.target.playVideo();
+                if (historyAllowed) event.target.playVideo();
               }
             },
             onStateChange: (e) => {
               if (disposed) return;
               if (e.data === 1 || e.data === 2 || e.data === 3) {
-                const currentVideoId = e.target.getVideoData()?.video_id;
-                if (
-                  !currentVideoId ||
-                  currentVideoId !== data.video.youtube_video_id
-                ) {
-                  console.warn(
-                    "[watchnest-player] blocked unexpected player identity",
-                    { videoId: data.video.id },
-                  );
-                  e.target.pauseVideo();
-                  e.target.destroy();
-                  player.current = null;
-                  active.current = false;
-                  setErrorKind("authorization");
-                  setError("WatchNest stopped a video that was not approved.");
-                  return;
-                }
+                verifyIdentity(e.target);
               }
               if (e.data === 1) {
                 setBlocked(false);
@@ -332,6 +368,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               }
               if (e.data === 2) void save();
               if (e.data === 0) {
+                window.clearTimeout(identityTimer);
+                identityTimer = undefined;
                 completed = true;
                 setEnded(true);
                 void save();
@@ -389,7 +427,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             active.current = false;
           } else {
             setStaticFallback(true);
-            setPlayerNotice("Press Play to begin.");
+            setPlayerNotice("Tap Play in the video to begin.");
           }
         }
       });
@@ -411,6 +449,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       void save();
       disposed = true;
       active.current = false;
+      window.clearTimeout(identityTimer);
       clearInterval(bookmark);
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("pagehide", pagehide);
@@ -546,7 +585,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   ? data.video.progress?.current_time_seconds || 0
                   : 0
               }
-              autoplay={data.video.made_for_kids === false}
+              autoplay={false}
               onLoad={() => setReady(true)}
               safePlayback={data.safe_playback_enabled}
             />
