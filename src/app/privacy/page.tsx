@@ -20,8 +20,9 @@ export default function Privacy() {
           <p>
             WatchNest provides a library of individual videos approved by a
             parent or caregiver. Each child can access only their assigned
-            library through WatchNest. Children cannot search the open YouTube
-            catalog here.
+            library through WatchNest. If a parent enables Discover, a child
+            can search only within topics or channels that parent selected.
+            Results cannot play and can only be sent to Parent for approval.
           </p>
           <h2>YouTube is the video provider</h2>
           <p>
@@ -79,10 +80,11 @@ export default function Privacy() {
           </p>
           <h2>Parent control</h2>
           <p>
-            Parents can revoke video access, turn each child PIN on or off,
-            change or reset child PINs, and resolve child requests. Requests
-            stay in the family’s Parent Inbox; they do not return open YouTube
-            results to a child. Private viewing information is not publicly
+            Parents can revoke video access, set a wall-clock WatchNest session,
+            turn each child PIN on or off, change or reset child PINs, and
+            resolve child requests. A session deadline is access control; it
+            does not measure watched minutes or create viewing analytics.
+            Requests stay in the family’s Parent Inbox. Private viewing information is not publicly
             shared. WatchNest does not use advertising profiles or third-party
             analytics SDKs.
           </p>

@@ -133,6 +133,8 @@ export async function fixture(
         next: videos[1],
         safe_playback_enabled: true,
       };
+    else if (path === "/api/child/requests" && method === "GET")
+      response = { requests: [] };
     else if (path === "/api/parent/settings")
       response = {
         parent_pin_set: true,

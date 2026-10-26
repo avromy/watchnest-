@@ -2,13 +2,22 @@
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { api, Collection, duration, Profile, Video } from "./model";
+import {
+  api,
+  ChildRequest,
+  Collection,
+  DiscoveryResult,
+  duration,
+  Profile,
+  SessionAccess,
+  Video,
+} from "./model";
 import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 import ProfileImage from "../ProfileImage";
 import Icon from "../ui/Icon";
 import { requestImmersivePlayback } from "@/lib/immersive-playback";
 
-type Tab = "home" | "library" | "request";
+type Tab = "home" | "library" | "discover";
 
 function VideoGrid({
   videos,
@@ -115,15 +124,38 @@ export default function ChildLibrary() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [sessionAccess, setSessionAccess] = useState<SessionAccess | null>(null);
+  const [requests, setRequests] = useState<ChildRequest[]>([]);
+  const [discoverQuery, setDiscoverQuery] = useState("");
+  const [boundary, setBoundary] = useState("");
+  const [discoverResults, setDiscoverResults] = useState<DiscoveryResult[]>([]);
+  const [discoverBusy, setDiscoverBusy] = useState(false);
 
   useEffect(() => {
-    api<{ profile: Profile; videos: Video[]; collections: Collection[] }>(
+    if (!sessionAccess?.enabled || !sessionAccess.expiresAt || !sessionAccess.allowed) return;
+    const delay = Date.parse(sessionAccess.expiresAt) - Date.parse(sessionAccess.serverNow);
+    const timer = window.setTimeout(
+      () => setSessionAccess((current) => current ? { ...current, allowed: false, remainingSeconds: 0 } : current),
+      Math.max(0, delay),
+    );
+    return () => window.clearTimeout(timer);
+  }, [sessionAccess?.expiresAt, sessionAccess?.serverNow, sessionAccess?.enabled, sessionAccess?.allowed]);
+
+  useEffect(() => {
+    api<{ profile: Profile; videos: Video[]; collections: Collection[]; session_access?: SessionAccess }>(
       "/api/child/library",
     )
       .then((data) => {
         setProfile(data.profile);
         setVideos(data.videos);
         setCollections(data.collections);
+        setSessionAccess(data.session_access || null);
+        const firstTopic = data.profile.discovery_topics?.[0];
+        const firstChannel = data.profile.discovery_channels?.[0];
+        setBoundary(firstTopic ? `topic:${firstTopic}` : firstChannel ? `channel:${firstChannel.id}` : "");
+        void api<{ requests: ChildRequest[] }>("/api/child/requests")
+          .then((value) => setRequests(Array.isArray(value.requests) ? value.requests : []))
+          .catch(() => {});
       })
       .catch((reason) => setError(reason.message));
   }, []);
@@ -171,7 +203,7 @@ export default function ChildLibrary() {
   }
   function askFromSearch() {
     setMessage(query.slice(0, 200));
-    setTab("request");
+    setTab("discover");
     setSent(false);
   }
   async function switchProfile() {
@@ -235,6 +267,41 @@ export default function ChildLibrary() {
     }
   }
 
+  async function searchDiscover(event: FormEvent) {
+    event.preventDefault();
+    if (!boundary || !discoverQuery.trim()) return;
+    const [boundaryKind, ...parts] = boundary.split(":");
+    setDiscoverBusy(true);
+    setError("");
+    try {
+      const data = await api<{ results: DiscoveryResult[] }>(
+        `/api/child/discover?q=${encodeURIComponent(discoverQuery.trim())}&kind=${boundaryKind}&boundary=${encodeURIComponent(parts.join(":"))}`,
+      );
+      setDiscoverResults(data.results);
+    } catch (reason) {
+      setError((reason as Error).message);
+    } finally {
+      setDiscoverBusy(false);
+    }
+  }
+
+  async function requestVideo(video: DiscoveryResult) {
+    setDiscoverBusy(true);
+    setError("");
+    try {
+      await api("/api/child/requests", {
+        kind: "video",
+        request_token: video.request_token,
+      });
+      const data = await api<{ requests: ChildRequest[] }>("/api/child/requests");
+      setRequests(Array.isArray(data.requests) ? data.requests : []);
+    } catch (reason) {
+      setError((reason as Error).message);
+    } finally {
+      setDiscoverBusy(false);
+    }
+  }
+
   if (!profile)
     return (
       <main id="main-content" className="child-shell">
@@ -291,11 +358,11 @@ export default function ChildLibrary() {
           Library
         </button>
         <button
-          aria-current={tab === "request" ? "page" : undefined}
-          onClick={() => navigate("request")}
+          aria-current={tab === "discover" ? "page" : undefined}
+          onClick={() => navigate("discover")}
         >
-          <Icon name="plus" />
-          Ask Parent
+          <Icon name="search" />
+          {profile.discover_enabled ? "Discover" : "Ask Parent"}
         </button>
       </nav>
       {error && (
@@ -317,20 +384,59 @@ export default function ChildLibrary() {
           </button>
         </div>
       )}
-      {tab === "request" ? (
-        <section className="request-card">
+      {sessionAccess?.enabled && !sessionAccess.allowed && tab !== "discover" ? (
+        <section className="request-card time-up-card">
+          <p className="eyebrow">WatchNest session</p>
+          <h1>Time’s up for now</h1>
+          <p>Ask Parent when you’re ready for more time.</p>
+          <button className="button" onClick={switchProfile}>Choose profile</button>
+        </section>
+      ) : tab === "discover" ? (
+        <section className="request-card discover-page">
           <div className="request-icon">
-            <Icon name="plus" width="30" />
+            <Icon name="search" width="30" />
           </div>
-          <h1>Ask Parent</h1>
-          <p>What would you like added to your library?</p>
+          <h1>{profile.discover_enabled ? "Discover" : "Ask Parent"}</h1>
+          <p>Find something you’d like Parent to add.</p>
+          {profile.discover_enabled && boundary && (
+            <form onSubmit={searchDiscover}>
+              <label>
+                Search in
+                <select className="field" value={boundary} onChange={(event) => setBoundary(event.target.value)}>
+                  {(profile.discovery_topics || []).map((topic) => <option key={topic} value={`topic:${topic}`}>{topic}</option>)}
+                  {(profile.discovery_channels || []).map((channel) => <option key={channel.id} value={`channel:${channel.id}`}>{channel.title}</option>)}
+                </select>
+              </label>
+              <label>
+                What do you want to find?
+                <input className="field" type="search" maxLength={120} value={discoverQuery} onChange={(event) => setDiscoverQuery(event.target.value)} required />
+              </label>
+              <button className="button" disabled={discoverBusy || !discoverQuery.trim()}>{discoverBusy ? "Searching…" : "Search"}</button>
+            </form>
+          )}
+          {!!discoverResults.length && (
+            <div className="child-video-grid discover-results">
+              {discoverResults.map((video) => {
+                const existing = requests.find((item) => item.youtube_video_id === video.youtube_video_id);
+                return (
+                  <article className="child-video-card" key={video.youtube_video_id}>
+                    <div className="child-artwork"><img src={video.thumbnail_url} alt="" /></div>
+                    <div className="child-video-copy"><h3>{video.title}</h3><p>{video.channel_title}</p></div>
+                    <button className="button" disabled={discoverBusy || existing?.status === "pending"} onClick={() => requestVideo(video)}>
+                      {existing?.status === "pending" ? "Waiting for Parent" : existing?.status === "resolved" ? "Added to your library" : existing?.status === "dismissed" ? "Ask again" : "Ask Parent"}
+                    </button>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+          <details open={!profile.discover_enabled || !!message}>
+            <summary>Ask Parent another way</summary>
           {sent ? (
             <div className="request-success" role="status">
               <Icon name="check" width="30" />
               <h2>Sent to Parent</h2>
-              <button className="button" onClick={() => navigate("home")}>
-                Back home
-              </button>
+              <button className="button-secondary" onClick={() => setSent(false)}>Send another</button>
             </div>
           ) : (
             <form onSubmit={request}>
@@ -363,6 +469,13 @@ export default function ChildLibrary() {
                 {busy ? "Sending…" : "Send request"}
               </button>
             </form>
+          )}
+          </details>
+          {!!requests.length && (
+            <div className="request-history">
+              <h2>My requests</h2>
+              {requests.slice(0, 12).map((item) => <p key={item.id}><strong>{item.video_title || item.message}</strong><br /><span className="muted">{item.status === "pending" ? "Waiting for Parent" : item.status === "resolved" ? "Added to your library" : "Not added"}</span></p>)}
+            </div>
           )}
         </section>
       ) : tab === "library" ? (
@@ -562,7 +675,7 @@ export default function ChildLibrary() {
             <div className="child-empty">
               <h2>Your library is ready</h2>
               <p>Ask Parent to add your first video.</p>
-              <button className="button" onClick={() => navigate("request")}>
+              <button className="button" onClick={() => navigate("discover")}>
                 Ask Parent
               </button>
             </div>

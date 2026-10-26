@@ -816,6 +816,32 @@ export function AddVideos() {
               >
                 Browse videos
               </button>
+              {item.type === "channel" && (
+                <details>
+                  <summary>Allow in child Discover</summary>
+                  <div className={styles.row}>
+                    {data.profiles.map((profile) => {
+                      const channels = profile.discovery_channels || [];
+                      const allowed = channels.some((channel) => channel.id === item.id);
+                      return (
+                        <button
+                          key={profile.id}
+                          type="button"
+                          className="button-quiet"
+                          disabled={busy || allowed}
+                          onClick={() => act("/api/parent/profiles", "PATCH", {
+                            id: profile.id,
+                            discover_enabled: true,
+                            discovery_channels: [...channels, { id: item.id, title: item.title }],
+                          })}
+                        >
+                          {allowed ? `${profile.display_name}: allowed` : `Allow for ${profile.display_name}`}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </details>
+              )}
             </article>
           ))}
         </div>
@@ -1930,8 +1956,68 @@ export function Children() {
     </>
   );
 }
+function RequestApproval({ request, data, act, busy, reload }: {
+  request: Request;
+  data: Dashboard;
+  act: (path: string, method: string, body?: unknown) => Promise<boolean>;
+  busy: boolean;
+  reload: () => Promise<void>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [profiles, setProfiles] = useState([request.profile_id]);
+  const [collection, setCollection] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  if (!request.youtube_video_id) return null;
+  return (
+    <div>
+      <div className={styles.row}>
+        <button className="button" type="button" onClick={() => setOpen(!open)}>Approve</button>
+        <details>
+          <summary>Preview</summary>
+          <YouTubeEmbed videoId={request.youtube_video_id} title={request.video_title || request.message} />
+        </details>
+      </div>
+      {open && (
+        <form onSubmit={async (event) => {
+          event.preventDefault();
+          if (collection === "__new") return;
+          await act("/api/parent/requests", "PATCH", {
+            id: request.id,
+            status: "resolved",
+            approve: true,
+            profile_ids: profiles,
+            ...(collection ? { collection_id: collection } : {}),
+          });
+        }}>
+          <Choices profiles={data.profiles} value={profiles} setValue={setProfiles} />
+          <label>
+            Collection (optional)
+            <select className="field" value={collection} onChange={(event) => setCollection(event.target.value)}>
+              <option value="">No collection</option>
+              {data.collections.map((item) => <option value={item.id} key={item.id}>{item.title}</option>)}
+              <option value="__new">+ New Collection</option>
+            </select>
+          </label>
+          {collection === "__new" && (
+            <div className="form-row">
+              <input className="field" value={newTitle} onChange={(event) => setNewTitle(event.target.value)} placeholder="Collection name" maxLength={120} />
+              <button type="button" className="button-secondary" disabled={busy || !newTitle.trim()} onClick={async () => {
+                const created = await api<{ collection: Collection }>("/api/parent/collections", "POST", { title: newTitle.trim(), video_ids: [] });
+                await reload();
+                setCollection(created.collection.id);
+                setNewTitle("");
+              }}>Create</button>
+            </div>
+          )}
+          <button className="button" disabled={busy || !profiles.includes(request.profile_id) || collection === "__new"}>Approve video</button>
+        </form>
+      )}
+    </div>
+  );
+}
+
 export function Inbox() {
-  const { data, act, busy } = useParent();
+  const { data, act, busy, reload } = useParent();
   const pending = data.requests.filter((r) => r.status === "pending");
   const [checked, setChecked] = useState(false);
   return (
@@ -1970,29 +2056,21 @@ export function Inbox() {
                   "Child"}{" "}
                 · {r.kind}
               </p>
-              <h3>{r.message}</h3>
+              {r.thumbnail_url && <img className={styles.discoveryImage} src={r.thumbnail_url} alt="" />}
+              <h3>{r.video_title || r.message}</h3>
+              {r.channel_title && <p className="muted">{r.channel_title}</p>}
               <p className="muted">
                 {new Date(r.created_at).toLocaleDateString()}
               </p>
               <div className={styles.row}>
-                <Link
-                  className="button"
-                  href={`/parent/add-video?q=${encodeURIComponent(r.message)}`}
-                >
-                  Find a video
-                </Link>
-                <button
-                  className="button-secondary"
-                  disabled={busy}
-                  onClick={() =>
-                    act("/api/parent/requests", "PATCH", {
-                      id: r.id,
-                      status: "resolved",
-                    })
-                  }
-                >
-                  Mark resolved
-                </button>
+                {r.youtube_video_id ? (
+                  <>
+                    <RequestApproval request={r} data={data} act={act} busy={busy} reload={reload} />
+                    <Link className="button-secondary" href={`/parent/add-video?url=${encodeURIComponent(`https://www.youtube.com/watch?v=${r.youtube_video_id}`)}`}>Review & organize</Link>
+                  </>
+                ) : (
+                  <Link className="button" href={`/parent/add-video?q=${encodeURIComponent(r.message)}`}>Find a video</Link>
+                )}
                 <button
                   className="button-quiet"
                   disabled={busy}
@@ -2003,7 +2081,7 @@ export function Inbox() {
                     })
                   }
                 >
-                  Dismiss
+                  Not now
                 </button>
               </div>
             </article>
@@ -2045,6 +2123,50 @@ function timeLabel(value: number) {
   }).format(new Date(Date.UTC(2026, 0, 1, hour, minute)));
 }
 
+function SessionTimerCard({ profile, act, busy }: {
+  profile: Profile;
+  act: (path: string, method: string, body?: unknown) => Promise<boolean>;
+  busy: boolean;
+}) {
+  const [duration, setDuration] = useState(profile.session_duration_minutes || 20);
+  const [now, setNow] = useState(0);
+  useEffect(() => {
+    setNow(Date.now());
+    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+  const expiry = Date.parse(profile.session_expires_at || "");
+  const remaining = now > 0 && Number.isFinite(expiry)
+    ? Math.max(0, Math.ceil((expiry - now) / 60000))
+    : 0;
+  const enabled = profile.session_duration_minutes != null;
+  return (
+    <section className="panel">
+      <div className={styles.childHeader}>
+        <ProfileImage name={profile.display_name} avatar={profile.avatar_key} photoUrl={profile.photo_url} size="small" />
+        <div>
+          <h2>{profile.display_name}</h2>
+          <p className="muted">{!enabled ? "No session timer" : remaining > 0 ? `${remaining} min left` : "Time’s up"}</p>
+        </div>
+      </div>
+      <label>
+        Session length
+        <select className="field" value={duration} onChange={(event) => setDuration(Number(event.target.value))}>
+          {[15, 20, 30, 45, 60, 90, 120].map((minutes) => <option key={minutes} value={minutes}>{minutes} minutes</option>)}
+        </select>
+      </label>
+      <div className={styles.row}>
+        <button className="button" disabled={busy} onClick={() => act("/api/parent/session-timer", "POST", { profile_id: profile.id, action: "start", duration_minutes: duration })}>
+          {remaining > 0 ? "Start new session" : "Start session"}
+        </button>
+        {remaining > 0 && <button className="button-secondary" disabled={busy} onClick={() => act("/api/parent/session-timer", "POST", { profile_id: profile.id, action: "stop" })}>End now</button>}
+        {enabled && <button className="button-quiet" disabled={busy} onClick={() => act("/api/parent/session-timer", "POST", { profile_id: profile.id, action: "disable" })}>Turn timer off</button>}
+      </div>
+      <p className="muted">Time counts down while paused or while WatchNest is in the background.</p>
+    </section>
+  );
+}
+
 export function Controls() {
   const { data, act, busy } = useParent();
   const options = Array.from(
@@ -2055,9 +2177,52 @@ export function Controls() {
     <>
       <Heading
         eyebrow="Controls"
-        title="When WatchNest is available"
-        description="Set an optional daily window for each child. These controls govern access to WatchNest without measuring YouTube playback."
+        title="Time and discovery"
+        description="Choose when each child can watch and what they may ask you to add."
       />
+      <h2>Session time</h2>
+      <div className="grid grid-2">
+        {data.profiles.map((profile) => (
+          <SessionTimerCard profile={profile} act={act} busy={busy} key={profile.id} />
+        ))}
+      </div>
+      <section className="notice">
+        <h2>Using Guided Access</h2>
+        <p>WatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.</p>
+      </section>
+      <h2>Discover</h2>
+      <div className="grid grid-2">
+        {data.profiles.map((profile) => (
+          <form className="panel" key={`discover-${profile.id}`} onSubmit={async (event) => {
+            event.preventDefault();
+            const form = new FormData(event.currentTarget);
+            const topics = String(form.get("topics") || "").split(",").map((item) => item.trim()).filter(Boolean).slice(0, 12);
+            await act("/api/parent/profiles", "PATCH", {
+              id: profile.id,
+              discover_enabled:
+                form.get("enabled") === "on" &&
+                (topics.length > 0 || !!profile.discovery_channels?.length),
+              discovery_topics: topics,
+            });
+          }}>
+            <div className={styles.childHeader}>
+              <ProfileImage name={profile.display_name} avatar={profile.avatar_key} photoUrl={profile.photo_url} size="small" />
+              <div><h2>{profile.display_name}</h2><p className="muted">Every result still needs Parent approval.</p></div>
+            </div>
+            <label className={styles.switchRow}>
+              <input type="checkbox" name="enabled" defaultChecked={profile.discover_enabled} />
+              <span><strong>Discover videos</strong></span>
+            </label>
+            <label>
+              Topics they may search
+              <input className="field" name="topics" defaultValue={(profile.discovery_topics || []).join(", ")} placeholder="Drawing, science, Jewish music" />
+            </label>
+            {!!profile.discovery_channels?.length && <div><p className="muted">Allowed channels: {profile.discovery_channels.map((item) => item.title).join(" · ")}</p><button type="button" className="button-quiet" disabled={busy} onClick={() => act("/api/parent/profiles", "PATCH", { id: profile.id, discovery_channels: [] })}>Remove allowed channels</button></div>}
+            <button className="button" disabled={busy}>Save Discover</button>
+          </form>
+        ))}
+      </div>
+      <h2>Available hours</h2>
       <div className="grid grid-2">
         {data.profiles.map((profile) => (
           <form
@@ -2129,15 +2294,7 @@ export function Controls() {
           </form>
         ))}
       </div>
-      <section className="notice">
-        <h2>About minute limits</h2>
-        <p>
-          WatchNest does not read or reconstruct viewing time from Made-for-Kids
-          players. Daily and Collection minute budgets remain deferred until
-          they can be enforced without prohibited player tracking. Schedule
-          windows are enforced independently of YouTube.
-        </p>
-      </section>
+      <p className="muted">Session time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time.</p>
     </>
   );
 }

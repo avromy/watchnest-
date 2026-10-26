@@ -606,6 +606,31 @@
   display: grid;
   gap: 8px;
 }
+.discover-page {
+  max-width: 980px;
+}
+.discover-results {
+  margin-top: 28px;
+}
+.discover-results .child-video-card {
+  padding-bottom: 16px;
+}
+.discover-results .child-video-copy {
+  padding-right: 18px;
+}
+.discover-results .child-video-card > .button {
+  margin: 0 16px;
+  width: calc(100% - 32px);
+}
+.request-history {
+  margin-top: 28px;
+  border-top: 1px solid #d7dfd9;
+  padding-top: 20px;
+}
+.time-up-card {
+  text-align: center;
+  margin-top: clamp(36px, 10vh, 110px);
+}
 .request-success {
   text-align: center;
   padding: 22px;

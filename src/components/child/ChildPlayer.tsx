@@ -92,7 +92,15 @@ type Playback = {
   video: Video;
   next: Video | null;
   safe_playback_enabled: boolean;
+  session_access?: {
+    enabled: boolean;
+    allowed: boolean;
+    expiresAt: string | null;
+    remainingSeconds: number | null;
+    serverNow: string;
+  };
 };
+type PlaybackAccess = NonNullable<Playback["session_access"]>;
 
 const SAFE_PLAYER_SANDBOX =
   "allow-scripts allow-same-origin allow-presentation";
@@ -119,6 +127,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     | "unknown"
   >("unknown");
   const [started, setStarted] = useState(false);
+  const [timeUp, setTimeUp] = useState(false);
+  const [sessionAccessState, setSessionAccessState] =
+    useState<PlaybackAccess | null>(null);
   const [ended, setEnded] = useState(false);
   const [ready, setReady] = useState(false);
   const [staticFallback, setStaticFallback] = useState(false);
@@ -158,6 +169,23 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   const mount = useRef<HTMLDivElement>(null);
   const player = useRef<Player | null>(null);
   const active = useRef(true);
+  function stopForTimeUp() {
+    active.current = false;
+    try {
+      player.current?.pauseVideo();
+      player.current?.destroy();
+    } catch {}
+    player.current = null;
+    mount.current?.replaceChildren();
+    const doc = document as Document & {
+      webkitExitFullscreen?: () => void;
+    };
+    if (document.fullscreenElement) void document.exitFullscreen().catch(() => {});
+    else doc.webkitExitFullscreen?.();
+    setTimeUp(true);
+    setError("");
+    setReady(false);
+  }
   useEffect(() => {
     let cancelled = false;
     setData(null);
@@ -166,6 +194,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     setEnded(false);
     setReady(false);
     setStarted(false);
+    setTimeUp(false);
+    setSessionAccessState(null);
     setStaticFallback(false);
     setPlayerNotice("");
     setHelpSent(false);
@@ -177,11 +207,19 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         ),
       )
       .then((d) => {
-        if (!cancelled) setData(d);
+        if (!cancelled) {
+          setData(d);
+          setSessionAccessState(d.session_access || null);
+          if (d.session_access && !d.session_access.allowed) setTimeUp(true);
+        }
       })
       .catch((e) => {
         if (!cancelled) {
           const message = e instanceof Error ? e.message : "";
+          if (/time.+up|more time/i.test(message)) {
+            setTimeUp(true);
+            return;
+          }
           setError(message || "WatchNest could not open this video.");
           setErrorKind(
             /not in your library|no longer assigned/i.test(message)
@@ -201,7 +239,20 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     };
   }, [videoId, replay]);
   useEffect(() => {
-    if (!data || staticFallback || !mount.current) return;
+    const access = sessionAccessState;
+    if (!access || !access.enabled || !access.expiresAt) return;
+    const serverNow = Date.parse(access.serverNow);
+    const expiresAt = Date.parse(access.expiresAt);
+    const delay = expiresAt - serverNow;
+    if (!Number.isFinite(delay) || delay <= 0) {
+      stopForTimeUp();
+      return;
+    }
+    const timer = window.setTimeout(stopForTimeUp, delay);
+    return () => window.clearTimeout(timer);
+  }, [sessionAccessState]);
+  useEffect(() => {
+    if (!data || timeUp || staticFallback || !mount.current) return;
     let disposed = false;
     let completed = false;
     let identityTimer: number | undefined;
@@ -221,7 +272,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       setErrorKind("authorization");
       setError("WatchNest stopped a video that was not approved.");
     }
-    function verifyIdentity(target: Player) {
+    function verifyIdentity(target: Player, enforceUnknown = false) {
       const currentVideoId = currentPlayerVideoId(target);
       if (currentVideoId === approvedVideoId) {
         window.clearTimeout(identityTimer);
@@ -235,7 +286,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       // WebKit can briefly expose no identity while the iframe is buffering.
       // Give that initialization state one bounded grace period; an identity
       // that remains unreadable still fails closed.
-      if (identityTimer === undefined) {
+      if (enforceUnknown && identityTimer === undefined) {
         identityTimer = window.setTimeout(() => {
           identityTimer = undefined;
           if (!disposed) {
@@ -295,7 +346,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       );
       host.title = data.video.title;
       host.allow =
-        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+        "accelerometer; autoplay; encrypted-media; gyroscope; fullscreen";
       host.allowFullscreen = true;
       host.referrerPolicy = "strict-origin-when-cross-origin";
       host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
@@ -353,14 +404,17 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   frame.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
                 }
                 event.target.setVolume(volumeRef.current);
+                verifyIdentity(event.target, false);
                 setReady(true);
               }
             },
             onStateChange: (e) => {
               if (disposed) return;
-              if (e.data === 1 || e.data === 2 || e.data === 3) {
-                verifyIdentity(e.target);
-              }
+              // Reject every explicit identity mismatch, including related
+              // videos entering UNSTARTED/CUED. Only enforce an unreadable
+              // identity timeout after Playing/Paused; slow WebKit buffering
+              // does not have a documented identity-readiness deadline.
+              verifyIdentity(e.target, e.data === 1 || e.data === 2);
               if (e.data === 1) {
                 setStarted(true);
                 setEnded(false);
@@ -400,7 +454,10 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 active.current = false;
               }
             },
-            onAutoplayBlocked: () => {},
+            onAutoplayBlocked: () => {
+              if (!disposed)
+                setPlayerNotice("Tap Play in the video to begin.");
+            },
           },
         });
       })
@@ -453,16 +510,30 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       player.current?.destroy();
       player.current = null;
     };
-  }, [data, videoId, staticFallback]);
+  }, [data, videoId, staticFallback, timeUp]);
   useEffect(() => {
     if (!data) return;
     let disposed = false;
-    const check = setInterval(() => {
+    const revalidate = () => {
       api<Playback>(
         `/api/child/player?videoId=${encodeURIComponent(videoId)}`,
-      ).catch((e) => {
+      ).then((latest) => {
+        if (disposed || !latest.session_access) return;
+        if (!latest.session_access.allowed) {
+          stopForTimeUp();
+          return;
+        }
+        // Parent changes are server-authoritative. Replacing only the access
+        // snapshot reschedules the local deadline without recreating the
+        // cross-origin player or losing its native iPad play gesture.
+        setSessionAccessState(latest.session_access);
+      }).catch((e) => {
         if (!disposed) {
           const message = e instanceof Error ? e.message : "";
+          if (/time.+up|more time/i.test(message)) {
+            stopForTimeUp();
+            return;
+          }
           active.current = false;
           player.current?.pauseVideo();
           player.current?.destroy();
@@ -481,10 +552,20 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           setError(message || "WatchNest could not continue this video.");
         }
       });
-    }, 20000);
+    };
+    const check = setInterval(revalidate, 5000);
+    const resume = () => {
+      if (!document.hidden) void revalidate();
+    };
+    document.addEventListener("visibilitychange", resume);
+    window.addEventListener("pageshow", resume);
+    window.addEventListener("focus", resume);
     return () => {
       disposed = true;
       clearInterval(check);
+      document.removeEventListener("visibilitychange", resume);
+      window.removeEventListener("pageshow", resume);
+      window.removeEventListener("focus", resume);
     };
   }, [data, videoId]);
   return (
@@ -494,20 +575,21 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           WatchNest
         </Link>
         <div className="child-player-topbar-actions">
-          {data && !ended && ready && !started && (
-            <button
-              className="button"
-              onClick={() => player.current?.playVideo()}
-            >
-              ▶ Play video
-            </button>
-          )}
           <Link className="button button-secondary" href="/watch/home">
             ← Back to Library
           </Link>
         </div>
       </header>
-      {error ? (
+      {timeUp ? (
+        <section className="panel time-up-card" aria-labelledby="time-up-heading">
+          <p className="eyebrow">WatchNest session</p>
+          <h1 id="time-up-heading" tabIndex={-1}>Time’s up for now</h1>
+          <p>Video has stopped. Ask Parent when you’re ready for more time.</p>
+          <Link className="button" href="/watch">
+            Choose profile
+          </Link>
+        </section>
+      ) : error ? (
         <section className="panel" style={{ marginTop: 32 }}>
           <p className="eyebrow">Let’s pick something else</p>
           <h1>

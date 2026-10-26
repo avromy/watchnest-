@@ -16,6 +16,12 @@ import {
   cleanProviderText,
 } from "./product-security";
 import { extractYouTubeVideoId } from "../youtube";
+import { sessionAccess } from "../session-access";
+import {
+  createDiscoveryCandidateToken,
+  discoveryBoundaryAllowed,
+  readDiscoveryCandidateToken,
+} from "../discovery-security";
 const id = z.string().uuid();
 const ids = z.array(id).max(200);
 const text = z.string().trim().min(1).max(200);
@@ -23,7 +29,7 @@ const youtubeId = z.string().regex(/^[A-Za-z0-9_-]{11}$/);
 const founder = () =>
   (process.env.FOUNDER_EMAIL || "Avromy@gmail.com").toLowerCase();
 const selectProfile =
-  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute";
+  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,discover_enabled,discovery_topics,discovery_channels";
 export function configured() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -524,6 +530,34 @@ async function metadata(videoIds: string[], force = false) {
     title: cleanProviderText(r.title),
     tags: [],
   }));
+}
+function accessView(profile: any) {
+  return { ...sessionAccess(profile), serverNow: new Date().toISOString() };
+}
+
+function discoveryCandidateToken(
+  profileId: string,
+  videoId: string,
+  boundaryKind: "topic" | "channel",
+  boundary: string,
+) {
+  return createDiscoveryCandidateToken(
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    profileId,
+    videoId,
+    boundaryKind,
+    boundary,
+  );
+}
+
+function verifyDiscoveryCandidateToken(token: string, profileId: string) {
+  const value = readDiscoveryCandidateToken(
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    token,
+    profileId,
+  );
+  if (!value) throw new Failure("Request expired.", 403);
+  return value;
 }
 function requireConfirmedFounder(user: any) {
   if (!user?.email_confirmed_at || user.email?.toLowerCase() !== founder())
@@ -1163,6 +1197,24 @@ async function parentRoute(
           .max(1439)
           .nullable()
           .optional(),
+        session_duration_minutes: z
+          .number()
+          .int()
+          .min(1)
+          .max(240)
+          .nullable()
+          .optional(),
+        discover_enabled: z.boolean().optional(),
+        discovery_topics: z.array(text).max(12).optional(),
+        discovery_channels: z
+          .array(
+            z.object({
+              id: z.string().trim().min(1).max(100),
+              title: text,
+            }),
+          )
+          .max(12)
+          .optional(),
       })
       .parse(body);
     const values: any = { ...fields };
@@ -1222,6 +1274,8 @@ async function parentRoute(
       }
       delete values.pin_enabled;
       delete values.pin_hash;
+      if (fields.session_duration_minutes === null)
+        values.session_expires_at = null;
       if (Object.keys(values).length)
         check(
           await client
@@ -1232,6 +1286,52 @@ async function parentRoute(
         );
     } else throw new Failure("Method not allowed.", 405);
     return reply({ ok: true });
+  }
+  if (route === "parent/session-timer" && method === "POST") {
+    const b = z
+      .object({
+        profile_id: id,
+        action: z.enum(["start", "stop", "disable"]),
+        duration_minutes: z.number().int().min(1).max(240).optional(),
+      })
+      .parse(body);
+    await ownedProfiles(p.id, [b.profile_id]);
+    if (b.action === "disable") {
+      const disabled = check(await client.rpc("wn_end_profile_session", {
+        p_parent: p.id,
+        p_profile: b.profile_id,
+        p_disable: true,
+      }));
+      if (!disabled) throw new Failure("Child profile unavailable.", 404);
+      return reply({ ok: true });
+    }
+    if (b.action === "stop") {
+      const stopped = check(await client.rpc("wn_end_profile_session", {
+        p_parent: p.id,
+        p_profile: b.profile_id,
+        p_disable: false,
+      }));
+      if (!stopped) throw new Failure("Child profile unavailable.", 404);
+      return reply({ ok: true });
+    }
+    const existing = check(
+      await client
+        .from("profiles")
+        .select("session_duration_minutes")
+        .eq("id", b.profile_id)
+        .eq("parent_id", p.id)
+        .single(),
+    );
+    const durationMinutes =
+      b.duration_minutes ?? existing.session_duration_minutes;
+    if (!durationMinutes)
+      throw new Failure("Choose a session length before starting.");
+    const expiresAt = check(await client.rpc("wn_start_profile_session", {
+      p_parent: p.id,
+      p_profile: b.profile_id,
+      p_minutes: durationMinutes,
+    }));
+    return reply({ ok: true, expires_at: expiresAt });
   }
   if (route === "parent/settings") {
     if (method === "GET")
@@ -1617,8 +1717,50 @@ async function parentRoute(
   }
   if (route === "parent/requests" && method === "PATCH") {
     const b = z
-      .object({ id, status: z.enum(["resolved", "dismissed"]) })
+      .object({
+        id,
+        status: z.enum(["resolved", "dismissed"]),
+        approve: z.boolean().optional(),
+        profile_ids: ids.optional(),
+        collection_id: id.optional(),
+      })
       .parse(body);
+    const requestRow = check(
+      await client
+        .from("child_requests")
+        .select("*")
+        .eq("id", b.id)
+        .eq("parent_id", p.id)
+        .maybeSingle(),
+    );
+    if (!requestRow) throw new Failure("Request unavailable.", 404);
+    if (requestRow.youtube_video_id && b.status === "resolved" && !b.approve)
+      throw new Failure("Approve the requested video before marking it added.");
+    if (b.approve) {
+      if (!requestRow.youtube_video_id)
+        throw new Failure("Choose a specific video before approving.");
+      const profileIds = b.profile_ids?.length
+        ? b.profile_ids
+        : [requestRow.profile_id];
+      await ownedProfiles(p.id, profileIds);
+      const [video] = await metadata([requestRow.youtube_video_id], true);
+      if (
+        !video ||
+        video.availability_status !== "available" ||
+        video.embeddable_status !== "embeddable"
+      )
+        throw new Failure("This video is unavailable or cannot be embedded.");
+      check(
+        await client.rpc("wn_approve_child_request", {
+          p_parent: p.id,
+          p_request: b.id,
+          p_video: video.id,
+          p_profiles: profileIds,
+          p_collection: b.collection_id || null,
+        }),
+      );
+      return reply({ ok: true });
+    }
     check(
       await client
         .from("child_requests")
@@ -1762,6 +1904,7 @@ async function childRoute(
         hidden: hiddenIds.has(video.id),
       })),
       collections,
+      session_access: accessView(profile),
     });
   }
   if (route === "child/hidden" && method === "POST") {
@@ -1788,19 +1931,125 @@ async function childRoute(
     }
     return reply({ ok: true });
   }
+  if (route === "child/discover" && method === "GET") {
+    if (!profile.discover_enabled)
+      throw new Failure("Discover is not available for this profile.", 403);
+    const params = new URL(request.url).searchParams;
+    const query = text.parse(params.get("q"));
+    const boundaryKind = z.enum(["topic", "channel"]).parse(params.get("kind"));
+    const boundary = text.parse(params.get("boundary"));
+    const topics = Array.isArray(profile.discovery_topics)
+      ? profile.discovery_topics
+      : [];
+    const channels = Array.isArray(profile.discovery_channels)
+      ? profile.discovery_channels
+      : [];
+    let searchParams: Record<string, string>;
+    if (boundaryKind === "topic") {
+      const topic = topics.find(
+        (item: string) => item.toLocaleLowerCase() === boundary.toLocaleLowerCase(),
+      );
+      if (!topic) throw new Failure("Choose one of Parent’s search topics.", 403);
+      searchParams = { q: `${topic} ${query}`.trim() };
+    } else {
+      const channel = channels.find((item: any) => item.id === boundary);
+      if (!channel) throw new Failure("Choose a channel Parent allowed.", 403);
+      searchParams = { channelId: channel.id, ...(query ? { q: query } : {}) };
+    }
+    await limit(`child-discover:${profile.id}`, 12, 86400);
+    const found = await youtube("search", {
+      part: "snippet",
+      type: "video",
+      safeSearch: "strict",
+      videoEmbeddable: "true",
+      videoSyndicated: "true",
+      maxResults: "12",
+      ...searchParams,
+    });
+    const rows = await metadata(
+      found.items.map((item: any) => item.id?.videoId).filter(Boolean),
+    );
+    const results = rows
+      .filter(
+        (video: any) =>
+          video.availability_status === "available" &&
+          video.embeddable_status === "embeddable" &&
+          Number(video.duration_seconds || 0) > 180,
+      )
+      .map((video: any) => ({
+        youtube_video_id: video.youtube_video_id,
+        title: cleanProviderText(video.title),
+        channel_title: cleanProviderText(video.channel_title),
+        thumbnail_url: normalizeYouTubeThumbnailUrl(video.thumbnail_url) || "",
+        duration_seconds: video.duration_seconds || 0,
+        request_token: discoveryCandidateToken(
+          profile.id,
+          video.youtube_video_id,
+          boundaryKind,
+          boundary,
+        ),
+      }));
+    return reply({ results });
+  }
+  if (route === "child/requests" && method === "GET") {
+    const rows = check(
+      await client
+        .from("child_requests")
+        .select(
+          "id,kind,message,status,created_at,youtube_video_id,video_title,channel_title,thumbnail_url",
+        )
+        .eq("profile_id", profile.id)
+        .eq("parent_id", profile.parent_id)
+        .order("created_at", { ascending: false })
+        .limit(50),
+    );
+    return reply({ requests: rows });
+  }
   if (route === "child/requests" && method === "POST") {
     const b = z
       .object({
         kind: z.enum(["video", "show", "creator", "topic"]),
-        message: text,
+        message: text.optional(),
+        request_token: z.string().min(20).max(1000).optional(),
       })
+      .refine((value) => value.message || value.request_token)
       .parse(body);
     await limit("requests:" + profile.id, 10, 86400);
-    check(
-      await client
-        .from("child_requests")
-        .insert({ ...b, parent_id: profile.parent_id, profile_id: profile.id }),
-    );
+    let values: any = {
+      kind: b.kind,
+      message: b.message,
+      parent_id: profile.parent_id,
+      profile_id: profile.id,
+    };
+    if (b.request_token) {
+      const candidate = verifyDiscoveryCandidateToken(
+        b.request_token,
+        profile.id,
+      );
+      const stillAllowed = discoveryBoundaryAllowed(profile, candidate);
+      if (!stillAllowed)
+        throw new Failure("Parent changed the Discover choices. Search again.", 403);
+      const [video] = await metadata([candidate.videoId], true);
+      if (
+        !video ||
+        video.availability_status !== "available" ||
+        video.embeddable_status !== "embeddable" ||
+        Number(video.duration_seconds || 0) <= 180
+      )
+        throw new Failure("This video can no longer be requested.", 409);
+      values = {
+        ...values,
+        kind: "video",
+        message: cleanProviderText(video.title),
+        youtube_video_id: video.youtube_video_id,
+        video_title: cleanProviderText(video.title),
+        channel_title: cleanProviderText(video.channel_title),
+        thumbnail_url: normalizeYouTubeThumbnailUrl(video.thumbnail_url),
+      };
+    }
+    const inserted = await client.from("child_requests").insert(values);
+    if (inserted.error?.code === "23505") return reply({ ok: true, duplicate: true });
+    check(inserted);
     return reply({ ok: true });
   }
   if (route === "child/favorites" && method === "POST") {
@@ -1828,6 +2077,9 @@ async function childRoute(
     return reply({ ok: true });
   }
   if (route === "child/player" && method === "GET") {
+    const access = accessView(profile);
+    if (!access.allowed)
+      throw new Failure("Time’s up for now. Ask Parent for more time.", 403);
     const videoId = id.parse(new URL(request.url).searchParams.get("videoId"));
     let video = own.find((v: any) => v.id === videoId);
     if (!video) throw new Failure("This video is not in your library.", 403);
@@ -1854,9 +2106,12 @@ async function childRoute(
       video: childVideoView(video),
       next: next ? childVideoView(next) : null,
       safe_playback_enabled: c.parent.safe_playback_enabled !== false,
+      session_access: access,
     });
   }
   if (route === "child/progress" && method === "POST") {
+    if (!accessView(profile).allowed)
+      throw new Failure("Time’s up for now. Ask Parent for more time.", 403);
     const b = z
       .object({
         videoId: id,

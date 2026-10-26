@@ -3,10 +3,19 @@ import {
   scryptSync,
   timingSafeEqual,
   createHash,
+  createHmac,
 } from "node:crypto";
 export const digest = (value: string) =>
   createHash("sha256").update(value).digest("hex");
 export const opaque = () => randomBytes(32).toString("base64url");
+export function signOpaquePayload(payload: string, secret: string) {
+  return createHmac("sha256", secret).update(payload).digest("base64url");
+}
+export function signaturesMatch(left: string, right: string) {
+  const a = Buffer.from(left);
+  const b = Buffer.from(right);
+  return a.length === b.length && timingSafeEqual(a, b);
+}
 export function hashPin(pin: string) {
   const salt = randomBytes(16).toString("hex");
   return `${salt}:${scryptSync(pin, salt, 64).toString("hex")}`;

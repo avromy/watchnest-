@@ -39,7 +39,7 @@ export default function YouTubeEmbed({
       className={className}
       src={youtubeEmbedUrl(videoId, origin, { autoplay, startSeconds })}
       title={title}
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; fullscreen"
       allowFullScreen
       loading="eager"
       referrerPolicy="strict-origin-when-cross-origin"

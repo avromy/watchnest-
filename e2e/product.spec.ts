@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
 import { dashboard, fixture } from "./fixtures";
+test.beforeEach(async ({ page }) => {
+  page.on("pageerror", (error) => console.error("PAGEERROR", error.stack));
+  page.on("console", (message) => {
+    if (message.type() === "error") console.error("BROWSER", message.text());
+  });
+});
 test.afterEach(async ({ page }, info) => {
   if (info.status !== info.expectedStatus) {
     await page
@@ -151,6 +157,93 @@ test("synthetic UI: a video-card tap requests immersive playback before navigati
       window.sessionStorage.getItem("immersive-requested"),
     ),
   ).toBe("yes");
+});
+
+test("synthetic UI: WatchNest deadline destroys playback and blocks reload", async ({ page }) => {
+  await page.addInitScript(() => {
+    class MockPlayer {
+      frame: HTMLIFrameElement;
+      events: any;
+      constructor(frame: HTMLIFrameElement, options: any) {
+        this.frame = frame;
+        this.events = options.events;
+        window.setTimeout(() => this.events.onReady({ target: this }), 0);
+      }
+      getIframe() { return this.frame; }
+      getVideoData() { return { video_id: this.frame.src.split("/embed/")[1]?.split("?")[0] }; }
+      getVideoUrl() { return `https://www.youtube.com/watch?v=${this.getVideoData().video_id}`; }
+      playVideo() { this.events.onStateChange({ target: this, data: 1 }); }
+      pauseVideo() { (window as any).__timerPaused = true; }
+      setVolume() {}
+      getCurrentTime() { return 0; }
+      getDuration() { return 180; }
+      getPlayerState() { return 1; }
+      destroy() { (window as any).__timerDestroyed = true; this.frame.remove(); }
+    }
+    (window as any).YT = { Player: MockPlayer };
+  });
+  await fixture(page, "child");
+  let expiresAt = Date.now() + 500;
+  await page.route("**/api/child/player?**", (route) => {
+    const expired = Date.now() >= expiresAt;
+    route.fulfill({
+      status: expired ? 403 : 200,
+      contentType: "application/json",
+      body: JSON.stringify(expired ? { error: "Time’s up for now. Ask Parent for more time." } : {
+        profile: dashboard.profiles[1], video: dashboard.videos[0], next: null,
+        safe_playback_enabled: true,
+        session_access: { enabled: true, allowed: true, serverNow: new Date().toISOString(), expiresAt: new Date(expiresAt).toISOString(), remainingSeconds: Math.max(1, Math.ceil((expiresAt - Date.now()) / 1000)) },
+      }),
+    });
+  });
+  await page.route("https://www.youtube-nocookie.com/**", (route) => route.fulfill({ status: 200, contentType: "text/html", body: "" }));
+  await page.goto(`/watch/player/${dashboard.videos[0].id}`);
+  await expect(page.locator("iframe")).toBeVisible();
+  // A Parent extension received while the player is open must replace the
+  // stale client deadline without rebuilding the player.
+  expiresAt = Date.now() + 900;
+  await page.evaluate(() => window.dispatchEvent(new Event("focus")));
+  await page.waitForTimeout(600);
+  await expect(page.locator("iframe")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Time’s up for now" })).toBeVisible({ timeout: 4000 });
+  await expect(page.locator("iframe")).toHaveCount(0);
+  expect(await page.evaluate(() => (window as any).__timerDestroyed)).toBe(true);
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Time’s up for now" })).toBeVisible();
+});
+
+test("synthetic UI: bounded Discover creates a request without a playable result", async ({ page }) => {
+  Object.assign(dashboard.profiles[1], {
+    discover_enabled: true,
+    discovery_topics: ["Drawing"],
+    discovery_channels: [],
+  });
+  await fixture(page, "child");
+  const discoveryProfile = { ...dashboard.profiles[1], discover_enabled: true, discovery_topics: ["Drawing"], discovery_channels: [] };
+  let requested = false;
+  await page.route("**/api/child/library", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: discoveryProfile, videos: dashboard.videos, collections: dashboard.collections }) }));
+  await page.route("**/api/child/discover?**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ results: [{ youtube_video_id: "abcdefghijk", title: "Draw a fox", channel_title: "Little Makers", thumbnail_url: "", duration_seconds: 600, request_token: "signed-candidate-token-that-is-long-enough" }] }) }));
+  await page.route("**/api/child/requests", async (route) => {
+    if (route.request().method() === "POST") {
+      requested = true;
+      return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
+    }
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ requests: requested ? [{ id: "request-1", kind: "video", message: "Draw a fox", status: "pending", created_at: new Date().toISOString(), youtube_video_id: "abcdefghijk", video_title: "Draw a fox" }] : [] }) });
+  });
+  await page.goto("/watch/home");
+  await page.getByRole("button", { name: "Discover", exact: true }).click();
+  await page.getByLabel("What do you want to find?").fill("fox");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Draw a fox" })).toBeVisible();
+  await expect(page.locator(".discover-results iframe, .discover-results a")).toHaveCount(0);
+  await page.getByRole("button", { name: "Ask Parent", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Waiting for Parent" })).toBeVisible();
+  expect(requested).toBe(true);
+  Object.assign(dashboard.profiles[1], {
+    discover_enabled: false,
+    discovery_topics: [],
+    discovery_channels: [],
+  });
 });
 
 test("synthetic UI: shared device opens the profile picker and Parent Mode stays protected", async ({
@@ -376,8 +469,8 @@ test("synthetic UI: Made-for-Kids playback is manual, contained, and identity-mo
   await expect(page.getByText(/Safe Playback is on/i)).toBeVisible();
   await expect(page.getByText(/resume is off/i)).toHaveCount(0);
   expect(await page.evaluate(() => (window as any).__watchnestPlayCalls || 0)).toBe(0);
-  await expect(page.getByRole("button", { name: "Play video" })).toBeVisible();
-  await page.getByRole("button", { name: "Play video" }).click();
+  await expect(page.getByRole("button", { name: "Play video" })).toHaveCount(0);
+  await page.evaluate(() => (window as any).__watchnestMockPlayer.playVideo());
   expect(await page.evaluate(() => (window as any).__watchnestPlayCalls || 0)).toBe(1);
   await expect(
     page.getByRole("heading", { name: "This video isn’t approved" }),
@@ -474,6 +567,7 @@ test("synthetic UI: transiently missing iPad player identity does not reject the
       constructor(frame: HTMLIFrameElement, options: any) {
         this.frame = frame;
         this.events = options.events;
+        (window as any).__watchnestMockPlayer = this;
         window.setTimeout(() => this.events.onReady({ target: this }), 0);
       }
       getIframe() {
@@ -516,7 +610,7 @@ test("synthetic UI: transiently missing iPad player identity does not reject the
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
   await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
-  await page.getByRole("button", { name: "Play video" }).click();
+  await page.evaluate(() => (window as any).__watchnestMockPlayer.playVideo());
   await expect(
     page.getByRole("heading", { name: "This video isn’t approved" }),
   ).toHaveCount(0);
@@ -532,6 +626,7 @@ test("synthetic UI: permanently unreadable player identity fails closed", async 
       constructor(frame: HTMLIFrameElement, options: any) {
         this.frame = frame;
         this.events = options.events;
+        (window as any).__watchnestMockPlayer = this;
         window.setTimeout(() => this.events.onReady({ target: this }), 0);
       }
       getIframe() { return this.frame; }
@@ -553,7 +648,8 @@ test("synthetic UI: permanently unreadable player identity fails closed", async 
   );
   const video = dashboard.videos[0];
   await page.goto(`/watch/player/${video.id}`);
-  await page.getByRole("button", { name: "Play video" }).click();
+  await expect(page.locator(`iframe[title="${video.title}"]`)).toBeVisible();
+  await page.evaluate(() => (window as any).__watchnestMockPlayer.playVideo());
   await expect(
     page.getByRole("heading", { name: "This video isn’t approved" }),
   ).toBeVisible({ timeout: 5000 });

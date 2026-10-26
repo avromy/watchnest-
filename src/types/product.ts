@@ -8,6 +8,11 @@ export type Profile = {
   photo_url?: string | null;
   available_from_minute?: number | null;
   available_until_minute?: number | null;
+  session_duration_minutes?: number | null;
+  session_expires_at?: string | null;
+  discover_enabled?: boolean;
+  discovery_topics?: string[];
+  discovery_channels?: { id: string; title: string }[];
 };
 export type LibraryVideo = {
   id: string;
@@ -44,4 +49,8 @@ export type Request = {
   message: string;
   status: "pending" | "resolved" | "dismissed";
   created_at: string;
+  youtube_video_id?: string | null;
+  video_title?: string | null;
+  channel_title?: string | null;
+  thumbnail_url?: string | null;
 };
