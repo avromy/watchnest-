@@ -90,6 +90,13 @@ meaningful native candidate requires one consolidated external preflight:
 
 ## Verification and open evidence
 
+- Application GitHub commit: `da666702369653076ab9a7a0cc2ff94290a626e9`
+- Application tree: `2fd4aae8865c131af2d1e59ae72d626f6f4c518b`
+- Production deployment: `dpl_FXsKRLDLwGGUs2Ers2zdECTJ6LAM` (`READY`)
+- Production URL: `https://watchnest-rho.vercel.app`
+- Hosted configuration: `configured:true`; no observed runtime errors or
+  warning/error/fatal logs after the production probe
+
 - TypeScript: PASS
 - ESLint: PASS
 - Unit/integration/database: 199/199 PASS

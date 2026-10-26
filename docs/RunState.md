@@ -17,8 +17,13 @@ no second timer.
 
 Hosted additive migration `20261026152453_remote_parent_session_control` is
 applied. No existing household content or timer configuration was changed by
-verification. Exact final application commit/deployment remain pending the
-corrected-candidate review and production publication. Physical-iPad fullscreen
+verification. Exact application release: GitHub
+`da666702369653076ab9a7a0cc2ff94290a626e9`, tree
+`2fd4aae8865c131af2d1e59ae72d626f6f4c518b`, production deployment
+`dpl_FXsKRLDLwGGUs2Ers2zdECTJ6LAM` READY at
+`https://watchnest-rho.vercel.app`. Hosted `/api/session` reports
+`configured:true`; no runtime error clusters or warning/error/fatal logs were
+observed after the production probe. Physical-iPad fullscreen
 and PiP shutdown remains `PENDING — NATIVE-DEVICE ACCEPTANCE`; synthetic
 browser evidence is not promoted. Full decision and evidence:
 `docs/NativeRemoteControl-20261026.md`.

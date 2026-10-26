@@ -10,7 +10,7 @@
 | Security and adversarial review | Clock changes, stale responses, offline commands, multi-device state, Parent ownership, child session binding | Initial FAIL findings repaired; final corrected-candidate review PASS |
 | Browser / functional QA | Remote start/extend/pause/resume/end, expiry teardown, reload denial, Parent device status | 199 tests and 23 browser flows PASS on the final corrected candidate |
 | Founder Ready | Exact device/evidence boundary | BLOCKED for native/device-control claim on signed build, Apple entitlement path, and physical-iPad fullscreen/PiP shutdown |
-| Project Handoff / Continuous Learning | Durable decision, implementation, Apple preflight, limitations and rollback | PASS; exact final deployment identity pending publication |
+| Project Handoff / Continuous Learning | Durable decision, implementation, Apple preflight, limitations and rollback | PASS; GitHub `da666702` / production `dpl_FXsKRLDLwGGUs2Ers2zdECTJ6LAM` bound and verified |
 
 ## 2026-10-26 — iPad playback, timer, and Discover receipts
 
