@@ -10,6 +10,9 @@ export type Profile = {
   available_until_minute?: number | null;
   session_duration_minutes?: number | null;
   session_expires_at?: string | null;
+  session_paused_seconds?: number | null;
+  session_state_revision?: number;
+  session_updated_at?: string | null;
   discover_enabled?: boolean;
   discovery_topics?: string[];
   discovery_channels?: { id: string; title: string }[];

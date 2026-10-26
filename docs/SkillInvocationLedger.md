@@ -1,5 +1,17 @@
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
+## 2026-10-26 — native feasibility and remote Parent-control receipts
+
+| Authority / capability | Applied to | Result |
+| --- | --- | --- |
+| Product Intelligence | Native-versus-PWA decision, one-timer family workflow, ordinary-family setup burden | PASS — enhanced PWA now; native only when it adds proven platform capability |
+| Apple / YouTube specialist research | WKWebView playback, media shutdown, Guided Access, Family Controls, Device Activity, Single App Mode, client identity | PASS — capability and entitlement boundaries recorded; no native-readiness overclaim |
+| Supabase / Postgres | Additive schema, atomic server-time actions, service-only RPCs, acknowledgement state, RLS/advisors | PASS — hosted migration `20261026152453`; public/authenticated execute denied |
+| Security and adversarial review | Clock changes, stale responses, offline commands, multi-device state, Parent ownership, child session binding | Initial FAIL findings repaired; final corrected-candidate review PASS |
+| Browser / functional QA | Remote start/extend/pause/resume/end, expiry teardown, reload denial, Parent device status | 199 tests and 23 browser flows PASS on the final corrected candidate |
+| Founder Ready | Exact device/evidence boundary | BLOCKED for native/device-control claim on signed build, Apple entitlement path, and physical-iPad fullscreen/PiP shutdown |
+| Project Handoff / Continuous Learning | Durable decision, implementation, Apple preflight, limitations and rollback | PASS; exact final deployment identity pending publication |
+
 ## 2026-10-26 — iPad playback, timer, and Discover receipts
 
 | Authority / capability | Applied to | Result |

@@ -30,6 +30,12 @@ describe("session timer and discovery database boundaries", () => {
     await database.exec(
       readFileSync("supabase/migrations/20261026000100_session_timer_discovery.sql", "utf8"),
     );
+    await database.exec(
+      "create table if not exists public.household_devices(id uuid primary key);",
+    );
+    await database.exec(
+      readFileSync("supabase/migrations/20261026151813_remote_parent_session_control.sql", "utf8"),
+    );
   }, 20_000);
 
   afterAll(async () => database.close());
@@ -55,6 +61,38 @@ describe("session timer and discovery database boundaries", () => {
       values('10000000-0000-4000-8000-000000000001','20000000-0000-4000-8000-000000000001','video','Drawing','M7lc1UVf-VE')`;
     await database.exec(insert);
     await expect(database.exec(insert)).rejects.toThrow();
+  });
+
+  it("serializes remote timer actions and advances a monotonic revision", async () => {
+    const parent = "10000000-0000-4000-8000-000000000001";
+    const profile = "20000000-0000-4000-8000-000000000001";
+    const started = await database.query<{ wn_control_profile_session: any }>(
+      `select wn_control_profile_session('${parent}','${profile}','start',20)`,
+    );
+    expect(Number(started.rows[0].wn_control_profile_session.revision)).toBe(1);
+    expect(started.rows[0].wn_control_profile_session.expires_at).toBeTruthy();
+
+    const paused = await database.query<{ wn_control_profile_session: any }>(
+      `select wn_control_profile_session('${parent}','${profile}','pause',null)`,
+    );
+    expect(Number(paused.rows[0].wn_control_profile_session.revision)).toBe(2);
+    expect(Number(paused.rows[0].wn_control_profile_session.paused_seconds)).toBeGreaterThan(0);
+    expect(paused.rows[0].wn_control_profile_session.expires_at).toBeNull();
+
+    const resumed = await database.query<{ wn_control_profile_session: any }>(
+      `select wn_control_profile_session('${parent}','${profile}','resume',null)`,
+    );
+    expect(Number(resumed.rows[0].wn_control_profile_session.revision)).toBe(3);
+    expect(resumed.rows[0].wn_control_profile_session.expires_at).toBeTruthy();
+
+    const ended = await database.query<{ wn_control_profile_session: any }>(
+      `select wn_control_profile_session('${parent}','${profile}','end',null)`,
+    );
+    expect(Number(ended.rows[0].wn_control_profile_session.revision)).toBe(4);
+    const access = await database.query<{ allowed: boolean }>(
+      `select session_expires_at > now() as allowed from profiles where id='${profile}'`,
+    );
+    expect(access.rows[0].allowed).toBe(false);
   });
 
   it("atomically approves and assigns a structured request", async () => {

@@ -211,3 +211,29 @@ Patch the smallest supported versions, then rerun every functional and browser
 gate; do not waive a release audit because earlier evidence was green. Keep the
 application candidate distinct from a later documentation-only successor so
 the device evidence remains bound to the code that actually changed.
+
+## 2026-10-26 — PRODUCT: native must buy a platform capability
+
+A native shell is not inherently a product upgrade. For WatchNest it still uses
+WebKit and the YouTube iframe, so a wrapper alone does not guarantee playback,
+autoplay, or device containment. Adopt native only when it adds measurable
+platform behavior: lifecycle revalidation, OS-level media shutdown,
+fullscreen/PiP closure, push wakeups, or approved Family Controls. Preserve the
+existing backend and product rather than rewriting working authorization and
+family data.
+
+## 2026-10-26 — SECURITY: remote controls need authority, revision and honest acknowledgement
+
+A remote Parent action is authoritative only when the server owns the deadline
+and revision. Child clients must reject stale state, anchor time to a server
+sample plus monotonic elapsed time, and keep the last confirmed deadline during
+network loss. Presence and acknowledgement are operational hints, not security
+proof. A product must distinguish connected/confirmed, pending, offline and
+unknown; it must never imply that an offline device received an early Stop.
+
+## 2026-10-26 — PRIVACY: enforce access windows without rebuilding watch history
+
+The remote timer records a prospective wall-clock access deadline and ephemeral
+device acknowledgement. It does not require video identity, progress, viewed
+minutes or engagement history. This preserves the separation between Parent
+access control and Made-for-Kids viewing analytics.

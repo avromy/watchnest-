@@ -192,7 +192,26 @@ test("synthetic UI: WatchNest deadline destroys playback and blocks reload", asy
       body: JSON.stringify(expired ? { error: "Time’s up for now. Ask Parent for more time." } : {
         profile: dashboard.profiles[1], video: dashboard.videos[0], next: null,
         safe_playback_enabled: true,
-        session_access: { enabled: true, allowed: true, serverNow: new Date().toISOString(), expiresAt: new Date(expiresAt).toISOString(), remainingSeconds: Math.max(1, Math.ceil((expiresAt - Date.now()) / 1000)) },
+        session_access: { enabled: true, allowed: true, serverNow: new Date().toISOString(), expiresAt: new Date(expiresAt).toISOString(), remainingSeconds: Math.max(1, Math.ceil((expiresAt - Date.now()) / 1000)), pausedSeconds: null, revision: 1, state: "active" },
+      }),
+    });
+  });
+  await page.route("**/api/child/session-access", (route) => {
+    const expired = Date.now() >= expiresAt;
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        session_access: {
+          enabled: true,
+          allowed: !expired,
+          serverNow: new Date().toISOString(),
+          expiresAt: new Date(expiresAt).toISOString(),
+          remainingSeconds: Math.max(0, Math.ceil((expiresAt - Date.now()) / 1000)),
+          pausedSeconds: null,
+          revision: 1,
+          state: expired ? "expired" : "active",
+        },
       }),
     });
   });
@@ -210,6 +229,95 @@ test("synthetic UI: WatchNest deadline destroys playback and blocks reload", asy
   expect(await page.evaluate(() => (window as any).__timerDestroyed)).toBe(true);
   await page.reload();
   await expect(page.getByRole("heading", { name: "Time’s up for now" })).toBeVisible();
+});
+
+test("synthetic UI: Parent phone controls one remote profile timer", async ({ page }) => {
+  const changes = await fixture(page, "parent");
+  let statusRequests = 0;
+  await page.route("**/api/parent/session-status", (route) => {
+    statusRequests += 1;
+    if (statusRequests > 1) {
+      return route.fulfill({
+        status: 503,
+        contentType: "application/json",
+        body: JSON.stringify({ error: "Temporarily unavailable" }),
+      });
+    }
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        serverNow: new Date().toISOString(),
+        profiles: dashboard.profiles.map((profile, index) => ({
+          id: profile.id,
+          session_duration_minutes: index === 0 ? 20 : null,
+          session_expires_at:
+            index === 0 ? new Date(Date.now() + 15 * 60_000).toISOString() : null,
+          session_paused_seconds: null,
+          session_state_revision: index === 0 ? 4 : 0,
+          session_updated_at: new Date().toISOString(),
+          access: {
+            enabled: index === 0,
+            allowed: true,
+            expiresAt:
+              index === 0 ? new Date(Date.now() + 15 * 60_000).toISOString() : null,
+            remainingSeconds: index === 0 ? 900 : null,
+            pausedSeconds: null,
+            revision: index === 0 ? 4 : 0,
+            state: index === 0 ? "active" : "unlimited",
+          },
+          devices:
+            index === 0
+              ? [{
+                  device_id: "40000000-0000-4000-8000-000000000001",
+                  timer_last_seen_at: new Date().toISOString(),
+                  timer_ack_revision: 4,
+                  timer_playback_active: true,
+                }, {
+                  // An older session for the same household device must not
+                  // replace its newest acknowledgement.
+                  device_id: "40000000-0000-4000-8000-000000000001",
+                  timer_last_seen_at: new Date(Date.now() - 60_000).toISOString(),
+                  timer_ack_revision: 1,
+                  timer_playback_active: false,
+                }, {
+                  device_id: "40000000-0000-4000-8000-000000000002",
+                  timer_last_seen_at: new Date(Date.now() - 120_000).toISOString(),
+                  timer_ack_revision: 2,
+                  timer_playback_active: false,
+                }]
+              : [],
+        })),
+      }),
+    });
+  });
+  await page.goto("/parent/controls");
+  const miri = page.locator("section.panel").filter({
+    has: page.getByRole("heading", { name: "Miri", exact: true }),
+  });
+  await expect(miri).toContainText(
+    "1 child device connected · latest change received · player open · 1 other device offline or unconfirmed",
+  );
+  await miri.getByRole("button", { name: "Add 15 minutes" }).click();
+  await expect.poll(() =>
+    changes.some(
+      (change) =>
+        change.path === "/api/parent/session-timer" &&
+        change.body.profile_id === dashboard.profiles[0].id &&
+        change.body.action === "extend" &&
+        change.body.duration_minutes === 15,
+    ),
+  ).toBe(true);
+  await miri.getByRole("button", { name: "End now" }).click();
+  await expect.poll(() =>
+    changes.some(
+      (change) =>
+        change.path === "/api/parent/session-timer" &&
+        change.body.action === "end",
+    ),
+  ).toBe(true);
+  await expect(miri).toContainText("Remote device status is unavailable", { timeout: 6000 });
+  await expect(miri.getByRole("button", { name: "Add 15 minutes" })).toBeDisabled();
 });
 
 test("synthetic UI: bounded Discover creates a request without a playable result", async ({ page }) => {

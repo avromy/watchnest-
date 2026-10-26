@@ -45,6 +45,37 @@ type Dashboard = {
   };
   attention: { id: string; title: string; detail: string }[];
 };
+type SessionStatus = {
+  serverNow: string;
+  localReceivedAt?: number;
+  profiles: Array<
+    Pick<
+      Profile,
+      | "id"
+      | "session_duration_minutes"
+      | "session_expires_at"
+      | "session_paused_seconds"
+      | "session_state_revision"
+      | "session_updated_at"
+    > & {
+      access: {
+        enabled: boolean;
+        allowed: boolean;
+        expiresAt: string | null;
+        remainingSeconds: number | null;
+        pausedSeconds: number | null;
+        revision: number;
+        state: "unlimited" | "active" | "paused" | "expired";
+      };
+      devices: Array<{
+        device_id: string | null;
+        timer_last_seen_at: string | null;
+        timer_ack_revision: number;
+        timer_playback_active: boolean;
+      }>;
+    }
+  >;
+};
 async function api<T>(
   path: string,
   method = "GET",
@@ -2123,30 +2154,100 @@ function timeLabel(value: number) {
   }).format(new Date(Date.UTC(2026, 0, 1, hour, minute)));
 }
 
-function SessionTimerCard({ profile, act, busy }: {
+function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusState, act, busy }: {
   profile: Profile;
+  status?: SessionStatus["profiles"][number];
+  serverNow?: string;
+  localReceivedAt?: number;
+  statusState: "checking" | "ready" | "unavailable";
   act: (path: string, method: string, body?: unknown) => Promise<boolean>;
   busy: boolean;
 }) {
   const [duration, setDuration] = useState(profile.session_duration_minutes || 20);
-  const [now, setNow] = useState(0);
+  const [clock, setClock] = useState({ monotonic: 0, wall: 0 });
   useEffect(() => {
-    setNow(Date.now());
-    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    const tick = () => setClock({ monotonic: performance.now(), wall: Date.now() });
+    tick();
+    const timer = window.setInterval(tick, 1000);
     return () => window.clearInterval(timer);
   }, []);
-  const expiry = Date.parse(profile.session_expires_at || "");
-  const remaining = now > 0 && Number.isFinite(expiry)
-    ? Math.max(0, Math.ceil((expiry - now) / 60000))
-    : 0;
-  const enabled = profile.session_duration_minutes != null;
+  const serverAnchor = Date.parse(serverNow || "");
+  const localAnchor = localReceivedAt || clock.monotonic;
+  const authoritative = Boolean(
+    statusState === "ready" && status && Number.isFinite(serverAnchor) && localReceivedAt,
+  );
+  const estimatedServerNow = Number.isFinite(serverAnchor)
+    ? serverAnchor + Math.max(0, clock.monotonic - localAnchor)
+    : clock.wall;
+  const expiry = Date.parse(status?.access.expiresAt || profile.session_expires_at || "");
+  const pausedSeconds = status?.access.pausedSeconds ?? profile.session_paused_seconds ?? null;
+  const remainingSeconds = status?.access.state === "paused"
+    ? pausedSeconds || 0
+    : estimatedServerNow > 0 && Number.isFinite(expiry)
+      ? Math.max(0, Math.ceil((expiry - estimatedServerNow) / 1000))
+      : 0;
+  const remaining = authoritative ? Math.max(0, Math.ceil(remainingSeconds / 60)) : null;
+  const enabled = status?.access.enabled ?? profile.session_duration_minutes != null;
+  const state = status?.access.state || (!enabled ? "unlimited" : "unknown");
+  const revision = status?.access.revision ?? profile.session_state_revision ?? 0;
+  const distinctDeviceMap = new Map<string, NonNullable<typeof status>["devices"][number]>();
+  (status?.devices || []).forEach((device, index) => {
+    if (!device.timer_last_seen_at) return;
+    const key = device.device_id || `session-${index}`;
+    // The API orders newest-first. Keep the first live session for a known device.
+    if (!distinctDeviceMap.has(key)) distinctDeviceMap.set(key, device);
+  });
+  const distinctDevices = Array.from(distinctDeviceMap.values());
+  const withAge = distinctDevices.map((device) => ({
+    ...device,
+    ageSeconds: Math.max(
+      0,
+      Math.floor((estimatedServerNow - Date.parse(device.timer_last_seen_at || "")) / 1000),
+    ),
+  }));
+  const connected = withAge.filter((device) => Number.isFinite(device.ageSeconds) && device.ageSeconds <= 10);
+  const offline = withAge.filter((device) => !Number.isFinite(device.ageSeconds) || device.ageSeconds > 10);
+  const allConnectedAcknowledged =
+    connected.length > 0 && connected.every((device) => device.timer_ack_revision >= revision);
+  const anyPlayerOpen = connected.some((device) => device.timer_playback_active);
+  const latestAge = withAge.length ? Math.min(...withAge.map((device) => device.ageSeconds)) : null;
+  const offlineSuffix = offline.length
+    ? ` · ${offline.length} other ${offline.length === 1 ? "device" : "devices"} offline or unconfirmed`
+    : "";
+  const deviceStatus = statusState === "checking"
+    ? "Checking child devices…"
+    : statusState === "unavailable"
+      ? "Remote device status is unavailable. Try again in a moment."
+      : latestAge === null
+        ? "No child device has checked in yet."
+    : connected.length
+      ? `${connected.length} child ${connected.length === 1 ? "device" : "devices"} connected · ${
+          allConnectedAcknowledged ? "latest change received" : "sending latest change"
+        }${anyPlayerOpen ? " · player open" : ""}${offlineSuffix}`
+      : `No child device is connected · last check-in ${Math.max(1, Math.ceil(latestAge / 60))} min ago${offlineSuffix}`;
+  const control = (action: string, minutes?: number) =>
+    act("/api/parent/session-timer", "POST", {
+      profile_id: profile.id,
+      action,
+      ...(minutes ? { duration_minutes: minutes } : {}),
+    });
   return (
     <section className="panel">
       <div className={styles.childHeader}>
         <ProfileImage name={profile.display_name} avatar={profile.avatar_key} photoUrl={profile.photo_url} size="small" />
         <div>
           <h2>{profile.display_name}</h2>
-          <p className="muted">{!enabled ? "No session timer" : remaining > 0 ? `${remaining} min left` : "Time’s up"}</p>
+          <p className="muted">
+            {state === "unlimited"
+              ? "No session timer"
+              : state === "unknown"
+                ? "Timer on · checking time…"
+              : state === "paused"
+                ? `Paused · ${remaining} min saved`
+                : state === "active"
+                  ? `${remaining} min left`
+                  : "Time’s up"}
+          </p>
         </div>
       </div>
       <label>
@@ -2156,19 +2257,59 @@ function SessionTimerCard({ profile, act, busy }: {
         </select>
       </label>
       <div className={styles.row}>
-        <button className="button" disabled={busy} onClick={() => act("/api/parent/session-timer", "POST", { profile_id: profile.id, action: "start", duration_minutes: duration })}>
-          {remaining > 0 ? "Start new session" : "Start session"}
-        </button>
-        {remaining > 0 && <button className="button-secondary" disabled={busy} onClick={() => act("/api/parent/session-timer", "POST", { profile_id: profile.id, action: "stop" })}>End now</button>}
-        {enabled && <button className="button-quiet" disabled={busy} onClick={() => act("/api/parent/session-timer", "POST", { profile_id: profile.id, action: "disable" })}>Turn timer off</button>}
+        {state === "active" ? (
+          <>
+            <button className="button" disabled={busy || !authoritative} onClick={() => control("extend", 15)}>Add 15 minutes</button>
+            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("pause")}>Pause</button>
+            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("end")}>End now</button>
+          </>
+        ) : state === "paused" ? (
+          <>
+            <button className="button" disabled={busy || !authoritative || remainingSeconds <= 0} onClick={() => control("resume")}>Resume</button>
+            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("extend", 15)}>Add 15 minutes</button>
+            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("end")}>End now</button>
+          </>
+        ) : (
+          <button className="button" disabled={busy || statusState !== "ready"} onClick={() => control("start", duration)}>
+            Give {duration} minutes
+          </button>
+        )}
+        {enabled && <button className="button-quiet" disabled={busy || !authoritative} onClick={() => control("disable")}>Turn timer off</button>}
       </div>
-      <p className="muted">Time counts down while paused or while WatchNest is in the background.</p>
+      <p className="muted">{deviceStatus}</p>
+      <p className="muted">Active time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.</p>
     </section>
   );
 }
 
 export function Controls() {
   const { data, act, busy } = useParent();
+  const [sessionStatus, setSessionStatus] = useState<SessionStatus | null>(null);
+  const [sessionStatusError, setSessionStatusError] = useState(false);
+  useEffect(() => {
+    let disposed = false;
+    let timer: number | undefined;
+    const refresh = async () => {
+      try {
+        const result = await api<SessionStatus>("/api/parent/session-status");
+        if (!disposed) {
+          setSessionStatus({ ...result, localReceivedAt: performance.now() });
+          setSessionStatusError(false);
+        }
+      } catch {
+        // Keep the last confirmed status visible; Parent actions still surface
+        // their own errors through the shared Parent shell.
+        if (!disposed) setSessionStatusError(true);
+      } finally {
+        if (!disposed) timer = window.setTimeout(refresh, 4000);
+      }
+    };
+    void refresh();
+    return () => {
+      disposed = true;
+      window.clearTimeout(timer);
+    };
+  }, []);
   const options = Array.from(
     { length: 37 },
     (_, index) => index * 30 + 300,
@@ -2183,9 +2324,23 @@ export function Controls() {
       <h2>Session time</h2>
       <div className="grid grid-2">
         {data.profiles.map((profile) => (
-          <SessionTimerCard profile={profile} act={act} busy={busy} key={profile.id} />
+          <SessionTimerCard
+            profile={profile}
+            status={sessionStatus?.profiles.find((item) => item.id === profile.id)}
+            serverNow={sessionStatus?.serverNow}
+            localReceivedAt={sessionStatus?.localReceivedAt}
+            statusState={sessionStatusError ? "unavailable" : sessionStatus ? "ready" : "checking"}
+            act={act}
+            busy={busy}
+            key={profile.id}
+          />
         ))}
       </div>
+      <p className="muted">
+        Remote changes reach a connected child device in a few seconds. If a
+        device is offline, it cannot receive an early End command until it
+        reconnects, but it cannot continue beyond its last confirmed deadline.
+      </p>
       <section className="notice">
         <h2>Using Guided Access</h2>
         <p>WatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.</p>

@@ -10,6 +10,9 @@ describe("sessionAccess", () => {
       allowed: true,
       expiresAt: null,
       remainingSeconds: null,
+      pausedSeconds: null,
+      revision: 0,
+      state: "unlimited",
     });
   });
 
@@ -38,5 +41,24 @@ describe("sessionAccess", () => {
         now,
       ).allowed,
     ).toBe(false);
+  });
+
+  it("fails closed while paused and preserves the server-owned remainder", () => {
+    expect(
+      sessionAccess(
+        {
+          session_duration_minutes: 20,
+          session_paused_seconds: 420,
+          session_state_revision: 7,
+        },
+        now,
+      ),
+    ).toMatchObject({
+      enabled: true,
+      allowed: false,
+      pausedSeconds: 420,
+      revision: 7,
+      state: "paused",
+    });
   });
 });

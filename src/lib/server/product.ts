@@ -29,7 +29,7 @@ const youtubeId = z.string().regex(/^[A-Za-z0-9_-]{11}$/);
 const founder = () =>
   (process.env.FOUNDER_EMAIL || "Avromy@gmail.com").toLowerCase();
 const selectProfile =
-  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,discover_enabled,discovery_topics,discovery_channels";
+  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at,discover_enabled,discovery_topics,discovery_channels";
 export function configured() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -1071,6 +1071,14 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
       if (!admitted)
         throw new Failure("Profile settings changed. Please try again.", 409);
+      if (linked) {
+        check(
+          await client
+            .from("child_sessions")
+            .update({ device_id: linked.id })
+            .eq("token_hash", digest(token)),
+        );
+      }
       await cookie("wn_child", token, 86400);
       await cookie("wn_parent", "", 0);
       await cookie("wn_refresh", "", 0);
@@ -1082,13 +1090,13 @@ export async function handle(request: globalThis.Request, path: string[]) {
     if (route.startsWith("parent/")) {
       const p = await parent();
       await limit("parent-actions:" + p.id, 300, 60);
-      await metadataMaintenance(client);
+      if (route !== "parent/session-status") await metadataMaintenance(client);
       return await parentRoute(route, method, body, p, request);
     }
     if (route.startsWith("child/")) {
       const c = await child();
       await limit("child-actions:" + c.profile.id, 120, 60);
-      await metadataMaintenance(client);
+      if (route !== "child/session-access") await metadataMaintenance(client);
       return await childRoute(route, method, body, c, request);
     }
     throw new Failure("Not found.", 404);
@@ -1127,6 +1135,7 @@ async function parentRoute(
     check(
       await client.from("child_sessions").insert({
         profile_id: profileId,
+        device_id: (await device()).id,
         token_hash: digest(token),
         expires_at: new Date(Date.now() + 86400000).toISOString(),
       }),
@@ -1291,47 +1300,47 @@ async function parentRoute(
     const b = z
       .object({
         profile_id: id,
-        action: z.enum(["start", "stop", "disable"]),
+        action: z.enum(["start", "extend", "pause", "resume", "end", "disable"]),
         duration_minutes: z.number().int().min(1).max(240).optional(),
       })
       .parse(body);
     await ownedProfiles(p.id, [b.profile_id]);
-    if (b.action === "disable") {
-      const disabled = check(await client.rpc("wn_end_profile_session", {
-        p_parent: p.id,
-        p_profile: b.profile_id,
-        p_disable: true,
-      }));
-      if (!disabled) throw new Failure("Child profile unavailable.", 404);
-      return reply({ ok: true });
-    }
-    if (b.action === "stop") {
-      const stopped = check(await client.rpc("wn_end_profile_session", {
-        p_parent: p.id,
-        p_profile: b.profile_id,
-        p_disable: false,
-      }));
-      if (!stopped) throw new Failure("Child profile unavailable.", 404);
-      return reply({ ok: true });
-    }
-    const existing = check(
-      await client
-        .from("profiles")
-        .select("session_duration_minutes")
-        .eq("id", b.profile_id)
-        .eq("parent_id", p.id)
-        .single(),
-    );
-    const durationMinutes =
-      b.duration_minutes ?? existing.session_duration_minutes;
-    if (!durationMinutes)
-      throw new Failure("Choose a session length before starting.");
-    const expiresAt = check(await client.rpc("wn_start_profile_session", {
+    const controlled = check(await client.rpc("wn_control_profile_session", {
       p_parent: p.id,
       p_profile: b.profile_id,
-      p_minutes: durationMinutes,
+      p_action: b.action,
+      p_minutes: b.duration_minutes ?? null,
     }));
-    return reply({ ok: true, expires_at: expiresAt });
+    return reply({ ok: true, session: controlled });
+  }
+  if (route === "parent/session-status" && method === "GET") {
+    const profiles = check(
+      await client
+        .from("profiles")
+        .select("id,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at")
+        .eq("parent_id", p.id)
+        .is("archived_at", null),
+    );
+    const profileIds = profiles.map((profile: any) => profile.id);
+    const sessions = profileIds.length
+      ? check(
+          await client
+            .from("child_sessions")
+            .select("profile_id,device_id,timer_last_seen_at,timer_ack_revision,timer_playback_active")
+            .in("profile_id", profileIds)
+            .is("revoked_at", null)
+            .gt("expires_at", new Date().toISOString())
+            .order("timer_last_seen_at", { ascending: false }),
+        )
+      : [];
+    return reply({
+      serverNow: new Date().toISOString(),
+      profiles: profiles.map((profile: any) => ({
+        ...profile,
+        access: accessView(profile),
+        devices: sessions.filter((session: any) => session.profile_id === profile.id),
+      })),
+    });
   }
   if (route === "parent/settings") {
     if (method === "GET")
@@ -1873,6 +1882,23 @@ async function childRoute(
 ) {
   const client = db(),
     profile = c.profile;
+  if (route === "child/session-access" && method === "POST") {
+    const b = z
+      .object({
+        revision: z.number().int().min(0),
+        playback_active: z.boolean(),
+      })
+      .parse(body);
+    const access = accessView(profile);
+    check(
+      await client.rpc("wn_ack_profile_session", {
+        p_session: c.session.id,
+        p_revision: Math.min(b.revision, access.revision),
+        p_playback_active: b.playback_active && access.allowed,
+      }),
+    );
+    return reply({ session_access: access });
+  }
   const own = await videos(profile.parent_id, profile.id);
   if (route === "child/library" && method === "GET") {
     const hiddenIds = new Set(

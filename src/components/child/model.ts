@@ -10,6 +10,8 @@ export type Profile = {
   available_until_minute?: number | null;
   session_duration_minutes?: number | null;
   session_expires_at?: string | null;
+  session_paused_seconds?: number | null;
+  session_state_revision?: number;
   discover_enabled?: boolean;
   discovery_topics?: string[];
   discovery_channels?: { id: string; title: string }[];
@@ -19,6 +21,9 @@ export type SessionAccess = {
   allowed: boolean;
   expiresAt: string | null;
   remainingSeconds: number | null;
+  pausedSeconds: number | null;
+  revision: number;
+  state: "unlimited" | "active" | "paused" | "expired";
   serverNow: string;
 };
 export type DiscoveryResult = {

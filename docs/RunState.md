@@ -1,5 +1,28 @@
 # Final family beta — Founder Ready (2026-10-07)
 
+## 2026-10-26 — native feasibility and remote Parent control
+
+Architecture decision: preserve the qualified Next.js/Supabase product and ship
+the measurable improvement now as an enhanced server-authoritative remote
+session timer. A bare native wrapper is rejected. The future native direction is
+a thin SwiftUI/WKWebView shell only when it adds native media teardown,
+lifecycle handling, push wakeups and—after Apple approval—Family Controls.
+
+The implementation adds atomic start/extend/pause/resume/end/disable actions,
+monotonic revisions, server-clock anchoring, two-second authenticated child
+status polling, profile-wide multi-device acknowledgements, privacy-minimal
+presence, and fail-closed player teardown. Parent phone Controls provides the
+one-timer workflow. Guided Access remains optional navigation containment with
+no second timer.
+
+Hosted additive migration `20261026152453_remote_parent_session_control` is
+applied. No existing household content or timer configuration was changed by
+verification. Exact final application commit/deployment remain pending the
+corrected-candidate review and production publication. Physical-iPad fullscreen
+and PiP shutdown remains `PENDING — NATIVE-DEVICE ACCEPTANCE`; synthetic
+browser evidence is not promoted. Full decision and evidence:
+`docs/NativeRemoteControl-20261026.md`.
+
 ## 2026-10-26 — iPad playback, timer, and Discover candidate
 
 Application commit `d0eae994ca16d8d2a347c04fe20c8db2a1409848`, tree

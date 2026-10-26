@@ -1,6 +1,8 @@
 export type SessionAccessProfile = {
   session_duration_minutes?: number | null;
   session_expires_at?: string | null;
+  session_paused_seconds?: number | null;
+  session_state_revision?: number | null;
 };
 
 export type SessionAccess = {
@@ -8,6 +10,9 @@ export type SessionAccess = {
   allowed: boolean;
   expiresAt: string | null;
   remainingSeconds: number | null;
+  pausedSeconds: number | null;
+  revision: number;
+  state: "unlimited" | "active" | "paused" | "expired";
 };
 
 /**
@@ -26,11 +31,24 @@ export function sessionAccess(
   const remainingSeconds = expiresAt
     ? Math.max(0, Math.ceil((parsed - now) / 1000))
     : null;
+  const pausedSeconds = Number.isInteger(profile.session_paused_seconds)
+    ? Math.max(0, Number(profile.session_paused_seconds))
+    : null;
+  const state = !enabled
+    ? "unlimited"
+    : pausedSeconds !== null
+      ? "paused"
+      : remainingSeconds !== null && remainingSeconds > 0
+        ? "active"
+        : "expired";
   return {
     enabled,
-    allowed: !enabled || (remainingSeconds !== null && remainingSeconds > 0),
+    allowed: state === "unlimited" || state === "active",
     expiresAt,
     remainingSeconds,
+    pausedSeconds,
+    revision: Math.max(0, Number(profile.session_state_revision || 0)),
+    state,
   };
 }
 

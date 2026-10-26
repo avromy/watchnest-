@@ -97,10 +97,16 @@ type Playback = {
     allowed: boolean;
     expiresAt: string | null;
     remainingSeconds: number | null;
+    pausedSeconds: number | null;
+    revision: number;
+    state: "unlimited" | "active" | "paused" | "expired";
     serverNow: string;
   };
 };
-type PlaybackAccess = NonNullable<Playback["session_access"]>;
+type PlaybackAccess = NonNullable<Playback["session_access"]> & {
+  localReceivedAt?: number;
+  safetyMs?: number;
+};
 
 const SAFE_PLAYER_SANDBOX =
   "allow-scripts allow-same-origin allow-presentation";
@@ -128,6 +134,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   >("unknown");
   const [started, setStarted] = useState(false);
   const [timeUp, setTimeUp] = useState(false);
+  const [timeBlockKind, setTimeBlockKind] = useState<"paused" | "expired">("expired");
   const [sessionAccessState, setSessionAccessState] =
     useState<PlaybackAccess | null>(null);
   const [ended, setEnded] = useState(false);
@@ -169,7 +176,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   const mount = useRef<HTMLDivElement>(null);
   const player = useRef<Player | null>(null);
   const active = useRef(true);
-  function stopForTimeUp() {
+  const remoteBlock = useRef<"time" | "network" | null>(null);
+  function stopForTimeUp(kind: "paused" | "expired" = "expired") {
+    remoteBlock.current = "time";
     active.current = false;
     try {
       player.current?.pauseVideo();
@@ -183,6 +192,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     if (document.fullscreenElement) void document.exitFullscreen().catch(() => {});
     else doc.webkitExitFullscreen?.();
     setTimeUp(true);
+    setTimeBlockKind(kind);
     setError("");
     setReady(false);
   }
@@ -195,11 +205,14 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     setReady(false);
     setStarted(false);
     setTimeUp(false);
+    setTimeBlockKind("expired");
+    remoteBlock.current = null;
     setSessionAccessState(null);
     setStaticFallback(false);
     setPlayerNotice("");
     setHelpSent(false);
     setHelpError("");
+    const requestStarted = Date.now();
     waitForBookmarks()
       .then(() =>
         api<Playback>(
@@ -209,8 +222,19 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       .then((d) => {
         if (!cancelled) {
           setData(d);
-          setSessionAccessState(d.session_access || null);
-          if (d.session_access && !d.session_access.allowed) setTimeUp(true);
+          setSessionAccessState(
+            d.session_access
+              ? {
+                  ...d.session_access,
+                  localReceivedAt: Date.now(),
+                  safetyMs: Date.now() - requestStarted,
+                }
+              : null,
+          );
+          if (d.session_access && !d.session_access.allowed) {
+            setTimeBlockKind(d.session_access.state === "paused" ? "paused" : "expired");
+            setTimeUp(true);
+          }
         }
       })
       .catch((e) => {
@@ -243,7 +267,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     if (!access || !access.enabled || !access.expiresAt) return;
     const serverNow = Date.parse(access.serverNow);
     const expiresAt = Date.parse(access.expiresAt);
-    const delay = expiresAt - serverNow;
+    const delay = expiresAt - serverNow - Math.max(0, access.safetyMs || 0);
     if (!Number.isFinite(delay) || delay <= 0) {
       stopForTimeUp();
       return;
@@ -514,46 +538,69 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   useEffect(() => {
     if (!data) return;
     let disposed = false;
-    const revalidate = () => {
-      api<Playback>(
-        `/api/child/player?videoId=${encodeURIComponent(videoId)}`,
-      ).then((latest) => {
-        if (disposed || !latest.session_access) return;
-        if (!latest.session_access.allowed) {
-          stopForTimeUp();
+    let timer: number | undefined;
+    let inFlight = false;
+    let latestRevision = data.session_access?.revision || 0;
+    const revalidate = async () => {
+      if (inFlight || disposed) return;
+      inFlight = true;
+      const requestStarted = Date.now();
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 4000);
+      try {
+        const response = await fetch("/api/child/session-access", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            revision: latestRevision,
+            playback_active: Boolean(player.current && active.current),
+          }),
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        const latest = await response.json();
+        if (!response.ok)
+          throw new Error(latest.error || "WatchNest could not confirm session time.");
+        const access = latest.session_access as PlaybackAccess;
+        if (disposed || !access) return;
+        if (access.revision < latestRevision) return;
+        latestRevision = access.revision;
+        if (!access.allowed) {
+          stopForTimeUp(access.state === "paused" ? "paused" : "expired");
+          return;
+        }
+        if (remoteBlock.current) {
+          remoteBlock.current = null;
+          setError("");
+          setTimeUp(false);
+          setReplay((value) => value + 1);
           return;
         }
         // Parent changes are server-authoritative. Replacing only the access
         // snapshot reschedules the local deadline without recreating the
         // cross-origin player or losing its native iPad play gesture.
-        setSessionAccessState(latest.session_access);
-      }).catch((e) => {
+        setSessionAccessState({
+          ...access,
+          localReceivedAt: Date.now(),
+          safetyMs: Date.now() - requestStarted,
+        });
+      } catch {
         if (!disposed) {
-          const message = e instanceof Error ? e.message : "";
-          if (/time.+up|more time/i.test(message)) {
-            stopForTimeUp();
-            return;
-          }
+          remoteBlock.current = "network";
           active.current = false;
           player.current?.pauseVideo();
           player.current?.destroy();
           player.current = null;
-          setErrorKind(
-            /not in your library|no longer assigned|sign in|session/i.test(
-              message,
-            )
-              ? "authorization"
-              : /unavailable|removed|private/i.test(message)
-                ? "unavailable"
-                : /reach|network|connection/i.test(message)
-                  ? "network"
-                  : "unknown",
-          );
-          setError(message || "WatchNest could not continue this video.");
+          setErrorKind("network");
+          setError("WatchNest could not confirm session time. Ask Parent for help.");
         }
-      });
+      } finally {
+        inFlight = false;
+        window.clearTimeout(timeout);
+        if (!disposed) timer = window.setTimeout(revalidate, 2000);
+      }
     };
-    const check = setInterval(revalidate, 5000);
+    timer = window.setTimeout(revalidate, 500);
     const resume = () => {
       if (!document.hidden) void revalidate();
     };
@@ -562,7 +609,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     window.addEventListener("focus", resume);
     return () => {
       disposed = true;
-      clearInterval(check);
+      window.clearTimeout(timer);
       document.removeEventListener("visibilitychange", resume);
       window.removeEventListener("pageshow", resume);
       window.removeEventListener("focus", resume);
@@ -583,8 +630,14 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       {timeUp ? (
         <section className="panel time-up-card" aria-labelledby="time-up-heading">
           <p className="eyebrow">WatchNest session</p>
-          <h1 id="time-up-heading" tabIndex={-1}>Time’s up for now</h1>
-          <p>Video has stopped. Ask Parent when you’re ready for more time.</p>
+          <h1 id="time-up-heading" tabIndex={-1}>
+            {timeBlockKind === "paused" ? "Parent paused WatchNest" : "Time’s up for now"}
+          </h1>
+          <p>
+            {timeBlockKind === "paused"
+              ? "Video has stopped. Parent can resume when it’s time."
+              : "Video has stopped. Ask Parent when you’re ready for more time."}
+          </p>
           <Link className="button" href="/watch">
             Choose profile
           </Link>
