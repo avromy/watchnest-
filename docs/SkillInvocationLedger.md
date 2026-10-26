@@ -1,5 +1,18 @@
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
+## 2026-10-26 — iPad playback, timer, and Discover receipts
+
+| Authority / capability | Applied to | Result |
+| --- | --- | --- |
+| Current Product/App authority recovery | Repository, Founder Workspace, CTO Handoff, run state, registry, production and rollback reconciliation | PASS; exact predecessor and family-data baseline preserved |
+| Product Intelligence | Session-timer model, Discover/Request IA, progressive disclosure, request-only candidates | PASS; one Kids discovery job and existing Parent Inbox reused |
+| Supabase + Postgres practices | Additive defaults, service-only RPCs, atomic approval, indexes, post-write readback/advisors | PASS; migration `20261026045621`; no family rows rewritten |
+| Browser/functional QA | Native Play path, timer teardown/reload/stale-deadline, bounded request, responsive, containment | PASS for 22 synthetic/deployed-scope flows; physical iPad not inferred |
+| Independent red-team | Playback premise, timer bypasses, request escalation, migration safety | CONDITIONAL GO; stale active-deadline defect repaired; no authorization bypass found |
+| Stranger / responsive product review | Child Discover, Parent Controls/Inbox, Time's Up, tablet layouts and copy | PASS for deterministic evidence; real-device audiovisual proof pending |
+| Founder Ready | Exact candidate/evidence binding and anti-overclaim gate | BLOCKED only on one frozen-candidate physical-iPad playback + fullscreen-expiry observation |
+| Continuous Learning | Cross-origin gesture ownership, device evidence, wall-clock access, non-playable discovery boundary | PASS; project-scoped lessons recorded below |
+
 ## 2026-10-22 — emergency iPad playback repair receipts
 
 | Authority / capability | Application | Result |

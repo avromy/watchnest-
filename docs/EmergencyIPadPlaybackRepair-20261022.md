@@ -109,3 +109,19 @@ identity is stopped. Exact gates after the change: typecheck, lint, production
 build, 188/188 tests, and 20/20 isolated browser flows PASS. A new deployment
 and one final physical-iPad picture-and-sound observation remain required.
 
+## 2026-10-26 successor correction
+
+The visible WatchNest top-bar Play action above was still in the parent page and
+called into a cross-origin player, so it did not reliably carry user activation
+into YouTube on iPad. The current successor removes that outer Play action and
+uses the official native in-frame Play control. This restores the gesture path
+of the earlier working physical-iPad candidate while retaining IFrame API
+identity monitoring, Safe Playback, native manual fullscreen and failure-closed
+related-video enforcement. BUFFERING may temporarily lack a readable identity;
+explicit mismatches still stop immediately, and unreadable identity fails
+closed after Playing/Paused.
+
+Exact successor application: `d0eae994ca16d8d2a347c04fe20c8db2a1409848` /
+deployment `dpl_EBoRfBbBRCUMgXZnCVx3GdqxsUsP`. Automated gates pass; one final
+physical-iPad picture/sound observation remains required.
+

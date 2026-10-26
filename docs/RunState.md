@@ -1,5 +1,29 @@
 # Final family beta — Founder Ready (2026-10-07)
 
+## 2026-10-26 — iPad playback, timer, and Discover candidate
+
+Application commit `d0eae994ca16d8d2a347c04fe20c8db2a1409848`, tree
+`8ed32c6e3703ea9855653cfd106c078970011532`, production deployment
+`dpl_EBoRfBbBRCUMgXZnCVx3GdqxsUsP`, and hosted migration
+`20261026045621_session_timer_discovery` are exact and READY. The last-known
+working family data is preserved: 1 Parent / 4 active profiles / 25 family
+videos / 26 active assignments / 2 Collections; all existing profiles remain
+timer-unlimited and Discover-off by default.
+
+P0 correction uses the official in-frame YouTube Play control so the iPad tap
+occurs inside the cross-origin player; the outer `playVideo()` control that lost
+WebKit user activation is removed. Native controls/manual fullscreen, Safe
+Playback, approved identity and sibling authorization remain. The server-owned
+wall-clock timer stops/destroys/removes playback and denies reload/direct access
+after expiry without watch-duration telemetry. Bounded non-playable Discover,
+signed requests and atomic Parent approval are implemented.
+
+Exact gates: typecheck/lint/build PASS; 197/197 tests; 22/22 browser flows;
+independent red-team conditional GO with its stale-deadline finding repaired.
+Physical family-iPad picture/sound and fullscreen-expiry evidence remains the
+only open gate and is not inferred from synthetic WebKit/Chromium evidence. See
+[IPadTimerDiscovery-20261026.md](IPadTimerDiscovery-20261026.md).
+
 ## 2026-10-22 — emergency real-iPad playback repair
 
 Founder physical-device evidence reopened playback: the current production

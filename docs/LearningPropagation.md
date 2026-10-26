@@ -175,3 +175,30 @@ separate gates. For Apple-device playback, qualification must record the direct
 gesture that starts media; an opened iframe or provider-ready event is not a
 playback PASS. This remains a WatchNest-specific calibration until another
 product reproduces the same integration boundary.
+
+## 2026-10-26 — PROJECT: a parent-frame click is not an iframe media gesture
+
+The prior correction still placed Play in WatchNest's parent document and then
+called `playVideo()` across the YouTube iframe boundary. That looked like a
+direct click in application code but did not give iPad/WebKit a gesture inside
+the cross-origin media document. Preserve the provider's native in-frame Play
+control for reliable Apple playback unless a supported native integration owns
+the gesture. Continue monitoring identity and containment independently; do not
+trade authorization for playback reliability.
+
+## 2026-10-26 — PROJECT: access deadlines and viewing analytics are distinct
+
+A Parent-issued wall-clock deadline can enforce when WatchNest is available
+without accumulating play state, video duration, or watched minutes. Server
+time authorizes every player request; a local monotonic timeout provides prompt
+shutdown. Parent changes must replace the client's active deadline, not rebuild
+the cross-origin player or leave a stale timer. Guided Access remains navigation
+containment and is never represented as an observable WatchNest timer.
+
+## 2026-10-26 — PRODUCT: discovery candidates must be non-escalating
+
+Child discovery is safe only when metadata cards cannot play or navigate,
+requests are signed and profile/boundary-bound, and the request API cannot
+create approval. Parent approval re-fetches provider state and atomically
+creates individual authorization. Keywords express intent rather than safety;
+prefer exact channel boundaries and keep every candidate behind Parent review.
