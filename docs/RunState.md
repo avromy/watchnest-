@@ -24,6 +24,13 @@ Physical family-iPad picture/sound and fullscreen-expiry evidence remains the
 only open gate and is not inferred from synthetic WebKit/Chromium evidence. See
 [IPadTimerDiscovery-20261026.md](IPadTimerDiscovery-20261026.md).
 
+Security successor: newly published production dependency advisories were
+closed with Next.js `16.4.3` and Zod `4.6.7`. Exact final application commit
+`e704b0377d0caec4279cc5af8f4d42cc2f29f13c`, tree
+`a86e862f7e8620d1f0ec0bd0c4452e242aff9e38`, deployment
+`dpl_558237m1Z1FsFiEjMxgpjv2MLfXV` READY, CI run 113 PASS. Production audit now
+reports zero vulnerabilities; all functional gates reran unchanged.
+
 ## 2026-10-22 — emergency real-iPad playback repair
 
 Founder physical-device evidence reopened playback: the current production

@@ -90,6 +90,20 @@ approval before playback.
 - Physical family iPad: PENDING for picture/sound and timer expiry in manual
   fullscreen. This is one final observation against the frozen candidate.
 
+## Production security successor
+
+GitHub's production audit gate then identified newly published Next.js and Zod
+advisories. The release was patched to Next.js `16.4.3` and Zod `4.6.7` without
+changing product behavior or schema. The full 197-test, build, 22-flow browser
+suite passed again; production dependency audit reports zero vulnerabilities.
+
+- Final application commit: `e704b0377d0caec4279cc5af8f4d42cc2f29f13c`
+- Final application tree: `a86e862f7e8620d1f0ec0bd0c4452e242aff9e38`
+- Final application deployment: `dpl_558237m1Z1FsFiEjMxgpjv2MLfXV` (`READY`)
+- GitHub CI: run 113 PASS
+- Hosted configuration: `configured:true`; no warning/error/fatal runtime logs
+  observed after the exact-deployment probe.
+
 ## Terminal state
 
 `WATCHNEST_IPAD_PLAYBACK_TIMER_DISCOVERY_AUTONOMOUS_GATES_PASS`

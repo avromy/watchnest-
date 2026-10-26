@@ -202,3 +202,12 @@ requests are signed and profile/boundary-bound, and the request API cannot
 create approval. Parent approval re-fetches provider state and atomically
 creates individual authorization. Keywords express intent rather than safety;
 prefer exact channel boundaries and keep every candidate behind Parent review.
+
+## 2026-10-26 — PROCESS: rerun dependency intelligence at the release boundary
+
+The functional candidate passed locally, but GitHub's later production audit
+received newly published critical/high advisories for framework dependencies.
+Patch the smallest supported versions, then rerun every functional and browser
+gate; do not waive a release audit because earlier evidence was green. Keep the
+application candidate distinct from a later documentation-only successor so
+the device evidence remains bound to the code that actually changed.
