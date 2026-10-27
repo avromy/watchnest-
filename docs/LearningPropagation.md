@@ -1,5 +1,29 @@
 # UX redesign learning propagation — 2026-10-02
 
+## 2026-10-27 — PROJECT / PROCESS: safety promises cannot be optional state
+
+Problem: approved-only playback was presented as a product invariant while a
+legacy Parent setting could select an unsandboxed child-player path. A prior
+real-device check tapped one external control, so it missed recommendation and
+same-iframe routes. State-event-only identity enforcement also left provider
+navigation timing gaps.
+
+Correction: make Safe Playback mandatory at UI, API and database layers; remove
+the unsafe branch; constrain frame destinations; arm same-frame navigation
+defense before asynchronous provider readiness; continuously verify the active
+video identity; and fail closed on mismatch. Preserve ordinary playback,
+manual fullscreen, the remote timer and sibling authorization independently.
+
+Prevention: a non-negotiable safety claim must be encoded as an invariant, not
+a mutable preference. Acceptance matrices must enumerate interaction surfaces
+and navigation mechanisms—popup, top-level, current-frame, in-player identity,
+fullscreen and app handoff—not merely one representative link. Provider
+callbacks are evidence inputs, not the only enforcement clock. A synthetic
+browser result never certifies native fullscreen or universal-link behavior.
+
+This is a WatchNest project/process lesson. The Founder-authorized containment
+scope remains project-specific and is not generalized to other API clients.
+
 ## PROCESS — production domains must bind production-target artifacts
 
 Failure: a READY preview deployment was manually assigned to the public

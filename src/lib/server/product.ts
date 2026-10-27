@@ -1347,7 +1347,7 @@ async function parentRoute(
       return reply({
         parent_pin_set: Boolean(p.parent_pin_hash),
         timezone: p.timezone || "America/New_York",
-        safe_playback_enabled: p.safe_playback_enabled !== false,
+        safe_playback_enabled: true,
       });
     if (method === "PATCH") {
       const b = z
@@ -1357,7 +1357,7 @@ async function parentRoute(
             .regex(/^\d{4}$/)
             .optional(),
           timezone: z.string().min(1).max(80).optional(),
-          safe_playback_enabled: z.boolean().optional(),
+          safe_playback_enabled: z.literal(true).optional(),
         })
         .parse(body);
       if (b.parent_pin) {
@@ -1389,14 +1389,6 @@ async function parentRoute(
           await client
             .from("parents")
             .update({ timezone: b.timezone })
-            .eq("id", p.id),
-        );
-      }
-      if (b.safe_playback_enabled !== undefined) {
-        check(
-          await client
-            .from("parents")
-            .update({ safe_playback_enabled: b.safe_playback_enabled })
             .eq("id", p.id),
         );
       }
@@ -2131,7 +2123,7 @@ async function childRoute(
       profile: profileView,
       video: childVideoView(video),
       next: next ? childVideoView(next) : null,
-      safe_playback_enabled: c.parent.safe_playback_enabled !== false,
+      safe_playback_enabled: true,
       session_access: access,
     });
   }

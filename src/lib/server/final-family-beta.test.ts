@@ -31,6 +31,12 @@ describe("final family beta boundaries", () => {
         "utf8",
       ),
     );
+    await database.exec(
+      readFileSync(
+        "supabase/migrations/20261027134146_mandatory_safe_playback.sql",
+        "utf8",
+      ),
+    );
   }, 20_000);
 
   afterAll(async () => database.close());
@@ -43,6 +49,9 @@ describe("final family beta boundaries", () => {
       "select safe_playback_enabled from parents limit 1",
     );
     expect(result.rows[0].safe_playback_enabled).toBe(true);
+    await expect(
+      database.exec("update parents set safe_playback_enabled=false"),
+    ).rejects.toThrow("parents_safe_playback_required");
   });
 
   for (const role of ["anon", "authenticated"]) {
@@ -67,6 +76,13 @@ describe("final family beta boundaries", () => {
     expect(embed).not.toContain("allow-popups");
     expect(embed).not.toContain("allow-top-navigation");
     expect(player).toContain('host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX)');
+    expect(player).toContain("identityWatch = window.setInterval");
+    expect(player).toContain('guardedFrame.addEventListener("load", guardedLoad)');
+    const config = readFileSync("next.config.mjs", "utf8");
+    expect(config).toContain("frame-src https://www.youtube-nocookie.com/embed/");
+    expect(config).not.toContain(
+      "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
+    );
   });
 
   it("bounds photo multipart input and verifies file signatures", () => {

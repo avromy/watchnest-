@@ -1,5 +1,22 @@
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
+## 2026-10-27 — P0 recommendation containment receipts
+
+| Authority / capability | Applied to | Result |
+| --- | --- | --- |
+| Current WatchNest authority + Project Handoff | Exact GitHub/deployment/database recovery, rollback, family-data preservation and stale-evidence classification | PASS — no restart; prior durable candidate and family state preserved |
+| Product Intelligence | Mandatory approved-only boundary, Parent protection copy, recovery actions and native-versus-PWA decision | PASS — Safe Playback is required, not an optional preference; no speculative rewrite |
+| YouTube player engineering | Recommendation/end-state behavior, supported identity surface, iframe lifecycle and embed scope | PASS for bounded implementation; real provider surface on family iPad pending |
+| Security / adversarial review | False-state regression, popup/top/self navigation, pre-ready race, silent ID replacement, timer and sibling invariants | Initial race found and repaired; independent corrected-candidate review PASS; 200/200 tests and 25/25 browser flows PASS |
+| Stranger / product review | Mandatory protection language and child recovery | Initial copy contradiction found and repaired; no remaining UX blocker |
+| Founder Ready | Exact device/evidence boundary | BLOCKED pending one frozen-candidate physical-iPad recommendation/fullscreen observation |
+| Continuous Learning | Optional safety invariant, interaction-path coverage, callback-independent containment and native device boundaries | PASS — project/process lesson recorded without generalizing private authorization |
+
+Hosted authority consumption: the sole production household was changed only
+from the unsafe legacy false state to mandatory true and an incident audit event
+was added. Migration `20261027134442_mandatory_safe_playback` adds the database
+constraint. Exact application commit and deployment remain pending publication.
+
 ## 2026-10-26 — native feasibility and remote Parent-control receipts
 
 | Authority / capability | Applied to | Result |

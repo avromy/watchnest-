@@ -2460,29 +2460,8 @@ export function Settings() {
     [confirmPin, setConfirmPin] = useState(""),
     [pinMessage, setPinMessage] = useState(""),
     [pinError, setPinError] = useState(""),
-    [safeMessage, setSafeMessage] = useState(""),
-    [safeError, setSafeError] = useState(""),
     [busy, setBusy] = useState(false),
-    [safePlayback, setSafePlayback] = useState(true),
     [setupResult, setSetupResult] = useState("");
-  useEffect(() => {
-    let active = true;
-    api<{ safe_playback_enabled: boolean }>("/api/parent/settings")
-      .then((settings) => {
-        if (active) setSafePlayback(settings.safe_playback_enabled !== false);
-      })
-      .catch((reason) => {
-        if (active)
-          setSafeError(
-            reason instanceof Error
-              ? reason.message
-              : "Could not load device settings.",
-          );
-      });
-    return () => {
-      active = false;
-    };
-  }, []);
   return (
     <>
       <Heading
@@ -2495,58 +2474,20 @@ export function Settings() {
           <p className="eyebrow">Protection levels</p>
           <h2>Protection options</h2>
           <p className="muted">
-            Start with Safe Playback. Add an iPad option if it fits your family.
+            Safe Playback protects every Child Mode session. Add an iPad option
+            if it fits your family.
           </p>
           <div className={styles.protectionGrid}>
             <article className={styles.protectionCard}>
-              <span className={styles.protectionBadge}>Recommended</span>
+              <span className={styles.protectionBadge}>Required</span>
               <h3>1. Safe Playback</h3>
-              <p>Keeps video-player exits inside WatchNest.</p>
-              <label className={styles.switchRow}>
-                <input
-                  type="checkbox"
-                  checked={safePlayback}
-                  disabled={busy}
-                  onChange={async (event) => {
-                    const next = event.target.checked;
-                    setSafePlayback(next);
-                    setBusy(true);
-                    setSafeError("");
-                    setSafeMessage("");
-                    try {
-                      await api("/api/parent/settings", "PATCH", {
-                        safe_playback_enabled: next,
-                      });
-                      setSafeMessage(
-                        next ? "Safe Playback is on." : "Safe Playback is off.",
-                      );
-                    } catch (reason) {
-                      setSafePlayback(!next);
-                      setSafeError(
-                        reason instanceof Error
-                          ? reason.message
-                          : "Could not update Safe Playback.",
-                      );
-                    } finally {
-                      setBusy(false);
-                    }
-                  }}
-                />
+              <p>Required in Child Mode. Only Parent-approved videos may play.</p>
+              <div className={styles.switchRow}>
                 <span>
-                  <strong>{safePlayback ? "On" : "Off"}</strong>
+                  <strong>Always on</strong>
                   <small>No special iPad setup needed</small>
                 </span>
-              </label>
-              {safeError && (
-                <p className="error" role="alert">
-                  {safeError}
-                </p>
-              )}
-              {safeMessage && (
-                <p className="notice" role="status">
-                  {safeMessage}
-                </p>
-              )}
+              </div>
             </article>
             <article className={styles.protectionCard}>
               <span className={styles.protectionBadge}>Optional</span>
@@ -2594,7 +2535,7 @@ export function Settings() {
                 (navigator as Navigator & { standalone?: boolean }).standalone;
               const touch = navigator.maxTouchPoints > 0;
               setSetupResult(
-                `${safePlayback ? "Safe Playback is on" : "Turn on Safe Playback"}. ${standalone ? "Home Screen mode is active" : "Open the Home Screen app for the strongest device setup"}. ${touch ? "Touch input detected" : "No touch input detected"}. YouTube app and Safari restrictions must be confirmed in iPad Settings.`,
+                `Safe Playback is always on. ${standalone ? "Home Screen mode is active" : "Open the Home Screen app for the strongest device setup"}. ${touch ? "Touch input detected" : "No touch input detected"}. YouTube app and Safari restrictions must be confirmed in iPad Settings.`,
               );
             }}
           >

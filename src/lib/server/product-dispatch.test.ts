@@ -366,6 +366,25 @@ describe("authenticated route dispatch regression", () => {
     );
     expect(response.status).toBe(403);
   });
+  it("rejects attempts to disable mandatory Safe Playback", async () => {
+    configured();
+    const response = await handle(
+      new Request("https://test.local/api/parent/settings", {
+        method: "PATCH",
+        headers: {
+          origin: "https://test.local",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ safe_playback_enabled: false }),
+      }),
+      ["parent", "settings"],
+    );
+    expect(response.status).toBe(400);
+    expect(state.updates).not.toContainEqual({
+      table: "parents",
+      values: { safe_playback_enabled: false },
+    });
+  });
   it("unconfirmed signup cannot create profiles or overwrite auth ownership", async () => {
     configured();
     const response = await handle(

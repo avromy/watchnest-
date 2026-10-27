@@ -8,11 +8,9 @@ import {
   serializeBookmark,
   waitForBookmarks,
 } from "./model";
-import YouTubeEmbed from "../YouTubeEmbed";
 import {
   classifyYouTubePlayerError,
   youtubeEmbedUrl,
-  youtubePlayerVars,
 } from "@/lib/youtube-player";
 import {
   leaveImmersivePlayback,
@@ -112,13 +110,15 @@ const SAFE_PLAYER_SANDBOX =
   "allow-scripts allow-same-origin allow-presentation";
 
 function currentPlayerVideoId(player: Player) {
-  const reported = player.getVideoData()?.video_id;
-  if (reported) return reported;
   try {
-    return new URL(player.getVideoUrl()).searchParams.get("v") || undefined;
-  } catch {
-    return undefined;
-  }
+    const officialUrl = player.getVideoUrl();
+    if (officialUrl)
+      return new URL(officialUrl).searchParams.get("v") || undefined;
+  } catch {}
+  try {
+    return player.getVideoData()?.video_id || undefined;
+  } catch {}
+  return undefined;
 }
 export default function ChildPlayer({ videoId }: { videoId: string }) {
   const [data, setData] = useState<Playback | null>(null);
@@ -139,7 +139,6 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     useState<PlaybackAccess | null>(null);
   const [ended, setEnded] = useState(false);
   const [ready, setReady] = useState(false);
-  const [staticFallback, setStaticFallback] = useState(false);
   const [playerNotice, setPlayerNotice] = useState("");
   const [replay, setReplay] = useState(0);
   const [helpSent, setHelpSent] = useState(false);
@@ -208,7 +207,6 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     setTimeBlockKind("expired");
     remoteBlock.current = null;
     setSessionAccessState(null);
-    setStaticFallback(false);
     setPlayerNotice("");
     setHelpSent(false);
     setHelpError("");
@@ -276,25 +274,36 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     return () => window.clearTimeout(timer);
   }, [sessionAccessState]);
   useEffect(() => {
-    if (!data || timeUp || staticFallback || !mount.current) return;
+    if (!data || timeUp || !mount.current) return;
     let disposed = false;
     let completed = false;
     let identityTimer: number | undefined;
+    let identityWatch: number | undefined;
+    let guardedFrame: HTMLIFrameElement | undefined;
+    let guardedLoad: (() => void) | undefined;
     active.current = true;
     const approvedVideoId = data.video.youtube_video_id;
     const historyAllowed = data.video.made_for_kids === false;
-    function stopUnauthorized(target: Player) {
+    function stopUnauthorized(target?: Player) {
       window.clearTimeout(identityTimer);
       identityTimer = undefined;
+      window.clearInterval(identityWatch);
+      identityWatch = undefined;
       console.warn("[watchnest-player] blocked unexpected player identity", {
         videoId: data?.video.id,
       });
-      target.pauseVideo();
-      target.destroy();
+      try {
+        target?.pauseVideo();
+        target?.destroy();
+      } catch {}
+      // The iframe's own browsing context can navigate before the IFrame API
+      // reports ready. Remove it directly so containment never depends on a
+      // provider callback arriving first.
+      if (host.isConnected) host.remove();
       player.current = null;
       active.current = false;
       setErrorKind("authorization");
-      setError("WatchNest stopped a video that was not approved.");
+      setError("Only videos your parent added can play here.");
     }
     function verifyIdentity(target: Player, enforceUnknown = false) {
       const currentVideoId = currentPlayerVideoId(target);
@@ -351,65 +360,53 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         }
       });
     }
-    const host = data.safe_playback_enabled
-      ? document.createElement("iframe")
-      : document.createElement("div");
-    if (host instanceof HTMLIFrameElement) {
-      const startSeconds =
-        historyAllowed && !data.video.progress?.completed_at
-          ? Math.floor(data.video.progress?.current_time_seconds || 0)
-          : 0;
-      host.src = youtubeEmbedUrl(
-        data.video.youtube_video_id,
-        window.location.origin,
-        {
-          autoplay: false,
-          enableJsApi: true,
-          startSeconds,
-        },
+    const host = document.createElement("iframe");
+    const startSeconds =
+      historyAllowed && !data.video.progress?.completed_at
+        ? Math.floor(data.video.progress?.current_time_seconds || 0)
+        : 0;
+    host.src = youtubeEmbedUrl(
+      data.video.youtube_video_id,
+      window.location.origin,
+      {
+        autoplay: false,
+        enableJsApi: true,
+        startSeconds,
+      },
+    );
+    host.title = data.video.title;
+    host.allow =
+      "accelerometer; autoplay; encrypted-media; gyroscope; fullscreen";
+    host.allowFullscreen = true;
+    host.referrerPolicy = "strict-origin-when-cross-origin";
+    host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
+    const iframeReady = new Promise<void>((resolve, reject) => {
+      const timer = window.setTimeout(
+        () => reject(new Error("youtube-iframe-timeout")),
+        15000,
       );
-      host.title = data.video.title;
-      host.allow =
-        "accelerometer; autoplay; encrypted-media; gyroscope; fullscreen";
-      host.allowFullscreen = true;
-      host.referrerPolicy = "strict-origin-when-cross-origin";
-      host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
-    }
-    const iframeReady =
-      host instanceof HTMLIFrameElement
-        ? new Promise<void>((resolve, reject) => {
-            const timer = window.setTimeout(
-              () => reject(new Error("youtube-iframe-timeout")),
-              15000,
-            );
-            host.addEventListener(
-              "load",
-              () => {
-                window.clearTimeout(timer);
-                resolve();
-              },
-              { once: true },
-            );
-          })
-        : Promise.resolve();
+      host.addEventListener(
+        "load",
+        () => {
+          window.clearTimeout(timer);
+          // Arm the guard at the first completed document load, before the
+          // asynchronous IFrame API onReady callback. Every later load is an
+          // unexpected provider-controlled navigation and fails closed.
+          guardedFrame = host;
+          guardedLoad = () => {
+            if (!disposed) stopUnauthorized(player.current || undefined);
+          };
+          guardedFrame.addEventListener("load", guardedLoad);
+          resolve();
+        },
+        { once: true },
+      );
+    });
     mount.current.replaceChildren(host);
     Promise.all([loadPlayer(), iframeReady])
       .then(([YT]) => {
         if (disposed) return;
         player.current = new YT.Player(host, {
-          ...(data.safe_playback_enabled
-            ? {}
-            : {
-                videoId: data.video.youtube_video_id,
-                host: "https://www.youtube-nocookie.com",
-                playerVars: youtubePlayerVars(window.location.origin, {
-                  autoplay: false,
-                  startSeconds:
-                    historyAllowed && !data.video.progress?.completed_at
-                      ? data.video.progress?.current_time_seconds || 0
-                      : 0,
-                }),
-              }),
           events: {
             onReady: (event) => {
               if (!disposed) {
@@ -424,11 +421,23 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   setError("WatchNest stopped a video that was not approved.");
                   return;
                 }
-                if (data.safe_playback_enabled) {
-                  frame.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
-                }
+                frame.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
                 event.target.setVolume(volumeRef.current);
                 verifyIdentity(event.target, false);
+                // The same-frame navigation guard was armed on the initial
+                // iframe load, before this provider readiness callback.
+                // Do not depend exclusively on provider state-event timing.
+                // Poll the official current-video URL for silent related-video
+                // replacement; unreadable identity fails closed only while
+                // media is actually playing or paused.
+                identityWatch = window.setInterval(() => {
+                  if (disposed || !player.current) return;
+                  let state = -1;
+                  try {
+                    state = player.current.getPlayerState();
+                  } catch {}
+                  verifyIdentity(player.current, state === 1 || state === 2);
+                }, 250);
                 setReady(true);
               }
             },
@@ -497,16 +506,11 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           player.current?.destroy();
           player.current = null;
           mount.current?.replaceChildren();
-          if (data.safe_playback_enabled) {
-            setErrorKind("initialization");
-            setError(
-              "The video player could not start safely. Please try again.",
-            );
-            active.current = false;
-          } else {
-            setStaticFallback(true);
-            setPlayerNotice("Tap Play in the video to begin.");
-          }
+          setErrorKind("initialization");
+          setError(
+            "The video player could not start safely. Please try again.",
+          );
+          active.current = false;
         }
       });
     const bookmark = historyAllowed
@@ -528,13 +532,16 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       disposed = true;
       active.current = false;
       window.clearTimeout(identityTimer);
+      window.clearInterval(identityWatch);
+      if (guardedFrame && guardedLoad)
+        guardedFrame.removeEventListener("load", guardedLoad);
       clearInterval(bookmark);
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("pagehide", pagehide);
       player.current?.destroy();
       player.current = null;
     };
-  }, [data, videoId, staticFallback, timeUp]);
+  }, [data, videoId, timeUp]);
   useEffect(() => {
     if (!data) return;
     let disposed = false;
@@ -649,7 +656,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             {error.includes("not available for this profile right now")
               ? "WatchNest is closed right now"
               : errorKind === "authorization"
-                ? "This video isn’t approved"
+                ? "That video isn’t in your library"
                 : errorKind === "unavailable"
                   ? "This video is unavailable"
                   : errorKind === "embedding"
@@ -664,6 +671,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           <Link className="button" href="/watch/home">
             Back to Library
           </Link>
+          {errorKind === "authorization" && data && (
+            <button
+              className="button button-secondary"
+              style={{ marginLeft: 12 }}
+              onClick={() => setReplay((value) => value + 1)}
+            >
+              Watch approved video again
+            </button>
+          )}
           {data && (
             <div style={{ marginTop: 16 }}>
               {helpSent ? (
@@ -716,21 +732,6 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 Watch again
               </button>
             </section>
-          ) : staticFallback ? (
-            <YouTubeEmbed
-              className="watchnest-player"
-              videoId={data.video.youtube_video_id}
-              title={data.video.title}
-              startSeconds={
-                data.video.made_for_kids === false &&
-                !data.video.progress?.completed_at
-                  ? data.video.progress?.current_time_seconds || 0
-                  : 0
-              }
-              autoplay={false}
-              onLoad={() => setReady(true)}
-              safePlayback={data.safe_playback_enabled}
-            />
           ) : (
             <div
               ref={mount}
@@ -750,7 +751,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
             </p>
           )}
           {playerNotice && <p className="notice">{playerNotice}</p>}
-          {data.video.made_for_kids === false && !staticFallback && (
+          {data.video.made_for_kids === false && (
             <label className="player-volume">
               Volume
               <input
@@ -771,12 +772,10 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               />
             </label>
           )}
-          {data.safe_playback_enabled && (
-            <p className="safe-playback-note" role="status">
-              Safe Playback is on. External links stay blocked in Child Mode.
-            </p>
-          )}
-          {(started || ended || staticFallback) && (
+          <p className="safe-playback-note" role="status">
+            Safe Playback is always on in Child Mode.
+          </p>
+          {(started || ended) && (
             <section
               className={`panel child-player-next ${ended ? "is-visible" : ""}`}
               style={{ marginTop: 24 }}

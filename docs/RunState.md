@@ -1,5 +1,32 @@
 # Final family beta — Founder Ready (2026-10-07)
 
+## 2026-10-27 — P0 recommendation escape containment
+
+Founder real-family-iPad evidence reopened Safe Playback: children could tap a
+provider recommendation and reach YouTube. Production readback verified the
+direct cause: the household's legacy optional `safe_playback_enabled` flag was
+false, selecting the deployed unsandboxed iframe path. The household has been
+restored to true with an audit event, and hosted migration
+`20261027134442_mandatory_safe_playback` makes false invalid.
+
+The successor removes optional/unsafe Child Mode entirely and layers an
+embed-only CSP, a pre-ready subsequent-load guard, continuous approved-video
+identity checking and fail-closed recovery. It preserves the remote Parent
+timer, sibling isolation and native controls/manual fullscreen. Prior iPad
+evidence remains stale for recommendations, same-frame replacement and native
+fullscreen. One exact-candidate family-iPad test remains required after final
+deployment; synthetic evidence is not promoted. Native direction is a future
+thin SwiftUI/WKWebView shell plus the existing backend; ordinary consumer iPads
+still require manual Guided Access for one-app containment, while Family
+Controls needs Apple entitlement approval and true Single App Mode requires a
+supervised device. Full record:
+`docs/RecommendationContainmentIncident-20261027.md`.
+
+Current gate: `DO NOT DELETE YET` / not Founder Ready. Exact successor commit,
+deployment are pending publication. Corrected-candidate gates: lint, typecheck,
+production build, 200/200 tests and 25/25 browser flows PASS; independent
+security and product/copy re-reviews PASS for deployment.
+
 ## 2026-10-26 — native feasibility and remote Parent control
 
 Architecture decision: preserve the qualified Next.js/Supabase product and ship
