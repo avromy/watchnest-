@@ -22,10 +22,18 @@ Controls needs Apple entitlement approval and true Single App Mode requires a
 supervised device. Full record:
 `docs/RecommendationContainmentIncident-20261027.md`.
 
-Current gate: `DO NOT DELETE YET` / not Founder Ready. Exact successor commit,
-deployment are pending publication. Corrected-candidate gates: lint, typecheck,
-production build, 200/200 tests and 25/25 browser flows PASS; independent
-security and product/copy re-reviews PASS for deployment.
+Exact application release: GitHub
+`d362e580d4d4bb9f3cd7bdac8aade27e4abdc4a2`, tree
+`7a7a30a25d5ffa70580678aecaeb7e6956861061`, production deployment
+`dpl_BDG6o85jeMKcvE1TCSRBvtHXNac3` READY at the canonical URL. Hosted session
+is configured, the embed-only CSP is live, and no runtime error clusters or
+warning/error/fatal logs followed the probe. Production integrity remains one
+Parent, four active profiles, 28 family videos, 29 active assignments and four
+Collections; Safe Playback is true and the required database constraint exists.
+
+Current gate: `DO NOT DELETE YET` / not Founder Ready. Corrected-candidate
+gates: lint, typecheck, production build, 200/200 tests and 25/25 browser flows
+PASS; independent security and product/copy re-reviews PASS for deployment.
 
 ## 2026-10-26 — native feasibility and remote Parent control
 

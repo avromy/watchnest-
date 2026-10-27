@@ -82,6 +82,14 @@ accepted, and the current PWA was not replaced during this incident.
 - Pre-incident durable GitHub head: `88f14c7551c8f18333941078bcd9ebef14c9120d`
 - Pre-incident production deployment: `dpl_H6ngNBpffxUV6aiLvR25Vf9fB2Db`
 - Prior app rollback: `dpl_FXsKRLDLwGGUs2Ers2zdECTJ6LAM`
-- Exact successor commit/deployment: pending publication
+- Exact application commit: `d362e580d4d4bb9f3cd7bdac8aade27e4abdc4a2`
+- Exact application tree: `7a7a30a25d5ffa70580678aecaeb7e6956861061`
+- Exact application deployment: `dpl_BDG6o85jeMKcvE1TCSRBvtHXNac3` READY
+  at `https://watchnest-rho.vercel.app`
+- Hosted readback: `configured:true`; embed-only CSP active; no runtime error
+  clusters or warning/error/fatal logs after the release probe
+- Production integrity: one Parent, four active profiles, 28 family videos,
+  29 active assignments and four Collections; Safe Playback true and the
+  mandatory database constraint present
 - Real iPad recommendation/fullscreen acceptance: pending one final observation
 

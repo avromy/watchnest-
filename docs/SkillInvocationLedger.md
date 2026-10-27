@@ -15,7 +15,11 @@
 Hosted authority consumption: the sole production household was changed only
 from the unsafe legacy false state to mandatory true and an incident audit event
 was added. Migration `20261027134442_mandatory_safe_playback` adds the database
-constraint. Exact application commit and deployment remain pending publication.
+constraint. Exact application commit
+`d362e580d4d4bb9f3cd7bdac8aade27e4abdc4a2`, tree
+`7a7a30a25d5ffa70580678aecaeb7e6956861061` and production deployment
+`dpl_BDG6o85jeMKcvE1TCSRBvtHXNac3` are bound and READY. Hosted session/CSP,
+runtime health and preserved family-data counts were read back after release.
 
 ## 2026-10-26 — native feasibility and remote Parent-control receipts
 
