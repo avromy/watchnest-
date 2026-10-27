@@ -1,48 +1,24 @@
 name: CI
-
 on:
   pull_request:
-    branches:
-      - main
-
+    branches: [main]
+  push:
+    branches: [main, product-completion-20260930]
 permissions:
   contents: read
-
 jobs:
   quality-checks:
-    name: Typecheck, tests, and build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js 20
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-
-      - name: Cache npm package downloads
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json', 'package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: Install dependencies with npm ci
-        if: ${{ hashFiles('package-lock.json') != '' }}
-        run: npm ci
-
-      - name: Install dependencies with npm install
-        if: ${{ hashFiles('package-lock.json') == '' }}
-        run: npm install
-
-      - name: Run TypeScript typecheck
-        run: npm run typecheck
-
-      - name: Run test suite
-        run: npm run test -- --run
-
-      - name: Build production application
-        run: npm run build
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test -- --run
+      - run: npm run build
+      - run: npm run test:e2e
+      - run: npm audit --omit=dev --audit-level=high
