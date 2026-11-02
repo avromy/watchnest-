@@ -87,11 +87,11 @@ test("synthetic startup: missing provider readiness times out and removes frame"
   await prepare(page);
   await page.addInitScript(() => { (window as any).__neverReady = true; });
   await page.route("https://www.youtube.com/iframe_api", route => route.fulfill({contentType:"application/javascript",body:apiStub}));
-  await page.clock.install();
   await page.goto(`/watch/player/${dashboard.videos[0].id}`);
   await expect.poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer))).toBe(true);
-  await page.clock.runFor(20100);
-  await expect(page.getByText("The video player could not start safely. Please try again.")).toBeVisible();
+  // Exercise the actual browser timer. A virtual clock also controls the
+  // cross-origin fixture and cannot qualify this real-time startup deadline.
+  await expect(page.getByText("The video player could not start safely. Please try again.")).toBeVisible({ timeout: 25000 });
   await expect(page.locator("iframe")).toHaveCount(0);
 });
 

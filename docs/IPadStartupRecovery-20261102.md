@@ -99,3 +99,16 @@ perform one consolidated real-iPad observation beginning with approved video
 picture/sound. Only after startup succeeds, test related/More Videos in normal
 and native fullscreen plus phone End now while fullscreen. Do not claim
 WATCHNEST_IPAD_PLAYBACK_RESTORED or Founder Ready before genuine evidence.
+
+
+## CI qualification history
+
+GitHub CI run 124 on `8921d30` passed lint, typecheck, 200 tests and build;
+31/32 browser flows passed. The readiness-timeout regression failed under the
+virtual browser clock; no production release followed that failed gate. The
+successor uses the actual browser timer for this test, rather than treating
+virtual cross-origin timer behavior as proof of the real deadline. Application
+source is byte-identical (ChildPlayer SHA-256
+`9323dfeaf7f811be72328bb0cfdbb0f6d3453b69ae7f96acfbce7ea67bd3b42e`).
+Both independent source reviewers passed this exact application, qualified on
+successful executable browser checks. The original failed run is preserved.
