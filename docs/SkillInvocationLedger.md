@@ -365,3 +365,16 @@ Security/data/API changes invalidate affected previous build, tests, CI and brow
   source hypotheses are not physical causes, mock API readiness is not genuine
   startup qualification, stopped generations cannot revive. No global skill
   authority overwritten.
+
+
+### Frozen-release receipt — 2026-11-02
+
+Exact application `77a5017d938ded03b1530c2b72978cef27273d61` /
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`. CI125 executable gates PASS, including
+32/32 browser flows; independent source review conditions satisfied. Hosted
+session/CSP/API denials and runtime health verified. Complete bounded coverage,
+reviewer separation, applicability decisions, evidence hierarchy, unresolved
+physical gates and learning propagation are recorded in
+[IPadStartupRelease-20261102.md](IPadStartupRelease-20261102.md). This receipt
+is not full family-beta/physical acceptance. Founder Ready BLOCKED; physical
+observation required. No evidence category promoted.

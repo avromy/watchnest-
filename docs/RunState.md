@@ -1,3 +1,21 @@
+# Frozen production release — 2026-11-02
+
+Application `77a5017d938ded03b1530c2b72978cef27273d61`, deployment
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`, canonical production READY. CI125
+PASS: 200 tests, 32 browser flows, lint/typecheck/build/audit. Independent
+technical/security source reviews PASS. Hosted session/CSP/API denials/runtime
+health verified. No database/data/config changes.
+
+State: WATCHNEST_IPAD_STARTUP_REPAIR_DEPLOYED_PHYSICAL_CONFIRMATION_REQUIRED.
+Not playback-restored or Founder Ready. [Exact release, coverage receipt,
+rollback and deterministic physical-observation/resume contract](IPadStartupRelease-20261102.md).
+One conditional physical session begins with approved picture/sound; only if
+successful, recommendations normal/fullscreen then phone End now. Stop on first
+failure. DO NOT DELETE YET. This evidence-only successor does not alter frozen
+application/deployment.
+
+---
+
 # Current recovery checkpoint — 2026-11-02
 
 P0 iPad playback is reopened. Builder 2 is sole active implementation owner.
