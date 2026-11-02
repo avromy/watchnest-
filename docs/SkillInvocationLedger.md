@@ -335,3 +335,33 @@ NOT FOUNDER READY. Product functionality is implemented but not live-certified. 
 ## Evidence invalidation
 
 Security/data/API changes invalidate affected previous build, tests, CI and browser results until rerun. Existing synthetic UI captures remain historical diagnostics: do not promote them to deployed-browser, real-device or whole-product visual acceptance. Final gates must bind a real deployment URL/ID, exact source commit/tree, hosted migration/config state and design/evidence identities. Never carry a PASS forward simply because the UI files did not change.
+
+
+## 2026-11-02 — bounded iPad startup recovery
+
+- Current attached WatchNest authority/router/run-state/product locks/source
+  pack/propagation and live Founder/CTO Notion checkpoints consumed; GitHub and
+  Vercel exact production source verified. Recovery/preflight PASS (read only).
+- Current universal Router, Infrastructure V1.1, Access-First Preflight V1.1,
+  Founder Attention protocol and Continuous Learning retrieved from their live
+  Notion authorities. Access verified for GitHub/Vercel/Supabase/Notion/Gmail;
+  normal browser has no WatchNest authenticated session. No secrets requested.
+- Vercel deployments-cicd and Supabase skills read/applied to project-scoped
+  inspection and release sequencing. Database Safe Playback constraint and
+  existing project/schema verified; no schema mutation.
+- Product Intelligence read/applied as background lens: lifecycle readiness
+  and delayed callbacks are PROJECT/DOMAIN calibration; no new product created.
+- Founder Ready read/applied: BLOCKED on exact-candidate executable browser
+  checks, deployed qualification and real iPad. Not a READY verdict.
+- Independent technical review and separate security source review performed;
+  frame replacement/readiness-exception findings repaired. Source review only;
+  physical/provider qualification remains unresolved.
+- Browser skill applied: production opens existing login UI. No fake session,
+  audio result or physical-device result fabricated.
+- Visual redesign/icon/typography/reference match/Blind Jury not triggered by
+  bounded startup lifecycle changes. Preserve historical visual receipts;
+  affected loading/error state and family usability still need qualification.
+- Learning authority applied at narrow project level in the incident document:
+  source hypotheses are not physical causes, mock API readiness is not genuine
+  startup qualification, stopped generations cannot revive. No global skill
+  authority overwritten.

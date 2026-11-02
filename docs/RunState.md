@@ -1,3 +1,16 @@
+# Current recovery checkpoint — 2026-11-02
+
+P0 iPad playback is reopened. Builder 2 is sole active implementation owner.
+Production recovery verified `1bd5f184c61cc9e43af2a707884e98fd1d7731e9` /
+`dpl_HAF2T6KASXZMTaQ86Z4LhKY5QD8i`; no newer predecessor work recovered.
+Bounded startup repair and exact queue: [IPadStartupRecovery-20261102.md](IPadStartupRecovery-20261102.md).
+Physical startup FAIL on previous candidate; final physical confirmation and
+recommendation/fullscreen/remote-End-now gates remain open. Do not infer
+terminal status from historical headings below. No new Founder test requested
+until a qualified deployment is frozen. No database/family-data mutation.
+
+---
+
 # Final family beta — Founder Ready (2026-10-07)
 
 ## 2026-10-27 — P0 recommendation escape containment

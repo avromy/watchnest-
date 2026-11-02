@@ -277,14 +277,18 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     if (!data || timeUp || !mount.current) return;
     let disposed = false;
     let completed = false;
+    let stopped = false;
+    let startupPhase = "api-script";
+    const isLive = () => !disposed && !stopped && !remoteBlock.current;
     let identityTimer: number | undefined;
     let identityWatch: number | undefined;
-    let guardedFrame: HTMLIFrameElement | undefined;
-    let guardedLoad: (() => void) | undefined;
     active.current = true;
     const approvedVideoId = data.video.youtube_video_id;
     const historyAllowed = data.video.made_for_kids === false;
     function stopUnauthorized(target?: Player) {
+      if (disposed || stopped) return;
+      stopped = true;
+      window.clearTimeout(startupTimer);
       window.clearTimeout(identityTimer);
       identityTimer = undefined;
       window.clearInterval(identityWatch);
@@ -299,6 +303,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       // The iframe's own browsing context can navigate before the IFrame API
       // reports ready. Remove it directly so containment never depends on a
       // provider callback arriving first.
+      mount.current?.replaceChildren();
       if (host.isConnected) host.remove();
       player.current = null;
       active.current = false;
@@ -306,6 +311,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       setError("Only videos your parent added can play here.");
     }
     function verifyIdentity(target: Player, enforceUnknown = false) {
+      if (!isLive()) return;
       const currentVideoId = currentPlayerVideoId(target);
       if (currentVideoId === approvedVideoId) {
         window.clearTimeout(identityTimer);
@@ -322,7 +328,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       if (enforceUnknown && identityTimer === undefined) {
         identityTimer = window.setTimeout(() => {
           identityTimer = undefined;
-          if (!disposed) {
+          if (isLive()) {
             const settledVideoId = currentPlayerVideoId(target);
             if (settledVideoId !== approvedVideoId) {
               stopUnauthorized(target);
@@ -380,74 +386,94 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     host.allowFullscreen = true;
     host.referrerPolicy = "strict-origin-when-cross-origin";
     host.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
-    const iframeReady = new Promise<void>((resolve, reject) => {
-      const timer = window.setTimeout(
-        () => reject(new Error("youtube-iframe-timeout")),
-        15000,
-      );
-      host.addEventListener(
-        "load",
-        () => {
-          window.clearTimeout(timer);
-          // Arm the guard at the first completed document load, before the
-          // asynchronous IFrame API onReady callback. Every later load is an
-          // unexpected provider-controlled navigation and fails closed.
-          guardedFrame = host;
-          guardedLoad = () => {
-            if (!disposed) stopUnauthorized(player.current || undefined);
-          };
-          guardedFrame.addEventListener("load", guardedLoad);
-          resolve();
-        },
-        { once: true },
-      );
-    });
+    // A frame load is a navigation signal, not the provider readiness signal.
+    // Slow subresources may delay load after the official API can already attach.
+    // Keep containment armed before insertion, without waiting on those resources.
+    let documentLoaded = false;
+    const guardedFrame = host;
+    const guardedLoad = () => {
+      if (!isLive()) return;
+      try {
+        if (host.contentWindow?.location.href === "about:blank") return;
+      } catch {
+        // The expected provider document is cross-origin. The DOM src is not
+        // proof of its current URL; never permit another load based on src.
+      }
+      if (documentLoaded) stopUnauthorized(player.current || undefined);
+      else documentLoaded = true;
+    };
+    guardedFrame.addEventListener("load", guardedLoad);
     mount.current.replaceChildren(host);
-    Promise.all([loadPlayer(), iframeReady])
-      .then(([YT]) => {
-        if (disposed) return;
-        player.current = new YT.Player(host, {
+    function failStartup(reason: string) {
+      if (!isLive()) return;
+      stopped = true;
+      window.clearTimeout(startupTimer);
+      console.warn("[watchnest-player] monitored startup failed", {
+        phase: startupPhase,
+        reason,
+        videoId: data?.video.id,
+      });
+      try { player.current?.destroy(); } catch {}
+      player.current = null;
+      mount.current?.replaceChildren();
+      host.remove();
+      setErrorKind("initialization");
+      setError("The video player could not start safely. Please try again.");
+      setReady(false);
+      active.current = false;
+    }
+    const startupTimer = window.setTimeout(() => failStartup("youtube-ready-timeout"), 20000);
+    loadPlayer()
+      .then((YT) => {
+        if (!isLive()) return;
+        if (!host.isConnected) { failStartup("detached-frame"); return; }
+        startupPhase = "player-construction";
+        const constructed = new YT.Player(host, {
           events: {
             onReady: (event) => {
-              if (!disposed) {
+              if (!isLive()) return;
+              try {
                 const frame = event.target.getIframe();
                 if (
-                  new URL(frame.src).hostname !== "www.youtube-nocookie.com"
+                  frame !== host ||
+                  new URL(frame.src).origin !== "https://www.youtube-nocookie.com" ||
+                  new URL(frame.src).pathname !== `/embed/${approvedVideoId}`
                 ) {
-                  event.target.destroy();
-                  player.current = null;
-                  active.current = false;
-                  setErrorKind("authorization");
-                  setError("WatchNest stopped a video that was not approved.");
+                  stopUnauthorized(event.target);
                   return;
                 }
                 frame.setAttribute("sandbox", SAFE_PLAYER_SANDBOX);
                 event.target.setVolume(volumeRef.current);
                 verifyIdentity(event.target, false);
-                // The same-frame navigation guard was armed on the initial
-                // iframe load, before this provider readiness callback.
+                if (!isLive()) return;
+                // The navigation guard was armed before insertion.
                 // Do not depend exclusively on provider state-event timing.
                 // Poll the official current-video URL for silent related-video
                 // replacement; unreadable identity fails closed only while
                 // media is actually playing or paused.
                 identityWatch = window.setInterval(() => {
-                  if (disposed || !player.current) return;
+                  if (!isLive() || !player.current) return;
                   let state = -1;
                   try {
                     state = player.current.getPlayerState();
                   } catch {}
                   verifyIdentity(player.current, state === 1 || state === 2);
                 }, 250);
+                window.clearTimeout(startupTimer);
+                startupPhase = "ready";
                 setReady(true);
+              } catch (e) {
+                failStartup(e instanceof Error ? e.message : "readiness-error");
               }
             },
             onStateChange: (e) => {
-              if (disposed) return;
+              if (!isLive()) return;
               // Reject every explicit identity mismatch, including related
               // videos entering UNSTARTED/CUED. Only enforce an unreadable
               // identity timeout after Playing/Paused; slow WebKit buffering
               // does not have a documented identity-readiness deadline.
               verifyIdentity(e.target, e.data === 1 || e.data === 2);
+              if (!isLive()) return;
               if (e.data === 1) {
                 setStarted(true);
                 setEnded(false);
@@ -456,6 +482,7 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               if (e.data === 0) {
                 window.clearTimeout(identityTimer);
                 identityTimer = undefined;
+                stopped = true;
                 completed = true;
                 setEnded(true);
                 void save();
@@ -465,7 +492,12 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               }
             },
             onError: (event) => {
-              if (!disposed) {
+              if (isLive()) {
+                stopped = true;
+                window.clearTimeout(startupTimer);
+                try { player.current?.destroy(); } catch {}
+                player.current = null;
+                host.remove();
                 const failure = classifyYouTubePlayerError(event.data);
                 console.warn("[watchnest-player] YouTube playback failed", {
                   kind: failure.kind,
@@ -488,31 +520,20 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               }
             },
             onAutoplayBlocked: () => {
-              if (!disposed)
+              if (isLive())
                 setPlayerNotice("Tap Play in the video to begin.");
             },
           },
         });
-      })
-      .catch((e) => {
-        if (!disposed) {
-          console.warn(
-            "[watchnest-player] IFrame API unavailable; using direct embed",
-            {
-              reason: e instanceof Error ? e.message : "unknown",
-              videoId: data.video.id,
-            },
-          );
-          player.current?.destroy();
-          player.current = null;
-          mount.current?.replaceChildren();
-          setErrorKind("initialization");
-          setError(
-            "The video player could not start safely. Please try again.",
-          );
-          active.current = false;
+        if (!isLive()) { constructed.destroy(); return; }
+        player.current = constructed;
+        if (constructed.getIframe() !== host || !host.isConnected) {
+          failStartup("unexpected-frame-replacement");
+          return;
         }
-      });
+        if (startupPhase !== "ready") startupPhase = "provider-ready";
+      })
+      .catch((e) => failStartup(e instanceof Error ? e.message : "unknown"));
     const bookmark = historyAllowed
       ? setInterval(() => void save(), 15000)
       : undefined;
@@ -530,6 +551,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     return () => {
       void save();
       disposed = true;
+      stopped = true;
+      window.clearTimeout(startupTimer);
+      host.remove();
       active.current = false;
       window.clearTimeout(identityTimer);
       window.clearInterval(identityWatch);
