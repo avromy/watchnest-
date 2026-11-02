@@ -3,3 +3,12 @@ node_modules/
 out/
 .env*.local
 tsconfig.tsbuildinfo
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+.vercel/
+coverage/
+
+supabase/.temp/

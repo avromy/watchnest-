@@ -1,112 +1,25 @@
 # WatchNest
 
-Parent-curated video library MVP for approved-only child viewing.
+A private family video library: **Only the videos I approve. Nothing else.** WatchNest navigation, search, and playback authorization include only individually assigned videos. YouTube controls its own embedded surfaces; see the platform limits below.
 
-## Core Promise
+## Current status
 
-Only caregiver-approved videos are available inside WatchNest. The viewer does not get WatchNest-provided YouTube browsing, YouTube search, comments, Shorts feeds, or open recommendation surfaces.
+Advanced private-beta qualification is deployed at <https://watchnest-rho.vercel.app>, but **final Founder Review Ready is not yet claimed**. Supabase, four locked child profiles and a private server-only YouTube API connection are live. Real Parent-session, audiovisual/iPad Safari and whole-product visual acceptance remain outstanding. See [current qualification](docs/Qualification-20261002.md).
 
-## MVP Scope
+Parent: protected sign-in, YouTube search/URL lookup, previews, individual approval, bulk assignment, library maintenance, collections, four child profiles, Inbox and eligible-video viewing insights.
 
-WatchNest is a responsive web app optimized for iPad Safari and desktop browsers.
+Child: optional Parent-controlled PIN protection (OFF by default per profile), Simple/Standard modes, own assigned library, local search, Shows, requests, authorized player, eligible progress/resume and approved Next Up. PIN-OFF never broadens content authorization; sibling isolation remains server-side.
 
-Parents can:
-- Create profiles.
-- Search YouTube from the parent area.
-- Paste YouTube URLs.
-- Preview videos.
-- Approve individual videos.
-- Assign videos to one, multiple, or all profiles.
-- Remove videos from profiles.
+## Development
 
-Viewers can:
-- Select their profile.
-- Browse approved videos only.
-- Search within approved videos only.
-- Watch approved videos.
-- Continue watching.
-- Use Next Up.
+Node 24 recommended. `npm ci`, copy `.env.example` to `.env.local`, configure secrets through deployment settings, then `npm run dev`. Never commit credentials. Apply **every migration** in timestamp order to a dedicated Supabase project; see [Schema](docs/DatabaseSchema.md). **Do not apply `supabase/seed.sql` to production**. Only the verified Founder sign-in creates the locked family profiles. Metadata scheduling is a separate verified release action, not implied by applying SQL.
 
-## Recommended Stack
+Checks: `npm run lint`, `npm run typecheck`, `npm run test -- --run`, `npm run build`, `npm run test:e2e`. Browser tests require a production build. Synthetic UI tests are explicitly separate from real HTTP fail-closed checks and database integration tests.
 
-- Next.js App Router
-- React
-- TypeScript
-- Tailwind CSS
-- Supabase Postgres
-- Supabase Auth
-- YouTube Data API, server-side only
-- YouTube IFrame Player API
-- Vercel
+## Boundaries
 
-## Important Architecture Rules
+Server-only YouTube API keys and metadata. No audiovisual downloading/proxying/restreaming. Child library identity comes from the server session, never a route-selected profile. Database client roles have no direct table/RPC access; authorization runs through server APIs. See [Architecture](docs/Architecture.md), [Schema](docs/DatabaseSchema.md), and [Security review](docs/SecurityReview-20260930.md).
 
-- Keep YouTube Data API calls server-side.
-- Never expose the YouTube API key in the browser.
-- Viewer search must only search approved local metadata.
-- Viewer playback must be authorized server-side.
-- Never return unassigned videos to a viewer profile.
-- Store YouTube metadata, not video files.
-- Do not download, proxy, or cache YouTube audiovisual content.
-- Do not overlay custom controls on top of the YouTube iframe.
+## YouTube reality
 
-## Initial Engineering Priorities
-
-1. Database schema.
-2. Profile-specific assignment logic.
-3. Viewer library filtering.
-4. Server-side playback authorization.
-5. YouTube player shell POC.
-6. Search/cache/quota POC.
-
-## Getting Started
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open the local app:
-
-```bash
-http://localhost:3000
-```
-
-## Environment Variables
-
-Copy `.env.example` to `.env.local` and fill in real values as services are added.
-
-```bash
-cp .env.example .env.local
-```
-
-Required variables:
-
-```text
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-YOUTUBE_API_KEY=
-NEXT_PUBLIC_APP_URL=
-```
-
-Optional later:
-
-```text
-POSTHOG_KEY=
-POSTHOG_HOST=
-SENTRY_DSN=
-```
-
-## Development Notes
-
-The first technical priority is the approved-only data model. A pretty product that leaks videos across profiles is not WatchNest.
-
-Planning, product requirements, technical POCs, Figma design, and build prompts live in the WatchNest Notion workspace.
+Official embeds retain native branding, links, menus, ads and possible same-channel suggestions (`rel=0` does not eliminate them). WatchNest cannot promise that YouTube-controlled click paths are contained. Made-for-kids or unknown-status videos conservatively disable per-child viewing telemetry and resume. Actual pause/end/fullscreen/PiP/external paths and iPad Safari still require live testing. [Research and decisions](docs/ProductResearch-20260930.md).

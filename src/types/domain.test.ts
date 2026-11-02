@@ -1,8 +1,14 @@
-import { describe, expect, expectTypeOf, it } from 'vitest';
-import type { Parent, Profile, ProfileVideoAssignment, Video, WatchProgress } from './domain';
+import { describe, expect, expectTypeOf, it } from "vitest";
+import type {
+  Parent,
+  Profile,
+  ProfileVideoAssignment,
+  Video,
+  WatchProgress,
+} from "./domain";
 
-describe('core domain models', () => {
-  it('defines the WatchNest parent/profile/video/assignment/progress model surface', () => {
+describe("core domain models", () => {
+  it("defines the WatchNest parent/profile/video/assignment/progress model surface", () => {
     expectTypeOf<Parent>().toMatchTypeOf<{
       id: string;
       email: string;
@@ -25,8 +31,8 @@ describe('core domain models', () => {
       id: string;
       youtubeVideoId: string;
       title: string;
-      availabilityStatus: 'available' | 'unavailable' | 'needs_review';
-      embeddableStatus: 'embeddable' | 'not_embeddable' | 'unknown';
+      availabilityStatus: "available" | "unavailable" | "needs_review";
+      embeddableStatus: "embeddable" | "not_embeddable" | "unknown";
     }>();
 
     expectTypeOf<ProfileVideoAssignment>().toMatchTypeOf<{

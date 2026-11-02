@@ -1,4 +1,9 @@
-import { assignments, getVideosForProfile, profiles, videos } from '@/lib/sample-data';
+import {
+  assignments,
+  getVideosForProfile,
+  profiles,
+  videos,
+} from "@/lib/sample-data";
 
 export function listViewerProfiles() {
   return profiles;
@@ -22,5 +27,8 @@ export function getViewerHome(profileId: string) {
 }
 
 export function isVideoAssignedToProfile(profileId: string, videoId: string) {
-  return assignments.some((assignment) => assignment.profileId === profileId && assignment.videoId === videoId);
+  return assignments.some(
+    (assignment) =>
+      assignment.profileId === profileId && assignment.videoId === videoId,
+  );
 }
