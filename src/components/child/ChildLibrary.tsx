@@ -556,7 +556,7 @@ export default function ChildLibrary() {
           )}
           <details
             className="request-another"
-            open={!profile.discover_enabled || !!message}
+            open={!profile.discover_enabled || !!message || sent}
           >
             <summary>Ask Parent another way</summary>
             {sent ? (

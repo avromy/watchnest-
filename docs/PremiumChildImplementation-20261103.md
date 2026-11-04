@@ -25,3 +25,7 @@ TypeScript `npx tsc --noEmit`: passed after final child refinements. Targeted `n
 ## Independent qualification still required
 
 Independent browser screenshots, responsive/Human-Eye, cold UX review, functional/security regression, final exact-candidate checks and release qualification are owned by the main release workstream. No physical iPad evidence is claimed. Final commit/deployment and acceptance receipts must be bound by the release owner after freeze.
+
+## Independent QA correction
+
+Executable QA found that a successful text request cleared its message and collapsed the Discover-enabled request disclosure, hiding Sent to Parent. The disclosure now stays open while `sent` is true. Send another and navigation retain their existing reset of the success state; request endpoints and payloads are unchanged. This material source correction invalidates affected prior request-flow evidence until rerun against the corrected candidate.

@@ -12,11 +12,15 @@ Production comparison: `77a5017d938ded03b1530c2b72978cef27273d61`. Local HEAD wh
 | `src/app/premium-tokens.css` | `dfcb2f3ce5689bf43c5fdfeb3f8bbc8f2ec6b24964eab0c370472e8e2c272651` |
 | `src/app/login/page.tsx` | `6f6f5f86c09d8aea07fa1b7f453d21009d77285eb76e21a35246eee6dce05762` |
 | `src/app/login/login.module.css` | `ad206d1d6568af40c394d5e56762efc4d5e6cdcffbdd6cca56d7e01c530009d6` |
-| `src/components/child/ChildLibrary.tsx` | `741a46c7402645278a82a87949e74f517b1ac015289c355a5b1ad9d4c0c69425` |
+| `src/components/child/ChildLibrary.tsx` | `0da19287073a02c83fc89ffb899a58ddd72aafbde7afb80c0948a05d92a0eac1` |
 | `src/components/child/ChildLogin.tsx` | `49bc452fcfea17b2075246856457fbdc22110f35db6c77d95a5000d737e318ce` |
 | `src/components/child/ChildExperience.css` | `d5ab170eb356db3cc6e3eb6681d48a88beedee2a40184c199e5d310effcffd9d` |
 | `src/components/parent/ParentApp.tsx` | `7e85ba03f63b3e0f5c19c8d83c53628287ebbbc3b0810b6bc5322065f8a5fdcb` |
 | `src/components/parent/Parent.module.css` | `47fdb2e8aa2d4b5c9d50c7039789f390b1e338baa3a5ea9f24a802541aa436c9` |
+
+## Narrow follow-up source qualification
+
+Rechecked the subsequent request-success disclosure repair on 2026-11-04 UTC. The only ChildLibrary change from the previously reviewed SHA-256 `741a46c7402645278a82a87949e74f517b1ac015289c355a5b1ad9d4c0c69425` is `open={!profile.discover_enabled || !!message || sent}` replacing the same expression without `|| sent`. Reconstructing the prior text reproduces that prior hash exactly. Current hash is reflected in the table above. Successful submission sets `sent` before clearing the composer message; including `sent` keeps the success disclosure open. Navigation and Send another reset behavior, API calls, tokens, auth, assignments and timer logic are unchanged. No new source security/function issue identified in this delta. This qualification makes no rendered-visibility or visual PASS claim; corresponding browser evidence must use the updated source.
 
 ## Findings and disposition
 

@@ -113,7 +113,7 @@ test("synthetic UI: child searches local library and asks parent on no match", a
   ).toBeVisible();
   await page.getByRole("button", { name: /Ask Parent for/ }).click();
   await expect(
-    page.getByRole("heading", { name: "Ask Parent", exact: true }),
+    page.getByRole("heading", { name: "What would you love to watch?", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Send request" }).click();
   await expect(
@@ -330,13 +330,13 @@ test("synthetic UI: bounded Discover creates a request without a playable result
   const discoveryProfile = { ...dashboard.profiles[1], discover_enabled: true, discovery_topics: ["Drawing"], discovery_channels: [] };
   let requested = false;
   await page.route("**/api/child/library", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: discoveryProfile, videos: dashboard.videos, collections: dashboard.collections }) }));
-  await page.route("**/api/child/discover?**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ results: [{ youtube_video_id: "abcdefghijk", title: "Draw a fox", channel_title: "Little Makers", thumbnail_url: "", duration_seconds: 600, request_token: "signed-candidate-token-that-is-long-enough" }] }) }));
+  await page.route("**/api/child/discover?**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ results: [{ youtube_video_id: "newvideo123", title: "Draw a fox", channel_title: "Little Makers", thumbnail_url: "", duration_seconds: 600, request_token: "signed-candidate-token-that-is-long-enough" }] }) }));
   await page.route("**/api/child/requests", async (route) => {
     if (route.request().method() === "POST") {
       requested = true;
       return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
     }
-    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ requests: requested ? [{ id: "request-1", kind: "video", message: "Draw a fox", status: "pending", created_at: new Date().toISOString(), youtube_video_id: "abcdefghijk", video_title: "Draw a fox" }] : [] }) });
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ requests: requested ? [{ id: "request-1", kind: "video", message: "Draw a fox", status: "pending", created_at: new Date().toISOString(), youtube_video_id: "newvideo123", video_title: "Draw a fox" }] : [] }) });
   });
   await page.goto("/watch/home");
   await page.getByRole("button", { name: "Discover", exact: true }).click();

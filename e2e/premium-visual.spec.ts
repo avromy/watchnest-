@@ -30,6 +30,7 @@ const syntheticVideos = Array.from({ length: 12 }, (_, index) => {
 });
 const syntheticArtwork = syntheticVideos.map(video => decodeURIComponent(video.thumbnail_url.slice("data:image/svg+xml,".length)));
 syntheticVideos.forEach(video => { video.thumbnail_url = `https://i.ytimg.com/vi/${video.youtube_video_id}/hqdefault.jpg`; });
+const discoverCandidate = { ...syntheticVideos[2], youtube_video_id: "newvideo123", title: "Draw a fox in three steps" };
 const discoveryProfile = {
   ...profiles[1], discover_enabled: true, discovery_topics: ["Drawing"], discovery_channels: [],
 };
@@ -44,7 +45,7 @@ async function synthetic(page: Page, role: "parent" | "child") {
   const fulfill = (value: unknown) => ({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
   await page.route("**/api/parent/dashboard", route => route.fulfill(fulfill({ ...dashboard, videos: syntheticVideos })));
   await page.route("**/api/child/library", route => route.fulfill(fulfill({ profile: discoveryProfile, videos: syntheticVideos, collections: dashboard.collections })));
-  await page.route("**/api/child/discover?**", route => route.fulfill(fulfill({ results: [{ ...syntheticVideos[2], request_token: "synthetic-request-token-not-a-real-credential" }] })));
+  await page.route("**/api/child/discover?**", route => route.fulfill(fulfill({ results: [{ ...discoverCandidate, request_token: "synthetic-request-token-not-a-real-credential" }] })));
   await page.route("**/api/child/requests", route => route.fulfill(fulfill(route.request().method() === "GET" ? { requests: [{ id: "synthetic-request", kind: "topic", message: "Drawing a fox", status: "pending", created_at: "2026-09-30T10:00:00Z" }] } : { ok: true })));
   await page.route("**/api/parent/session-status", route => route.fulfill(fulfill({ serverNow: new Date().toISOString(), profiles: profiles.map(profile => ({ ...profile, access: { enabled: false, allowed: true, state: "unlimited", remainingSeconds: null, pausedSeconds: null, revision: 0, expiresAt: null }, devices: [] })) })));
   await page.route("https://www.youtube-nocookie.com/**", route => route.fulfill({ status: 200, contentType: "text/html", body: "<!doctype html><html lang='en'><title>Synthetic preview</title><body style='margin:0;background:#132e25;color:white;display:grid;place-items:center;height:100vh;font:24px system-ui'>Synthetic approved-video preview</body></html>" }));
@@ -70,6 +71,7 @@ for (const viewport of viewports) {
       workingDiffSha256: hash(git("diff", "HEAD", "--", "src", "public", "e2e", "playwright.config.ts")),
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
+      baselineInterventions: label.startsWith("before-") ? ["Reopen the historical request disclosure after successful submit so its otherwise hidden success state can be inspected. This does not certify baseline usability."] : [],
       captures,
     };
     const saveManifest = async () => {
@@ -106,6 +108,19 @@ for (const viewport of viewports) {
           imagesMissingAlt: Array.from(document.querySelectorAll("img:not([alt])")).filter(visible).length,
           dialogs: Array.from(document.querySelectorAll('[role="dialog"]')).filter(visible).map(element => ({ name: name(element), ariaModal: element.getAttribute("aria-modal") })),
           activeElement: document.activeElement?.tagName,
+          boundedAssets: Array.from(document.querySelectorAll("img,svg")).filter(visible).map((element, index) => {
+            const rect = element.getBoundingClientRect();
+            const ancestors = [];
+            for (let parent = element.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
+              const style = getComputedStyle(parent);
+              if ([style.overflowX, style.overflowY].some(value => ["hidden", "clip", "auto", "scroll"].includes(value))) {
+                const bounds = parent.getBoundingClientRect();
+                ancestors.push({ tag: parent.tagName, className: parent.className, bounds: { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height }, overflowX: style.overflowX, overflowY: style.overflowY });
+              }
+            }
+            const style = getComputedStyle(element);
+            return { id: `A${String(index + 1).padStart(3, "0")}`, objectFit: style.objectFit, objectPosition: style.objectPosition, clipPath: style.clipPath, borderRadius: style.borderRadius, kind: element.tagName, name: name(element), source: element.getAttribute("src"), bounds: { x: rect.x, y: rect.y, width: rect.width, height: rect.height }, clipAncestors: ancestors, edgeReview: "LEFT RIGHT TOP BOTTOM: pixel review pending" };
+          }),
         };
       });
       const files: { path: string; sha256: string; region: string }[] = [];
@@ -125,7 +140,16 @@ for (const viewport of viewports) {
         await screenshot("bottom", false, "Readable viewport: LEFT RIGHT BOTTOM");
       }
       await writeFile(`${directory}/${state}-accessibility.yml`, await page.locator("body").ariaSnapshot());
-      captures.push({ state, route: new URL(page.url()).pathname, viewport, files, inventory });
+      captures.push({
+        state, route: new URL(page.url()).pathname, viewport, files, inventory,
+        assetEvidence: inventory.boundedAssets.map(asset => ({
+          identity: `${state}/${viewport.width}x${viewport.height}/${asset.id}`,
+          fullPage: files[0].path, bounds: asset.bounds,
+          readableViews: files.map(file => file.path),
+          edges: { LEFT: { source: files[0].path, x: asset.bounds.x }, RIGHT: { source: files[0].path, x: asset.bounds.x + asset.bounds.width }, TOP: { source: files[0].path, y: asset.bounds.y }, BOTTOM: { source: files[0].path, y: asset.bounds.y + asset.bounds.height } },
+          verdict: "PENDING independent pixel inspection; geometry does not establish CLEAN",
+        })),
+      });
       await saveManifest();
       // Keep assertions after evidence collection so defects remain reviewable.
       expect.soft(inventory.horizontalOverflow, `${state}: horizontal overflow`).toBe(false);
@@ -176,12 +200,18 @@ for (const viewport of viewports) {
     await page.getByRole("button", { name: /Ask Parent for/ }).click();
     await capture("child-request-form");
     await page.getByRole("button", { name: "Send request" }).click();
+    if (label.startsWith("before-")) {
+      await expect(page.getByRole("heading", { name: "Sent to Parent", includeHidden: true })).toBeAttached();
+      if (!(await page.getByRole("heading", { name: "Sent to Parent" }).isVisible())) {
+        await page.getByText("Ask Parent another way", { exact: true }).click();
+      }
+    }
     await expect(page.getByRole("heading", { name: "Sent to Parent" })).toBeVisible();
     await capture("child-request-sent-pending");
     await page.getByRole("button", { name: "Discover", exact: true }).click();
     await page.getByLabel("What do you want to find?").fill("fox");
     await page.getByRole("button", { name: "Search", exact: true }).click();
-    await expect(page.getByRole("heading", { name: syntheticVideos[2].title })).toBeVisible();
+    await expect(page.getByRole("heading", { name: discoverCandidate.title })).toBeVisible();
     await capture("child-discover-results");
     await page.route("**/api/child/library", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: discoveryProfile, videos: [], collections: [] }) }));
     await page.goto("/watch/home");
