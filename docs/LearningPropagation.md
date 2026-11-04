@@ -1,3 +1,30 @@
+# Premium qualification — project/process propagation — 2026-11-04
+
+See PremiumLearning-20261104.md and final source-bound receipts. This checkpoint
+supersedes pending premium review statuses, not historical incident evidence.
+
+Applied lessons: inspect successful empty responses and actual recurring Parent
+request completion; fix UI gaps through existing authorized APIs instead of
+relaxing frozen task outcomes. Distinguish ambiguous test locators/fixtures from
+real UI failures, preserving both. Fresh contexts are required for cold verdicts;
+inherited history cannot be erased by a role label. Verified instant capture
+scroll and finite overlapping readable views resolve screenshot occlusion gaps.
+Exact PNG/asset equivalence supports bounded reuse only when mapping and source
+identity are proved; every changed patch requires actual independent inspection.
+
+R1–R5 failures/repairs and five fresh final design PASS votes are preserved.
+CI139200/64/14 and CI140200/14 PASS; independent security protected64 equality
+PASS. Raw evidence and post-CI neutral review derivatives are privately archived
+with byte hashes and custody in the existing Notion handoff. Do not rely on
+14-day CI retention or conversation memory. No private skill package copied to
+public GitHub, no global skill rewrite from one project.
+
+Production remains77a5017; physical playback/containment/native-fullscreen remote
+stop and authenticated hosted candidate gates remain open. A READY unconfigured
+preview must never be promoted as production. No final-product/physical claim.
+
+---
+
 # UX redesign learning propagation — 2026-10-02
 
 ## 2026-10-27 — PROJECT / PROCESS: safety promises cannot be optional state

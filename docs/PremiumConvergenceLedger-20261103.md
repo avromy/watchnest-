@@ -44,3 +44,15 @@ The existing authenticated backend, physical iPad Safari/PWA, genuine YouTube,
 native fullscreen and remote audio/video stop require separate evidence. Synthetic
 fixtures cannot close those gates. No Founder design or deployment approval is
 required; genuine physical acceptance remains unresolved.
+
+## Final frozen qualification
+
+R4 adversarial review found empty Profiles P2; fresh Parent journey found topic
+request closure P2. Both were repaired using existing presentation/APIs and
+independently rechecked at c670d55a9bf22aa493f685fa62f79fda89151247.
+R5 comparator and Reporter separately PASS. CI139200/64/14 and same-app CI140200/14
+PASS. Final exact-pixel binding resolves4315assetIDs with no unresolved/material
+defects. Five fresh final jurors unanimous PASS within synthetic design scope;
+six independently chosen rendered journeys and separate fresh request recheck PASS.
+See final binding, jury and release-hold receipts. Earlier pending/failed sections
+remain historical; real-device/hosted gates remain open. No production promotion.

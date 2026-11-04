@@ -38,3 +38,15 @@ This records bounded, observed lessons; it is not a final product acceptance.
 Preserve mandatory Safe Playback and the existing physical-device release gate.
 No synthetic browser evidence is promoted to genuine YouTube, Safari/PWA, native
 fullscreen or remote picture/sound stop acceptance.
+
+## R4 independent discoveries
+
+- Expanded later-state inspection found a successful zero-profile response rendered
+  only an intro. A factual empty state plus existing refresh/overview navigation
+  repairs the gap without inventing profile-creation capability or backend APIs.
+- A fresh Parent journey approved a video but left the originating topic request
+  pending with only Find a video / Not now. This was a real workflow gap, not a
+  reason to relax the frozen completion assertion. The bounded repair exposes
+  Mark as fulfilled for non-video requests through the existing resolved endpoint;
+  video-specific atomic approval and server guards remain unchanged. Preserve the
+  original failure and require actual rendered completion plus fresh recheck.

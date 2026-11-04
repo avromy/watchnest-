@@ -1,0 +1,103 @@
+{
+  "source": {
+    "checkout": "fc96af972c6a82977409a0cecc31513c0e7e4735",
+    "tree": "18a16627fa96e80ea17e2674666a55af0ab1a416",
+    "applicationSourceTree": "98948406b6e561a24982198bcf69e2b264fcd151",
+    "frozenApplicationCommit": "da6edbb4436fc6f455eaef87ace5df61c3e62396",
+    "wholeTreeEquivalence": false,
+    "artifactSha256": "f40e4fdbdb5065aa1daf9697f84836f9628e97921751ccbfa40e533f803eb1f2"
+  },
+  "shards": [
+    {
+      "scope": "small",
+      "receipt": "docs/evidence/premium-review/20261104/supplement-small-visual-receipt.json",
+      "sha256": "9437c81f5fd15cab8ad9577bd16b2856fb41e091e76a850a92668cfd12ac4b1a",
+      "assetInstances": 636,
+      "edgeEntries": 2544,
+      "sourceIdentityCoverage": "Exact original ID set equals receipt, no duplicate IDs, four named edges each; pixel judgment remains independent reviewer",
+      "result": "INCOMPLETE / CONDITIONAL: five assets have ten unresolved LEFT/RIGHT edge outcomes; all other supplied raster coverage clear. Not production, provider, hosted-backend or physical-device acceptance."
+    },
+    {
+      "scope": "large",
+      "receipt": "docs/evidence/premium-review/20261104/supplement-large-visual-receipt.json",
+      "sha256": "83b89761426ef98997318252ffae090b578d6d8d22238ec612df67527f15e757",
+      "assetInstances": 764,
+      "edgeEntries": 3056,
+      "sourceIdentityCoverage": "Exact original ID set equals receipt, no duplicate IDs, four named edges each; pixel judgment remains independent reviewer",
+      "result": "CLEAN_SCOPED_SUPPLEMENTAL_RASTERS"
+    }
+  ],
+  "counts": {
+    "regions": 40,
+    "captureFiles": 157,
+    "assets": 1400,
+    "uniquePatchGroups": 871,
+    "edgeEntries": 5600,
+    "visibleClear": 5126,
+    "nonpaintedN_A": 464,
+    "unresolved": 10
+  },
+  "finiteGaps": [
+    {
+      "identity": "child-home/360x800/A013",
+      "unresolvedEdges": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "clearEdges": [
+        "TOP",
+        "BOTTOM"
+      ],
+      "requiredEvidence": "child-home viewport scroll500"
+    },
+    {
+      "identity": "child-home/360x800/A014",
+      "unresolvedEdges": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "clearEdges": [
+        "TOP",
+        "BOTTOM"
+      ],
+      "requiredEvidence": "child-home viewport scroll500"
+    },
+    {
+      "identity": "child-home/360x800/A015",
+      "unresolvedEdges": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "clearEdges": [
+        "TOP",
+        "BOTTOM"
+      ],
+      "requiredEvidence": "child-home viewport scroll500"
+    },
+    {
+      "identity": "child-library/360x800/A012",
+      "unresolvedEdges": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "clearEdges": [
+        "TOP",
+        "BOTTOM"
+      ],
+      "requiredEvidence": "child-library viewport scroll500"
+    },
+    {
+      "identity": "child-library/360x800/A015",
+      "unresolvedEdges": [
+        "LEFT",
+        "RIGHT"
+      ],
+      "clearEdges": [
+        "TOP",
+        "BOTTOM"
+      ],
+      "requiredEvidence": "child-library viewport scroll500"
+    }
+  ],
+  "result": "INCOMPLETE conditional visual evidence, no confirmed application defect; no supplemental CLEAN"
+}

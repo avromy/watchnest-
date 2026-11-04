@@ -1,3 +1,28 @@
+# Current premium transformation receipts — 2026-11-04
+
+This section supersedes historical readiness headings below. Frozen application
+`c670d55a9bf22aa493f685fa62f79fda89151247`; evidence descendants preserve the
+same application tree. Production remains77a5017. No overall Founder Ready.
+
+| Capability | Actual application / evidence | Current result |
+| --- | --- | --- |
+| Authority recovery / handoff | Current operating authority, all eight app controls, live registry and canonical packages; existing repository/deployment/rollback reconciled | Recovered; sole owner retained, no restart |
+| Product Intelligence / research | Official Netflix, Apple TV, YouTube Kids sources and bounded first-hand frustrations; PremiumResearch-20261103.md | Applied to distinctive family-library IA; no competitor cloning |
+| Visual production / Website methods adapted to app | Shared tokens; login, child, Parent implementations; R1–R3 comparator and adversarial reports preserved | Built and independently converged R1–R5; final five-juror PASS |
+| Typography / spacing / icons / components | Existing WatchNest/SVG family, shared ivory/evergreen/amber tokens, 44px controls; exact browser renders and independent shards | Final source-bound anchor and supplemental visual scope CLEAN |
+| Human-Eye / Match Check | Four fresh independent phone, portrait, landscape and desktop actual-pixel reviews, manifests and per-asset edge receipts | Final binding receipt resolved all4315IDs/17260edge outcomes; synthetic scope only |
+| Independent functional / security | Protected64-file comparison and source receipt; CI139200 unit/64 browser flows, lint/type/build/audit | PASS in stated source/synthetic scope; physical playback/containment/remote fullscreen stop open |
+| Blind Jury | Canonical current authority recovered; five fresh unanimous reviewers required | INVOKED: five fresh isolated contexts, unanimous5/5 design PASS; PremiumFinalJury-20261104.md |
+| Stranger | Fresh-context Parent/child testers froze impressions and independently authored6 executable journeys; CI137 failures retained, test adapters independently corrected | Six executed journeys PASS; original FAIL retained; independent fresh repaired-request recheck PASS |
+| Founder Ready / release gate | Explicit current physical playback, recommendation and native-fullscreen remote-stop evidence boundary | BLOCKED; no routine design approval required |
+| Continuous Learning / durability | PremiumLearning-20261104.md, project Notion CTO checkpoint and Continuous Learning record, PR49 source/receipts/comparison images | Updated; raw and derivative evidence privately archived, final verified CTO checkpoint controls deletion clearance |
+
+Synthetic artwork/family fixtures and Chromium renders never certify genuine
+YouTube, authenticated hosted data, Safari/PWA or a physical iPad. Failed review
+and CI evidence stays historical, not rewritten as final PASS.
+
+---
+
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
 ## 2026-10-27 — P0 recommendation containment receipts

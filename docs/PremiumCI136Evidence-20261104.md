@@ -21,7 +21,7 @@ Draft PR49 base is production branch `product-completion-20260930`; no merge or 
 | Candidate |13299431499|773a7c8f8db20fec6e7d23bc1f4147e3441b79221605657cc4d680b614bea031|618|14|212|72|2915|
 | Before production77 |13298524602|263ea5d1e314976f991bf9c5e65d049e48e7345bc54a74d3cbb248114f269866|594|14|212|72|2747|
 
-Both ZIP byte hashes were verified against GitHub artifact digest before safe extraction. Artifact expiration is2026-11-18; archive durably before deletion. Candidate local recovery path: `/workspace/scratch/b4fb31747e8d/watchnest-review/ci136-candidate/artifact.zip`; baseline sibling `ci136-before/artifact.zip`. Local paths are transient recovery convenience, not durable storage.
+Both ZIP byte hashes were verified against GitHub artifact digest before safe extraction. Artifact expiration is2026-11-18; subsequently archived privately with verified byte identity; custody in existing CTO Handoff. Candidate local recovery path: `/workspace/scratch/b4fb31747e8d/watchnest-review/ci136-candidate/artifact.zip`; baseline sibling `ci136-before/artifact.zip`. Local paths are transient recovery convenience, not durable storage.
 
 Anchor viewports390x844,768x1024,1024x768,1440x1000. Core and player-state families cover all4. Dedicated parent details cover phone+desktop; dedicated child entry/details cover portrait+landscape tablets. All captures inventory actual viewport, headings/controls, overflow and accessible names; assets have bounded neutral identities, source hashes and explicit four-edge references. Verified instant scrolling is a documented capture-only intervention. Baseline success disclosure is reopened only to expose historical success DOM; its intervention is recorded.
 

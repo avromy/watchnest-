@@ -11,3 +11,8 @@ Artifact13299527511 ZIP SHA256 f40e4fdbdb5065aa1daf9697f84836f9628e97921751ccbfa
 Cold outcomes: younger child, shared PIN/profile boundary, low-confidence Parent ingestion PASS. Older child fails broad Favorites selector ambiguity; independent test owner assesses narrow selector correction. Busy Parent approved video but original topic request remained pending, violating frozen request-resolution expectation; independent owner classifies actual UX result. Login reaches profile picker then Parent Mode but expected dashboard assertion fails; independent owner inspects PIN state before classification. No app repair or acceptance follows merely from a harness failure.
 
 All evidence is synthetic clean-CI local production build in Chromium. No physical iPad, Safari/PWA, hosted signed-in workflow, real YouTube, security or final visual PASS inferred.
+
+
+## Later durability custody update
+
+The release owner subsequently confirmed verified private archival of the raw CI139 candidate/before and CI137/138/140 packages, with helper receipts and recovery pointers held in the existing private project authority. Earlier statements describe custody at capture time. Private storage identifiers are intentionally excluded from this public repository. Exact ZIP hashes above remain the content identities; the release-owner closeout records final custody.
