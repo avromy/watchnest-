@@ -67,10 +67,15 @@ for (const viewport of viewports) {
       productionBaseline: "77a5017d938ded03b1530c2b72978cef27273d61",
       sourceWorktreeStatus: git("status", "--porcelain", "--", "src", "public"),
       harnessSha256: hash(await readFile("e2e/premium-visual.spec.ts")),
+      fixtureSourceSha256: hash(await readFile("e2e/fixtures.ts")),
+      runtimeBaseUrl: info.project.use.baseURL,
+      previewUrl: process.env.WATCHNEST_REVIEW_PREVIEW_URL || null,
+      previewDeployment: process.env.WATCHNEST_REVIEW_PREVIEW_DEPLOYMENT || null,
       sourceTree: git("rev-parse", "HEAD^{tree}"),
       workingDiffSha256: hash(git("diff", "HEAD", "--", "src", "public", "e2e", "playwright.config.ts")),
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
+      captureInterventions: ["Root-document smooth scrolling is disabled only in the synthetic browser capture; every tile records and verifies its actual scroll position."],
       baselineInterventions: label.startsWith("before-") ? ["Reopen the historical request disclosure after successful submit so its otherwise hidden success state can be inspected. This does not certify baseline usability."] : [],
       captures,
     };
@@ -80,7 +85,17 @@ for (const viewport of viewports) {
     const capture = async (state: string) => {
       await expect(page.locator("main")).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
-      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; });
+      const scrollTo = async (top: number) => {
+        const expected = await page.evaluate(async target => {
+          const limit = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+          window.scrollTo({ top: target, left: 0, behavior: "instant" });
+          await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+          return Math.min(target, limit);
+        }, top);
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(expected);
+      };
+      await scrollTo(0);
       const inventory = await page.evaluate(() => {
         const visible = (element: Element) => {
           const rect = element.getBoundingClientRect();
@@ -123,20 +138,20 @@ for (const viewport of viewports) {
           }),
         };
       });
-      const files: { path: string; sha256: string; region: string }[] = [];
+      const files: { path: string; sha256: string; region: string; scroll: { x: number; y: number } }[] = [];
       const screenshot = async (suffix: string, fullPage: boolean, region: string) => {
         const path = `${directory}/${state}-${suffix}.png`;
         await page.screenshot({ path, fullPage, animations: "disabled", scale: "css" });
-        files.push({ path, sha256: hash(await readFile(path)), region });
+        files.push({ path, sha256: hash(await readFile(path)), region, scroll: await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY })) });
       };
       await screenshot("full", true, "Complete document: LEFT RIGHT TOP BOTTOM");
       if (inventory.documentHeight > viewport.height + 1) {
         await screenshot("top", false, "Readable viewport: LEFT RIGHT TOP");
         for (let y = viewport.height - 80, tile = 1; y < inventory.documentHeight - viewport.height; y += viewport.height - 80, tile += 1) {
-          await page.evaluate(scrollY => window.scrollTo(0, scrollY), y);
+          await scrollTo(y);
           await screenshot(`middle-${tile}`, false, `Readable viewport: LEFT RIGHT, document y=${y}`);
         }
-        await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+        await scrollTo(inventory.documentHeight);
         await screenshot("bottom", false, "Readable viewport: LEFT RIGHT BOTTOM");
       }
       await writeFile(`${directory}/${state}-accessibility.yml`, await page.locator("body").ariaSnapshot());

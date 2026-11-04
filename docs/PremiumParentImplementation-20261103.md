@@ -34,3 +34,22 @@ Changes are limited to `src/components/parent/ParentApp.tsx` and `src/components
 - Final `npx tsc --noEmit`: PASS.
 - Authoritative full-release checks belong in the release QA receipt.
 - No physical iPad execution was available to this implementation worker. No physical-device acceptance is claimed.
+
+## Independent visual review repair — R1, 2026-11-04
+
+Inspected actual `ci129-candidate/test-results/visual-evidence/candidate/390x844/parent-collections-full.png` and the matching `1440x1000` raster. Confirmed the collection create form shaded checkbox row contained the checkbox while its video title flowed below it.
+
+Verified source cause: `.main form label:not(.check)` applied `display: grid` with greater specificity than `.videoChoices label`'s horizontal layout. The anonymous title text therefore occupied a separate grid row. The same rule also affected shared child-selection labels inside forms and the Discover toggle.
+
+Repair: give collection-video and shared child-choice labels an explicit `choiceOption` class, wrap their text in a span, and exclude checkbox/switch rows from generic field-label grid styling. Checkbox and title remain one clickable, vertically centered label row with a 48px minimum height; long titles wrap inside that row. Native checkbox semantics, handlers, selection state, assignment requests, and APIs are unchanged.
+
+R1-03 repair: phone-header Add videos and Switch profile now explicitly have minimum 44px height and width. Switch profile has a fixed 44px footprint and both actions resist flex shrinking. Header horizontal padding is 12px at the narrow breakpoint to preserve room for these targets at 360px. Exact 360/390 browser geometry and raster verification is assigned to independent QA; CSS intent alone is not recorded as visual PASS.
+
+Validation after checkbox component fix: scoped ESLint PASS; TypeScript PASS. Header change is stylesheet-only. Required follow-up: recapture collection creation at all four anchors, open sharing/approval child-choice groups, inspect Discover toggle, and measure header targets/no page overflow at 360 and 390.
+
+Frozen source SHA-256:
+
+- ParentApp.tsx: `24a6c9c5c84679a2bc31cb06af1eb7486d2eafbe930361cfea9e03d924bb804e`
+- Parent.module.css: `72bd8d64acf52f09589ea5d4722c91c68002b075e883acd5707e614a3676100b`
+
+This receipt records a source repair ready for independent recapture. It does not supersede the reviewer gate or claim physical-iPad acceptance.

@@ -107,7 +107,13 @@ test("synthetic UI: child searches local library and asks parent on no match", a
   await expect(page.getByText("Hi, Ari.", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Library", exact: true }).click();
   const search = page.getByPlaceholder("Search your library");
+  await search.fill("paper");
+  await expect(page.getByRole("link", { name: "Play Build a paper rocket", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Collections", exact: true })).toHaveCount(0);
+  await search.fill("");
+  await expect(page.getByRole("heading", { name: "Collections", exact: true })).toBeVisible();
   await search.fill("no matching dinosaur");
+  await expect(page.getByRole("heading", { name: "Collections", exact: true })).toHaveCount(0);
   await expect(
     page.getByRole("heading", { name: "Nothing found" }),
   ).toBeVisible();
@@ -1026,6 +1032,11 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
   page,
 }) => {
   await fixture(page, "parent");
+  const analyticsOnlyTitle = "Synthetic analytics-only title must not be shown";
+  await page.route("**/api/parent/dashboard", route => route.fulfill({
+    status: 200, contentType: "application/json",
+    body: JSON.stringify({ ...dashboard, analytics: { ...dashboard.analytics, popular: [{ title: analyticsOnlyTitle, seconds: 1200 }] } }),
+  }));
   // Fixture contains fake eligible watch time, recent videos and popularity data.
   // None may become a parent-facing YouTube engagement report.
   await page.goto("/parent/dashboard");
@@ -1049,7 +1060,7 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
     page.getByText(/^(Eligible watch time|Watched today|Last 7 days)/),
   ).toHaveCount(0);
   await expect(
-    page.getByText(dashboard.analytics.popular[0].title, { exact: true }),
+    page.getByText(analyticsOnlyTitle, { exact: true }),
   ).toHaveCount(0);
 });
 
@@ -1138,4 +1149,32 @@ test("synthetic UI: password visibility and recovery work with a keyboard", asyn
   await expect(page.getByText("If this address has an account, a reset link is on its way.")).toBeVisible();
   await page.getByRole("button", { name: "Back to sign in", exact: true }).press("Enter");
   await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeVisible();
+});
+
+
+test("synthetic UI: phone parent actions and collection choices remain touchable", async ({ page }) => {
+  await fixture(page, "parent");
+  for (const width of [360, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/parent/collections");
+    const header = page.locator("header.topbar");
+    for (const control of [header.getByRole("link", { name: "Add videos", exact: true }), header.getByRole("button", { name: "Switch profile", exact: true })]) {
+      const bounds = await control.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.width).toBeGreaterThanOrEqual(44);
+      expect(bounds!.height).toBeGreaterThanOrEqual(44);
+      expect(bounds!.x).toBeGreaterThanOrEqual(0);
+      expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    }
+    const option = page.locator("label").filter({ hasText: dashboard.videos[0].title });
+    await expect(option).toHaveCount(1);
+    const labelBounds = await option.boundingBox();
+    const titleBounds = await option.getByText(dashboard.videos[0].title, { exact: true }).boundingBox();
+    expect(labelBounds).not.toBeNull();
+    expect(titleBounds).not.toBeNull();
+    expect(titleBounds!.y).toBeGreaterThanOrEqual(labelBounds!.y);
+    expect(titleBounds!.y + titleBounds!.height).toBeLessThanOrEqual(labelBounds!.y + labelBounds!.height + 1);
+    await option.click();
+    await expect(option.getByRole("checkbox")).toBeChecked();
+  }
 });

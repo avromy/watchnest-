@@ -402,7 +402,7 @@ function Choices({
         Select all children
       </button>
       {profiles.map((p) => (
-        <label key={p.id}>
+        <label className={styles.choiceOption} key={p.id}>
           <input
             type="checkbox"
             checked={value.includes(p.id)}
@@ -414,7 +414,7 @@ function Choices({
               )
             }
           />
-          {p.display_name}
+          <span>{p.display_name}</span>
         </label>
       ))}
     </fieldset>
@@ -1699,7 +1699,7 @@ export function Collections() {
           <fieldset className={styles.videoChoices}>
             <legend>Approved videos</legend>
             {data.videos.map((v) => (
-              <label key={v.id}>
+              <label className={styles.choiceOption} key={v.id}>
                 <input
                   type="checkbox"
                   checked={ids.includes(v.id)}
@@ -1711,7 +1711,7 @@ export function Collections() {
                     )
                   }
                 />
-                {v.title}
+                <span>{v.title}</span>
               </label>
             ))}
             {!data.videos.length && (

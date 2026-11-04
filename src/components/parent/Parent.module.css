@@ -158,7 +158,7 @@
   overflow-wrap: anywhere;
   font-size: 14px;
 }
-.main form label:not(.check) {
+.main form label:not(.check):not(.choiceOption):not(.switchRow) {
   display: grid;
   gap: 8px;
   margin: 12px 0;
@@ -1228,6 +1228,7 @@
 @media (max-width: 650px) {
   .topbar {
     padding-block: 18px;
+    padding-inline: 12px;
     gap: 8px;
     flex-wrap: nowrap;
   }
@@ -1246,7 +1247,9 @@
     gap: 5px;
   }
   .addButton {
-    min-height: 42px !important;
+    min-height: 44px !important;
+    min-width: 44px;
+    flex-shrink: 0;
     padding-inline: 11px !important;
     font-size: 0.78rem !important;
   }
@@ -1254,8 +1257,11 @@
     width: 15px;
   }
   .profileSwitch {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
     padding: 0 !important;
     display: grid;
     place-items: center;
@@ -1519,4 +1525,21 @@
 }
 .profileEditor .photoField {
   margin-top: 16px;
+}
+
+/* Checkbox labels remain single touch rows inside forms; field labels use grid. */
+.choiceOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  cursor: pointer;
+}
+.choiceOption > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+.videoChoices .choiceOption {
+  margin: 0;
 }

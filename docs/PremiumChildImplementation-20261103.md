@@ -29,3 +29,7 @@ Independent browser screenshots, responsive/Human-Eye, cold UX review, functiona
 ## Independent QA correction
 
 Executable QA found that a successful text request cleared its message and collapsed the Discover-enabled request disclosure, hiding Sent to Parent. The disclosure now stays open while `sent` is true. Send another and navigation retain their existing reset of the success state; request endpoints and payloads are unchanged. This material source correction invalidates affected prior request-flow evidence until rerun against the corrected candidate.
+
+## Independent visual review correction R1-02
+
+Inspected actual CI129 candidate child-search-empty-full screenshots at390x844 and1024x768. They show an unrelated Collections shelf above the zero-result state. The shelf is now rendered only when the trimmed library query is empty. Matching and zero-result searches therefore place their results immediately after the search/filter controls. Clearing the query restores ordinary collection browsing. Video matching, assigned-video authorization, request actions and player code are unchanged. The affected child Library search screenshots require rerun on the corrected candidate; no new visual PASS is claimed by this implementation receipt.

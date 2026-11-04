@@ -700,7 +700,8 @@ export default function ChildLibrary() {
               </select>
             </label>
           </div>
-          {!collection &&
+          {!query.trim() &&
+            !collection &&
             !favoritesOnly &&
             !hiddenOnly &&
             collections.length > 0 && (
