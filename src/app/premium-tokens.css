@@ -1,0 +1,20 @@
+/* Shared premium presentation primitives. No player or authorization behavior. */
+:root {
+  --wn-evergreen: #143e35;
+  --wn-action: #173e34;
+  --wn-ivory: #f8f6f0;
+  --wn-ink: #172b27;
+  --wn-muted: #52655b;
+  --wn-amber: #e3c27d;
+  --wn-surface: #ffffff;
+  --wn-space-1: 4px;
+  --wn-space-2: 8px;
+  --wn-space-3: 12px;
+  --wn-space-4: 16px;
+  --wn-space-6: 24px;
+  --wn-space-8: 32px;
+  --wn-radius-control: 12px;
+  --wn-radius-card: 16px;
+  --wn-radius-feature: 28px;
+  --wn-touch: 44px;
+}

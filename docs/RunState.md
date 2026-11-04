@@ -1,3 +1,57 @@
+# Premium transformation — rendered candidate qualified; production held — 2026-11-04
+
+Application `c670d55a9bf22aa493f685fa62f79fda89151247`, tree
+`536c97e884065ac79338695d47bba7e2fc098c7f`; same-app evidence successor
+`39524edde3f24f2fca5535f2860338e3eb81b94a`. [PR49](https://github.com/avromy/watchnest-/pull/49)
+on isolated premium-ui-ux-20261103 targets product-completion-20260930. Sole
+owner Builder2; main remains older foundation. No production promotion.
+
+CI139 PASS200 tests/64 browser flows/14 baseline families/lint/type/build/audit.
+CI140 same-app followup PASS200/14 targeted with corrected source metadata and
+finite capture views. Five fresh final jurors unanimous design PASS. Independent
+Human-Eye final252 states/771 capture paths/4315 assets: all17260 edge outcomes
+resolved,0 material defects. Six independently chosen Parent/child journeys PASS;
+fresh separate repaired-request recheck PASS. All limited synthetic Chromium scope.
+Source/security protected64 equality PASS; player code/hash unchanged. Original
+failures and optional nonblocking design notes retained, not erased.
+
+Current production/rollback remains `77a5017d938ded03b1530c2b72978cef27273d61`
+/ `dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`. Frozen UI preview
+`dpl_Gov7twBYTsX6ejKF2EWzphcojk3U` is READY, backend unconfigured. No data,
+credentials, schema, timer configuration or environment mutation.
+
+Open release gates: actual approved iPad picture/sound, recommendations inline/
+native fullscreen and phone End now native picture/sound stop; authenticated hosted
+candidate qualification also pending. The latter configuration may safely remain
+deferred while P0 physical evidence is absent. Never promote synthetic evidence.
+Not WATCHNEST_PREMIUM_UI_UX_PRODUCTION_READY or Founder Ready.
+
+[Complete frozen release hold, evidence, exact rollback, one minimum conditional
+physical observation and deterministic continuation](PremiumReleaseHold-20261104.md).
+Raw and derivative evidence privately archived; custody in existing CTO Handoff.
+Final verified private checkpoint controls chat delete clearance separately from
+product readiness. Continue without redesign approval or Founder PR coordination.
+
+---
+
+# Frozen production release — 2026-11-02
+
+Application `77a5017d938ded03b1530c2b72978cef27273d61`, deployment
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`, canonical production READY. CI125
+PASS: 200 tests, 32 browser flows, lint/typecheck/build/audit. Independent
+technical/security source reviews PASS. Hosted session/CSP/API denials/runtime
+health verified. No database/data/config changes.
+
+State: WATCHNEST_IPAD_STARTUP_REPAIR_DEPLOYED_PHYSICAL_CONFIRMATION_REQUIRED.
+Not playback-restored or Founder Ready. [Exact release, coverage receipt,
+rollback and deterministic physical-observation/resume contract](IPadStartupRelease-20261102.md).
+One conditional physical session begins with approved picture/sound; only if
+successful, recommendations normal/fullscreen then phone End now. Stop on first
+failure. DO NOT DELETE YET. This evidence-only successor does not alter frozen
+application/deployment.
+
+---
+
 # Current recovery checkpoint — 2026-11-02
 
 P0 iPad playback is reopened. Builder 2 is sole active implementation owner.

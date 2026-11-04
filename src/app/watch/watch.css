@@ -424,6 +424,9 @@
   max-width: 1500px;
   margin: 18px auto 14px;
 }
+.child-player-heading .eyebrow {
+  color: var(--wn-amber, #e3c27d);
+}
 .child-player-heading h1 {
   color: #fff;
   margin: 2px 0 4px;
@@ -630,6 +633,21 @@
 .time-up-card {
   text-align: center;
   margin-top: clamp(36px, 10vh, 110px);
+}
+/* Paper message panels need a dark foreground inside the dark player shell.
+   These selectors do not target the media mount, frame, or player controls. */
+.child-player-shell > .panel {
+  background: var(--wn-surface, #fff);
+  color: var(--wn-ink, #172b27);
+}
+.child-player-shell > .panel :is(h1, h2, h3) {
+  color: var(--wn-ink, #172b27);
+}
+.child-player-shell > .panel > p:not(.eyebrow):not(.error) {
+  color: var(--wn-muted, #52655b);
+}
+.child-player-shell > .panel .eyebrow {
+  color: var(--wn-evergreen, #143e35);
 }
 .request-success {
   text-align: center;

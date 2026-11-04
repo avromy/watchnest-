@@ -42,7 +42,7 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/parent/dashboard");
   await expect(
-    page.getByRole("heading", { name: "Family overview" }),
+    page.getByRole("heading", { name: "Their favorites. Your family library." }),
   ).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/parent-overview-synthetic.png",
@@ -67,7 +67,7 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   });
   await page.goto("/parent/add-video");
   await expect(
-    page.getByRole("heading", { name: "Find videos" }),
+    page.getByRole("heading", { name: "Find their next favorite." }),
   ).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/parent-add-videos-tablet-synthetic.png",
@@ -77,7 +77,7 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   await fixture(page, "child");
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto("/watch/home");
-  await expect(page.getByText("Hi, Ari", { exact: true })).toBeVisible();
+  await expect(page.getByText("Hi, Ari.", { exact: true })).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/child-tablet-synthetic.png",
     fullPage: true,

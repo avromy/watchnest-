@@ -120,26 +120,25 @@ function lookupVideoUrls(links: string[]) {
     // disabled or contains an invalid value.
   }
   const recentVideoLookup = scope.__watchnestRecentVideoLookup;
-  if (
-    recentVideoLookup?.key === key &&
-    now - recentVideoLookup.at < 1500
-  )
+  if (recentVideoLookup?.key === key && now - recentVideoLookup.at < 1500)
     return recentVideoLookup.promise;
   const promise = api<LookupResult>("/api/parent/videos/lookup", "POST", {
     urls: links,
-  }).then((result) => {
-    try {
-      window.sessionStorage.setItem(
-        "watchnest-recent-video-lookup",
-        JSON.stringify({ key, at: Date.now(), result }),
-      );
-    } catch {}
-    return result;
-  }).catch((error) => {
-    if (scope.__watchnestRecentVideoLookup?.promise === promise)
-      delete scope.__watchnestRecentVideoLookup;
-    throw error;
-  });
+  })
+    .then((result) => {
+      try {
+        window.sessionStorage.setItem(
+          "watchnest-recent-video-lookup",
+          JSON.stringify({ key, at: Date.now(), result }),
+        );
+      } catch {}
+      return result;
+    })
+    .catch((error) => {
+      if (scope.__watchnestRecentVideoLookup?.promise === promise)
+        delete scope.__watchnestRecentVideoLookup;
+      throw error;
+    });
   scope.__watchnestRecentVideoLookup = { key, at: now, promise };
   return promise;
 }
@@ -220,62 +219,114 @@ export function ParentShell({ children }: { children: ReactNode }) {
       setBusy(false);
     }
   }
-  const nav: [string, string, IconName][] = [
-    ["Dashboard", "/parent/dashboard", "home"],
-    ["Children", "/parent/children", "children"],
-    ["Add Videos", "/parent/add-video", "plus"],
-    ["Library", "/parent/library", "library"],
-    ["Collections", "/parent/collections", "collection"],
-    ["Inbox", "/parent/inbox", "inbox"],
-    ["Controls", "/parent/controls", "controls"],
-    ["Settings", "/parent/settings", "settings"],
+  const pendingRequests =
+    data?.requests.filter((request) => request.status === "pending").length ||
+    0;
+  const libraryRoutes = [
+    "/parent/library",
+    "/parent/collections",
+    "/parent/add-video",
   ];
+  const familyRoutes = [
+    "/parent/children",
+    "/parent/controls",
+    "/parent/settings",
+  ];
+  const nav: [string, string, IconName, boolean][] = [
+    ["Overview", "/parent/dashboard", "home", path === "/parent/dashboard"],
+    ["Library", "/parent/library", "library", libraryRoutes.includes(path)],
+    ["Requests", "/parent/inbox", "inbox", path === "/parent/inbox"],
+    ["Family", "/parent/children", "children", familyRoutes.includes(path)],
+  ];
+  const secondaryNav = libraryRoutes.includes(path)
+    ? [
+        ["Videos", "/parent/library"],
+        ["Collections", "/parent/collections"],
+        ["Add videos", "/parent/add-video"],
+      ]
+    : familyRoutes.includes(path)
+      ? [
+          ["Profiles", "/parent/children"],
+          ["Time & discovery", "/parent/controls"],
+          ["Settings", "/parent/settings"],
+        ]
+      : [];
   return (
-    <div className="shell">
+    <div className={`shell ${styles.parentShell}`}>
       {data && (
         <>
-          <header className="topbar">
+          <header className={`topbar ${styles.topbar}`}>
             <Link href="/parent/dashboard" className="brand">
               <img src="/icon.svg" alt="" width="36" height="36" /> WatchNest{" "}
               <span className="badge">Parent</span>
             </Link>
-            <button
-              className="button-quiet"
-              onClick={async () => {
-                try {
-                  await api("/api/auth/parent-lock", "POST", {});
-                  router.replace("/watch");
-                } catch (e) {
-                  setError(
-                    e instanceof Error
-                      ? e.message
-                      : "Could not switch profiles. Try again.",
-                  );
-                }
-              }}
-            >
-              <Icon name="switch" width="18" /> Switch profile
-            </button>
+            <div className={styles.headerActions}>
+              {path !== "/parent/add-video" && (
+                <Link
+                  className={`button ${styles.addButton}`}
+                  href="/parent/add-video"
+                >
+                  <Icon name="plus" width="18" />
+                  <span>Add videos</span>
+                </Link>
+              )}
+              <button
+                className={`button-quiet ${styles.profileSwitch}`}
+                onClick={async () => {
+                  try {
+                    await api("/api/auth/parent-lock", "POST", {});
+                    router.replace("/watch");
+                  } catch (e) {
+                    setError(
+                      e instanceof Error
+                        ? e.message
+                        : "Could not switch profiles. Try again.",
+                    );
+                  }
+                }}
+              >
+                <Icon name="switch" width="18" /> <span>Switch profile</span>
+              </button>
+            </div>
           </header>
           <nav
             ref={navRef}
-            className={`nav ${styles.navigation}`}
+            className={styles.navigation}
             aria-label="Parent navigation"
           >
-            {nav.map(([label, href, icon]) => (
+            {nav.map(([label, href, icon, active]) => (
               <Link
                 key={href}
                 href={href}
-                aria-current={path === href ? "page" : undefined}
+                aria-current={active ? "page" : undefined}
               >
                 <Icon name={icon} width="18" /> {label}
-                {label === "Inbox" &&
-                data.requests.filter((r) => r.status === "pending").length > 0
-                  ? ` (${data.requests.filter((r) => r.status === "pending").length})`
-                  : ""}
+                {label === "Requests" && pendingRequests > 0 && (
+                  <span className={styles.navCount}>{pendingRequests}</span>
+                )}
               </Link>
             ))}
           </nav>
+          {secondaryNav.length > 0 && (
+            <nav
+              className={styles.secondaryNav}
+              aria-label={
+                libraryRoutes.includes(path)
+                  ? "Library sections"
+                  : "Family sections"
+              }
+            >
+              {secondaryNav.map(([label, href]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={path === href ? "page" : undefined}
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          )}
         </>
       )}
       <main id="main-content" className={styles.main}>
@@ -351,7 +402,7 @@ function Choices({
         Select all children
       </button>
       {profiles.map((p) => (
-        <label key={p.id}>
+        <label className={styles.choiceOption} key={p.id}>
           <input
             type="checkbox"
             checked={value.includes(p.id)}
@@ -363,7 +414,7 @@ function Choices({
               )
             }
           />
-          {p.display_name}
+          <span>{p.display_name}</span>
         </label>
       ))}
     </fieldset>
@@ -385,135 +436,166 @@ function Thumb({ video }: { video: Video }) {
 export function Overview() {
   const { data } = useParent();
   const { workflow } = data;
-  const pending = data.requests.filter((r) => r.status === "pending");
+  const pending = data.requests.filter(
+    (request) => request.status === "pending",
+  );
   return (
     <>
-      <Heading
-        eyebrow="Dashboard"
-        title="Family overview"
-        description="Requests, library health, and each child’s approved content."
-        action={
+      <section className={styles.overviewHero} aria-labelledby="overview-title">
+        <div className={styles.heroContent}>
+          <p className="eyebrow">Your family space</p>
+          <h1 id="overview-title">
+            Their favorites.
+            <br />
+            Your family library.
+          </h1>
+          <p>Choose the videos. Make room for their favorites.</p>
           <Link className="button" href="/parent/add-video">
-            Add videos
+            <Icon name="plus" width="19" /> Add to the library
           </Link>
-        }
-      />
-      {(pending.length > 0 || data.attention.length > 0) && (
-        <section
-          className={`panel ${styles.attention}`}
-          aria-label="Needs your attention"
-        >
+          <span className={styles.heroProtection}>
+            <Icon name="lock" width="15" /> Approved-only playback in Child Mode
+          </span>
+        </div>
+        <div className={styles.heroShelf} aria-hidden="true">
+          {data.videos.slice(0, 3).map((video) => (
+            <div key={video.id}>
+              <Thumb video={video} />
+              <span>{video.title}</span>
+            </div>
+          ))}
+          {!data.videos.length && (
+            <div className={styles.heroEmpty}>
+              <Icon name="library" width="64" />
+              <span>Their next favorite starts here.</span>
+            </div>
+          )}
+        </div>
+      </section>
+      <div className={styles.overviewMetrics} aria-label="Library overview">
+        <Link href="/parent/library">
+          <strong>{workflow.approvedVideos}</strong>
+          <span>Approved videos</span>
+          <Icon name="library" width="21" />
+        </Link>
+        <Link href="/parent/collections">
+          <strong>{data.collections.length}</strong>
+          <span>Collections</span>
+          <Icon name="collection" width="21" />
+        </Link>
+        <Link href="/parent/inbox">
+          <strong>{workflow.openRequests}</strong>
+          <span>Waiting for you</span>
+          <Icon name="inbox" width="21" />
+        </Link>
+      </div>
+      {(pending.length > 0 ||
+        data.attention.length > 0 ||
+        workflow.unassignedVideos > 0) && (
+        <section className={styles.attention} aria-label="Needs your attention">
           <div>
-            <p className="eyebrow">Needs your attention</p>
+            <p className="eyebrow">Next up</p>
             <h2>
-              {pending.length} child{" "}
-              {pending.length === 1 ? "request" : "requests"} ·{" "}
-              {data.attention.length} library{" "}
-              {data.attention.length === 1 ? "issue" : "issues"}
+              {pending.length
+                ? `${pending.length} ${pending.length === 1 ? "request" : "requests"} from the children`
+                : data.attention.length
+                  ? "A library update needs you"
+                  : `${workflow.unassignedVideos} approved videos to share`}
             </h2>
             <p className="muted">
-              {pending[0]
-                ? `${pending[0].display_name || "A child"} asked: ${pending[0].message}`
-                : data.attention[0]?.title}
+              {pending.length
+                ? `${pending[0].display_name || "A child"} asked for ${pending[0].video_title || pending[0].message}`
+                : data.attention[0]?.title ||
+                  "Choose who can watch your latest additions."}
             </p>
           </div>
-          <Link className="button" href="/parent/inbox">
-            Review Inbox
+          <Link
+            className="button-secondary"
+            href={
+              pending.length || data.attention.length
+                ? "/parent/inbox"
+                : "/parent/library"
+            }
+          >
+            {pending.length
+              ? "Review requests"
+              : data.attention.length
+                ? "Open requests"
+                : "Share videos"}
+            <span aria-hidden="true"> →</span>
           </Link>
         </section>
       )}
       <section
         className={styles.dashboardSection}
-        aria-labelledby="library-overview-title"
+        aria-labelledby="family-library-title"
       >
-        <div>
-          <h2 id="library-overview-title">Library and requests</h2>
+        <div className={styles.sectionHeading}>
+          <div>
+            <p className="eyebrow">Made for each of them</p>
+            <h2 id="family-library-title">Their libraries</h2>
+          </div>
+          <Link href="/parent/children">
+            Manage family <span aria-hidden="true">→</span>
+          </Link>
         </div>
-        <div className={`stats ${styles.stats}`}>
-          <div className="stat">
-            <span className="muted">Approved videos</span>
-            <strong>{workflow.approvedVideos}</strong>
-            <small className="muted">
-              Individually approved in your library
-            </small>
-          </div>
-          <div className="stat">
-            <span className="muted">Shared with children</span>
-            <strong>{workflow.assignedVideos}</strong>
-            <small className="muted">Available to at least one child</small>
-          </div>
-          <div className="stat">
-            <span className="muted">Not shared yet</span>
-            <strong>{workflow.unassignedVideos}</strong>
-            <small className="muted">Approved, with no child access yet</small>
-            {workflow.unassignedVideos > 0 && (
-              <Link href="/parent/library">Choose who can watch</Link>
-            )}
-          </div>
-          <div className="stat">
-            <span className="muted">Open child requests</span>
-            <strong>{workflow.openRequests}</strong>
-            <small className="muted">Waiting for your review</small>
-            {workflow.openRequests > 0 && (
-              <Link href="/parent/inbox">Review requests</Link>
-            )}
-          </div>
-        </div>
-        <div className="grid grid-2">
+        <div className={styles.familyGrid}>
           {data.profiles.map((profile) => {
             const library = workflow.byChild.find(
               (child) => child.profile_id === profile.id,
             );
             return (
-              <section
-                className="panel"
-                key={profile.id}
-                aria-label={`${profile.display_name} library status`}
-              >
-                <div className={styles.row}>
+              <article className={styles.familySummary} key={profile.id}>
+                <ProfileImage
+                  name={profile.display_name}
+                  avatar={profile.avatar_key}
+                  photoUrl={profile.photo_url}
+                  size="medium"
+                />
+                <div className={styles.grow}>
                   <h3>{profile.display_name}</h3>
-                  <ProfileImage
-                    name={profile.display_name}
-                    avatar={profile.avatar_key}
-                    photoUrl={profile.photo_url}
-                    size="small"
-                  />
-                </div>
-                <p className={styles.libraryCount}>
-                  <strong>{library?.assignedVideos ?? 0}</strong> approved
-                  videos in their library
-                </p>
-                <p className="muted">
-                  {(library?.openRequests ?? 0) > 0
-                    ? `${library!.openRequests} open request${library!.openRequests === 1 ? "" : "s"}`
-                    : "No open requests"}{" "}
-                  ·{" "}
-                  {profile.pin_enabled
-                    ? "PIN protection on"
-                    : "PIN protection off"}
-                </p>
-                {(library?.assignedVideos ?? 0) === 0 && (
-                  <p className="muted">
-                    Choose a first video to give them something to explore.
+                  <p>
+                    {library?.assignedVideos ?? 0} approved videos
+                    {(library?.openRequests ?? 0) > 0
+                      ? ` · ${library!.openRequests} requests`
+                      : ""}
                   </p>
-                )}
+                  <span className={styles.profileProtection}>
+                    <Icon name="lock" width="13" />
+                    {profile.pin_enabled ? "PIN protected" : "No profile PIN"}
+                  </span>
+                </div>
                 <Link
-                  className="button-secondary"
                   href={
                     (library?.assignedVideos ?? 0) === 0
                       ? "/parent/add-video"
                       : "/parent/children"
                   }
+                  aria-label={`Manage ${profile.display_name}’s library`}
+                  className={styles.circleLink}
                 >
-                  {(library?.assignedVideos ?? 0) === 0
-                    ? "Add their first video"
-                    : `View ${profile.display_name}`}
+                  <Icon
+                    name={
+                      (library?.assignedVideos ?? 0) === 0 ? "plus" : "controls"
+                    }
+                    width="20"
+                  />
                 </Link>
-              </section>
+              </article>
             );
           })}
         </div>
       </section>
+      <Link href="/parent/controls" className={styles.timerShortcut}>
+        <span className={styles.shortcutIcon}>
+          <Icon name="clock" width="25" />
+        </span>
+        <span>
+          <strong>A little time for watching</strong>
+          <small>Start a session, add time, or end playback from here.</small>
+        </span>
+        <span aria-hidden="true">→</span>
+      </Link>
     </>
   );
 }
@@ -521,6 +603,7 @@ export function AddVideos() {
   const { data, act, busy, reload } = useParent();
   const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
   const urlInput = useRef<HTMLTextAreaElement | null>(null);
+  const [entryMode, setEntryMode] = useState<"search" | "links">("search");
   const [query, setQuery] = useState(""),
     [urls, setUrls] = useState(""),
     [results, setResults] = useState<Video[]>([]),
@@ -563,7 +646,10 @@ export function AddVideos() {
     const requested = params.get("q");
     const sharedUrl = params.get("url");
     if (requested) setQuery(requested);
-    if (sharedUrl) setUrls(sharedUrl);
+    if (sharedUrl) {
+      setUrls(sharedUrl);
+      setEntryMode("links");
+    }
   }, []);
   async function runFind(
     lookup: boolean,
@@ -683,12 +769,32 @@ export function AddVideos() {
     <>
       <Heading
         eyebrow="Add Videos"
-        title="Find videos"
-        description="Search or paste links, preview each video, then choose who can watch."
+        title="Find their next favorite."
+        description="Find a video, take a look, then share it with the children."
       />
-      <div className="grid grid-2">
-        <form className="panel" onSubmit={(e) => find(e, false)}>
-          <h2>Search YouTube</h2>
+      <div className={styles.addWorkspace}>
+        <div className={styles.entryModes} aria-label="How to find videos">
+          <button
+            type="button"
+            aria-pressed={entryMode === "search"}
+            onClick={() => setEntryMode("search")}
+          >
+            <Icon name="search" width="20" /> Search YouTube
+          </button>
+          <button
+            type="button"
+            aria-pressed={entryMode === "links"}
+            onClick={() => setEntryMode("links")}
+          >
+            <Icon name="plus" width="20" /> Paste video links
+          </button>
+        </div>
+        <form
+          className={styles.sourcePanel}
+          hidden={entryMode !== "search"}
+          onSubmit={(e) => find(e, false)}
+        >
+          <h2>What would they love to watch?</h2>
           <div className={styles.segmented} aria-label="Search type">
             {(["video", "channel", "playlist"] as const).map((type) => (
               <button
@@ -732,6 +838,7 @@ export function AddVideos() {
             <input
               className="field"
               id="yt-query"
+              placeholder="A show, a creator, a new curiosity…"
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -746,8 +853,12 @@ export function AddVideos() {
             </button>
           </div>
         </form>
-        <form className="panel" onSubmit={(e) => find(e, true)}>
-          <h2>Already have links?</h2>
+        <form
+          className={styles.sourcePanel}
+          hidden={entryMode !== "links"}
+          onSubmit={(e) => find(e, true)}
+        >
+          <h2>Bring your family’s favorites.</h2>
           <label htmlFor="yt-urls">Paste one YouTube video link per line</label>
           <textarea
             ref={urlInput}
@@ -853,20 +964,29 @@ export function AddVideos() {
                   <div className={styles.row}>
                     {data.profiles.map((profile) => {
                       const channels = profile.discovery_channels || [];
-                      const allowed = channels.some((channel) => channel.id === item.id);
+                      const allowed = channels.some(
+                        (channel) => channel.id === item.id,
+                      );
                       return (
                         <button
                           key={profile.id}
                           type="button"
                           className="button-quiet"
                           disabled={busy || allowed}
-                          onClick={() => act("/api/parent/profiles", "PATCH", {
-                            id: profile.id,
-                            discover_enabled: true,
-                            discovery_channels: [...channels, { id: item.id, title: item.title }],
-                          })}
+                          onClick={() =>
+                            act("/api/parent/profiles", "PATCH", {
+                              id: profile.id,
+                              discover_enabled: true,
+                              discovery_channels: [
+                                ...channels,
+                                { id: item.id, title: item.title },
+                              ],
+                            })
+                          }
                         >
-                          {allowed ? `${profile.display_name}: allowed` : `Allow for ${profile.display_name}`}
+                          {allowed
+                            ? `${profile.display_name}: allowed`
+                            : `Allow for ${profile.display_name}`}
                         </button>
                       );
                     })}
@@ -879,7 +999,21 @@ export function AddVideos() {
       )}
       {!!results.length && (
         <>
-          <section className="panel">
+          <section className={`panel ${styles.approvalPanel}`}>
+            <div className={styles.sectionHeading}>
+              <div>
+                <p className="eyebrow">Make it theirs</p>
+                <h2>
+                  {selected.length
+                    ? `${selected.length} selected for approval`
+                    : "Choose videos below"}
+                </h2>
+              </div>
+              <span className={styles.selectionCount}>
+                {results.length} {results.length === 1 ? "video" : "videos"}{" "}
+                found
+              </span>
+            </div>
             <Choices
               profiles={data.profiles}
               value={profiles}
@@ -953,7 +1087,8 @@ export function AddVideos() {
               }
               onClick={approve}
             >
-              Approve {selected.length || ""} selected videos
+              Approve {selected.length || ""} selected{" "}
+              {selected.length === 1 ? "video" : "videos"}
             </button>
           </section>
           <div className="video-grid">
@@ -1143,8 +1278,8 @@ export function Library() {
     <>
       <Heading
         eyebrow="Your approved library"
-        title="Good videos, easy to find."
-        description="Organize the library, preview playback, and control exactly who can watch each video."
+        title="The family library."
+        description="Your approved picks. Shared with just the right children."
         action={
           <Link className="button" href="/parent/add-video">
             Add videos
@@ -1435,7 +1570,9 @@ export function Collections() {
     [title, setTitle] = useState(""),
     [description, setDescription] = useState(""),
     [ids, setIds] = useState<string[]>([]),
-    [profileIds, setProfileIds] = useState<string[]>([]),
+    [collectionProfiles, setCollectionProfiles] = useState<
+      Record<string, string[]>
+    >({}),
     [saved, setSaved] = useState(false);
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -1458,8 +1595,8 @@ export function Collections() {
     <>
       <Heading
         eyebrow="Collections"
-        title="Organize the library"
-        description="Group approved videos by show, creator, topic, or anything your family recognizes."
+        title="Favorites belong together."
+        description="Build familiar shelves for the shows, creators, and topics they love."
       />
       <div className="grid grid-2">
         <section className="panel">
@@ -1480,30 +1617,47 @@ export function Collections() {
                     setDescription(c.description || "");
                     setIds(c.video_ids);
                     setSaved(false);
+                    requestAnimationFrame(() => {
+                      const editor =
+                        document.getElementById("collection-editor");
+                      editor?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                      editor?.focus({ preventScroll: true });
+                    });
                   }}
                 >
                   Edit collection
                 </button>
-                <Choices
-                  profiles={data.profiles}
-                  value={profileIds}
-                  setValue={setProfileIds}
-                />
-                <button
-                  className="button-quiet"
-                  disabled={busy || !profileIds.length}
-                  onClick={async () => {
-                    if (
-                      await act("/api/parent/collections/assign", "POST", {
-                        collection_id: c.id,
-                        profile_ids: profileIds,
-                      })
-                    )
-                      setSaved(true);
-                  }}
-                >
-                  Share collection
-                </button>
+                <details className={styles.collectionShare}>
+                  <summary>Share with children</summary>
+                  <Choices
+                    profiles={data.profiles}
+                    value={collectionProfiles[c.id] || []}
+                    setValue={(value) =>
+                      setCollectionProfiles((current) => ({
+                        ...current,
+                        [c.id]: value,
+                      }))
+                    }
+                  />
+                  <button
+                    className="button-secondary"
+                    disabled={busy || !collectionProfiles[c.id]?.length}
+                    onClick={async () => {
+                      if (
+                        await act("/api/parent/collections/assign", "POST", {
+                          collection_id: c.id,
+                          profile_ids: collectionProfiles[c.id],
+                        })
+                      )
+                        setSaved(true);
+                    }}
+                  >
+                    Share collection
+                  </button>
+                </details>
               </div>
             ))
           ) : (
@@ -1513,7 +1667,12 @@ export function Collections() {
             </p>
           )}
         </section>
-        <form className="panel" onSubmit={submit}>
+        <form
+          id="collection-editor"
+          tabIndex={-1}
+          className="panel"
+          onSubmit={submit}
+        >
           <h2>{id ? "Edit collection" : "Create a collection"}</h2>
           {saved && (
             <p className="notice" role="status">
@@ -1542,7 +1701,7 @@ export function Collections() {
           <fieldset className={styles.videoChoices}>
             <legend>Approved videos</legend>
             {data.videos.map((v) => (
-              <label key={v.id}>
+              <label className={styles.choiceOption} key={v.id}>
                 <input
                   type="checkbox"
                   checked={ids.includes(v.id)}
@@ -1554,7 +1713,7 @@ export function Collections() {
                     )
                   }
                 />
-                {v.title}
+                <span>{v.title}</span>
               </label>
             ))}
             {!data.videos.length && (
@@ -1767,118 +1926,121 @@ function ChildSettings({ profile }: { profile: Profile }) {
           }
         }}
       >
-        <fieldset className={styles.photoField}>
-          <legend>Photo or avatar</legend>
-          <div className={styles.avatarChoices}>
-            {[
-              "leaf",
-              "sun",
-              "star",
-              "moon",
-              "bird",
-              "fox",
-              "bear",
-              "cat",
-              "rocket",
-            ].map((key) => (
-              <button
-                type="button"
-                aria-label={`Use ${key} avatar`}
-                aria-pressed={!profile.photo_url && avatar === key}
-                key={key}
-                onClick={() => setAvatar(key)}
-              >
-                <ProfileIdentity identity={key} />
-              </button>
-            ))}
-          </div>
-          <label className="button-secondary">
-            <Icon name="upload" width="18" />
-            {photoBusy
-              ? "Saving…"
-              : profile.photo_url
-                ? "Change photo"
-                : "Upload photo"}
-            <input
-              className="sr-only"
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              disabled={photoBusy}
-              onChange={(event) => {
-                const file = event.target.files?.[0];
-                if (!file) return;
-                if (file.size > 25 * 1024 * 1024) {
-                  setError("Choose a photo smaller than 25 MB.");
-                  return;
-                }
-                setError("");
-                if (photoPreview) URL.revokeObjectURL(photoPreview);
-                setPhotoFile(file);
-                setPhotoPreview(URL.createObjectURL(file));
-                void suggestedPhotoFocus(file)
-                  .then((focus) => {
-                    setFocusX(focus.x);
-                    setFocusY(focus.y);
-                  })
-                  .catch(() => {
-                    setFocusX(50);
-                    setFocusY(42);
-                  });
-              }}
-            />
-          </label>
-          {photoFile && photoPreview && (
-            <div className={styles.photoEditor}>
-              <img
-                src={photoPreview}
-                alt="Profile photo preview"
-                style={{ objectPosition: `${focusX}% ${focusY}%` }}
+        <details className={styles.profileEditor}>
+          <summary>Photo or avatar</summary>
+          <fieldset className={styles.photoField}>
+            <legend className="sr-only">Photo or avatar</legend>
+            <div className={styles.avatarChoices}>
+              {[
+                "leaf",
+                "sun",
+                "star",
+                "moon",
+                "bird",
+                "fox",
+                "bear",
+                "cat",
+                "rocket",
+              ].map((key) => (
+                <button
+                  type="button"
+                  aria-label={`Use ${key} avatar`}
+                  aria-pressed={!profile.photo_url && avatar === key}
+                  key={key}
+                  onClick={() => setAvatar(key)}
+                >
+                  <ProfileIdentity identity={key} />
+                </button>
+              ))}
+            </div>
+            <label className="button-secondary">
+              <Icon name="upload" width="18" />
+              {photoBusy
+                ? "Saving…"
+                : profile.photo_url
+                  ? "Change photo"
+                  : "Upload photo"}
+              <input
+                className="sr-only"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                disabled={photoBusy}
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  if (!file) return;
+                  if (file.size > 25 * 1024 * 1024) {
+                    setError("Choose a photo smaller than 25 MB.");
+                    return;
+                  }
+                  setError("");
+                  if (photoPreview) URL.revokeObjectURL(photoPreview);
+                  setPhotoFile(file);
+                  setPhotoPreview(URL.createObjectURL(file));
+                  void suggestedPhotoFocus(file)
+                    .then((focus) => {
+                      setFocusX(focus.x);
+                      setFocusY(focus.y);
+                    })
+                    .catch(() => {
+                      setFocusX(50);
+                      setFocusY(42);
+                    });
+                }}
               />
-              <label>
-                Move left or right
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={focusX}
-                  onChange={(event) => setFocusX(Number(event.target.value))}
+            </label>
+            {photoFile && photoPreview && (
+              <div className={styles.photoEditor}>
+                <img
+                  src={photoPreview}
+                  alt="Profile photo preview"
+                  style={{ objectPosition: `${focusX}% ${focusY}%` }}
                 />
-              </label>
-              <label>
-                Move up or down
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={focusY}
-                  onChange={(event) => setFocusY(Number(event.target.value))}
-                />
-              </label>
+                <label>
+                  Move left or right
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={focusX}
+                    onChange={(event) => setFocusX(Number(event.target.value))}
+                  />
+                </label>
+                <label>
+                  Move up or down
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={focusY}
+                    onChange={(event) => setFocusY(Number(event.target.value))}
+                  />
+                </label>
+                <button
+                  className="button"
+                  type="button"
+                  disabled={photoBusy}
+                  onClick={() => void uploadPhoto(photoFile)}
+                >
+                  {photoBusy ? "Saving…" : "Use this photo"}
+                </button>
+              </div>
+            )}
+            {profile.photo_url && (
               <button
-                className="button"
+                className="button-quiet"
                 type="button"
                 disabled={photoBusy}
-                onClick={() => void uploadPhoto(photoFile)}
+                onClick={() => void removePhoto()}
               >
-                {photoBusy ? "Saving…" : "Use this photo"}
+                Remove photo
               </button>
-            </div>
-          )}
-          {profile.photo_url && (
-            <button
-              className="button-quiet"
-              type="button"
-              disabled={photoBusy}
-              onClick={() => void removePhoto()}
-            >
-              Remove photo
-            </button>
-          )}
-          <p className="muted">
-            Photos are cropped and compressed on this device, then stored
-            privately. JPG, PNG, or WebP; up to 25 MB before processing.
-          </p>
-        </fieldset>
+            )}
+            <p className="muted">
+              Photos are cropped and compressed on this device, then stored
+              privately. JPG, PNG, or WebP; up to 25 MB before processing.
+            </p>
+          </fieldset>
+        </details>
         <label className={styles.toggle}>
           <input
             type="checkbox"
@@ -1975,19 +2137,43 @@ export function Children() {
   return (
     <>
       <Heading
-        eyebrow="Children"
-        title="Profiles"
+        eyebrow="Family"
+        title="Each one, their own space."
         description="Choose a photo or avatar, manage PINs, and check each child’s experience."
       />
-      <div className="grid grid-2">
-        {data.profiles.map((p) => (
-          <ChildSettings profile={p} key={p.id} />
-        ))}
-      </div>
+      {data.profiles.length ? (
+        <div className="grid grid-2">
+          {data.profiles.map((p) => (
+            <ChildSettings profile={p} key={p.id} />
+          ))}
+        </div>
+      ) : (
+        <section className="empty" aria-labelledby="empty-profiles-title">
+          <h2 id="empty-profiles-title">No child profiles to show</h2>
+          <p>
+            There are no child profiles to manage right now. Refresh to check
+            again.
+          </p>
+          <div className={styles.emptyActions}>
+            <button className="button" onClick={() => window.location.reload()}>
+              Refresh profiles
+            </button>
+            <Link className="button-secondary" href="/parent/dashboard">
+              Family overview
+            </Link>
+          </div>
+        </section>
+      )}
     </>
   );
 }
-function RequestApproval({ request, data, act, busy, reload }: {
+function RequestApproval({
+  request,
+  data,
+  act,
+  busy,
+  reload,
+}: {
   request: Request;
   data: Dashboard;
   act: (path: string, method: string, body?: unknown) => Promise<boolean>;
@@ -2002,45 +2188,90 @@ function RequestApproval({ request, data, act, busy, reload }: {
   return (
     <div>
       <div className={styles.row}>
-        <button className="button" type="button" onClick={() => setOpen(!open)}>Approve</button>
+        <button className="button" type="button" onClick={() => setOpen(!open)}>
+          Approve
+        </button>
         <details>
           <summary>Preview</summary>
-          <YouTubeEmbed videoId={request.youtube_video_id} title={request.video_title || request.message} />
+          <YouTubeEmbed
+            videoId={request.youtube_video_id}
+            title={request.video_title || request.message}
+          />
         </details>
       </div>
       {open && (
-        <form onSubmit={async (event) => {
-          event.preventDefault();
-          if (collection === "__new") return;
-          await act("/api/parent/requests", "PATCH", {
-            id: request.id,
-            status: "resolved",
-            approve: true,
-            profile_ids: profiles,
-            ...(collection ? { collection_id: collection } : {}),
-          });
-        }}>
-          <Choices profiles={data.profiles} value={profiles} setValue={setProfiles} />
+        <form
+          onSubmit={async (event) => {
+            event.preventDefault();
+            if (collection === "__new") return;
+            await act("/api/parent/requests", "PATCH", {
+              id: request.id,
+              status: "resolved",
+              approve: true,
+              profile_ids: profiles,
+              ...(collection ? { collection_id: collection } : {}),
+            });
+          }}
+        >
+          <Choices
+            profiles={data.profiles}
+            value={profiles}
+            setValue={setProfiles}
+          />
           <label>
             Collection (optional)
-            <select className="field" value={collection} onChange={(event) => setCollection(event.target.value)}>
+            <select
+              className="field"
+              value={collection}
+              onChange={(event) => setCollection(event.target.value)}
+            >
               <option value="">No collection</option>
-              {data.collections.map((item) => <option value={item.id} key={item.id}>{item.title}</option>)}
+              {data.collections.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.title}
+                </option>
+              ))}
               <option value="__new">+ New Collection</option>
             </select>
           </label>
           {collection === "__new" && (
             <div className="form-row">
-              <input className="field" value={newTitle} onChange={(event) => setNewTitle(event.target.value)} placeholder="Collection name" maxLength={120} />
-              <button type="button" className="button-secondary" disabled={busy || !newTitle.trim()} onClick={async () => {
-                const created = await api<{ collection: Collection }>("/api/parent/collections", "POST", { title: newTitle.trim(), video_ids: [] });
-                await reload();
-                setCollection(created.collection.id);
-                setNewTitle("");
-              }}>Create</button>
+              <input
+                className="field"
+                value={newTitle}
+                onChange={(event) => setNewTitle(event.target.value)}
+                placeholder="Collection name"
+                maxLength={120}
+              />
+              <button
+                type="button"
+                className="button-secondary"
+                disabled={busy || !newTitle.trim()}
+                onClick={async () => {
+                  const created = await api<{ collection: Collection }>(
+                    "/api/parent/collections",
+                    "POST",
+                    { title: newTitle.trim(), video_ids: [] },
+                  );
+                  await reload();
+                  setCollection(created.collection.id);
+                  setNewTitle("");
+                }}
+              >
+                Create
+              </button>
             </div>
           )}
-          <button className="button" disabled={busy || !profiles.includes(request.profile_id) || collection === "__new"}>Approve video</button>
+          <button
+            className="button"
+            disabled={
+              busy ||
+              !profiles.includes(request.profile_id) ||
+              collection === "__new"
+            }
+          >
+            Approve video
+          </button>
         </form>
       )}
     </div>
@@ -2055,8 +2286,14 @@ export function Inbox() {
     <>
       <Heading
         eyebrow="Parent inbox"
-        title="A few things that need you."
-        description="Requests, library health and useful actions in one place."
+        title={
+          pending.length
+            ? `${pending.length} little ${pending.length === 1 ? "request" : "requests"}.`
+            : data.attention.length
+              ? "A library update needs you."
+              : "You’re all caught up."
+        }
+        description="See what caught their eye. You decide what joins the library."
         action={
           <button
             className="button-secondary"
@@ -2087,20 +2324,62 @@ export function Inbox() {
                   "Child"}{" "}
                 · {r.kind}
               </p>
-              {r.thumbnail_url && <img className={styles.discoveryImage} src={r.thumbnail_url} alt="" />}
+              {r.thumbnail_url && (
+                <img
+                  className={styles.discoveryImage}
+                  src={r.thumbnail_url}
+                  alt=""
+                />
+              )}
               <h3>{r.video_title || r.message}</h3>
               {r.channel_title && <p className="muted">{r.channel_title}</p>}
               <p className="muted">
                 {new Date(r.created_at).toLocaleDateString()}
               </p>
+              {!r.youtube_video_id && (
+                <p className="muted">
+                  After adding a video, return here to mark this request as
+                  fulfilled.
+                </p>
+              )}
               <div className={styles.row}>
                 {r.youtube_video_id ? (
                   <>
-                    <RequestApproval request={r} data={data} act={act} busy={busy} reload={reload} />
-                    <Link className="button-secondary" href={`/parent/add-video?url=${encodeURIComponent(`https://www.youtube.com/watch?v=${r.youtube_video_id}`)}`}>Review & organize</Link>
+                    <RequestApproval
+                      request={r}
+                      data={data}
+                      act={act}
+                      busy={busy}
+                      reload={reload}
+                    />
+                    <Link
+                      className="button-secondary"
+                      href={`/parent/add-video?url=${encodeURIComponent(`https://www.youtube.com/watch?v=${r.youtube_video_id}`)}`}
+                    >
+                      Review & organize
+                    </Link>
                   </>
                 ) : (
-                  <Link className="button" href={`/parent/add-video?q=${encodeURIComponent(r.message)}`}>Find a video</Link>
+                  <>
+                    <Link
+                      className="button"
+                      href={`/parent/add-video?q=${encodeURIComponent(r.message)}`}
+                    >
+                      Find a video
+                    </Link>
+                    <button
+                      className="button-secondary"
+                      disabled={busy}
+                      onClick={() =>
+                        act("/api/parent/requests", "PATCH", {
+                          id: r.id,
+                          status: "resolved",
+                        })
+                      }
+                    >
+                      Mark as fulfilled
+                    </button>
+                  </>
                 )}
                 <button
                   className="button-quiet"
@@ -2154,7 +2433,15 @@ function timeLabel(value: number) {
   }).format(new Date(Date.UTC(2026, 0, 1, hour, minute)));
 }
 
-function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusState, act, busy }: {
+function SessionTimerCard({
+  profile,
+  status,
+  serverNow,
+  localReceivedAt,
+  statusState,
+  act,
+  busy,
+}: {
   profile: Profile;
   status?: SessionStatus["profiles"][number];
   serverNow?: string;
@@ -2163,10 +2450,13 @@ function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusS
   act: (path: string, method: string, body?: unknown) => Promise<boolean>;
   busy: boolean;
 }) {
-  const [duration, setDuration] = useState(profile.session_duration_minutes || 20);
+  const [duration, setDuration] = useState(
+    profile.session_duration_minutes || 20,
+  );
   const [clock, setClock] = useState({ monotonic: 0, wall: 0 });
   useEffect(() => {
-    const tick = () => setClock({ monotonic: performance.now(), wall: Date.now() });
+    const tick = () =>
+      setClock({ monotonic: performance.now(), wall: Date.now() });
     tick();
     const timer = window.setInterval(tick, 1000);
     return () => window.clearInterval(timer);
@@ -2174,23 +2464,37 @@ function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusS
   const serverAnchor = Date.parse(serverNow || "");
   const localAnchor = localReceivedAt || clock.monotonic;
   const authoritative = Boolean(
-    statusState === "ready" && status && Number.isFinite(serverAnchor) && localReceivedAt,
+    statusState === "ready" &&
+    status &&
+    Number.isFinite(serverAnchor) &&
+    localReceivedAt,
   );
   const estimatedServerNow = Number.isFinite(serverAnchor)
     ? serverAnchor + Math.max(0, clock.monotonic - localAnchor)
     : clock.wall;
-  const expiry = Date.parse(status?.access.expiresAt || profile.session_expires_at || "");
-  const pausedSeconds = status?.access.pausedSeconds ?? profile.session_paused_seconds ?? null;
-  const remainingSeconds = status?.access.state === "paused"
-    ? pausedSeconds || 0
-    : estimatedServerNow > 0 && Number.isFinite(expiry)
-      ? Math.max(0, Math.ceil((expiry - estimatedServerNow) / 1000))
-      : 0;
-  const remaining = authoritative ? Math.max(0, Math.ceil(remainingSeconds / 60)) : null;
-  const enabled = status?.access.enabled ?? profile.session_duration_minutes != null;
+  const expiry = Date.parse(
+    status?.access.expiresAt || profile.session_expires_at || "",
+  );
+  const pausedSeconds =
+    status?.access.pausedSeconds ?? profile.session_paused_seconds ?? null;
+  const remainingSeconds =
+    status?.access.state === "paused"
+      ? pausedSeconds || 0
+      : estimatedServerNow > 0 && Number.isFinite(expiry)
+        ? Math.max(0, Math.ceil((expiry - estimatedServerNow) / 1000))
+        : 0;
+  const remaining = authoritative
+    ? Math.max(0, Math.ceil(remainingSeconds / 60))
+    : null;
+  const enabled =
+    status?.access.enabled ?? profile.session_duration_minutes != null;
   const state = status?.access.state || (!enabled ? "unlimited" : "unknown");
-  const revision = status?.access.revision ?? profile.session_state_revision ?? 0;
-  const distinctDeviceMap = new Map<string, NonNullable<typeof status>["devices"][number]>();
+  const revision =
+    status?.access.revision ?? profile.session_state_revision ?? 0;
+  const distinctDeviceMap = new Map<
+    string,
+    NonNullable<typeof status>["devices"][number]
+  >();
   (status?.devices || []).forEach((device, index) => {
     if (!device.timer_last_seen_at) return;
     const key = device.device_id || `session-${index}`;
@@ -2202,29 +2506,44 @@ function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusS
     ...device,
     ageSeconds: Math.max(
       0,
-      Math.floor((estimatedServerNow - Date.parse(device.timer_last_seen_at || "")) / 1000),
+      Math.floor(
+        (estimatedServerNow - Date.parse(device.timer_last_seen_at || "")) /
+          1000,
+      ),
     ),
   }));
-  const connected = withAge.filter((device) => Number.isFinite(device.ageSeconds) && device.ageSeconds <= 10);
-  const offline = withAge.filter((device) => !Number.isFinite(device.ageSeconds) || device.ageSeconds > 10);
+  const connected = withAge.filter(
+    (device) => Number.isFinite(device.ageSeconds) && device.ageSeconds <= 10,
+  );
+  const offline = withAge.filter(
+    (device) => !Number.isFinite(device.ageSeconds) || device.ageSeconds > 10,
+  );
   const allConnectedAcknowledged =
-    connected.length > 0 && connected.every((device) => device.timer_ack_revision >= revision);
-  const anyPlayerOpen = connected.some((device) => device.timer_playback_active);
-  const latestAge = withAge.length ? Math.min(...withAge.map((device) => device.ageSeconds)) : null;
+    connected.length > 0 &&
+    connected.every((device) => device.timer_ack_revision >= revision);
+  const anyPlayerOpen = connected.some(
+    (device) => device.timer_playback_active,
+  );
+  const latestAge = withAge.length
+    ? Math.min(...withAge.map((device) => device.ageSeconds))
+    : null;
   const offlineSuffix = offline.length
     ? ` · ${offline.length} other ${offline.length === 1 ? "device" : "devices"} offline or unconfirmed`
     : "";
-  const deviceStatus = statusState === "checking"
-    ? "Checking child devices…"
-    : statusState === "unavailable"
-      ? "Remote device status is unavailable. Try again in a moment."
-      : latestAge === null
-        ? "No child device has checked in yet."
-    : connected.length
-      ? `${connected.length} child ${connected.length === 1 ? "device" : "devices"} connected · ${
-          allConnectedAcknowledged ? "latest change received" : "sending latest change"
-        }${anyPlayerOpen ? " · player open" : ""}${offlineSuffix}`
-      : `No child device is connected · last check-in ${Math.max(1, Math.ceil(latestAge / 60))} min ago${offlineSuffix}`;
+  const deviceStatus =
+    statusState === "checking"
+      ? "Checking child devices…"
+      : statusState === "unavailable"
+        ? "Remote device status is unavailable. Try again in a moment."
+        : latestAge === null
+          ? "No child device has checked in yet."
+          : connected.length
+            ? `${connected.length} child ${connected.length === 1 ? "device" : "devices"} connected · ${
+                allConnectedAcknowledged
+                  ? "latest change received"
+                  : "sending latest change"
+              }${anyPlayerOpen ? " · player open" : ""}${offlineSuffix}`
+            : `No child device is connected · last check-in ${Math.max(1, Math.ceil(latestAge / 60))} min ago${offlineSuffix}`;
   const control = (action: string, minutes?: number) =>
     act("/api/parent/session-timer", "POST", {
       profile_id: profile.id,
@@ -2232,9 +2551,14 @@ function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusS
       ...(minutes ? { duration_minutes: minutes } : {}),
     });
   return (
-    <section className="panel">
+    <section className={`panel ${styles.timerCard}`}>
       <div className={styles.childHeader}>
-        <ProfileImage name={profile.display_name} avatar={profile.avatar_key} photoUrl={profile.photo_url} size="small" />
+        <ProfileImage
+          name={profile.display_name}
+          avatar={profile.avatar_key}
+          photoUrl={profile.photo_url}
+          size="small"
+        />
         <div>
           <h2>{profile.display_name}</h2>
           <p className="muted">
@@ -2242,49 +2566,114 @@ function SessionTimerCard({ profile, status, serverNow, localReceivedAt, statusS
               ? "No session timer"
               : state === "unknown"
                 ? "Timer on · checking time…"
-              : state === "paused"
-                ? `Paused · ${remaining} min saved`
-                : state === "active"
-                  ? `${remaining} min left`
-                  : "Time’s up"}
+                : state === "paused"
+                  ? `Paused · ${remaining} min saved`
+                  : state === "active"
+                    ? `${remaining} min left`
+                    : "Time’s up"}
           </p>
         </div>
       </div>
       <label>
         Session length
-        <select className="field" value={duration} onChange={(event) => setDuration(Number(event.target.value))}>
-          {[15, 20, 30, 45, 60, 90, 120].map((minutes) => <option key={minutes} value={minutes}>{minutes} minutes</option>)}
+        <select
+          className="field"
+          value={duration}
+          onChange={(event) => setDuration(Number(event.target.value))}
+        >
+          {[15, 20, 30, 45, 60, 90, 120].map((minutes) => (
+            <option key={minutes} value={minutes}>
+              {minutes} minutes
+            </option>
+          ))}
         </select>
       </label>
-      <div className={styles.row}>
+      <div className={styles.timerActions}>
         {state === "active" ? (
           <>
-            <button className="button" disabled={busy || !authoritative} onClick={() => control("extend", 15)}>Add 15 minutes</button>
-            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("pause")}>Pause</button>
-            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("end")}>End now</button>
+            <button
+              className="button"
+              disabled={busy || !authoritative}
+              onClick={() => control("extend", 15)}
+            >
+              Add 15 minutes
+            </button>
+            <button
+              className="button-secondary"
+              disabled={busy || !authoritative}
+              onClick={() => control("pause")}
+            >
+              Pause
+            </button>
+            <button
+              className={styles.endButton}
+              disabled={busy || !authoritative}
+              onClick={() => control("end")}
+            >
+              End now
+            </button>
           </>
         ) : state === "paused" ? (
           <>
-            <button className="button" disabled={busy || !authoritative || remainingSeconds <= 0} onClick={() => control("resume")}>Resume</button>
-            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("extend", 15)}>Add 15 minutes</button>
-            <button className="button-secondary" disabled={busy || !authoritative} onClick={() => control("end")}>End now</button>
+            <button
+              className="button"
+              disabled={busy || !authoritative || remainingSeconds <= 0}
+              onClick={() => control("resume")}
+            >
+              Resume
+            </button>
+            <button
+              className="button-secondary"
+              disabled={busy || !authoritative}
+              onClick={() => control("extend", 15)}
+            >
+              Add 15 minutes
+            </button>
+            <button
+              className={styles.endButton}
+              disabled={busy || !authoritative}
+              onClick={() => control("end")}
+            >
+              End now
+            </button>
           </>
         ) : (
-          <button className="button" disabled={busy || statusState !== "ready"} onClick={() => control("start", duration)}>
+          <button
+            className="button"
+            disabled={busy || statusState !== "ready"}
+            onClick={() => control("start", duration)}
+          >
             Give {duration} minutes
           </button>
         )}
-        {enabled && <button className="button-quiet" disabled={busy || !authoritative} onClick={() => control("disable")}>Turn timer off</button>}
+        {enabled && (
+          <button
+            className="button-quiet"
+            disabled={busy || !authoritative}
+            onClick={() => control("disable")}
+          >
+            Turn timer off
+          </button>
+        )}
       </div>
-      <p className="muted">{deviceStatus}</p>
-      <p className="muted">Active time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.</p>
+      <p className={styles.deviceStatus} role="status">
+        <span data-connected={authoritative && connected.length > 0} />
+        {deviceStatus}
+      </p>
+      <p className="muted">
+        Active time counts down by the clock, including while a video is paused
+        or WatchNest is in the background. Pausing from here saves the remaining
+        allowance.
+      </p>
     </section>
   );
 }
 
 export function Controls() {
   const { data, act, busy } = useParent();
-  const [sessionStatus, setSessionStatus] = useState<SessionStatus | null>(null);
+  const [sessionStatus, setSessionStatus] = useState<SessionStatus | null>(
+    null,
+  );
   const [sessionStatusError, setSessionStatusError] = useState(false);
   useEffect(() => {
     let disposed = false;
@@ -2318,7 +2707,7 @@ export function Controls() {
     <>
       <Heading
         eyebrow="Controls"
-        title="Time and discovery"
+        title="Time & discovery."
         description="Choose when each child can watch and what they may ask you to add."
       />
       <h2>Session time</h2>
@@ -2326,10 +2715,18 @@ export function Controls() {
         {data.profiles.map((profile) => (
           <SessionTimerCard
             profile={profile}
-            status={sessionStatus?.profiles.find((item) => item.id === profile.id)}
+            status={sessionStatus?.profiles.find(
+              (item) => item.id === profile.id,
+            )}
             serverNow={sessionStatus?.serverNow}
             localReceivedAt={sessionStatus?.localReceivedAt}
-            statusState={sessionStatusError ? "unavailable" : sessionStatus ? "ready" : "checking"}
+            statusState={
+              sessionStatusError
+                ? "unavailable"
+                : sessionStatus
+                  ? "ready"
+                  : "checking"
+            }
             act={act}
             busy={busy}
             key={profile.id}
@@ -2343,37 +2740,95 @@ export function Controls() {
       </p>
       <section className="notice">
         <h2>Using Guided Access</h2>
-        <p>WatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.</p>
+        <p>
+          WatchNest stops playback when its timer ends. Guided Access can keep
+          your child inside WatchNest, but Apple does not let this website read
+          or control the Guided Access timer. Use Guided Access for navigation
+          protection and the WatchNest timer for stopping video and sound.
+        </p>
       </section>
       <h2>Discover</h2>
       <div className="grid grid-2">
         {data.profiles.map((profile) => (
-          <form className="panel" key={`discover-${profile.id}`} onSubmit={async (event) => {
-            event.preventDefault();
-            const form = new FormData(event.currentTarget);
-            const topics = String(form.get("topics") || "").split(",").map((item) => item.trim()).filter(Boolean).slice(0, 12);
-            await act("/api/parent/profiles", "PATCH", {
-              id: profile.id,
-              discover_enabled:
-                form.get("enabled") === "on" &&
-                (topics.length > 0 || !!profile.discovery_channels?.length),
-              discovery_topics: topics,
-            });
-          }}>
+          <form
+            className="panel"
+            key={`discover-${profile.id}`}
+            onSubmit={async (event) => {
+              event.preventDefault();
+              const form = new FormData(event.currentTarget);
+              const topics = String(form.get("topics") || "")
+                .split(",")
+                .map((item) => item.trim())
+                .filter(Boolean)
+                .slice(0, 12);
+              await act("/api/parent/profiles", "PATCH", {
+                id: profile.id,
+                discover_enabled:
+                  form.get("enabled") === "on" &&
+                  (topics.length > 0 || !!profile.discovery_channels?.length),
+                discovery_topics: topics,
+              });
+            }}
+          >
             <div className={styles.childHeader}>
-              <ProfileImage name={profile.display_name} avatar={profile.avatar_key} photoUrl={profile.photo_url} size="small" />
-              <div><h2>{profile.display_name}</h2><p className="muted">Every result still needs Parent approval.</p></div>
+              <ProfileImage
+                name={profile.display_name}
+                avatar={profile.avatar_key}
+                photoUrl={profile.photo_url}
+                size="small"
+              />
+              <div>
+                <h2>{profile.display_name}</h2>
+                <p className="muted">
+                  Every result still needs Parent approval.
+                </p>
+              </div>
             </div>
             <label className={styles.switchRow}>
-              <input type="checkbox" name="enabled" defaultChecked={profile.discover_enabled} />
-              <span><strong>Discover videos</strong></span>
+              <input
+                type="checkbox"
+                name="enabled"
+                defaultChecked={profile.discover_enabled}
+              />
+              <span>
+                <strong>Discover videos</strong>
+              </span>
             </label>
             <label>
               Topics they may search
-              <input className="field" name="topics" defaultValue={(profile.discovery_topics || []).join(", ")} placeholder="Drawing, science, Jewish music" />
+              <input
+                className="field"
+                name="topics"
+                defaultValue={(profile.discovery_topics || []).join(", ")}
+                placeholder="Drawing, science, Jewish music"
+              />
             </label>
-            {!!profile.discovery_channels?.length && <div><p className="muted">Allowed channels: {profile.discovery_channels.map((item) => item.title).join(" · ")}</p><button type="button" className="button-quiet" disabled={busy} onClick={() => act("/api/parent/profiles", "PATCH", { id: profile.id, discovery_channels: [] })}>Remove allowed channels</button></div>}
-            <button className="button" disabled={busy}>Save Discover</button>
+            {!!profile.discovery_channels?.length && (
+              <div>
+                <p className="muted">
+                  Allowed channels:{" "}
+                  {profile.discovery_channels
+                    .map((item) => item.title)
+                    .join(" · ")}
+                </p>
+                <button
+                  type="button"
+                  className="button-quiet"
+                  disabled={busy}
+                  onClick={() =>
+                    act("/api/parent/profiles", "PATCH", {
+                      id: profile.id,
+                      discovery_channels: [],
+                    })
+                  }
+                >
+                  Remove allowed channels
+                </button>
+              </div>
+            )}
+            <button className="button" disabled={busy}>
+              Save Discover
+            </button>
           </form>
         ))}
       </div>
@@ -2449,7 +2904,10 @@ export function Controls() {
           </form>
         ))}
       </div>
-      <p className="muted">Session time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time.</p>
+      <p className="muted">
+        Session time is a wall-clock access deadline. WatchNest does not measure
+        or reconstruct YouTube watch time.
+      </p>
     </>
   );
 }
@@ -2466,7 +2924,7 @@ export function Settings() {
     <>
       <Heading
         eyebrow="Settings"
-        title="Family device"
+        title="Family settings."
         description="Protect Parent Mode and manage this device."
       />
       <div className="grid grid-2">
@@ -2481,7 +2939,9 @@ export function Settings() {
             <article className={styles.protectionCard}>
               <span className={styles.protectionBadge}>Required</span>
               <h3>1. Safe Playback</h3>
-              <p>Required in Child Mode. Only Parent-approved videos may play.</p>
+              <p>
+                Required in Child Mode. Only Parent-approved videos may play.
+              </p>
               <div className={styles.switchRow}>
                 <span>
                   <strong>Always on</strong>

@@ -1,0 +1,101 @@
+{
+  "controller": "coverage only; inherited history, not cold reviewer",
+  "source": {
+    "head": "da6edbb4436fc6f455eaef87ace5df61c3e62396",
+    "tree": "bb562b7c878d6e3be904b318a54e8546892fce52",
+    "ciMerge": "c624704e0ed074356ff0826fd3c539cb48b917e3",
+    "run": 41780707635,
+    "candidateZipSha256": "773a7c8f8db20fec6e7d23bc1f4147e3441b79221605657cc4d680b614bea031"
+  },
+  "shards": [
+    {
+      "viewport": "390x844",
+      "receipt": "docs/evidence/premium-review/20261104/final-phone-visual-receipt.json",
+      "receiptSha256": "fdd119e3f024f95403aef7f2ccbc3f54425fb080d6fd334d803401709eadf6ac",
+      "regions": 61,
+      "captureFiles": 206,
+      "assetInstances": 737,
+      "visibleContourClear": 633,
+      "nonvisibleN_A": 104,
+      "visibleEdgesClear": 2532,
+      "nonvisibleEdgeEntriesN_A": 416,
+      "dispositions": {
+        "VISIBLE_CONTOUR_CLEAR": 629,
+        "FULLY_OCCLUDED_BY_DIALOG": 34,
+        "CLOSED_DETAILS_NOT_RENDERED": 70,
+        "VIEWPORT_RESOLVED_FULLPAGE_NAV_OCCLUSION": 4
+      },
+      "structuralValidation": "exact original identity set; no duplicates; four named edge fields per identity; does not re-certify pixels",
+      "independentResult": "CLEAN within phone raster-review scope; no production/provider/physical-device acceptance"
+    },
+    {
+      "viewport": "768x1024",
+      "receipt": "docs/PremiumBlindTabletVisual-20261104.json",
+      "receiptSha256": "116c4faaf433a054e03b322a7aa088ec98fb8a49288cde798b669167ef5d3eb9",
+      "regions": 45,
+      "captureFiles": 110,
+      "assetInstances": 700,
+      "visibleContourClear": 574,
+      "nonvisibleN_A": 126,
+      "visibleEdgesClear": 2296,
+      "nonvisibleEdgeEntriesN_A": 504,
+      "dispositions": {
+        "VISIBLE_CONTOUR_CLEAR": 574,
+        "FULLY_OCCLUDED_BY_MODAL": 18,
+        "CLOSED_DETAILS_NOT_RENDERED": 40,
+        "NOT_PAINTED_OPACITY0": 68
+      },
+      "structuralValidation": "exact original identity set; no duplicates; four named edge fields per identity; does not re-certify pixels",
+      "independentResult": "CLEAN \u2014 synthetic browser portrait visual scope; one nonblocking optical concern"
+    },
+    {
+      "viewport": "1024x768",
+      "receipt": "docs/evidence/premium-review/20261104/final-landscape-visual-receipt.json",
+      "receiptSha256": "de6beeecc1386ba9a6b8f1b59f5ddebd9b6b3c0368c8c58cd312cfbf22d3ea18",
+      "regions": 45,
+      "captureFiles": 135,
+      "assetInstances": 700,
+      "visibleContourClear": 564,
+      "nonvisibleN_A": 136,
+      "visibleEdgesClear": 2256,
+      "nonvisibleEdgeEntriesN_A": 544,
+      "dispositions": {
+        "VISIBLE_CONTOUR_CLEAR": 564,
+        "DIALOG_UNDERLAY_OCCLUDED": 28,
+        "CLOSED_DETAILS_NOT_RENDERED": 40,
+        "NOT_PAINTED_OPACITY_ZERO_IN_FULL_CAPTURE": 68
+      },
+      "structuralValidation": "exact original identity set; no duplicates; four named edge fields per identity; does not re-certify pixels",
+      "independentResult": "CLEAN within assigned synthetic Chromium landscape raster scope"
+    },
+    {
+      "viewport": "1440x1000",
+      "receipt": "docs/PremiumFinalDesktopVisual-20261104.json",
+      "receiptSha256": "af3504704fce1ef820a83d58f259a592d13e2a3aad4768485b92113ee98c1257",
+      "regions": 61,
+      "captureFiles": 158,
+      "assetInstances": 778,
+      "visibleContourClear": 651,
+      "nonvisibleN_A": 127,
+      "visibleEdgesClear": 2604,
+      "nonvisibleEdgeEntriesN_A": 508,
+      "dispositions": {
+        "VISIBLE_CONTOUR_CLEAR": 651,
+        "INTENTIONALLY_OBSCURED_BACKGROUND": 20,
+        "CLOSED_DETAILS_NOT_RENDERED": 70,
+        "FULLY_OCCLUDED": 2,
+        "NOT_PAINTED_OPACITY0": 35
+      },
+      "structuralValidation": "exact original identity set; no duplicates; four named edge fields per identity; does not re-certify pixels",
+      "independentResult": "CLEAN within desktop1440 synthetic-render visual scope"
+    }
+  ],
+  "totals": {
+    "regions": 212,
+    "captureFiles": 609,
+    "assetInstances": 2915,
+    "visibleEdgesClear": 9688,
+    "nonvisibleEdgeEntriesN_A": 1972
+  },
+  "result": "CLEAN for supplied four-anchor synthetic Chromium raster corpus only; broader responsive/hosted/provider/physical gates separate"
+}
