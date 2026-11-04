@@ -12,12 +12,12 @@ Production comparison: `77a5017d938ded03b1530c2b72978cef27273d61`. Local HEAD wh
 | `src/app/premium-tokens.css` | `dfcb2f3ce5689bf43c5fdfeb3f8bbc8f2ec6b24964eab0c370472e8e2c272651` |
 | `src/app/login/page.tsx` | `6f6f5f86c09d8aea07fa1b7f453d21009d77285eb76e21a35246eee6dce05762` |
 | `src/app/login/login.module.css` | `ad206d1d6568af40c394d5e56762efc4d5e6cdcffbdd6cca56d7e01c530009d6` |
-| `src/components/child/ChildLibrary.tsx` | `802c6b2a8eb9f631934686d035e343afc64bf867836e58fd9f34c979196d6fd6` |
+| `src/components/child/ChildLibrary.tsx` | `6a6f62f69ae29f1906c307f2461b7c81701c51883c9cce42f93f61be3148df5d` |
 | `src/components/child/ChildLogin.tsx` | `3c7b685b4915b41d4b5588f60320a3d83f27ddfc0f3e6688043f6f221b09d893` |
 | `src/components/child/ChildExperience.css` | `d5ab170eb356db3cc6e3eb6681d48a88beedee2a40184c199e5d310effcffd9d` |
-| `src/components/parent/ParentApp.tsx` | `24a6c9c5c84679a2bc31cb06af1eb7486d2eafbe930361cfea9e03d924bb804e` |
+| `src/components/parent/ParentApp.tsx` | `ceb1baf8e92c50bb9374d0eb36ffa13b7b3e5aff640db551e049f31f8f110c25` |
 | `src/components/parent/Parent.module.css` | `72bd8d64acf52f09589ea5d4722c91c68002b075e883acd5707e614a3676100b` |
-| `src/app/watch/watch.css` | `8bc3f8207c9070a9f74d9e5f91e9f415549624770e9e4adb2473bf8889513068` |
+| `src/app/watch/watch.css` | `b04668eb1e369aa8ee9a581ee8af9e878ebc5354b289ec68b1ca6fb665bb2869` |
 
 ## Narrow follow-up source qualification
 
@@ -34,6 +34,10 @@ Independently inspected the added `src/app/watch/watch.css` delta on 2026-11-04 
 ## Final PIN error-alert source qualification
 
 Independently rechecked the final ChildLogin correction on 2026-11-04 UTC. The sole delta from prior SHA-256 `49bc452fcfea17b2075246856457fbdc22110f35db6c77d95a5000d737e318ce` narrows the outer picker alert from `error` to `error && !selected && !parentMode`. Restoring only that expression reproduces the prior hash exactly; the updated table binds the new source. The existing dialog alert still displays errors while a child or Parent PIN dialog is active, avoiding a duplicate outer alert. PIN/auth handlers, request bodies, busy/reset state and routing are unchanged. All 64 protected manifest files were independently rechecked against recorded hashes and production bytes with zero differences. **PASS for this bounded source delta.** Screen-reader announcement quality and rendered accessibility remain separately qualified browser/review obligations; no visual or device PASS is claimed.
+
+## R3 copy and heading-color source qualification
+
+Independently inspected the next three frontend deltas on 2026-11-04 UTC. Reversing only each stated change reproduces its prior reviewed SHA-256 exactly: ParentApp `24a6c9c5…bb804e`, ChildLibrary `802c6b2a…96d6fd6`, and watch.css `8bc3f820…9513068`. The table binds the updated full hashes. ParentApp adds singular/plural copy for found and selected video counts, without changing selection/approval handlers or payloads. ChildLibrary chooses paused versus expired heading/body copy from `sessionAccess.state` inside the unchanged enabled/!allowed gate; it does not change allowance, expiry, requests, profile switching or playback access. watch.css adds only a color declaration for `.child-player-heading .eyebrow`; no media, layout, visibility, positioning, stacking, pointer, overlay or containment rule changes occur. All 64 protected manifest files were independently rechecked against recorded hashes and production bytes with zero differences. **PASS for this bounded source delta.** This is not a raster, workflow, accessibility, device or release acceptance claim.
 
 ## Findings and disposition
 

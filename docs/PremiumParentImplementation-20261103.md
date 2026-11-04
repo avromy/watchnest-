@@ -53,3 +53,9 @@ Frozen source SHA-256:
 - Parent.module.css: `72bd8d64acf52f09589ea5d4722c91c68002b075e883acd5707e614a3676100b`
 
 This receipt records a source repair ready for independent recapture. It does not supersede the reviewer gate or claim physical-iPad acceptance.
+
+## Independent review R3 P3 — count copy, 2026-11-04
+
+Corrected the Add Videos result count and approval action to use `video` for exactly one item and `videos` for other counts. The zero-selection approval fallback remains unchanged; handlers, validation, and APIs are unchanged. Source inspection verified both conditional strings; Prettier completed. No additional behavior or visual changes made.
+
+Updated ParentApp.tsx SHA-256: `ceb1baf8e92c50bb9374d0eb36ffa13b7b3e5aff640db551e049f31f8f110c25`.

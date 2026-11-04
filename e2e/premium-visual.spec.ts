@@ -247,6 +247,12 @@ for (const viewport of viewports) {
       await page.evaluate(() => (window as any).__visualSyntheticPlayer.finish());
       await expect(page.getByRole("heading", { name: `${videos[1].title} has ended`, exact: true })).toBeVisible();
       await capture("player-synthetic-ended-next");
+      for (const state of ["expired", "paused"]) {
+        await page.route("**/api/child/library", route => route.fulfill(json({ profile: discoveryProfile, videos: syntheticVideos, collections: dashboard.collections, session_access: { enabled: true, allowed: false, serverNow: new Date().toISOString(), expiresAt: null, remainingSeconds: 0, pausedSeconds: state === "paused" ? 600 : null, revision: 2, state } })));
+        await page.goto("/watch/home");
+        await expect(page.getByRole("heading", { name: state === "paused" && !label.startsWith("before-") ? "Parent paused WatchNest" : "Time’s up for now", exact: true })).toBeVisible();
+        await capture(`child-library-timer-${state}`);
+      }
       await finish();
       return;
     }
@@ -264,11 +270,12 @@ for (const viewport of viewports) {
       await page.getByLabel("Paste one YouTube video link per line").fill("https://youtu.be/newvideo123");
       if (label.startsWith("before-")) await page.getByRole("button", { name: "Load videos", exact: true }).click();
       await expect(page.getByRole("heading", { name: discoverCandidate.title, exact: true })).toBeVisible();
+      if (!label.startsWith("before-")) await expect(page.getByText("1 video found", { exact: true })).toBeVisible();
       await capture("parent-url-resolved");
       await page.getByRole("checkbox", { name: "Select this video", exact: true }).check();
       await page.getByRole("checkbox", { name: "Ari", exact: true }).check();
       await capture("parent-approval-assignment");
-      await page.getByRole("button", { name: /Approve 1 selected videos/ }).click();
+      await page.getByRole("button", { name: label.startsWith("before-") ? "Approve 1 selected videos" : "Approve 1 selected video", exact: true }).click();
       await expect(page.getByText("1 individually selected video approved.", { exact: true })).toBeVisible();
       await capture("parent-approval-success");
       await page.goto("/parent/add-video");
@@ -352,7 +359,7 @@ for (const viewport of viewports) {
       }
       await page.route("**/api/parent/dashboard", route => route.fulfill(json({ error: "Your family space is taking a moment. Please try again." }, 503)));
       await page.goto("/parent/dashboard");
-      await expect(page.getByRole("alert")).toContainText("Your family space is taking a moment. Please try again.");
+      await expect(page.getByRole("alert").filter({ hasText: "Your family space is taking a moment. Please try again." })).toContainText("Your family space is taking a moment. Please try again.");
       await capture("parent-dashboard-error");
       await finish();
       return;
@@ -406,13 +413,8 @@ for (const viewport of viewports) {
       await page.getByRole("button", { name: "Send request", exact: true }).click();
       await expect(page.getByRole("heading", { name: "Sent to Parent", exact: true })).toBeVisible();
       await capture("child-discover-disabled-success");
-      for (const state of ["expired", "paused"]) {
-        await page.route("**/api/child/library", route => route.fulfill(json({ profile: discoveryProfile, videos: syntheticVideos, collections: dashboard.collections, session_access: { enabled: true, allowed: false, serverNow: new Date().toISOString(), expiresAt: null, remainingSeconds: 0, pausedSeconds: state === "paused" ? 600 : null, revision: 2, state } })));
-        await page.goto("/watch/home");
-        await expect(page.getByRole("button", { name: "Choose profile", exact: true })).toBeVisible();
-        await capture(`child-library-timer-${state}`);
-      }
-      await page.getByRole("button", { name: "Choose profile", exact: true }).click();
+      await page.getByRole("button", { name: "Home", exact: true }).click();
+      await page.getByRole("button", { name: /Ari/ }).first().click();
       await expect(page.getByRole("heading", { name: "Who’s watching?", exact: true })).toBeVisible();
       await capture("child-profile-switch-return");
       await finish();

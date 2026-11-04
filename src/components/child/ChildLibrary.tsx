@@ -443,8 +443,16 @@ export default function ChildLibrary() {
             <Icon name="clock" width="44" />
           </div>
           <p className="eyebrow">A little pause</p>
-          <h1>Time’s up for now</h1>
-          <p>Your videos will be here when it’s time to watch again.</p>
+          <h1>
+            {sessionAccess.state === "paused"
+              ? "Parent paused WatchNest"
+              : "Time’s up for now"}
+          </h1>
+          <p>
+            {sessionAccess.state === "paused"
+              ? "Parent can resume when it’s time to watch again."
+              : "Your videos will be here when it’s time to watch again."}
+          </p>
           <button className="button" onClick={switchProfile}>
             Choose profile
           </button>

@@ -424,6 +424,9 @@
   max-width: 1500px;
   margin: 18px auto 14px;
 }
+.child-player-heading .eyebrow {
+  color: var(--wn-amber, #e3c27d);
+}
 .child-player-heading h1 {
   color: #fff;
   margin: 2px 0 4px;

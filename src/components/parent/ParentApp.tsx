@@ -1010,7 +1010,8 @@ export function AddVideos() {
                 </h2>
               </div>
               <span className={styles.selectionCount}>
-                {results.length} videos found
+                {results.length} {results.length === 1 ? "video" : "videos"}{" "}
+                found
               </span>
             </div>
             <Choices
@@ -1086,7 +1087,8 @@ export function AddVideos() {
               }
               onClick={approve}
             >
-              Approve {selected.length || ""} selected videos
+              Approve {selected.length || ""} selected{" "}
+              {selected.length === 1 ? "video" : "videos"}
             </button>
           </section>
           <div className="video-grid">

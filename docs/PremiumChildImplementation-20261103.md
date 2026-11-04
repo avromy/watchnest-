@@ -45,3 +45,7 @@ Source audit confirms that the same inherited pale foreground affects the initia
 ## PIN error duplicate-announcement correction
 
 Independent detail capture identified the same PIN error simultaneously rendered in the picker-level role=alert and modal role=alert. Source confirmed both used the shared error state without a modal guard. The picker-level error now renders only when neither a child PIN nor Parent Mode dialog is open; dialog errors retain their existing role=alert. API requests, PIN submission/reset behavior and authentication remain unchanged. QA must verify exactly one alert for incorrect child and Parent PINs, plus the global error on nonmodal child entry failure.
+
+## R3 contrast and session-copy corrections
+
+Inspected CI1341024x768 player-synthetic-ended-next-full raster and source: the player-heading eyebrow retained global dark evergreen on the dark shell. Added only `.child-player-heading .eyebrow` amber foreground; this selector excludes white-card eyebrows. ChildPlayer source/lifecycle is unchanged. ChildLibrary blocked-session copy now distinguishes sessionAccess.state paused (Parent paused WatchNest; Parent can resume when it is time to watch again) from expired (existing Time’s up and explanatory copy). The existing enabled/!allowed gate, timer and APIs are unchanged. QA must assert exact paused/expired copy and rerender affected player/library states at all four viewports before new visual acceptance.
