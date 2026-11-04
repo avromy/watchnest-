@@ -1,3 +1,43 @@
+# Premium UI/UX transformation — current execution — 2026-11-03
+
+Founder authorized complete autonomous premium redesign and qualified production
+release. Isolated premium-ui-ux-20261103 candidate; sole implementation owner
+remains Builder2. Current production remains77a5017 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac.
+Physical approved playback/recommendations/fullscreen remote stop remain pending,
+and block production promotion under the new explicit directive. Do not waive.
+
+Child, parent and login presentation/workflows are being redesigned with existing
+APIs. Shared tokens and existing SVG icon family; player lifecycle/backend/CSP/
+schema must remain byte-identical. Governing design and complete acceptance:
+PremiumDesignAuthority-20261103.md and PremiumReviewContract-20261103.md.
+
+Next: freeze integrated source → clean remote CI + BEFORE/AFTER synthetic
+screenshot artifacts → independent visual convergence and repairs → five fresh
+final jurors + cold rendered Stranger → exact preview qualification → promote
+only once current P0 gate is cleared. Continue candidate work while physical
+gate is open. No routine Founder design/merge/deploy permission needed.
+DO NOT DELETE YET. Not WATCHNEST_PREMIUM_UI_UX_PRODUCTION_READY.
+
+---
+
+# Frozen production release — 2026-11-02
+
+Application `77a5017d938ded03b1530c2b72978cef27273d61`, deployment
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`, canonical production READY. CI125
+PASS: 200 tests, 32 browser flows, lint/typecheck/build/audit. Independent
+technical/security source reviews PASS. Hosted session/CSP/API denials/runtime
+health verified. No database/data/config changes.
+
+State: WATCHNEST_IPAD_STARTUP_REPAIR_DEPLOYED_PHYSICAL_CONFIRMATION_REQUIRED.
+Not playback-restored or Founder Ready. [Exact release, coverage receipt,
+rollback and deterministic physical-observation/resume contract](IPadStartupRelease-20261102.md).
+One conditional physical session begins with approved picture/sound; only if
+successful, recommendations normal/fullscreen then phone End now. Stop on first
+failure. DO NOT DELETE YET. This evidence-only successor does not alter frozen
+application/deployment.
+
+---
+
 # Current recovery checkpoint — 2026-11-02
 
 P0 iPad playback is reopened. Builder 2 is sole active implementation owner.

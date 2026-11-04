@@ -365,3 +365,34 @@ Security/data/API changes invalidate affected previous build, tests, CI and brow
   source hypotheses are not physical causes, mock API readiness is not genuine
   startup qualification, stopped generations cannot revive. No global skill
   authority overwritten.
+
+
+### Frozen-release receipt — 2026-11-02
+
+Exact application `77a5017d938ded03b1530c2b72978cef27273d61` /
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`. CI125 executable gates PASS, including
+32/32 browser flows; independent source review conditions satisfied. Hosted
+session/CSP/API denials and runtime health verified. Complete bounded coverage,
+reviewer separation, applicability decisions, evidence hierarchy, unresolved
+physical gates and learning propagation are recorded in
+[IPadStartupRelease-20261102.md](IPadStartupRelease-20261102.md). This receipt
+is not full family-beta/physical acceptance. Founder Ready BLOCKED; physical
+observation required. No evidence category promoted.
+
+
+## Premium transformation — 2026-11-03 — in progress
+
+Current authority/package consumption receipt and mandatory rendered-review
+contract: PremiumReviewContract-20261103.md. AVP V008.2, HumanEyeV2,
+MatchCheckv1, BlindJuryv1 and Stranger v1.1 resolved from canonical sources;
+installed superseded adapters are not certification authority. Applied to
+independent production/evidence lanes; final gates remain PENDING, not PASS.
+Product Intelligence/Founder Ready/Continuous Learning and existing infrastructure
+preflight govern this continued project. Independent documentation-based
+Netflix/Apple/YouTubeKids research informed PremiumDesignAuthority-20261103.md.
+
+Design production covers parent/child/login, shared palette/spacing/control tokens,
+existing SVG icon consistency, responsive/accessibility and actual state capture.
+Player/backend mutations prohibited. Candidate and production claims require
+exact frozen source, executable checks, genuine rendered independent receipts.
+The physical P0 gate remains unresolved; no inherited device PASS claimed.

@@ -1,7 +1,7 @@
 name: CI
 on:
   pull_request:
-    branches: [main]
+    branches: [main, product-completion-20260930]
   push:
     branches: [main, product-completion-20260930]
 permissions:
@@ -21,4 +21,61 @@ jobs:
       - run: npm run test -- --run
       - run: npm run build
       - run: npm run test:e2e
+        env:
+          WATCHNEST_EVIDENCE_LABEL: candidate
+          WATCHNEST_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      # Explicit allowlist: synthetic screenshots, DOM inventories, and result JSON.
+      # No traces, credentials, environment files, or authenticated browser state.
+      - name: Preserve synthetic browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchnest-synthetic-browser-evidence-${{ github.sha }}
+          path: |
+            test-results/visual-evidence/**/*.png
+            test-results/visual-evidence/**/*.json
+            test-results/visual-evidence/**/*.yml
+            test-results/browser-results.json
+            docs/evidence/*-synthetic.png
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 6
       - run: npm audit --omit=dev --audit-level=high
+
+  baseline-visual-evidence:
+    # Historical appearance may contain accessibility defects. Preserve them as
+    # BEFORE evidence without allowing that legacy result to certify a candidate.
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retain the candidate evidence harness
+        run: cp e2e/premium-visual.spec.ts "$RUNNER_TEMP/watchnest-premium-visual.spec.ts"
+      - uses: actions/checkout@v4
+        with:
+          ref: 77a5017d938ded03b1530c2b72978cef27273d61
+      - name: Install the same synthetic evidence harness on the baseline
+        run: cp "$RUNNER_TEMP/watchnest-premium-visual.spec.ts" e2e/premium-visual.spec.ts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:e2e -- e2e/premium-visual.spec.ts
+        env:
+          WATCHNEST_EVIDENCE_LABEL: before-77a5017
+          WATCHNEST_EVIDENCE_COMMIT: 77a5017d938ded03b1530c2b72978cef27273d61
+      - name: Preserve synthetic baseline browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchnest-before-77a5017-synthetic-browser-evidence-${{ github.sha }}
+          path: |
+            test-results/visual-evidence/**/*.png
+            test-results/visual-evidence/**/*.json
+            test-results/visual-evidence/**/*.yml
+            test-results/browser-results.json
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 6

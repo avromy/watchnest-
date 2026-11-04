@@ -8,6 +8,7 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [recovery, setRecovery] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
@@ -51,6 +52,13 @@ export default function Login() {
   }
   return (
     <main id="main-content" className={styles.loginPage}>
+      <aside className={styles.introduction} aria-label="About WatchNest">
+        <span className={styles.kicker}>WATCHNEST · FAMILY LIBRARY</span>
+        <h2>Your family’s<br />video library.</h2>
+        <p>Videos you choose. A space of their own.</p>
+        <div className={styles.libraryMark} aria-hidden="true"><img src="/icon.svg" alt="" width="112" height="112" /></div>
+        <span className={styles.assurance}>Individual profiles. Parent-approved videos.</span>
+      </aside>
       <section className={styles.loginCard}>
         <Link className={styles.logo} href="/" aria-label="WatchNest home">
           <img src="/icon.svg" alt="" width="48" height="48" />
@@ -81,12 +89,13 @@ export default function Login() {
               <input
                 className="field"
                 id="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 autoComplete="current-password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 required
               />
+              <button type="button" className={styles.passwordToggle} aria-pressed={showPassword} onClick={() => setShowPassword(value => !value)}>{showPassword ? "Hide password" : "Show password"}</button>
             </>
           )}
           {error && (

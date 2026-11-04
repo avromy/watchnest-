@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { api, Profile } from "./model";
 import ProfileImage from "../ProfileImage";
 import Icon from "../ui/Icon";
+import "./ChildExperience.css";
 
 export default function ChildLogin() {
   const router = useRouter();
@@ -15,6 +16,40 @@ export default function ChildLogin() {
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
   const submittedPin = useRef("");
+  const modalRef = useRef<HTMLDivElement>(null);
+  const modalTrigger = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!selected && !parentMode) return;
+    const dialog = modalRef.current;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setSelected(null);
+        setParentMode(false);
+        setPin("");
+        setError("");
+        submittedPin.current = "";
+      }
+      if (event.key !== "Tab" || !dialog) return;
+      const controls = Array.from(
+        dialog.querySelectorAll<HTMLElement>("input, button:not(:disabled)"),
+      );
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      modalTrigger.current?.focus();
+    };
+  }, [selected, parentMode]);
 
   useEffect(() => {
     let cancelled = false;
@@ -83,7 +118,7 @@ export default function ChildLogin() {
 
   if (busy && !profiles.length)
     return (
-      <main id="main-content" className="profile-picker">
+      <main id="main-content" className="profile-picker premium-profile-picker">
         <div className="picker-loading" role="status">
           <img src="/icon.svg" alt="" width="58" height="58" />
           <span>Opening WatchNest…</span>
@@ -92,7 +127,7 @@ export default function ChildLogin() {
     );
 
   return (
-    <main id="main-content" className="profile-picker">
+    <main id="main-content" className="profile-picker premium-profile-picker">
       <header className="picker-header">
         <span className="brand">
           <img src="/icon.svg" alt="" width="42" height="42" />
@@ -101,11 +136,19 @@ export default function ChildLogin() {
       </header>
       <section className="picker-content" aria-labelledby="picker-title">
         <div className="picker-heading">
+          <p className="eyebrow">Make yourself at home</p>
           <h1 id="picker-title">Who’s watching?</h1>
+          <p>Your favorites. Your discoveries. Your own little library.</p>
         </div>
         {error && (
           <p role="alert" className="error picker-error">
             {error}
+          </p>
+        )}
+        {!profiles.length && (
+          <p className="picker-empty">
+            Your family library is almost ready. Parent can add a profile in
+            Parent Mode.
           </p>
         )}
         <div className="profile-grid">
@@ -114,7 +157,8 @@ export default function ChildLogin() {
               key={profile.id}
               className="profile-choice"
               disabled={busy}
-              onClick={() => {
+              onClick={(event) => {
+                modalTrigger.current = event.currentTarget;
                 setError("");
                 setPin("");
                 submittedPin.current = "";
@@ -129,6 +173,9 @@ export default function ChildLogin() {
                 size="large"
               />
               <strong>{profile.display_name}</strong>
+              <span className="profile-enter">
+                Open my library <span aria-hidden="true">↗</span>
+              </span>
               {profile.pin_enabled && (
                 <span className="profile-lock">
                   <Icon name="lock" width="15" /> PIN
@@ -139,7 +186,8 @@ export default function ChildLogin() {
         </div>
         <button
           className="parent-entry"
-          onClick={() => {
+          onClick={(event) => {
+            modalTrigger.current = event.currentTarget;
             setError("");
             setPin("");
             submittedPin.current = "";
@@ -150,9 +198,13 @@ export default function ChildLogin() {
           <Icon name="lock" width="18" /> Parent Mode
         </button>
       </section>
+      <footer className="picker-footer">
+        <Icon name="library" width="18" /> A little library. A world to explore.
+      </footer>
       {(selected || parentMode) && (
         <div
           className="picker-modal"
+          ref={modalRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby="pin-title"
@@ -165,9 +217,7 @@ export default function ChildLogin() {
             }
           }}
         >
-          <div
-            className="pin-card"
-          >
+          <div className="pin-card">
             {selected && (
               <ProfileImage
                 name={selected.display_name}

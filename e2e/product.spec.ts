@@ -68,10 +68,10 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
   await fixture(page, "parent");
   await page.goto("/parent/dashboard");
   await expect(
-    page.getByRole("heading", { name: "Family overview" }),
+    page.getByRole("heading", { name: "Their favorites. Your family library." }),
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Library and requests" }),
+    page.getByRole("heading", { name: "Their libraries" }),
   ).toBeVisible();
   await expect(
     page.getByRole("region", { name: "Ari library status" }),
@@ -83,14 +83,14 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
     page.getByText("Shared with children", { exact: true }),
   ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
-  await page.getByRole("link", { name: "Children", exact: true }).click();
+  await page.getByRole("link", { name: "Family", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Miri", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Eli", exact: true }),
   ).toBeVisible();
-  await page.getByRole("link", { name: /Inbox/ }).click();
+  await page.getByRole("link", { name: /Requests/ }).click();
   await expect(
     page.getByRole("heading", { name: "Lego trains" }),
   ).toBeVisible();
@@ -104,7 +104,7 @@ test("synthetic UI: child searches local library and asks parent on no match", a
 }) => {
   const changes = await fixture(page, "child");
   await page.goto("/watch/home");
-  await expect(page.getByText("Hi, Ari", { exact: true })).toBeVisible();
+  await expect(page.getByText("Hi, Ari.", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Library", exact: true }).click();
   const search = page.getByPlaceholder("Search your library");
   await search.fill("no matching dinosaur");
@@ -412,10 +412,10 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 900 });
   await page.goto("/parent/children");
   const dashboardBox = await page
-    .getByRole("link", { name: "Dashboard", exact: true })
+    .getByRole("link", { name: "Overview", exact: true })
     .boundingBox();
   const settingsBox = await page
-    .getByRole("link", { name: "Settings", exact: true })
+    .getByRole("link", { name: "Family", exact: true })
     .boundingBox();
   expect(dashboardBox).not.toBeNull();
   expect(settingsBox).not.toBeNull();
@@ -858,6 +858,7 @@ test("synthetic UI: mobile share text auto-resolves and retains a manual fallbac
   });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/parent/add-video");
+  await page.getByRole("button", { name: "Paste video links", exact: true }).click();
   const links = page.getByLabel("Paste one YouTube video link per line");
   await links.fill(
     "Shared from my phone https://youtu.be/dQw4w9WgXcQ?si=mobile",
@@ -890,6 +891,7 @@ test("synthetic UI: mobile URL fallback retries the same link after an automatic
   });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/parent/add-video");
+  await page.getByRole("button", { name: "Paste video links", exact: true }).click();
   const links = page.getByLabel("Paste one YouTube video link per line");
   await links.fill("https://youtu.be/dQw4w9WgXcQ");
   await expect(page.getByText("YouTube is temporarily unavailable.")).toBeVisible();
