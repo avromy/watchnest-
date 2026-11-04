@@ -33,3 +33,15 @@ Executable QA found that a successful text request cleared its message and colla
 ## Independent visual review correction R1-02
 
 Inspected actual CI129 candidate child-search-empty-full screenshots at390x844 and1024x768. They show an unrelated Collections shelf above the zero-result state. The shelf is now rendered only when the trimmed library query is empty. Matching and zero-result searches therefore place their results immediately after the search/filter controls. Clearing the query restores ordinary collection browsing. Video matching, assigned-video authorization, request actions and player code are unchanged. The affected child Library search screenshots require rerun on the corrected candidate; no new visual PASS is claimed by this implementation receipt.
+
+## Rendered review correction R2: expired/paused card readability
+
+Inspected actual CI132390x844 child-times-up-full.png. The dark player shell foreground (#f8fbf9) inherited into a white session-block panel, making its heading and explanatory copy almost invisible. Release owner explicitly approved a bounded presentation scope correction to the earlier file freeze: `src/app/watch/watch.css`, only `.child-player-shell .time-up-card` and its heading/paragraph/eyebrow descendants. These selectors now define shared white surface, ink heading, muted body and evergreen eyebrow colors, covering expired and paused messaging. ChildPlayer source, media styling, lifecycle, containment and backend remain unchanged. Existing all-state/four-viewport visual evidence requires rerender; no raster PASS is claimed until independent review of the repaired candidate.
+
+### Same-cause message-panel audit
+
+Source audit confirms that the same inherited pale foreground affects the initial Opening your video panel, authorization/startup error heading and help confirmation, All finished heading and Next in your library heading: each uses a direct-child `.panel` on the dark shell. Release owner expanded the bounded scope to this proven shared class. Final selectors are `.child-player-shell > .panel` for white background/ink foreground, its h1/h2/h3 descendants for ink, direct paragraph children excluding eyebrow/error for muted text, and eyebrow descendants for evergreen. Error alert colors remain governed by their existing error rule. No geometry, visibility, overlay, media-mount, frame, control or lifecycle styling changed. QA must add startup-failure, authorization/error, paused and ended/next captures and rerender all four viewport inventories.
+
+## PIN error duplicate-announcement correction
+
+Independent detail capture identified the same PIN error simultaneously rendered in the picker-level role=alert and modal role=alert. Source confirmed both used the shared error state without a modal guard. The picker-level error now renders only when neither a child PIN nor Parent Mode dialog is open; dialog errors retain their existing role=alert. API requests, PIN submission/reset behavior and authentication remain unchanged. QA must verify exactly one alert for incorrect child and Parent PINs, plus the global error on nonmodal child entry failure.

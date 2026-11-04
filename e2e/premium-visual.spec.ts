@@ -52,7 +52,7 @@ async function synthetic(page: Page, role: "parent" | "child") {
 }
 
 for (const viewport of viewports) {
-  const families = ["core", ...(viewport.width === 390 || viewport.width === 1440 ? ["parent-details"] : []), ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details"] : [])];
+  const families = ["core", "player-states", ...(viewport.width === 390 || viewport.width === 1440 ? ["parent-details"] : []), ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details", "child-entry"] : [])];
   for (const family of families) {
   test(`premium evidence: ${family} ${viewport.name} ${viewport.width}x${viewport.height}`, async ({ page }, info: TestInfo) => {
     test.setTimeout(180_000);
@@ -87,7 +87,10 @@ for (const viewport of viewports) {
     const capture = async (state: string) => {
       await expect(page.locator("main")).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
-      await page.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; });
+      await page.evaluate(async () => {
+        document.documentElement.style.scrollBehavior = "auto";
+        await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      });
       const scrollTo = async (top: number) => {
         const expected = await page.evaluate(async target => {
           const limit = Math.max(0, document.documentElement.scrollHeight - innerHeight);
@@ -95,7 +98,12 @@ for (const viewport of viewports) {
           await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
           return Math.min(target, limit);
         }, top);
-        await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(expected);
+        await expect.poll(async () => page.evaluate(async target => {
+          // Cancel a component's queued scrollIntoView animation as well as CSS smooth scroll.
+          window.scrollTo({ top: target, left: 0, behavior: "instant" });
+          await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+          return window.scrollY;
+        }, expected)).toBe(expected);
       };
       await scrollTo(0);
       const inventory = await page.evaluate(() => {
@@ -123,9 +131,10 @@ for (const viewport of viewports) {
           unnamedControls: controls.filter(control => !control.name),
           smallTouchTargets: controls.filter(control => control.width < 44 || control.height < 44),
           imagesMissingAlt: Array.from(document.querySelectorAll("img:not([alt])")).filter(visible).length,
+          alerts: Array.from(document.querySelectorAll('[role="alert"]')).filter(visible).map(element => element.textContent?.trim()).filter(Boolean),
           dialogs: Array.from(document.querySelectorAll('[role="dialog"]')).filter(visible).map(element => ({ name: name(element), ariaModal: element.getAttribute("aria-modal") })),
           activeElement: document.activeElement?.tagName,
-          boundedAssets: Array.from(document.querySelectorAll("img,svg")).filter(visible).map((element, index) => {
+          boundedAssets: Array.from(document.querySelectorAll("img,svg,iframe,.brand")).filter(visible).map((element, index) => {
             const rect = element.getBoundingClientRect();
             const ancestors = [];
             for (let parent = element.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
@@ -179,6 +188,68 @@ for (const viewport of viewports) {
       console.log(`VISUAL_EVIDENCE ${relative(process.cwd(), directory)}/manifest.json`);
     };
     const json = (value: unknown, status = 200) => ({ status, contentType: "application/json", body: JSON.stringify(value) });
+    if (family === "player-states") {
+      await synthetic(page, "child");
+      let releasePlayer!: () => void;
+      const playerGate = new Promise<void>(resolve => { releasePlayer = resolve; });
+      await page.route("**/api/child/player?**", async route => { await playerGate; await route.fulfill(json({ error: "The video player could not start safely. Please try again." }, 503)); });
+      await page.goto(`/watch/player/${videos[1].id}`, { waitUntil: "domcontentloaded" });
+      await expect(page.getByText("Opening your video…", { exact: true })).toBeVisible();
+      await capture("player-opening");
+      releasePlayer();
+      await expect(page.getByRole("heading", { name: "The video player didn’t start", exact: true })).toBeVisible();
+      await capture("player-startup-error");
+      await page.route("**/api/child/player?**", route => route.fulfill(json({ profile: profiles[1], video: { ...videos[1], made_for_kids: true }, next: videos[2], safe_playback_enabled: true })));
+      await page.route("https://www.youtube.com/iframe_api", route => route.abort());
+      await page.goto(`/watch/player/${videos[1].id}`);
+      await expect(page.getByRole("heading", { name: "The video player didn’t start", exact: true })).toBeVisible();
+      await capture("player-monitored-startup-error");
+      for (const failure of [
+        { name: "authorization", heading: "That video isn’t in your library", status: 403, error: "That video is not in your library." },
+        { name: "paused", heading: "Parent paused WatchNest", status: 200, error: "Parent paused WatchNest. Ask Parent to resume." },
+        { name: "expired", heading: "Time’s up for now", status: 403, error: "Time’s up for now. Ask Parent for more time." },
+      ]) {
+        await page.route("**/api/child/player?**", route => route.fulfill(json(failure.name === "paused" ? { profile: profiles[1], video: videos[1], next: null, safe_playback_enabled: true, session_access: { enabled: true, allowed: false, serverNow: new Date().toISOString(), expiresAt: null, remainingSeconds: 0, pausedSeconds: 600, revision: 2, state: "paused" } } : { error: failure.error }, failure.status)));
+        await page.goto(`/watch/player/${videos[1].id}`);
+        await expect(page.getByRole("heading", { name: failure.heading, exact: true })).toBeVisible();
+        await capture(`player-${failure.name}`);
+      }
+      await page.addInitScript(() => {
+        class SyntheticPlayer {
+          frame: HTMLIFrameElement;
+          events: any;
+          state = -1;
+          constructor(frame: HTMLIFrameElement, options: any) {
+            this.frame = frame; this.events = options.events;
+            (window as any).__visualSyntheticPlayer = this;
+            window.setTimeout(() => this.events.onReady({ target: this }), 0);
+          }
+          getIframe() { return this.frame; }
+          getVideoData() { return { video_id: this.frame.src.split("/embed/")[1]?.split("?")[0] }; }
+          getVideoUrl() { return `https://www.youtube.com/watch?v=${this.getVideoData().video_id}`; }
+          playVideo() { this.state = 1; this.events.onStateChange({ target: this, data: 1 }); }
+          pauseVideo() { this.state = 2; }
+          setVolume() {}
+          getCurrentTime() { return this.state === 0 ? 240 : 0; }
+          getDuration() { return 240; }
+          getPlayerState() { return this.state; }
+          finish() { this.state = 0; this.events.onStateChange({ target: this, data: 0 }); }
+          destroy() { this.frame.remove(); }
+        }
+        (window as any).YT = { Player: SyntheticPlayer };
+      });
+      await page.route("**/api/child/player?**", route => route.fulfill(json({ profile: profiles[1], video: { ...videos[1], made_for_kids: true }, next: videos[2], safe_playback_enabled: true })));
+      await page.goto(`/watch/player/${videos[1].id}`);
+      await expect(page.locator("iframe")).toBeVisible();
+      await page.waitForFunction(() => !!(window as any).__visualSyntheticPlayer);
+      await page.evaluate(() => (window as any).__visualSyntheticPlayer.playVideo());
+      await capture("player-synthetic-ready-next");
+      await page.evaluate(() => (window as any).__visualSyntheticPlayer.finish());
+      await expect(page.getByRole("heading", { name: `${videos[1].title} has ended`, exact: true })).toBeVisible();
+      await capture("player-synthetic-ended-next");
+      await finish();
+      return;
+    }
     if (family === "parent-details") {
       await synthetic(page, "parent");
       await page.route("**/api/parent/videos/search**", route => {
@@ -200,6 +271,15 @@ for (const viewport of viewports) {
       await page.getByRole("button", { name: /Approve 1 selected videos/ }).click();
       await expect(page.getByText("1 individually selected video approved.", { exact: true })).toBeVisible();
       await capture("parent-approval-success");
+      await page.goto("/parent/add-video");
+      await page.getByRole("searchbox", { name: "Search", exact: true }).fill("drawing");
+      await page.getByRole("button", { name: "Search", exact: true }).click();
+      await expect(page.getByRole("heading", { name: discoverCandidate.title, exact: true })).toBeVisible();
+      await capture("parent-youtube-search-results");
+      await page.getByRole("button", { name: "Preview", exact: true }).first().click();
+      await expect(page.getByRole("dialog")).toBeVisible();
+      await capture("parent-add-preview-dialog");
+      await page.getByRole("button", { name: "Close preview", exact: true }).click();
       for (const type of ["Channels", "Playlists"]) {
         await page.goto("/parent/add-video");
         await page.getByRole("button", { name: type, exact: true }).click();
@@ -243,6 +323,25 @@ for (const viewport of viewports) {
       await page.getByRole("button", { name: "Share collection", exact: true }).first().click();
       await expect(page.getByText("Collection saved.", { exact: true })).toBeVisible();
       await capture("parent-collection-share-success");
+      await page.goto("/parent/children");
+      if (!label.startsWith("before-")) await page.getByText("Photo or avatar", { exact: true }).first().click();
+      await capture("parent-profile-photo-avatar-settings");
+      await page.route("**/api/parent/dashboard", route => route.fulfill(json({ ...dashboard, videos: syntheticVideos, profiles: profiles.map(profile => profile.id === profiles[1].id ? discoveryProfile : profile) })));
+      await page.goto("/parent/controls");
+      await capture("parent-discovery-permissions-enabled");
+      for (const state of ["active", "paused", "expired"]) {
+        await page.route("**/api/parent/session-status", route => route.fulfill(json({ serverNow: new Date().toISOString(), profiles: profiles.map((profile, index) => ({ ...profile, session_duration_minutes: index === 0 ? 15 : null, session_expires_at: state === "active" && index === 0 ? new Date(Date.now() + 900000).toISOString() : null, session_paused_seconds: state === "paused" && index === 0 ? 600 : null, session_state_revision: 2, access: { enabled: index === 0, allowed: index !== 0 || state === "active", state: index === 0 ? state : "unlimited", expiresAt: state === "active" && index === 0 ? new Date(Date.now() + 900000).toISOString() : null, remainingSeconds: index === 0 ? state === "active" ? 900 : 0 : null, pausedSeconds: state === "paused" && index === 0 ? 600 : null, revision: 2 }, devices: [] })) })));
+        await page.reload();
+        await expect(page.getByRole("heading", { name: "Miri", exact: true })).toBeVisible();
+        await capture(`parent-remote-timer-${state}`);
+      }
+      await page.goto("/login");
+      await page.route("**/api/auth/parent", route => route.fulfill(json({ error: "We couldn’t sign you in. Check your email and password." }, 403)));
+      await page.getByLabel("Email", { exact: true }).fill("synthetic@example.test");
+      await page.getByLabel("Password", { exact: true }).fill("synthetic-not-a-real-password");
+      await page.getByRole("button", { name: "Sign in", exact: true }).click();
+      await expect(page.getByText("We couldn’t sign you in. Check your email and password.", { exact: true })).toBeVisible();
+      await capture("parent-sign-in-error");
       const empty = { ...dashboard, videos: [], profiles: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, openRequests: 0, byChild: [] } };
       await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
       for (const route of ["library", "collections", "inbox", "children"]) {
@@ -252,21 +351,33 @@ for (const viewport of viewports) {
       }
       await page.route("**/api/parent/dashboard", route => route.fulfill(json({ error: "Your family space is taking a moment. Please try again." }, 503)));
       await page.goto("/parent/dashboard");
-      await expect(page.getByText("Your family space is taking a moment. Please try again.", { exact: true })).toBeVisible();
+      await expect(page.getByRole("alert")).toContainText("Your family space is taking a moment. Please try again.");
       await capture("parent-dashboard-error");
       await finish();
       return;
     }
-    if (family === "child-details") {
+    if (family === "child-entry") {
       await synthetic(page, "parent");
       await page.goto("/watch");
       await page.getByRole("button", { name: /Miri/ }).click();
       await expect(page.getByRole("dialog")).toBeVisible();
       await capture("child-pin-dialog");
-      await page.route("**/api/auth/child", route => route.fulfill(json({ error: "That PIN didn’t match. Please try again." }, 403)));
+      await page.route("**/api/auth/child*", route => route.fulfill(json({ error: "That PIN didn’t match. Please try again." }, 403)));
       await page.getByLabel("4-digit PIN", { exact: true }).fill("1234");
-      await expect(page.getByText("That PIN didn’t match. Please try again.", { exact: true })).toBeVisible();
+      await expect(page.getByRole("dialog").getByRole("alert")).toHaveText("That PIN didn’t match. Please try again.");
+      if (!label.startsWith("before-")) await expect(page.getByRole("alert").filter({ hasText: "That PIN didn’t match. Please try again." })).toHaveCount(1);
       await capture("child-pin-error");
+      await page.getByRole("button", { name: "Cancel", exact: true }).click();
+      await page.getByRole("button", { name: "Parent Mode", exact: true }).click();
+      await page.route("**/api/auth/parent-mode*", route => route.fulfill(json({ error: "That Parent PIN didn’t match. Please try again." }, 403)));
+      await page.getByLabel("4-digit PIN", { exact: true }).fill("1234");
+      await expect(page.getByRole("dialog").getByRole("alert")).toHaveText("That Parent PIN didn’t match. Please try again.");
+      if (!label.startsWith("before-")) await expect(page.getByRole("alert").filter({ hasText: "That Parent PIN didn’t match. Please try again." })).toHaveCount(1);
+      await capture("parent-pin-error");
+      await finish();
+      return;
+    }
+    if (family === "child-details") {
       await synthetic(page, "child");
       let releaseLibrary!: () => void;
       const libraryGate = new Promise<void>(resolve => { releaseLibrary = resolve; });
@@ -287,15 +398,20 @@ for (const viewport of viewports) {
       await capture("child-hidden-empty");
       await page.route("**/api/child/library", route => route.fulfill(json({ profile: { ...profiles[1], discover_enabled: false, experience_mode: "standard" }, videos: syntheticVideos, collections: dashboard.collections })));
       await page.goto("/watch/home");
-      await page.getByRole("button", { name: "Discover", exact: true }).click();
+      await page.getByRole("button", { name: /^(Discover|Ask Parent)$/ }).click();
       await expect(page.getByLabel("Tell Parent", { exact: true })).toBeVisible();
       await capture("child-discover-disabled-request");
       await page.getByLabel("Tell Parent", { exact: true }).fill("A long new idea about building a treehouse with paper, glue, and recycled boxes");
       await page.getByRole("button", { name: "Send request", exact: true }).click();
       await expect(page.getByRole("heading", { name: "Sent to Parent", exact: true })).toBeVisible();
       await capture("child-discover-disabled-success");
-      await page.getByRole("button", { name: "Home", exact: true }).click();
-      await page.getByRole("button", { name: /Ari/ }).first().click();
+      for (const state of ["expired", "paused"]) {
+        await page.route("**/api/child/library", route => route.fulfill(json({ profile: discoveryProfile, videos: syntheticVideos, collections: dashboard.collections, session_access: { enabled: true, allowed: false, serverNow: new Date().toISOString(), expiresAt: null, remainingSeconds: 0, pausedSeconds: state === "paused" ? 600 : null, revision: 2, state } })));
+        await page.goto("/watch/home");
+        await expect(page.getByRole("button", { name: "Choose profile", exact: true })).toBeVisible();
+        await capture(`child-library-timer-${state}`);
+      }
+      await page.getByRole("button", { name: "Choose profile", exact: true }).click();
       await expect(page.getByRole("heading", { name: "Who’s watching?", exact: true })).toBeVisible();
       await capture("child-profile-switch-return");
       await finish();

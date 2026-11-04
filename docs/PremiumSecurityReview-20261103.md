@@ -13,10 +13,11 @@ Production comparison: `77a5017d938ded03b1530c2b72978cef27273d61`. Local HEAD wh
 | `src/app/login/page.tsx` | `6f6f5f86c09d8aea07fa1b7f453d21009d77285eb76e21a35246eee6dce05762` |
 | `src/app/login/login.module.css` | `ad206d1d6568af40c394d5e56762efc4d5e6cdcffbdd6cca56d7e01c530009d6` |
 | `src/components/child/ChildLibrary.tsx` | `802c6b2a8eb9f631934686d035e343afc64bf867836e58fd9f34c979196d6fd6` |
-| `src/components/child/ChildLogin.tsx` | `49bc452fcfea17b2075246856457fbdc22110f35db6c77d95a5000d737e318ce` |
+| `src/components/child/ChildLogin.tsx` | `3c7b685b4915b41d4b5588f60320a3d83f27ddfc0f3e6688043f6f221b09d893` |
 | `src/components/child/ChildExperience.css` | `d5ab170eb356db3cc6e3eb6681d48a88beedee2a40184c199e5d310effcffd9d` |
 | `src/components/parent/ParentApp.tsx` | `24a6c9c5c84679a2bc31cb06af1eb7486d2eafbe930361cfea9e03d924bb804e` |
 | `src/components/parent/Parent.module.css` | `72bd8d64acf52f09589ea5d4722c91c68002b075e883acd5707e614a3676100b` |
+| `src/app/watch/watch.css` | `8bc3f8207c9070a9f74d9e5f91e9f415549624770e9e4adb2473bf8889513068` |
 
 ## Narrow follow-up source qualification
 
@@ -25,6 +26,14 @@ Rechecked the subsequent request-success disclosure repair on 2026-11-04 UTC. Th
 ## R1 convergence source qualification
 
 Rechecked the next bounded frontend repairs on 2026-11-04 UTC against the prior reviewed candidate at `7089335fc2b6a1a4a9836853f7e4eb736b994257`. The three updated file hashes appear in the table above. Child Library adds only `!query.trim()` to the Collections shelf condition; it changes shelf visibility during a search without changing filtering, requests or playback. ParentApp changes only two checkbox label classes and wraps the corresponding child name/video title text in spans; checked values, selection callbacks and form/API payloads are byte-identical in this delta. Parent CSS excludes choice/switch rows from generic field-label grid styling, styles the choice rows, and adjusts phone header padding and action minimum dimensions. No callback, API, admission, assignment, discovery or timer semantics changed. All 64 protected manifest files were independently rechecked against their recorded hashes and production bytes with zero differences. **PASS for this bounded source delta.** Browser geometry, label usability and raster appearance require the R1 rendered checks; no visual or device PASS is claimed here.
+
+## R2 player message-panel color source qualification
+
+Independently inspected the added `src/app/watch/watch.css` delta on 2026-11-04 UTC. This tenth presentation file adds only foreground/background declarations for direct `.child-player-shell > .panel` message panels and their heading/body/eyebrow text. No layout, display, visibility, opacity, positioning, stacking, pointer-event, overflow, media, animation or overlay rule changes occur in this delta. Player lifecycle, media mount, iframe, controls and containment source are untouched. The table records the exact stylesheet SHA-256. All 64 protected files were again checked against their recorded hashes and production bytes with zero differences, including ChildPlayer. **PASS for this bounded source delta.** This confirms source scope only; color readability and visual outcomes require the R2 raster review.
+
+## Final PIN error-alert source qualification
+
+Independently rechecked the final ChildLogin correction on 2026-11-04 UTC. The sole delta from prior SHA-256 `49bc452fcfea17b2075246856457fbdc22110f35db6c77d95a5000d737e318ce` narrows the outer picker alert from `error` to `error && !selected && !parentMode`. Restoring only that expression reproduces the prior hash exactly; the updated table binds the new source. The existing dialog alert still displays errors while a child or Parent PIN dialog is active, avoiding a duplicate outer alert. PIN/auth handlers, request bodies, busy/reset state and routing are unchanged. All 64 protected manifest files were independently rechecked against recorded hashes and production bytes with zero differences. **PASS for this bounded source delta.** Screen-reader announcement quality and rendered accessibility remain separately qualified browser/review obligations; no visual or device PASS is claimed.
 
 ## Findings and disposition
 

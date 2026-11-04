@@ -140,7 +140,7 @@ export default function ChildLogin() {
           <h1 id="picker-title">Who’s watching?</h1>
           <p>Your favorites. Your discoveries. Your own little library.</p>
         </div>
-        {error && (
+        {error && !selected && !parentMode && (
           <p role="alert" className="error picker-error">
             {error}
           </p>
