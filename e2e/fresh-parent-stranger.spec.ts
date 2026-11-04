@@ -48,8 +48,12 @@ test('fresh busy Parent follows a child topic request to preview and approval',a
   await page.screenshot({path:info.outputPath('busy-parent-after-approval.png'),fullPage:true});
   await page.getByRole('link',{name:/Requests/}).click();
   await page.screenshot({path:info.outputPath('busy-parent-request-outcome.png'),fullPage:true});
-  // Frozen expectation: resolving a topic through approval should visibly resolve its request.
+  // CI138 preserved the genuine missing-fulfillment defect. The bounded product
+  // repair adds an explicit action; this extra user step is part of the rerun.
+  await page.getByRole('button',{name:'Mark as fulfilled',exact:true}).click();
+  await expect.poll(()=>changes.some(change=>change.path==='/api/parent/requests' && change.body.status==='resolved')).toBe(true);
   await expect(page.getByRole('heading',{name:'Lego trains',exact:true})).toHaveCount(0);
+  await page.screenshot({path:info.outputPath('busy-parent-request-fulfilled.png'),fullPage:true});
 });
 
 test('fresh low-confidence Parent corrects a pasted link then previews and assigns one child',async({page},info)=>{
@@ -100,6 +104,9 @@ test('fresh Parent signs in with password visibility reassurance',async({page},i
   await expect(page.getByRole('heading',{name:'Who’s watching?',exact:true})).toBeVisible();
   await page.screenshot({path:info.outputPath('signed-in-profile-picker.png'),fullPage:true});
   await page.getByRole('button',{name:'Parent Mode',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Parent Mode',exact:true})).toBeVisible();
+  await page.screenshot({path:info.outputPath('signed-in-parent-pin.png'),fullPage:true});
+  await page.getByLabel('4-digit PIN',{exact:true}).fill('1234');
   await expect(page).toHaveURL(/\/parent\/dashboard$/);
   await expect(page.getByRole('heading',{name:'Their favorites. Your family library.'})).toBeVisible();
   await page.screenshot({path:info.outputPath('signed-in-dashboard.png'),fullPage:true});

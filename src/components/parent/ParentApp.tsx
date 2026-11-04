@@ -2141,11 +2141,29 @@ export function Children() {
         title="Each one, their own space."
         description="Choose a photo or avatar, manage PINs, and check each child’s experience."
       />
-      <div className="grid grid-2">
-        {data.profiles.map((p) => (
-          <ChildSettings profile={p} key={p.id} />
-        ))}
-      </div>
+      {data.profiles.length ? (
+        <div className="grid grid-2">
+          {data.profiles.map((p) => (
+            <ChildSettings profile={p} key={p.id} />
+          ))}
+        </div>
+      ) : (
+        <section className="empty" aria-labelledby="empty-profiles-title">
+          <h2 id="empty-profiles-title">No child profiles to show</h2>
+          <p>
+            There are no child profiles to manage right now. Refresh to check
+            again.
+          </p>
+          <div className={styles.emptyActions}>
+            <button className="button" onClick={() => window.location.reload()}>
+              Refresh profiles
+            </button>
+            <Link className="button-secondary" href="/parent/dashboard">
+              Family overview
+            </Link>
+          </div>
+        </section>
+      )}
     </>
   );
 }
@@ -2318,6 +2336,12 @@ export function Inbox() {
               <p className="muted">
                 {new Date(r.created_at).toLocaleDateString()}
               </p>
+              {!r.youtube_video_id && (
+                <p className="muted">
+                  After adding a video, return here to mark this request as
+                  fulfilled.
+                </p>
+              )}
               <div className={styles.row}>
                 {r.youtube_video_id ? (
                   <>
@@ -2336,12 +2360,26 @@ export function Inbox() {
                     </Link>
                   </>
                 ) : (
-                  <Link
-                    className="button"
-                    href={`/parent/add-video?q=${encodeURIComponent(r.message)}`}
-                  >
-                    Find a video
-                  </Link>
+                  <>
+                    <Link
+                      className="button"
+                      href={`/parent/add-video?q=${encodeURIComponent(r.message)}`}
+                    >
+                      Find a video
+                    </Link>
+                    <button
+                      className="button-secondary"
+                      disabled={busy}
+                      onClick={() =>
+                        act("/api/parent/requests", "PATCH", {
+                          id: r.id,
+                          status: "resolved",
+                        })
+                      }
+                    >
+                      Mark as fulfilled
+                    </button>
+                  </>
                 )}
                 <button
                   className="button-quiet"

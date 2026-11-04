@@ -74,7 +74,7 @@ test('fresh older child retrieves saves and requests', async ({ page }, info) =>
   await page.getByRole('button', { name: 'Add Draw a friendly fox to Favorites', exact: true }).click();
   await page.getByPlaceholder('Search your library').fill('');
   await page.getByRole('button', { name: 'Home', exact: true }).click();
-  await page.getByRole('button', { name: /Favorites/ }).click();
+  await page.getByRole('button', { name: 'Favorites Your saved favorites', exact: true }).click();
   await expect(page.getByRole('link', { name: 'Play Draw a friendly fox', exact: true })).toBeVisible();
   await evidence(page, info, 'older-favorite-retrieved');
   await page.getByRole('button', { name: 'Discover', exact: true }).click();

@@ -355,6 +355,11 @@ for (const viewport of viewports) {
       for (const route of ["library", "collections", "inbox", "children"]) {
         await page.goto(`/parent/${route}`);
         await expect(page.locator("main h1")).toBeVisible();
+        if (route === "children" && !label.startsWith("before-")) {
+          await expect(page.getByRole("heading", { name: "No child profiles to show", exact: true })).toBeVisible();
+          await expect(page.getByRole("button", { name: "Refresh profiles", exact: true })).toBeVisible();
+          await expect(page.getByRole("link", { name: "Family overview", exact: true })).toHaveAttribute("href", "/parent/dashboard");
+        }
         await capture(`parent-${route}-empty`);
       }
       await page.route("**/api/parent/dashboard", route => route.fulfill(json({ error: "Your family space is taking a moment. Please try again." }, 503)));

@@ -59,3 +59,27 @@ This receipt records a source repair ready for independent recapture. It does no
 Corrected the Add Videos result count and approval action to use `video` for exactly one item and `videos` for other counts. The zero-selection approval fallback remains unchanged; handlers, validation, and APIs are unchanged. Source inspection verified both conditional strings; Prettier completed. No additional behavior or visual changes made.
 
 Updated ParentApp.tsx SHA-256: `ceb1baf8e92c50bb9374d0eb36ffa13b7b3e5aff640db551e049f31f8f110c25`.
+
+## Independent review R4 P2 — empty Family Profiles, 2026-11-04
+
+Inspected actual `ci136-candidate` phone (`390x844`) and desktop (`1440x1000`) `parent-details/parent-children-empty-full.png` rasters. Both showed the Family heading followed by blank content after a successful dashboard response containing zero profiles.
+
+Added a bounded zero-profile presentation branch in `Children`: the existing shared `.empty` treatment now shows “No child profiles to show,” a factual explanation, **Refresh profiles** using the existing safe browser-reload retry pattern, and **Family overview** linking to the existing parent dashboard. A small wrapping action group keeps both controls coherent on phones. The normal nonempty profile branch is unchanged. No create endpoint, auth change, backend assumption, player change, or data mutation was introduced.
+
+Scoped ESLint PASS; `npx tsc --noEmit` PASS. Empty-profile phone and desktop rasters must be recaptured and independently inspected before acceptance; source validation is not visual acceptance.
+
+Frozen SHA-256:
+
+- ParentApp.tsx: `72771fcdf5a9da520f55faab10c6ee076d818c9438d6da18cbea7bb04952f476`
+- Parent.module.css: `579e3870d4eb5bb94e31c63c23bec8d5a1c7248a293fb6e1987bb47c5170c95a`
+
+## Independent cold Parent P2 — explicit topic-request completion, 2026-11-04
+
+The independent workflow review found a topic request remained pending after following Find a video and approving a result. Added **Mark as fulfilled** only to pending requests without `youtube_video_id`, plus a brief visible hint explaining to return after adding a video. The action explicitly invokes the existing owned-request endpoint `PATCH /api/parent/requests` with that request's `id` and `status: "resolved"`. Shared `act` retains busy/error handling and dashboard refresh. **Not now** still dismisses, and **Find a video** still starts search.
+
+No automatic resolution, approval, new endpoint, backend change, or cross-child operation was added. Video-specific atomic approval is unchanged, including the server requirement for `approve` when resolving video requests. The empty Profiles repair remains present.
+
+Scoped ESLint PASS; `npx tsc --noEmit` PASS. The independent cold owner must follow Find a video → approve → return to Requests → Mark as fulfilled and verify the specific request clears. Implementation completion does not replace that outcome gate.
+
+Frozen ParentApp.tsx SHA-256: `ef657b7c3bf8e8b4d7f4a2f9153bb9d728511d5f60b89c8ae7bb1cbfccff2f4c`.
+Parent.module.css remains `579e3870d4eb5bb94e31c63c23bec8d5a1c7248a293fb6e1987bb47c5170c95a`.

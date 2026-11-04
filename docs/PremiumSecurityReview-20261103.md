@@ -15,8 +15,8 @@ Production comparison: `77a5017d938ded03b1530c2b72978cef27273d61`. Local HEAD wh
 | `src/components/child/ChildLibrary.tsx` | `6a6f62f69ae29f1906c307f2461b7c81701c51883c9cce42f93f61be3148df5d` |
 | `src/components/child/ChildLogin.tsx` | `3c7b685b4915b41d4b5588f60320a3d83f27ddfc0f3e6688043f6f221b09d893` |
 | `src/components/child/ChildExperience.css` | `d5ab170eb356db3cc6e3eb6681d48a88beedee2a40184c199e5d310effcffd9d` |
-| `src/components/parent/ParentApp.tsx` | `ceb1baf8e92c50bb9374d0eb36ffa13b7b3e5aff640db551e049f31f8f110c25` |
-| `src/components/parent/Parent.module.css` | `72bd8d64acf52f09589ea5d4722c91c68002b075e883acd5707e614a3676100b` |
+| `src/components/parent/ParentApp.tsx` | `ef657b7c3bf8e8b4d7f4a2f9153bb9d728511d5f60b89c8ae7bb1cbfccff2f4c` |
+| `src/components/parent/Parent.module.css` | `579e3870d4eb5bb94e31c63c23bec8d5a1c7248a293fb6e1987bb47c5170c95a` |
 | `src/app/watch/watch.css` | `b04668eb1e369aa8ee9a581ee8af9e878ebc5354b289ec68b1ca6fb665bb2869` |
 
 ## Narrow follow-up source qualification
@@ -38,6 +38,14 @@ Independently rechecked the final ChildLogin correction on 2026-11-04 UTC. The s
 ## R3 copy and heading-color source qualification
 
 Independently inspected the next three frontend deltas on 2026-11-04 UTC. Reversing only each stated change reproduces its prior reviewed SHA-256 exactly: ParentApp `24a6c9c5…bb804e`, ChildLibrary `802c6b2a…96d6fd6`, and watch.css `8bc3f820…9513068`. The table binds the updated full hashes. ParentApp adds singular/plural copy for found and selected video counts, without changing selection/approval handlers or payloads. ChildLibrary chooses paused versus expired heading/body copy from `sessionAccess.state` inside the unchanged enabled/!allowed gate; it does not change allowance, expiry, requests, profile switching or playback access. watch.css adds only a color declaration for `.child-player-heading .eyebrow`; no media, layout, visibility, positioning, stacking, pointer, overlay or containment rule changes occur. All 64 protected manifest files were independently rechecked against recorded hashes and production bytes with zero differences. **PASS for this bounded source delta.** This is not a raster, workflow, accessibility, device or release acceptance claim.
+
+## R4 empty-profile and explicit topic-completion source qualification
+
+Independently inspected the frozen ParentApp `ef657b7c3bf8e8b4d7f4a2f9153bb9d728511d5f60b89c8ae7bb1cbfccff2f4c` and Parent CSS `579e3870d4eb5bb94e31c63c23bec8d5a1c7248a293fb6e1987bb47c5170c95a` on 2026-11-04 UTC. Reversing only the empty Profiles branch, non-video completion hint/action, and wrapping empty-action CSS reproduces the prior reviewed ParentApp `ceb1baf8…110c25` and CSS `72bd8d64…6100b` hashes exactly. The zero-profile branch adds only a browser reload and existing overview link; the nonempty profile mapping is unchanged.
+
+The new Mark as fulfilled action appears only in the `r.youtube_video_id` false branch of pending-request rendering. It calls existing `act("/api/parent/requests", "PATCH", { id: r.id, status: "resolved" })`, preserving busy/error handling and dashboard reload; it grants no video or profile assignment. The video-ID true branch still uses existing RequestApproval and its atomic approval flow. The unchanged server selects the request by ID and authenticated parent ID, rejects missing/foreign requests, and rejects video-request resolution without `approve`. Existing metadata availability checks, owned-profile validation and `wn_approve_child_request` remain intact. An altered client therefore cannot use the new action to bypass video approval or resolve a different parent's request.
+
+All 64 protected manifest files were independently rechecked against recorded hashes and production bytes with zero differences. **PASS for this bounded source delta.** The Parent workflow owner still needs to exercise Find a video → approve → return → Mark as fulfilled and verify the requested item clears; this source receipt does not certify that rendered outcome or actual-device behavior.
 
 ## Findings and disposition
 

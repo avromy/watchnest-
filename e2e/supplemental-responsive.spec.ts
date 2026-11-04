@@ -150,6 +150,12 @@ for (const viewport of viewports) {
         files.push({ path, sha256: hash(await readFile(path)), region, scroll: await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY })) });
       };
       await screenshot("full", true, "Complete document: LEFT RIGHT TOP BOTTOM");
+      if (viewport.width === 360 && state === "child-home") {
+        // Independent pixel inspection requested an unoccluded shortcut view.
+        await scrollTo(500);
+        await screenshot("shortcut-readable", false, "Readable shortcut assets above fixed navigation; verified document scroll y=500 or clamped limit");
+        await scrollTo(0);
+      }
       if (inventory.documentHeight > viewport.height + 1) {
         await screenshot("top", false, "Readable viewport: LEFT RIGHT TOP");
         for (let y = viewport.height - 80, tile = 1; y < inventory.documentHeight - viewport.height; y += viewport.height - 80, tile += 1) {

@@ -34,3 +34,18 @@ Current verdict: INTERACTIVE COMPLETION NOT YET ESTABLISHED. Initial CI failures
 ### CI137 login adapter receipt
 
 QA checked the access contract: successful direct /login deliberately routes to /watch; response role does not choose the destination. {ok:true} is valid. My exact dashboard URL expectation is withdrawn as unsupported, while the observed extra Parent navigation step remains a discoverability observation. Rerun now asserts the family picker, captures it full-page, follows the visible Parent Mode control, and still requires arrival in the Parent dashboard. This preserves the practical task (sign in and reach Parent work) and does not alter application behavior.
+
+## CI138 independent outcome review
+
+Read raw browser-results.json and actual busy-parent-after-approval, busy-parent-request-outcome, new-parent-library-outcome, and login failure PNGs.
+
+- Low-confidence task: PASS in browser. Malformed link recovery, preview without approval, explicit selection, Miri-only mutation, and final library presence succeeded. Actual final library card says “Lego train adventure” / “Miri”; other existing cards say Ari. This is synthetic transport persistence, not real backend/provider proof.
+- Busy Parent task: FAIL — moderate genuine workflow gap. Actual success banner says “1 individually selected video approved.” Result says Already approved / Ari. Returning to Requests still shows “1 little request” and Lego trains, with only Find a video / Not now. No clear fulfilled/done action exists in the observed inbox; “Not now” contradicts successful fulfillment. I will not use dismissal to manufacture a pass or withdraw the frozen request outcome expectation. The only observed mutation is approval; no request update. Product should carry request context through approval and fulfill it, or provide an explicit fulfilled control.
+- Login: password controls and sign-in succeeded; Parent Mode opened a centered, focused PIN modal with clear instruction “Enter the 4-digit Parent PIN.” This is an intelligible protective extra step, not an authentication failure. Narrow adapter now enters synthetic PIN 1234 via the visible “4-digit PIN” field before requiring dashboard. Extra user actions are preserved: sign in → scroll to Parent Mode → click → enter PIN. Dashboard completion still needs runtime evidence.
+
+Disposition: reject complete busy-Parent task acceptance pending product correction and exact-candidate rerun. Low-confidence task accepted only within the synthetic browser boundary. No static-only acceptance.
+
+
+## Bounded product repair rerun pending
+
+Release owner accepted the CI138 missing-fulfillment defect and authorized an explicit Mark as fulfilled control for non-video requests using the existing PATCH resolved contract. QA adapted only the busy Parent journey to click that visible action after approval and returning to Requests, then require a resolved request mutation and disappearance of the pending topic. A new after-fulfillment PNG is captured; the original before-fulfillment screenshot and failed CI138 expectation remain preserved. This records an extra user action rather than claiming automatic fulfillment. This amendment is Builder test adaptation, not fresh independent acceptance. Exact-candidate execution and independent post-repair review remain required.
