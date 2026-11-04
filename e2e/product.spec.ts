@@ -74,13 +74,13 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
     page.getByRole("heading", { name: "Their libraries" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("region", { name: "Ari library status" }),
+    page.locator("article").filter({ has: page.getByRole("heading", { name: "Ari", exact: true }) }),
   ).toContainText("3 approved videos");
   await expect(
-    page.getByRole("region", { name: "Miri library status" }),
+    page.locator("article").filter({ has: page.getByRole("heading", { name: "Miri", exact: true }) }),
   ).toContainText("0 approved videos");
   await expect(
-    page.getByText("Shared with children", { exact: true }),
+    page.getByRole("heading", { name: "Their libraries", exact: true }),
   ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await page.getByRole("link", { name: "Family", exact: true }).click();
@@ -1030,10 +1030,10 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
   // None may become a parent-facing YouTube engagement report.
   await page.goto("/parent/dashboard");
   await expect(
-    page.getByRole("region", { name: "Ari library status" }),
+    page.locator("article").filter({ has: page.getByRole("heading", { name: "Ari", exact: true }) }),
   ).toContainText("3 approved videos");
   await expect(
-    page.getByText("Shared with children", { exact: true }),
+    page.getByRole("heading", { name: "Their libraries", exact: true }),
   ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await expect(
@@ -1051,4 +1051,91 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
   await expect(
     page.getByText(dashboard.analytics.popular[0].title, { exact: true }),
   ).toHaveCount(0);
+});
+
+test("synthetic UI: a child finds approved videos in a 240-item library", async ({ page }) => {
+  await fixture(page, "child");
+  const manyVideos = Array.from({ length: 240 }, (_, index) => ({
+    ...dashboard.videos[index % dashboard.videos.length],
+    id: `10000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
+    title: index === 173 ? "The hidden otter drawing lesson" : `Everyday video ${String(240 - index).padStart(3, "0")}`,
+    favorite: index === 173 || index === 7,
+    progress: undefined,
+    added_at: new Date(Date.UTC(2026, 8, 30, 0, index)).toISOString(),
+  }));
+  await page.route("**/api/child/library", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: dashboard.profiles[1], videos: manyVideos, collections: [] }) }));
+  await page.goto("/watch/home");
+  await page.getByRole("button", { name: "Library", exact: true }).click();
+  const search = page.getByPlaceholder("Search your library");
+  await search.fill("hidden otter");
+  await expect(page.getByRole("link", { name: "Play The hidden otter drawing lesson", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Play / })).toHaveCount(1);
+  await search.fill("");
+  await page.getByRole("button", { name: "Favorites", exact: true }).click();
+  await expect(page.getByRole("link", { name: /^Play / })).toHaveCount(2);
+  await page.getByLabel("Sort videos").selectOption("title");
+  await expect(page.getByRole("link", { name: /^Play / }).first()).toHaveAttribute("aria-label", "Play Everyday video 233");
+  await page.getByRole("button", { name: "All videos", exact: true }).click();
+  await expect(page.getByRole("link", { name: /^Play / })).toHaveCount(240);
+  await expect(page.getByRole("link", { name: /^Play / }).first()).toHaveAttribute("aria-label", "Play Everyday video 001");
+  // Only approved-library data is searched: discovery/player providers remain absent.
+  await expect(page.locator("iframe")).toHaveCount(0);
+});
+
+test("synthetic UI: intermediate widths keep parent tools and child browsing within reach", async ({ page }) => {
+  await fixture(page, "parent");
+  const assertWithinViewport = async () => {
+    await expect(page.locator("main h1")).toBeVisible();
+    const clipping = await page.evaluate(() => {
+      const elements = Array.from(document.querySelectorAll("main button,main input:not([type=hidden]),main select,main textarea"));
+      return {
+        documentOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+        clippedControls: elements.filter(element => {
+          const rect = element.getBoundingClientRect();
+          return rect.width > 0 && rect.height > 0 && (rect.left < -1 || rect.right > innerWidth + 1);
+        }).map(element => element.getAttribute("aria-label") || element.textContent?.trim() || element.tagName),
+      };
+    });
+    expect(clipping).toEqual({ documentOverflow: false, clippedControls: [] });
+  };
+  for (const width of [360, 412, 520, 640, 820, 900, 1180, 1280]) {
+    await page.setViewportSize({ width, height: width < 520 ? 915 : 820 });
+    for (const route of ["/parent/add-video", "/parent/controls"]) {
+      await page.goto(route);
+      await assertWithinViewport();
+    }
+  }
+  await page.unroute("**/api/**");
+  await fixture(page, "child");
+  for (const width of [360, 412, 520, 640, 820, 900, 1180, 1280]) {
+    await page.setViewportSize({ width, height: width < 520 ? 915 : 820 });
+    await page.goto("/watch/home");
+    await page.getByRole("button", { name: "Library", exact: true }).click();
+    await assertWithinViewport();
+  }
+});
+
+test("synthetic UI: password visibility and recovery work with a keyboard", async ({ page }) => {
+  await page.route("**/api/auth/parent", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ message: "If this address has an account, a reset link is on its way." }) }));
+  await page.goto("/login");
+  await page.getByLabel("Email", { exact: true }).fill("synthetic@example.test");
+  const password = page.getByLabel("Password", { exact: true });
+  await password.fill("synthetic-not-a-real-password");
+  await expect(password).toHaveAttribute("type", "password");
+  await password.focus();
+  await page.keyboard.press("Tab");
+  const toggle = page.getByRole("button", { name: "Show password", exact: true });
+  await expect(toggle).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(password).toHaveAttribute("type", "text");
+  await page.getByRole("button", { name: "Hide password", exact: true }).press("Enter");
+  await expect(password).toHaveAttribute("type", "password");
+  await page.getByRole("button", { name: "Forgot password?", exact: true }).press("Enter");
+  await expect(page.getByRole("heading", { name: "Reset your password", exact: true })).toBeVisible();
+  await expect(password).toHaveCount(0);
+  await expect(page.getByLabel("Email", { exact: true })).toHaveValue("synthetic@example.test");
+  await page.getByRole("button", { name: "Send reset link", exact: true }).press("Enter");
+  await expect(page.getByText("If this address has an account, a reset link is on its way.")).toBeVisible();
+  await page.getByRole("button", { name: "Back to sign in", exact: true }).press("Enter");
+  await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeVisible();
 });
