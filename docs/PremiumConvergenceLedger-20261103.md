@@ -1,43 +1,46 @@
 # Premium experience convergence — bounded review ledger
 
-Production remains77a5017; UI release blocked by existing physical playback gate.
-No premature UI/visual acceptance. Current branch PR49 qualification only.
+Production remains `77a5017d938ded03b1530c2b72978cef27273d61` /
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`. Existing physical playback acceptance
+blocks promotion. PR49 is isolated qualification work, not a live premium release.
 
-## R1 independent review
+## Candidate and evidence chronology
 
-Comparator and adversarial Reporter independently inspected CI129 rasters bound
-to PRhead e60d5ffa187524abe2d658ad137b729c7a491b99. Both withheld clearance.
-Original reports retained. Screenshot metadata actual CImerge source tree
-must match requested head tree; names alone are not proof.
+| Source / run | Result and disposition |
+| --- | --- |
+| e60d5ff / CI129 | Initial independent review rejected collection labels, empty-search hierarchy, phone targets and incomplete request capture. Retained. |
+| f10e5ff / CI132 | Complete CI PASS after R1 repairs; readable rasters exposed player-message contrast and duplicate PIN announcements. Retained. |
+| 53bd2f7 / CI134 | R2 source repairs; 48/50 browser tests, two test locator ambiguities. Final-state coverage incomplete; no acceptance inferred. |
+| 1f7735c / CI135 | Same application as 53bd; 48/50, remaining locator matched framework route announcer. Fixed with app-specific error text, not removed assertion. Retained. |
+| da6edbb4436fc6f455eaef87ace5df61c3e62396 / CI136 | Frozen R3 application, tree bb562b7c878d6e3be904b318a54e8546892fce52. Final full evidence and independent verdicts pending. |
 
-- Collection selection rows: checkbox-only shaded bars detached from titles.
-  Parent repaired label specificity and explicit selection-row layout; same-class
-  child choices/switch layout checked. Rerender phone/tablet/desktop PENDING.
-- Search empty state: unrelated Collections ahead of no-results response.
-  Child suppresses unrelated shelf during active query; clearing restores it.
-  Matching/no-result/cleared search executable and visual recheck PENDING.
-- Phone header targets:43px Add and42px Switch. Parent enforces44px minima and
-  narrow-screen spacing.360/390 geometry and pixels recheck PENDING.
-- Request-success disclosure: executable capture uncovered success hidden when
-  message cleared. Child now keeps disclosure open while sent. Actual request
-  success/error/reset regression and complete later-state capture PENDING.
-- Evidence capture: smooth scroll made purported top/bottom/middle crops capture
-  incorrect locations. QA now forces instant capture scrolling and verifies
-  actual position before screenshot; this is a recorded capture intervention,
-  not an application behavior assertion. Fresh artifacts required.
-- Missing neutral bounded-asset/edge inventory: QA adds per-state identifiers,
-  bounds, clipping ancestry and explicit source-coordinate references. Pixel
-  inspectors still decide visible clipping; geometry cannot certify artwork.
-- Missing later states: prior run stopped at request success. Baseline known bug
-  is preserved/disclosed; any baseline-only capture intervention must be explicit.
+## Defects and corrections
 
-## Source/evidence discipline
+- R1 collection rows: explicit selectable-label layout fixes detached title and checkbox. Rechecked independently in R2/R3 rasters.
+- R1 search: hide unrelated Collections while an approved-library query is active; clearing restores shelves. R2/R3 review rechecked.
+- R1 phone targets: Add and Switch now enforce 44px minima and narrow spacing. Executable geometry and rendered review retained.
+- R1 requests: keep success disclosure visible after clearing submitted message. Browser regression and fresh rendered success retained.
+- Capture defect: force instant scroll, settle layout, verify actual position before readable tiles. Original misleading capture retained; no silent replacement.
+- R2 paper player messages: scoped dark foreground makes Time's Up/error/loading/ended/next readable on white panels. No player lifecycle change.
+- R2 PIN: dialog owns error announcement while active; eliminate duplicate global alert. R3 screenshots rechecked.
+- R3 dark player header: use readable amber eyebrow outside paper panels. Final raster recheck pending.
+- R3 paused session: explicitly say Parent paused WatchNest, keeping expired Time's Up distinct. Authorization gate unchanged; all four anchor captures pending.
+- R3 singular labels: Add/Approve one video uses singular copy. Final exact-candidate assertions pending.
 
-Local code checks pass for repairs; no repaired-raster PASS yet. Previous
-request-area/search/collection/header evidence is STALE for corresponding repairs.
-Fresh exact-candidate full CI+artifacts → independent convergence recheck → fresh
-five-person final jury and cold rendered usability journeys. Material findings
-are repair work, never routine Founder design choices.
+## Independent acceptance discipline
 
-No independent visual gate, native playback, iPad or final release PASS is
-inferred from this ledger. The Founder-only physical gate must remain explicit.
+Comparator and adversarial reports R1–R3 remain historical evidence; their limited
+or rejected verdicts are not rewritten as final PASS. Source, clean tree, fixture,
+harness, viewport, screenshots and actual scroll coordinates are recorded in
+manifests. Neutral asset crops preserve source coordinates; hashes and geometry
+are inventories, never proof that a person inspected the pixels.
+
+Final Human-Eye coverage, five fresh unanimous jurors, and fresh rendered Stranger
+journeys remain separate gates. Two preliminary agents inherited project history;
+their observations are explicitly supplemental and disqualified from cold status.
+Fresh-context reviewers replace them. Do not infer a cold review from a role name.
+
+The existing authenticated backend, physical iPad Safari/PWA, genuine YouTube,
+native fullscreen and remote audio/video stop require separate evidence. Synthetic
+fixtures cannot close those gates. No Founder design or deployment approval is
+required; genuine physical acceptance remains unresolved.

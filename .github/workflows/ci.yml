@@ -7,7 +7,29 @@ on:
 permissions:
   contents: read
 jobs:
+  qualification-mode:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.mode.outputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: mode
+        name: Bind follow-up journeys to the frozen application
+        shell: bash
+        run: |
+          frozen=da6edbb4436fc6f455eaef87ace5df61c3e62396
+          mode=full
+          if git merge-base --is-ancestor "$frozen" HEAD &&
+             git diff --quiet "$frozen" HEAD -- . ':!docs/**' ':!e2e/**' ':!.github/workflows/**' ':!scripts/**' &&
+             git diff --quiet "$frozen" HEAD -- e2e/premium-visual.spec.ts e2e/fixtures.ts playwright.config.ts; then
+            mode=cold-journeys
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          git rev-parse HEAD HEAD^{tree} "$frozen:src" HEAD:src
   quality-checks:
+    needs: qualification-mode
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,9 +43,12 @@ jobs:
       - run: npm run test -- --run
       - run: npm run build
       - run: npm run test:e2e
+        if: needs.qualification-mode.outputs.mode != 'cold-journeys'
         env:
           WATCHNEST_EVIDENCE_LABEL: candidate
           WATCHNEST_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      - run: npm run test:e2e -- e2e/fresh-parent-stranger.spec.ts e2e/fresh-child-stranger.spec.ts
+        if: needs.qualification-mode.outputs.mode == 'cold-journeys'
       # Explicit allowlist: synthetic screenshots, DOM inventories, and result JSON.
       # No traces, credentials, environment files, or authenticated browser state.
       - name: Preserve synthetic browser evidence
@@ -35,6 +60,7 @@ jobs:
             test-results/visual-evidence/**/*.png
             test-results/visual-evidence/**/*.json
             test-results/visual-evidence/**/*.yml
+            test-results/fresh-*/**/*.png
             test-results/browser-results.json
             docs/evidence/*-synthetic.png
           if-no-files-found: warn
@@ -43,6 +69,8 @@ jobs:
       - run: npm audit --omit=dev --audit-level=high
 
   baseline-visual-evidence:
+    needs: qualification-mode
+    if: needs.qualification-mode.outputs.mode != 'cold-journeys'
     # Historical appearance may contain accessibility defects. Preserve them as
     # BEFORE evidence without allowing that legacy result to certify a candidate.
     continue-on-error: true
