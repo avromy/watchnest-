@@ -67,7 +67,7 @@ for (const viewport of viewports) {
       runtimeBaseUrl: info.project.use.baseURL,
       previewUrl: process.env.WATCHNEST_REVIEW_PREVIEW_URL || null,
       previewDeployment: process.env.WATCHNEST_REVIEW_PREVIEW_DEPLOYMENT || null,
-      sourceTree: git("rev-parse", "HEAD^{tree}"), applicationSourceTree: git("rev-parse", "HEAD:src"), frozenApplicationCommit: "da6edbb4436fc6f455eaef87ace5df61c3e62396",
+      sourceTree: git("rev-parse", "HEAD^{tree}"), applicationSourceTree: git("rev-parse", "HEAD:src"), frozenApplicationCommit: "c670d55a9bf22aa493f685fa62f79fda89151247",
       workingDiffSha256: hash(git("diff", "HEAD", "--", "src", "public", "e2e", "playwright.config.ts")),
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
@@ -150,7 +150,7 @@ for (const viewport of viewports) {
         files.push({ path, sha256: hash(await readFile(path)), region, scroll: await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY })) });
       };
       await screenshot("full", true, "Complete document: LEFT RIGHT TOP BOTTOM");
-      if (viewport.width === 360 && state === "child-home") {
+      if (viewport.width === 360 && ["child-home", "child-library"].includes(state)) {
         // Independent pixel inspection requested an unoccluded shortcut view.
         await scrollTo(500);
         await screenshot("shortcut-readable", false, "Readable shortcut assets above fixed navigation; verified document scroll y=500 or clamped limit");

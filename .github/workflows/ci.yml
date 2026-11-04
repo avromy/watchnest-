@@ -19,7 +19,7 @@ jobs:
         name: Bind follow-up journeys to the frozen application
         shell: bash
         run: |
-          frozen=da6edbb4436fc6f455eaef87ace5df61c3e62396
+          frozen=c670d55a9bf22aa493f685fa62f79fda89151247
           mode=full
           if git merge-base --is-ancestor "$frozen" HEAD &&
              git diff --quiet "$frozen" HEAD -- . ':!docs/**' ':!e2e/**' ':!.github/workflows/**' ':!scripts/**' &&
@@ -49,6 +49,9 @@ jobs:
           WATCHNEST_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
       - run: npm run test:e2e -- e2e/fresh-parent-stranger.spec.ts e2e/fresh-child-stranger.spec.ts e2e/supplemental-responsive.spec.ts
         if: needs.qualification-mode.outputs.mode == 'cold-journeys'
+        env:
+          WATCHNEST_EVIDENCE_LABEL: candidate
+          WATCHNEST_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
       # Explicit allowlist: synthetic screenshots, DOM inventories, and result JSON.
       # No traces, credentials, environment files, or authenticated browser state.
       - name: Preserve synthetic browser evidence
