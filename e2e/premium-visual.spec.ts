@@ -332,7 +332,8 @@ for (const viewport of viewports) {
       for (const state of ["active", "paused", "expired"]) {
         await page.route("**/api/parent/session-status", route => route.fulfill(json({ serverNow: new Date().toISOString(), profiles: profiles.map((profile, index) => ({ ...profile, session_duration_minutes: index === 0 ? 15 : null, session_expires_at: state === "active" && index === 0 ? new Date(Date.now() + 900000).toISOString() : null, session_paused_seconds: state === "paused" && index === 0 ? 600 : null, session_state_revision: 2, access: { enabled: index === 0, allowed: index !== 0 || state === "active", state: index === 0 ? state : "unlimited", expiresAt: state === "active" && index === 0 ? new Date(Date.now() + 900000).toISOString() : null, remainingSeconds: index === 0 ? state === "active" ? 900 : 0 : null, pausedSeconds: state === "paused" && index === 0 ? 600 : null, revision: 2 }, devices: [] })) })));
         await page.reload();
-        await expect(page.getByRole("heading", { name: "Miri", exact: true })).toBeVisible();
+        const timer = page.locator("section.panel").filter({ has: page.getByRole("heading", { name: "Miri", exact: true }) }).first();
+        await expect(timer).toContainText(state === "active" ? /min left/ : state === "paused" ? /Paused.*min saved/ : "Time’s up");
         await capture(`parent-remote-timer-${state}`);
       }
       await page.goto("/login");
