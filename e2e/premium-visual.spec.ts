@@ -52,14 +52,16 @@ async function synthetic(page: Page, role: "parent" | "child") {
 }
 
 for (const viewport of viewports) {
-  test(`premium evidence: ${viewport.name} ${viewport.width}x${viewport.height}`, async ({ page }, info: TestInfo) => {
+  const families = ["core", ...(viewport.width === 390 || viewport.width === 1440 ? ["parent-details"] : []), ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details"] : [])];
+  for (const family of families) {
+  test(`premium evidence: ${family} ${viewport.name} ${viewport.width}x${viewport.height}`, async ({ page }, info: TestInfo) => {
     test.setTimeout(180_000);
     await page.setViewportSize(viewport);
-    const directory = `test-results/visual-evidence/${label}/${viewport.width}x${viewport.height}`;
+    const directory = `test-results/visual-evidence/${label}/${viewport.width}x${viewport.height}${family === "core" ? "" : `/${family}`}`;
     await mkdir(directory, { recursive: true });
     const captures: unknown[] = [];
     const manifest = {
-      schema: 1, kind: "synthetic-rendered-browser-evidence", label,
+      schema: 1, kind: "synthetic-rendered-browser-evidence", label, family,
       sourceCommit: git("rev-parse", "HEAD"),
       requestedSourceCommit: process.env.WATCHNEST_EVIDENCE_COMMIT || null,
       ciEventCommit: process.env.GITHUB_SHA || null,
@@ -76,7 +78,7 @@ for (const viewport of viewports) {
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
       captureInterventions: ["Root-document smooth scrolling is disabled only in the synthetic browser capture; every tile records and verifies its actual scroll position."],
-      baselineInterventions: label.startsWith("before-") ? ["Reopen the historical request disclosure after successful submit so its otherwise hidden success state can be inspected. This does not certify baseline usability."] : [],
+      baselineInterventions: [] as string[],
       captures,
     };
     const saveManifest = async () => {
@@ -172,6 +174,133 @@ for (const viewport of viewports) {
       expect.soft(inventory.unnamedControls, `${state}: interactive controls require names`).toEqual([]);
       expect.soft(inventory.language, `${state}: document language`).toBe("en");
     };
+    const finish = async () => {
+      await info.attach(`visual-manifest-${family}-${viewport.width}x${viewport.height}`, { path: `${directory}/manifest.json`, contentType: "application/json" });
+      console.log(`VISUAL_EVIDENCE ${relative(process.cwd(), directory)}/manifest.json`);
+    };
+    const json = (value: unknown, status = 200) => ({ status, contentType: "application/json", body: JSON.stringify(value) });
+    if (family === "parent-details") {
+      await synthetic(page, "parent");
+      await page.route("**/api/parent/videos/search**", route => {
+        const url = new URL(route.request().url());
+        const type = url.searchParams.get("type");
+        return route.fulfill(json(url.searchParams.has("source") || type === "video" ? { videos: [discoverCandidate], nextPageToken: null } : { items: [{ id: `synthetic-${type}`, type, title: type === "channel" ? "Little Makers Studio" : "Weekend projects", description: "A synthetic family-friendly source", thumbnail_url: syntheticVideos[0].thumbnail_url, channel_title: "Little Makers Studio" }], nextPageToken: null }));
+      });
+      await page.route("**/api/parent/videos/lookup", route => route.fulfill(json({ videos: [discoverCandidate], errors: [] })));
+      await page.goto("/parent/add-video");
+      if (!label.startsWith("before-")) await page.getByRole("button", { name: "Paste video links", exact: true }).click();
+      await capture("parent-url-intake");
+      await page.getByLabel("Paste one YouTube video link per line").fill("https://youtu.be/newvideo123");
+      if (label.startsWith("before-")) await page.getByRole("button", { name: "Load videos", exact: true }).click();
+      await expect(page.getByRole("heading", { name: discoverCandidate.title, exact: true })).toBeVisible();
+      await capture("parent-url-resolved");
+      await page.getByRole("checkbox", { name: "Select this video", exact: true }).check();
+      await page.getByRole("checkbox", { name: "Ari", exact: true }).check();
+      await capture("parent-approval-assignment");
+      await page.getByRole("button", { name: /Approve 1 selected videos/ }).click();
+      await expect(page.getByText("1 individually selected video approved.", { exact: true })).toBeVisible();
+      await capture("parent-approval-success");
+      for (const type of ["Channels", "Playlists"]) {
+        await page.goto("/parent/add-video");
+        await page.getByRole("button", { name: type, exact: true }).click();
+        await page.getByRole("searchbox", { name: "Search", exact: true }).fill("makers");
+        await page.getByRole("button", { name: "Search", exact: true }).click();
+        await expect(page.getByRole("button", { name: "Browse videos", exact: true })).toBeVisible();
+        await capture(`parent-${type.toLowerCase()}-results`);
+        await page.getByRole("button", { name: "Browse videos", exact: true }).click();
+        await expect(page.getByRole("heading", { name: discoverCandidate.title, exact: true })).toBeVisible();
+        await capture(`parent-${type.toLowerCase()}-videos`);
+      }
+      await page.goto("/parent/add-video");
+      await page.route("**/api/parent/videos/search**", route => route.fulfill(json({ videos: [], nextPageToken: null })));
+      await page.getByRole("searchbox", { name: "Search", exact: true }).fill("no matching title");
+      await page.getByRole("button", { name: "Search", exact: true }).click();
+      await expect(page.getByRole("heading", { name: "No matching videos", exact: true })).toBeVisible();
+      await capture("parent-search-empty");
+      await page.route("**/api/parent/videos/search**", route => route.fulfill(json({ error: "Video search is taking a moment. Please try again." }, 503)));
+      await page.getByRole("button", { name: "Search", exact: true }).click();
+      await expect(page.getByText("Video search is taking a moment. Please try again.", { exact: true })).toBeVisible();
+      await capture("parent-search-error");
+      let releaseSearch!: () => void;
+      const searchGate = new Promise<void>(resolve => { releaseSearch = resolve; });
+      await page.route("**/api/parent/videos/search**", async route => { await searchGate; await route.fulfill(json({ videos: [] })); });
+      await page.getByRole("button", { name: "Search", exact: true }).click();
+      await expect(page.getByText("Finding real video details…", { exact: true })).toBeVisible();
+      await capture("parent-search-loading");
+      releaseSearch();
+      await page.goto("/parent/collections");
+      await page.getByRole("button", { name: "Edit collection", exact: true }).first().click();
+      await expect(page.getByRole("heading", { name: "Edit collection", exact: true })).toBeVisible();
+      await capture("parent-collection-edit");
+      if (!label.startsWith("before-")) await page.getByText("Share with children", { exact: true }).first().click();
+      const share = page.locator("details").filter({ hasText: "Share with children" }).first();
+      if (!label.startsWith("before-")) {
+        await share.getByRole("checkbox", { name: "Ari", exact: true }).check();
+      } else {
+        await page.getByRole("checkbox", { name: "Ari", exact: true }).first().check();
+      }
+      await capture("parent-collection-share");
+      await page.getByRole("button", { name: "Share collection", exact: true }).first().click();
+      await expect(page.getByText("Collection saved.", { exact: true })).toBeVisible();
+      await capture("parent-collection-share-success");
+      const empty = { ...dashboard, videos: [], profiles: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, openRequests: 0, byChild: [] } };
+      await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
+      for (const route of ["library", "collections", "inbox", "children"]) {
+        await page.goto(`/parent/${route}`);
+        await expect(page.locator("main h1")).toBeVisible();
+        await capture(`parent-${route}-empty`);
+      }
+      await page.route("**/api/parent/dashboard", route => route.fulfill(json({ error: "Your family space is taking a moment. Please try again." }, 503)));
+      await page.goto("/parent/dashboard");
+      await expect(page.getByText("Your family space is taking a moment. Please try again.", { exact: true })).toBeVisible();
+      await capture("parent-dashboard-error");
+      await finish();
+      return;
+    }
+    if (family === "child-details") {
+      await synthetic(page, "parent");
+      await page.goto("/watch");
+      await page.getByRole("button", { name: /Miri/ }).click();
+      await expect(page.getByRole("dialog")).toBeVisible();
+      await capture("child-pin-dialog");
+      await page.route("**/api/auth/child", route => route.fulfill(json({ error: "That PIN didn’t match. Please try again." }, 403)));
+      await page.getByLabel("4-digit PIN", { exact: true }).fill("1234");
+      await expect(page.getByText("That PIN didn’t match. Please try again.", { exact: true })).toBeVisible();
+      await capture("child-pin-error");
+      await synthetic(page, "child");
+      let releaseLibrary!: () => void;
+      const libraryGate = new Promise<void>(resolve => { releaseLibrary = resolve; });
+      await page.route("**/api/child/library", async route => { await libraryGate; await route.fulfill(json({ profile: { ...discoveryProfile, experience_mode: "simple" }, videos: syntheticVideos, collections: dashboard.collections })); });
+      await page.goto("/watch/home", { waitUntil: "domcontentloaded" });
+      await expect(page.getByText("Opening your library…", { exact: true })).toBeVisible();
+      await capture("child-library-loading");
+      releaseLibrary();
+      await expect(page.getByText(/^Hi, Ari\.?$/, { exact: true })).toBeVisible();
+      await capture("child-simple-home");
+      await page.getByRole("button", { name: "Library", exact: true }).click();
+      await capture("child-simple-library");
+      await page.getByPlaceholder("Search your library").fill("piano");
+      await expect(page.getByRole("link", { name: /^Play A gentle piano lesson/ }).first()).toBeVisible();
+      await capture("child-search-results");
+      await page.getByPlaceholder("Search your library").fill("");
+      await page.getByRole("button", { name: "Hidden", exact: true }).click();
+      await capture("child-hidden-empty");
+      await page.route("**/api/child/library", route => route.fulfill(json({ profile: { ...profiles[1], discover_enabled: false, experience_mode: "standard" }, videos: syntheticVideos, collections: dashboard.collections })));
+      await page.goto("/watch/home");
+      await page.getByRole("button", { name: "Discover", exact: true }).click();
+      await expect(page.getByLabel("Tell Parent", { exact: true })).toBeVisible();
+      await capture("child-discover-disabled-request");
+      await page.getByLabel("Tell Parent", { exact: true }).fill("A long new idea about building a treehouse with paper, glue, and recycled boxes");
+      await page.getByRole("button", { name: "Send request", exact: true }).click();
+      await expect(page.getByRole("heading", { name: "Sent to Parent", exact: true })).toBeVisible();
+      await capture("child-discover-disabled-success");
+      await page.getByRole("button", { name: "Home", exact: true }).click();
+      await page.getByRole("button", { name: /Ari/ }).first().click();
+      await expect(page.getByRole("heading", { name: "Who’s watching?", exact: true })).toBeVisible();
+      await capture("child-profile-switch-return");
+      await finish();
+      return;
+    }
     await page.goto("/login");
     await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeVisible();
     await capture("parent-sign-in");
@@ -219,6 +348,7 @@ for (const viewport of viewports) {
       await expect(page.getByRole("heading", { name: "Sent to Parent", includeHidden: true })).toBeAttached();
       if (!(await page.getByRole("heading", { name: "Sent to Parent" }).isVisible())) {
         await page.getByText("Ask Parent another way", { exact: true }).click();
+        manifest.baselineInterventions.push("Reopened historical request-success disclosure after successful submission because it had closed. This does not certify baseline usability.");
       }
     }
     await expect(page.getByRole("heading", { name: "Sent to Parent" })).toBeVisible();
@@ -244,4 +374,5 @@ for (const viewport of viewports) {
     // Avoid accidental relative-path ambiguity when logs are opened elsewhere.
     console.log(`VISUAL_EVIDENCE ${relative(process.cwd(), directory)}/manifest.json`);
   });
+}
 }
