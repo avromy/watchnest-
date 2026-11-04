@@ -28,6 +28,8 @@ const syntheticVideos = Array.from({ length: 12 }, (_, index) => {
   thumbnail_url: `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="${["#cbdcc4", "#e2cda6", "#d1dce6"][i]}"/><circle cx="490" cy="80" r="95" fill="#ffffff" opacity=".3"/><path d="M0 300 Q140 190 290 285 T640 250 V360 H0Z" fill="#284f42" opacity=".2"/><g fill="#284f42">${["<path d='M250 240 310 90 385 240 315 205Z'/><path d='M312 209V280' stroke='#284f42' stroke-width='8'/>", "<rect x='180' y='120' width='280' height='135' rx='12'/><path d='M210 140V240M250 140V240M290 140V240M330 140V240M370 140V240M410 140V240' stroke='#f9f3e9' stroke-width='24'/>", "<path d='M230 240 210 110 290 155 370 110 390 240 310 290Z'/><circle cx='270' cy='210' r='9' fill='#fff'/><circle cx='350' cy='210' r='9' fill='#fff'/>" ][i]}</g></svg>`)}`,
 };
 });
+const syntheticArtwork = syntheticVideos.map(video => decodeURIComponent(video.thumbnail_url.slice("data:image/svg+xml,".length)));
+syntheticVideos.forEach(video => { video.thumbnail_url = `https://i.ytimg.com/vi/${video.youtube_video_id}/hqdefault.jpg`; });
 const discoveryProfile = {
   ...profiles[1], discover_enabled: true, discovery_topics: ["Drawing"], discovery_channels: [],
 };
@@ -35,6 +37,10 @@ const discoveryProfile = {
 async function synthetic(page: Page, role: "parent" | "child") {
   await page.unroute("**/api/**");
   await fixture(page, role);
+  await page.route(/https:\/\/(?:i\.ytimg\.com|img\.youtube\.com)\//, route => {
+    const index = videos.findIndex(video => route.request().url().includes(video.youtube_video_id));
+    return route.fulfill({ status: 200, contentType: "image/svg+xml", body: syntheticArtwork[Math.max(0, index)] });
+  });
   const fulfill = (value: unknown) => ({ status: 200, contentType: "application/json", body: JSON.stringify(value) });
   await page.route("**/api/parent/dashboard", route => route.fulfill(fulfill({ ...dashboard, videos: syntheticVideos })));
   await page.route("**/api/child/library", route => route.fulfill(fulfill({ profile: discoveryProfile, videos: syntheticVideos, collections: dashboard.collections })));
@@ -111,6 +117,10 @@ for (const viewport of viewports) {
       await screenshot("full", true, "Complete document: LEFT RIGHT TOP BOTTOM");
       if (inventory.documentHeight > viewport.height + 1) {
         await screenshot("top", false, "Readable viewport: LEFT RIGHT TOP");
+        for (let y = viewport.height - 80, tile = 1; y < inventory.documentHeight - viewport.height; y += viewport.height - 80, tile += 1) {
+          await page.evaluate(scrollY => window.scrollTo(0, scrollY), y);
+          await screenshot(`middle-${tile}`, false, `Readable viewport: LEFT RIGHT, document y=${y}`);
+        }
         await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
         await screenshot("bottom", false, "Readable viewport: LEFT RIGHT BOTTOM");
       }
