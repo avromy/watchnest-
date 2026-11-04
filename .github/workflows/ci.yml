@@ -47,7 +47,7 @@ jobs:
         env:
           WATCHNEST_EVIDENCE_LABEL: candidate
           WATCHNEST_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-      - run: npm run test:e2e -- e2e/fresh-parent-stranger.spec.ts e2e/fresh-child-stranger.spec.ts
+      - run: npm run test:e2e -- e2e/fresh-parent-stranger.spec.ts e2e/fresh-child-stranger.spec.ts e2e/supplemental-responsive.spec.ts
         if: needs.qualification-mode.outputs.mode == 'cold-journeys'
       # Explicit allowlist: synthetic screenshots, DOM inventories, and result JSON.
       # No traces, credentials, environment files, or authenticated browser state.

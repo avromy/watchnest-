@@ -21,8 +21,9 @@ async function family(page: Page, mode = 'standard') {
     const fulfill = (data: any, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(data) });
     if (method !== 'GET') mutations.push({ path, body });
     if (path === '/api/auth/child') {
-      const selected = profiles.find(p => p.id === body.profile_id) || profiles[1];
-      if (selected.pin_enabled && body.pin !== '1234') return fulfill({ error: 'That PIN didn’t match. Try again.' }, 401);
+      const selected = profiles.find(p => p.id === body.profileId);
+      if (!selected) throw new Error('Fresh child fixture received an unknown profileId');
+      if (selected.pin_enabled && body.passcode !== '1234') return fulfill({ error: 'That PIN didn’t match. Try again.' }, 401);
       current = { ...selected, experience_mode: mode, discover_enabled: true, discovery_topics: ['Drawing'], discovery_channels: [] };
       return fulfill({ profile: current });
     }

@@ -41,7 +41,8 @@ test('fresh busy Parent follows a child topic request to preview and approval',a
   await previewWithoutApproval(page,changes,info.outputPath('busy-parent-preview.png'));
   await page.getByRole('checkbox',{name:'Ari',exact:true}).check();
   await page.screenshot({path:info.outputPath('busy-parent-ready-to-approve.png'),fullPage:true});
-  await page.getByRole('button',{name:/Approve 1 selected videos/}).click();
+  await page.getByRole('checkbox',{name:'Select this video',exact:true}).check();
+  await page.getByRole('button',{name:'Approve 1 selected video',exact:true}).click();
   await expect.poll(()=>changes.filter(c=>c.path==='/api/parent/videos').length).toBe(1);
   console.log('FRESH_PARENT_APPROVAL',JSON.stringify(changes));
   await page.screenshot({path:info.outputPath('busy-parent-after-approval.png'),fullPage:true});
@@ -68,7 +69,8 @@ test('fresh low-confidence Parent corrects a pasted link then previews and assig
   await page.getByRole('checkbox',{name:'Miri',exact:true}).check();
   for(const name of ['Ari','Benny','Eli']) await page.getByRole('checkbox',{name,exact:true}).uncheck();
   await page.screenshot({path:info.outputPath('new-parent-one-child.png'),fullPage:true});
-  await page.getByRole('button',{name:/Approve 1 selected videos/}).click();
+  await page.getByRole('checkbox',{name:'Select this video',exact:true}).check();
+  await page.getByRole('button',{name:'Approve 1 selected video',exact:true}).click();
   await expect.poll(()=>changes.filter(c=>c.path==='/api/parent/videos').length).toBe(1);
   const approval=changes.find(c=>c.path==='/api/parent/videos')!;
   console.log('FRESH_PARENT_APPROVAL',JSON.stringify(approval));
@@ -94,6 +96,10 @@ test('fresh Parent signs in with password visibility reassurance',async({page},i
   await page.getByRole('button',{name:'Hide password',exact:true}).click();
   await expect(password).toHaveAttribute('type','password');
   await page.getByRole('button',{name:'Sign in',exact:true}).click();
+  await expect(page).toHaveURL(/\/watch$/);
+  await expect(page.getByRole('heading',{name:'Who’s watching?',exact:true})).toBeVisible();
+  await page.screenshot({path:info.outputPath('signed-in-profile-picker.png'),fullPage:true});
+  await page.getByRole('button',{name:'Parent Mode',exact:true}).click();
   await expect(page).toHaveURL(/\/parent\/dashboard$/);
   await expect(page.getByRole('heading',{name:'Their favorites. Your family library.'})).toBeVisible();
   await page.screenshot({path:info.outputPath('signed-in-dashboard.png'),fullPage:true});

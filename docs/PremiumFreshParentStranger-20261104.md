@@ -19,3 +19,18 @@ As a low-confidence new parent, I would press Add videos (or the large Add to th
 ## Acceptance boundary
 
 These impressions are frozen before fixture access. Assertions below will exercise synthetic browser paths only. This document does not certify provider integration, live data, physical devices, or interactive acceptance from static imagery.
+
+## CI137 observed execution — initial failures retained
+
+Application candidate: da6edbb4436fc6f455eaef87ace5df61c3e62396. Raw untouched browser result: ../watchnest-review/ci137-cold/test-results/browser-results.json; actual Parent failure/intermediate PNGs inspected individually. No application source/design documents read for these judgments.
+
+- Busy Parent reached request-derived Lego trains search, result, and preview. Low-confidence Parent retained malformed input with a clear “Paste a YouTube video link, then choose Load videos” error; corrected input automatically loaded a result; preview opened and closed without approving; Miri-only assignment visible. These partial actions passed browser assertions.
+- Both approval attempts timed out because my test assumed preview implied selecting the video, and used obsolete plural button text. Actual screenshots show “Choose videos below,” unchecked “Select this video,” and disabled “Approve selected videos.” This is principally test adaptation, not broken approval. Narrow correction: explicitly select the result, then click exact singular “Approve 1 selected video.” Frozen task/outcome assertions remain.
+- Discoverability friction (moderate, nonblocking until completion evidence): on 390px phone the assignment/approval panel appears above a lone half-width result card. Selecting a child leaves approval disabled until the separately located video checkbox below. Preview closes without selection. A low-confidence Parent can mistake their preview/child choice for sufficient preparation. The UI does explain “Choose videos below”; no irreversible mistake observed.
+- Login show/hide and submit executed, then rendered a coherent “Who’s watching?” family picker at /watch, rather than the test-assumed dashboard. This assumption was not established in frozen first impressions. Parent Mode lies below the initial 844px viewport in the inspected picker. Authentication response contract needs validation before calling this an application defect; my synthetic response supplied only {ok:true}.
+
+Current verdict: INTERACTIVE COMPLETION NOT YET ESTABLISHED. Initial CI failures preserved; no pass from static screenshots. No provider/player playback or production persistence claim.
+
+### CI137 login adapter receipt
+
+QA checked the access contract: successful direct /login deliberately routes to /watch; response role does not choose the destination. {ok:true} is valid. My exact dashboard URL expectation is withdrawn as unsupported, while the observed extra Parent navigation step remains a discoverability observation. Rerun now asserts the family picker, captures it full-page, follows the visible Parent Mode control, and still requires arrival in the Parent dashboard. This preserves the practical task (sign in and reach Parent work) and does not alter application behavior.

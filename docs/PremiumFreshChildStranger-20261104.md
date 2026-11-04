@@ -21,3 +21,9 @@ Visual first-pass concerns: large vertical home hero pushes browsing partly belo
 ## Interactive evidence and verdict
 
 Pending separately executed fresh test and final-candidate screenshot review. Static-only impressions do not certify interactive acceptance. Candidate requested by parent: `da6edbb4436fc6f455eaef87ace5df61c3e62396`; CI135 is preliminary and final evidence must bind the eventual verdict.
+
+### CI137 failed-attempt receipt
+
+Independently inspected all three raw child `failure.png` renders and browser-results errors under `/workspace/scratch/b4fb31747e8d/watchnest-review/ci137-cold`. Younger/shared tasks stopped at the family picker with an erroneous PIN rejection after selecting unprotected Benny/Eli. The test adapter looked up `body.profile_id`, while the actual app transport uses `body.profileId` (confirmed by execution agent's bounded infrastructure review). Corrected this test-only adapter and removed its silent fallback to Ari. This was a test defect, not evidence of product gating failure.
+
+Older-child failure visibly shows Ari's PIN dialog with an explicit rejection after filling the code. Therefore submission happened; adding an invented submit action is not supported by the pixels. Execution agent confirmed the actual auth transport is `{profileId, passcode}`, whereas my adapter checked `pin`. Corrected the adapter to `passcode`, preserving the fill interaction. Original tasks, assertions, and failed CI137 evidence remain preserved. No application changes. No interactive acceptance verdict yet.
