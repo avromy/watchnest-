@@ -68,7 +68,7 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
   await fixture(page, "parent");
   await page.goto("/parent/dashboard");
   await expect(
-    page.getByRole("heading", { name: "Their favorites. Your family library." }),
+    page.getByRole("heading", { name: "Family overview" }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Their libraries" }),

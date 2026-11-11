@@ -345,7 +345,7 @@ export function ParentShell({ children }: { children: ReactNode }) {
         )}
         {!ready && (
           <div className="panel" role="status">
-            Opening your family space…
+            Loading family overview…
           </div>
         )}
         {data && (
@@ -441,37 +441,9 @@ export function Overview() {
   );
   return (
     <>
-      <section className={styles.overviewHero} aria-labelledby="overview-title">
-        <div className={styles.heroContent}>
-          <p className="eyebrow">Your family space</p>
-          <h1 id="overview-title">
-            Their favorites.
-            <br />
-            Your family library.
-          </h1>
-          <p>Choose the videos. Make room for their favorites.</p>
-          <Link className="button" href="/parent/add-video">
-            <Icon name="plus" width="19" /> Add to the library
-          </Link>
-          <span className={styles.heroProtection}>
-            <Icon name="lock" width="15" /> Approved-only playback in Child Mode
-          </span>
-        </div>
-        <div className={styles.heroShelf} aria-hidden="true">
-          {data.videos.slice(0, 3).map((video) => (
-            <div key={video.id}>
-              <Thumb video={video} />
-              <span>{video.title}</span>
-            </div>
-          ))}
-          {!data.videos.length && (
-            <div className={styles.heroEmpty}>
-              <Icon name="library" width="64" />
-              <span>Their next favorite starts here.</span>
-            </div>
-          )}
-        </div>
-      </section>
+      <header className={styles.overviewHeading}>
+        <h1>Family overview</h1>
+      </header>
       <div className={styles.overviewMetrics} aria-label="Library overview">
         <Link href="/parent/library">
           <strong>{workflow.approvedVideos}</strong>
@@ -485,7 +457,7 @@ export function Overview() {
         </Link>
         <Link href="/parent/inbox">
           <strong>{workflow.openRequests}</strong>
-          <span>Waiting for you</span>
+          <span>Pending requests</span>
           <Icon name="inbox" width="21" />
         </Link>
       </div>
@@ -532,7 +504,7 @@ export function Overview() {
       >
         <div className={styles.sectionHeading}>
           <div>
-            <p className="eyebrow">Made for each of them</p>
+            <p className="eyebrow">Children</p>
             <h2 id="family-library-title">Their libraries</h2>
           </div>
           <Link href="/parent/children">
@@ -557,7 +529,7 @@ export function Overview() {
                   <p>
                     {library?.assignedVideos ?? 0} approved videos
                     {(library?.openRequests ?? 0) > 0
-                      ? ` · ${library!.openRequests} requests`
+                      ? ` · ${library!.openRequests} ${library!.openRequests === 1 ? "request" : "requests"}`
                       : ""}
                   </p>
                   <span className={styles.profileProtection}>
@@ -591,7 +563,7 @@ export function Overview() {
           <Icon name="clock" width="25" />
         </span>
         <span>
-          <strong>A little time for watching</strong>
+          <strong>Watch sessions</strong>
           <small>Start a session, add time, or end playback from here.</small>
         </span>
         <span aria-hidden="true">→</span>
@@ -768,8 +740,8 @@ export function AddVideos() {
   return (
     <>
       <Heading
-        eyebrow="Add Videos"
-        title="Find their next favorite."
+        eyebrow="Parent library"
+        title="Add videos"
         description="Find a video, take a look, then share it with the children."
       />
       <div className={styles.addWorkspace}>
@@ -858,7 +830,7 @@ export function AddVideos() {
           hidden={entryMode !== "links"}
           onSubmit={(e) => find(e, true)}
         >
-          <h2>Bring your family’s favorites.</h2>
+          <h2>Paste YouTube video links</h2>
           <label htmlFor="yt-urls">Paste one YouTube video link per line</label>
           <textarea
             ref={urlInput}
@@ -1595,8 +1567,8 @@ export function Collections() {
     <>
       <Heading
         eyebrow="Collections"
-        title="Favorites belong together."
-        description="Build familiar shelves for the shows, creators, and topics they love."
+        title="Organize collections"
+        description="Group approved videos by show, creator, or topic."
       />
       <div className="grid grid-2">
         <section className="panel">
@@ -2138,7 +2110,7 @@ export function Children() {
     <>
       <Heading
         eyebrow="Family"
-        title="Each one, their own space."
+        title="Child profiles"
         description="Choose a photo or avatar, manage PINs, and check each child’s experience."
       />
       {data.profiles.length ? (
@@ -2288,7 +2260,7 @@ export function Inbox() {
         eyebrow="Parent inbox"
         title={
           pending.length
-            ? `${pending.length} little ${pending.length === 1 ? "request" : "requests"}.`
+            ? `${pending.length} ${pending.length === 1 ? "request" : "requests"}`
             : data.attention.length
               ? "A library update needs you."
               : "You’re all caught up."

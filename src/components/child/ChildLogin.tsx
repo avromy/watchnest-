@@ -136,9 +136,8 @@ export default function ChildLogin() {
       </header>
       <section className="picker-content" aria-labelledby="picker-title">
         <div className="picker-heading">
-          <p className="eyebrow">Make yourself at home</p>
           <h1 id="picker-title">Who’s watching?</h1>
-          <p>Your favorites. Your discoveries. Your own little library.</p>
+          <p>Choose a profile to open its approved library.</p>
         </div>
         {error && !selected && !parentMode && (
           <p role="alert" className="error picker-error">
@@ -146,10 +145,12 @@ export default function ChildLogin() {
           </p>
         )}
         {!profiles.length && (
-          <p className="picker-empty">
-            Your family library is almost ready. Parent can add a profile in
-            Parent Mode.
-          </p>
+          <div className="picker-empty">
+            <p>No profiles are available. Refresh to check again, or open Parent Mode for family settings.</p>
+            <button className="button-secondary" onClick={() => window.location.reload()}>
+              Refresh profiles
+            </button>
+          </div>
         )}
         <div className="profile-grid">
           {profiles.map((profile) => (
@@ -199,7 +200,7 @@ export default function ChildLogin() {
         </button>
       </section>
       <footer className="picker-footer">
-        <Icon name="library" width="18" /> A little library. A world to explore.
+        <Icon name="library" width="18" /> Approved videos for your family
       </footer>
       {(selected || parentMode) && (
         <div

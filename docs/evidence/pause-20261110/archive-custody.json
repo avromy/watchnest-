@@ -1,0 +1,8 @@
+{
+  "file": "initial-partial-synthetic.zip",
+  "sha256": "ce768fb46abeca50f88777cc084c63ba8ca3d60e022b44a098997f4135811b51",
+  "bytes": 25345268,
+  "files": 562,
+  "excluded": "trace.zip, auth/env/browser state, actual competitor binaries; raw browser traces intentionally not public; screenshot fixture artwork synthetic",
+  "custody": "Private archive custody in existing CTO Handoff; ZIP intentionally omitted from public GitHub"
+}

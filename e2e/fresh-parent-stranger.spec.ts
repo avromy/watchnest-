@@ -108,6 +108,6 @@ test('fresh Parent signs in with password visibility reassurance',async({page},i
   await page.screenshot({path:info.outputPath('signed-in-parent-pin.png'),fullPage:true});
   await page.getByLabel('4-digit PIN',{exact:true}).fill('1234');
   await expect(page).toHaveURL(/\/parent\/dashboard$/);
-  await expect(page.getByRole('heading',{name:'Their favorites. Your family library.'})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'Family overview'})).toBeVisible();
   await page.screenshot({path:info.outputPath('signed-in-dashboard.png'),fullPage:true});
 });

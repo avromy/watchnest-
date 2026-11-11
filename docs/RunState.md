@@ -1,3 +1,14 @@
+# USER PAUSED — November 10, 2026
+
+Do not launch work until explicit Founder resume. WIP copy/task refinement on
+existing premium branch is preserved; no new release acceptance or production
+change. See [exact paused state and restart procedure](PauseCheckpoint-20261110.md).
+Branch-only Vercel deployment guard must be removed/re-enabled on resume before
+preview qualification. Historical qualified candidate below does not certify
+the new four-file refinement.
+
+---
+
 # Premium transformation — rendered candidate qualified; production held — 2026-11-04
 
 Application `c670d55a9bf22aa493f685fa62f79fda89151247`, tree

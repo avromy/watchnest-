@@ -442,7 +442,7 @@ export default function ChildLibrary() {
           <div className="time-up-symbol">
             <Icon name="clock" width="44" />
           </div>
-          <p className="eyebrow">A little pause</p>
+          <p className="eyebrow">Watch time</p>
           <h1>
             {sessionAccess.state === "paused"
               ? "Parent paused WatchNest"
@@ -462,7 +462,7 @@ export default function ChildLibrary() {
           <div className="request-icon">
             <Icon name="search" width="30" />
           </div>
-          <p className="eyebrow">Your next favorite starts here</p>
+          <p className="eyebrow">Ask Parent</p>
           <h1>
             {profile.discover_enabled
               ? "Discover something new"
@@ -785,7 +785,7 @@ export default function ChildLibrary() {
         <>
           <div className="child-welcome">
             <div>
-              <p className="eyebrow">Your own little screening room</p>
+              <p className="eyebrow">Your library</p>
               <h1>Hi, {profile.display_name}.</h1>
               <p>What would you like to watch?</p>
             </div>
@@ -872,7 +872,7 @@ export default function ChildLibrary() {
               <Icon name="search" width="24" />
               <span>
                 {profile.discover_enabled ? "Discover" : "Ask Parent"}
-                <small>Find your next favorite</small>
+                <small>Find videos to request</small>
               </span>
               <span aria-hidden="true">↗</span>
             </button>
