@@ -19,6 +19,9 @@
   outline: 3px solid var(--wn-coral);
   outline-offset: 4px;
 }
+.premium-child-library .child-time-remaining {
+  color: var(--child-muted);
+}
 .premium-child-library .child-header {
   border: 0;
   padding: 0;

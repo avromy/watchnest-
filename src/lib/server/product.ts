@@ -18,6 +18,10 @@ import {
 import { extractYouTubeVideoId } from "../youtube";
 import { sessionAccess } from "../session-access";
 import {
+  DAILY_TIMEZONE_UNAVAILABLE,
+  dailyPeriodMatchesServerRules,
+} from "./daily-period-validation";
+import {
   createDiscoveryCandidateToken,
   discoveryBoundaryAllowed,
   readDiscoveryCandidateToken,
@@ -531,6 +535,30 @@ async function metadata(videoIds: string[], force = false) {
     tags: [],
   }));
 }
+async function requireConsistentDailyTimezone(
+  client: ReturnType<typeof db>,
+  timezone: string,
+) {
+  const serverNow = new Date().toISOString();
+  const rows = check(
+    await client.rpc("wn_daily_session_period", {
+      p_at: serverNow,
+      p_timezone: timezone,
+    }),
+    "daily-timezone-preflight",
+    DAILY_TIMEZONE_UNAVAILABLE,
+  );
+  if (
+    !dailyPeriodMatchesServerRules({
+      periodStart: rows?.[0]?.period_start,
+      resetAt: rows?.[0]?.reset_at,
+      serverNow,
+      timezone,
+    })
+  )
+    throw new Failure(DAILY_TIMEZONE_UNAVAILABLE, 503);
+}
+
 async function accessView(
   profile: any,
   activate = true,
@@ -546,6 +574,16 @@ async function accessView(
     "WatchNest could not confirm session time. Please retry.",
   );
   const fresh = { ...profile, ...resolved.profile_state };
+  if (
+    fresh.session_mode === "daily" &&
+    !dailyPeriodMatchesServerRules({
+      periodStart: resolved.period_start,
+      resetAt: resolved.reset_at,
+      serverNow: resolved.server_now,
+      timezone: resolved.timezone,
+    })
+  )
+    throw new Failure(DAILY_TIMEZONE_UNAVAILABLE, 503);
   return {
     ...sessionAccess(fresh, Date.parse(resolved.server_now)),
     serverNow: resolved.server_now,
@@ -1336,6 +1374,12 @@ async function parentRoute(
       )
       .parse(body);
     await ownedProfiles(p.id, [b.profile_id]);
+    if (b.action === "daily") {
+      await requireConsistentDailyTimezone(
+        client,
+        p.timezone || "America/New_York",
+      );
+    }
     const controlled = check(
       await client.rpc("wn_control_profile_session_v2", {
         p_parent: p.id,
@@ -1403,6 +1447,29 @@ async function parentRoute(
           safe_playback_enabled: z.literal(true).optional(),
         })
         .parse(body);
+      let familyTimezone: string | undefined;
+      if (b.timezone) {
+        try {
+          familyTimezone = new Intl.DateTimeFormat("en", {
+            timeZone: b.timezone,
+          }).resolvedOptions().timeZone;
+        } catch {
+          throw new Failure("Choose a valid time zone.");
+        }
+        const dailyProfiles = check(
+          await client
+            .from("profiles")
+            .select("id")
+            .eq("parent_id", p.id)
+            .eq("session_mode", "daily")
+            .is("archived_at", null)
+            .limit(1),
+          "daily-timezone-profiles",
+        );
+        if (dailyProfiles.length) {
+          await requireConsistentDailyTimezone(client, familyTimezone);
+        }
+      }
       if (b.parent_pin) {
         try {
           const signedInParent = await parent(false);
@@ -1422,20 +1489,11 @@ async function parentRoute(
         );
         if (!updated) throw new Failure("Parent settings unavailable.", 404);
       }
-      if (b.timezone) {
-        try {
-          new Intl.DateTimeFormat("en", { timeZone: b.timezone }).format();
-        } catch {
-          throw new Failure("Choose a valid time zone.");
-        }
+      if (familyTimezone) {
         check(
           await client
             .from("parents")
-            .update({
-              timezone: new Intl.DateTimeFormat("en", {
-                timeZone: b.timezone,
-              }).resolvedOptions().timeZone,
-            })
+            .update({ timezone: familyTimezone })
             .eq("id", p.id),
         );
       }

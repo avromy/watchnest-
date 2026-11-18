@@ -462,7 +462,7 @@ export default function ChildLibrary() {
         </button>
       </nav>
       {sessionAccess?.enabled && sessionAccess.allowed && (
-        <p className="muted" role="status">
+        <p className="child-time-remaining" role="status">
           {sessionAccess.mode === "daily" ? "Daily time" : "Your time"} ·{" "}
           {Math.max(0, Math.ceil((sessionAccess.remainingSeconds || 0) / 60))}{" "}
           min left

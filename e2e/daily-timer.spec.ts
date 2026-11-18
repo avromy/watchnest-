@@ -65,7 +65,7 @@ for (const viewport of [
     page,
   }, info) => {
     await page.setViewportSize(viewport);
-    await fixture(page, "parent");
+    const changes = await fixture(page, "parent");
     let state = "ready";
     await page.route("**/api/parent/session-status", async (route) => {
       await route.fulfill({
@@ -88,7 +88,7 @@ for (const viewport of [
                 state === "active"
                   ? new Date(Date.now() + 300_000).toISOString()
                   : null,
-              remainingSeconds: 300,
+              remainingSeconds: state === "expired" ? 0 : 300,
               pausedSeconds: state === "paused" ? 300 : null,
               revision: index + 1,
             },
@@ -106,7 +106,7 @@ for (const viewport of [
     });
     await card.getByLabel("Time mode").selectOption("daily");
     await card.getByLabel("Custom minutes").fill("5");
-    for (const value of ["ready", "active", "paused", "blocked"]) {
+    for (const value of ["ready", "active", "paused", "blocked", "expired"]) {
       state = value;
       const text =
         value === "ready"
@@ -115,7 +115,9 @@ for (const viewport of [
             ? "min left"
             : value === "paused"
               ? "Paused"
-              : "Stopped by Parent";
+              : value === "blocked"
+                ? "Stopped by Parent"
+                : "Time’s up";
       await expect(card).toContainText(text, { timeout: 7000 });
       await page.evaluate(() =>
         window.scrollTo({ top: 0, behavior: "instant" }),
@@ -130,6 +132,23 @@ for (const viewport of [
       await page.screenshot({ path: info.outputPath(`${value}-top.png`) });
       await card.screenshot({ path: info.outputPath(`${value}-card.png`) });
       await expect(card.getByLabel("Custom minutes")).toHaveValue("5");
+      if (value === "expired") {
+        await card
+          .getByRole("button", { name: "Add 5 minutes today", exact: true })
+          .click();
+        await expect
+          .poll(() =>
+            changes.some(
+              (change) =>
+                change.path === "/api/parent/session-timer" &&
+                change.body.profile_id === pid &&
+                change.body.action === "extend" &&
+                change.body.duration_minutes === 5,
+            ),
+          )
+          .toBe(true);
+        await expect(card.getByLabel("Time mode")).toHaveValue("daily");
+      }
     }
   });
 }

@@ -2789,6 +2789,16 @@ function SessionTimerCard({
           </>
         ) : (
           <>
+            {state === "expired" && (
+              <button
+                className="button-secondary"
+                disabled={busy || !authoritative || !validDuration}
+                onClick={() => control("extend", duration)}
+              >
+                Add {duration || "…"} {duration === 1 ? "minute" : "minutes"}
+                {status?.access.mode === "daily" ? " today" : ""}
+              </button>
+            )}
             {state === "ready" && (
               <button
                 className="button-secondary"
