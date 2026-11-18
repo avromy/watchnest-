@@ -1,3 +1,11 @@
+# ACTIVE November 17/18 resumed evidence
+
+Current entry supersedes November10 pause below. All eight app controls/current runtime0.2.1/live router/HumanEyeV2 recovered; canonical current package recovery and independent-review plan in PremiumQualificationReviewPlan-20261117.md. Existing selected directionA/research remain durable and were not restarted. Actual bounded source/runtime qualification: dependency vendor-advisory investigation, minimum16.4.6 patch; lint/type/200unit/build/auditPASS; repaired syntheticfixture/test false positive then complete64browserPASS atcf764cb6087b394fbb9d97b687413c2084e2e708. Exact logs/sourcebinding in docs/evidence/qualification-20261117.
+
+Current fresh actual-pixel/Stranger/HumanEye/BlindJury/security review lanes are in progress; no old pixelPASS inherited for changed copy/runtime. Hosted authenticated/physical iPad gates OPEN. FounderReady BLOCKED. Root owns final verified durability and ContinuousLearning propagation; no missing receipt certified here.
+
+---
+
 # USER PAUSED refinement checkpoint — November 10, 2026
 
 Current authority recovery/research/three-direction comparison/independent

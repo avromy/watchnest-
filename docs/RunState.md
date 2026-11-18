@@ -1,3 +1,13 @@
+# ACTIVE resumed qualification — November 17/18, 2026
+
+Explicit Founder RESUME lifts November10 pause. Existing branch premium-ui-ux-20261103 / PR49, sole integration owner Builder2. Recovered immutable68dc623084e1b91e4b2cd83e041c3257b4ce3809; current tested candidatecf764cb6087b394fbb9d97b687413c2084e2e708. See [current exact qualification receipt](QualificationResume-20261117.md). No new design direction or competing implementation owner.
+
+Next16.4.3 build was blocked by vendor security fatal; compatible exact16.4.6 patch now builds;200unit tests/lint/typecheck and production audit0vulnerabilities PASS. Corrected shared synthetic session-status fixture plus strict route/runtime assertions; complete renewed64browser tests PASS,22manifest families captured. Prior green stress test with8TypeErrors is explicitly stale. Current independent visual/UX/security/cold review not yet complete. Physical iPad approved playback/containment/native fullscreen End now and authenticated hosted candidate gates remain OPEN; no overall readiness.
+
+Production/rollback remains77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Existing frozen old preview backend-unconfigured; current feature pause guard retained pending qualified preview. No production/config/schema/family-data change. Continue deterministic qualification; do not obey historical paused headings below as current instructions.
+
+---
+
 # USER PAUSED — November 10, 2026
 
 Do not launch work until explicit Founder resume. WIP copy/task refinement on
