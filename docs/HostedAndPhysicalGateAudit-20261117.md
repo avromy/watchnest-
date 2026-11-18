@@ -1,3 +1,17 @@
+# CURRENT — staged production build ready; WatchNest sign-in handoff — November18
+
+This current entry supersedes the earlier pending Vercel identity verification and CLI-only blocker. Those failures remain historical below and in immutable10aa2073be724c68302328deaca7907772238fb1. Source/design are unchanged; no new implementation owner.
+
+Owner-authorized fresh Vercel verification succeeded despite a transport submission_failed report: actual UI/API independently showed the staged deployment READY. Staged ID dpl_HH939UpRsidw913WvZocu6qkZv6v, exact source6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436, target production, unique URL https://watchnest-5ens0lo6f-avromy.vercel.app. UI showed STAGED / Assigning Custom Domains Skipped. Its only observed alias was the feature-branch alias; no canonical production domain moved. Fresh API readback independently resolved canonical77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac with all3 canonical aliases. No staged ID is missing anymore; Vercel MFA is CLOSED, not the current blocker. CLI was never authorized and is unnecessary for the working supported project-setting route.
+
+Root's live browser stage/api/session returned role:null,configured:true. Parent dashboard redirected to/login. A managed credential attempt for the existing WatchNest Parent account became unavailable after waiting; a fresh live tab again showed the Sign in heading, no auth error and no authenticated session. This does not establish bad credentials. STOP automatic credential requests/direct entry. Minimum owner-only action: sign in to the existing WatchNest Parent account in the handed-over Cloud browser; never send credentials in chat or notifications.
+
+Use the UNIQUE staged URL above, not the feature-branch alias: later documentation-only previews may repoint that alias to a backend-unconfigured preview. Current project autoAssignCustomDomains FALSE MUST remain OFF through staged qualification/release hold; original TRUE remains the recorded setting rollback value. Do not submit another deployment, restore domain auto-assignment, merge or promote now.
+
+After owner sign-in, continue least-privilege hosted read-only/metadata QA on the exact staged build, with no private family/auth artifacts saved. Only after hosted qualification request one consolidated conditional physical-iPad test at the frozen candidate. All final source/automated/independent visual/jury/cold lanes remain PASS within their recorded synthetic limits. Hosted authenticated and physical playback/containment/native-fullscreen remote-stop gates remain OPEN; Founder Ready and terminal production readiness remain BLOCKED.
+
+---
+
 # CURRENT correction — supported staging, owner verification pending — November 18
 
 This entry supersedes the earlier CLI-only blocker and restart instructions. Historical records remain below and at immutable6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436. No code/design change or new implementation owner.

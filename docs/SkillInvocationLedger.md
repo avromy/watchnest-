@@ -1,3 +1,11 @@
+# Current staged build / sign-in boundary — November18
+
+Supported Vercel project-setting staging route actually succeeded: saved autoAssignCustomDomainsFALSE, explicit no-domain confirmation, owner-authorized fresh verification followed by independently observed READY/STAGED exact6be0cab deployment dpl_HH939UpRsidw913WvZocu6qkZv6v. Fresh read-only API stage+canonical readbacks performed before this checkpoint. Current source/harness remain382,69/200/CI148 plus all final independent lanes qualified only within stated synthetic limits.
+
+Vercel/CLI blocker superseded: no new CLI grant, no further infrastructure authorization required. Stage browserconfigured:true but role:null and Parent→login. Managed Parent credential attempt unavailable; fresh UI Sign in/noautherror/noauthenticatedsession. Stop automaticcredentialrequests/directentry; owner manual existing-Parent-account sign-in in handed-over Cloud browser is minimum current action. No credentials/auth artifacts preserved. FounderReady BLOCKED pending hostedauthenticated QA then consolidated physical acceptance. StagedDeployment-20261117.md and current ResumeCheckpoint govern.
+
+---
+
 # Current supported-staging correction — November18
 
 All independent source/visual/jury/cold lanes remain qualified within recorded synthetic scope. Current Vercel official staging/project-update sources and exposed autoAssignCustomDomains boolean independently verified before mutation. Root alone changed project autoAssignCustomDomains TRUE→FALSE, verified savedUI checkbox0/manual-promotion warning and actual no-domain Redeploy confirmation. One6be0cab staged Redeploy submitted, then email verification rejected invalid/expired; no automaticretry/Resend, no stagedID confirmed, canonical77 unchanged. Current owner-only action is existing providerverification, not CLIgrant. KeepsettingOFF through pendingstage/hold. Historical CLI-only records superseded, not erased. FounderReady remains BLOCKED; hostedauthenticated/physical acceptance OPEN. Exact restart in ResumeCheckpoint-20261117.md; no code/auth artifacts changed or retained.
