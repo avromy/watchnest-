@@ -1,0 +1,55 @@
+{
+  "status": "SCOPED SOURCE/DEPENDENCY PASS \u2014 exact immutable candidate; no hosted/physical release approval",
+  "candidate": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "reviewer": "daily_timer_security_review",
+  "capturedAt": "2026-11-18T19:12:30.842149+00:00",
+  "sourceSha256": {
+    "package.json": "0079f2b81a57443f8423dae996c592dfb98f4ed9321fa8ca360be0f60b82befb",
+    "package-lock.json": "cf05652b2666257de2cbb036fb938c2bf39a7ffaf643988fcdcd367b4f134fed",
+    "src/components/parent/ParentApp.tsx": "e4a37e4eec4d1fe2d1949837ab725aac57bd8598e4d62570d14d9a6ee23b4db1",
+    "src/lib/server/product.ts": "e9af5fd70d64715c776e034091e66241d443a22322ff55f39e5e7596d903f34b",
+    "src/lib/server/daily-period-validation.ts": "3bdf2dc7f5e8dd6c757a8b1edbc84a6d19eb3800f5f150f1e519169a3c9cc1c4",
+    "src/lib/server/daily-period-validation.test.ts": "fe49bfa59bcfdc1df4f13318c4065710da4f65c08f303a1c9dff52086bc9abed",
+    "supabase/migrations/20261118173600_daily_session_allowance.sql": "95d27cc0acd2a7757b2891f624b2f65b9762981be69f21f1bbf144df4e4cd6df",
+    "src/components/child/ChildPlayer.tsx": "d3b8d088a59ec8f17424b644d4a50926d23f43e137614dd2763021f406eb74b6"
+  },
+  "independentTests": {
+    "passed": 147,
+    "exit": 0,
+    "log": "dependency-security-targeted.log",
+    "sha256": "1c4d709da932f07b29d214a9c58d28692bf28bac81edbd425e590ebbbed77c43"
+  },
+  "independentAudit": {
+    "command": "npm audit --json",
+    "exit": 0,
+    "total": 0,
+    "log": "dependency-security-full-audit.json",
+    "sha256": "60212c2b0590025faf3ad2cd8203573023d54ac0f2d92203d2c862e7f00c75a7"
+  },
+  "findings": [],
+  "assessment": [
+    "Manifest changes only exact dev Vite8.3.1\u21928.3.8.45 package lock changes plus root metadata; no new scripts or nonregistry URLs.",
+    "Only existing production package version change nanoid3.3.19\u21923.3.20, patch update; direct Next/React/Supabase/PGlite/Chromium pins unchanged.",
+    "Other affected toolchain updates are dev paths, including follow-redirects1.16.3/TSeslint8.73/CSS parser. Registry audit0 is current known-advisory evidence, not absence of every vulnerability.",
+    "All8 prior protected hashes independently unchanged; Parent editor changes since866 preserve command handlers/validation/authorization.",
+    "Official follow-redirects advisory identifies1.16.0\u20131.16.1 affected and1.16.2 patched; actual1.16.3 exceeds fixed baseline. Source accessibility verified independently.",
+    "Official Vite8.3.8 release verified; test harness reused Vitest5.0.3 with updated Vite and147 targeted tests reexecuted PASS."
+  ],
+  "primarySources": [
+    "https://github.com/follow-redirects/follow-redirects/security/advisories/GHSA-mrwp-f3q8-3g9p",
+    "https://github.com/vitejs/vite/releases/tag/v8.3.8"
+  ],
+  "limits": [
+    "No claim of application exploitability before patch solely from audit count.",
+    "Build/full343/browser80/visual qualification remains Root-owned.",
+    "No hosted DDL, credentials, family mutation, deployment or physical certification by reviewer.",
+    "No production approval or override of held hosted/physical gates."
+  ],
+  "wholeTree": "2feab20cfa6b6398bed612f8c48629a3a7e61385",
+  "subtrees": {
+    "src": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "e2e": "8966026e9384a3f7136a8041cc88a8d08bd52712",
+    "supabase": "2a36c8a7c89bb4413086bfa19686ea90695af54b"
+  },
+  "boundAt": "2026-11-18T19:12:54.382912+00:00"
+}

@@ -1,3 +1,11 @@
+# CURRENT306 final dependency/pixel/security receipts
+
+Actualnew306full343/80/allmechanicalgatesPASS, FULL+PRODaudit0; CI161SUCCESS. Independent147fresh+fullaudit0 verifiedexact306source/packagehashes. App/e2e/SQLunchangedaa2. Comparatornew55actualrastergate:49exactcarry,6freshinspectednonmaterialdeltas,CLEANfinite/MatchPASS.5freshaa2juryvotesnotrerun; reuseexplicitlyboundedunchangedUI/source+actualrendercomparison. DocumentationneverclaimsnewjurorsorphysicalPASS. CurrentSourceParentformworkflowcoldPASS supportsunchangedapp. DetailedexactreceiptsinTimerDailyDependencySecurityReview/VisualEquivalence306/Jury/FinalFormColdUX.
+
+Hostedmigration/stagecurrentlyPLANONLY; verifyrealoperationsbeforeclaimingcomplete. FounderReadyremainsHOLDfornewhostedauthandphysicaliPadgates. Rawarchive/NotioncustodypendingDO NOT DELETE YET. AllpriorfailuresandContinuousLearninghistorypreserved.
+
+---
+
 # CURRENT — final timer finite review receipts and dependency qualification
 
 aa2 final55referenceHumanEyeCLEAN/MatchPASS (48exactSHAcarries+7freshdifferentrasters), independentcold9tasks/6visualunitsPASS. Sourceboundfivefreshblindjurors5/5PASS38/35/35/35/35actualPNGinspection afterleanconvergence; nopeervotesbeforefreeze. ReportsandhashesinTimerDailyVisualFinal-aa2/FinalFormColdUX/Jury/evidencejury-aa2. Previous866editorFAILsTD-V02Savegap/TD-V03persistentselection missing retained and repairedbeforejury; previous6619contrastFAIL/11b4FAILjury retained. FounderReady remainsHOLD becausehosted/physical gatesOPEN. Newdependency-onlysuccessor needsfullgates andactual-pixelequivalence to carrysameApp acceptance, neverassume.

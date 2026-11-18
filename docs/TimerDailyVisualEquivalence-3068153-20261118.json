@@ -1,0 +1,771 @@
+{
+  "candidate": {
+    "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+    "app": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "build": "mdg0W5h4PuFHgHafwSXG1"
+  },
+  "referenceCandidate": {
+    "source": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+    "app": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "build": "oFLqPPG7G1UKn-j9z5BTR"
+  },
+  "verdict": "PASS",
+  "humanEye": "CLEAN_WITHIN_FINITE_AFFECTED_TIMER_SCOPE",
+  "writtenMatchCheck": "PASS",
+  "pixelEquivalence": "49 exact-SHA256 current references; 6 nonidentical current references freshly inspected without material visual difference. Not a claim that all55 are byte-identical.",
+  "counts": {
+    "currentReferences": 55,
+    "rootReferences": 47,
+    "ownReferences": 8,
+    "exactByteCarries": 49,
+    "freshlyInspectedRasters": 6,
+    "freshNativeRegionsActuallyViewed": 10
+  },
+  "rootReferences": {
+    "packet": {
+      "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+      "app": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+      "build": "mdg0W5h4PuFHgHafwSXG1",
+      "images": [
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+          "sha256": "cc421fe31f214682041fac783b746e61f92c81d6738026a628c6903cb139bfcf"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+          "sha256": "18af13eccc301c328ca8efe91a7990d96d3907eb1d208d867cbed896c6b321af"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+          "sha256": "95a718ccdefde5e58c35d73eec2fff8f89c471ef4ec357d26dbd277f87617c2b"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+          "sha256": "7885ab88280f019fd66597ed204375e03329b541aed5b837efde94e3da980166"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+          "sha256": "3355ec1ff5c29110bb45d36efe71f291728648f7cb20be967b918365fae5d651"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+          "sha256": "ea44f520285333facdf9e88302adacb0f34ecbfdd2d18da8073760746fd0b64f"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-top.png",
+          "sha256": "e21976ba371a00635b362263b7e175459f2248cb3d8a3eed648de730a6b1529e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--editor-card.png",
+          "sha256": "ecd9961afdbe79a0fddbd1420e96ac9eddb2582860fb16907ecd8d1357624b79"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+          "sha256": "7111e24fefe1e205870509c5acb3ea5970ad8985d60fd79cc3044d05e1550059"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+          "sha256": "c41853f10877c8715ca481899977c0f09af73db55d8e809d1538e5b18e9655a4"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+          "sha256": "166a1d725acebf09d9098757f7ee85dd9c3d5a3b0aab997658272ac242709688"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-top.png",
+          "sha256": "cdfb95a70cc4d2ea91f02e525d5d4d94d3221418b5268552fe1e052e13cb23fb"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+          "sha256": "1443dc3d857098584d33c273ec99f171774e6645a8dc1f1072a34c41c3fff1c5"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-top.png",
+          "sha256": "7796d90e278e6edb3666b997b76099f686484ce9bd5b8ba4e7e17f49defdbf65"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+          "sha256": "aa41686bacaa2498b287401512e8ccafc391d1fa8736c923630d84ab4e90c674"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+          "sha256": "bd056cf99ce75257a00cd588597942a93144be9ae5a36e069fec52b14df48d69"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+          "sha256": "3e082f88e37eb9451d009f557ae31aa2312cc47a449decca381a24ed54d9ee34"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-top.png",
+          "sha256": "070257538f35129e896aa9f4d25286d93253580557a4b634b55c5ddea68310cf"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--editor-card.png",
+          "sha256": "b03e373b18b983ee986c8b2b9c511e59bcba3efee02271fa88204032f25c9330"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+          "sha256": "1d23967c117975570476b1f2d1e6209717eb22d21768d9d648d0778f0f5d129b"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+          "sha256": "9500fa4376d5489d9ea9366da6c1af85e882273ecde0609ee8ec3796ca6fa874"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+          "sha256": "3dd5a3f7f93350301cbc859f8929d661a6bab161c56208e497346292f1f088af"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-top.png",
+          "sha256": "10fc063be8c090fe2066b17010147ba1d72b2d6f7eee38774fbabec9cb0a516e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+          "sha256": "412e5c543ae17bcadf0b1170a0a60068ad0b3cce949b52eb7cf994376484e0b3"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-top.png",
+          "sha256": "29694049c14cdc3a680c3aeb32eeb41a28e06291054e50baf15c1cb528f19adb"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+          "sha256": "c2ca06e8190b2ea3ca5e3f9923a21c77aaf99c2eb12557bb7efeea397f354839"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+          "sha256": "b5b63619aaf5601dc59fcfdd0064a4e4fa1b3b91435a206e9aeeeadae2c4e51e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+          "sha256": "f619e224e4c978239ac8205e1092a3e50b74813a45eea1dc33b44e91919231c8"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-top.png",
+          "sha256": "a20dbb9fe0dc5cf7f3ced5ed86722e03dd2617ee12ae371d859c1ff2e752e777"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--editor-card.png",
+          "sha256": "21c590e9a329481761b6c5e78041b19cbca3285bba9443249469dd0b4a42bb73"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+          "sha256": "7c769d4bba5523aae3bbb5c4bb8f0a00527de87d2f4389a67327893b3948c36d"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+          "sha256": "eb960d38f94cee567951062be131f58200ef993192fd2f512d58b03ad8bd8f29"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+          "sha256": "022e54800b010c5a4e26c28796c9da880f81ae116c8ee9b43f8d4fe5d9008368"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-top.png",
+          "sha256": "8bdbe5e50012591aa03b73bfbca3714996322450ac3cf81c5e40b0523ce55b93"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-card.png",
+          "sha256": "84c74ed88b957f7b3f23e1186d333436e93c23339fab5c639ba22861d2c9806f"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-top.png",
+          "sha256": "0cbd49e8e756a8bb97566cf51ee4b3aced6c44c5c4da00f197aabd19a8341a88"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+          "sha256": "3a374850837fb1167c93c498778f5f76a0428c59e25e1ff520c5b78524dc9677"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+          "sha256": "ff5ba77947aa6e4ba0ca15e07b2ac17ddded5b018f3da66417bb035889e9df7a"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+          "sha256": "fb275beb5bec4fc386971cfe4909d8188f005882cf2aa2ebedb1fec77245d3b3"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-top.png",
+          "sha256": "c97ba423da67695a4c2d0fb8a6ecc5230245a020b2205a76acc8cf89d114927e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--editor-card.png",
+          "sha256": "99f8cb0845302562114c0ec7f948e70b58576ef70b5d2aefea4f6fda1da95afc"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+          "sha256": "1054c9fb2131cfcf650b3e9fa3cc03eadfd647e502b7f9a24bee8b73ce7965e0"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+          "sha256": "f61286d05aeed704776b003510a28ab88be2488610b46d07c1f11f96a18aeacc"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+          "sha256": "5bdf53c420d959220c53629d29375cb41c18eddf28322c4d0334de09817e872c"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-top.png",
+          "sha256": "91bc8985cb8dd8f31cdccfa3b80a54d6bbd3be3fc5bb6fa33b552a428a1aa8a6"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+          "sha256": "0fdf44457b6d670236a1ca0fe6580f7a623b5197165aabb8b8b3af6b2649f4ab"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-top.png",
+          "sha256": "b55974f5334d8cfc1a6147aed1c121dfcef02be5db6fa798ead6b7b571441180"
+        }
+      ]
+    },
+    "references": [
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+        "sha256": "cc421fe31f214682041fac783b746e61f92c81d6738026a628c6903cb139bfcf",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+        "sha256": "18af13eccc301c328ca8efe91a7990d96d3907eb1d208d867cbed896c6b321af",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+        "sha256": "95a718ccdefde5e58c35d73eec2fff8f89c471ef4ec357d26dbd277f87617c2b",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+        "sha256": "7885ab88280f019fd66597ed204375e03329b541aed5b837efde94e3da980166",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+        "sha256": "3355ec1ff5c29110bb45d36efe71f291728648f7cb20be967b918365fae5d651",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+        "sha256": "ea44f520285333facdf9e88302adacb0f34ecbfdd2d18da8073760746fd0b64f",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-top.png",
+        "sha256": "e21976ba371a00635b362263b7e175459f2248cb3d8a3eed648de730a6b1529e",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--editor-card.png",
+        "sha256": "ecd9961afdbe79a0fddbd1420e96ac9eddb2582860fb16907ecd8d1357624b79",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--editor-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+        "sha256": "7111e24fefe1e205870509c5acb3ea5970ad8985d60fd79cc3044d05e1550059",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+        "sha256": "c41853f10877c8715ca481899977c0f09af73db55d8e809d1538e5b18e9655a4",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+        "sha256": "166a1d725acebf09d9098757f7ee85dd9c3d5a3b0aab997658272ac242709688",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-top.png",
+        "sha256": "cdfb95a70cc4d2ea91f02e525d5d4d94d3221418b5268552fe1e052e13cb23fb",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+        "sha256": "1443dc3d857098584d33c273ec99f171774e6645a8dc1f1072a34c41c3fff1c5",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-top.png",
+        "sha256": "7796d90e278e6edb3666b997b76099f686484ce9bd5b8ba4e7e17f49defdbf65",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+        "sha256": "aa41686bacaa2498b287401512e8ccafc391d1fa8736c923630d84ab4e90c674",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+        "sha256": "bd056cf99ce75257a00cd588597942a93144be9ae5a36e069fec52b14df48d69",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+        "sha256": "3e082f88e37eb9451d009f557ae31aa2312cc47a449decca381a24ed54d9ee34",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-top.png",
+        "sha256": "070257538f35129e896aa9f4d25286d93253580557a4b634b55c5ddea68310cf",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--editor-card.png",
+        "sha256": "b03e373b18b983ee986c8b2b9c511e59bcba3efee02271fa88204032f25c9330",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--editor-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+        "sha256": "1d23967c117975570476b1f2d1e6209717eb22d21768d9d648d0778f0f5d129b",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+        "sha256": "9500fa4376d5489d9ea9366da6c1af85e882273ecde0609ee8ec3796ca6fa874",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+        "sha256": "3dd5a3f7f93350301cbc859f8929d661a6bab161c56208e497346292f1f088af",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-top.png",
+        "sha256": "10fc063be8c090fe2066b17010147ba1d72b2d6f7eee38774fbabec9cb0a516e",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+        "sha256": "412e5c543ae17bcadf0b1170a0a60068ad0b3cce949b52eb7cf994376484e0b3",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-top.png",
+        "sha256": "29694049c14cdc3a680c3aeb32eeb41a28e06291054e50baf15c1cb528f19adb",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+        "sha256": "c2ca06e8190b2ea3ca5e3f9923a21c77aaf99c2eb12557bb7efeea397f354839",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+        "sha256": "b5b63619aaf5601dc59fcfdd0064a4e4fa1b3b91435a206e9aeeeadae2c4e51e",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+        "sha256": "f619e224e4c978239ac8205e1092a3e50b74813a45eea1dc33b44e91919231c8",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-top.png",
+        "sha256": "a20dbb9fe0dc5cf7f3ced5ed86722e03dd2617ee12ae371d859c1ff2e752e777",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--editor-card.png",
+        "sha256": "21c590e9a329481761b6c5e78041b19cbca3285bba9443249469dd0b4a42bb73",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--editor-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+        "sha256": "7c769d4bba5523aae3bbb5c4bb8f0a00527de87d2f4389a67327893b3948c36d",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+        "sha256": "eb960d38f94cee567951062be131f58200ef993192fd2f512d58b03ad8bd8f29",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+        "sha256": "022e54800b010c5a4e26c28796c9da880f81ae116c8ee9b43f8d4fe5d9008368",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-top.png",
+        "sha256": "8bdbe5e50012591aa03b73bfbca3714996322450ac3cf81c5e40b0523ce55b93",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-card.png",
+        "sha256": "84c74ed88b957f7b3f23e1186d333436e93c23339fab5c639ba22861d2c9806f",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              358,
+              388
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/R-000.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-top.png",
+        "sha256": "0cbd49e8e756a8bb97566cf51ee4b3aced6c44c5c4da00f197aabd19a8341a88",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              390,
+              844
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/R-001.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+        "sha256": "3a374850837fb1167c93c498778f5f76a0428c59e25e1ff520c5b78524dc9677",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+        "sha256": "ff5ba77947aa6e4ba0ca15e07b2ac17ddded5b018f3da66417bb035889e9df7a",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+        "sha256": "fb275beb5bec4fc386971cfe4909d8188f005882cf2aa2ebedb1fec77245d3b3",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-top.png",
+        "sha256": "c97ba423da67695a4c2d0fb8a6ecc5230245a020b2205a76acc8cf89d114927e",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--editor-card.png",
+        "sha256": "99f8cb0845302562114c0ec7f948e70b58576ef70b5d2aefea4f6fda1da95afc",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--editor-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+        "sha256": "1054c9fb2131cfcf650b3e9fa3cc03eadfd647e502b7f9a24bee8b73ce7965e0",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+        "sha256": "f61286d05aeed704776b003510a28ab88be2488610b46d07c1f11f96a18aeacc",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+        "sha256": "5bdf53c420d959220c53629d29375cb41c18eddf28322c4d0334de09817e872c",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-top.png",
+        "sha256": "91bc8985cb8dd8f31cdccfa3b80a54d6bbd3be3fc5bb6fa33b552a428a1aa8a6",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+        "sha256": "0fdf44457b6d670236a1ca0fe6580f7a623b5197165aabb8b8b3af6b2649f4ab",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/3068153/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-top.png",
+        "sha256": "b55974f5334d8cfc1a6147aed1c121dfcef02be5db6fa798ead6b7b571441180",
+        "method": "exact-byte carry from consumed aa2 reference",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-top.png",
+        "consumed": true
+      }
+    ],
+    "freshViews": [
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/R-000.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/R-001.png"
+    ],
+    "complete": true,
+    "actualViewedFreshSheets": [
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/R-000.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/R-001.png"
+    ]
+  },
+  "independentReferences": {
+    "candidate": {
+      "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+      "appTree": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+      "buildId": "mdg0W5h4PuFHgHafwSXG1",
+      "fixtureSha256": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+      "dailyHarnessSha256": "33b37e6445c1320f039067396f7c4160a5eeeb059f49eaf633be424c99e56df1",
+      "helperSha256": "0229f017fe2367aa0959900240661af96625d83726dfb74904a8ba39b661df7c"
+    },
+    "references": [
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/390x844-daily-active.png",
+        "sha256": "a485bc628fd18adf9c7efaa7adaa542b5e628377c7c1ec59bd8396c905797aea",
+        "identicalTo": null,
+        "consumed": true,
+        "method": "freshly inspected full native raster"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/768x1024-daily-active.png",
+        "sha256": "5c41126e9dcce1ed92622cb44d1bcae59494acefafc2f9055ee2f34b2662d7f2",
+        "identicalTo": null,
+        "consumed": true,
+        "method": "freshly inspected full native raster"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1024x768-daily-active.png",
+        "sha256": "428e7f0cf4ccda0c99330504668196f40e43066c8cab478c764a9183a3e8a103",
+        "identicalTo": null,
+        "consumed": true,
+        "method": "freshly inspected full native raster"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1440x1000-daily-active.png",
+        "sha256": "0674fff27ff2448b9ef3a86aa68bdc40565d4537ac0b09bff9f9ba9108a0b4c2",
+        "identicalTo": null,
+        "consumed": true,
+        "method": "freshly inspected full native raster"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/390x844-parent-mixed-full.png",
+        "sha256": "7ac11b28906658bdad6e87edf65bbf08f665a428eeee6ff7490e7b20f496a9a6",
+        "identicalTo": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/390x844-parent-mixed-full.png",
+        "consumed": true,
+        "method": "exact-byte carry"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/768x1024-parent-mixed-full.png",
+        "sha256": "7ecb861a7e6c25e8fc6900f700fd08d95d3ae0ecdf046110e4c14800a86254b7",
+        "identicalTo": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/768x1024-parent-mixed-full.png",
+        "consumed": true,
+        "method": "exact-byte carry"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1024x768-parent-mixed-full.png",
+        "sha256": "2b69b9b9004010b6aa4416632784d235537776b18440a16d92c5264b874cc93d",
+        "identicalTo": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1024x768-parent-mixed-full.png",
+        "consumed": true,
+        "method": "exact-byte carry"
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1440x1000-parent-mixed-full.png",
+        "sha256": "5ddc9232510a776ab0b14b0d97f356727422df4d42f492c801be39d3d447cb55",
+        "identicalTo": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1440x1000-parent-mixed-full.png",
+        "consumed": true,
+        "method": "exact-byte carry"
+      }
+    ],
+    "freshRegions": [
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/390x844-daily-active.png",
+        "box": [
+          0,
+          0,
+          390,
+          850
+        ],
+        "view": "daily-timer-visual-3068153/N-000.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/390x844-daily-active.png",
+        "box": [
+          0,
+          850,
+          390,
+          1210
+        ],
+        "view": "daily-timer-visual-3068153/N-001.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/768x1024-daily-active.png",
+        "box": [
+          0,
+          0,
+          768,
+          850
+        ],
+        "view": "daily-timer-visual-3068153/N-002.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/768x1024-daily-active.png",
+        "box": [
+          0,
+          850,
+          768,
+          1407
+        ],
+        "view": "daily-timer-visual-3068153/N-003.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1024x768-daily-active.png",
+        "box": [
+          0,
+          0,
+          1024,
+          850
+        ],
+        "view": "daily-timer-visual-3068153/N-004.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1024x768-daily-active.png",
+        "box": [
+          0,
+          850,
+          1024,
+          940
+        ],
+        "view": "daily-timer-visual-3068153/N-005.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1440x1000-daily-active.png",
+        "box": [
+          0,
+          0,
+          1440,
+          850
+        ],
+        "view": "daily-timer-visual-3068153/N-006.png"
+      },
+      {
+        "source": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-3068153/1440x1000-daily-active.png",
+        "box": [
+          0,
+          850,
+          1440,
+          1000
+        ],
+        "view": "daily-timer-visual-3068153/N-007.png"
+      }
+    ],
+    "actualViewedViews": [
+      "daily-timer-visual-3068153/N-000.png",
+      "daily-timer-visual-3068153/N-001.png",
+      "daily-timer-visual-3068153/N-002.png",
+      "daily-timer-visual-3068153/N-003.png",
+      "daily-timer-visual-3068153/N-004.png",
+      "daily-timer-visual-3068153/N-005.png",
+      "daily-timer-visual-3068153/N-006.png",
+      "daily-timer-visual-3068153/N-007.png"
+    ],
+    "materialDifferences": false,
+    "visibleDifference": "Video card order only; allthree identities/durations/progress preserved; source fixture independently creates added_at pervideo at runtime. Original runtime timestamp values not retained or recovered.",
+    "coverageCompleteForOwn8": true
+  },
+  "rootFreshMateriality": {
+    "references": [
+      "390x844--ready-card",
+      "390x844--ready-top"
+    ],
+    "difference": "45 raster pixels each, maximum channel difference1, wholly inside Endnow contour/text bounded region. Same card/view dimensions, labels, geometry, backgrounds and controls; actualnewrasters viewed completely. No material visual weakness; no unproven animation cause asserted."
+  },
+  "childFreshMateriality": "Four nativefullChildrasters show cardlistorder piano/fox/rocket instead of rocket/piano/fox. Actualall4 complete viewed. Fixture added_at generated independently at runtimepervideo; timestampvariation plausible and sourcecorroborated, originaltimestampsnotretained/recovered. Samecards/type/layout/remainingbanner/controlcontours remain readable; no newmaterialchange.",
+  "juryReuse": {
+    "priorVotes": "Root reports five fresh aa2 jurors unanimously PASS; peerreportsnotopened or independently re-votedhere",
+    "basis": "src app tree identical; exactsrc/e2e/supabase diff empty; 49pixelidentities plus6freshactual inspections find no materialvisualdifference",
+    "extent": "Carry priorfivejuryUIverdicts only; do not call them new306 jury runs, dependency/security votes, hosted/device or overallrelease acceptance"
+  },
+  "sourceBindings": {
+    "src": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "e2eDailyHarnessSha256": "33b37e6445c1320f039067396f7c4160a5eeeb059f49eaf633be424c99e56df1",
+    "packageJsonSha256": "0079f2b81a57443f8423dae996c592dfb98f4ed9321fa8ca360be0f60b82befb",
+    "packageLockSha256": "cf05652b2666257de2cbb036fb938c2bf39a7ffaf643988fcdcd367b4f134fed"
+  },
+  "preservation": "AllpreviousFAIL/PASSreports unchanged; ownscripts/currentPNGs/manifestandmapsoutside sharedtestresults",
+  "limitations": [
+    "Finite55timerreference scope only",
+    "LocaloptimizedChromiumsynthetic only, not hosted or physicaldevices",
+    "Current5juryPASS summary provided at taskstart; not blind to outcome, no peerreportsread",
+    "No all80suite completion claimed by this review; functional/security/dependency evidence separate",
+    "No new hovercapture: changeddependencycandidate finalfourneutraleditors exactSHA match viewedaa2; selected/hover interaction receipt fromaa2 retained as priorUIevidence"
+  ]
+}
