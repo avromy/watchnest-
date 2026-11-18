@@ -1,3 +1,13 @@
+# CURRENT — trusted-device hosted progress; existing Parent PIN handoff — November18
+
+Fresh staged `/api/session` established role:device,configured:true, superseding the stale login-view/password interpretation below. Unique candidate remains https://watchnest-5ens0lo6f-avromy.vercel.app /dpl_HH939UpRsidw913WvZocu6qkZv6v/source6be0cab; app/harness unchanged382. Root completed bounded hosted Child read-only/metadata checks:4 matching identities,1 expired session stayed denied,3 eligible Home views,one library/search/Collections/scoped-recovery path,Favorites/Hidden labels and allowed-topic non-playable discovery. No real Play/fullscreen/media/timer command or family-content/settings mutation. [Exact sanitized evidence and limits](HostedReadOnlyQA-20261118.md).
+
+MINIMUM OWNER ACTION NOW: enter the EXISTING4-digit Parent PIN in the handed-over Cloud browser's open Parent Mode modal. No PIN was entered/guessed. Do not send credentials in chat/notification, request another email/password, or repeat automated credential retrieval/direct entry. Vercel MFA/CLI are not current blockers. Root returned picker→ParentModePIN after child checks. After entry, continue hosted Parent read-only/metadata QA at the UNIQUE staged URL, not a branch alias/doc preview. Physical conditional testing comes only AFTER hosted QA completes.
+
+Canonical77/dpl_GiR remains unchanged; autoAssignCustomDomains FALSE MUST remain OFF through hold. All source/automated/independent synthetic gates stay scoped PASS. Parent hosted qualification and physical approved-playback/containment/fullscreen remote-stop gates remain OPEN; no merge/promotion or Founder Ready. This current entry supersedes earlier sign-in/MFA/CLI handoffs, whose history remains below.
+
+---
+
 # CURRENT — staged production build ready; WatchNest sign-in handoff — November18
 
 This current entry supersedes the earlier pending Vercel identity verification and CLI-only blocker. Those failures remain historical below and in immutable10aa2073be724c68302328deaca7907772238fb1. Source/design are unchanged; no new implementation owner.
