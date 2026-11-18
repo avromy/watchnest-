@@ -204,6 +204,61 @@ export default function ChildLibrary() {
       .catch((reason) => setError(reason.message));
   }, []);
 
+  useEffect(() => {
+    if (!profile) return;
+    let disposed = false;
+    let inFlight = false;
+    let timeout: number | undefined;
+    let controller: AbortController | undefined;
+    let abortTimer: number | undefined;
+    const refresh = async () => {
+      if (disposed || inFlight) return;
+      inFlight = true;
+      controller = new AbortController();
+      abortTimer = window.setTimeout(() => controller?.abort(), 4000);
+      try {
+        const response = await fetch("/api/child/session-access", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        const result = await response.json();
+        if (
+          !response.ok ||
+          typeof result.session_access?.allowed !== "boolean" ||
+          !Number.isInteger(result.session_access.revision) ||
+          !Number.isFinite(Date.parse(result.session_access.serverNow))
+        )
+          throw new Error("Unconfirmed time");
+        if (!disposed)
+          setSessionAccess((current) =>
+            !current || result.session_access.revision >= current.revision
+              ? result.session_access
+              : current,
+          );
+      } catch {
+        if (!disposed)
+          setSessionAccess((current) =>
+            current ? { ...current, allowed: false } : current,
+          );
+      } finally {
+        inFlight = false;
+        window.clearTimeout(abortTimer);
+        if (!disposed) timeout = window.setTimeout(refresh, 5000);
+      }
+    };
+    timeout = window.setTimeout(refresh, 5000);
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      disposed = true;
+      controller?.abort();
+      window.clearTimeout(abortTimer);
+      window.clearTimeout(timeout);
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", refresh);
+    };
+  }, [profile]);
+
   const filtered = useMemo(
     () =>
       videos
@@ -406,6 +461,13 @@ export default function ChildLibrary() {
           {profile.discover_enabled ? "Discover" : "Ask Parent"}
         </button>
       </nav>
+      {sessionAccess?.enabled && sessionAccess.allowed && (
+        <p className="muted" role="status">
+          {sessionAccess.mode === "daily" ? "Daily time" : "Your time"} ·{" "}
+          {Math.max(0, Math.ceil((sessionAccess.remainingSeconds || 0) / 60))}{" "}
+          min left
+        </p>
+      )}
       {error && (
         <p role="alert" className="error">
           {error}
@@ -441,7 +503,11 @@ export default function ChildLibrary() {
           <p>
             {sessionAccess.state === "paused"
               ? "Parent can resume when it’s time to watch again."
-              : "Your videos will be here when it’s time to watch again."}
+              : sessionAccess.parentBlocked
+                ? "Parent will let you know when it’s time to watch again."
+                : sessionAccess.mode === "daily"
+                  ? "Your daily time renews at 7 AM. Your videos will be here."
+                  : "Your videos will be here when it’s time to watch again."}
           </p>
           <button className="button" onClick={switchProfile}>
             Choose profile

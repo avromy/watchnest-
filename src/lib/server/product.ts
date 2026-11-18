@@ -29,7 +29,7 @@ const youtubeId = z.string().regex(/^[A-Za-z0-9_-]{11}$/);
 const founder = () =>
   (process.env.FOUNDER_EMAIL || "Avromy@gmail.com").toLowerCase();
 const selectProfile =
-  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at,discover_enabled,discovery_topics,discovery_channels";
+  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at,session_mode,daily_allowance_minutes,daily_period_start,daily_reset_at,daily_started,daily_period_timezone,session_parent_blocked,session_limit_disabled,discover_enabled,discovery_topics,discovery_channels";
 export function configured() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -531,8 +531,25 @@ async function metadata(videoIds: string[], force = false) {
     tags: [],
   }));
 }
-function accessView(profile: any) {
-  return { ...sessionAccess(profile), serverNow: new Date().toISOString() };
+async function accessView(
+  profile: any,
+  activate = true,
+  parentId = profile.parent_id,
+) {
+  const resolved = check(
+    await db().rpc("wn_resolve_profile_session", {
+      p_parent: parentId,
+      p_profile: profile.id,
+      p_activate: activate,
+    }),
+    "session-resolve",
+    "WatchNest could not confirm session time. Please retry.",
+  );
+  const fresh = { ...profile, ...resolved.profile_state };
+  return {
+    ...sessionAccess(fresh, Date.parse(resolved.server_now)),
+    serverNow: resolved.server_now,
+  };
 }
 
 function discoveryCandidateToken(
@@ -1300,24 +1317,42 @@ async function parentRoute(
     const b = z
       .object({
         profile_id: id,
-        action: z.enum(["start", "extend", "pause", "resume", "end", "disable"]),
+        action: z.enum([
+          "start",
+          "daily",
+          "extend",
+          "pause",
+          "resume",
+          "end",
+          "disable",
+        ]),
         duration_minutes: z.number().int().min(1).max(240).optional(),
       })
+      .refine(
+        (value) =>
+          !["start", "daily", "extend"].includes(value.action) ||
+          value.duration_minutes !== undefined,
+        "Choose a duration in minutes.",
+      )
       .parse(body);
     await ownedProfiles(p.id, [b.profile_id]);
-    const controlled = check(await client.rpc("wn_control_profile_session", {
-      p_parent: p.id,
-      p_profile: b.profile_id,
-      p_action: b.action,
-      p_minutes: b.duration_minutes ?? null,
-    }));
+    const controlled = check(
+      await client.rpc("wn_control_profile_session_v2", {
+        p_parent: p.id,
+        p_profile: b.profile_id,
+        p_action: b.action,
+        p_minutes: b.duration_minutes ?? null,
+      }),
+    );
     return reply({ ok: true, session: controlled });
   }
   if (route === "parent/session-status" && method === "GET") {
     const profiles = check(
       await client
         .from("profiles")
-        .select("id,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at")
+        .select(
+          "id,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at",
+        )
         .eq("parent_id", p.id)
         .is("archived_at", null),
     );
@@ -1326,20 +1361,28 @@ async function parentRoute(
       ? check(
           await client
             .from("child_sessions")
-            .select("profile_id,device_id,timer_last_seen_at,timer_ack_revision,timer_playback_active")
+            .select(
+              "profile_id,device_id,timer_last_seen_at,timer_ack_revision,timer_playback_active",
+            )
             .in("profile_id", profileIds)
             .is("revoked_at", null)
             .gt("expires_at", new Date().toISOString())
             .order("timer_last_seen_at", { ascending: false }),
         )
       : [];
-    return reply({
-      serverNow: new Date().toISOString(),
-      profiles: profiles.map((profile: any) => ({
+    const resolvedProfiles = await Promise.all(
+      profiles.map(async (profile: any) => ({
         ...profile,
-        access: accessView(profile),
-        devices: sessions.filter((session: any) => session.profile_id === profile.id),
+        access: await accessView(profile, false, p.id),
+        devices: sessions.filter(
+          (session: any) => session.profile_id === profile.id,
+        ),
       })),
+    );
+    return reply({
+      serverNow:
+        resolvedProfiles[0]?.access.serverNow || new Date().toISOString(),
+      profiles: resolvedProfiles,
     });
   }
   if (route === "parent/settings") {
@@ -1388,7 +1431,11 @@ async function parentRoute(
         check(
           await client
             .from("parents")
-            .update({ timezone: b.timezone })
+            .update({
+              timezone: new Intl.DateTimeFormat("en", {
+                timeZone: b.timezone,
+              }).resolvedOptions().timeZone,
+            })
             .eq("id", p.id),
         );
       }
@@ -1874,21 +1921,28 @@ async function childRoute(
 ) {
   const client = db(),
     profile = c.profile;
-  if (route === "child/session-access" && method === "POST") {
-    const b = z
-      .object({
-        revision: z.number().int().min(0),
-        playback_active: z.boolean(),
-      })
-      .parse(body);
-    const access = accessView(profile);
-    check(
-      await client.rpc("wn_ack_profile_session", {
-        p_session: c.session.id,
-        p_revision: Math.min(b.revision, access.revision),
-        p_playback_active: b.playback_active && access.allowed,
-      }),
-    );
+  if (
+    route === "child/session-access" &&
+    (method === "POST" || method === "GET")
+  ) {
+    const b =
+      method === "POST"
+        ? z
+            .object({
+              revision: z.number().int().min(0),
+              playback_active: z.boolean(),
+            })
+            .parse(body)
+        : null;
+    const access = await accessView(profile);
+    if (b)
+      check(
+        await client.rpc("wn_ack_profile_session", {
+          p_session: c.session.id,
+          p_revision: Math.min(b.revision, access.revision),
+          p_playback_active: b.playback_active && access.allowed,
+        }),
+      );
     return reply({ session_access: access });
   }
   const own = await videos(profile.parent_id, profile.id);
@@ -1922,7 +1976,7 @@ async function childRoute(
         hidden: hiddenIds.has(video.id),
       })),
       collections,
-      session_access: accessView(profile),
+      session_access: await accessView(profile),
     });
   }
   if (route === "child/hidden" && method === "POST") {
@@ -1965,9 +2019,11 @@ async function childRoute(
     let searchParams: Record<string, string>;
     if (boundaryKind === "topic") {
       const topic = topics.find(
-        (item: string) => item.toLocaleLowerCase() === boundary.toLocaleLowerCase(),
+        (item: string) =>
+          item.toLocaleLowerCase() === boundary.toLocaleLowerCase(),
       );
-      if (!topic) throw new Failure("Choose one of Parent’s search topics.", 403);
+      if (!topic)
+        throw new Failure("Choose one of Parent’s search topics.", 403);
       searchParams = { q: `${topic} ${query}`.trim() };
     } else {
       const channel = channels.find((item: any) => item.id === boundary);
@@ -2046,7 +2102,10 @@ async function childRoute(
       );
       const stillAllowed = discoveryBoundaryAllowed(profile, candidate);
       if (!stillAllowed)
-        throw new Failure("Parent changed the Discover choices. Search again.", 403);
+        throw new Failure(
+          "Parent changed the Discover choices. Search again.",
+          403,
+        );
       const [video] = await metadata([candidate.videoId], true);
       if (
         !video ||
@@ -2066,7 +2125,8 @@ async function childRoute(
       };
     }
     const inserted = await client.from("child_requests").insert(values);
-    if (inserted.error?.code === "23505") return reply({ ok: true, duplicate: true });
+    if (inserted.error?.code === "23505")
+      return reply({ ok: true, duplicate: true });
     check(inserted);
     return reply({ ok: true });
   }
@@ -2095,7 +2155,7 @@ async function childRoute(
     return reply({ ok: true });
   }
   if (route === "child/player" && method === "GET") {
-    const access = accessView(profile);
+    const access = await accessView(profile);
     if (!access.allowed)
       throw new Failure("Time’s up for now. Ask Parent for more time.", 403);
     const videoId = id.parse(new URL(request.url).searchParams.get("videoId"));
@@ -2128,7 +2188,7 @@ async function childRoute(
     });
   }
   if (route === "child/progress" && method === "POST") {
-    if (!accessView(profile).allowed)
+    if (!(await accessView(profile)).allowed)
       throw new Failure("Time’s up for now. Ask Parent for more time.", 403);
     const b = z
       .object({

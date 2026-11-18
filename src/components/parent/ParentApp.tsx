@@ -65,7 +65,15 @@ type SessionStatus = {
         remainingSeconds: number | null;
         pausedSeconds: number | null;
         revision: number;
-        state: "unlimited" | "active" | "paused" | "expired";
+        state:
+          "unlimited" | "active" | "paused" | "expired" | "ready" | "blocked";
+        mode?: "once" | "daily";
+        dailyAllowanceMinutes?: number | null;
+        resetAt?: string | null;
+        timezone?: string | null;
+        parentBlocked?: boolean;
+        dailyStarted?: boolean;
+        limitDisabled?: boolean;
       };
       devices: Array<{
         device_id: string | null;
@@ -2465,6 +2473,11 @@ function SessionTimerCard({
   const [duration, setDuration] = useState(
     profile.session_duration_minutes || 20,
   );
+  const [mode, setMode] = useState<"once" | "daily">(
+    profile.session_mode || "once",
+  );
+  const validDuration =
+    Number.isInteger(duration) && duration >= 1 && duration <= 240;
   const [clock, setClock] = useState({ monotonic: 0, wall: 0 });
   useEffect(() => {
     const tick = () =>
@@ -2490,11 +2503,13 @@ function SessionTimerCard({
   const pausedSeconds =
     status?.access.pausedSeconds ?? profile.session_paused_seconds ?? null;
   const remainingSeconds =
-    status?.access.state === "paused"
-      ? pausedSeconds || 0
-      : estimatedServerNow > 0 && Number.isFinite(expiry)
-        ? Math.max(0, Math.ceil((expiry - estimatedServerNow) / 1000))
-        : 0;
+    status?.access.state === "ready"
+      ? (status.access.dailyAllowanceMinutes || 0) * 60
+      : status?.access.state === "paused"
+        ? pausedSeconds || 0
+        : estimatedServerNow > 0 && Number.isFinite(expiry)
+          ? Math.max(0, Math.ceil((expiry - estimatedServerNow) / 1000))
+          : 0;
   const remaining = authoritative
     ? Math.max(0, Math.ceil(remainingSeconds / 60))
     : null;
@@ -2578,28 +2593,107 @@ function SessionTimerCard({
               ? "No session timer"
               : state === "unknown"
                 ? "Timer on · checking time…"
-                : state === "paused"
-                  ? `Paused · ${remaining} min saved`
-                  : state === "active"
-                    ? `${remaining} min left`
-                    : "Time’s up"}
+                : state === "blocked"
+                  ? "Stopped by Parent"
+                  : state === "ready"
+                    ? `${remaining} min available today`
+                    : state === "paused"
+                      ? `Paused · ${remaining} min saved`
+                      : state === "active"
+                        ? `${remaining} min left`
+                        : "Time’s up"}
           </p>
         </div>
       </div>
       <label>
-        Session length
+        Time mode
         <select
           className="field"
-          value={duration}
-          onChange={(event) => setDuration(Number(event.target.value))}
+          value={mode}
+          onChange={(event) => setMode(event.target.value as "once" | "daily")}
         >
-          {[15, 20, 30, 45, 60, 90, 120].map((minutes) => (
-            <option key={minutes} value={minutes}>
-              {minutes} minutes
-            </option>
-          ))}
+          <option value="once">Give Time · one-time</option>
+          <option value="daily">Daily Allowance · renews at 7 AM</option>
         </select>
       </label>
+      <label>
+        Custom minutes
+        <input
+          className="field"
+          type="number"
+          inputMode="numeric"
+          min="1"
+          max="240"
+          step="1"
+          value={duration || ""}
+          onChange={(event) => setDuration(Number(event.target.value))}
+          aria-describedby={`minutes-help-${profile.id}`}
+        />
+      </label>
+      <p className="muted" id={`minutes-help-${profile.id}`}>
+        Choose 1–240 whole minutes.
+      </p>
+      <div className={styles.timerActions} aria-label="Quick minutes">
+        {[1, 5, 10, 20, 30, 45, 60].map((minutes) => (
+          <button
+            type="button"
+            className="button-quiet"
+            key={minutes}
+            aria-pressed={duration === minutes}
+            onClick={() => setDuration(minutes)}
+          >
+            {minutes} min
+          </button>
+        ))}
+      </div>
+      {!validDuration && (
+        <p className="error" role="alert">
+          Enter a whole number from 1 to 240.
+        </p>
+      )}
+      {state === "blocked" && (
+        <p className="muted">
+          Access is stopped by Parent. Removing a time limit won’t unlock this
+          child. Give new time, or add time and allow access.
+        </p>
+      )}
+      <p className="muted">
+        {mode === "daily"
+          ? "Renews each day at 7 AM in your family’s time zone. The time window starts when the child opens their library. Unused time doesn’t carry over."
+          : "A one-time window. Giving time switches Daily Allowance off; it won’t renew tomorrow."}
+      </p>
+      {status?.access.mode === "daily" && (
+        <p className="muted">
+          Daily Allowance: {status.access.dailyAllowanceMinutes} min · Next
+          renewal:{" "}
+          {status.access.resetAt
+            ? new Intl.DateTimeFormat("en-US", {
+                timeZone: status.access.timezone || "America/New_York",
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+              }).format(new Date(status.access.resetAt))
+            : "7 AM"}{" "}
+          ({status.access.timezone || "America/New_York"}). A Parent stop or
+          pause stays in place.
+        </p>
+      )}
+      <div className={styles.timerActions}>
+        <button
+          className="button"
+          disabled={busy || statusState !== "ready" || !validDuration}
+          onClick={() =>
+            control(mode === "daily" ? "daily" : "start", duration)
+          }
+        >
+          {mode === "daily"
+            ? `Save ${duration || "…"} min daily allowance`
+            : state === "active" || state === "paused"
+              ? `Start new ${duration || "…"} min session`
+              : `Give ${duration || "…"} ${duration === 1 ? "minute" : "minutes"}`}
+        </button>
+      </div>
       <div className={styles.timerActions}>
         {state === "active" ? (
           <>
@@ -2610,6 +2704,15 @@ function SessionTimerCard({
             >
               Add 15 minutes
             </button>
+            {duration !== 15 && (
+              <button
+                className="button-secondary"
+                disabled={busy || !authoritative || !validDuration}
+                onClick={() => control("extend", duration)}
+              >
+                Add {duration || "…"} minutes
+              </button>
+            )}
             <button
               className="button-secondary"
               disabled={busy || !authoritative}
@@ -2641,6 +2744,15 @@ function SessionTimerCard({
             >
               Add 15 minutes
             </button>
+            {duration !== 15 && (
+              <button
+                className="button-secondary"
+                disabled={busy || !authoritative || !validDuration}
+                onClick={() => control("extend", duration)}
+              >
+                Add {duration || "…"} minutes
+              </button>
+            )}
             <button
               className={styles.endButton}
               disabled={busy || !authoritative}
@@ -2649,14 +2761,51 @@ function SessionTimerCard({
               End now
             </button>
           </>
+        ) : state === "blocked" ? (
+          <>
+            <button
+              className="button-secondary"
+              disabled={
+                busy ||
+                !authoritative ||
+                !(
+                  status?.access.limitDisabled ||
+                  (pausedSeconds || 0) > 0 ||
+                  (status?.access.mode === "daily" &&
+                    status.access.dailyStarted === false)
+                )
+              }
+              onClick={() => control("resume")}
+            >
+              Allow access
+            </button>
+            <button
+              className="button-secondary"
+              disabled={busy || !authoritative || !validDuration}
+              onClick={() => control("extend", duration)}
+            >
+              Add {duration || "…"} minutes
+            </button>
+          </>
         ) : (
-          <button
-            className="button"
-            disabled={busy || statusState !== "ready"}
-            onClick={() => control("start", duration)}
-          >
-            Give {duration} minutes
-          </button>
+          <>
+            {state === "ready" && (
+              <button
+                className="button-secondary"
+                disabled={busy || !authoritative}
+                onClick={() => control("pause")}
+              >
+                Pause
+              </button>
+            )}
+            <button
+              className={styles.endButton}
+              disabled={busy || !authoritative}
+              onClick={() => control("end")}
+            >
+              End now
+            </button>
+          </>
         )}
         {enabled && (
           <button
@@ -2664,7 +2813,7 @@ function SessionTimerCard({
             disabled={busy || !authoritative}
             onClick={() => control("disable")}
           >
-            Turn timer off
+            Remove time limit
           </button>
         )}
       </div>
@@ -2722,7 +2871,7 @@ export function Controls() {
         title="Time controls"
         description="Manage each child’s watch session from here."
       />
-      <h2>Session time</h2>
+      <h2>Time for each child</h2>
       <div className="grid grid-2">
         {data.profiles.map((profile) => (
           <SessionTimerCard

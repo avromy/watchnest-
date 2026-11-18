@@ -97,7 +97,7 @@ type Playback = {
     remainingSeconds: number | null;
     pausedSeconds: number | null;
     revision: number;
-    state: "unlimited" | "active" | "paused" | "expired";
+    state: "unlimited" | "active" | "paused" | "expired" | "ready" | "blocked";
     serverNow: string;
   };
 };
@@ -667,11 +667,10 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           <p>
             {timeBlockKind === "paused"
               ? "Video has stopped. Parent can resume when it’s time."
-              : "Video has stopped. Ask Parent when you’re ready for more time."}
+              : "Video has stopped. Check your library for available time, or ask Parent."}
           </p>
-          <Link className="button" href="/watch">
-            Choose profile
-          </Link>
+          <Link className="button" href="/watch/home">Back to Library</Link>
+          <Link className="button button-quiet" href="/watch">Choose profile</Link>
         </section>
       ) : error ? (
         <section className="panel" style={{ marginTop: 32 }}>
