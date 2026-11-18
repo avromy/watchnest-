@@ -1095,6 +1095,9 @@ test("synthetic UI: a child finds approved videos in a 240-item library", async 
 
 test("synthetic UI: intermediate widths keep parent tools and child browsing within reach", async ({ page }) => {
   await fixture(page, "parent");
+  const runtimeErrors: string[] = [];
+  page.on("pageerror", error => runtimeErrors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") runtimeErrors.push(message.text()); });
   const assertWithinViewport = async () => {
     await expect(page.locator("main h1")).toBeVisible();
     const clipping = await page.evaluate(() => {
@@ -1113,6 +1116,8 @@ test("synthetic UI: intermediate widths keep parent tools and child browsing wit
     await page.setViewportSize({ width, height: width < 520 ? 915 : 820 });
     for (const route of ["/parent/add-video", "/parent/controls"]) {
       await page.goto(route);
+      await expect(page.getByRole("heading", { level: 1, name: route === "/parent/controls" ? "Time & discovery." : "Add videos", exact: true })).toBeVisible();
+      if (route === "/parent/controls") await expect(page.getByRole("heading", { name: "Session time", exact: true })).toBeVisible();
       await assertWithinViewport();
     }
   }
@@ -1122,8 +1127,10 @@ test("synthetic UI: intermediate widths keep parent tools and child browsing wit
     await page.setViewportSize({ width, height: width < 520 ? 915 : 820 });
     await page.goto("/watch/home");
     await page.getByRole("button", { name: "Library", exact: true }).click();
+    await expect(page.getByRole("heading", { level: 1, name: "Your library", exact: true })).toBeVisible();
     await assertWithinViewport();
   }
+  expect(runtimeErrors).toEqual([]);
 });
 
 test("synthetic UI: password visibility and recovery work with a keyboard", async ({ page }) => {

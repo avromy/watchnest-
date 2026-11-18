@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs e2e/product.spec.ts -g intermediate widths
+
+[WebServer] (node:44) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:57) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:69) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/product.spec.ts:1096:5 › synthetic UI: intermediate widths keep parent tools and child browsing within reach (6.1s)
+
+  1 passed (8.6s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
