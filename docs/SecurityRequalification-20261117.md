@@ -194,3 +194,37 @@ cf764 full-suite result remains historical for that harness/source; this addendu
 does not claim a new test run, new final rendered acceptance or coverage of
 subsequent evidence-harness changes. Renew affected browser/visual evidence on
 the exact final candidate. Hosted/provider/physical-device gates remain OPEN.
+
+
+## Bounded scoped-search renewal — 38244
+
+Exact commit `38244d2c6ea6b7bb113f3e39338b63cf4eae1e82`, tree `a4b851b4230bf5b649d9ff32c9588db74b87a4d6`,
+src tree `461eb4dc14b9a5adb79047d681a8c85478e740ad`. Independently read the complete application and
+harness diff from9480: ChildLibrary is the sole changed application file.
+Its search label now names Collection/Favorites/Hidden scope; a scoped empty
+search offers Search all videos, clearing only collection/favoritesOnly/hiddenOnly
+UI state and preserving query. The same existing server-authorized videos array
+and filtering predicate remain; no provider search, playback, API call, automatic
+request or assignment is added. Existing global-miss Ask Parent behavior remains
+unchanged. Clearing Hidden scope returns to the existing nonhidden library
+filter; it does not retrieve new or sibling data.
+
+The new four-anchor regression asserts query preservation, existing approved
+piano result, no iframe and no child-request mutation; Favorites/Hidden labels
+are checked. New visual captures cover scoped empty/expanded states. Other
+harness changes fix internal dialog scroll target, add source-tree metadata,
+label historical frozen identity honestly and add phone Library captures. None
+removes or relaxes security assertions. This paragraph assesses source/test
+intent; no four-anchor execution or full69 result is self-certified here.
+
+All61 protected production-scope Git blobs independently match across prod77,
+9480 and38244. Dependencies remain unchanged. Exact per-path blobs and relevant
+application/harness SHA256 are frozen in
+`docs/evidence/qualification-20261117/security-source-comparison-38244.json`,
+SHA256 `790e1ef0942d3b70dbfafaf17911c5416689fc4a8e6fb6ec8bd7a287fb35fedd`. ChildLibrary SHA256
+`ebf51bc84a8536af7512ae2e46242620d0e93e0db831e7e024dd7d1ccb72d002`.
+
+Scoped SOURCE preservation verdict: PASS for exact38244. Prior cf764 runtime
+results do not certify changed UI/harness bytes; final full-suite and affected
+rendered evidence must bind to this candidate. Hosted/provider/physical-device
+acceptance remains OPEN; no production or database mutation performed.
