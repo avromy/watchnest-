@@ -451,7 +451,7 @@ for (const viewport of viewports) {
       await expect(page.getByText("Opening your library…", { exact: true })).toBeVisible();
       await capture("child-library-loading");
       releaseLibrary();
-      await expect(page.getByText(/^Hi, Ari\.?$/, { exact: true })).toBeVisible();
+      await expect(page.getByText(/^Ari’s space$/, { exact: true })).toBeVisible();
       await capture("child-simple-home");
       await page.getByRole("button", { name: "Library", exact: true }).click();
       await capture("child-simple-library");
@@ -470,7 +470,7 @@ for (const viewport of viewports) {
       await page.getByRole("button", { name: "Send request", exact: true }).click();
       await expect(page.getByRole("heading", { name: "Sent to Parent", exact: true })).toBeVisible();
       await capture("child-discover-disabled-success");
-      await page.getByRole("button", { name: "Home", exact: true }).click();
+      await page.getByRole("button", { name: "Library", exact: true }).click();
       await page.getByRole("button", { name: /Ari/ }).first().click();
       await expect(page.getByRole("heading", { name: "Who’s watching?", exact: true })).toBeVisible();
       await capture("child-profile-switch-return");
@@ -488,6 +488,13 @@ for (const viewport of viewports) {
       await page.goto(`/parent/${section}`);
       await expect(page.locator("main h1")).toBeVisible();
       await capture(`parent-${section}`);
+      if (section === "controls") {
+        for (const disclosure of ["Discover permissions", "Available hours"]) {
+          await page.locator("summary").filter({ hasText: disclosure }).click();
+          await capture(`parent-controls-${disclosure.toLowerCase().replace(/ /g, "-")}`);
+          await page.locator("summary").filter({ hasText: disclosure }).click();
+        }
+      }
       if (section === "library") {
         await page.getByRole("button", { name: "Preview", exact: true }).first().click();
         await expect(page.getByRole("dialog")).toBeVisible();
@@ -512,7 +519,7 @@ for (const viewport of viewports) {
 
     await synthetic(page, "child");
     await page.goto("/watch/home");
-    await expect(page.getByText(/^Hi, Ari\.?$/, { exact: true })).toBeVisible();
+    await expect(page.getByText(/^Ari’s space$/, { exact: true })).toBeVisible();
     await capture("child-home");
     await page.getByRole("button", { name: "Library", exact: true }).click();
     await capture("child-library");
@@ -553,7 +560,7 @@ for (const viewport of viewports) {
     await capture("child-discover-results");
     await page.route("**/api/child/library", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: discoveryProfile, videos: [], collections: [] }) }));
     await page.goto("/watch/home");
-    await expect(page.getByText(/^Hi, Ari\.?$/, { exact: true })).toBeVisible();
+    await expect(page.getByText(/^Ari’s space$/, { exact: true })).toBeVisible();
     await capture("child-empty-library");
     await page.route("**/api/child/library", route => route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "Your library is taking a moment. Please try again." }) }));
     await page.reload();

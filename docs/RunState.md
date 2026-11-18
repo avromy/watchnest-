@@ -1,3 +1,23 @@
+# CURRENT — first Concept3 WIP source freeze for qualification — November18
+
+Root has integrated and frozen the first Concept3/Premium Family Streaming candidate for WIP publication on existing premium-ui-ux-20261103/PR49. No dominant green; prior green visual acceptance remains STALE for changed identity/pixels/IA/interactions. Child has one Library landing, compact Collections/navigation,2×2 portrait picker and flat lavender avatars; Parent has task-first Overview/directTime navigation/results-before-approval and secondary-control disclosures. Exact scope/owners in Concept3Implementation-20261118.md; actual authority/UX receipts included.
+
+Root-reported diagnostics:200unit/build/lint/type PASS in draft;30browser flows PASS on EARLIER draft. These are not final frozen-source acceptance. Full exact-candidate suite/security/render/independent/hosted/device qualification PENDING; no overallPASS. Only changed src/public/e2e +eslint.config.mjs and threeConcept3docs/RunState/Ledger are published. Historical docs/evidence dirt/captures/helpers remain excluded and untouched. No app edits by publishing lane, no merge/manualdeploy/project-setting mutation.
+
+Production77/oldgreenHHstage remain preserved; autoAssignCustomDomainsFALSE/releasehold remains. Oldstage is not Concept3. ExistingPINhandoff unavailable; do not repeat notification/auth or physical test request. Root runs frozen gates next and supplies results. Earlier local-only/unfrozen entries below are historical, superseded by this source-freeze entry.
+
+---
+
+# CURRENT — Concept3 implementation active, previous visual authority superseded — November18
+
+Binding Founder decision: Concept3 / Premium Family Streaming, NO DOMINANT GREEN. Prior green-led visual direction and old selection A are superseded. Exact recovered remote baseline671b77d5f9293a0c9e1be21463c4fcae5da7e8dd/appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad is preserved. Historical382 engineering tests remain baseline facts; prior visual/HumanEye/jury/Stranger PASS is STALE for changed Concept3 pixels/identity/IA/interactions, not new acceptance. See [implementation scope/evidence contract](Concept3Implementation-20261118.md) and [actual current authority recovery](Concept3AuthorityRecovery-20261118.md).
+
+Root alone integrates/releases child/global/icon presentation. concept3_ux owns ONLY ParentApp.tsx/Parent.module.css. Documentation lane edits these local receipts only; no app edits, commit/push/deploy until Root instruction. Implementation IN PROGRESS, candidate UNFROZEN, new Concept3 tests/actual-pixel/independent/hosted/device gates NOT YET RUN. Root supplies new freeze/test results. Protected player/auth/PIN/CSP/RLS/timer/data contract stays locked.
+
+Canonical production remains77/dpl_GiR. Existing HHstage/source6be0cab is OLD GREEN, not Concept3. Keep autoAssignCustomDomainsFALSE/release hold. Existing PIN handoff is unavailable to Founder; do NOT repeat notifications/push auth or request physical testing now. Safe independent implementation continues. Preserve all dirty historical evidence. This current entry supersedes earlier next-action/readiness headings below; no new PASS/Founder Ready/product-ready claim.
+
+---
+
 # CURRENT — trusted-device hosted progress; existing Parent PIN handoff — November18
 
 Fresh staged `/api/session` established role:device,configured:true, superseding the stale login-view/password interpretation below. Unique candidate remains https://watchnest-5ens0lo6f-avromy.vercel.app /dpl_HH939UpRsidw913WvZocu6qkZv6v/source6be0cab; app/harness unchanged382. Root completed bounded hosted Child read-only/metadata checks:4 matching identities,1 expired session stayed denied,3 eligible Home views,one library/search/Collections/scoped-recovery path,Favorites/Hidden labels and allowed-topic non-playable discovery. No real Play/fullscreen/media/timer command or family-content/settings mutation. [Exact sanitized evidence and limits](HostedReadOnlyQA-20261118.md).

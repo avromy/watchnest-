@@ -210,7 +210,7 @@ for (const viewport of viewports) {
     await capture("family-profile-picker");
     await synthetic(page, "child");
     await page.goto("/watch/home");
-    await expect(page.getByText("Hi, Ari.", { exact: true })).toBeVisible();
+    await expect(page.getByText("Ari’s space", { exact: true })).toBeVisible();
     await capture("child-home");
     await page.getByRole("button", { name: "Library", exact: true }).click();
     await capture("child-library");

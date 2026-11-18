@@ -227,15 +227,12 @@ export function ParentShell({ children }: { children: ReactNode }) {
     "/parent/collections",
     "/parent/add-video",
   ];
-  const familyRoutes = [
-    "/parent/children",
-    "/parent/controls",
-    "/parent/settings",
-  ];
+  const familyRoutes = ["/parent/children", "/parent/settings"];
   const nav: [string, string, IconName, boolean][] = [
     ["Overview", "/parent/dashboard", "home", path === "/parent/dashboard"],
     ["Library", "/parent/library", "library", libraryRoutes.includes(path)],
     ["Requests", "/parent/inbox", "inbox", path === "/parent/inbox"],
+    ["Time", "/parent/controls", "clock", path === "/parent/controls"],
     ["Family", "/parent/children", "children", familyRoutes.includes(path)],
   ];
   const secondaryNav = libraryRoutes.includes(path)
@@ -247,7 +244,6 @@ export function ParentShell({ children }: { children: ReactNode }) {
     : familyRoutes.includes(path)
       ? [
           ["Profiles", "/parent/children"],
-          ["Time & discovery", "/parent/controls"],
           ["Settings", "/parent/settings"],
         ]
       : [];
@@ -442,9 +438,48 @@ export function Overview() {
   return (
     <>
       <header className={styles.overviewHeading}>
-        <h1>Family overview</h1>
+        <div>
+          <p className="eyebrow">Parent space</p>
+          <h1>Family overview</h1>
+        </div>
       </header>
-      <div className={styles.overviewMetrics} aria-label="Library overview">
+      <div className={styles.taskGrid} aria-label="Family actions">
+        <Link href="/parent/add-video" className={styles.primaryTask}>
+          <span className={styles.taskIcon}>
+            <Icon name="plus" width="26" />
+          </span>
+          <span>
+            <strong>Add videos</strong>
+            <small>Find, approve and share</small>
+          </span>
+          <span aria-hidden="true">→</span>
+        </Link>
+        <Link href="/parent/inbox">
+          <span className={styles.taskIcon}>
+            <Icon name="inbox" width="26" />
+          </span>
+          <span>
+            <strong>Requests</strong>
+            <small>
+              {pending.length
+                ? `${pending.length} waiting for you`
+                : "See what they asked for"}
+            </small>
+          </span>
+          <span aria-hidden="true">→</span>
+        </Link>
+        <Link href="/parent/controls">
+          <span className={styles.taskIcon}>
+            <Icon name="clock" width="26" />
+          </span>
+          <span>
+            <strong>Time controls</strong>
+            <small>Start, extend or end a session</small>
+          </span>
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
+      <div className={styles.librarySummary} aria-label="Library overview">
         <Link href="/parent/library">
           <strong>{workflow.approvedVideos}</strong>
           <span>Approved videos</span>
@@ -558,16 +593,6 @@ export function Overview() {
           })}
         </div>
       </section>
-      <Link href="/parent/controls" className={styles.timerShortcut}>
-        <span className={styles.shortcutIcon}>
-          <Icon name="clock" width="25" />
-        </span>
-        <span>
-          <strong>Watch sessions</strong>
-          <small>Start a session, add time, or end playback from here.</small>
-        </span>
-        <span aria-hidden="true">→</span>
-      </Link>
     </>
   );
 }
@@ -971,164 +996,179 @@ export function AddVideos() {
       )}
       {!!results.length && (
         <>
-          <section className={`panel ${styles.approvalPanel}`}>
-            <div className={styles.sectionHeading}>
-              <div>
-                <p className="eyebrow">Make it theirs</p>
-                <h2>
-                  {selected.length
-                    ? `${selected.length} selected for approval`
-                    : "Choose videos below"}
-                </h2>
+          <div className={styles.approvalWorkspace}>
+            <div className={styles.resultWorkspace}>
+              {selected.length > 0 && (
+                <a href="#video-approval" className={styles.approvalJump}>
+                  {selected.length} selected{" "}
+                  <span>Choose children & approve →</span>
+                </a>
+              )}
+              <div className="video-grid">
+                {results.map((v) => (
+                  <article className="video-card" key={v.youtube_video_id}>
+                    <Thumb video={v} />
+                    <div className={styles.cardBody}>
+                      <h3>{v.title}</h3>
+                      <p className="muted">{v.channel_title}</p>
+                      {data.videos.some(
+                        (existing) =>
+                          existing.youtube_video_id === v.youtube_video_id,
+                      ) && (
+                        <p className="notice">
+                          <strong>Already approved</strong>
+                          <br />
+                          {data.profiles
+                            .filter((profile) =>
+                              data.videos
+                                .find(
+                                  (existing) =>
+                                    existing.youtube_video_id ===
+                                    v.youtube_video_id,
+                                )
+                                ?.profile_ids?.includes(profile.id),
+                            )
+                            .map((profile) => profile.display_name)
+                            .join(" · ") || "Not shared yet"}
+                        </p>
+                      )}
+                      <label className={styles.check}>
+                        <input
+                          type="checkbox"
+                          checked={selected.includes(v.youtube_video_id)}
+                          onChange={() =>
+                            setSelected(
+                              selected.includes(v.youtube_video_id)
+                                ? selected.filter(
+                                    (id) => id !== v.youtube_video_id,
+                                  )
+                                : [...selected, v.youtube_video_id],
+                            )
+                          }
+                        />
+                        Select this video
+                      </label>
+                      <button
+                        className="button-secondary"
+                        onClick={(event) => {
+                          previewReturnFocus.current = event.currentTarget;
+                          setPreviewLoaded(false);
+                          setPreview(v);
+                        }}
+                      >
+                        Preview
+                      </button>
+                    </div>
+                  </article>
+                ))}
               </div>
-              <span className={styles.selectionCount}>
-                {results.length} {results.length === 1 ? "video" : "videos"}{" "}
-                found
-              </span>
-            </div>
-            <Choices
-              profiles={data.profiles}
-              value={profiles}
-              setValue={setProfiles}
-            />
-            <label htmlFor="add-collection">Collection (optional)</label>
-            <select
-              id="add-collection"
-              className="field"
-              value={collection}
-              onChange={(e) => setCollection(e.target.value)}
-            >
-              <option value="">No collection</option>
-              {data.collections.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.title}
-                </option>
-              ))}
-              <option value="__new">+ New Collection</option>
-            </select>
-            {collection === "__new" && (
-              <div className="form-row">
-                <input
-                  className="field"
-                  value={newCollectionTitle}
-                  onChange={(event) =>
-                    setNewCollectionTitle(event.target.value)
-                  }
-                  placeholder="Collection name"
-                  maxLength={120}
-                  autoFocus
-                />
+              {nextPageToken && (
                 <button
                   type="button"
                   className="button-secondary"
-                  disabled={creatingCollection || !newCollectionTitle.trim()}
-                  onClick={async () => {
-                    setCreatingCollection(true);
-                    setError("");
-                    try {
-                      const result = await api<{ collection: Collection }>(
-                        "/api/parent/collections",
-                        "POST",
-                        { title: newCollectionTitle.trim(), video_ids: [] },
-                      );
-                      await reload();
-                      setCollection(result.collection.id);
-                      setNewCollectionTitle("");
-                    } catch (reason) {
-                      setError(
-                        reason instanceof Error
-                          ? reason.message
-                          : "Could not create the Collection.",
-                      );
-                    } finally {
-                      setCreatingCollection(false);
-                    }
-                  }}
+                  disabled={loading}
+                  onClick={() => void runFind(false, nextPageToken, true)}
                 >
-                  Create
+                  {loading ? "Loading…" : "Load more"}
                 </button>
-              </div>
-            )}
-            <button
-              className="button"
-              disabled={
-                !selected.length ||
-                !profiles.length ||
-                busy ||
-                collection === "__new"
-              }
-              onClick={approve}
+              )}
+            </div>
+            <section
+              className={`panel ${styles.approvalPanel}`}
+              id="video-approval"
             >
-              Approve {selected.length || ""} selected{" "}
-              {selected.length === 1 ? "video" : "videos"}
-            </button>
-          </section>
-          <div className="video-grid">
-            {results.map((v) => (
-              <article className="video-card" key={v.youtube_video_id}>
-                <Thumb video={v} />
-                <div className={styles.cardBody}>
-                  <h3>{v.title}</h3>
-                  <p className="muted">{v.channel_title}</p>
-                  {data.videos.some(
-                    (existing) =>
-                      existing.youtube_video_id === v.youtube_video_id,
-                  ) && (
-                    <p className="notice">
-                      <strong>Already approved</strong>
-                      <br />
-                      {data.profiles
-                        .filter((profile) =>
-                          data.videos
-                            .find(
-                              (existing) =>
-                                existing.youtube_video_id ===
-                                v.youtube_video_id,
-                            )
-                            ?.profile_ids?.includes(profile.id),
-                        )
-                        .map((profile) => profile.display_name)
-                        .join(" · ") || "Not shared yet"}
-                    </p>
-                  )}
-                  <label className={styles.check}>
-                    <input
-                      type="checkbox"
-                      checked={selected.includes(v.youtube_video_id)}
-                      onChange={() =>
-                        setSelected(
-                          selected.includes(v.youtube_video_id)
-                            ? selected.filter((id) => id !== v.youtube_video_id)
-                            : [...selected, v.youtube_video_id],
-                        )
-                      }
-                    />
-                    Select this video
-                  </label>
+              <div className={styles.sectionHeading}>
+                <div>
+                  <p className="eyebrow">Approval</p>
+                  <h2>
+                    {selected.length
+                      ? `${selected.length} selected for approval`
+                      : "Choose videos to approve"}
+                  </h2>
+                </div>
+                <span className={styles.selectionCount}>
+                  {results.length} {results.length === 1 ? "video" : "videos"}{" "}
+                  found
+                </span>
+              </div>
+              <Choices
+                profiles={data.profiles}
+                value={profiles}
+                setValue={setProfiles}
+              />
+              <label htmlFor="add-collection">Collection (optional)</label>
+              <select
+                id="add-collection"
+                className="field"
+                value={collection}
+                onChange={(e) => setCollection(e.target.value)}
+              >
+                <option value="">No collection</option>
+                {data.collections.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.title}
+                  </option>
+                ))}
+                <option value="__new">+ New Collection</option>
+              </select>
+              {collection === "__new" && (
+                <div className="form-row">
+                  <input
+                    className="field"
+                    value={newCollectionTitle}
+                    onChange={(event) =>
+                      setNewCollectionTitle(event.target.value)
+                    }
+                    placeholder="Collection name"
+                    maxLength={120}
+                    autoFocus
+                  />
                   <button
+                    type="button"
                     className="button-secondary"
-                    onClick={(event) => {
-                      previewReturnFocus.current = event.currentTarget;
-                      setPreviewLoaded(false);
-                      setPreview(v);
+                    disabled={creatingCollection || !newCollectionTitle.trim()}
+                    onClick={async () => {
+                      setCreatingCollection(true);
+                      setError("");
+                      try {
+                        const result = await api<{ collection: Collection }>(
+                          "/api/parent/collections",
+                          "POST",
+                          { title: newCollectionTitle.trim(), video_ids: [] },
+                        );
+                        await reload();
+                        setCollection(result.collection.id);
+                        setNewCollectionTitle("");
+                      } catch (reason) {
+                        setError(
+                          reason instanceof Error
+                            ? reason.message
+                            : "Could not create the Collection.",
+                        );
+                      } finally {
+                        setCreatingCollection(false);
+                      }
                     }}
                   >
-                    Preview
+                    Create
                   </button>
                 </div>
-              </article>
-            ))}
+              )}
+              <button
+                className="button"
+                disabled={
+                  !selected.length ||
+                  !profiles.length ||
+                  busy ||
+                  collection === "__new"
+                }
+                onClick={approve}
+              >
+                Approve {selected.length || ""} selected{" "}
+                {selected.length === 1 ? "video" : "videos"}
+              </button>
+            </section>
           </div>
-          {nextPageToken && (
-            <button
-              type="button"
-              className="button-secondary"
-              disabled={loading}
-              onClick={() => void runFind(false, nextPageToken, true)}
-            >
-              {loading ? "Loading…" : "Load more"}
-            </button>
-          )}
         </>
       )}
       {preview && (
@@ -1250,8 +1290,8 @@ export function Library() {
     <>
       <Heading
         eyebrow="Your approved library"
-        title="The family library."
-        description="Your approved picks. Shared with just the right children."
+        title="Family library"
+        description="Search and organize the videos you’ve approved."
         action={
           <Link className="button" href="/parent/add-video">
             Add videos
@@ -2679,8 +2719,8 @@ export function Controls() {
     <>
       <Heading
         eyebrow="Controls"
-        title="Time & discovery."
-        description="Choose when each child can watch and what they may ask you to add."
+        title="Time controls"
+        description="Manage each child’s watch session from here."
       />
       <h2>Session time</h2>
       <div className="grid grid-2">
@@ -2719,163 +2759,171 @@ export function Controls() {
           protection and the WatchNest timer for stopping video and sound.
         </p>
       </section>
-      <h2>Discover</h2>
-      <div className="grid grid-2">
-        {data.profiles.map((profile) => (
-          <form
-            className="panel"
-            key={`discover-${profile.id}`}
-            onSubmit={async (event) => {
-              event.preventDefault();
-              const form = new FormData(event.currentTarget);
-              const topics = String(form.get("topics") || "")
-                .split(",")
-                .map((item) => item.trim())
-                .filter(Boolean)
-                .slice(0, 12);
-              await act("/api/parent/profiles", "PATCH", {
-                id: profile.id,
-                discover_enabled:
-                  form.get("enabled") === "on" &&
-                  (topics.length > 0 || !!profile.discovery_channels?.length),
-                discovery_topics: topics,
-              });
-            }}
-          >
-            <div className={styles.childHeader}>
-              <ProfileImage
-                name={profile.display_name}
-                avatar={profile.avatar_key}
-                photoUrl={profile.photo_url}
-                size="small"
-              />
-              <div>
-                <h2>{profile.display_name}</h2>
-                <p className="muted">
-                  Every result still needs Parent approval.
-                </p>
+      <details className={styles.controlDetails}>
+        <summary>Discover permissions</summary>
+        <p className="muted">
+          Choose the topics and channels each child may search. Every video
+          still needs your approval.
+        </p>
+        <div className="grid grid-2">
+          {data.profiles.map((profile) => (
+            <form
+              className="panel"
+              key={`discover-${profile.id}`}
+              onSubmit={async (event) => {
+                event.preventDefault();
+                const form = new FormData(event.currentTarget);
+                const topics = String(form.get("topics") || "")
+                  .split(",")
+                  .map((item) => item.trim())
+                  .filter(Boolean)
+                  .slice(0, 12);
+                await act("/api/parent/profiles", "PATCH", {
+                  id: profile.id,
+                  discover_enabled:
+                    form.get("enabled") === "on" &&
+                    (topics.length > 0 || !!profile.discovery_channels?.length),
+                  discovery_topics: topics,
+                });
+              }}
+            >
+              <div className={styles.childHeader}>
+                <ProfileImage
+                  name={profile.display_name}
+                  avatar={profile.avatar_key}
+                  photoUrl={profile.photo_url}
+                  size="small"
+                />
+                <div>
+                  <h2>{profile.display_name}</h2>
+                  <p className="muted">
+                    Every result still needs Parent approval.
+                  </p>
+                </div>
               </div>
-            </div>
-            <label className={styles.switchRow}>
-              <input
-                type="checkbox"
-                name="enabled"
-                defaultChecked={profile.discover_enabled}
-              />
-              <span>
-                <strong>Discover videos</strong>
-              </span>
-            </label>
-            <label>
-              Topics they may search
-              <input
-                className="field"
-                name="topics"
-                defaultValue={(profile.discovery_topics || []).join(", ")}
-                placeholder="Drawing, science, Jewish music"
-              />
-            </label>
-            {!!profile.discovery_channels?.length && (
-              <div>
-                <p className="muted">
-                  Allowed channels:{" "}
-                  {profile.discovery_channels
-                    .map((item) => item.title)
-                    .join(" · ")}
-                </p>
-                <button
-                  type="button"
-                  className="button-quiet"
-                  disabled={busy}
-                  onClick={() =>
-                    act("/api/parent/profiles", "PATCH", {
-                      id: profile.id,
-                      discovery_channels: [],
-                    })
-                  }
-                >
-                  Remove allowed channels
-                </button>
-              </div>
-            )}
-            <button className="button" disabled={busy}>
-              Save Discover
-            </button>
-          </form>
-        ))}
-      </div>
-      <h2>Available hours</h2>
-      <div className="grid grid-2">
-        {data.profiles.map((profile) => (
-          <form
-            className="panel"
-            key={profile.id}
-            onSubmit={async (event) => {
-              event.preventDefault();
-              const form = new FormData(event.currentTarget);
-              const start = form.get("start"),
-                end = form.get("end");
-              await act("/api/parent/profiles", "PATCH", {
-                id: profile.id,
-                available_from_minute: start ? Number(start) : null,
-                available_until_minute: end ? Number(end) : null,
-              });
-            }}
-          >
-            <div className={styles.childHeader}>
-              <ProfileImage
-                name={profile.display_name}
-                avatar={profile.avatar_key}
-                photoUrl={profile.photo_url}
-                size="small"
-              />
-              <div>
-                <h2>{profile.display_name}</h2>
-                <p className="muted">
-                  {profile.available_from_minute == null
-                    ? "Available anytime"
-                    : `${timeLabel(profile.available_from_minute)}–${timeLabel(profile.available_until_minute || 0)}`}
-                </p>
-              </div>
-            </div>
-            <div className={styles.pinGrid}>
-              <label>
-                Available from
-                <select
-                  className="field"
-                  name="start"
-                  defaultValue={profile.available_from_minute ?? ""}
-                >
-                  <option value="">Any time</option>
-                  {options.map((value) => (
-                    <option key={value} value={value}>
-                      {timeLabel(value)}
-                    </option>
-                  ))}
-                </select>
+              <label className={styles.switchRow}>
+                <input
+                  type="checkbox"
+                  name="enabled"
+                  defaultChecked={profile.discover_enabled}
+                />
+                <span>
+                  <strong>Discover videos</strong>
+                </span>
               </label>
               <label>
-                Until
-                <select
+                Topics they may search
+                <input
                   className="field"
-                  name="end"
-                  defaultValue={profile.available_until_minute ?? ""}
-                >
-                  <option value="">Any time</option>
-                  {options.map((value) => (
-                    <option key={value} value={value}>
-                      {timeLabel(value)}
-                    </option>
-                  ))}
-                </select>
+                  name="topics"
+                  defaultValue={(profile.discovery_topics || []).join(", ")}
+                  placeholder="Drawing, science, Jewish music"
+                />
               </label>
-            </div>
-            <button className="button" disabled={busy}>
-              Save schedule
-            </button>
-          </form>
-        ))}
-      </div>
+              {!!profile.discovery_channels?.length && (
+                <div>
+                  <p className="muted">
+                    Allowed channels:{" "}
+                    {profile.discovery_channels
+                      .map((item) => item.title)
+                      .join(" · ")}
+                  </p>
+                  <button
+                    type="button"
+                    className="button-quiet"
+                    disabled={busy}
+                    onClick={() =>
+                      act("/api/parent/profiles", "PATCH", {
+                        id: profile.id,
+                        discovery_channels: [],
+                      })
+                    }
+                  >
+                    Remove allowed channels
+                  </button>
+                </div>
+              )}
+              <button className="button" disabled={busy}>
+                Save Discover
+              </button>
+            </form>
+          ))}
+        </div>
+      </details>
+      <details className={styles.controlDetails}>
+        <summary>Available hours</summary>
+        <div className="grid grid-2">
+          {data.profiles.map((profile) => (
+            <form
+              className="panel"
+              key={profile.id}
+              onSubmit={async (event) => {
+                event.preventDefault();
+                const form = new FormData(event.currentTarget);
+                const start = form.get("start"),
+                  end = form.get("end");
+                await act("/api/parent/profiles", "PATCH", {
+                  id: profile.id,
+                  available_from_minute: start ? Number(start) : null,
+                  available_until_minute: end ? Number(end) : null,
+                });
+              }}
+            >
+              <div className={styles.childHeader}>
+                <ProfileImage
+                  name={profile.display_name}
+                  avatar={profile.avatar_key}
+                  photoUrl={profile.photo_url}
+                  size="small"
+                />
+                <div>
+                  <h2>{profile.display_name}</h2>
+                  <p className="muted">
+                    {profile.available_from_minute == null
+                      ? "Available anytime"
+                      : `${timeLabel(profile.available_from_minute)}–${timeLabel(profile.available_until_minute || 0)}`}
+                  </p>
+                </div>
+              </div>
+              <div className={styles.pinGrid}>
+                <label>
+                  Available from
+                  <select
+                    className="field"
+                    name="start"
+                    defaultValue={profile.available_from_minute ?? ""}
+                  >
+                    <option value="">Any time</option>
+                    {options.map((value) => (
+                      <option key={value} value={value}>
+                        {timeLabel(value)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Until
+                  <select
+                    className="field"
+                    name="end"
+                    defaultValue={profile.available_until_minute ?? ""}
+                  >
+                    <option value="">Any time</option>
+                    {options.map((value) => (
+                      <option key={value} value={value}>
+                        {timeLabel(value)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <button className="button" disabled={busy}>
+                Save schedule
+              </button>
+            </form>
+          ))}
+        </div>
+      </details>
       <p className="muted">
         Session time is a wall-clock access deadline. WatchNest does not measure
         or reconstruct YouTube watch time.
@@ -2896,7 +2944,7 @@ export function Settings() {
     <>
       <Heading
         eyebrow="Settings"
-        title="Family settings."
+        title="Family settings"
         description="Protect Parent Mode and manage this device."
       />
       <div className="grid grid-2">

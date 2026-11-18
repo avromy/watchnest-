@@ -32,7 +32,7 @@ async function previewWithoutApproval(page: Page, changes: {path:string;body:any
 test('fresh busy Parent follows a child topic request to preview and approval',async({page},info)=>{
   const changes = await setup(page);
   await page.goto('/parent/dashboard');
-  await page.getByRole('link',{name:/Requests/}).click();
+  await page.getByRole('navigation',{name:'Parent navigation'}).getByRole('link',{name:/Requests/}).click();
   await expect(page.getByRole('heading',{name:'Lego trains',exact:true})).toBeVisible();
   await page.getByRole('link',{name:'Find a video',exact:true}).click();
   await expect(page.getByRole('searchbox',{name:'Search',exact:true})).toHaveValue('Lego trains');
@@ -46,7 +46,7 @@ test('fresh busy Parent follows a child topic request to preview and approval',a
   await expect.poll(()=>changes.filter(c=>c.path==='/api/parent/videos').length).toBe(1);
   console.log('FRESH_PARENT_APPROVAL',JSON.stringify(changes));
   await page.screenshot({path:info.outputPath('busy-parent-after-approval.png'),fullPage:true});
-  await page.getByRole('link',{name:/Requests/}).click();
+  await page.getByRole('navigation',{name:'Parent navigation'}).getByRole('link',{name:/Requests/}).click();
   await page.screenshot({path:info.outputPath('busy-parent-request-outcome.png'),fullPage:true});
   // CI138 preserved the genuine missing-fulfillment defect. The bounded product
   // repair adds an explicit action; this extra user step is part of the rerun.

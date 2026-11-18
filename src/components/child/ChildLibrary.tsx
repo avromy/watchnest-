@@ -18,7 +18,7 @@ import ProfileImage from "../ProfileImage";
 import Icon from "../ui/Icon";
 import { requestImmersivePlayback } from "@/lib/immersive-playback";
 
-type Tab = "home" | "library" | "discover";
+type Tab = "library" | "discover";
 
 function VideoGrid({
   videos,
@@ -119,14 +119,20 @@ export default function ChildLibrary() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [videos, setVideos] = useState<Video[]>([]);
   const [collections, setCollections] = useState<Collection[]>([]);
-  const [tab, setTab] = useState<Tab>("home");
+  const [tab, setTab] = useState<Tab>("library");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("newest");
   const [discoverSearched, setDiscoverSearched] = useState(false);
   const [collection, setCollection] = useState<Collection | null>(null);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [hiddenOnly, setHiddenOnly] = useState(false);
-  const librarySearchLabel = collection ? "Search this collection" : favoritesOnly ? "Search Favorites" : hiddenOnly ? "Search hidden videos" : "Search your library";
+  const librarySearchLabel = collection
+    ? "Search this collection"
+    : favoritesOnly
+      ? "Search Favorites"
+      : hiddenOnly
+        ? "Search hidden videos"
+        : "Search your library";
   const [undoVideo, setUndoVideo] = useState<Video | null>(null);
   const [error, setError] = useState("");
   const [kind, setKind] = useState("topic");
@@ -217,24 +223,6 @@ export default function ChildLibrary() {
         ),
     [videos, collection, favoritesOnly, hiddenOnly, query, sort],
   );
-  const continuing = videos
-    .filter(
-      (video) =>
-        !video.hidden &&
-        video.made_for_kids === false &&
-        video.progress &&
-        video.progress.current_time_seconds > 0 &&
-        !video.progress.completed_at,
-    )
-    .sort((a, b) =>
-      (b.progress?.updated_at || "").localeCompare(
-        a.progress?.updated_at || "",
-      ),
-    );
-  const recent = videos
-    .filter((video) => !video.hidden)
-    .sort((a, b) => (b.added_at || "").localeCompare(a.added_at || ""));
-  const favorites = videos.filter((video) => video.favorite && !video.hidden);
 
   function navigate(next: Tab) {
     setTab(next);
@@ -395,13 +383,6 @@ export default function ChildLibrary() {
         </button>
       </header>
       <nav className="child-nav" aria-label="WatchNest">
-        <button
-          aria-current={tab === "home" ? "page" : undefined}
-          onClick={() => navigate("home")}
-        >
-          <Icon name="home" />
-          Home
-        </button>
         <button
           aria-current={tab === "library" ? "page" : undefined}
           onClick={() => navigate("library")}
@@ -637,11 +618,11 @@ export default function ChildLibrary() {
             </div>
           )}
         </section>
-      ) : tab === "library" ? (
+      ) : (
         <>
           <div className="child-page-title">
             <div>
-              <p className="eyebrow">Made for you</p>
+              <p className="eyebrow">{profile.display_name}’s space</p>
               <h1>
                 {collection
                   ? collection.title
@@ -666,6 +647,7 @@ export default function ChildLibrary() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={librarySearchLabel}
+                autoComplete="off"
               />
             </label>
             <button
@@ -704,7 +686,7 @@ export default function ChildLibrary() {
                 value={sort}
                 onChange={(event) => setSort(event.target.value)}
               >
-                <option value="newest">Newest first</option>
+                <option value="newest">Recently added</option>
                 <option value="title">A–Z</option>
               </select>
             </label>
@@ -721,7 +703,23 @@ export default function ChildLibrary() {
                 <div className="collection-row">
                   {collections.map((item) => (
                     <button key={item.id} onClick={() => setCollection(item)}>
-                      <Icon name="collection" width="28" />
+                      <span className="collection-art" aria-hidden="true">
+                        {(() => {
+                          const cover = videos.find(
+                            (video) =>
+                              !video.hidden &&
+                              item.video_ids.includes(video.id),
+                          );
+                          const thumbnail =
+                            cover &&
+                            normalizeYouTubeThumbnailUrl(cover.thumbnail_url);
+                          return thumbnail ? (
+                            <img src={thumbnail} alt="" loading="lazy" />
+                          ) : (
+                            <Icon name="collection" width="32" />
+                          );
+                        })()}
+                      </span>
                       <span>{item.video_ids.length} videos</span>
                       <strong>{item.title}</strong>
                       <small>{item.description || "Open Collection"}</small>
@@ -744,9 +742,15 @@ export default function ChildLibrary() {
           )}
           {filtered.length ? (
             <section className="library-results" aria-label="Library videos">
-              {!query.trim() && !collection && !favoritesOnly && !hiddenOnly && collections.length > 0 && (
-                <div className="row-heading"><h2>All videos</h2></div>
-              )}
+              {!query.trim() &&
+                !collection &&
+                !favoritesOnly &&
+                !hiddenOnly &&
+                collections.length > 0 && (
+                  <div className="row-heading">
+                    <h2>All videos</h2>
+                  </div>
+                )}
               <VideoGrid
                 videos={filtered}
                 onFavorite={toggleFavorite}
@@ -772,200 +776,32 @@ export default function ChildLibrary() {
               </h2>
               <p>
                 {query
-                  ? collection || favoritesOnly || hiddenOnly ? "Try another word, or search all your videos." : "Try another word or ask Parent."
+                  ? collection || favoritesOnly || hiddenOnly
+                    ? "Try another word, or search all your videos."
+                    : "Try another word or ask Parent."
                   : favoritesOnly
                     ? "Tap the heart on a video to save it here."
                     : hiddenOnly
                       ? "Videos you hide will appear here."
                       : "Ask Parent to add something."}
               </p>
-              {query && (collection || favoritesOnly || hiddenOnly ? (
-                <button className="button" onClick={() => {
-                  setCollection(null);
-                  setFavoritesOnly(false);
-                  setHiddenOnly(false);
-                }}>
-                  Search all videos
-                </button>
-              ) : (
-                <button className="button" onClick={askFromSearch}>
-                  Ask Parent for “{query}”
-                </button>
-              ))}
-            </div>
-          )}
-        </>
-      ) : (
-        <>
-          <div className="child-welcome">
-            <div>
-              <p className="eyebrow">Your library</p>
-              <h1>Hi, {profile.display_name}.</h1>
-              <p>What would you like to watch?</p>
-            </div>
-            <button
-              className="search-shortcut"
-              onClick={() => navigate("library")}
-            >
-              <Icon name="search" width="22" />
-              Search
-            </button>
-          </div>
-          {recent.length > 0 && (
-            <section
-              className="child-feature"
-              aria-label="Featured from your library"
-            >
-              <div className="feature-copy">
-                <span className="feature-label">
-                  <Icon name="check" width="17" /> In your library
-                </span>
-                <p className="eyebrow">
-                  {continuing.length
-                    ? "Pick up where you left off"
-                    : "A good place to start"}
-                </p>
-                <h2>{(continuing[0] || recent[0]).title}</h2>
-                <p>{(continuing[0] || recent[0]).channel_title}</p>
-                <Link
-                  className="button feature-play"
-                  href={`/watch/player/${encodeURIComponent((continuing[0] || recent[0]).id)}`}
-                  onClick={requestImmersivePlayback}
-                >
-                  <Icon name="play" width="22" />{" "}
-                  {continuing.length ? "Keep watching" : "Watch now"}
-                </Link>
-              </div>
-              <Link
-                className="feature-art"
-                aria-label={`Play ${(continuing[0] || recent[0]).title}`}
-                href={`/watch/player/${encodeURIComponent((continuing[0] || recent[0]).id)}`}
-                onClick={requestImmersivePlayback}
-              >
-                {normalizeYouTubeThumbnailUrl(
-                  (continuing[0] || recent[0]).thumbnail_url,
-                ) ? (
-                  <img
-                    src={
-                      normalizeYouTubeThumbnailUrl(
-                        (continuing[0] || recent[0]).thumbnail_url,
-                      ) || undefined
-                    }
-                    alt=""
-                  />
-                ) : (
-                  <Icon name="play" width="72" />
-                )}
-                <span className="feature-art-play">
-                  <Icon name="play" width="30" />
-                </span>
-              </Link>
-            </section>
-          )}
-          <div className="child-quick-links" aria-label="Explore your library">
-            <button onClick={() => navigate("library")}>
-              <Icon name="library" width="24" />
-              <span>
-                All videos<small>{recent.length} ready to watch</small>
-              </span>
-              <span aria-hidden="true">↗</span>
-            </button>
-            <button
-              onClick={() => {
-                navigate("library");
-                setFavoritesOnly(true);
-              }}
-            >
-              <Icon name="heart" width="24" />
-              <span>
-                Favorites<small>Your saved favorites</small>
-              </span>
-              <span aria-hidden="true">↗</span>
-            </button>
-            <button onClick={() => navigate("discover")}>
-              <Icon name="search" width="24" />
-              <span>
-                {profile.discover_enabled ? "Discover" : "Ask Parent"}
-                <small>Find videos to request</small>
-              </span>
-              <span aria-hidden="true">↗</span>
-            </button>
-          </div>
-          {continuing.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Continue Watching</h2>
-              </div>
-              <VideoGrid
-                videos={continuing.slice(0, 6)}
-                onFavorite={toggleFavorite}
-                onHide={toggleHidden}
-              />
-            </section>
-          )}
-          {favorites.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Favorites</h2>
-                <button
-                  onClick={() => {
-                    setTab("library");
-                    setFavoritesOnly(true);
-                  }}
-                >
-                  See all
-                </button>
-              </div>
-              <VideoGrid
-                videos={favorites.slice(0, 6)}
-                onFavorite={toggleFavorite}
-                onHide={toggleHidden}
-              />
-            </section>
-          )}
-          {collections.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Collections</h2>
-                <button onClick={() => navigate("library")}>See all</button>
-              </div>
-              <div className="collection-row">
-                {collections.slice(0, 5).map((item) => (
+              {query &&
+                (collection || favoritesOnly || hiddenOnly ? (
                   <button
-                    key={item.id}
+                    className="button"
                     onClick={() => {
-                      setTab("library");
-                      setCollection(item);
+                      setCollection(null);
+                      setFavoritesOnly(false);
+                      setHiddenOnly(false);
                     }}
                   >
-                    <Icon name="collection" width="28" />
-                    <span>{item.video_ids.length} videos</span>
-                    <strong>{item.title}</strong>
-                    <small>{item.description || "Open Collection"}</small>
+                    Search all videos
+                  </button>
+                ) : (
+                  <button className="button" onClick={askFromSearch}>
+                    Ask Parent for “{query}”
                   </button>
                 ))}
-              </div>
-            </section>
-          )}
-          {recent.length ? (
-            <section>
-              <div className="row-heading">
-                <h2>Recently Added</h2>
-                <button onClick={() => navigate("library")}>See all</button>
-              </div>
-              <VideoGrid
-                videos={recent.slice(0, 9)}
-                onFavorite={toggleFavorite}
-                onHide={toggleHidden}
-              />
-            </section>
-          ) : (
-            <div className="child-empty">
-              <h2>Your library is ready</h2>
-              <p>Ask Parent to add your first video.</p>
-              <button className="button" onClick={() => navigate("discover")}>
-                Ask Parent
-              </button>
             </div>
           )}
         </>
