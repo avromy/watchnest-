@@ -1,3 +1,13 @@
+# CURRENT — ef4 mechanical/source gates passed, final review mapping pending — November18
+
+Exactef4c4bb/tree d57c0f6/appsrc9771c2e frozen, no source changes planned absent confirmed material defect. Local lint/type/200unit/build/audit0/full73 PASS; read-back73expected/0unexpected/skipped/flaky249945.471ms. Exact CI154/run44253438924 all3jobsSUCCESS. Independent ef4 source/security review PASS within62-protected-blob scope. [Coverage and boundaries](Concept3SourceSkillCoverage-20261118.md); compact capture/index+CI receipts under docs/evidence/concept3-ef4c4bb.
+
+Stable external packet concept3-evidence/ef4c4bb has28families355states956visualPNGs+40other testPNGs (996total). All declared capture hashes recomputed0mismatches. Not visualacceptance: HumanEye finalef4mapping/nonidenticaldeltas ongoing; final5freshjury NOTSTARTED. OriginalFAILs/rounds preserved. Parent/Child complete priorpacket consumption does not certify uninspected finaldeltas. Raw Library archive upload remains Root-pending.
+
+Current production-configured APIstage NZvsource0f predatesef4, not finalef4hostedacceptance. Allcanonical77 stable, autoAssignFALSE held. Hostedauthenticated/physicalpicture-sound/recommendation containment/nativefullscreen phoneEndnow remainOPEN. FounderReady/productReadyBLOCKED. This is doc-only checkpoint, no app/harness/config changes, tests/jobs/manualdeploy/notification/promotion. Root completes finalreviewfreeze next.
+
+---
+
 # CURRENT — success-icon/capture-coherence successor freeze — November18
 
 Exacta8c0dbe full73/local lint/type/200unit/build/audit0PASS is preserved outside default output at concept3-evidence/a8c0dbe. Read-back browser stats73expected/0unexpected/skipped/flaky,237176.538ms. Independent Child D2finalPASS232native-key transitions/16actualPNGs binds a8; source-security handler review62protectedblobsPASS remains scoped. Original D2FAILs/repair history remain. HumanEye fullChild+Parentmapping is ongoing, not finalCLEAN.
