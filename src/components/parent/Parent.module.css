@@ -1227,6 +1227,7 @@
     flex-basis: 100%;
   }
   .main :global(.video-grid) {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   .overviewMetrics {

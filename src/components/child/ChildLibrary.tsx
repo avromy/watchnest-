@@ -742,11 +742,16 @@ export default function ChildLibrary() {
             </button>
           )}
           {filtered.length ? (
-            <VideoGrid
-              videos={filtered}
-              onFavorite={toggleFavorite}
-              onHide={toggleHidden}
-            />
+            <section className="library-results" aria-label="Library videos">
+              {!query.trim() && !collection && !favoritesOnly && !hiddenOnly && collections.length > 0 && (
+                <div className="row-heading"><h2>All videos</h2></div>
+              )}
+              <VideoGrid
+                videos={filtered}
+                onFavorite={toggleFavorite}
+                onHide={toggleHidden}
+              />
+            </section>
           ) : (
             <div className="child-empty">
               <Icon

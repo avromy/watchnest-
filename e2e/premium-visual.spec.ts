@@ -145,7 +145,19 @@ for (const viewport of viewports) {
               }
             }
             const style = getComputedStyle(element);
-            return { id: `A${String(index + 1).padStart(3, "0")}`, objectFit: style.objectFit, objectPosition: style.objectPosition, clipPath: style.clipPath, borderRadius: style.borderRadius, kind: element.tagName, name: name(element), source: element.getAttribute("src"), bounds: { x: rect.x, y: rect.y, width: rect.width, height: rect.height }, clipAncestors: ancestors, edgeReview: "LEFT RIGHT TOP BOTTOM: pixel review pending" };
+            const paintAncestors = [];
+            for (let parent: Element | null = element; parent; parent = parent.parentElement) {
+              const computed = getComputedStyle(parent);
+              const closedDetailsContent = parent.tagName === "DETAILS" && !(parent as HTMLDetailsElement).open && !parent.querySelector(":scope > summary")?.contains(element);
+              if (closedDetailsContent || computed.display === "none" || computed.visibility !== "visible" || Number(computed.opacity) === 0) paintAncestors.push({ tag: parent.tagName, className: parent.className, closedDetailsContent, display: computed.display, visibility: computed.visibility, opacity: computed.opacity });
+            }
+            const activeModal = Array.from(document.querySelectorAll('[role="dialog"][aria-modal="true"]')).find(dialog => { const bounds = dialog.getBoundingClientRect(); return bounds.width > 0 && bounds.height > 0 && getComputedStyle(dialog).visibility === "visible"; });
+            const center = { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };
+            const centerInViewport = center.x >= 0 && center.x < innerWidth && center.y >= 0 && center.y < innerHeight;
+            const hit = centerInViewport ? document.elementFromPoint(center.x, center.y) : null;
+            const hitBelongsToAsset = !!hit && (element.contains(hit) || hit.contains(element));
+            const eligibility = { computedVisibility: style.visibility, computedOpacity: style.opacity, paintAncestors, eligibleByStyleAndOpenDetails: paintAncestors.length === 0, activeModal: activeModal?.getAttribute("aria-labelledby") || activeModal?.getAttribute("aria-label") || null, belongsToActiveModal: activeModal ? activeModal.contains(element) : null, outsideActiveModal: activeModal ? !activeModal.contains(element) : false, centerInViewport, centerHit: hit ? { tag: hit.tagName, className: hit.className } : null, centerHitBelongsToAsset: centerInViewport ? hitBelongsToAsset : null, note: "Structural eligibility and one center hit-test only; not independent pixel edge clearance" };
+            return { id: `A${String(index + 1).padStart(3, "0")}`, eligibility, objectFit: style.objectFit, objectPosition: style.objectPosition, clipPath: style.clipPath, borderRadius: style.borderRadius, kind: element.tagName, name: name(element), source: element.getAttribute("src"), bounds: { x: rect.x, y: rect.y, width: rect.width, height: rect.height }, clipAncestors: ancestors, edgeReview: "LEFT RIGHT TOP BOTTOM: pixel review pending" };
           }),
         };
       });
@@ -480,6 +492,14 @@ for (const viewport of viewports) {
         await page.getByRole("button", { name: "Preview", exact: true }).first().click();
         await expect(page.getByRole("dialog")).toBeVisible();
         await capture("parent-preview-dialog");
+        if (viewport.width === 1024 && !label.startsWith("before-")) {
+          const dialog = page.getByRole("dialog");
+          const scroll = await dialog.evaluate(element => { element.scrollTop = element.scrollHeight; return { actual: element.scrollTop, expected: Math.max(0, element.scrollHeight - element.clientHeight), height: element.scrollHeight, viewport: element.clientHeight }; });
+          expect(scroll.expected, "landscape preview must expose internal scrollable content").toBeGreaterThan(0);
+          await expect.poll(() => dialog.evaluate(element => element.scrollTop)).toBe(scroll.expected);
+          await capture("parent-preview-dialog-internal-bottom");
+          await writeFile(`${directory}/parent-preview-dialog-internal-scroll.json`, JSON.stringify(scroll, null, 2));
+        }
         await page.getByRole("button", { name: "Close preview" }).click();
       }
     }

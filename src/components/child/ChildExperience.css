@@ -902,3 +902,8 @@
     transition: none;
   }
 }
+
+/* Keep a collection shelf distinct from the complete approved-video results. */
+.library-results {
+  margin-top: 28px;
+}

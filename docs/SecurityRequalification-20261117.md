@@ -111,3 +111,60 @@ Current hosted authenticated and actual-family-iPad playback/containment/fullscr
 remote-End-Now gates remain open. No preview/production/config/data writes were
 performed by this reviewer. SOURCE verdict PASS; initial synthetic browser
 functional-clearance FAIL for affected scope; renewed full evidence pending.
+
+
+## Renewal addendum — cf764 frozen harness and full run
+
+This addendum resolves SEC-06 for the repaired local synthetic suite only. The
+initial d723 false-positive clearance and original failed-build account above
+remain historical findings; neither is overwritten.
+
+Independently compared commit `cf764cb6087b394fbb9d97b687413c2084e2e708`,
+tree `75111a1facf4d124b75bf08f133162510c84f572`, with d723. No changes exist
+under src/, supabase/, next.config.mjs, package.json or package-lock.json. The app
+src tree remains `372590c4dcfe1e4fedf51b3dc3d30f25d3b645ca`. The source/security
+preservation verdict therefore transfers to these exact application bytes.
+
+Read both complete harness diffs: the fixture now returns a correctly shaped
+Parent session-status response with profile/access/device data, rather than a
+fallback object missing profiles. Stress checks retain clipping assertions and
+add exact Add Videos/Time & discovery/Library H1 assertions, Session time heading
+and an empty collected pageerror/console-error list. This strengthens affected
+checks without application mitigation, assertion deletion or authorization
+fixture weakening. The fixture's unlimited sessions are synthetic baseline data;
+they do not replace dedicated timer behavior tests or physical remote-stop proof.
+
+Recomputed every file hash in retained cf764-source-binding.json against the
+actual cf764 Git objects: zero mismatches. Inspected retained full browser JSON
+and stdout: 64 actual passed results, zero skipped/flaky/unexpected, no top-level
+or per-result errors, zero TypeError/pageerror/ReferenceError/Minified React error
+markers in stdout. Reported Playwright1.63.0, one worker, start
+2026-11-18T02:24:39.450Z, duration189087.642ms. This is renewed synthetic Chromium
+functional evidence, not independent visual consumption or all-provider testing.
+
+| Retained artifact under docs/evidence/qualification-20261117/ | SHA256 |
+| --- | --- |
+| cf764-source-binding.json | 749e9db1e9953e6170809a2f54deaf1fbfb89a1b4955d7215b20490405db349f |
+| cf764-browser-results.json | b63865cc15c0d6e64536118a170923578d6e68cac62fb3dc59e42271fbca340f |
+| cf764-browser-stdout.log | ddddbf61ca355b3e3683a79135e840f60057a824202e39074d84cc0eed8985b9 |
+| initial-browser-stdout.log | c30a76d5986859a94f992a811f0083053a7b942c31e3521dfebf223786655cc6 |
+| intermediate-recheck.log | c62fabcc96d29f41cc941e3e782d5d7be4c68b001387adbd8e3d6466050ebc53 |
+
+Repaired fixture SHA256 `c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56`;
+product harness SHA256 `554f37c96f499740a44ff8df04e97f1eb4356b248bf33dd7104718705c61d9fe`.
+
+Independently fetched GitHub Actions run143 (`44223029178`) and its latest jobs.
+Run head is exact cf764, tree75111a1facf4d124b75bf08f133162510c84f572,
+conclusion success. All three jobs are completed/success: qualification-mode,
+baseline-visual-evidence, quality-checks. quality-checks reports success for npm ci,
+lint, typecheck, unit, build, full e2e and production dependency audit; optional
+follow-up-journey step10 is explicitly skipped, not passed. These are GitHub
+execution conclusions, not a claim that this reviewer personally ran commands or
+independently consumed CI raster output. Run source:
+https://github.com/avromy/watchnest-/actions/runs/44223029178 .
+
+Renewed scoped verdict: SOURCE PASS and repaired full local synthetic suite PASS
+for exact cf764 app/harness bytes. Missing-state supplement is a separate ongoing
+coverage lane. Hosted authentication, genuine YouTube behavior, physical family
+iPad containment/fullscreen/remote End Now remain OPEN. No release/Founder Ready
+or universal functional/security acceptance follows from this addendum.
