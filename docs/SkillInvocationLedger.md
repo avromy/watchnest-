@@ -1,3 +1,13 @@
+# CURRENT — success-icon/capture-coherence successor freeze — November18
+
+Exacta8c0dbe full73/local lint/type/200unit/build/audit0PASS is preserved outside default output at concept3-evidence/a8c0dbe. Read-back browser stats73expected/0unexpected/skipped/flaky,237176.538ms. Independent Child D2finalPASS232native-key transitions/16actualPNGs binds a8; source-security handler review62protectedblobsPASS remains scoped. Original D2FAILs/repair history remain. HumanEye fullChild+Parentmapping is ongoing, not finalCLEAN.
+
+Root froze ONLY3paths: ChildExperience.css fixes confirmed C3V02 success-check SVG to centered block/lavender; premium/supplemental captures park pointer0,0 and await finite running animations before inventory/raster, explicitly recorded as intervention. Existing scroll/correctness predicates unchanged. Hover-transition metadata/raster mismatches are evidence-coherence issues, not demonstrated app defects. New exactfull73/28families355states capture/completeHumanEye/Jury/hosted/physical gates PENDING; olda8PASS cannot certify newbytes. Parent/protected sources unchanged. No furtherappchange absent confirmed materialdefect. KeepautoAssignFALSE/production77rollback; no promotion or notification.
+
+Root fresh aggregate-only DB read verified SafePlayback CHECK true, unsafe0, latestmigration20261027134442; no rowidentifiers/auth/familydata or mutation recorded. Publisher writes only authorized frozen source/docs, never raw historicalPNG/logs/unfinishedbulk reviewJSON. Root next rebuilds/fullcaptures and preserves packet before another test.
+
+---
+
 # CURRENT — native-Tab D2 repair and expanded tablet evidence freeze — November18
 
 0f full71/local lint/type/200unit/build/audit0PASS and exactCI151/run44250643904 all3jobsSUCCESS are preserved facts, not new-source acceptance. Independent native-Tab recheck stillFAIL D2on0f; original report retained. Root now froze THREEpaths: ChildLibrary explicit nearest/instant onFocus scrolling; product regression uses19actualTabs, focusedlastitem and complete horizontalcard containment rather than programmatic last.focus; visual harness adds Parent details atALL4anchors (+2tests→73). Root optimizedbuild+nativeTabtarget diagnosticPASS; new exactfull73/actual-pixel/finalHumanEye/Jury/hosted/device gates PENDING. No all-newPASS.

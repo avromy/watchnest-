@@ -1069,3 +1069,9 @@
 .premium-child-library .collection-row button:focus-visible {
   outline-offset: -4px;
 }
+/* Confirmation art shares the centered text hierarchy and readable accent. */
+.premium-child-library .request-success > svg {
+  color: var(--wn-lavender);
+  display: block;
+  margin: 0 auto 16px;
+}

@@ -71,7 +71,7 @@ for (const viewport of viewports) {
       workingDiffSha256: hash(git("diff", "HEAD", "--", "src", "public", "e2e", "playwright.config.ts")),
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
-      captureInterventions: ["Root-document smooth scrolling is disabled only in the synthetic browser capture; every tile records and verifies its actual scroll position."],
+      captureInterventions: ["Root-document smooth scrolling is disabled only in the synthetic browser capture; every tile records and verifies its actual scroll position. Pointer is parked outside content and finite hover transitions finish before inventory/raster capture."],
       baselineInterventions: [] as string[],
       captures,
     };
@@ -100,6 +100,13 @@ for (const viewport of viewports) {
         }, expected)).toBe(expected);
       };
       await scrollTo(0);
+      // A pointer left over a moving card can make the inventory describe an
+      // in-flight hover transition that screenshot animations later finish.
+      await page.mouse.move(0, 0);
+      await page.evaluate(async () => {
+        await Promise.all(document.getAnimations().filter(animation => animation.playState === "running" && Number.isFinite(Number(animation.effect?.getTiming().iterations))).map(animation => animation.finished.catch(() => {})));
+        await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      });
       const inventory = await page.evaluate(() => {
         const visible = (element: Element) => {
           const rect = element.getBoundingClientRect();
