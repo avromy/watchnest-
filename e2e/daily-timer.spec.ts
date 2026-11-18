@@ -2,6 +2,24 @@ import { test, expect } from "@playwright/test";
 import { dashboard, fixture } from "./fixtures";
 
 const pid = dashboard.profiles[0].id;
+// Synthetic snapshots still represent a real next New York 7AM boundary.
+// This fixture is presentation data, never production timer authority.
+function nextDailyReset() {
+  const now = Date.now();
+  const hour = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour: "2-digit",
+    hourCycle: "h23",
+  });
+  const boundary = new Date(now);
+  boundary.setUTCMinutes(0, 0, 0);
+  for (let i = 0; i < 27; i++) {
+    if (boundary.getTime() > now && hour.format(boundary) === "07")
+      return boundary.toISOString();
+    boundary.setUTCHours(boundary.getUTCHours() + 1);
+  }
+  throw new Error("Daily fixture must have a next 7AM boundary");
+}
 test("custom one-minute grant, validation and explicit daily mode", async ({
   page,
 }) => {
@@ -79,10 +97,10 @@ for (const viewport of [
               state,
               mode: "daily",
               dailyAllowanceMinutes: 5,
-              dailyStarted: state === "active",
+              dailyStarted: state === "active" || state === "expired",
               parentBlocked: state === "blocked",
               limitDisabled: false,
-              resetAt: new Date(Date.now() + 12 * 3600_000).toISOString(),
+              resetAt: nextDailyReset(),
               timezone: "America/New_York",
               expiresAt:
                 state === "active"
@@ -164,7 +182,7 @@ test("daily library denies exhausted access, renews only from a server response,
     state,
     mode: "daily",
     dailyAllowanceMinutes: 1,
-    resetAt: new Date(Date.now() + 3600_000).toISOString(),
+    resetAt: nextDailyReset(),
     timezone: "America/New_York",
     parentBlocked: state === "blocked",
     revision: state === "expired" ? 1 : state === "active" ? 2 : 3,
