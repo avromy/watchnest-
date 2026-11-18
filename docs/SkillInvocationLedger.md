@@ -1,3 +1,9 @@
+# Current supported-staging correction — November18
+
+All independent source/visual/jury/cold lanes remain qualified within recorded synthetic scope. Current Vercel official staging/project-update sources and exposed autoAssignCustomDomains boolean independently verified before mutation. Root alone changed project autoAssignCustomDomains TRUE→FALSE, verified savedUI checkbox0/manual-promotion warning and actual no-domain Redeploy confirmation. One6be0cab staged Redeploy submitted, then email verification rejected invalid/expired; no automaticretry/Resend, no stagedID confirmed, canonical77 unchanged. Current owner-only action is existing providerverification, not CLIgrant. KeepsettingOFF through pendingstage/hold. Historical CLI-only records superseded, not erased. FounderReady remains BLOCKED; hostedauthenticated/physical acceptance OPEN. Exact restart in ResumeCheckpoint-20261117.md; no code/auth artifacts changed or retained.
+
+---
+
 # Final current receipts — November 18
 
 Exact qualified source382; appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Final independent HumanEye/MatchCheck repair report+finitecoverage/binding PASS; priorFAIL preserved. Five fresh final BlindJury reports frozen sampledvisualPASS (104/79/93/83/88), actual PNG inventories and neutral source binding attached. Final Child/Parent Stranger reports frozen bounded syntheticinteractionPASS, blindfirstimpressions/scripts/statefuljournals/rawscreens preserved. Source/security382 review PASS; local69/200/build/lint/type and CI148PASS.

@@ -1,3 +1,19 @@
+# CURRENT correction — supported staging, owner verification pending — November 18
+
+This entry supersedes the earlier CLI-only blocker and restart instructions. Historical records remain below and at immutable6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436. No code/design change or new implementation owner.
+
+Root verified the documented Vercel project-setting staging route. Actual UI baseline Auto-assign Custom Production Domains was ON. Root updated only autoAssignCustomDomains:false; reloaded Production Environment UI showed checkbox0 and warned that production deployments require manual promotion. Canonical watchnest-rho.vercel.app was listed as a production custom domain. The actual Redeploy confirmation for exact6be0cab Production removed the canonical assigned-domain list and explicitly stated custom domains would not be assigned because auto-assignment was disabled.
+
+Root submitted Redeploy ONCE. Vercel then required email identity verification; the secure verification attempt was rejected as invalid or expired. No automatic credential retry or Resend occurred. The existing verification UI/pending intent awaits the owner. No new staged deployment ID is confirmed: post-challenge canonical API readback still showed77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac with all three canonical aliases, and the latest10 production listing had no new6be0cab deployment. Do not repeat Create/Redeploy while this pending intent may resume after verification.
+
+Current project autoAssignCustomDomains is FALSE and MUST remain OFF through verification, staging and release hold. Original TRUE is recorded as the setting rollback value; do not restore it while verification might resume a production build. CLI authorization is no longer necessary for this supported route; the earlier CLI attempt was cancelled without a grant/token. No auth code, auth URL, browser state, personal account image or session directory is preserved.
+
+Minimum next action: owner completes the existing provider identity-verification step, using Resend personally if needed. Then inspect the resulting deployment/listing first; only if no deployment exists and the pending intent is clearly closed may the release owner decide whether another single supported staging submission is needed. Bind actual staged ID/SHA/configuration and verify canonical aliases still77 before hosted read-only qualification. Physical conditional testing comes AFTER hosted qualification of a frozen candidate, not now. All final independent lanes remain PASS only within their synthetic limits; Founder Ready and production promotion remain BLOCKED.
+
+Official basis: https://vercel.com/docs/deployments/promoting-a-deployment (Dashboard staging via Production → Branch Tracking → auto-assignment OFF); https://vercel.com/docs/rest-api/projects/update-an-existing-project (autoAssignCustomDomains boolean).
+
+---
+
 # Hosted and physical release-gate audit — November 17, 2026
 
 Read-only lane; no source, database, credential, configuration, session or deployment
