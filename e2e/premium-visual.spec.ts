@@ -52,7 +52,7 @@ async function synthetic(page: Page, role: "parent" | "child") {
 }
 
 for (const viewport of viewports) {
-  const families = ["core", "player-states", ...(!label.startsWith("before-") ? ["recovery-states"] : []), ...(viewport.width === 390 || viewport.width === 1440 ? ["parent-details"] : []), ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details", "child-entry"] : [])];
+  const families = ["core", "player-states", ...(!label.startsWith("before-") ? ["recovery-states"] : []), ...["parent-details"], ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details", "child-entry"] : [])];
   for (const family of families) {
   test(`premium evidence: ${family} ${viewport.name} ${viewport.width}x${viewport.height}`, async ({ page }, info: TestInfo) => {
     test.setTimeout(180_000);

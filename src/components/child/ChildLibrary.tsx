@@ -751,7 +751,17 @@ export default function ChildLibrary() {
                   tabIndex={0}
                 >
                   {collections.map((item) => (
-                    <button key={item.id} onClick={() => setCollection(item)}>
+                    <button
+                      key={item.id}
+                      onFocus={(event) =>
+                        event.currentTarget.scrollIntoView({
+                          block: "nearest",
+                          inline: "nearest",
+                          behavior: "instant",
+                        })
+                      }
+                      onClick={() => setCollection(item)}
+                    >
                       <span className="collection-art" aria-hidden="true">
                         {(() => {
                           const cover = videos.find(

@@ -1262,7 +1262,9 @@ test("synthetic UI: many Collections remain keyboard reachable without pushing v
   const shelf=page.getByRole("group",{name:"Collections",exact:true});
   await expect(shelf.getByRole("button")).toHaveCount(20);
   const last=shelf.getByRole("button").last();
-  await last.focus();
+  await shelf.getByRole("button").first().focus();
+  for (let index=1;index<20;index++) await page.keyboard.press("Tab");
+  await expect(last).toBeFocused();
   await expect(last).toBeInViewport();
   await expect.poll(async () => {
     const [item,container] = await Promise.all([last.boundingBox(),shelf.boundingBox()]);

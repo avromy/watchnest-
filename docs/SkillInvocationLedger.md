@@ -1,3 +1,11 @@
+# CURRENT — native-Tab D2 repair and expanded tablet evidence freeze — November18
+
+0f full71/local lint/type/200unit/build/audit0PASS and exactCI151/run44250643904 all3jobsSUCCESS are preserved facts, not new-source acceptance. Independent native-Tab recheck stillFAIL D2on0f; original report retained. Root now froze THREEpaths: ChildLibrary explicit nearest/instant onFocus scrolling; product regression uses19actualTabs, focusedlastitem and complete horizontalcard containment rather than programmatic last.focus; visual harness adds Parent details atALL4anchors (+2tests→73). Root optimizedbuild+nativeTabtarget diagnosticPASS; new exactfull73/actual-pixel/finalHumanEye/Jury/hosted/device gates PENDING. No all-newPASS.
+
+New API-staged0f build READY dpl_NZv8bccyrmLXyo5MknhuKr54oQ18 at unique watchnest-sv32lq236-avromy.vercel.app, productiontarget/configured:true/role:null. Direct fresh resolution ofALL3canonicalhostnames remains77/dpl_GiR; initialmetadataaliasarray does not supersede actualhostnamereadback. autoAssignFALSE stays; no promotion. Stage0fpredatescallback/newsource. Parent finalvisualreview started against unchanged0fParentbytes; expanded tablet detail gates NOT waived. Root runs fullfrozen73 and preservespacket before another test. Publisher does not editapp, merge/manualdeploy/settings or touchhistoricalPNGs/logs.
+
+---
+
 # CURRENT — D2 focus repair frozen, renewed exact71 pending — November18
 
 Exactea5 full71/local lint/type/200unit/build/audit0PASS and CI150/run44249693504 all3jobsSUCCESS retained as prior-source evidence. Original bd8 local69 vs CI149FAIL/auditSKIPPED and independentFAIL history preserved. ea5 full packet safely copied outside test-results at concept3-evidence/ea5e213/test-results. Independent Child recheck D1/R1/R2PASS, but D2keyboardfocusvisibility HOLD remains until fresh successor verification; no final Child signoff.
