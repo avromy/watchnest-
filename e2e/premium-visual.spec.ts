@@ -493,7 +493,7 @@ for (const viewport of viewports) {
         await expect(page.getByRole("dialog")).toBeVisible();
         await capture("parent-preview-dialog");
         if (viewport.width === 1024 && !label.startsWith("before-")) {
-          const dialog = page.getByRole("dialog");
+          const dialog = page.getByRole("dialog").locator(":scope > section");
           const scroll = await dialog.evaluate(element => { element.scrollTop = element.scrollHeight; return { actual: element.scrollTop, expected: Math.max(0, element.scrollHeight - element.clientHeight), height: element.scrollHeight, viewport: element.clientHeight }; });
           expect(scroll.expected, "landscape preview must expose internal scrollable content").toBeGreaterThan(0);
           await expect.poll(() => dialog.evaluate(element => element.scrollTop)).toBe(scroll.expected);
