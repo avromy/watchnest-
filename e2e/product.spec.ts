@@ -1257,22 +1257,31 @@ test("synthetic UI: many Collections remain keyboard reachable without pushing v
   await fixture(page, "child");
   const collections = Array.from({length:20},(_,index)=>({...dashboard.collections[0],id:`collection-${index}`,title:`Collection ${index+1}`}));
   await page.route("**/api/child/library", route=>route.fulfill({json:{profile:dashboard.profiles[1],videos:dashboard.videos,collections}}));
-  await page.setViewportSize({width:390,height:844});
-  await page.goto("/watch/home");
-  const shelf=page.getByRole("group",{name:"Collections",exact:true});
-  await expect(shelf.getByRole("button")).toHaveCount(20);
-  const last=shelf.getByRole("button").last();
-  await shelf.getByRole("button").first().focus();
-  for (let index=1;index<20;index++) await page.keyboard.press("Tab");
-  await expect(last).toBeFocused();
-  await expect(last).toBeInViewport();
-  await expect.poll(async () => {
-    const [item,container] = await Promise.all([last.boundingBox(),shelf.boundingBox()]);
-    return !!item && !!container && item.x >= container.x - 1 && item.x + item.width <= container.x + container.width + 1;
-  }).toBe(true);
-  await page.screenshot({path:info.outputPath("focused-collection20.png"),fullPage:false});
-  await last.press("Enter");
-  await expect(page.getByRole("heading",{name:"Collection 20",exact:true})).toBeVisible();
-  await expect(page.locator("iframe")).toHaveCount(0);
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  for (const viewport of [{width:360,height:800},{width:390,height:844},{width:768,height:1024},{width:1024,height:768}]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/watch/home");
+    const shelf=page.getByRole("group",{name:"Collections",exact:true});
+    await expect(shelf.getByRole("button")).toHaveCount(20);
+    const buttons=shelf.getByRole("button");
+    const assertFullyVisible=async(index:number)=>{
+      const button=buttons.nth(index);
+      await expect(button).toBeFocused();
+      await expect.poll(async()=>{
+        const [item,container]=await Promise.all([button.boundingBox(),shelf.boundingBox()]);
+        return !!item && !!container && item.x>=container.x-1 && item.x+item.width<=container.x+container.width+1;
+      }).toBe(true);
+    };
+    await buttons.first().focus();
+    for(let index=1;index<20;index++) await page.keyboard.press("Tab");
+    await assertFullyVisible(19);
+    for(let index=0;index<10;index++) await page.keyboard.press("Shift+Tab");
+    await assertFullyVisible(9);
+    for(let index=0;index<10;index++) await page.keyboard.press("Tab");
+    await assertFullyVisible(19);
+    await page.screenshot({path:info.outputPath(`focused-collection20-${viewport.width}.png`),fullPage:false});
+    await buttons.last().press("Enter");
+    await expect(page.getByRole("heading",{name:"Collection 20",exact:true})).toBeVisible();
+    await expect(page.locator("iframe")).toHaveCount(0);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  }
 });
