@@ -51,3 +51,15 @@ Fresh independent interactive review found a genuine scope/copy mismatch: collec
 OptimizedbuildPASS. New actualinteractionregression loops390/768/1024/1440widths:collectionpianomiss→broaden→approvedpianolinkvisible, preservedquery,0iframe,0requestmutation;Favorites/Hidden scope labels and fallbackbuttons inspected+screenshotted.1testPASS(4viewportjourneys),2.7s. Original test harness incorrectly navigated nonexistent /watch/library, failed404; preserved originalfailure and fixed bootstrap to actual /watch/home→Library button, without productroutingchange.
 
 Finalrenderharness adds collectionmissempty+expandedresult atall4anchors; ParentLibrary populatedlongtitle at360/412/520/640 with exactscroll/readabletiles. Final69fullsuite/independentrecheck stillpending. Previous726full68PASS remains scoped to earlier appbytes.
+
+## Final frozen local candidate — 382
+
+Exactsource38244d2c6ea6b7bb113f3e39338b63cf4eae1e82 /treea4b851b4230bf5b649d9ff32c9588db74b87a4d6 /appsrctree461eb4dc14b9a5adb79047d681a8c85478e740ad. Clean src/public worktree. No further application/harness edits after thisfreeze.
+
+Lint/type/25files200unit/optimizedbuildPASS. Complete69browserPASS,0skipped/unexpected/flaky,230154.436ms.26manifestfamilies293states931actualPNGs include4anchorcollectionmiss/recovery,4narrowParentLibrarylongtitlecaps,structuraleligibility and internal-dialoglowercapture. All original exactscrollassertions retained. Newtest loops4viewportscopedsearchjourneys withoutautomaticrequest; oldfailureevidence preserved. Browser stdout counts TypeError0/ReferenceError0/Unhandled0; intentional mocked-provider/resourcefailedcases remain specifically scoped tests.
+
+Neutral review index+productbrief and immutable rawpacket are privately retained forfreshindependentreview; local69PASS does not certify that review or physical/hostedgates. Exact CI148 run44225923586 completed all3jobs SUCCESS: qualification-mode, baseline-visual-evidence and quality-checks including ci/lint/type/200unit/build/fullbrowser/artifact/audit. Optional followup-journey step skipped by full-modecondition, not separatelypassed. https://github.com/avromy/watchnest-/actions/runs/44225923586 .
+
+Log byte distinction: original local patched-build.log SHA256142da385e65ddbfaf91c16b2743a0f82d1defd935402b2a9559af744c7f2b6b5 uses terminal CR; GitHub normalizedUTF8 text SHA256f5c9e0f695e092cf53783a6ffabe132bdea4015aa46106b8fab99523f350f97c. Final privatearchive retains rawbytes. Do not treat these as rawidenticalfiles or alter historicalfailedbuild accounting.
+
+Final sanitized privateevidence archive SHA25649ee308275a669a58e11bfb8d5abae25e73fb94726d82dce1f47bc8daf4a8bd7,69750508bytes,2853paths/1139uniqueobjects includes726/382renderedpackets, boundedfailures, interactiveStrangerrawcaptures and rawbuildlogs. Exactpath/hashmapping supports losslessreconstruction. PrivateCTOHandoff carries verifiedcustody onceownerarchives; no uploadcompletionclaimedby thissource receipt. Initialthreepackets separately archived privately SHA256a44a7a86d7d82cc08f420aac40980511bdde72eae871071f31f3ee8cc854f9d3.

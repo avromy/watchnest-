@@ -1,3 +1,13 @@
+# ACTIVE final candidate qualification — November 18, 2026
+
+Current frozen application/harness source38244d2c6ea6b7bb113f3e39338b63cf4eae1e82, treea4b851b4230bf5b649d9ff32c9588db74b87a4d6, appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Existing premium-ui-ux-20261103 / PR49 targetproduct-completion-20260930. Explicit Founder resume remains active; this is not a newproject or designrestart.
+
+Local final lint/type/200unit/build and complete69browserPASS;26manifestfamilies293states931PNGs. Includes narrow V01/V02 presentationrepairs and SI01 scopedsearch recovery. Original failures/false-positive stress clearance remain preserved. Independent focusedpixelrecheck/freshStranger/fivefinaljurors pending; no designPASS or FounderReady claimed here. CI148 exact382ALL3JOBSSUCCESS. [Exact qualification and evidence](QualificationResume-20261117.md).
+
+Production/rollback remains77a5017d938ded03b1530c2b72978cef27273d61 /dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Featurebranch deployment guard unchanged. No production/environment/schema/data mutation. Authenticatedhostedcandidate and genuine family-iPad approvedpicture/sound, recommendationsnormal/nativefullscreen, phoneEndnow picture/sound-stop gates OPEN. ReleaseHOLD untilactualgatespass. Nextowneraction is focusedfinalsourceindependentreview, not routineFounderdesignapproval.
+
+---
+
 # ACTIVE resumed qualification — November 17/18, 2026
 
 Explicit Founder RESUME lifts November10 pause. Existing branch premium-ui-ux-20261103 / PR49, sole integration owner Builder2. Recovered immutable68dc623084e1b91e4b2cd83e041c3257b4ce3809; current tested candidatecf764cb6087b394fbb9d97b687413c2084e2e708. See [current exact qualification receipt](QualificationResume-20261117.md). No new design direction or competing implementation owner.
