@@ -77,7 +77,7 @@ test("synthetic visual evidence: parent and child surfaces", async ({
   await fixture(page, "child");
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto("/watch/home");
-  await expect(page.getByText("Ari’s space", { exact: true })).toBeVisible();
+  await expect(page.getByText("Ari", { exact: true })).toBeVisible();
   await page.screenshot({
     path: "docs/evidence/child-tablet-synthetic.png",
     fullPage: true,

@@ -90,7 +90,7 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
   await expect(
     page.getByRole("heading", { name: "Eli", exact: true }),
   ).toBeVisible();
-  await page.getByRole("link", { name: /Requests/ }).click();
+  await page.getByRole("navigation", { name: "Parent navigation" }).getByRole("link", { name: /Requests/ }).click();
   await expect(
     page.getByRole("heading", { name: "Lego trains" }),
   ).toBeVisible();
@@ -104,7 +104,7 @@ test("synthetic UI: child searches local library and asks parent on no match", a
 }) => {
   const changes = await fixture(page, "child");
   await page.goto("/watch/home");
-  await expect(page.getByText("Ari’s space", { exact: true })).toBeVisible();
+  await expect(page.getByText("Ari", { exact: true })).toBeVisible();
   // Recurring entry lands directly in the approved library: no duplicate Home.
   await expect(page.getByRole("heading", { name: "Your library", exact: true })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "WatchNest", exact: true }).getByRole("button")).toHaveCount(2);
@@ -1218,4 +1218,54 @@ test("synthetic UI: collection search expands to approved library without reques
   expect(changes.some(change => change.path === "/api/child/requests")).toBe(false);
   await page.screenshot({ path: info.outputPath(`scoped-hidden-${viewport.width}.png`), fullPage: true });
   }
+});
+
+test("synthetic UI: initial child choices are visible and Simple controls stay secondary", async ({ page }, info) => {
+  for (const mode of ["standard", "simple"] as const) {
+    await page.unroute("**/api/**");
+    await fixture(page, "child", mode);
+    for (const viewport of [{width:360,height:800},{width:390,height:844},{width:768,height:1024},{width:1024,height:768}]) {
+      await page.setViewportSize(viewport);
+      await page.goto("/watch/home");
+      const title = page.locator(".child-video-card h3").first();
+      await expect(title).toBeVisible();
+      const content = await page.evaluate(() => {
+        const link = document.querySelector(".child-video-card > a")!.getBoundingClientRect();
+        const title = document.querySelector(".child-video-card h3")!.getBoundingClientRect();
+        const navigation = document.querySelector(".child-nav")!.getBoundingClientRect();
+        const limit = innerWidth <= 700 ? navigation.top : innerHeight;
+        return { artworkTop: link.top, titleBottom: title.bottom, limit };
+      });
+      console.log("CONTENT_REACH", JSON.stringify({mode,viewport,...content}));
+      await page.screenshot({path:info.outputPath(`${mode}-${viewport.width}.png`),fullPage:false});
+      expect(content.artworkTop).toBeGreaterThanOrEqual(0);
+      expect(content.titleBottom).toBeLessThan(content.limit - 6);
+      if (mode === "simple") {
+        await expect(page.getByRole("button", {name:"Hidden",exact:true})).toBeHidden();
+        await expect(page.getByRole("combobox", {name:"Sort videos",exact:true})).toBeHidden();
+        await page.locator("summary").filter({hasText:"More"}).click();
+        await expect(page.getByRole("button", {name:"Hidden",exact:true})).toBeVisible();
+        await expect(page.getByRole("combobox", {name:"Sort videos",exact:true})).toBeVisible();
+      } else {
+        await expect(page.getByRole("combobox", {name:"Sort videos",exact:true})).toBeVisible();
+      }
+    }
+  }
+});
+
+test("synthetic UI: many Collections remain keyboard reachable without pushing videos away", async ({ page }) => {
+  await fixture(page, "child");
+  const collections = Array.from({length:20},(_,index)=>({...dashboard.collections[0],id:`collection-${index}`,title:`Collection ${index+1}`}));
+  await page.route("**/api/child/library", route=>route.fulfill({json:{profile:dashboard.profiles[1],videos:dashboard.videos,collections}}));
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("/watch/home");
+  const shelf=page.getByRole("group",{name:"Collections",exact:true});
+  await expect(shelf.getByRole("button")).toHaveCount(20);
+  const last=shelf.getByRole("button").last();
+  await last.focus();
+  await expect(last).toBeInViewport();
+  await last.press("Enter");
+  await expect(page.getByRole("heading",{name:"Collection 20",exact:true})).toBeVisible();
+  await expect(page.locator("iframe")).toHaveCount(0);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });

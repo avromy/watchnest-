@@ -48,7 +48,7 @@ test('fresh younger child chooses a picture and returns to own library', async (
   await page.route('https://www.youtube-nocookie.com/**', r => r.fulfill({ contentType: 'text/html', body: '' }));
   await page.goto('/watch');
   await page.getByRole('button', { name: /Benny.*Open my library/ }).click();
-  await expect(page.getByText('Benny’s space', { exact: true })).toBeVisible();
+  await expect(page.getByText('Benny', { exact: true })).toBeVisible();
   await evidence(page, info, 'younger-home');
   await page.getByRole('button', { name: 'Library', exact: true }).click();
   await page.getByRole('link', { name: 'Play Build a paper rocket', exact: true }).click();
@@ -67,7 +67,7 @@ test('fresh older child retrieves saves and requests', async ({ page }, info) =>
   await page.goto('/watch');
   await page.getByRole('button', { name: /Ari.*Open my library/ }).click();
   await page.getByLabel('4-digit PIN').fill('1234');
-  await expect(page.getByText('Ari’s space', { exact: true })).toBeVisible();
+  await expect(page.getByText('Ari', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Library', exact: true }).click();
   await page.getByPlaceholder('Search your library').fill('friendly fox');
   await expect(page.getByRole('link', { name: /^Play / })).toHaveCount(1);
@@ -92,7 +92,7 @@ test('fresh shared family switch PIN recovery and parent boundary', async ({ pag
   await family(page);
   await page.goto('/watch');
   await page.getByRole('button', { name: /Eli.*Open my library/ }).click();
-  await expect(page.getByText('Eli’s space', { exact: true })).toBeVisible();
+  await expect(page.getByText('Eli', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: /Eli/ }).click();
   await expect(page.getByRole('heading', { name: 'Who’s watching?' })).toBeVisible();
   await page.getByRole('button', { name: /Ari.*Open my library/ }).click();
@@ -100,7 +100,7 @@ test('fresh shared family switch PIN recovery and parent boundary', async ({ pag
   await expect(page.getByText('That PIN didn’t match. Try again.', { exact: true })).toBeVisible();
   await evidence(page, info, 'shared-wrong-pin');
   await page.getByLabel('4-digit PIN').fill('1234');
-  await expect(page.getByText('Ari’s space', { exact: true })).toBeVisible();
+  await expect(page.getByText('Ari', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: /Ari/ }).click();
   await page.getByRole('button', { name: 'Parent Mode', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();

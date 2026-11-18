@@ -1,3 +1,13 @@
+# CURRENT — bounded Concept3 repair successor frozen for qualification — November18
+
+Root froze Child-only R1 content reach/R2 Discover hierarchy/D1 Simple-mode repair for publication. Baseline firstConcept3bd8d local69/200/build/lint/type/audit0PASS remains separate from actual CI149FAIL (one Requests-selector ambiguity; auditSKIPPED) and original Visual/Reporter/ChildStrangerFAIL. Original Parent boundedPASS retains unchanged Parent blobs only, not new global acceptance. Root's new targeted8-state reach/disclosure diagnostic PASS retained its initialtwo failures/thresholds. New FULL71 exact-source/browser/render/security/independent/hosted/device gates PENDING, not PASS.
+
+Source publication scope:8changedChildsrc/e2e files +CIworkflow. Product Requests selector now Parent-nav scoped; historical baseline workflow uses immutable671b77 harness with immutable77application, never Concept3-only labels on oldsource. No candidate correctness assertion removed. Parent production files and protected backend/player/CSP/RLS/timer code unchanged by repair. Round1 receipts/compactCI149byteindex and originalFAIL reports are preserved; original LOCAL26manifest packet was lost to default test-results cleanup, distinct verified CI ZIP is not its recovery. Root will copy next full packet outside test-results BEFORE any subsequent test command.
+
+Root fresh Vercel UI readback: autoAssign Custom Production Domains checkbox0/manualpromotion warning; no mutation. KeepFALSE. Production77 and oldgreenHHstage remain preserved. Oldgreen hosted Parent read-only metadata/preview/pages worked, then normal Parent expiry returned device role/sign-in denial; no timerbackend failure or command proven. Not Concept3 acceptance. No family data/auth artifacts retained. Root owns frozen71gates next; no merge/manualdeploy/settingschange.
+
+---
+
 # First Concept3 WIP publication receipt — November18
 
 Actual current authority recovery receipt and Parent UX implementation receipt consumed; three Concept3 documents retained. Root integrated child/global/icon and Parent-owner changes under disjoint scope. Publishing lane reviewed six harness diffs and eslint delta: semantic headings/navigation updated; stronger no-Home/two-primary-child-nav assertions and disclosure captures added; no correctness/security/scroll predicate removed. ESLint new ignores limited to exactly three historical docs audit-script folders, no application exclusion.

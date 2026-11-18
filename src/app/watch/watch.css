@@ -661,7 +661,7 @@
   place-items: center;
   overflow: hidden;
   border-radius: 31%;
-  background: linear-gradient(145deg, #f6d77c, #e3e3ee);
+  background: #ebe6fb;
   color: #1b1a39;
   flex: none;
 }

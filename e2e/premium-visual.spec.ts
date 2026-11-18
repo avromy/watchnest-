@@ -451,7 +451,7 @@ for (const viewport of viewports) {
       await expect(page.getByText("Opening your library…", { exact: true })).toBeVisible();
       await capture("child-library-loading");
       releaseLibrary();
-      await expect(page.getByText(/^Ari’s space$/, { exact: true })).toBeVisible();
+      await expect(page.getByText(/^Ari$/, { exact: true })).toBeVisible();
       await capture("child-simple-home");
       await page.getByRole("button", { name: "Library", exact: true }).click();
       await capture("child-simple-library");
@@ -459,6 +459,7 @@ for (const viewport of viewports) {
       await expect(page.getByRole("link", { name: /^Play A gentle piano lesson/ }).first()).toBeVisible();
       await capture("child-search-results");
       await page.getByPlaceholder("Search your library").fill("");
+      await page.locator("summary").filter({ hasText: "More" }).click();
       await page.getByRole("button", { name: "Hidden", exact: true }).click();
       await capture("child-hidden-empty");
       await page.route("**/api/child/library", route => route.fulfill(json({ profile: { ...profiles[1], discover_enabled: false, experience_mode: "standard" }, videos: syntheticVideos, collections: dashboard.collections })));
@@ -519,7 +520,7 @@ for (const viewport of viewports) {
 
     await synthetic(page, "child");
     await page.goto("/watch/home");
-    await expect(page.getByText(/^Ari’s space$/, { exact: true })).toBeVisible();
+    await expect(page.getByText(/^Ari$/, { exact: true })).toBeVisible();
     await capture("child-home");
     await page.getByRole("button", { name: "Library", exact: true }).click();
     await capture("child-library");
@@ -560,7 +561,7 @@ for (const viewport of viewports) {
     await capture("child-discover-results");
     await page.route("**/api/child/library", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: discoveryProfile, videos: [], collections: [] }) }));
     await page.goto("/watch/home");
-    await expect(page.getByText(/^Ari’s space$/, { exact: true })).toBeVisible();
+    await expect(page.getByText(/^Ari$/, { exact: true })).toBeVisible();
     await capture("child-empty-library");
     await page.route("**/api/child/library", route => route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "Your library is taking a moment. Please try again." }) }));
     await page.reload();

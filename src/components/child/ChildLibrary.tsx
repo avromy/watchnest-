@@ -344,7 +344,11 @@ export default function ChildLibrary() {
 
   if (!profile)
     return (
-      <main id="main-content" className="child-shell premium-child-library">
+      <main
+        id="main-content"
+        className="child-shell premium-child-library"
+        data-experience-mode="standard"
+      >
         <div className="picker-loading" role="status">
           {error ? (
             <>
@@ -361,7 +365,11 @@ export default function ChildLibrary() {
     );
 
   return (
-    <main id="main-content" className="child-shell premium-child-library">
+    <main
+      id="main-content"
+      className="child-shell premium-child-library"
+      data-experience-mode={profile?.experience_mode || "standard"}
+    >
       <header className="child-header">
         <span className="brand">
           <img src="/icon.svg" alt="" width="38" height="38" />
@@ -441,17 +449,15 @@ export default function ChildLibrary() {
         </section>
       ) : tab === "discover" ? (
         <section className="request-card discover-page">
-          <div className="request-icon">
-            <Icon name="search" width="30" />
-          </div>
-          <p className="eyebrow">Ask Parent</p>
           <h1>
             {profile.discover_enabled
               ? "Discover something new"
               : "What would you love to watch?"}
           </h1>
           <p>
-            Find something you’d like. Parent decides what joins your library.
+            {profile.discover_enabled
+              ? "Choose a video to ask Parent."
+              : "Tell Parent what you’d like to add."}
           </p>
           {profile.discover_enabled && boundary && (
             <form onSubmit={searchDiscover}>
@@ -548,7 +554,11 @@ export default function ChildLibrary() {
             className="request-another"
             open={!profile.discover_enabled || !!message || sent}
           >
-            <summary>Ask Parent another way</summary>
+            <summary>
+              {profile.discover_enabled
+                ? "Ask Parent another way"
+                : "Send an idea"}
+            </summary>
             {sent ? (
               <div className="request-success" role="status">
                 <Icon name="check" width="30" />
@@ -620,76 +630,110 @@ export default function ChildLibrary() {
         </section>
       ) : (
         <>
-          <div className="child-page-title">
-            <div>
-              <p className="eyebrow">{profile.display_name}’s space</p>
-              <h1>
-                {collection
-                  ? collection.title
-                  : favoritesOnly
-                    ? "Favorites"
-                    : hiddenOnly
-                      ? "Hidden videos"
-                      : "Your library"}
-              </h1>
-              <p className="library-count">
-                {filtered.length} {filtered.length === 1 ? "video" : "videos"}
-                {collection ? " in this collection" : " to explore"}
-              </p>
+          <div className="library-heading-tools">
+            <div className="child-page-title">
+              <div>
+                <h1>
+                  {collection
+                    ? collection.title
+                    : favoritesOnly
+                      ? "Favorites"
+                      : hiddenOnly
+                        ? "Hidden videos"
+                        : "Your library"}
+                </h1>
+                <p className="library-count">
+                  {filtered.length} {filtered.length === 1 ? "video" : "videos"}
+                  {collection ? " in this collection" : " to explore"}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="library-tools">
-            <label className="child-search">
-              <Icon name="search" width="20" />
-              <span className="sr-only">{librarySearchLabel}</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={librarySearchLabel}
-                autoComplete="off"
-              />
-            </label>
-            <button
-              aria-pressed={!favoritesOnly && !hiddenOnly && !collection}
-              onClick={() => {
-                setFavoritesOnly(false);
-                setHiddenOnly(false);
-                setCollection(null);
-              }}
-            >
-              <Icon name="library" width="19" /> All videos
-            </button>
-            <button
-              aria-pressed={favoritesOnly}
-              onClick={() => {
-                setFavoritesOnly(!favoritesOnly);
-                setHiddenOnly(false);
-                setCollection(null);
-              }}
-            >
-              <Icon name="heart" width="19" /> Favorites
-            </button>
-            <button
-              aria-pressed={hiddenOnly}
-              onClick={() => {
-                setHiddenOnly(!hiddenOnly);
-                setFavoritesOnly(false);
-                setCollection(null);
-              }}
-            >
-              Hidden
-            </button>
-            <label className="library-sort">
-              <span className="sr-only">Sort videos</span>
-              <select
-                value={sort}
-                onChange={(event) => setSort(event.target.value)}
+            <div className="library-tools">
+              <label className="child-search">
+                <Icon name="search" width="20" />
+                <span className="sr-only">{librarySearchLabel}</span>
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={librarySearchLabel}
+                  autoComplete="off"
+                />
+              </label>
+              <button
+                aria-pressed={!favoritesOnly && !hiddenOnly && !collection}
+                onClick={() => {
+                  setFavoritesOnly(false);
+                  setHiddenOnly(false);
+                  setCollection(null);
+                }}
               >
-                <option value="newest">Recently added</option>
-                <option value="title">A–Z</option>
-              </select>
-            </label>
+                <Icon name="library" width="19" /> All videos
+              </button>
+              <button
+                aria-pressed={favoritesOnly}
+                onClick={() => {
+                  setFavoritesOnly(!favoritesOnly);
+                  setHiddenOnly(false);
+                  setCollection(null);
+                }}
+              >
+                <Icon name="heart" width="19" /> Favorites
+              </button>
+              {profile.experience_mode === "simple" ? (
+                <details className="library-more">
+                  <summary>
+                    <Icon name="more" width="20" />
+                    <span>More</span>
+                  </summary>
+                  <div className="library-more-panel">
+                    <button
+                      aria-pressed={hiddenOnly}
+                      onClick={() => {
+                        setHiddenOnly(!hiddenOnly);
+                        setFavoritesOnly(false);
+                        setCollection(null);
+                      }}
+                    >
+                      Hidden
+                    </button>
+                    <label className="library-sort">
+                      <span className="sr-only">Sort videos</span>
+                      <select
+                        value={sort}
+                        onChange={(event) => setSort(event.target.value)}
+                      >
+                        <option value="newest">Recently added</option>
+                        <option value="title">A–Z</option>
+                      </select>
+                    </label>
+                  </div>
+                </details>
+              ) : (
+                <>
+                  <button
+                    aria-pressed={hiddenOnly}
+                    onClick={() => {
+                      setHiddenOnly(!hiddenOnly);
+                      setFavoritesOnly(false);
+                      setCollection(null);
+                    }}
+                  >
+                    Hidden
+                  </button>
+                  <label className="library-sort">
+                    <span className="sr-only">Sort videos</span>
+                    <select
+                      value={sort}
+                      onChange={(event) => setSort(event.target.value)}
+                    >
+                      <option value="newest">Recently added</option>
+                      <option value="title">A–Z</option>
+                    </select>
+                  </label>
+                </>
+              )}
+            </div>
           </div>
           {!query.trim() &&
             !collection &&
@@ -700,7 +744,12 @@ export default function ChildLibrary() {
                 <div className="row-heading">
                   <h2>Collections</h2>
                 </div>
-                <div className="collection-row">
+                <div
+                  className="collection-row"
+                  role="group"
+                  aria-label="Collections"
+                  tabIndex={0}
+                >
                   {collections.map((item) => (
                     <button key={item.id} onClick={() => setCollection(item)}>
                       <span className="collection-art" aria-hidden="true">
@@ -746,7 +795,8 @@ export default function ChildLibrary() {
                 !collection &&
                 !favoritesOnly &&
                 !hiddenOnly &&
-                collections.length > 0 && (
+                collections.length > 0 &&
+                profile.experience_mode !== "simple" && (
                   <div className="row-heading">
                     <h2>All videos</h2>
                   </div>
