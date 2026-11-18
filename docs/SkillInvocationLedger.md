@@ -1,3 +1,13 @@
+# CURRENT timer correction receipts — November18
+
+Founder timer mandate authorizes narrow necessary backendwork, preservingConcept3. Supabasecurrentmanual applied, actualmigrationnewCLIgenerated,119PGliteDBcases; nohostedDDLyet. Source992independentsecurity147targetedPASS including21newcalendaractual-dispatch tests; no physical/hosted grant. PriorTSEC01FAIL and calibrationrepair retained. ActualhostedPG.002 staleVancouverboundary observed; currentNYcorrect, trustedserverguardfailsclosed. Numeric/69legacyalias semantics tested, nofallback/secretcopy.
+
+Finitevisual6619FAILcountdown3.24→992actual9.17contrastPASS; current11b55refs fullyconsumed withNOTCLEANprecisioncaveat. Coldinitial26steps/10captures scopedPASS, expiredAddtoday/singular1/currentmode recheckPASS.5freshblindjurors11b actual35/31/31/31/35PNGs,4FAIL/1PASS, no peer findings beforefreeze; rootacceptedactionhierarchyrepair. ModeC finaljury NOTaccepted. Newcompact UI gates stale untilrerun. Detailed originalreceipts in TimerDailySecurityReview/VisualReview/VisualRecheck/VisualFinal/ColdUX/Jury docs. ExistingConcept3unaffected findings remain scoped, never globallyborrowed fornewtimer.
+
+ContinuousLearning: lower-tier “nonblocking” density can become final material task-friction rejection; do not waive. Pair displaydeadlinewithmatchingserverclock andcoherentsyntheticinstant. Preserve native fixture/anomaly evidence; don'tfixvisualstorybyerasingassertions. FounderReady remains held bynewqualification+hosted+physical gates. Durability pendingfinalcurrentrawpacket/Notionclosure, original6619historyarchive verified privateNotioncustody.
+
+---
+
 # CURRENT — authenticated hosted read-only QA complete; physical-device hold — November18
 
 Exact ef4 stage dpl_4D5qjPzrJ6iR9U2XhXBhESt7fTyW actually owner-signed-in/unlocked; Root completed bounded Parent/Child read-only hosted journeys and reload/isolation checks. Full sanitized receipt and limits: Concept3HostedQualification-20261118.md. No actual family records/settings/timer commands changed. No app/harness changes; ef4 local/CI/final independent acceptance remains applicable. Canonical77/dpl_GiR reverified READY, autoAssignFALSE held. Physical picture+sound, normal/nativefullscreen recommendation containment and Parent-phone fullscreen End-now remain OPEN. Next is ONE consolidated conditional real iPad+phone session on exact frozen stage; startup failure stops the later tests. No production promotion/FounderReady claim. Existing source/asset custody and recovery checkpoint2ac remain preserved; current documentation successor records this transition.

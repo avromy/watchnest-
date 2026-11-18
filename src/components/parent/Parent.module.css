@@ -931,7 +931,35 @@
 }
 .timerCard {
   display: grid;
-  gap: 20px;
+  gap: 12px;
+  align-self: start;
+}
+.timerMode {
+  margin: 0;
+  color: var(--wn-muted);
+  font-size: 0.85rem;
+}
+.timerEditor {
+  border-top: 1px solid var(--wn-border);
+  padding-top: 8px;
+}
+.timerEditor > summary {
+  min-height: 48px;
+  display: list-item;
+  align-content: center;
+  color: var(--wn-navy);
+  font-weight: 700;
+  cursor: pointer;
+}
+.timerEditorFields {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+}
+.timerEditorFields > :global(.muted) {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
 }
 .timerCard label {
   display: grid;
@@ -955,7 +983,6 @@
   white-space: nowrap;
 }
 .endButton {
-  order: -1;
   width: 100%;
   min-height: 50px;
   background: #f7e7df;

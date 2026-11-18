@@ -1,0 +1,7 @@
+# Daily timer final jury — round1 preserved FAIL
+
+Exact source11b0ae78b576be3922d2893fec53bc5732a4cc25, app6f223458b04a6ae684889597ad48d6e7866b6c88, optimized buildHVDZVyKg9-IHAy-NwqiAC. Five fresh contexts received identical neutral TARGET/index55 actual synthetic PNGs, no Builder rationale/repair history/peer verdicts. Jurors1/2/4/5 FAIL, juror3 scopedPASS; unanimity NOT achieved. Actual consumption35/31/31/31/35 PNGs with verified hashes. Reports are preserved under evidence/daily-timer/jury-round1.
+
+Material rejection: Parent immediate controls sit below lengthy configuration, outside the initial viewport at all anchors. Root accepts the defect and is moving actions directly below each child, making configuration a disclosure and eliminating redundant page hierarchy. Phone card travel was previously classified nonblocking in a cold review; stronger final jury rejection supersedes that acceptance for release. No Founder tie-breaker is needed. New UI and affected evidence must be independently requalified before another final jury. Also correcting synthetic single-clock fixtures and pairing each displayed profile deadline with its own server snapshot to avoid false6-versus5minute presentation. No DB/player/auth mutation in this repair.
+
+Local11b lint/type/343unit/build/audit0/full79PASS does not waive visual/UX failure. Original6619failure,992full79PASS and all review history remain preserved. This finite jury never certified hosted enforcement, physical iPad picture/sound, nativefullscreen containment or End-now. Production77 stays unchanged.

@@ -1121,7 +1121,7 @@ test("synthetic UI: intermediate widths keep parent tools and child browsing wit
     for (const route of ["/parent/add-video", "/parent/controls"]) {
       await page.goto(route);
       await expect(page.getByRole("heading", { level: 1, name: route === "/parent/controls" ? "Time controls" : "Add videos", exact: true })).toBeVisible();
-      if (route === "/parent/controls") await expect(page.getByRole("heading", { name: "Time for each child", exact: true })).toBeVisible();
+      if (route === "/parent/controls") await expect(page.getByRole("heading", { name: "Miri", exact: true })).toBeVisible();
       await assertWithinViewport();
     }
   }

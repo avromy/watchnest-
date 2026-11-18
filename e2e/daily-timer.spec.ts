@@ -31,6 +31,7 @@ test("custom one-minute grant, validation and explicit daily mode", async ({
       exact: true,
     }),
   });
+  await card.locator("summary").click();
   await card.getByLabel("Custom minutes").fill("1");
   await card
     .getByRole("button", { name: "Give 1 minute", exact: true })
@@ -73,6 +74,51 @@ test("custom one-minute grant, validation and explicit daily mode", async ({
   await expect(card).toContainText("Unused time doesn’t carry over");
 });
 
+test("each Parent countdown pairs its deadline with its own server snapshot", async ({
+  page,
+}) => {
+  await fixture(page, "parent");
+  await page.route("**/api/parent/session-status", async (route) => {
+    const outer = Date.now();
+    await route.fulfill({
+      json: {
+        serverNow: new Date(outer).toISOString(),
+        profiles: dashboard.profiles.map((profile, index) => {
+          const own = outer + index * 5000;
+          return {
+            ...profile,
+            devices: [],
+            access: {
+              enabled: true,
+              allowed: true,
+              state: "active",
+              mode: "once",
+              revision: 1,
+              serverNow: new Date(own).toISOString(),
+              expiresAt: new Date(own + 300000).toISOString(),
+              remainingSeconds: 300,
+              pausedSeconds: null,
+            },
+          };
+        }),
+      },
+    });
+  });
+  await page.goto("/parent/controls");
+  for (const profile of dashboard.profiles) {
+    const card = page
+      .locator("section.panel")
+      .filter({
+        has: page.getByRole("heading", {
+          name: profile.display_name,
+          exact: true,
+        }),
+      });
+    await expect(card.getByText("5 min left", { exact: true })).toBeVisible();
+    await expect(card.getByText("6 min left", { exact: true })).toHaveCount(0);
+  }
+});
+
 for (const viewport of [
   { width: 390, height: 844 },
   { width: 768, height: 1024 },
@@ -86,9 +132,10 @@ for (const viewport of [
     const changes = await fixture(page, "parent");
     let state = "ready";
     await page.route("**/api/parent/session-status", async (route) => {
+      const snapshotNow = Date.now();
       await route.fulfill({
         json: {
-          serverNow: new Date().toISOString(),
+          serverNow: new Date(snapshotNow).toISOString(),
           profiles: dashboard.profiles.map((p, index) => ({
             ...p,
             access: {
@@ -104,7 +151,7 @@ for (const viewport of [
               timezone: "America/New_York",
               expiresAt:
                 state === "active"
-                  ? new Date(Date.now() + 300_000).toISOString()
+                  ? new Date(snapshotNow + 300_000).toISOString()
                   : null,
               remainingSeconds: state === "expired" ? 0 : 300,
               pausedSeconds: state === "paused" ? 300 : null,
@@ -122,8 +169,10 @@ for (const viewport of [
         exact: true,
       }),
     });
+    await card.locator("summary").click();
     await card.getByLabel("Time mode").selectOption("daily");
     await card.getByLabel("Custom minutes").fill("5");
+    await card.locator("summary").click();
     for (const value of ["ready", "active", "paused", "blocked", "expired"]) {
       state = value;
       const text =
@@ -149,6 +198,17 @@ for (const viewport of [
       ).toBe(true);
       await page.screenshot({ path: info.outputPath(`${value}-top.png`) });
       await card.screenshot({ path: info.outputPath(`${value}-card.png`) });
+      const immediate = card.getByRole("button", {
+        name: value === "blocked" ? "Allow access" : "End now",
+        exact: true,
+      });
+      const immediateBounds = await immediate.boundingBox();
+      expect(immediateBounds).not.toBeNull();
+      expect(immediateBounds!.y).toBeGreaterThanOrEqual(0);
+      expect(immediateBounds!.y + immediateBounds!.height).toBeLessThanOrEqual(
+        viewport.height,
+      );
+      expect(immediateBounds!.height).toBeGreaterThanOrEqual(44);
       await expect(card.getByLabel("Custom minutes")).toHaveValue("5");
       if (value === "expired") {
         await card
@@ -168,6 +228,9 @@ for (const viewport of [
         await expect(card.getByLabel("Time mode")).toHaveValue("daily");
       }
     }
+    await card.locator("summary").click();
+    await expect(card.getByLabel("Custom minutes")).toBeVisible();
+    await card.screenshot({ path: info.outputPath("editor-card.png") });
   });
 }
 
