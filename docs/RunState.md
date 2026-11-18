@@ -1,3 +1,15 @@
+# CURRENT — qualified UI candidate, release hold — November 18
+
+**WATCHNEST_PREMIUM_UI_UX_QUALIFIED_RELEASE_HOLD**, not production ready. Final frozen app/harness38244d2c6ea6b7bb113f3e39338b63cf4eae1e82/appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Local69browser/200unit/lint/type/build and CI148 alljobsPASS. Targeted independent visual repair verification PASS;5 fresh final jurors unanimous sampled-synthetic PASS (104/79/93/83/88 PNG samples, not exhaustive). Final Child/Parent cold interactions bounded PASS; original failures and recommendations preserved.
+
+Preview source83ecc /dpl_F4mP5fCsSD8iJGqsMQnuRUpJCXZ7 READY; only branch pause guard removed. Root live runtime probe preview/api/session role:null,configured:false; canonical production role:null,configured:true. DO NOT promote unconfigured preview. Production remains77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No production/environment/schema/family-data mutation.
+
+Vercel browser sign-in succeeded, but supported production-environment staging remains blocked on pending owner-only CLI device authorization. Provider authorization action was disabled after one reload; no provider reason observed, no new CLI grant/token obtained. No authorization code/URL/session/personal image retained. Root cancelled UI production forms assigning canonical domains; no deployment submitted there. Planned supported CLI command only after correct account/project verification: `vercel deploy --prod --skip-domain`; hosted checks and physical-device acceptance before any promotion.
+
+[Exact restart recipe](ResumeCheckpoint-20261117.md) and [Founder gate BLOCKED receipt](FounderReadyGate-20261117.md) govern continuation. Final archives/Notion verification remains root-owned; DO NOT DELETE YET until verified. No routine Founder design approval or new design phase. Physical approved playback/recommendation containment/native-fullscreen End now gates OPEN.
+
+---
+
 # ACTIVE final review and hosted qualification — November 18
 
 Frozen source38244d2c6ea6b7bb113f3e39338b63cf4eae1e82 / appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad unchanged. Local69browser/200unit/lint/type/build and CI148 alljobsPASS. Independent targeted visual repair verification now PASS within its finite synthetic scope; original FAIL evidence preserved. Five fresh final jurors ongoing; no final jury verdict yet.

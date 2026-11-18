@@ -1,0 +1,354 @@
+{
+  "synthetic": {
+    "profiles": [
+      {
+        "id": "00000000-0000-4000-8000-000000000001",
+        "display_name": "Miri",
+        "avatar_key": "bird",
+        "color_key": "mint",
+        "experience_mode": "standard",
+        "pin_enabled": true,
+        "photo_url": null,
+        "available_from_minute": null,
+        "available_until_minute": null
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000002",
+        "display_name": "Ari",
+        "avatar_key": "fox",
+        "color_key": "yellow",
+        "experience_mode": "standard",
+        "pin_enabled": true,
+        "photo_url": null,
+        "available_from_minute": null,
+        "available_until_minute": null
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000003",
+        "display_name": "Benny",
+        "avatar_key": "bear",
+        "color_key": "blue",
+        "experience_mode": "standard",
+        "pin_enabled": false,
+        "photo_url": null,
+        "available_from_minute": null,
+        "available_until_minute": null
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000004",
+        "display_name": "Eli",
+        "avatar_key": "rocket",
+        "color_key": "coral",
+        "experience_mode": "standard",
+        "pin_enabled": false,
+        "photo_url": null,
+        "available_from_minute": null,
+        "available_until_minute": null
+      }
+    ],
+    "videos": [
+      {
+        "id": "10000000-0000-4000-8000-000000000001",
+        "youtube_video_id": "abcdefghijk",
+        "title": "Build a paper rocket",
+        "channel_title": "Little Makers",
+        "thumbnail_url": "",
+        "duration_seconds": 180,
+        "tags": [
+          "crafts"
+        ],
+        "made_for_kids": false,
+        "profile_ids": [
+          "00000000-0000-4000-8000-000000000002",
+          "00000000-0000-4000-8000-000000000001"
+        ],
+        "added_at": "2026-11-18T03:07:27.618Z",
+        "progress": {
+          "current_time_seconds": 40,
+          "duration_seconds": 180,
+          "completed_at": null,
+          "updated_at": "2026-11-18T03:07:27.619Z"
+        }
+      },
+      {
+        "id": "10000000-0000-4000-8000-000000000002",
+        "youtube_video_id": "lmnopqrstuv",
+        "title": "A gentle piano lesson",
+        "channel_title": "Music Room",
+        "thumbnail_url": "",
+        "duration_seconds": 240,
+        "tags": [
+          "music"
+        ],
+        "made_for_kids": true,
+        "profile_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "added_at": "2026-11-18T03:07:27.619Z"
+      },
+      {
+        "id": "10000000-0000-4000-8000-000000000003",
+        "youtube_video_id": "zyxwvutsrqp",
+        "title": "Draw a friendly fox",
+        "channel_title": "Little Makers",
+        "thumbnail_url": "",
+        "duration_seconds": 300,
+        "tags": [
+          "drawing"
+        ],
+        "made_for_kids": true,
+        "profile_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "added_at": "2026-11-18T03:07:27.619Z"
+      },
+      {
+        "id": "10000000-0000-4000-8000-000000000004",
+        "youtube_video_id": "synthetic01",
+        "title": "Fold a paper boat",
+        "channel_title": "Little Makers",
+        "thumbnail_url": "",
+        "duration_seconds": 180,
+        "tags": [
+          "crafts"
+        ],
+        "made_for_kids": false,
+        "profile_ids": [
+          "00000000-0000-4000-8000-000000000001"
+        ],
+        "added_at": "2026-11-18T03:07:27.618Z",
+        "progress": {
+          "current_time_seconds": 40,
+          "duration_seconds": 180,
+          "completed_at": null,
+          "updated_at": "2026-11-18T03:07:27.619Z"
+        }
+      }
+    ],
+    "collections": [
+      {
+        "id": "20000000-0000-4000-8000-000000000001",
+        "title": "Making things",
+        "description": "Make and discover",
+        "video_ids": [
+          "10000000-0000-4000-8000-000000000001",
+          "10000000-0000-4000-8000-000000000003",
+          "10000000-0000-4000-8000-000000000004"
+        ]
+      }
+    ],
+    "requests": [],
+    "familyCode": "synthetic-household-code",
+    "workflow": {
+      "approvedVideos": 3,
+      "activeChildren": 4,
+      "assignedVideos": 3,
+      "unassignedVideos": 0,
+      "openRequests": 0,
+      "byChild": [
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "assignedVideos": 0,
+          "openRequests": 0
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000002",
+          "assignedVideos": 3,
+          "openRequests": 1
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000003",
+          "assignedVideos": 0,
+          "openRequests": 0
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000004",
+          "assignedVideos": 0,
+          "openRequests": 0
+        }
+      ],
+      "source": "WatchNest approval, assignment and request activity. Not YouTube watch or engagement metrics."
+    },
+    "analytics": {
+      "todaySeconds": 240,
+      "weekSeconds": 1200,
+      "byChild": [
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "display_name": "Miri",
+          "todaySeconds": 0,
+          "weekSeconds": 0,
+          "recent": []
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000002",
+          "display_name": "Ari",
+          "todaySeconds": 240,
+          "weekSeconds": 1200,
+          "recent": [
+            {
+              "id": "10000000-0000-4000-8000-000000000001",
+              "youtube_video_id": "abcdefghijk",
+              "title": "Build a paper rocket",
+              "channel_title": "Little Makers",
+              "thumbnail_url": "",
+              "duration_seconds": 180,
+              "tags": [
+                "crafts"
+              ],
+              "made_for_kids": false,
+              "profile_ids": [
+                "00000000-0000-4000-8000-000000000002"
+              ],
+              "added_at": "2026-11-18T03:07:27.618Z",
+              "progress": {
+                "current_time_seconds": 40,
+                "duration_seconds": 180,
+                "completed_at": null,
+                "updated_at": "2026-11-18T03:07:27.619Z"
+              }
+            }
+          ]
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000003",
+          "display_name": "Benny",
+          "todaySeconds": 0,
+          "weekSeconds": 0,
+          "recent": []
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000004",
+          "display_name": "Eli",
+          "todaySeconds": 0,
+          "weekSeconds": 0,
+          "recent": []
+        }
+      ],
+      "popular": [
+        {
+          "title": "Build a paper rocket",
+          "seconds": 1200
+        }
+      ],
+      "daily": [
+        {
+          "date": "2026-09-24",
+          "seconds": 0
+        },
+        {
+          "date": "2026-09-25",
+          "seconds": 60
+        },
+        {
+          "date": "2026-09-26",
+          "seconds": 120
+        },
+        {
+          "date": "2026-09-27",
+          "seconds": 180
+        },
+        {
+          "date": "2026-09-28",
+          "seconds": 240
+        },
+        {
+          "date": "2026-09-29",
+          "seconds": 300
+        },
+        {
+          "date": "2026-09-30",
+          "seconds": 360
+        }
+      ],
+      "neverWatched": 2
+    },
+    "attention": []
+  },
+  "sessionRows": [
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "display_name": "Miri",
+      "avatar_key": "bird",
+      "color_key": "mint",
+      "experience_mode": "standard",
+      "pin_enabled": true,
+      "photo_url": null,
+      "available_from_minute": null,
+      "available_until_minute": null,
+      "access": {
+        "enabled": true,
+        "allowed": false,
+        "state": "ended",
+        "remainingSeconds": 0,
+        "pausedSeconds": null,
+        "revision": 6,
+        "expiresAt": "2026-11-18T03:10:58.867Z"
+      },
+      "devices": []
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "display_name": "Ari",
+      "avatar_key": "fox",
+      "color_key": "yellow",
+      "experience_mode": "standard",
+      "pin_enabled": true,
+      "photo_url": null,
+      "available_from_minute": null,
+      "available_until_minute": null,
+      "access": {
+        "enabled": false,
+        "allowed": true,
+        "state": "unlimited",
+        "remainingSeconds": null,
+        "pausedSeconds": null,
+        "revision": 0,
+        "expiresAt": null
+      },
+      "devices": []
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "display_name": "Benny",
+      "avatar_key": "bear",
+      "color_key": "blue",
+      "experience_mode": "standard",
+      "pin_enabled": false,
+      "photo_url": null,
+      "available_from_minute": null,
+      "available_until_minute": null,
+      "access": {
+        "enabled": false,
+        "allowed": true,
+        "state": "unlimited",
+        "remainingSeconds": null,
+        "pausedSeconds": null,
+        "revision": 0,
+        "expiresAt": null
+      },
+      "devices": []
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000004",
+      "display_name": "Eli",
+      "avatar_key": "rocket",
+      "color_key": "coral",
+      "experience_mode": "standard",
+      "pin_enabled": false,
+      "photo_url": null,
+      "available_from_minute": null,
+      "available_until_minute": null,
+      "access": {
+        "enabled": false,
+        "allowed": true,
+        "state": "unlimited",
+        "remainingSeconds": null,
+        "pausedSeconds": null,
+        "revision": 0,
+        "expiresAt": null
+      },
+      "devices": []
+    }
+  ]
+}
