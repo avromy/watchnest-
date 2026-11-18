@@ -1,3 +1,17 @@
+# Concept3 qualification learning — November18
+
+Classification: PROJECT / PROCESS / CALIBRATION. No universal skill rewrite. Current Founder Concept3 supersedes earlier internal green choice while retaining engineering and unaffected task research; technical review is not authority to override explicit taste direction.
+
+A programmatic focus check passed while real Tab navigation clipped a horizontal Collection card. Preserve that failed check; regression now uses actual forward/reverse keyboard events, whole-card containment and activation. Explicit nearest/instant focus scrolling repaired the real defect; independent232 transitions and current73 suite preserve the calibration.
+
+Paint eligibility and PNG capture must describe the same settled instant. Hover transitions produced metadata/raster disagreement. Disclosed pointer parking/finite-animation settling fixed capture coherence while retaining correctness and scroll assertions. Camera overlap under fixed navigation left tiny edges unobserved; supplemental real viewport images close them. A first supplemental fixture reordered videos because Date.now millisecond ties changed sort order. Reject its equivalence; explicit fixture relative timestamps then match original title order and every image URL/bounds. Original absolute timestamps were unavailable and were never claimed recovered. Geometry/hash equality supports mapping; independent actual pixels close visual acceptance.
+
+Snapshot raw output before another Playwright run cleans it. First local rejected packet was not recovered; a separately bound same-source CI artifact and surviving derivatives retain distinct provenance. Final raw, historical repairs, review journals and initial generated working-tree overlays now have verified durable custody, not just expiring CI links. Source equality, CI success, public configured:true and actual hosted authentication are separate evidence claims. Fresh final jury contexts preserve independence; a lean reviewer’s late peer-summary exposure is disclosed rather than hidden.
+
+Exact ef4 has local200unit/73browser, lint/type/build/audit0 and CI154 success; finite Child/Parent visual acceptance and five fresh unanimous scoped jury PASS. Hosted authenticated and genuine iPad/YouTube/fullscreen remote-stop remain open. Keep canonical77 and manual promotion through the release hold. API staging uses existing reviewed source/config without CLI-token or privileged-secret copying. READY targetproduction is staging when canonical aliases remain old; verify actual hostname resolution, not early intended alias arrays. No family data/security mutation was used to manufacture test success.
+
+---
+
 # Premium qualification — project/process propagation — 2026-11-04
 
 See PremiumLearning-20261104.md and final source-bound receipts. This checkpoint

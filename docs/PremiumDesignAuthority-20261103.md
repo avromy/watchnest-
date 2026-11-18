@@ -1,3 +1,11 @@
+# CURRENT AUTHORITY — Founder-selected Concept 3 / Premium Family Streaming — November18
+
+This supersedes the historical green-led choice below. The Founder explicitly selected navy/ink, lavender/periwinkle, coral/peach and warm light neutrals; no dominant green. Child approved Library/Collections lead, with immediate visual navigation; Parent Add Videos, Requests and Time lead. The mockup is inspiration, not an exact pixel Golden or authority to invent features. No further routine Founder design approval is required. Preserve product promise, per-video approval, family data and all security/player/timer contracts. Existing branch/PR49 and sole Builder2 ownership continue.
+
+Frozen implemented candidate ef4c4bb30a16ae273f04a426d979480a808930ab, application tree9771c2e229ff3e286f7443d9146d31ff22405303; final local/CI, bounded source/security, Child/Parent visual, Stranger and five fresh jury receipts are in Concept3ReleaseHold-20261118.md. Authenticated hosted/physical-device gates remain open; no production promotion or FounderReady claim. Historical decisions/evidence below remain for provenance, not current green authority.
+
+---
+
 # WatchNest premium experience — design authority V1
 
 Founder directive: full autonomous premium UI/UX transformation, November 3,
