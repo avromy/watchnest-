@@ -1,6 +1,6 @@
 # Concept3 current qualification / release hold — November18
 
-**Frozen local/CI/independent qualification complete; release held for authenticated hosted QA and genuine physical-device gates.**
+**Frozen local/CI/independent and bounded authenticated hosted read-only qualification complete; release held for genuine physical-device gates.**
 
 State: **WATCHNEST_CONCEPT3_QUALIFICATION_RELEASE_HOLD**. Not WATCHNEST_PREMIUM_UI_UX_PRODUCTION_READY. Root remains sole implementation/release owner; existing branch premium-ui-ux-20261103 and draft PR49 target product-completion-20260930. No new project, branch, design authority or production infrastructure.
 
@@ -37,7 +37,7 @@ Keep that immutable production deployment as rollback. Project **autoAssignCusto
 | Child keyboard / task verification | D1/R1/R2 repaired; a8 final D2PASS232 native transitions/16PNGs, explicit source carryforward to ef4 narrow icon-only delta | Synthetic browser interactions; original D2FAILs retained. |
 | Independent Parent Stranger | Bounded current-source Parent interaction report preserved | Fixture mutation is not database persistence/auth/timer media proof. |
 | Five fresh final jurors | **UNANIMOUS SCOPED PASS5/5**, fresh juror reports1–5 and Concept3FinalJury summary | All five frozen before aggregation;50/50/43/42/52 actual PNG entries, no inherited old-green votes. |
-| Final staged authenticated hosted QA | **OPEN** | Current finalstage role:null/configured:true only. Old HH/0f hosted observations do not certify ef4. |
+| Final staged authenticated hosted QA | **BOUNDED READ-ONLY PASS** | Actual ef4 owner sign-in/PIN, Parent/Child views, real metadata search/preview, reload and isolation; Concept3HostedQualification receipt. Not new hosted mutation/media proof. |
 | Physical A: approved playback | **OPEN** | Genuine family-iPad picture AND sound required; Chromium/tablet emulation is insufficient. |
 | Physical B: recommendations | **OPEN** | No unapproved video/external YouTube after related/More Videos actions in normal AND native fullscreen. |
 | Physical C: remote End now | **OPEN** | Parent-phone End now must stop fullscreen picture AND sound and prevent resumption. |
@@ -77,3 +77,7 @@ Preserve original bd8 local69 vs CI149FAIL/auditSKIPPED, original visual/Reporte
 A later bounded recovery delta preserves116 newly generated or historical working-tree evidence overlays without overwriting canonical tracked evidence. Saved PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF /PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF,9986524bytes,SHA256809b31173a0237e0517c8f2ac2c970b77fe2e047a98f71b2c8f1f1d71683099a. Successful create and local identity/version helper applied. These old generated overlays are not ef4 acceptance and were intentionally not committed over historical Git evidence. All app/harness sources stayef4. The separate final juror/Child/Parent receipts are committed as current documents; no unsaved source work is being hidden behind the archive.
 
 Complete large raw pixel/asset journals are intentionally privately archived instead of publishing31MB of derivations into Git. Frozen receipt bundle PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF /PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF contains12 complete journals/receipts,1158116compressed bytes,SHA25627a831f722f2d3bee6890c4c24ae7433b0325a554e255204ce2c1896c6911651. Each raw JSON name/size/hash and exact Library identity is in evidence/concept3-ef4c4bb/final-review-journal-index.json. Individual final reports and small jury receipts are current Git records; do not infer a missing local large JSON was never saved. All archive creates and identity writes succeeded. Notion successor verification remains the final recovery-clearance step.
+
+## Latest hosted successor
+
+Owner completed sign-in and PIN. Root actual exact-ef4 hosted read-only QA is complete, with settled Parent/Child journeys, search/preview, reload and isolation. See Concept3HostedQualification-20261118.md for actual observations, extension-log distinction and unexecuted mutative/media scopes. Earlier unauthenticated/credential-handoff steps remain historical and must not trigger another unnecessary password request. Browser ends at trusted-device picker after deliberate profile switch. Physical A/B/C remain mandatory; use the one consolidated conditional session in that receipt. No production/source/config mutation.

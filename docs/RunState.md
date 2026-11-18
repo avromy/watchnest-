@@ -1,3 +1,9 @@
+# CURRENT — authenticated hosted read-only QA complete; physical-device hold — November18
+
+Exact ef4 stage dpl_4D5qjPzrJ6iR9U2XhXBhESt7fTyW actually owner-signed-in/unlocked; Root completed bounded Parent/Child read-only hosted journeys and reload/isolation checks. Full sanitized receipt and limits: Concept3HostedQualification-20261118.md. No actual family records/settings/timer commands changed. No app/harness changes; ef4 local/CI/final independent acceptance remains applicable. Canonical77/dpl_GiR reverified READY, autoAssignFALSE held. Physical picture+sound, normal/nativefullscreen recommendation containment and Parent-phone fullscreen End-now remain OPEN. Next is ONE consolidated conditional real iPad+phone session on exact frozen stage; startup failure stops the later tests. No production promotion/FounderReady claim. Existing source/asset custody and recovery checkpoint2ac remain preserved; current documentation successor records this transition.
+
+---
+
 # CURRENT — Concept3 independent qualification complete; hosted/device release hold — November18
 
 Frozen app/harness ef4c4bb30a16ae273f04a426d979480a808930ab, tree d57c0f675876bec6b19779dfd9229ccb1267c314, appsrc9771c2e229ff3e286f7443d9146d31ff22405303. Local lint/type/200unit/build/audit0/full73 and exact CI154 all3jobs PASS. Independent bounded62-protected-source PASS. Child finite154-state Human-Eye CLEAN/MatchPASS; Parent201-state finalPASS; five fresh final jurors unanimously scopedPASS, receipts and firewall in Concept3FinalJury. No source change after freeze. OriginalFAILs preserved.
