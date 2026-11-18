@@ -1253,7 +1253,7 @@ test("synthetic UI: initial child choices are visible and Simple controls stay s
   }
 });
 
-test("synthetic UI: many Collections remain keyboard reachable without pushing videos away", async ({ page }) => {
+test("synthetic UI: many Collections remain keyboard reachable without pushing videos away", async ({ page }, info) => {
   await fixture(page, "child");
   const collections = Array.from({length:20},(_,index)=>({...dashboard.collections[0],id:`collection-${index}`,title:`Collection ${index+1}`}));
   await page.route("**/api/child/library", route=>route.fulfill({json:{profile:dashboard.profiles[1],videos:dashboard.videos,collections}}));
@@ -1264,6 +1264,11 @@ test("synthetic UI: many Collections remain keyboard reachable without pushing v
   const last=shelf.getByRole("button").last();
   await last.focus();
   await expect(last).toBeInViewport();
+  await expect.poll(async () => {
+    const [item,container] = await Promise.all([last.boundingBox(),shelf.boundingBox()]);
+    return !!item && !!container && item.x >= container.x - 1 && item.x + item.width <= container.x + container.width + 1;
+  }).toBe(true);
+  await page.screenshot({path:info.outputPath("focused-collection20.png"),fullPage:false});
   await last.press("Enter");
   await expect(page.getByRole("heading",{name:"Collection 20",exact:true})).toBeVisible();
   await expect(page.locator("iframe")).toHaveCount(0);

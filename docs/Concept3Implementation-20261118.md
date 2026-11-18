@@ -1,3 +1,11 @@
+# CURRENT — D2 focus repair frozen, renewed exact71 pending — November18
+
+Exactea5 full71/local lint/type/200unit/build/audit0PASS and CI150/run44249693504 all3jobsSUCCESS retained as prior-source evidence. Original bd8 local69 vs CI149FAIL/auditSKIPPED and independentFAIL history preserved. ea5 full packet safely copied outside test-results at concept3-evidence/ea5e213/test-results. Independent Child recheck D1/R1/R2PASS, but D2keyboardfocusvisibility HOLD remains until fresh successor verification; no final Child signoff.
+
+Root now froze ONLY ChildExperience.css +product.spec.ts focus repair: remove shelf snap,8px scrollpadding/margin, inside-card outline-4px; stronger focusedlastcard horizontalbounds assertion+focusPNG. Earlier diagnostic build/targetPASS precedes final outline offset and is not final acceptance. New exactfull71/build/security/render/independent gates PENDING. Source publisher makes no app edits, merge/manualdeploy/config changes. Protected backend/player/CSP/timer and Parent source stay unchanged. Root runs rebuilt frozen gates and copies packet before another test.
+
+---
+
 # Current successor freeze — bounded repair, final71 pending
 
 Root authorized publication of the repaired Child presentation/harness/workflow with original round1 rejection and diagnostic receipts. Exact successor commit/tree/appsrc will be reported after remote readback. See Concept3Repair-20261118.md and Concept3Round1Diagnostics-20261118.md. Firstbd8d local69PASS did not establish acceptance: CI149FAILED and independent Visual/Reporter/ChildStrangerFAIL remain explicit. New targeted8-state diagnostic passed after two preserved repair failures; full71 and affected actual-pixel/independent/hosted/device gates remain PENDING. Parent source blobs remain unchanged by this repair. Keep autoAssignFALSE (fresh actualUI checkbox0 readback), production77 rollback, no merge/manualdeploy. Capture next full packet outside default test-results before another test command. Earlier first-freeze record below is historical.

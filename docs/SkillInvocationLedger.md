@@ -1,3 +1,11 @@
+# CURRENT — D2 focus repair frozen, renewed exact71 pending — November18
+
+Exactea5 full71/local lint/type/200unit/build/audit0PASS and CI150/run44249693504 all3jobsSUCCESS retained as prior-source evidence. Original bd8 local69 vs CI149FAIL/auditSKIPPED and independentFAIL history preserved. ea5 full packet safely copied outside test-results at concept3-evidence/ea5e213/test-results. Independent Child recheck D1/R1/R2PASS, but D2keyboardfocusvisibility HOLD remains until fresh successor verification; no final Child signoff.
+
+Root now froze ONLY ChildExperience.css +product.spec.ts focus repair: remove shelf snap,8px scrollpadding/margin, inside-card outline-4px; stronger focusedlastcard horizontalbounds assertion+focusPNG. Earlier diagnostic build/targetPASS precedes final outline offset and is not final acceptance. New exactfull71/build/security/render/independent gates PENDING. Source publisher makes no app edits, merge/manualdeploy/config changes. Protected backend/player/CSP/timer and Parent source stay unchanged. Root runs rebuilt frozen gates and copies packet before another test.
+
+---
+
 # CURRENT — bounded Concept3 repair successor frozen for qualification — November18
 
 Root froze Child-only R1 content reach/R2 Discover hierarchy/D1 Simple-mode repair for publication. Baseline firstConcept3bd8d local69/200/build/lint/type/audit0PASS remains separate from actual CI149FAIL (one Requests-selector ambiguity; auditSKIPPED) and original Visual/Reporter/ChildStrangerFAIL. Original Parent boundedPASS retains unchanged Parent blobs only, not new global acceptance. Root's new targeted8-state reach/disclosure diagnostic PASS retained its initialtwo failures/thresholds. New FULL71 exact-source/browser/render/security/independent/hosted/device gates PENDING, not PASS.

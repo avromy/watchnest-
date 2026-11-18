@@ -1058,3 +1058,14 @@
     gap: 5px;
   }
 }
+/* Native keyboard focus must not be displaced by carousel snapping. */
+.premium-child-library .collection-row {
+  scroll-snap-type: none;
+  scroll-padding-inline: 8px;
+}
+.premium-child-library .collection-row button {
+  scroll-margin-inline: 8px;
+}
+.premium-child-library .collection-row button:focus-visible {
+  outline-offset: -4px;
+}

@@ -54,3 +54,9 @@ not Concept3 hosted acceptance. Final hosted/device gates remain OPEN.
 New exact source/test/review/deployment bindings belong in the successor RunState.
 No promotion or Founder Ready until all applicable independent/hosted/device gates
 actually pass. No new credentials, paid service or schema migration introduced.
+
+## D2 focus-visibility successor freeze
+
+Independent ea5 Child repair verification cleared D1/R1/R2 but held final signoff for D2: a long Collections shelf's keyboard-focused last item could remain partly clipped under native proximity snap. Root changed ONLY ChildExperience.css and product.spec.ts: shelf snapping disabled,8px scroll padding/margin, focus outline moved inside card with offset-4px. The regression now requires full horizontal focused-button bounds inside shelf (in addition to viewport visibility), captures focused-collection20.png, and retains Enter activation/noiframe/overflow checks. No assertion deleted. Diagnostic build/target test passed before the final outline-offset refinement (same geometry); fresh exact-source full71 and focused independent pixel/interaction recheck remain PENDING. D2 is not yet closed.
+
+Exactea5 previous full71/lint/type/200unit/build/audit0PASS and remoteCI150ALL3JOBSSUCCESS are preserved separately; they do not certify this CSS/test successor. Entire ea5 test-results packet is now preserved at /workspace/scratch/b4fb31747e8d/concept3-evidence/ea5e213/test-results before any further tests. Original rejection reports and distinct CI149FAIL artifact remain historical.
