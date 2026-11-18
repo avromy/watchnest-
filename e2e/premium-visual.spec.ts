@@ -52,7 +52,7 @@ async function synthetic(page: Page, role: "parent" | "child") {
 }
 
 for (const viewport of viewports) {
-  const families = ["core", "player-states", ...(viewport.width === 390 || viewport.width === 1440 ? ["parent-details"] : []), ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details", "child-entry"] : [])];
+  const families = ["core", "player-states", ...(!label.startsWith("before-") ? ["recovery-states"] : []), ...(viewport.width === 390 || viewport.width === 1440 ? ["parent-details"] : []), ...(viewport.width === 768 || viewport.width === 1024 ? ["child-details", "child-entry"] : [])];
   for (const family of families) {
   test(`premium evidence: ${family} ${viewport.name} ${viewport.width}x${viewport.height}`, async ({ page }, info: TestInfo) => {
     test.setTimeout(180_000);
@@ -188,6 +188,46 @@ for (const viewport of viewports) {
       console.log(`VISUAL_EVIDENCE ${relative(process.cwd(), directory)}/manifest.json`);
     };
     const json = (value: unknown, status = 200) => ({ status, contentType: "application/json", body: JSON.stringify(value) });
+    if (family === "recovery-states") {
+      await synthetic(page, "parent");
+      await page.route("**/api/auth/device", route => route.fulfill(json({ profiles: [], parent_pin_set: true })));
+      await page.goto("/watch");
+      await expect(page.getByRole("button", { name: "Refresh profiles", exact: true })).toBeVisible();
+      await capture("family-profile-picker-empty");
+      await page.route("**/api/auth/device", route => route.fulfill(json({ profiles, parent_pin_set: true })));
+      await page.reload();
+      await page.route("**/api/auth/child", route => route.fulfill(json({ error: "Your library is taking a moment. Please try again." }, 503)));
+      await page.getByRole("button", { name: /Benny/ }).click();
+      await expect(page.getByRole("alert").filter({ hasText: "Your library is taking a moment. Please try again." })).toHaveText("Your library is taking a moment. Please try again.");
+      await capture("family-profile-picker-entry-error");
+      const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };
+      await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
+      await page.goto("/parent/dashboard");
+      await expect(page.getByRole("heading", { name: "Family overview", exact: true })).toBeVisible();
+      await capture("parent-dashboard-empty");
+      let releaseDashboard!: () => void;
+      const dashboardGate = new Promise<void>(resolve => { releaseDashboard = resolve; });
+      await page.route("**/api/parent/dashboard", async route => { await dashboardGate; await route.fulfill(json(dashboard)); });
+      await page.reload({ waitUntil: "domcontentloaded" });
+      await expect(page.getByRole("status").filter({ hasText: "Loading family overview…" })).toBeVisible();
+      await capture("parent-dashboard-loading");
+      releaseDashboard();
+      await expect(page.getByRole("heading", { name: "Family overview", exact: true })).toBeVisible();
+      await page.route("**/api/parent/dashboard", route => route.fulfill(json({ ...dashboard, requests: dashboard.requests.map(request => ({ ...request, status: "resolved" })), workflow: { ...dashboard.workflow, openRequests: 0 } })));
+      await page.goto("/parent/inbox");
+      await expect(page.getByRole("heading", { name: "You’re all caught up.", exact: true })).toBeVisible();
+      await capture("parent-inbox-fulfilled");
+      for (const state of ["offline", "ended"]) {
+        await page.route("**/api/parent/session-status", route => route.fulfill(json({ serverNow: new Date().toISOString(), profiles: profiles.map((profile, index) => ({ ...profile, access: { enabled: index === 0, allowed: index !== 0, state: index === 0 ? "expired" : "unlimited", remainingSeconds: index === 0 ? 0 : null, pausedSeconds: null, revision: 2, expiresAt: null }, devices: index === 0 ? [{ device_id: "synthetic-ipad", timer_last_seen_at: new Date(Date.now() - (state === "offline" ? 120000 : 0)).toISOString(), timer_ack_revision: 2, timer_playback_active: false }] : [] })) })));
+        await page.goto("/parent/controls");
+        const timer = page.locator("section.panel").filter({ has: page.getByRole("heading", { name: "Miri", exact: true }) }).first();
+        await expect(timer).toContainText("Time’s up");
+        await expect(timer).toContainText(state === "offline" ? "No child device is connected" : "latest change received");
+        await capture(`parent-remote-timer-${state}`);
+      }
+      await finish();
+      return;
+    }
     if (family === "player-states") {
       await synthetic(page, "child");
       let releasePlayer!: () => void;
