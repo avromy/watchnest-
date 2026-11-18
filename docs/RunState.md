@@ -1,3 +1,13 @@
+# CURRENT — timer UI independently accepted; dependency successor qualification pending — November18
+
+Same soleBuilder2/premium-ui-ux-20261103/PR49→product-completion-20260930. Appaa2/appsrc1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392 passed local343unit/80browser/lint/type/build/prodaudit0, CI160all3jobsSUCCESS. FinalfiniteHumanEyeCLEAN/MatchPASS, coldformPASS, fiveFRESHfinaljurors5/5scopedPASS; originalFAILsretained. Newdeveloper-tool audit findings are compatiblypatched with full/prodaudit0 andclean-ci; one sharedproductionnanoidpatch recorded, not dev-onlyclaim. This containingcommit changespackages/lock/evidence only, App/SQLsourceunchanged. Fresh343/80/build/full+prodaudit and exact-pixel comparison stillPENDING before qualificationcarryforward.
+
+Next deterministicstep: fullnewsourcegates inclALLdependency audit, independentdependency/securityreacceptance, compareall55actual timerPNGs/sourceApp hashes toaa2 (reuse5juryonlywhereunchangedverified). Preservefinalrawhistory/currentarchives and verifiedprivateNotioncustody. Then qualify additivebackward-compatibleSQL migration againstold77 baseline androllback; stageexactnewcandidateproduction-configuredwithautoAssignFALSE, no canonicalpromotion. CurrentDBmigrationstill20261027134442, no newtimerDDL. ActualnewhostedParentauth/child/remote/sessionproofOPEN; oldef4hostedPASSdoesnotcertifynewtimer. Genuinefamily-iPadpicture/sound, recommendationcontainment/nativefullscreen andphoneEndnow remainOPEN. Onlyrequestoneconditionalphysicalsessionafterauthhostedqualification; oldphysicalrequestsuperseded. NoOwneractionyet. Canonicalall3hostsremain77/dplGiR; no merges/promotions.
+
+DO NOT DELETE YET: latesttimerraw/reviewassetcustody/Notionclosure stillpending; source/historyrecoverableinGit, original6619archive andearlierConcept3eightcustodiespreserved. Neverrestartresearch, discardRootdesign, useoldermain orclaimphysicalPASS.
+
+---
+
 # CURRENT — timer action-first repair in qualification — November18
 
 Same Builder2/premium-ui-ux-20261103/draftPR49. Founder custom1–240minutes and7AM Daily semantics implemented; canonical77/dplGiR unchanged, no newtimerDDL. Sources992 and coherent-fixture11b each passed lint/type/343unit/build/audit0/full79. Security147scopedPASS. Original6619full78/79FAIL preserved. Final11b fivefreshjury NOTunanimous:4FAIL/1PASS because immediate Parent controls are below lengthy settings. Human-Eye also held CLEAN for6vs5syntheticclockprecision conflict. NO FounderReady/releasePASS.

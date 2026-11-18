@@ -1,0 +1,261 @@
+{
+  "verdict": "PASS",
+  "scope": "Independent bounded final expanded timer form UX/dispatch recheck",
+  "source": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+  "appTree": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+  "build": "oFLqPPG7G1UKn-j9z5BTR",
+  "environment": "Root BUILD_PASS optimized .next read-only; own port3023; Chromium390x844; synthetic fixtures",
+  "history": "8669371 compactPASS preserved. Earlier6619bf9/99239ee scopedPASS and jury history remain source-bound; this is not a repeated whole cold audit.",
+  "materialDefects": [],
+  "recommendationDisposition": "Expanded form proximity recommendation resolved in this bounded task. No additional mandatory repair.",
+  "measurements": {
+    "inputBottomToPrimaryTop": 53.75,
+    "inputTopToPrimaryTop": 103.75,
+    "presets": "All7 are73x46px at390px viewport",
+    "expandedCard": "client356/scroll356",
+    "document": "viewport390/scroll390"
+  },
+  "passed": [
+    "Keyboard Enter disclosure and Tab to mode",
+    "Keyboard Enter5min preset updates numeric5",
+    "Custom1 dispatchstart1",
+    "Invalid0 integer error+disabledprimary",
+    "Click5min preset updates daily save; dispatchdaily5",
+    "Selected5 persistent distinct from hovered10 and nohover state",
+    "No expanded horizontal overflow",
+    "Keyboard closes disclosure"
+  ],
+  "visualUnits": [
+    {
+      "file": "daily-timer-cold-ux/final-form/01-closed.png",
+      "screen": "Closed card",
+      "observation": "Closed-card hierarchy unchanged; final recheck limited to expanded editor.",
+      "sha256": "10d628574c536c16b1e089dc1e8e0b5e440dd6d96576a3add43f6b45902c7d0e"
+    },
+    {
+      "file": "daily-timer-cold-ux/final-form/02-custom1-proximity.png",
+      "screen": "Custom1 primary proximity",
+      "observation": "Custom input and Start new1minsession are visible together;53.75px clear gap below input including helper.",
+      "sha256": "cf6b1bc2fe97b1f4e4fbe3bac544f0bae66c0526bf5782cc912699cbae8f437c"
+    },
+    {
+      "file": "daily-timer-cold-ux/final-form/03-invalid0.png",
+      "screen": "Invalid0",
+      "observation": "Inline integer correction and disabled primary.",
+      "sha256": "bbebdada67ba7525cf50dc35284f379731d9b4365582cc180e9e174649a07972"
+    },
+    {
+      "file": "daily-timer-cold-ux/final-form/04-daily5.png",
+      "screen": "Daily5",
+      "observation": "Pre-action renewal/start/no-rollover copy and Save5min daily allowance.",
+      "sha256": "be4cbf91990c24d02215ba2df21b901faa55e648dcc12aa04ac34607ea6c660f"
+    },
+    {
+      "file": "daily-timer-cold-ux/final-form/05-selected5-hover10.png",
+      "screen": "Selection versus hover",
+      "observation": "Selected5 stays lavender with inset outline; hovered10 only has pale background.",
+      "sha256": "a96e690de2aec8504c9d689cc0796a23a800a4f91c8cf0418671f99790c1c0fb"
+    },
+    {
+      "file": "daily-timer-cold-ux/final-form/06-selected5-nohover.png",
+      "screen": "Persistent selected preset",
+      "observation": "Selected5 remains visually marked when pointer moves away.",
+      "sha256": "279aed17ef03a5cc8ae28d636add8778b226edf223d964659cd08178fe7c28d4"
+    }
+  ],
+  "journal": [
+    {
+      "step": 1,
+      "task": "Keyboard open and Tab to mode",
+      "focusedTag": "SELECT"
+    },
+    {
+      "step": 2,
+      "task": "Keyboard preset5",
+      "value": "5",
+      "presetBox": {
+        "x": 118,
+        "y": 850.5,
+        "width": 73,
+        "height": 46
+      }
+    },
+    {
+      "step": 3,
+      "task": "Selected preset distinct from hover",
+      "styles": [
+        {
+          "text": "1 min",
+          "selected": "false",
+          "hover": false,
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(101, 107, 128)",
+          "shadow": "none",
+          "width": 73,
+          "height": 46
+        },
+        {
+          "text": "5 min",
+          "selected": "true",
+          "hover": false,
+          "background": "rgb(184, 173, 255)",
+          "color": "rgb(21, 26, 50)",
+          "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+          "width": 73,
+          "height": 46
+        },
+        {
+          "text": "10 min",
+          "selected": "false",
+          "hover": true,
+          "background": "rgb(239, 236, 251)",
+          "color": "rgb(101, 107, 128)",
+          "shadow": "none",
+          "width": 73,
+          "height": 46
+        },
+        {
+          "text": "20 min",
+          "selected": "false",
+          "hover": false,
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(101, 107, 128)",
+          "shadow": "none",
+          "width": 73,
+          "height": 46
+        },
+        {
+          "text": "30 min",
+          "selected": "false",
+          "hover": false,
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(101, 107, 128)",
+          "shadow": "none",
+          "width": 73,
+          "height": 46
+        },
+        {
+          "text": "45 min",
+          "selected": "false",
+          "hover": false,
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(101, 107, 128)",
+          "shadow": "none",
+          "width": 73,
+          "height": 46
+        },
+        {
+          "text": "60 min",
+          "selected": "false",
+          "hover": false,
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(101, 107, 128)",
+          "shadow": "none",
+          "width": 73,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "task": "Custom1 proximity",
+      "inputBox": {
+        "x": 37,
+        "y": 396.5625,
+        "width": 316,
+        "height": 50
+      },
+      "primaryBox": {
+        "x": 37,
+        "y": 500.3125,
+        "width": 316,
+        "height": 46
+      },
+      "topToTop": 103.75,
+      "inputBottomToPrimaryTop": 53.75
+    },
+    {
+      "step": 5,
+      "task": "GiveTime1",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "start",
+        "duration_minutes": 1
+      }
+    },
+    {
+      "step": 6,
+      "task": "Invalid0",
+      "primaryDisabled": true,
+      "error": "Enter a whole number from 1 to 240."
+    },
+    {
+      "step": 7,
+      "task": "Daily5",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "daily",
+        "duration_minutes": 5
+      },
+      "copy": "Miri\n\n5 min left\n\nDaily Allowance \u00b7 5 min daily \u00b7 renews at 7 AM\n\nEnd now\nPause\nAdd 15 minutes\nAdd 5 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\n\nRenews at 7 AM. Starts when the child opens their library. Unused time doesn\u2019t carry over.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\nSave 5 min daily allowance\n\nDaily Allowance: 5 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nRemove time limit\n\nTime counts down while video is paused or WatchNest is in the background. Parent Pause saves the remaining time."
+    },
+    {
+      "step": 8,
+      "task": "Expanded width",
+      "viewport": 390,
+      "document": 390,
+      "card": {
+        "client": 356,
+        "scroll": 356
+      },
+      "presets": [
+        {
+          "text": "1 min",
+          "w": 73,
+          "h": 46
+        },
+        {
+          "text": "5 min",
+          "w": 73,
+          "h": 46
+        },
+        {
+          "text": "10 min",
+          "w": 73,
+          "h": 46
+        },
+        {
+          "text": "20 min",
+          "w": 73,
+          "h": 46
+        },
+        {
+          "text": "30 min",
+          "w": 73,
+          "h": 46
+        },
+        {
+          "text": "45 min",
+          "w": 73,
+          "h": 46
+        },
+        {
+          "text": "60 min",
+          "w": 73,
+          "h": 46
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "task": "Keyboard close",
+      "closed": true
+    }
+  ],
+  "limits": [
+    "UI presentation and exact outgoing command proof only; injected API responses do not prove real state transitions or persistence.",
+    "No new backend/security/hosted/Supabase/physicalphone/playback/sound/fullscreen evidence.",
+    "No source edits, builds, shared test-results writes, external mutation, agents, commits or deploys."
+  ],
+  "releaseAuthority": "FAIL / HELD; physical/hosted and other independent gates remain separate."
+}

@@ -138,5 +138,35 @@
       "supabase": "2a36c8a7c89bb4413086bfa19686ea90695af54b"
     },
     "immutableBoundAt": "2026-11-18T18:20:52.779591+00:00"
+  },
+  "compactParentReview": {
+    "status": "SCOPED SOURCE PASS \u2014 exact immutable source; not hosted/physical release approval",
+    "candidate": "86693712f4abb3ada8d89d9e01e66ab10f228b4d",
+    "srcTree": "88f287278391ad894ea70fe737e24362153f18e7",
+    "reviewedAt": "2026-11-18T18:41:32.869451+00:00",
+    "parentAppSha256": "7318919c6cde93c7995769ca5d8ab1dd55e5f2934214ab818afb55fbd9d39581",
+    "unchangedProtectedFiles": [
+      "src/lib/server/product.ts",
+      "src/lib/server/daily-period-validation.ts",
+      "src/lib/server/daily-period-validation.test.ts",
+      "src/components/child/ChildLibrary.tsx",
+      "src/components/child/ChildExperience.css",
+      "src/components/child/ChildPlayer.tsx",
+      "src/lib/session-access.ts",
+      "supabase/migrations/20261118173600_daily_session_allowance.sql"
+    ],
+    "testEvidence": "Reuse147 independent targeted PASS: all participating server/SQL/snapshot files unchanged byte-for-byte versus99239ee; Parent UI browser/full gates Root-owned.",
+    "findings": [],
+    "verifiedScope": [
+      "Only Parent layout/action order and per-profile server clock display anchor changed; existing command names/profile IDs/origin/server authorization unchanged.",
+      "End now remains immediate explicit authenticated End; native details only discloses settings, no mutation on toggle.",
+      "Arbitrary1\u2013240 minutes retains integer validation; daily and one-time mode dispatch unchanged.",
+      "Per-profile resolver serverNow anchors countdown, outer serverNow fallback retained; display estimate cannot authorize access.",
+      "Existing reset revalidation may recreate approved iframe after allowed server response. Source embed has autoplay:false and onReady does not call playVideo; no auto-start intent or newly introduced player lifecycle change."
+    ],
+    "limits": [
+      "No actual YouTube media/autoplay/fullscreen proof; physical gates held.",
+      "147 prior tests reused only for exact unchanged server/test bytes; no new Parent-browser test execution claimed by this reviewer."
+    ]
   }
 }

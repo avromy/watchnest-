@@ -1,0 +1,368 @@
+{
+  "recordedAt": "2026-11-18T19:08:54.204039+00:00",
+  "scope": "Only package.json and package-lock.json changed; no app/SQL edits, builds, commits or deployments by this task.",
+  "baselineFullVulnerabilities": {
+    "total": 10,
+    "moderate": 8,
+    "high": 2
+  },
+  "directVite": "8.3.8",
+  "protectedDirectPinsUnchanged": true,
+  "changedLockEntries": [
+    {
+      "path": "node_modules/@isaacs/nonrecursive-glob-match",
+      "before": null,
+      "after": "1.1.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@napi-rs/wasm-runtime",
+      "before": "1.2.4",
+      "after": "1.2.6",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@oxc-project/types",
+      "before": "0.152.0",
+      "after": "0.156.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm-eabi",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm64",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-arm64",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-x64",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-freebsd-x64",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm-gnueabihf",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-gnu",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-musl",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-ppc64-gnu",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-s390x-gnu",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-gnu",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-musl",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-openharmony-arm64",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-wasm32-wasi",
+      "before": null,
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/core",
+      "before": null,
+      "after": "2.0.0-beta.2",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/runtime",
+      "before": null,
+      "after": "2.0.0-beta.2",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/wasi-threads",
+      "before": null,
+      "after": "2.2.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-arm64-msvc",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-x64-msvc",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@rolldown/pluginutils",
+      "before": "1.0.1",
+      "after": "1.1.1",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/eslint-plugin",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore",
+      "before": "7.0.11",
+      "after": "7.0.16",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/parser",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/project-service",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/scope-manager",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/tsconfig-utils",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/type-utils",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/types",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/brace-expansion",
+      "before": "5.0.12",
+      "after": "5.0.13",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch",
+      "before": "10.2.6",
+      "after": "11.0.9",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/semver",
+      "before": "7.8.5",
+      "after": "7.8.6",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/utils",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/@typescript-eslint/visitor-keys",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/cssesc",
+      "before": "3.0.0",
+      "after": null,
+      "dev": null
+    },
+    {
+      "path": "node_modules/follow-redirects",
+      "before": "1.16.0",
+      "after": "1.16.3",
+      "dev": true
+    },
+    {
+      "path": "node_modules/nanoid",
+      "before": "3.3.19",
+      "after": "3.3.20",
+      "dev": null
+    },
+    {
+      "path": "node_modules/postcss",
+      "before": "8.5.28",
+      "after": "8.5.33",
+      "dev": true
+    },
+    {
+      "path": "node_modules/postcss-selector-parser",
+      "before": "6.1.4",
+      "after": "6.1.6",
+      "dev": true
+    },
+    {
+      "path": "node_modules/rolldown",
+      "before": "1.2.12",
+      "after": "1.2.19",
+      "dev": true
+    },
+    {
+      "path": "node_modules/typescript-eslint",
+      "before": "8.71.0",
+      "after": "8.73.0",
+      "dev": true
+    },
+    {
+      "path": "node_modules/vite",
+      "before": "8.3.1",
+      "after": "8.3.8",
+      "dev": true
+    }
+  ],
+  "existingProductionPackageVersionChanges": [
+    {
+      "path": "node_modules/nanoid",
+      "before": "3.3.19",
+      "after": "3.3.20",
+      "dev": null
+    }
+  ],
+  "hashes": {
+    "package.json": "0079f2b81a57443f8423dae996c592dfb98f4ed9321fa8ca360be0f60b82befb",
+    "package-lock.json": "cf05652b2666257de2cbb036fb938c2bf39a7ffaf643988fcdcd367b4f134fed"
+  },
+  "cleanCi": {
+    "exit": 0,
+    "log": "dependency-clean-ci.log",
+    "ignoreScripts": true,
+    "manifestAndLockUnchangedAfterCleanCi": true
+  },
+  "fullAudit": {
+    "exit": 0,
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 34,
+        "dev": 484,
+        "optional": 96,
+        "peer": 8,
+        "peerOptional": 0,
+        "total": 555
+      }
+    },
+    "evidence": "dependency-full-audit-after.json"
+  },
+  "productionAudit": {
+    "exit": 0,
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 34,
+        "dev": 484,
+        "optional": 96,
+        "peer": 8,
+        "peerOptional": 0,
+        "total": 555
+      }
+    },
+    "evidence": "dependency-production-audit-after.json"
+  },
+  "installedTree": {
+    "exit": 0,
+    "problems": [
+      "extraneous: @emnapi/core@1.10.0 /workspace/scratch/b4fb31747e8d/watchnest/node_modules/@emnapi/core",
+      "extraneous: @emnapi/runtime@1.11.3 /workspace/scratch/b4fb31747e8d/watchnest/node_modules/@emnapi/runtime",
+      "extraneous: @emnapi/wasi-threads@1.2.1 /workspace/scratch/b4fb31747e8d/watchnest/node_modules/@emnapi/wasi-threads",
+      "extraneous: @img/sharp-wasm32@0.35.5 /workspace/scratch/b4fb31747e8d/watchnest/node_modules/@img/sharp-wasm32",
+      "extraneous: @napi-rs/wasm-runtime@1.2.6 /workspace/scratch/b4fb31747e8d/watchnest/node_modules/@napi-rs/wasm-runtime",
+      "extraneous: @tybys/wasm-util@0.10.4 /workspace/scratch/b4fb31747e8d/watchnest/node_modules/@tybys/wasm-util"
+    ],
+    "explanation": "All six reported extraneous WASM packages have matching optional lock entries after clean npm ci; no missing/invalid package problems reported.",
+    "evidence": "dependency-installed-tree.json"
+  },
+  "executionCorrection": "Initial Vite install and audit fix briefly overlapped; disclosed to Root. Followed by sequential exact Vite installation and clean npm ci, and fresh audits. Intermediate audit fix retained stale Vite finding; not counted as final evidence.",
+  "metadataVerified": [
+    "npm view vite@8.3.8",
+    "npm view follow-redirects@1.16.2",
+    "npm view @sparticuz/chromium@143.0.4 dependencies",
+    "npm view eslint-config-next@16.3.8 dependencies",
+    "npm view typescript-eslint@8.73.0 engines",
+    "npm view postcss-selector-parser@6.1.5 engines"
+  ],
+  "sourceQualification": "Root independently verified official Vite GHSA/release before task; metadata and current dependency audit verified via npm registry. No assertion of fresh functional/build acceptance: Root must rerun final gates."
+}
