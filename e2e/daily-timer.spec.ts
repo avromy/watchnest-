@@ -65,7 +65,11 @@ test("custom one-minute grant, validation and explicit daily mode", async ({
   await expect(
     card.getByRole("button", { name: "Give 1.5 minutes", exact: true }),
   ).toBeDisabled();
-  await card.getByLabel("Custom minutes").fill("5");
+  await card.getByRole("button", { name: "5 min", exact: true }).click();
+  await expect(card.getByLabel("Custom minutes")).toHaveValue("5");
+  await expect(
+    card.getByRole("button", { name: "5 min", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
   await card.getByLabel("Time mode").selectOption("daily");
   await card
     .getByRole("button", { name: "Save 5 min daily allowance", exact: true })
@@ -242,6 +246,7 @@ for (const viewport of [
         () => document.documentElement.scrollWidth <= innerWidth + 1,
       ),
     ).toBe(true);
+    await page.mouse.move(0, 0);
     await card.screenshot({ path: info.outputPath("editor-card.png") });
   });
 }
