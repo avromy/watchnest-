@@ -168,3 +168,29 @@ for exact cf764 app/harness bytes. Missing-state supplement is a separate ongoin
 coverage lane. Hosted authentication, genuine YouTube behavior, physical family
 iPad containment/fullscreen/remote End Now remain OPEN. No release/Founder Ready
 or universal functional/security acceptance follows from this addendum.
+
+
+## Bounded presentation renewal — 9480
+
+Independently read the complete src diff from cf764 to commit
+`9480ac8a9f091fc381c33a5d10bfe926f0515dd9`, tree
+`d09d27e1cd10ee51051c9d724666912d4fd46795`. Exactly three application files
+change: Parent.module.css gives the existing phone video grid one column;
+ChildExperience.css adds28px top margin to library-results; ChildLibrary.tsx
+wraps the existing filtered VideoGrid in a named section and conditionally labels
+the unfiltered/unscoped results All videos when Collections exist. The same
+filtered videos, favorite/hide handlers and empty branch remain. No data fetching,
+approval/assignment, routing, player entry, sibling filter, PIN or timer logic
+changes. This is a source classification, not rendered/accessibility acceptance.
+
+Recomputed all61 protected production-scope blobs against both cf764 and prod77:
+61/61 identical across all three candidates. Package/lock are unchanged from
+cf764. Detailed path/blob and three presentation-file SHA256 bindings are frozen
+in `docs/evidence/qualification-20261117/security-source-comparison-9480.json`,
+SHA256 `76007f88cd4014a70ef422776039d7403b45df334157f809ca05a55fa962ec80`.
+
+Verdict: PASS for bounded SOURCE security-preservation at exact9480. The earlier
+cf764 full-suite result remains historical for that harness/source; this addendum
+does not claim a new test run, new final rendered acceptance or coverage of
+subsequent evidence-harness changes. Renew affected browser/visual evidence on
+the exact final candidate. Hosted/provider/physical-device gates remain OPEN.

@@ -43,3 +43,11 @@ Independent cold comparator raised two material visual defects: phone Parent lib
 ## Bounded repair captures before final freeze
 
 At9480ac8 narrow apprepair optimizedbuildPASS; phoneanchor+520/640stress capturePASS. Landscape firstcapture correctly failed expectedscroll>0: selected outerdialogoverlay ratherthan actual innersectionscrollcontainer. Preserved failed packet and assertion; corrected locator to dialog >section, measured actual/expected scroll, landscape core rerunPASS1/1. Initialtarget3/4PASS is not finalfullacceptance. Application bytes unchanged by capturefix. Final committedharness full68 and independent repairrecheck NEXT. No productionchange.
+
+## Scoped child search correction before final qualification
+
+Fresh independent interactive review found a genuine scope/copy mismatch: collection search said Search your library but excluded an approved piano video outside the collection; emptyresult invited another Parent request. Narrow ChildLibrary repair states Search this collection/Search Favorites/Search hidden videos, and scopedquery emptyresult offers Search all videos, clearing collection/Favorites/Hidden filters while preservingquery. Globalmiss still offers Ask Parent. Individual-video authorization/playback unchanged.
+
+OptimizedbuildPASS. New actualinteractionregression loops390/768/1024/1440widths:collectionpianomiss→broaden→approvedpianolinkvisible, preservedquery,0iframe,0requestmutation;Favorites/Hidden scope labels and fallbackbuttons inspected+screenshotted.1testPASS(4viewportjourneys),2.7s. Original test harness incorrectly navigated nonexistent /watch/library, failed404; preserved originalfailure and fixed bootstrap to actual /watch/home→Library button, without productroutingchange.
+
+Finalrenderharness adds collectionmissempty+expandedresult atall4anchors; ParentLibrary populatedlongtitle at360/412/520/640 with exactscroll/readabletiles. Final69fullsuite/independentrecheck stillpending. Previous726full68PASS remains scoped to earlier appbytes.

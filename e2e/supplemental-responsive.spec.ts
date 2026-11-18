@@ -67,7 +67,7 @@ for (const viewport of viewports) {
       runtimeBaseUrl: info.project.use.baseURL,
       previewUrl: process.env.WATCHNEST_REVIEW_PREVIEW_URL || null,
       previewDeployment: process.env.WATCHNEST_REVIEW_PREVIEW_DEPLOYMENT || null,
-      sourceTree: git("rev-parse", "HEAD^{tree}"), applicationSourceTree: git("rev-parse", "HEAD:src"), frozenApplicationCommit: "c670d55a9bf22aa493f685fa62f79fda89151247",
+      sourceTree: git("rev-parse", "HEAD^{tree}"), applicationSourceTree: git("rev-parse", "HEAD:src"), historicalFrozenApplicationCommit: "c670d55a9bf22aa493f685fa62f79fda89151247",
       workingDiffSha256: hash(git("diff", "HEAD", "--", "src", "public", "e2e", "playwright.config.ts")),
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
@@ -200,7 +200,7 @@ for (const viewport of viewports) {
       console.log(`VISUAL_EVIDENCE ${relative(process.cwd(), directory)}/manifest.json`);
     };
     await synthetic(page, "parent");
-    for (const section of ["dashboard", "add-video"]) {
+    for (const section of ["dashboard", "add-video", ...(viewport.width <= 640 ? ["library"] : [])]) {
       await page.goto(`/parent/${section}`);
       await expect(page.locator("main h1")).toBeVisible();
       await capture(`parent-${section}`);

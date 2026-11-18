@@ -126,6 +126,7 @@ export default function ChildLibrary() {
   const [collection, setCollection] = useState<Collection | null>(null);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [hiddenOnly, setHiddenOnly] = useState(false);
+  const librarySearchLabel = collection ? "Search this collection" : favoritesOnly ? "Search Favorites" : hiddenOnly ? "Search hidden videos" : "Search your library";
   const [undoVideo, setUndoVideo] = useState<Video | null>(null);
   const [error, setError] = useState("");
   const [kind, setKind] = useState("topic");
@@ -659,12 +660,12 @@ export default function ChildLibrary() {
           <div className="library-tools">
             <label className="child-search">
               <Icon name="search" width="20" />
-              <span className="sr-only">Search your library</span>
+              <span className="sr-only">{librarySearchLabel}</span>
               <input
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search your library"
+                placeholder={librarySearchLabel}
               />
             </label>
             <button
@@ -771,18 +772,26 @@ export default function ChildLibrary() {
               </h2>
               <p>
                 {query
-                  ? "Try another word or ask Parent."
+                  ? collection || favoritesOnly || hiddenOnly ? "Try another word, or search all your videos." : "Try another word or ask Parent."
                   : favoritesOnly
                     ? "Tap the heart on a video to save it here."
                     : hiddenOnly
                       ? "Videos you hide will appear here."
                       : "Ask Parent to add something."}
               </p>
-              {query && (
+              {query && (collection || favoritesOnly || hiddenOnly ? (
+                <button className="button" onClick={() => {
+                  setCollection(null);
+                  setFavoritesOnly(false);
+                  setHiddenOnly(false);
+                }}>
+                  Search all videos
+                </button>
+              ) : (
                 <button className="button" onClick={askFromSearch}>
                   Ask Parent for “{query}”
                 </button>
-              )}
+              ))}
             </div>
           )}
         </>

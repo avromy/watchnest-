@@ -73,7 +73,7 @@ for (const viewport of viewports) {
       runtimeBaseUrl: info.project.use.baseURL,
       previewUrl: process.env.WATCHNEST_REVIEW_PREVIEW_URL || null,
       previewDeployment: process.env.WATCHNEST_REVIEW_PREVIEW_DEPLOYMENT || null,
-      sourceTree: git("rev-parse", "HEAD^{tree}"),
+      sourceTree: git("rev-parse", "HEAD^{tree}"), applicationSourceTree: git("rev-parse", "HEAD:src"),
       workingDiffSha256: hash(git("diff", "HEAD", "--", "src", "public", "e2e", "playwright.config.ts")),
       viewport, browser: "Chromium", physicalDevice: false,
       limitations: ["Synthetic API responses and SVG artwork", "Not real iPad Safari/PWA", "No genuine YouTube playback", "DOM accessibility inventory is not a complete accessibility audit", "Independent visual review required"],
@@ -521,6 +521,15 @@ for (const viewport of viewports) {
     await page.getByRole("button", { name: "Library", exact: true }).click();
     await page.getByRole("button", { name: /Little Makers/ }).first().click();
     await capture("child-collection");
+    if (!label.startsWith("before-")) {
+      await page.getByRole("searchbox", { name: "Search this collection", exact: true }).fill("piano");
+      await expect(page.getByRole("button", { name: "Search all videos", exact: true })).toBeVisible();
+      await capture("child-collection-search-empty");
+      await page.getByRole("button", { name: "Search all videos", exact: true }).click();
+      await expect(page.getByRole("searchbox", { name: "Search your library", exact: true })).toHaveValue("piano");
+      await expect(page.getByRole("link", { name: "Play A gentle piano lesson", exact: true })).toBeVisible();
+      await capture("child-collection-search-expanded");
+    }
     await page.getByRole("button", { name: "Library", exact: true }).click();
     await page.getByPlaceholder("Search your library").fill("no matching dinosaur");
     await expect(page.getByRole("heading", { name: "Nothing found" })).toBeVisible();

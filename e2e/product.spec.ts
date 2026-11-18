@@ -1185,3 +1185,33 @@ test("synthetic UI: phone parent actions and collection choices remain touchable
     await expect(option.getByRole("checkbox")).toBeChecked();
   }
 });
+
+
+test("synthetic UI: collection search expands to approved library without requesting again", async ({ page }, info) => {
+  test.setTimeout(60000);
+  for (const viewport of [{width:390,height:844},{width:768,height:1024},{width:1024,height:768},{width:1440,height:1000}]) {
+  await page.setViewportSize(viewport);
+  const changes = await fixture(page, "child");
+  await page.goto("/watch/home");
+  await page.getByRole("button", { name: "Library", exact: true }).click();
+  await page.getByRole("button", { name: /Little Makers/ }).click();
+  const search = page.getByRole("searchbox", { name: "Search this collection", exact: true });
+  await search.fill("piano");
+  await expect(page.getByRole("heading", { name: "Nothing found", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Ask Parent for/ })).toHaveCount(0);
+  await page.getByRole("button", { name: "Search all videos", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search your library", exact: true })).toHaveValue("piano");
+  await expect(page.getByRole("link", { name: "Play A gentle piano lesson", exact: true })).toBeVisible();
+  await expect(page.locator("iframe")).toHaveCount(0);
+  expect(changes.some(change => change.path === "/api/child/requests")).toBe(false);
+  await page.getByRole("button", { name: "Favorites", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search Favorites", exact: true })).toHaveValue("piano");
+  await expect(page.getByRole("button", { name: "Search all videos", exact: true })).toBeVisible();
+  await page.screenshot({ path: info.outputPath(`scoped-favorites-${viewport.width}.png`), fullPage: true });
+  await page.getByRole("button", { name: "Hidden", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search hidden videos", exact: true })).toHaveValue("piano");
+  await expect(page.getByRole("button", { name: "Search all videos", exact: true })).toBeVisible();
+  expect(changes.some(change => change.path === "/api/child/requests")).toBe(false);
+  await page.screenshot({ path: info.outputPath(`scoped-hidden-${viewport.width}.png`), fullPage: true });
+  }
+});
