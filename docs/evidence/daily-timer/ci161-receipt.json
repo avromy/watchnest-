@@ -1,0 +1,45 @@
+{
+  "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "run": 44377983202,
+  "number": 161,
+  "conclusion": "success",
+  "checkout": "9276a262dc7db623a681e067822987c081fa7b94",
+  "checkoutKind": "GitHub PR synthetic merge into77",
+  "jobs": [
+    {
+      "id": 135062157228,
+      "name": "qualification-mode",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135062241335,
+      "name": "quality-checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135062241451,
+      "name": "baseline-visual-evidence",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "gates": {
+    "unitTests": 343,
+    "unitFiles": 27,
+    "browserPassed": 80,
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "installAuditVulnerabilities": 0,
+    "productionAuditVulnerabilities": 0
+  },
+  "artifact": {
+    "id": 14464070359,
+    "bytes": 57092874,
+    "sha256": "19d2b18068ced310ab7beccabd23e8eac41206c76b609259fe6a5e101dc04b2d",
+    "retentionDays": 14
+  },
+  "boundaries": "Synthetic/local CI does not establish hosted/physical release readiness. Optional followup command skipped separately."
+}
