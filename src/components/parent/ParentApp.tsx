@@ -2758,6 +2758,24 @@ function SessionTimerCard({
               <option value="daily">Daily Allowance · renews at 7 AM</option>
             </select>
           </label>
+          <p className="muted">
+            {mode === "daily"
+              ? "Renews at 7 AM. Starts when the child opens their library. Unused time doesn’t carry over."
+              : "One-time only. Replaces Daily Allowance and won’t renew tomorrow."}
+          </p>
+          <div className={styles.timerPresets} aria-label="Quick minutes">
+            {[1, 5, 10, 20, 30, 45, 60].map((minutes) => (
+              <button
+                type="button"
+                className="button-quiet"
+                key={minutes}
+                aria-pressed={duration === minutes}
+                onClick={() => setDuration(minutes)}
+              >
+                {minutes} min
+              </button>
+            ))}
+          </div>
           <label>
             Custom minutes
             <input
@@ -2775,50 +2793,9 @@ function SessionTimerCard({
           <p className="muted" id={`minutes-help-${profile.id}`}>
             Choose 1–240 whole minutes.
           </p>
-          <div className={styles.timerActions} aria-label="Quick minutes">
-            {[1, 5, 10, 20, 30, 45, 60].map((minutes) => (
-              <button
-                type="button"
-                className="button-quiet"
-                key={minutes}
-                aria-pressed={duration === minutes}
-                onClick={() => setDuration(minutes)}
-              >
-                {minutes} min
-              </button>
-            ))}
-          </div>
           {!validDuration && (
             <p className="error" role="alert">
               Enter a whole number from 1 to 240.
-            </p>
-          )}
-          {state === "blocked" && (
-            <p className="muted">
-              Access is stopped by Parent. Removing a time limit won’t unlock
-              this child. Give new time, or add time and allow access.
-            </p>
-          )}
-          <p className="muted">
-            {mode === "daily"
-              ? "Renews each day at 7 AM in your family’s time zone. The time window starts when the child opens their library. Unused time doesn’t carry over."
-              : "A one-time window. Giving time switches Daily Allowance off; it won’t renew tomorrow."}
-          </p>
-          {status?.access.mode === "daily" && (
-            <p className="muted">
-              Daily Allowance: {status.access.dailyAllowanceMinutes} min · Next
-              renewal:{" "}
-              {status.access.resetAt
-                ? new Intl.DateTimeFormat("en-US", {
-                    timeZone: status.access.timezone || "America/New_York",
-                    month: "short",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "2-digit",
-                  }).format(new Date(status.access.resetAt))
-                : "7 AM"}{" "}
-              ({status.access.timezone || "America/New_York"}). A Parent stop or
-              pause stays in place.
             </p>
           )}
           <div className={styles.timerActions}>
@@ -2836,6 +2813,29 @@ function SessionTimerCard({
                   : `Give ${duration || "…"} ${duration === 1 ? "minute" : "minutes"}`}
             </button>
           </div>
+          {state === "blocked" && (
+            <p className="muted">
+              Access is stopped by Parent. Removing a time limit won’t unlock
+              this child. Give new time, or add time and allow access.
+            </p>
+          )}
+          {status?.access.mode === "daily" && (
+            <p className="muted">
+              Daily Allowance: {status.access.dailyAllowanceMinutes} min · Next
+              renewal:{" "}
+              {status.access.resetAt
+                ? new Intl.DateTimeFormat("en-US", {
+                    timeZone: status.access.timezone || "America/New_York",
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                  }).format(new Date(status.access.resetAt))
+                : "7 AM"}{" "}
+              ({status.access.timezone || "America/New_York"}). A Parent stop or
+              pause stays in place.
+            </p>
+          )}
           <div className={styles.timerActions}>
             {enabled && (
               <button

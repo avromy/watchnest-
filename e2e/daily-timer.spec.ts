@@ -33,6 +33,15 @@ test("custom one-minute grant, validation and explicit daily mode", async ({
   });
   await card.locator("summary").click();
   await card.getByLabel("Custom minutes").fill("1");
+  const inputBounds = await card.getByLabel("Custom minutes").boundingBox();
+  const saveBounds = await card
+    .getByRole("button", { name: "Give 1 minute", exact: true })
+    .boundingBox();
+  expect(inputBounds).not.toBeNull();
+  expect(saveBounds).not.toBeNull();
+  expect(
+    saveBounds!.y - inputBounds!.y - inputBounds!.height,
+  ).toBeLessThanOrEqual(160);
   await card
     .getByRole("button", { name: "Give 1 minute", exact: true })
     .click();
@@ -106,14 +115,12 @@ test("each Parent countdown pairs its deadline with its own server snapshot", as
   });
   await page.goto("/parent/controls");
   for (const profile of dashboard.profiles) {
-    const card = page
-      .locator("section.panel")
-      .filter({
-        has: page.getByRole("heading", {
-          name: profile.display_name,
-          exact: true,
-        }),
-      });
+    const card = page.locator("section.panel").filter({
+      has: page.getByRole("heading", {
+        name: profile.display_name,
+        exact: true,
+      }),
+    });
     await expect(card.getByText("5 min left", { exact: true })).toBeVisible();
     await expect(card.getByText("6 min left", { exact: true })).toHaveCount(0);
   }
@@ -230,6 +237,11 @@ for (const viewport of [
     }
     await card.locator("summary").click();
     await expect(card.getByLabel("Custom minutes")).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
     await card.screenshot({ path: info.outputPath("editor-card.png") });
   });
 }
