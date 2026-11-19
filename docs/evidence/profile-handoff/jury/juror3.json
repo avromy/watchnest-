@@ -1,0 +1,4192 @@
+{
+  "reviewer": "juror3",
+  "verdict": "PASS",
+  "final_visual_result": "CLEAN",
+  "frozen_at_utc": "2026-11-19T04:05:53.726940+00:00",
+  "independent": true,
+  "peer_findings_seen_before_freeze": false,
+  "implementation_or_prior_reviews_read": false,
+  "authority": {
+    "human_eye": "https://app.notion.com/p/3ea584c4f74781f5946bef30a54c86c5",
+    "version": "V2.0, production certified effective 2026-09-29",
+    "blind_jury": "/workspace/scratch/b4fb31747e8d/handoff-authority-0/Autonomous-Visual-Production-V008/BLIND-JURY-REVIEW-v1.0.md"
+  },
+  "jury_return_contract": {
+    "mode": "Final independent jury member; controller owns aggregate mode and size",
+    "why": "Bounded final rendered UI review assigned cold",
+    "convergence_reviewers_used": "Not supplied; not retrieved to preserve independence",
+    "final_jury_size": "Controller owned; not independently established",
+    "final_verdicts": {
+      "juror3": "PASS"
+    },
+    "jury_round_count": "One round personally performed; aggregate history not retrieved",
+    "regressions_discovered": [],
+    "material_progress_status": "Not evaluated: prior versions excluded by firewall",
+    "locked_golden_reused_or_rebuilt": "No Golden supplied; no Golden created or rebuilt"
+  },
+  "V2CoverageReceipt": {
+    "SOURCE_IDENTITY": {
+      "commit": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "binding_basis": "Both supplied manifests agree; all 27 referenced evidence files SHA-256 verified. No implementation inspected."
+    },
+    "REGION_COVERAGE": {
+      "required": 9,
+      "consumed": 9,
+      "scope": "All full document rasters: header, question, helper, four profile cards, Parent Mode, footer and each visible modal/input/error/Cancel region."
+    },
+    "BOUNDED_ASSETS": {
+      "required": 96,
+      "consumed": 96
+    },
+    "ASSET_EVIDENCE_CONSUMED": [
+      "V01:A01",
+      "V01:A02",
+      "V01:A03",
+      "V01:A04",
+      "V01:A05",
+      "V01:A06",
+      "V01:A07",
+      "V01:A08",
+      "V01:A09",
+      "V01:A10",
+      "V01:A11",
+      "V02:A01",
+      "V02:A02",
+      "V02:A03",
+      "V02:A04",
+      "V02:A05",
+      "V02:A06",
+      "V02:A07",
+      "V02:A08",
+      "V02:A09",
+      "V02:A10",
+      "V03:A01",
+      "V03:A02",
+      "V03:A03",
+      "V03:A04",
+      "V03:A05",
+      "V03:A06",
+      "V03:A07",
+      "V03:A08",
+      "V03:A09",
+      "V03:A10",
+      "V03:A11",
+      "V04:A01",
+      "V04:A02",
+      "V04:A03",
+      "V04:A04",
+      "V04:A05",
+      "V04:A06",
+      "V04:A07",
+      "V04:A08",
+      "V04:A09",
+      "V04:A10",
+      "V04:A11",
+      "V05:A01",
+      "V05:A02",
+      "V05:A03",
+      "V05:A04",
+      "V05:A05",
+      "V05:A06",
+      "V05:A07",
+      "V05:A08",
+      "V05:A09",
+      "V05:A10",
+      "V06:A01",
+      "V06:A02",
+      "V06:A03",
+      "V06:A04",
+      "V06:A05",
+      "V06:A06",
+      "V06:A07",
+      "V06:A08",
+      "V06:A09",
+      "V06:A10",
+      "V06:A11",
+      "V07:A01",
+      "V07:A02",
+      "V07:A03",
+      "V07:A04",
+      "V07:A05",
+      "V07:A06",
+      "V07:A07",
+      "V07:A08",
+      "V07:A09",
+      "V07:A10",
+      "V07:A11",
+      "V08:A01",
+      "V08:A02",
+      "V08:A03",
+      "V08:A04",
+      "V08:A05",
+      "V08:A06",
+      "V08:A07",
+      "V08:A08",
+      "V08:A09",
+      "V08:A10",
+      "V09:A01",
+      "V09:A02",
+      "V09:A03",
+      "V09:A04",
+      "V09:A05",
+      "V09:A06",
+      "V09:A07",
+      "V09:A08",
+      "V09:A09",
+      "V09:A10",
+      "V09:A11"
+    ],
+    "READABLE_VIEWS": {
+      "required": 9,
+      "consumed": 9,
+      "crop_instances": 54,
+      "method": "All nine supplied source-derived sheets opened and emitted through view_image; large profile symbols and modal symbol readable in native rasters."
+    },
+    "STRUCTURAL_RECORDS": {
+      "required": 9,
+      "consumed": 9,
+      "asset_records": 96,
+      "all_contained_edges_true": true
+    },
+    "EDGE_GATES": {
+      "resolved": 384,
+      "required": 384,
+      "resolution": "Per-asset LEFT/RIGHT/TOP/BOTTOM below. Structural containment reconciled against pixels. Intentional overlay occlusion resolved as occlusion, not malformed contour."
+    },
+    "APPLICATION_BINDING": {
+      "application": "WatchNest",
+      "states": [
+        "picker",
+        "handoff",
+        "wrong PIN"
+      ],
+      "viewports": [
+        "390x844",
+        "768x1024",
+        "1024x768"
+      ],
+      "capture_dimensions": "Full document rasters 390x942, 768x1039, 1024x775; viewport binding supplied by neutral records. Full-page document extension is not viewport-edge clipping.",
+      "runtime": "Actual compiled Chromium synthetic UI only"
+    },
+    "UNRESOLVED_CONFLICTS": [],
+    "HUMAN_GATES": {
+      "alignment": "PASS: consistent card baselines, symmetric centered dialogs, aligned PIN and error carriers.",
+      "optical_centering": "PASS: profile marks balanced within circular carriers; modal rocket and title optically centered.",
+      "spacing_rhythm": "PASS: even card gutters and repeated name/action/status spacing; dialog content has breathing room at all three widths.",
+      "grouping": "PASS: each profile forms one visual unit; Parent Mode is distinct; error belongs to the PIN field.",
+      "hierarchy": "PASS: viewer question leads picker; profile names lead cards; modal title and PIN lead handoff.",
+      "crop_story": "PASS: visible artwork contours complete; covered background imagery is intentional modal occlusion.",
+      "contrast": "PASS: readable white/lavender on ink and ink on pale dialog; subdued overlay excludes inactive background from active contrast judgment. No numerical WCAG certification.",
+      "gestalt": "PASS: coherent premium ink/lavender/peach family interface with calm parent handoff state.",
+      "visible_copy": "PASS: profile switching is explained; selected profile differs from parent handoff; PIN prompt names Eli and explicitly preserves time limits.",
+      "error_clarity": "PASS: peach error panel says That Parent PIN is not correct, adjacent to the PIN entry and with a clear Cancel escape."
+    },
+    "CONFIRMED_DEFECTS": [],
+    "POSSIBLE_CONCERNS": [],
+    "FINAL_RESULT": "PASS / CLEAN within bounded rendered UI scope"
+  },
+  "limitations": [
+    "Static compiled synthetic Chromium evidence only; no authenticated hosted environment, physical iPad, on-screen keyboard, real-device, media, PIN correctness, security or functional-safety acceptance.",
+    "Modal-covered contours cannot be observed underneath the overlay. Their currently visible state is legitimate occlusion, corroborated by corresponding unobstructed picker rasters; no reconstruction or hidden-contour guarantee.",
+    "No numerical contrast certification or pixel-match-to-Golden claim."
+  ],
+  "captures": [
+    {
+      "capture_id": "V01",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document": {
+        "width": 390,
+        "height": 942
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/390-handoff.png",
+      "raster_sha256": "1657caf245cb526eb8afdbe7be6b6808f9d55d62682670b8a6842a829f256c51",
+      "structure": "docs/evidence/profile-handoff/final-pixels/390-handoff-structure.json",
+      "structure_sha256": "89014dca6d406c376f638e7aedd31e6bfd02ae25d69f919d72055678721fca0c",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V01.png",
+      "readable_sha256": "715e6b143314558fe288a4e2a20165ed92f757ffb30e80ea3e15098dac365890",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V01:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 20,
+            "y": 24,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 20,
+            "y": 24,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V01:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 76.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V01:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 44.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 44.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V01:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 257.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V01:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 225.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V01:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 76.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V01:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 257.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V01:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 225.5,
+            "y": 733.75,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 731.34375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V01:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 131,
+            "y": 827.171875,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 108,
+            "y": 810.171875,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V01:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 85.5,
+            "y": 899.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 20,
+            "y": 898.171875,
+            "width": 350,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V01:A11",
+          "local_id": "A11",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 172.203125,
+            "y": 241.171875,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 157,
+            "y": 225.96875,
+            "width": 76,
+            "height": 76
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        },
+        {
+          "label": "profile-pin",
+          "width": 286,
+          "height": 66
+        },
+        {
+          "label": "Cancel",
+          "width": 286,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "capture_id": "V02",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document": {
+        "width": 390,
+        "height": 942
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/390-picker.png",
+      "raster_sha256": "6a268d4dc4c3c6c06b941ca3190bf98b52fdffdd710d64f5b343eb28ffff0ad8",
+      "structure": "docs/evidence/profile-handoff/final-pixels/390-picker-structure.json",
+      "structure_sha256": "7405255fc9c5abf876464c3bbd2fd793b89f1c6ea7a5dcb7fbb8d9a5b4ef5031",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V02.png",
+      "readable_sha256": "df9882e47418522c1ed389357151fd651a54acc1422998b33d9587aed8a03746",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V02:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 20,
+            "y": 24,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 20,
+            "y": 24,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 76.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 44.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 44.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 257.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 225.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 76.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 257.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 225.5,
+            "y": 733.75,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 731.34375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 131,
+            "y": 827.171875,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 108,
+            "y": 810.171875,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V02:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 85.5,
+            "y": 899.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 20,
+            "y": 898.171875,
+            "width": 350,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        }
+      ]
+    },
+    {
+      "capture_id": "V03",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document": {
+        "width": 390,
+        "height": 942
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/390-wrong-pin.png",
+      "raster_sha256": "917204a6e085dd544f07e59801eacfcbe2ce2d47e19c009d7fd7d16630b693e9",
+      "structure": "docs/evidence/profile-handoff/final-pixels/390-wrong-pin-structure.json",
+      "structure_sha256": "17ec3b0d16d4ad85051cb05cce3b29c7f54a6fc44041034a0e7891600714f015",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V03.png",
+      "readable_sha256": "1673627235255dcb3a8d31f15d6d4f0ef3ae1acdc075554e48cf01f3bc068fae",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V03:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 20,
+            "y": 24,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 20,
+            "y": 24,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V03:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 76.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V03:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 44.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 44.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V03:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 257.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V03:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 225.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V03:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 76.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V03:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 257.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V03:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 225.5,
+            "y": 733.75,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 731.34375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V03:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 131,
+            "y": 827.171875,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 108,
+            "y": 810.171875,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V03:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 85.5,
+            "y": 899.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 20,
+            "y": 898.171875,
+            "width": 350,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V03:A11",
+          "local_id": "A11",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 172.203125,
+            "y": 203.78125,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 157,
+            "y": 188.578125,
+            "width": 76,
+            "height": 76
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 169,
+          "height": 243.1875
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        },
+        {
+          "label": "profile-pin",
+          "width": 286,
+          "height": 66
+        },
+        {
+          "label": "Cancel",
+          "width": 286,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "capture_id": "V04",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "document": {
+        "width": 768,
+        "height": 1039
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/768-handoff.png",
+      "raster_sha256": "01bbc1c9874fa8b6475d58bd843c1afa267b7c920ce7fec54ccb6d056861c8b5",
+      "structure": "docs/evidence/profile-handoff/final-pixels/768-handoff-structure.json",
+      "structure_sha256": "97dc6d56f313d7ef60a15cca7ced53e082646e5dab20a105d4f4f81aa37dfea1",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V04.png",
+      "readable_sha256": "ae435d713b3564bb79d5b0b85592b0c1be38dfe756d4f78753e02648e256904f",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V04:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V04:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 185.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V04:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 154,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 154,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V04:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 525.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V04:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 494,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V04:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 185.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V04:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 525.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V04:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 494,
+            "y": 810.65625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 808.25,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V04:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 320,
+            "y": 904.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 297,
+            "y": 887.078125,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V04:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 274.5,
+            "y": 987.984375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 987.078125,
+            "width": 688,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V04:A11",
+          "local_id": "A11",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 361.203125,
+            "y": 331.171875,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 346,
+            "y": 315.96875,
+            "width": 76,
+            "height": 76
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        },
+        {
+          "label": "profile-pin",
+          "width": 346,
+          "height": 66
+        },
+        {
+          "label": "Cancel",
+          "width": 346,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "capture_id": "V05",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "document": {
+        "width": 768,
+        "height": 1039
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/768-picker.png",
+      "raster_sha256": "4c512dfa150c2fc330b2f72363d56967631022d42b02b8dd8de70a7fa921066d",
+      "structure": "docs/evidence/profile-handoff/final-pixels/768-picker-structure.json",
+      "structure_sha256": "059d8db3efd286b6e8baad720d3a44a0de2f511cc09b4647b5c5b6d213cf6964",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V05.png",
+      "readable_sha256": "ffdb077a014fcce2c240309fbffa1be5b16732521c9f5a7855f5747b97828dde",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V05:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 185.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 154,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 154,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 525.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 494,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 185.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 525.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 494,
+            "y": 810.65625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 808.25,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 320,
+            "y": 904.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 297,
+            "y": 887.078125,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V05:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 274.5,
+            "y": 987.984375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 987.078125,
+            "width": 688,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        }
+      ]
+    },
+    {
+      "capture_id": "V06",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "document": {
+        "width": 768,
+        "height": 1039
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/768-wrong-pin.png",
+      "raster_sha256": "134b4685e0ccdb946b82093cccc2a612c870eb3616148a16908d80d77df24dea",
+      "structure": "docs/evidence/profile-handoff/final-pixels/768-wrong-pin-structure.json",
+      "structure_sha256": "4915bb66d47466b5f6da908f5093d09cdea10030e05c1dde7a449a5eaa2b5cd6",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V06.png",
+      "readable_sha256": "30fbc4582f22b82405e99da29a5a6a3816b39f7163b9a1502507e2c839f30a34",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V06:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V06:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 185.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V06:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 154,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 154,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V06:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 525.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V06:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 494,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V06:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 185.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V06:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 525.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V06:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 494,
+            "y": 810.65625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 808.25,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V06:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 320,
+            "y": 904.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 297,
+            "y": 887.078125,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V06:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 274.5,
+            "y": 987.984375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 987.078125,
+            "width": 688,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V06:A11",
+          "local_id": "A11",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 361.203125,
+            "y": 293.78125,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 346,
+            "y": 278.578125,
+            "width": 76,
+            "height": 76
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 320,
+          "height": 252.640625
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        },
+        {
+          "label": "profile-pin",
+          "width": 346,
+          "height": 66
+        },
+        {
+          "label": "Cancel",
+          "width": 346,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "capture_id": "V07",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "document": {
+        "width": 1024,
+        "height": 775
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/1024-handoff.png",
+      "raster_sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+      "structure": "docs/evidence/profile-handoff/final-pixels/1024-handoff-structure.json",
+      "structure_sha256": "cdc40bc1f1762b7a24c245630379035570590886e412e997d5525592d1b5a801",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V07.png",
+      "readable_sha256": "27a51071ce5d2eda5c8a6903cf6fbd437444fa01e29101d7b8fc5af7a47e9c9c",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V07:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 124.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 98.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 99.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 99.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 359.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 333.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V07:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 334.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 334.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V07:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 594.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 568.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V07:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 829.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 803.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 804.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 804.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 448,
+            "y": 640.375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 425,
+            "y": 623.375,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 402.5,
+            "y": 724.28125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 723.375,
+            "width": 944,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V07:A11",
+          "local_id": "A11",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 489.203125,
+            "y": 203.171875,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 474,
+            "y": 187.96875,
+            "width": 76,
+            "height": 76
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        },
+        {
+          "label": "profile-pin",
+          "width": 346,
+          "height": 66
+        },
+        {
+          "label": "Cancel",
+          "width": 346,
+          "height": 48
+        }
+      ]
+    },
+    {
+      "capture_id": "V08",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "document": {
+        "width": 1024,
+        "height": 775
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/1024-picker.png",
+      "raster_sha256": "a8dfc4dd2eb79fb703ef45d1caf35f649a033b2b41bf69514a7e14eb0d7305cd",
+      "structure": "docs/evidence/profile-handoff/final-pixels/1024-picker-structure.json",
+      "structure_sha256": "b506e40c2d6dfca4932e5085939772cd3b80965643451c8a6fccd70269686eaa",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V08.png",
+      "readable_sha256": "df9882e47418522c1ed389357151fd651a54acc1422998b33d9587aed8a03746",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V08:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 124.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 98.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 99.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 99.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 359.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 333.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 334.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 334.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 594.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 568.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 829.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 803.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 804.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 804.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 448,
+            "y": 640.375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 425,
+            "y": 623.375,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        },
+        {
+          "id": "V08:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 402.5,
+            "y": 724.28125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 723.375,
+            "width": 944,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        }
+      ]
+    },
+    {
+      "capture_id": "V09",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "document": {
+        "width": 1024,
+        "height": 775
+      },
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "source_src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "raster": "docs/evidence/profile-handoff/final-pixels/1024-wrong-pin.png",
+      "raster_sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+      "structure": "docs/evidence/profile-handoff/final-pixels/1024-wrong-pin-structure.json",
+      "structure_sha256": "300e21369693ca895ab88b8a3e50e1521fa1cc6f1934959ec465fb5179bba0a2",
+      "readable_view": "docs/evidence/profile-handoff/final-readable/V09.png",
+      "readable_sha256": "9b1ad42d2fc28e0ee5e2777f55d4f64d687f978920edaebb20ff0508e271b853",
+      "readable_asset_ids": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "hashes_verified": true,
+      "opened_emitted_via_view_image": true,
+      "assets": [
+        {
+          "id": "V09:A01",
+          "local_id": "A01",
+          "label": "decorative icon",
+          "rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V09:A02",
+          "local_id": "A02",
+          "label": "Miri profile photo",
+          "rect": {
+            "x": 124.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 98.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V09:A03",
+          "local_id": "A03",
+          "label": "decorative icon",
+          "rect": {
+            "x": 99.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 99.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V09:A04",
+          "local_id": "A04",
+          "label": "Ari profile photo",
+          "rect": {
+            "x": 359.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 333.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V09:A05",
+          "local_id": "A05",
+          "label": "decorative icon",
+          "rect": {
+            "x": 334.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 334.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V09:A06",
+          "local_id": "A06",
+          "label": "Benny profile photo",
+          "rect": {
+            "x": 594.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 568.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V09:A07",
+          "local_id": "A07",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 829.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 803.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V09:A08",
+          "local_id": "A08",
+          "label": "decorative icon",
+          "rect": {
+            "x": 804.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 804.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V09:A09",
+          "local_id": "A09",
+          "label": "decorative icon",
+          "rect": {
+            "x": 448,
+            "y": 640.375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 425,
+            "y": 623.375,
+            "width": 174,
+            "height": 52
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "INTENTIONAL_MODAL_OCCLUSION",
+          "edge_gates": {
+            "LEFT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "RIGHT": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "TOP": "RESOLVED_INTENTIONAL_OCCLUSION",
+            "BOTTOM": "RESOLVED_INTENTIONAL_OCCLUSION"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Modal overlay legitimately covers underlying artwork; no hidden contour integrity claim."
+        },
+        {
+          "id": "V09:A10",
+          "local_id": "A10",
+          "label": "decorative icon",
+          "rect": {
+            "x": 402.5,
+            "y": 724.28125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 723.375,
+            "width": 944,
+            "height": 19.828125
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure",
+            "source_derived_readable_crop"
+          ],
+          "note": "Contour clear within carrier; dimmed background artwork remains intentionally subdued."
+        },
+        {
+          "id": "V09:A11",
+          "local_id": "A11",
+          "label": "Eli profile photo",
+          "rect": {
+            "x": 489.203125,
+            "y": 165.78125,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 474,
+            "y": 150.578125,
+            "width": 76,
+            "height": 76
+          },
+          "structural_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "rendered_resolution": "VISIBLE_COMPLETE",
+          "edge_gates": {
+            "LEFT": "PASS_VISIBLE_CONTOUR",
+            "RIGHT": "PASS_VISIBLE_CONTOUR",
+            "TOP": "PASS_VISIBLE_CONTOUR",
+            "BOTTOM": "PASS_VISIBLE_CONTOUR"
+          },
+          "evidence_consumed": [
+            "native_raster",
+            "neutral_structure"
+          ],
+          "note": "Complete visible contour and expected spacing."
+        }
+      ],
+      "controls_consumed": [
+        {
+          "label": "MiriOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "AriOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "BennyOpen my library \u2197Selected profile",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "EliOpen my library \u2197Parent handoff",
+          "width": 215,
+          "height": 275.515625
+        },
+        {
+          "label": "Parent Mode",
+          "width": 174,
+          "height": 52
+        },
+        {
+          "label": "profile-pin",
+          "width": 346,
+          "height": 66
+        },
+        {
+          "label": "Cancel",
+          "width": 346,
+          "height": 48
+        }
+      ]
+    }
+  ]
+}

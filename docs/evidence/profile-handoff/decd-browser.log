@@ -1,0 +1,77 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs
+
+[WebServer] (node:642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 84 tests using 1 worker
+
+(node:667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/daily-timer.spec.ts:23:5 › custom one-minute grant, validation and explicit daily mode (2.0s)
+  ✓   2 e2e/daily-timer.spec.ts:90:5 › each Parent countdown pairs its deadline with its own server snapshot (401ms)
+  ✓   3 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 390x844 (17.0s)
+  ✓   4 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 768x1024 (17.3s)
+  ✓   5 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 1024x768 (17.2s)
+  ✓   6 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 1440x1000 (17.2s)
+  ✓   7 e2e/daily-timer.spec.ts:254:5 › daily library denies exhausted access, renews only from a server response, and retains Parent block (459ms)
+  ✓   8 e2e/daily-timer.spec.ts:327:5 › one-minute extensions use singular copy while active, paused and blocked (1.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/manifest.json
+  ✓   9 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-phone 390x844 (12.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/player-states/manifest.json
+  ✓  10 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-phone 390x844 (3.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/recovery-states/manifest.json
+  ✓  11 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-phone 390x844 (4.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/parent-details/manifest.json
+  ✓  12 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-phone 390x844 (14.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/manifest.json
+  ✓  13 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-portrait 768x1024 (13.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/player-states/manifest.json
+  ✓  14 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-portrait 768x1024 (2.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/recovery-states/manifest.json
+  ✓  15 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-portrait 768x1024 (3.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/parent-details/manifest.json
+  ✓  16 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details ipad-portrait 768x1024 (12.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-details/manifest.json
+  ✓  17 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-portrait 768x1024 (3.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-entry/manifest.json
+  ✓  18 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-portrait 768x1024 (1.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/manifest.json
+  ✓  19 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-landscape 1024x768 (14.4s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/player-states/manifest.json
+  ✓  20 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-landscape 1024x768 (3.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/recovery-states/manifest.json
+  ✓  21 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-landscape 1024x768 (3.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/parent-details/manifest.json
+  ✓  22 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details ipad-landscape 1024x768 (15.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-details/manifest.json
+  ✓  23 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-landscape 1024x768 (3.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-entry/manifest.json
+  ✓  24 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-landscape 1024x768 (1.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/manifest.json
+  ✓  25 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-desktop 1440x1000 (12.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/player-states/manifest.json
+  ✓  26 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-desktop 1440x1000 (3.1s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/recovery-states/manifest.json
+  ✓  27 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-desktop 1440x1000 (3.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/parent-details/manifest.json
+  ✓  28 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-desktop 1440x1000 (14.5s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  29 e2e/product.spec.ts:31:5 › real HTTP: absent infrastructure fails closed; no sample family or iframe (263ms)
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ✓  30 e2e/product.spec.ts:52:5 › real HTTP: public entry, protected parent redirect, and unknown page (472ms)
+  ✓  31 e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access (436ms)
+  ✓  32 e2e/product.spec.ts:102:5 › synthetic UI: child searches local library and asks parent on no match (433ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓  33 e2e/product.spec.ts:140:5 › synthetic UI: a video-card tap requests immersive playback before navigation (304ms)
+BROWSER Failed to load resource: the server responded with a status of 403 (Forbidden)
+  ✓  34 e2e/product.spec.ts:172:5 › synthetic UI: WatchNest deadline destroys playback and blocks reload (1.2s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  35 e2e/product.spec.ts:244:5 › synthetic UI: Parent phone controls one remote profile timer (4.5s)
+  ✓  36 e2e/product.spec.ts:333:5 › synthetic UI: bounded Discover creates a request without a playable result (395ms)
+  ✓  37 e2e/product.spec.ts:367:5 › synthetic UI: shared device opens the profile picker and Parent Mode stays protected (284ms)

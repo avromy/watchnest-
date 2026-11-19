@@ -1,0 +1,3515 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/b4fb31747e8d/watchnest/node_modules/@playwright/test/cli.js",
+      "test"
+    ],
+    "configFile": "/workspace/scratch/b4fb31747e8d/watchnest/playwright.config.ts",
+    "rootDir": "/workspace/scratch/b4fb31747e8d/watchnest/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/b4fb31747e8d/watchnest/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/b4fb31747e8d/watchnest/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run start -- --hostname 127.0.0.1 --port 3001",
+      "url": "http://127.0.0.1:3001",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "daily-timer.spec.ts",
+      "file": "daily-timer.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "custom one-minute grant, validation and explicit daily mode",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1923,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:50:45.558Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-e5c20eacb54ed93bb548",
+          "file": "daily-timer.spec.ts",
+          "line": 23,
+          "column": 5
+        },
+        {
+          "title": "each Parent countdown pairs its deadline with its own server snapshot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 422,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:50:47.779Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-e1ce9f2d0dde98fd9068",
+          "file": "daily-timer.spec.ts",
+          "line": 90,
+          "column": 5
+        },
+        {
+          "title": "daily timer real pixels 390x844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17116,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:50:48.210Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-4d98053f72b1650e83eb",
+          "file": "daily-timer.spec.ts",
+          "line": 139,
+          "column": 7
+        },
+        {
+          "title": "daily timer real pixels 768x1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17234,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:51:05.341Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-a2b230fb4ef4da59eed6",
+          "file": "daily-timer.spec.ts",
+          "line": 139,
+          "column": 7
+        },
+        {
+          "title": "daily timer real pixels 1024x768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17245,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:51:22.585Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-390fb9a05c19276f6b31",
+          "file": "daily-timer.spec.ts",
+          "line": 139,
+          "column": 7
+        },
+        {
+          "title": "daily timer real pixels 1440x1000",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17432,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:51:39.838Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-ab87fc7df9b0a98e688c",
+          "file": "daily-timer.spec.ts",
+          "line": 139,
+          "column": 7
+        },
+        {
+          "title": "daily library denies exhausted access, renews only from a server response, and retains Parent block",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:51:57.279Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fefdedb6463b4fcc6299-b6c5990e1dd61db23fdd",
+          "file": "daily-timer.spec.ts",
+          "line": 254,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "fresh-child-stranger.spec.ts",
+      "file": "fresh-child-stranger.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "fresh younger child chooses a picture and returns to own library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1221,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:03.857Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "younger-home",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIHRleHQ6IFdhdGNoTmVzdAogIC0gYnV0dG9uICJCZW5ueSBwcm9maWxlIHBob3RvIEJlbm55IjogQmVubnkKICAtIG5hdmlnYXRpb24gIldhdGNoTmVzdCI6CiAgICAtIGJ1dHRvbiAiTGlicmFyeSIKICAgIC0gYnV0dG9uICJEaXNjb3ZlciIKICAtIGhlYWRpbmcgIllvdXIgbGlicmFyeSIgW2xldmVsPTFdCiAgLSB0ZXh0OiBTZWFyY2ggeW91ciBsaWJyYXJ5CiAgLSBzZWFyY2hib3ggIlNlYXJjaCB5b3VyIGxpYnJhcnkiCiAgLSBidXR0b24gIkFsbCB2aWRlb3MiIFtwcmVzc2VkXQogIC0gYnV0dG9uICJGYXZvcml0ZXMiCiAgLSBncm91cDogTW9yZQogIC0gaGVhZGluZyAiQ29sbGVjdGlvbnMiIFtsZXZlbD0yXQogIC0gZ3JvdXAgIkNvbGxlY3Rpb25zIjoKICAgIC0gYnV0dG9uICIyIHZpZGVvcyBMaXR0bGUgTWFrZXJzIjoKICAgICAgLSB0ZXh0OiAyIHZpZGVvcwogICAgICAtIHN0cm9uZzogTGl0dGxlIE1ha2VycwogIC0gcmVnaW9uICJMaWJyYXJ5IHZpZGVvcyI6CiAgICAtIGFydGljbGU6CiAgICAgIC0gbGluayAiUGxheSBCdWlsZCBhIHBhcGVyIHJvY2tldCI6CiAgICAgICAgLSAvdXJsOiAvd2F0Y2gvcGxheWVyLzEwMDAwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMQogICAgICAgIC0gdGV4dDogMzowMAogICAgICAgIC0gaGVhZGluZyAiQnVpbGQgYSBwYXBlciByb2NrZXQiIFtsZXZlbD0zXQogICAgICAgIC0gcGFyYWdyYXBoOiBMaXR0bGUgTWFrZXJzCiAgICAgIC0gYnV0dG9uICJBZGQgQnVpbGQgYSBwYXBlciByb2NrZXQgdG8gRmF2b3JpdGVzIgogICAgICAtIGdyb3VwCiAgICAtIGFydGljbGU6CiAgICAgIC0gbGluayAiUGxheSBBIGdlbnRsZSBwaWFubyBsZXNzb24iOgogICAgICAgIC0gL3VybDogL3dhdGNoL3BsYXllci8xMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDIKICAgICAgICAtIHRleHQ6IDQ6MDAKICAgICAgICAtIGhlYWRpbmcgIkEgZ2VudGxlIHBpYW5vIGxlc3NvbiIgW2xldmVsPTNdCiAgICAgICAgLSBwYXJhZ3JhcGg6IE11c2ljIFJvb20KICAgICAgLSBidXR0b24gIkFkZCBBIGdlbnRsZSBwaWFubyBsZXNzb24gdG8gRmF2b3JpdGVzIgogICAgICAtIGdyb3VwCiAgICAtIGFydGljbGU6CiAgICAgIC0gbGluayAiUGxheSBEcmF3IGEgZnJpZW5kbHkgZm94IjoKICAgICAgICAtIC91cmw6IC93YXRjaC9wbGF5ZXIvMTAwMDAwMDAtMDAwMC00MDAwLTgwMDAtMDAwMDAwMDAwMDAzCiAgICAgICAgLSB0ZXh0OiA1OjAwCiAgICAgICAgLSBoZWFkaW5nICJEcmF3IGEgZnJpZW5kbHkgZm94IiBbbGV2ZWw9M10KICAgICAgICAtIHBhcmFncmFwaDogTGl0dGxlIE1ha2VycwogICAgICAtIGJ1dHRvbiAiQWRkIERyYXcgYSBmcmllbmRseSBmb3ggdG8gRmF2b3JpdGVzIgogICAgICAtIGdyb3VwCi0gYWxlcnQ="
+                    },
+                    {
+                      "name": "younger-player",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIGxpbmsgIldhdGNoTmVzdCI6CiAgICAtIC91cmw6IC93YXRjaC9ob21lCiAgLSBsaW5rICLihpAgQmFjayB0byBMaWJyYXJ5IjoKICAgIC0gL3VybDogL3dhdGNoL2hvbWUKICAtIHBhcmFncmFwaDogTGV04oCZcyBwaWNrIHNvbWV0aGluZyBlbHNlCiAgLSBoZWFkaW5nICJUaGUgdmlkZW8gcGxheWVyIGRpZG7igJl0IHN0YXJ0IiBbbGV2ZWw9MV0KICAtIGFsZXJ0OiBUaGUgdmlkZW8gcGxheWVyIGNvdWxkIG5vdCBzdGFydCBzYWZlbHkuIFBsZWFzZSB0cnkgYWdhaW4uCiAgLSBsaW5rICJCYWNrIHRvIExpYnJhcnkiOgogICAgLSAvdXJsOiAvd2F0Y2gvaG9tZQogIC0gYnV0dG9uICJBc2sgUGFyZW50IGZvciBoZWxwIgotIGFsZXJ0OiBXYXRjaE5lc3Q="
+                    },
+                    {
+                      "name": "younger-return",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIHRleHQ6IFdhdGNoTmVzdAogIC0gYnV0dG9uICJCZW5ueSBwcm9maWxlIHBob3RvIEJlbm55IjogQmVubnkKICAtIG5hdmlnYXRpb24gIldhdGNoTmVzdCI6CiAgICAtIGJ1dHRvbiAiTGlicmFyeSIKICAgIC0gYnV0dG9uICJEaXNjb3ZlciIKICAtIGhlYWRpbmcgIllvdXIgbGlicmFyeSIgW2xldmVsPTFdCiAgLSB0ZXh0OiBTZWFyY2ggeW91ciBsaWJyYXJ5CiAgLSBzZWFyY2hib3ggIlNlYXJjaCB5b3VyIGxpYnJhcnkiCiAgLSBidXR0b24gIkFsbCB2aWRlb3MiIFtwcmVzc2VkXQogIC0gYnV0dG9uICJGYXZvcml0ZXMiCiAgLSBncm91cDogTW9yZQogIC0gaGVhZGluZyAiQ29sbGVjdGlvbnMiIFtsZXZlbD0yXQogIC0gZ3JvdXAgIkNvbGxlY3Rpb25zIjoKICAgIC0gYnV0dG9uICIyIHZpZGVvcyBMaXR0bGUgTWFrZXJzIjoKICAgICAgLSB0ZXh0OiAyIHZpZGVvcwogICAgICAtIHN0cm9uZzogTGl0dGxlIE1ha2VycwogIC0gcmVnaW9uICJMaWJyYXJ5IHZpZGVvcyI6CiAgICAtIGFydGljbGU6CiAgICAgIC0gbGluayAiUGxheSBCdWlsZCBhIHBhcGVyIHJvY2tldCI6CiAgICAgICAgLSAvdXJsOiAvd2F0Y2gvcGxheWVyLzEwMDAwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMQogICAgICAgIC0gdGV4dDogMzowMAogICAgICAgIC0gaGVhZGluZyAiQnVpbGQgYSBwYXBlciByb2NrZXQiIFtsZXZlbD0zXQogICAgICAgIC0gcGFyYWdyYXBoOiBMaXR0bGUgTWFrZXJzCiAgICAgIC0gYnV0dG9uICJBZGQgQnVpbGQgYSBwYXBlciByb2NrZXQgdG8gRmF2b3JpdGVzIgogICAgICAtIGdyb3VwCiAgICAtIGFydGljbGU6CiAgICAgIC0gbGluayAiUGxheSBBIGdlbnRsZSBwaWFubyBsZXNzb24iOgogICAgICAgIC0gL3VybDogL3dhdGNoL3BsYXllci8xMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDIKICAgICAgICAtIHRleHQ6IDQ6MDAKICAgICAgICAtIGhlYWRpbmcgIkEgZ2VudGxlIHBpYW5vIGxlc3NvbiIgW2xldmVsPTNdCiAgICAgICAgLSBwYXJhZ3JhcGg6IE11c2ljIFJvb20KICAgICAgLSBidXR0b24gIkFkZCBBIGdlbnRsZSBwaWFubyBsZXNzb24gdG8gRmF2b3JpdGVzIgogICAgICAtIGdyb3VwCiAgICAtIGFydGljbGU6CiAgICAgIC0gbGluayAiUGxheSBEcmF3IGEgZnJpZW5kbHkgZm94IjoKICAgICAgICAtIC91cmw6IC93YXRjaC9wbGF5ZXIvMTAwMDAwMDAtMDAwMC00MDAwLTgwMDAtMDAwMDAwMDAwMDAzCiAgICAgICAgLSB0ZXh0OiA1OjAwCiAgICAgICAgLSBoZWFkaW5nICJEcmF3IGEgZnJpZW5kbHkgZm94IiBbbGV2ZWw9M10KICAgICAgICAtIHBhcmFncmFwaDogTGl0dGxlIE1ha2VycwogICAgICAtIGJ1dHRvbiAiQWRkIERyYXcgYSBmcmllbmRseSBmb3ggdG8gRmF2b3JpdGVzIgogICAgICAtIGdyb3VwCi0gYWxlcnQ6IFdhdGNoTmVzdA=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24155cbc38da4d2b38ad-614d55d7ac73686a8368",
+          "file": "fresh-child-stranger.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "fresh older child retrieves saves and requests",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1160,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:05.287Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "older-favorite-retrieved",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIHRleHQ6IFdhdGNoTmVzdAogIC0gYnV0dG9uICJBcmkgcHJvZmlsZSBwaG90byBBcmkiOiBBcmkKICAtIG5hdmlnYXRpb24gIldhdGNoTmVzdCI6CiAgICAtIGJ1dHRvbiAiTGlicmFyeSIKICAgIC0gYnV0dG9uICJEaXNjb3ZlciIKICAtIGhlYWRpbmcgIkZhdm9yaXRlcyIgW2xldmVsPTFdCiAgLSBwYXJhZ3JhcGg6IDEgdmlkZW8gdG8gZXhwbG9yZQogIC0gdGV4dDogU2VhcmNoIEZhdm9yaXRlcwogIC0gc2VhcmNoYm94ICJTZWFyY2ggRmF2b3JpdGVzIgogIC0gYnV0dG9uICJBbGwgdmlkZW9zIgogIC0gYnV0dG9uICJGYXZvcml0ZXMiIFtwcmVzc2VkXQogIC0gYnV0dG9uICJIaWRkZW4iCiAgLSB0ZXh0OiBTb3J0IHZpZGVvcwogIC0gY29tYm9ib3ggIlNvcnQgdmlkZW9zIjoKICAgIC0gb3B0aW9uICJSZWNlbnRseSBhZGRlZCIgW3NlbGVjdGVkXQogICAgLSBvcHRpb24gIkHigJNaIgogIC0gYnV0dG9uICLihpAgQWxsIHZpZGVvcyIKICAtIHJlZ2lvbiAiTGlicmFyeSB2aWRlb3MiOgogICAgLSBhcnRpY2xlOgogICAgICAtIGxpbmsgIlBsYXkgRHJhdyBhIGZyaWVuZGx5IGZveCI6CiAgICAgICAgLSAvdXJsOiAvd2F0Y2gvcGxheWVyLzEwMDAwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMwogICAgICAgIC0gdGV4dDogNTowMAogICAgICAgIC0gaGVhZGluZyAiRHJhdyBhIGZyaWVuZGx5IGZveCIgW2xldmVsPTNdCiAgICAgICAgLSBwYXJhZ3JhcGg6IExpdHRsZSBNYWtlcnMKICAgICAgLSBidXR0b24gIlJlbW92ZSBEcmF3IGEgZnJpZW5kbHkgZm94IGZyb20gRmF2b3JpdGVzIiBbcHJlc3NlZF0KICAgICAgLSBncm91cAotIGFsZXJ0"
+                    },
+                    {
+                      "name": "older-request-pending",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIHRleHQ6IFdhdGNoTmVzdAogIC0gYnV0dG9uICJBcmkgcHJvZmlsZSBwaG90byBBcmkiOiBBcmkKICAtIG5hdmlnYXRpb24gIldhdGNoTmVzdCI6CiAgICAtIGJ1dHRvbiAiTGlicmFyeSIKICAgIC0gYnV0dG9uICJEaXNjb3ZlciIKICAtIGhlYWRpbmcgIkRpc2NvdmVyIHNvbWV0aGluZyBuZXciIFtsZXZlbD0xXQogIC0gcGFyYWdyYXBoOiBDaG9vc2UgYSB2aWRlbyB0byBhc2sgUGFyZW50LgogIC0gdGV4dDogU2VhcmNoIGluCiAgLSBjb21ib2JveCAiU2VhcmNoIGluIjoKICAgIC0gb3B0aW9uICJEcmF3aW5nIiBbc2VsZWN0ZWRdCiAgLSB0ZXh0OiBXaGF0IGRvIHlvdSB3YW50IHRvIGZpbmQ/CiAgLSBzZWFyY2hib3ggIldoYXQgZG8geW91IHdhbnQgdG8gZmluZD8iOiBmb3gKICAtIGJ1dHRvbiAiU2VhcmNoIgogIC0gYXJ0aWNsZToKICAgIC0gaGVhZGluZyAiRHJhdyBhIGZveCIgW2xldmVsPTNdCiAgICAtIHBhcmFncmFwaDogTGl0dGxlIE1ha2VycwogICAgLSBidXR0b24gIldhaXRpbmcgZm9yIFBhcmVudCIgW2Rpc2FibGVkXQogIC0gZ3JvdXA6IEFzayBQYXJlbnQgYW5vdGhlciB3YXkKICAtIGhlYWRpbmcgIk15IHJlcXVlc3RzIiBbbGV2ZWw9Ml0KICAtIHBhcmFncmFwaDoKICAgIC0gc3Ryb25nOiBEcmF3IGEgZm94CiAgICAtIHRleHQ6IFdhaXRpbmcgZm9yIFBhcmVudAotIGFsZXJ0"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24155cbc38da4d2b38ad-f49004692d956bccd47b",
+          "file": "fresh-child-stranger.spec.ts",
+          "line": 68,
+          "column": 5
+        },
+        {
+          "title": "fresh shared family switch PIN recovery and parent boundary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 949,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:06.465Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "shared-wrong-pin",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIHRleHQ6IFdhdGNoTmVzdAogIC0gcmVnaW9uICJXaG/igJlzIHdhdGNoaW5nPyI6CiAgICAtIGhlYWRpbmcgIldob+KAmXMgd2F0Y2hpbmc/IiBbbGV2ZWw9MV0KICAgIC0gcGFyYWdyYXBoOiBDaG9vc2UgeW91ciBsaWJyYXJ5LiBBIHBhcmVudCBoZWxwcyB3aGVuIGl04oCZcyBzb21lb25lIGVsc2XigJlzIHR1cm4uCiAgICAtIGJ1dHRvbiAiTWlyaSBwcm9maWxlIHBob3RvIE1pcmkgT3BlbiBteSBsaWJyYXJ5IFBhcmVudCBoYW5kb2ZmIjoKICAgICAgLSBzdHJvbmc6IE1pcmkKICAgICAgLSB0ZXh0OiBPcGVuIG15IGxpYnJhcnkgUGFyZW50IGhhbmRvZmYKICAgIC0gYnV0dG9uICJBcmkgcHJvZmlsZSBwaG90byBBcmkgT3BlbiBteSBsaWJyYXJ5IFBhcmVudCBoYW5kb2ZmIjoKICAgICAgLSBzdHJvbmc6IEFyaQogICAgICAtIHRleHQ6IE9wZW4gbXkgbGlicmFyeSBQYXJlbnQgaGFuZG9mZgogICAgLSBidXR0b24gIkJlbm55IHByb2ZpbGUgcGhvdG8gQmVubnkgT3BlbiBteSBsaWJyYXJ5IFBhcmVudCBoYW5kb2ZmIjoKICAgICAgLSBzdHJvbmc6IEJlbm55CiAgICAgIC0gdGV4dDogT3BlbiBteSBsaWJyYXJ5IFBhcmVudCBoYW5kb2ZmCiAgICAtIGJ1dHRvbiAiRWxpIHByb2ZpbGUgcGhvdG8gRWxpIE9wZW4gbXkgbGlicmFyeSBTZWxlY3RlZCBwcm9maWxlIjoKICAgICAgLSBzdHJvbmc6IEVsaQogICAgICAtIHRleHQ6IE9wZW4gbXkgbGlicmFyeSBTZWxlY3RlZCBwcm9maWxlCiAgICAtIGJ1dHRvbiAiUGFyZW50IE1vZGUiCiAgLSB0ZXh0OiBBcHByb3ZlZCB2aWRlb3MgZm9yIHlvdXIgZmFtaWx5CiAgLSBkaWFsb2cgIk9wZW4gQXJp4oCZcyBsaWJyYXJ5IjoKICAgIC0gaGVhZGluZyAiT3BlbiBBcmnigJlzIGxpYnJhcnkiIFtsZXZlbD0yXQogICAgLSBwYXJhZ3JhcGg6ICJQYXJlbnQ6IGVudGVyIHlvdXIgNC1kaWdpdCBQSU4gdG8gaGFuZCBvdmVyIHRoaXMgZGV2aWNlLiBUaGlzIGRvZXNu4oCZdCBjaGFuZ2UgYW55b25l4oCZcyB0aW1lIGxpbWl0LiIKICAgIC0gdGV4dDogNC1kaWdpdCBQSU4KICAgIC0gdGV4dGJveCAiNC1kaWdpdCBQSU4iOgogICAgICAtIC9wbGFjZWhvbGRlcjog4oCi4oCi4oCi4oCiCiAgICAtIGFsZXJ0OiBUaGF0IFBJTiBkaWRu4oCZdCBtYXRjaC4gVHJ5IGFnYWluLgogICAgLSBidXR0b24gIkNhbmNlbCIKLSBhbGVydA=="
+                    },
+                    {
+                      "name": "shared-parent-boundary",
+                      "contentType": "text/plain",
+                      "body": "LSBsaW5rICJTa2lwIHRvIGNvbnRlbnQiOgogIC0gL3VybDogIiNtYWluLWNvbnRlbnQiCi0gbWFpbjoKICAtIHRleHQ6IFdhdGNoTmVzdAogIC0gcmVnaW9uICJXaG/igJlzIHdhdGNoaW5nPyI6CiAgICAtIGhlYWRpbmcgIldob+KAmXMgd2F0Y2hpbmc/IiBbbGV2ZWw9MV0KICAgIC0gcGFyYWdyYXBoOiBDaG9vc2UgeW91ciBsaWJyYXJ5LiBBIHBhcmVudCBoZWxwcyB3aGVuIGl04oCZcyBzb21lb25lIGVsc2XigJlzIHR1cm4uCiAgICAtIGJ1dHRvbiAiTWlyaSBwcm9maWxlIHBob3RvIE1pcmkgT3BlbiBteSBsaWJyYXJ5IFBhcmVudCBoYW5kb2ZmIjoKICAgICAgLSBzdHJvbmc6IE1pcmkKICAgICAgLSB0ZXh0OiBPcGVuIG15IGxpYnJhcnkgUGFyZW50IGhhbmRvZmYKICAgIC0gYnV0dG9uICJBcmkgcHJvZmlsZSBwaG90byBBcmkgT3BlbiBteSBsaWJyYXJ5IFBJTiI6CiAgICAgIC0gc3Ryb25nOiBBcmkKICAgICAgLSB0ZXh0OiBPcGVuIG15IGxpYnJhcnkgUElOCiAgICAtIGJ1dHRvbiAiQmVubnkgcHJvZmlsZSBwaG90byBCZW5ueSBPcGVuIG15IGxpYnJhcnkgUGFyZW50IGhhbmRvZmYiOgogICAgICAtIHN0cm9uZzogQmVubnkKICAgICAgLSB0ZXh0OiBPcGVuIG15IGxpYnJhcnkgUGFyZW50IGhhbmRvZmYKICAgIC0gYnV0dG9uICJFbGkgcHJvZmlsZSBwaG90byBFbGkgT3BlbiBteSBsaWJyYXJ5IFBhcmVudCBoYW5kb2ZmIjoKICAgICAgLSBzdHJvbmc6IEVsaQogICAgICAtIHRleHQ6IE9wZW4gbXkgbGlicmFyeSBQYXJlbnQgaGFuZG9mZgogICAgLSBidXR0b24gIlBhcmVudCBNb2RlIgogIC0gdGV4dDogQXBwcm92ZWQgdmlkZW9zIGZvciB5b3VyIGZhbWlseQogIC0gZGlhbG9nICJQYXJlbnQgTW9kZSI6CiAgICAtIGhlYWRpbmcgIlBhcmVudCBNb2RlIiBbbGV2ZWw9Ml0KICAgIC0gcGFyYWdyYXBoOiBFbnRlciB0aGUgNC1kaWdpdCBQYXJlbnQgUElOLgogICAgLSB0ZXh0OiA0LWRpZ2l0IFBJTgogICAgLSB0ZXh0Ym94ICI0LWRpZ2l0IFBJTiI6CiAgICAgIC0gL3BsYWNlaG9sZGVyOiDigKLigKLigKLigKIKICAgIC0gYnV0dG9uICJDYW5jZWwiCi0gYWxlcnQ="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24155cbc38da4d2b38ad-2dd2a5132c887ad73a3c",
+          "file": "fresh-child-stranger.spec.ts",
+          "line": 94,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "fresh-parent-stranger.spec.ts",
+      "file": "fresh-parent-stranger.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "fresh busy Parent follows a child topic request to preview and approval",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1381,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "FRESH_PARENT_APPROVAL [{\"path\":\"/api/parent/videos\",\"body\":{\"youtube_video_ids\":[\"newvideo123\"],\"profile_ids\":[\"00000000-0000-4000-8000-000000000002\"]}}]\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:07.430Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca69594408e3c8d1f510-29f763114dbc9dcd84f0",
+          "file": "fresh-parent-stranger.spec.ts",
+          "line": 32,
+          "column": 5
+        },
+        {
+          "title": "fresh low-confidence Parent corrects a pasted link then previews and assigns one child",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2067,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "FRESH_PARENT_APPROVAL {\"path\":\"/api/parent/videos\",\"body\":{\"youtube_video_ids\":[\"newvideo123\"],\"profile_ids\":[\"00000000-0000-4000-8000-000000000001\"]}}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:08.820Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca69594408e3c8d1f510-b4774c0380203ebcceab",
+          "file": "fresh-parent-stranger.spec.ts",
+          "line": 59,
+          "column": 5
+        },
+        {
+          "title": "fresh Parent signs in with password visibility reassurance",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 737,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:10.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca69594408e3c8d1f510-efba3b1bc7305c5c17fb",
+          "file": "fresh-parent-stranger.spec.ts",
+          "line": 89,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "premium-visual.spec.ts",
+      "file": "premium-visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "premium evidence: core parent-phone 390x844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12963,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:51:57.775Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-390x844",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evidence-core-parent-phone-390x844/attachments/visual-manifest-390x844-d49e823ba2a9f2d21f31d4cbc88d293f4ce0c014.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-839de7b58ccb8d49bea9",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: player-states parent-phone 390x844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2812,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/player-states/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:10.753Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-player-states-390x844",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-a04e4-states-parent-phone-390x844/attachments/visual-manifest-player-states-390x844-e4d5609d0efeff5c137774c3c613acf8b1e92939.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-6a4c33203291f06a6a83",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: recovery-states parent-phone 390x844",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5707,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                      "column": 119,
+                      "line": 220
+                    },
+                    "snippet": "  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                        "column": 119,
+                        "line": 220
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n\n  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:13.575Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-17c40-states-parent-phone-390x844/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-17c40-states-parent-phone-390x844/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                    "column": 119,
+                    "line": 220
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-b977ae92c18a1ec83fa8",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: parent-details parent-phone 390x844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13827,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/parent-details/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:19.777Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-parent-details-390x844",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-99ffa-etails-parent-phone-390x844/attachments/visual-manifest-parent-details-390x844-a7e4c9ec7b5c12cee9e422a9b6b5eb34932e0419.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-59cd676e54e63cae908a",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: core ipad-portrait 768x1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12003,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:33.665Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-768x1024",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evidence-core-ipad-portrait-768x1024/attachments/visual-manifest-768x1024-6b93cb95e68d1d0d3b767440c42e06981262cff8.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-207a082427f56e2d10e9",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: player-states ipad-portrait 768x1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2922,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/player-states/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:45.679Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-player-states-768x1024",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-c0b57-ates-ipad-portrait-768x1024/attachments/visual-manifest-player-states-768x1024-76723fa5528d44c4ec35b9e491fc0fe59f77bc84.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-38b8812ea16494950c4d",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: recovery-states ipad-portrait 768x1024",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5646,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                      "column": 119,
+                      "line": 220
+                    },
+                    "snippet": "  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                        "column": 119,
+                        "line": 220
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n\n  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:48.612Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-9f7b5-ates-ipad-portrait-768x1024/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-9f7b5-ates-ipad-portrait-768x1024/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                    "column": 119,
+                    "line": 220
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-f72d5036c628d1dddf62",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: parent-details ipad-portrait 768x1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13250,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/parent-details/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:52:54.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-parent-details-768x1024",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-194b5-ails-ipad-portrait-768x1024/attachments/visual-manifest-parent-details-768x1024-a1a7aa9f649cbedea36cd3e98537cda3982de34a.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-238a9a8788321952aead",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: child-details ipad-portrait 768x1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3234,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-details/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:08.117Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-child-details-768x1024",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-0c684-ails-ipad-portrait-768x1024/attachments/visual-manifest-child-details-768x1024-3b6af42dfcf2fe15c377b13b1dc531db6077656c.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-35654438491f27dc9b00",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: child-entry ipad-portrait 768x1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1464,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-entry/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:11.359Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-child-entry-768x1024",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-e9d53-ntry-ipad-portrait-768x1024/attachments/visual-manifest-child-entry-768x1024-73bcd0f361f719cf9ffa22996e335a19bd6c1cbe.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-02a0c809951e92a502aa",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: core ipad-landscape 1024x768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13604,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:12.833Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-1024x768",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evidence-core-ipad-landscape-1024x768/attachments/visual-manifest-1024x768-ed020fc471d683b269cf883b71601eeb3405633e.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-7d72f256cce7c7027c5f",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: player-states ipad-landscape 1024x768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2698,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/player-states/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:26.446Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-player-states-1024x768",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-fea9c-tes-ipad-landscape-1024x768/attachments/visual-manifest-player-states-1024x768-9e43be55df41bcc20cd110197087f45b0e11de7a.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-8889da065e60361a16dc",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: recovery-states ipad-landscape 1024x768",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5518,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                      "column": 119,
+                      "line": 220
+                    },
+                    "snippet": "  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                        "column": 119,
+                        "line": 220
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n\n  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:29.151Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-b2777-tes-ipad-landscape-1024x768/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-b2777-tes-ipad-landscape-1024x768/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                    "column": 119,
+                    "line": 220
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-2be46dc1f9e4525f4382",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: parent-details ipad-landscape 1024x768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14099,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/parent-details/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:35.107Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-parent-details-1024x768",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-d500d-ils-ipad-landscape-1024x768/attachments/visual-manifest-parent-details-1024x768-08fef7f0ead22feb9a1d5ca9714cf00b5e3d9841.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-847ba87388ea0f0ce7a6",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: child-details ipad-landscape 1024x768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3657,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-details/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:49.266Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-child-details-1024x768",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-39eb6-ils-ipad-landscape-1024x768/attachments/visual-manifest-child-details-1024x768-52641a21e321fa9e074a36a59b3de9753d713af1.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-09e120b174932abfce2c",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: child-entry ipad-landscape 1024x768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1299,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-entry/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:52.930Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-child-entry-1024x768",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-383d1-try-ipad-landscape-1024x768/attachments/visual-manifest-child-entry-1024x768-5f7a7a98fd0bc23487ab641246f751c0b4312271.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-80dca7d066b549d51ea5",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: core parent-desktop 1440x1000",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12006,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:53:54.236Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-1440x1000",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-d004b-re-parent-desktop-1440x1000/attachments/visual-manifest-1440x1000-7df2fa6962e4fca77ae8bcfae441ed5b8f5158b7.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-e70c134322c83e3b7804",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: player-states parent-desktop 1440x1000",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3052,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/player-states/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:06.251Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-player-states-1440x1000",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-67e76-es-parent-desktop-1440x1000/attachments/visual-manifest-player-states-1440x1000-ac25e9143f55b7bb0ecf2db7618c9135f527b516.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-508605ecd0db962eec78",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: recovery-states parent-desktop 1440x1000",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5556,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                      "column": 119,
+                      "line": 220
+                    },
+                    "snippet": "  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                        "column": 119,
+                        "line": 220
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\nExpected: \u001b[32m\"Your library is taking a moment. Please try again.\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })\u001b[22m\n\n\n  218 |       await page.route(\"**/api/auth/child\", route => route.fulfill(json({ error: \"Your library is taking a moment. Please try again.\" }, 503)));\n  219 |       await page.getByRole(\"button\", { name: /Benny/ }).click();\n> 220 |       await expect(page.getByRole(\"alert\").filter({ hasText: \"Your library is taking a moment. Please try again.\" })).toHaveText(\"Your library is taking a moment. Please try again.\");\n      |                                                                                                                       ^\n  221 |       await capture(\"family-profile-picker-entry-error\");\n  222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };\n  223 |       await page.route(\"**/api/parent/dashboard\", route => route.fulfill(json(empty)));\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:09.313Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-1012a-es-parent-desktop-1440x1000/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-1012a-es-parent-desktop-1440x1000/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts",
+                    "column": 119,
+                    "line": 220
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-05cb6b0386fcbb2bb76d",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "title": "premium evidence: parent-details parent-desktop 1440x1000",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13258,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/parent-details/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:15.316Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-parent-details-1440x1000",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/premium-visual-premium-evi-2c6a4-ls-parent-desktop-1440x1000/attachments/visual-manifest-parent-details-1440x1000-86c7d85f285688f54fd0b079314600fe72f55ec0.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a5fb2800bb66156c7156-7e79572ed1d95ab37241",
+          "file": "premium-visual.spec.ts",
+          "line": 57,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "product.spec.ts",
+      "file": "product.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real HTTP: absent infrastructure fails closed; no sample family or iframe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 249,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:28.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-2b7a127477adec34e002",
+          "file": "product.spec.ts",
+          "line": 31,
+          "column": 5
+        },
+        {
+          "title": "real HTTP: public entry, protected parent redirect, and unknown page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 337,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:28.917Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-ca622039ecbeb10ac410",
+          "file": "product.spec.ts",
+          "line": 52,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: parent navigation covers management, inbox, and independent access",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:29.263Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-aeaa0fed783f50b7a5b6",
+          "file": "product.spec.ts",
+          "line": 65,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: child searches local library and asks parent on no match",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 491,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:29.761Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-b2e2410a0ae372247ff6",
+          "file": "product.spec.ts",
+          "line": 102,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: a video-card tap requests immersive playback before navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 310,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: net::ERR_FAILED\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:30.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-2e3a9238e9012a1eb631",
+          "file": "product.spec.ts",
+          "line": 140,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: WatchNest deadline destroys playback and blocks reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1232,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: the server responded with a status of 403 (Forbidden)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:30.580Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-2f0e20d3b8d45fc025fe",
+          "file": "product.spec.ts",
+          "line": 172,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: Parent phone controls one remote profile timer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4427,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:31.821Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-9433e0ee76debeb364cd",
+          "file": "product.spec.ts",
+          "line": 244,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: bounded Discover creates a request without a playable result",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:36.258Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-90911c0a5b2ee45d3621",
+          "file": "product.spec.ts",
+          "line": 333,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: shared device opens the profile picker and Parent Mode stays protected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 300,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:36.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-62a417d266cd362ca95e",
+          "file": "product.spec.ts",
+          "line": 367,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: mobile and tablet pages fit viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9938,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:37.053Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-7a435510bd18868b5874",
+          "file": "product.spec.ts",
+          "line": 387,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: Safe Playback is a mandatory Child Mode boundary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 272,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:46.999Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-56bf3928e2bd0732c0ca",
+          "file": "product.spec.ts",
+          "line": 457,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1046,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.\n\n"
+                    },
+                    {
+                      "text": "BROWSER Blocked opening 'https://www.youtube.com/' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.\n"
+                    },
+                    {
+                      "text": "BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.\n\n"
+                    },
+                    {
+                      "text": "BROWSER Blocked opening 'https://www.youtube.com/watch?v=escape' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:47.280Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-15c38d4f66a795b84746",
+          "file": "product.spec.ts",
+          "line": 478,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: a stale false flag cannot disable mandatory containment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 473,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:48.336Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-ed25327f949b4dc3ef1c",
+          "file": "product.spec.ts",
+          "line": 602,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: post-ready same-frame recommendation navigation fails closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:48.818Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-80c825cb82b403d66ae2",
+          "file": "product.spec.ts",
+          "line": 653,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: pre-ready same-frame recommendation navigation fails closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 246,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:49.166Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-a849c907249c2b1978ba",
+          "file": "product.spec.ts",
+          "line": 697,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 262,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: net::ERR_FAILED\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:49.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-876d5031a0aa3bc60a64",
+          "file": "product.spec.ts",
+          "line": 738,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: transiently missing iPad player identity does not reject the approved video",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 214,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:49.699Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-e5ee8b617eae719a266e",
+          "file": "product.spec.ts",
+          "line": 756,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: permanently unreadable player identity fails closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3125,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:49.922Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-8819cfb7589b8451952b",
+          "file": "product.spec.ts",
+          "line": 816,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: mobile share text auto-resolves and retains a manual fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:53.057Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-caf92e09caf2b4e95639",
+          "file": "product.spec.ts",
+          "line": 856,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 317,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:53.950Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-a984e52a951afc077095",
+          "file": "product.spec.ts",
+          "line": 885,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: mobile channel selection immediately loads individual videos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 394,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:54.277Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-6f9dc934dfd074a2d2c6",
+          "file": "product.spec.ts",
+          "line": 915,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: mobile playlist selection immediately loads individual videos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 553,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:54.679Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-cd7640b332b467101f00",
+          "file": "product.spec.ts",
+          "line": 961,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: Parent Library offers an obvious playback preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 399,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:55.242Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-d35f51d681180d35b897",
+          "file": "product.spec.ts",
+          "line": 1008,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 285,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:55.651Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-aa5703c38e269579bffa",
+          "file": "product.spec.ts",
+          "line": 1035,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: a child finds approved videos in a 240-item library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:55.944Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-596cd616da3e615453ae",
+          "file": "product.spec.ts",
+          "line": 1071,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: intermediate widths keep parent tools and child browsing within reach",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4934,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:54:57.378Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-f2111dffca0c0c3a120a",
+          "file": "product.spec.ts",
+          "line": 1100,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: password visibility and recovery work with a keyboard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 350,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:02.332Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-35094ea4bda57bf64216",
+          "file": "product.spec.ts",
+          "line": 1140,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: phone parent actions and collection choices remain touchable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 577,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:02.701Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-2bbbb4a2852f67d54477",
+          "file": "product.spec.ts",
+          "line": 1166,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: collection search expands to approved library without requesting again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2151,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:03.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-0073ffbde75cf01cc126",
+          "file": "product.spec.ts",
+          "line": 1194,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: initial child choices are visible and Simple controls stay secondary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1678,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"standard\",\"viewport\":{\"width\":360,\"height\":800},\"artworkTop\":576.5625,\"titleBottom\":696.46875,\"limit\":710.203125}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"standard\",\"viewport\":{\"width\":390,\"height\":844},\"artworkTop\":576.5625,\"titleBottom\":704.90625,\"limit\":754.203125}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"standard\",\"viewport\":{\"width\":768,\"height\":1024},\"artworkTop\":587.203125,\"titleBottom\":818.5625,\"limit\":1024}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"standard\",\"viewport\":{\"width\":1024,\"height\":768},\"artworkTop\":506.34375,\"titleBottom\":713.546875,\"limit\":768}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"simple\",\"viewport\":{\"width\":360,\"height\":800},\"artworkTop\":449.53125,\"titleBottom\":668.40625,\"limit\":710.203125}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"simple\",\"viewport\":{\"width\":390,\"height\":844},\"artworkTop\":449.53125,\"titleBottom\":685.28125,\"limit\":754.203125}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"simple\",\"viewport\":{\"width\":768,\"height\":1024},\"artworkTop\":499.171875,\"titleBottom\":733.46875,\"limit\":1024}\n"
+                    },
+                    {
+                      "text": "CONTENT_REACH {\"mode\":\"simple\",\"viewport\":{\"width\":1024,\"height\":768},\"artworkTop\":438.671875,\"titleBottom\":739.203125,\"limit\":768}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:05.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-f00598afb5f0b8509449",
+          "file": "product.spec.ts",
+          "line": 1223,
+          "column": 5
+        },
+        {
+          "title": "synthetic UI: many Collections remain keyboard reachable without pushing videos away",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2368,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:07.233Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fa8ab87beca8e7f39ce-5f86ce2d21e184f515f1",
+          "file": "product.spec.ts",
+          "line": 1256,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "profile-handoff.spec.ts",
+      "file": "profile-handoff.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "profile handoff: Parent approval and same-profile return 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1146,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:09.615Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "picker-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MzkwLCJoZWlnaHQiOjg0NH0sImRvY3VtZW50Ijp7IndpZHRoIjozOTAsImhlaWdodCI6OTQyfSwiYXNzZXRzIjpbeyJpZCI6IkEwMSIsInRhZyI6IklNRyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyMCwieSI6MjQsIndpZHRoIjo0MiwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lciI6eyJ4IjoyMCwieSI6MjQsIndpZHRoIjoxNzMuNjU2MjUsImhlaWdodCI6NDJ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTAyIiwidGFnIjoic3ZnIiwibGFiZWwiOiJNaXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjc2LjI5Njg3NSwieSI6MzIwLjU5Mzc1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4Ijo1NC41LCJ5IjoyOTguNzk2ODc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDMiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDQuNSwieSI6NDc4LjU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo0NC41LCJ5Ijo0NzYuMTU2MjUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNCIsInRhZyI6InN2ZyIsImxhYmVsIjoiQXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjI1Ny4yOTY4NzUsInkiOjMyMC41OTM3NSwid2lkdGgiOjU2LjM5MDYyNSwiaGVpZ2h0Ijo1Ni4zOTA2MjV9LCJjb250YWluZXIiOnsieCI6MjM1LjUsInkiOjI5OC43OTY4NzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNSIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyMjUuNSwieSI6NDc4LjU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4IjoyMjUuNSwieSI6NDc2LjE1NjI1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDYiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkJlbm55IHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjc2LjI5Njg3NSwieSI6NTc1Ljc4MTI1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4Ijo1NC41LCJ5Ijo1NTMuOTg0Mzc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDciLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjoyNTcuMjk2ODc1LCJ5Ijo1NzUuNzgxMjUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjIzNS41LCJ5Ijo1NTMuOTg0Mzc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDgiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6MjI1LjUsInkiOjczMy43NSwid2lkdGgiOjE1LCJoZWlnaHQiOjE1fSwiY29udGFpbmVyIjp7IngiOjIyNS41LCJ5Ijo3MzEuMzQzNzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwOSIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoxMzEsInkiOjgyNy4xNzE4NzUsIndpZHRoIjoxOCwiaGVpZ2h0IjoxOH0sImNvbnRhaW5lciI6eyJ4IjoxMDgsInkiOjgxMC4xNzE4NzUsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTEwIiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjg1LjUsInkiOjg5OS4wNzgxMjUsIndpZHRoIjoxOCwiaGVpZ2h0IjoxOH0sImNvbnRhaW5lciI6eyJ4IjoyMCwieSI6ODk4LjE3MTg3NSwid2lkdGgiOjM1MCwiaGVpZ2h0IjoxOS44MjgxMjV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fV0sImNvbnRyb2xzIjpbeyJsYWJlbCI6Ik1pcmlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MTY5LCJoZWlnaHQiOjI0My4xODc1fSx7ImxhYmVsIjoiQXJpT3BlbiBteSBsaWJyYXJ5IOKGl1BhcmVudCBoYW5kb2ZmIiwid2lkdGgiOjE2OSwiaGVpZ2h0IjoyNDMuMTg3NX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MTY5LCJoZWlnaHQiOjI0My4xODc1fSx7ImxhYmVsIjoiRWxpT3BlbiBteSBsaWJyYXJ5IOKGl1BhcmVudCBoYW5kb2ZmIiwid2lkdGgiOjE2OSwiaGVpZ2h0IjoyNDMuMTg3NX0seyJsYWJlbCI6IlBhcmVudCBNb2RlIiwid2lkdGgiOjE3NCwiaGVpZ2h0Ijo1Mn1dfQ=="
+                    },
+                    {
+                      "name": "handoff-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MzkwLCJoZWlnaHQiOjg0NH0sImRvY3VtZW50Ijp7IndpZHRoIjozOTAsImhlaWdodCI6OTQyfSwiYXNzZXRzIjpbeyJpZCI6IkEwMSIsInRhZyI6IklNRyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyMCwieSI6MjQsIndpZHRoIjo0MiwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lciI6eyJ4IjoyMCwieSI6MjQsIndpZHRoIjoxNzMuNjU2MjUsImhlaWdodCI6NDJ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTAyIiwidGFnIjoic3ZnIiwibGFiZWwiOiJNaXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjc2LjI5Njg3NSwieSI6MzIwLjU5Mzc1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4Ijo1NC41LCJ5IjoyOTguNzk2ODc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDMiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDQuNSwieSI6NDc4LjU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo0NC41LCJ5Ijo0NzYuMTU2MjUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNCIsInRhZyI6InN2ZyIsImxhYmVsIjoiQXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjI1Ny4yOTY4NzUsInkiOjMyMC41OTM3NSwid2lkdGgiOjU2LjM5MDYyNSwiaGVpZ2h0Ijo1Ni4zOTA2MjV9LCJjb250YWluZXIiOnsieCI6MjM1LjUsInkiOjI5OC43OTY4NzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNSIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyMjUuNSwieSI6NDc4LjU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4IjoyMjUuNSwieSI6NDc2LjE1NjI1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDYiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkJlbm55IHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjc2LjI5Njg3NSwieSI6NTc1Ljc4MTI1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4Ijo1NC41LCJ5Ijo1NTMuOTg0Mzc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDciLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjoyNTcuMjk2ODc1LCJ5Ijo1NzUuNzgxMjUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjIzNS41LCJ5Ijo1NTMuOTg0Mzc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDgiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6MjI1LjUsInkiOjczMy43NSwid2lkdGgiOjE1LCJoZWlnaHQiOjE1fSwiY29udGFpbmVyIjp7IngiOjIyNS41LCJ5Ijo3MzEuMzQzNzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwOSIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoxMzEsInkiOjgyNy4xNzE4NzUsIndpZHRoIjoxOCwiaGVpZ2h0IjoxOH0sImNvbnRhaW5lciI6eyJ4IjoxMDgsInkiOjgxMC4xNzE4NzUsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTEwIiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjg1LjUsInkiOjg5OS4wNzgxMjUsIndpZHRoIjoxOCwiaGVpZ2h0IjoxOH0sImNvbnRhaW5lciI6eyJ4IjoyMCwieSI6ODk4LjE3MTg3NSwid2lkdGgiOjM1MCwiaGVpZ2h0IjoxOS44MjgxMjV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTExIiwidGFnIjoic3ZnIiwibGFiZWwiOiJFbGkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTcyLjIwMzEyNSwieSI6MjQxLjE3MTg3NSwid2lkdGgiOjQ1LjU5Mzc1LCJoZWlnaHQiOjQ1LjU5Mzc1fSwiY29udGFpbmVyIjp7IngiOjE1NywieSI6MjI1Ljk2ODc1LCJ3aWR0aCI6NzYsImhlaWdodCI6NzZ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fV0sImNvbnRyb2xzIjpbeyJsYWJlbCI6Ik1pcmlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MTY5LCJoZWlnaHQiOjI0My4xODc1fSx7ImxhYmVsIjoiQXJpT3BlbiBteSBsaWJyYXJ5IOKGl1BhcmVudCBoYW5kb2ZmIiwid2lkdGgiOjE2OSwiaGVpZ2h0IjoyNDMuMTg3NX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MTY5LCJoZWlnaHQiOjI0My4xODc1fSx7ImxhYmVsIjoiRWxpT3BlbiBteSBsaWJyYXJ5IOKGl1BhcmVudCBoYW5kb2ZmIiwid2lkdGgiOjE2OSwiaGVpZ2h0IjoyNDMuMTg3NX0seyJsYWJlbCI6IlBhcmVudCBNb2RlIiwid2lkdGgiOjE3NCwiaGVpZ2h0Ijo1Mn0seyJsYWJlbCI6InByb2ZpbGUtcGluIiwid2lkdGgiOjI4NiwiaGVpZ2h0Ijo2Nn0seyJsYWJlbCI6IkNhbmNlbCIsIndpZHRoIjoyODYsImhlaWdodCI6NDh9XX0="
+                    },
+                    {
+                      "name": "wrong-pin-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MzkwLCJoZWlnaHQiOjg0NH0sImRvY3VtZW50Ijp7IndpZHRoIjozOTAsImhlaWdodCI6OTQyfSwiYXNzZXRzIjpbeyJpZCI6IkEwMSIsInRhZyI6IklNRyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyMCwieSI6MjQsIndpZHRoIjo0MiwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lciI6eyJ4IjoyMCwieSI6MjQsIndpZHRoIjoxNzMuNjU2MjUsImhlaWdodCI6NDJ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTAyIiwidGFnIjoic3ZnIiwibGFiZWwiOiJNaXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjc2LjI5Njg3NSwieSI6MzIwLjU5Mzc1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4Ijo1NC41LCJ5IjoyOTguNzk2ODc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDMiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDQuNSwieSI6NDc4LjU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo0NC41LCJ5Ijo0NzYuMTU2MjUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNCIsInRhZyI6InN2ZyIsImxhYmVsIjoiQXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjI1Ny4yOTY4NzUsInkiOjMyMC41OTM3NSwid2lkdGgiOjU2LjM5MDYyNSwiaGVpZ2h0Ijo1Ni4zOTA2MjV9LCJjb250YWluZXIiOnsieCI6MjM1LjUsInkiOjI5OC43OTY4NzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNSIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyMjUuNSwieSI6NDc4LjU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4IjoyMjUuNSwieSI6NDc2LjE1NjI1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDYiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkJlbm55IHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjc2LjI5Njg3NSwieSI6NTc1Ljc4MTI1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4Ijo1NC41LCJ5Ijo1NTMuOTg0Mzc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDciLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjoyNTcuMjk2ODc1LCJ5Ijo1NzUuNzgxMjUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjIzNS41LCJ5Ijo1NTMuOTg0Mzc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDgiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6MjI1LjUsInkiOjczMy43NSwid2lkdGgiOjE1LCJoZWlnaHQiOjE1fSwiY29udGFpbmVyIjp7IngiOjIyNS41LCJ5Ijo3MzEuMzQzNzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwOSIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoxMzEsInkiOjgyNy4xNzE4NzUsIndpZHRoIjoxOCwiaGVpZ2h0IjoxOH0sImNvbnRhaW5lciI6eyJ4IjoxMDgsInkiOjgxMC4xNzE4NzUsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTEwIiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjg1LjUsInkiOjg5OS4wNzgxMjUsIndpZHRoIjoxOCwiaGVpZ2h0IjoxOH0sImNvbnRhaW5lciI6eyJ4IjoyMCwieSI6ODk4LjE3MTg3NSwid2lkdGgiOjM1MCwiaGVpZ2h0IjoxOS44MjgxMjV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTExIiwidGFnIjoic3ZnIiwibGFiZWwiOiJFbGkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTcyLjIwMzEyNSwieSI6MjAzLjc4MTI1LCJ3aWR0aCI6NDUuNTkzNzUsImhlaWdodCI6NDUuNTkzNzV9LCJjb250YWluZXIiOnsieCI6MTU3LCJ5IjoxODguNTc4MTI1LCJ3aWR0aCI6NzYsImhlaWdodCI6NzZ9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fV0sImNvbnRyb2xzIjpbeyJsYWJlbCI6Ik1pcmlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MTY5LCJoZWlnaHQiOjI0My4xODc1fSx7ImxhYmVsIjoiQXJpT3BlbiBteSBsaWJyYXJ5IOKGl1BhcmVudCBoYW5kb2ZmIiwid2lkdGgiOjE2OSwiaGVpZ2h0IjoyNDMuMTg3NX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MTY5LCJoZWlnaHQiOjI0My4xODc1fSx7ImxhYmVsIjoiRWxpT3BlbiBteSBsaWJyYXJ5IOKGl1BhcmVudCBoYW5kb2ZmIiwid2lkdGgiOjE2OSwiaGVpZ2h0IjoyNDMuMTg3NX0seyJsYWJlbCI6IlBhcmVudCBNb2RlIiwid2lkdGgiOjE3NCwiaGVpZ2h0Ijo1Mn0seyJsYWJlbCI6InByb2ZpbGUtcGluIiwid2lkdGgiOjI4NiwiaGVpZ2h0Ijo2Nn0seyJsYWJlbCI6IkNhbmNlbCIsIndpZHRoIjoyODYsImhlaWdodCI6NDh9XX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "353a10f32858d5e2e0f4-c45d3e8f1f1183ac5108",
+          "file": "profile-handoff.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "profile handoff: Parent approval and same-profile return 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 994,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:10.774Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "picker-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6NzY4LCJoZWlnaHQiOjEwMjR9LCJkb2N1bWVudCI6eyJ3aWR0aCI6NzY4LCJoZWlnaHQiOjEwMzl9LCJhc3NldHMiOlt7ImlkIjoiQTAxIiwidGFnIjoiSU1HIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjQyLCJoZWlnaHQiOjQyfSwiY29udGFpbmVyIjp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjE3My42NTYyNSwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDIiLCJ0YWciOiJzdmciLCJsYWJlbCI6Ik1pcmkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTg1Ljc5Njg3NSwieSI6Mzc0LjU5Mzc1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4IjoxNjQsInkiOjM1Mi43OTY4NzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwMyIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoxNTQsInkiOjUzOC4wMTU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4IjoxNTQsInkiOjUzNS42MDkzNzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNCIsInRhZyI6InN2ZyIsImxhYmVsIjoiQXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjUyNS43OTY4NzUsInkiOjM3NC41OTM3NSwid2lkdGgiOjU2LjM5MDYyNSwiaGVpZ2h0Ijo1Ni4zOTA2MjV9LCJjb250YWluZXIiOnsieCI6NTA0LCJ5IjozNTIuNzk2ODc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDUiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDk0LCJ5Ijo1MzguMDE1NjI1LCJ3aWR0aCI6MTUsImhlaWdodCI6MTV9LCJjb250YWluZXIiOnsieCI6NDk0LCJ5Ijo1MzUuNjA5Mzc1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDYiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkJlbm55IHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjE4NS43OTY4NzUsInkiOjY0Ny4yMzQzNzUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjE2NCwieSI6NjI1LjQzNzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNyIsInRhZyI6InN2ZyIsImxhYmVsIjoiRWxpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjUyNS43OTY4NzUsInkiOjY0Ny4yMzQzNzUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjUwNCwieSI6NjI1LjQzNzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwOCIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4Ijo0OTQsInkiOjgxMC42NTYyNSwid2lkdGgiOjE1LCJoZWlnaHQiOjE1fSwiY29udGFpbmVyIjp7IngiOjQ5NCwieSI6ODA4LjI1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDkiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6MzIwLCJ5Ijo5MDQuMDc4MTI1LCJ3aWR0aCI6MTgsImhlaWdodCI6MTh9LCJjb250YWluZXIiOnsieCI6Mjk3LCJ5Ijo4ODcuMDc4MTI1LCJ3aWR0aCI6MTc0LCJoZWlnaHQiOjUyfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkExMCIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyNzQuNSwieSI6OTg3Ljk4NDM3NSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQwLCJ5Ijo5ODcuMDc4MTI1LCJ3aWR0aCI6Njg4LCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19XSwiY29udHJvbHMiOlt7ImxhYmVsIjoiTWlyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjozMjAsImhlaWdodCI6MjUyLjY0MDYyNX0seyJsYWJlbCI6IkFyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjozMjAsImhlaWdodCI6MjUyLjY0MDYyNX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjI1Mi42NDA2MjV9LHsibGFiZWwiOiJFbGlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjI1Mi42NDA2MjV9LHsibGFiZWwiOiJQYXJlbnQgTW9kZSIsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9XX0="
+                    },
+                    {
+                      "name": "handoff-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6NzY4LCJoZWlnaHQiOjEwMjR9LCJkb2N1bWVudCI6eyJ3aWR0aCI6NzY4LCJoZWlnaHQiOjEwMzl9LCJhc3NldHMiOlt7ImlkIjoiQTAxIiwidGFnIjoiSU1HIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjQyLCJoZWlnaHQiOjQyfSwiY29udGFpbmVyIjp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjE3My42NTYyNSwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDIiLCJ0YWciOiJzdmciLCJsYWJlbCI6Ik1pcmkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTg1Ljc5Njg3NSwieSI6Mzc0LjU5Mzc1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4IjoxNjQsInkiOjM1Mi43OTY4NzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwMyIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoxNTQsInkiOjUzOC4wMTU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4IjoxNTQsInkiOjUzNS42MDkzNzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNCIsInRhZyI6InN2ZyIsImxhYmVsIjoiQXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjUyNS43OTY4NzUsInkiOjM3NC41OTM3NSwid2lkdGgiOjU2LjM5MDYyNSwiaGVpZ2h0Ijo1Ni4zOTA2MjV9LCJjb250YWluZXIiOnsieCI6NTA0LCJ5IjozNTIuNzk2ODc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDUiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDk0LCJ5Ijo1MzguMDE1NjI1LCJ3aWR0aCI6MTUsImhlaWdodCI6MTV9LCJjb250YWluZXIiOnsieCI6NDk0LCJ5Ijo1MzUuNjA5Mzc1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDYiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkJlbm55IHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjE4NS43OTY4NzUsInkiOjY0Ny4yMzQzNzUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjE2NCwieSI6NjI1LjQzNzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNyIsInRhZyI6InN2ZyIsImxhYmVsIjoiRWxpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjUyNS43OTY4NzUsInkiOjY0Ny4yMzQzNzUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjUwNCwieSI6NjI1LjQzNzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwOCIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4Ijo0OTQsInkiOjgxMC42NTYyNSwid2lkdGgiOjE1LCJoZWlnaHQiOjE1fSwiY29udGFpbmVyIjp7IngiOjQ5NCwieSI6ODA4LjI1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDkiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6MzIwLCJ5Ijo5MDQuMDc4MTI1LCJ3aWR0aCI6MTgsImhlaWdodCI6MTh9LCJjb250YWluZXIiOnsieCI6Mjk3LCJ5Ijo4ODcuMDc4MTI1LCJ3aWR0aCI6MTc0LCJoZWlnaHQiOjUyfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkExMCIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyNzQuNSwieSI6OTg3Ljk4NDM3NSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQwLCJ5Ijo5ODcuMDc4MTI1LCJ3aWR0aCI6Njg4LCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTEiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjozNjEuMjAzMTI1LCJ5IjozMzEuMTcxODc1LCJ3aWR0aCI6NDUuNTkzNzUsImhlaWdodCI6NDUuNTkzNzV9LCJjb250YWluZXIiOnsieCI6MzQ2LCJ5IjozMTUuOTY4NzUsIndpZHRoIjo3NiwiaGVpZ2h0Ijo3Nn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19XSwiY29udHJvbHMiOlt7ImxhYmVsIjoiTWlyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjozMjAsImhlaWdodCI6MjUyLjY0MDYyNX0seyJsYWJlbCI6IkFyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjozMjAsImhlaWdodCI6MjUyLjY0MDYyNX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjI1Mi42NDA2MjV9LHsibGFiZWwiOiJFbGlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjI1Mi42NDA2MjV9LHsibGFiZWwiOiJQYXJlbnQgTW9kZSIsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LHsibGFiZWwiOiJwcm9maWxlLXBpbiIsIndpZHRoIjozNDYsImhlaWdodCI6NjZ9LHsibGFiZWwiOiJDYW5jZWwiLCJ3aWR0aCI6MzQ2LCJoZWlnaHQiOjQ4fV19"
+                    },
+                    {
+                      "name": "wrong-pin-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6NzY4LCJoZWlnaHQiOjEwMjR9LCJkb2N1bWVudCI6eyJ3aWR0aCI6NzY4LCJoZWlnaHQiOjEwMzl9LCJhc3NldHMiOlt7ImlkIjoiQTAxIiwidGFnIjoiSU1HIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjQyLCJoZWlnaHQiOjQyfSwiY29udGFpbmVyIjp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjE3My42NTYyNSwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDIiLCJ0YWciOiJzdmciLCJsYWJlbCI6Ik1pcmkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTg1Ljc5Njg3NSwieSI6Mzc0LjU5Mzc1LCJ3aWR0aCI6NTYuMzkwNjI1LCJoZWlnaHQiOjU2LjM5MDYyNX0sImNvbnRhaW5lciI6eyJ4IjoxNjQsInkiOjM1Mi43OTY4NzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwMyIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoxNTQsInkiOjUzOC4wMTU2MjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4IjoxNTQsInkiOjUzNS42MDkzNzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNCIsInRhZyI6InN2ZyIsImxhYmVsIjoiQXJpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjUyNS43OTY4NzUsInkiOjM3NC41OTM3NSwid2lkdGgiOjU2LjM5MDYyNSwiaGVpZ2h0Ijo1Ni4zOTA2MjV9LCJjb250YWluZXIiOnsieCI6NTA0LCJ5IjozNTIuNzk2ODc1LCJ3aWR0aCI6MTAwLCJoZWlnaHQiOjEwMH0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDUiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDk0LCJ5Ijo1MzguMDE1NjI1LCJ3aWR0aCI6MTUsImhlaWdodCI6MTV9LCJjb250YWluZXIiOnsieCI6NDk0LCJ5Ijo1MzUuNjA5Mzc1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDYiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkJlbm55IHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjE4NS43OTY4NzUsInkiOjY0Ny4yMzQzNzUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjE2NCwieSI6NjI1LjQzNzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNyIsInRhZyI6InN2ZyIsImxhYmVsIjoiRWxpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjUyNS43OTY4NzUsInkiOjY0Ny4yMzQzNzUsIndpZHRoIjo1Ni4zOTA2MjUsImhlaWdodCI6NTYuMzkwNjI1fSwiY29udGFpbmVyIjp7IngiOjUwNCwieSI6NjI1LjQzNzUsIndpZHRoIjoxMDAsImhlaWdodCI6MTAwfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwOCIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4Ijo0OTQsInkiOjgxMC42NTYyNSwid2lkdGgiOjE1LCJoZWlnaHQiOjE1fSwiY29udGFpbmVyIjp7IngiOjQ5NCwieSI6ODA4LjI1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDkiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6MzIwLCJ5Ijo5MDQuMDc4MTI1LCJ3aWR0aCI6MTgsImhlaWdodCI6MTh9LCJjb250YWluZXIiOnsieCI6Mjk3LCJ5Ijo4ODcuMDc4MTI1LCJ3aWR0aCI6MTc0LCJoZWlnaHQiOjUyfSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkExMCIsInRhZyI6InN2ZyIsImxhYmVsIjoiZGVjb3JhdGl2ZSBpY29uIiwicmVjdCI6eyJ4IjoyNzQuNSwieSI6OTg3Ljk4NDM3NSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQwLCJ5Ijo5ODcuMDc4MTI1LCJ3aWR0aCI6Njg4LCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTEiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjozNjEuMjAzMTI1LCJ5IjoyOTMuNzgxMjUsIndpZHRoIjo0NS41OTM3NSwiaGVpZ2h0Ijo0NS41OTM3NX0sImNvbnRhaW5lciI6eyJ4IjozNDYsInkiOjI3OC41NzgxMjUsIndpZHRoIjo3NiwiaGVpZ2h0Ijo3Nn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19XSwiY29udHJvbHMiOlt7ImxhYmVsIjoiTWlyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjozMjAsImhlaWdodCI6MjUyLjY0MDYyNX0seyJsYWJlbCI6IkFyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjozMjAsImhlaWdodCI6MjUyLjY0MDYyNX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjI1Mi42NDA2MjV9LHsibGFiZWwiOiJFbGlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MzIwLCJoZWlnaHQiOjI1Mi42NDA2MjV9LHsibGFiZWwiOiJQYXJlbnQgTW9kZSIsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LHsibGFiZWwiOiJwcm9maWxlLXBpbiIsIndpZHRoIjozNDYsImhlaWdodCI6NjZ9LHsibGFiZWwiOiJDYW5jZWwiLCJ3aWR0aCI6MzQ2LCJoZWlnaHQiOjQ4fV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "353a10f32858d5e2e0f4-8f0b886754f3eb2d8e34",
+          "file": "profile-handoff.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "profile handoff: Parent approval and same-profile return 1024",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1089,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:11.778Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "picker-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3Njh9LCJkb2N1bWVudCI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NzV9LCJhc3NldHMiOlt7ImlkIjoiQTAxIiwidGFnIjoiSU1HIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjQyLCJoZWlnaHQiOjQyfSwiY29udGFpbmVyIjp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjE3My42NTYyNSwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDIiLCJ0YWciOiJzdmciLCJsYWJlbCI6Ik1pcmkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTI0LjQzNzUsInkiOjM2NS4yMzQzNzUsIndpZHRoIjo3MC4xMjUsImhlaWdodCI6NzAuMTI1fSwiY29udGFpbmVyIjp7IngiOjk4LjA2MjUsInkiOjMzOC44NTkzNzUsIndpZHRoIjoxMjIuODc1LCJoZWlnaHQiOjEyMi44NzV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTAzIiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjk5LjUsInkiOjU0Ni45NTMxMjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo5OS41LCJ5Ijo1NDQuNTQ2ODc1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDQiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkFyaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjozNTkuNDM3NSwieSI6MzY1LjIzNDM3NSwid2lkdGgiOjcwLjEyNSwiaGVpZ2h0Ijo3MC4xMjV9LCJjb250YWluZXIiOnsieCI6MzMzLjA2MjUsInkiOjMzOC44NTkzNzUsIndpZHRoIjoxMjIuODc1LCJoZWlnaHQiOjEyMi44NzV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTA1IiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjMzNC41LCJ5Ijo1NDYuOTUzMTI1LCJ3aWR0aCI6MTUsImhlaWdodCI6MTV9LCJjb250YWluZXIiOnsieCI6MzM0LjUsInkiOjU0NC41NDY4NzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNiIsInRhZyI6InN2ZyIsImxhYmVsIjoiQmVubnkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6NTk0LjQzNzUsInkiOjM2NS4yMzQzNzUsIndpZHRoIjo3MC4xMjUsImhlaWdodCI6NzAuMTI1fSwiY29udGFpbmVyIjp7IngiOjU2OC4wNjI1LCJ5IjozMzguODU5Mzc1LCJ3aWR0aCI6MTIyLjg3NSwiaGVpZ2h0IjoxMjIuODc1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNyIsInRhZyI6InN2ZyIsImxhYmVsIjoiRWxpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjgyOS40Mzc1LCJ5IjozNjUuMjM0Mzc1LCJ3aWR0aCI6NzAuMTI1LCJoZWlnaHQiOjcwLjEyNX0sImNvbnRhaW5lciI6eyJ4Ijo4MDMuMDYyNSwieSI6MzM4Ljg1OTM3NSwid2lkdGgiOjEyMi44NzUsImhlaWdodCI6MTIyLjg3NX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDgiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6ODA0LjUsInkiOjU0Ni45NTMxMjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo4MDQuNSwieSI6NTQ0LjU0Njg3NSwid2lkdGgiOjEyMCwiaGVpZ2h0IjoxOS44MjgxMjV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTA5IiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQ0OCwieSI6NjQwLjM3NSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQyNSwieSI6NjIzLjM3NSwid2lkdGgiOjE3NCwiaGVpZ2h0Ijo1Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTAiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDAyLjUsInkiOjcyNC4yODEyNSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQwLCJ5Ijo3MjMuMzc1LCJ3aWR0aCI6OTQ0LCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19XSwiY29udHJvbHMiOlt7ImxhYmVsIjoiTWlyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjoyMTUsImhlaWdodCI6Mjc1LjUxNTYyNX0seyJsYWJlbCI6IkFyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjoyMTUsImhlaWdodCI6Mjc1LjUxNTYyNX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MjE1LCJoZWlnaHQiOjI3NS41MTU2MjV9LHsibGFiZWwiOiJFbGlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MjE1LCJoZWlnaHQiOjI3NS41MTU2MjV9LHsibGFiZWwiOiJQYXJlbnQgTW9kZSIsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9XX0="
+                    },
+                    {
+                      "name": "handoff-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3Njh9LCJkb2N1bWVudCI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NzV9LCJhc3NldHMiOlt7ImlkIjoiQTAxIiwidGFnIjoiSU1HIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjQyLCJoZWlnaHQiOjQyfSwiY29udGFpbmVyIjp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjE3My42NTYyNSwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDIiLCJ0YWciOiJzdmciLCJsYWJlbCI6Ik1pcmkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTI0LjQzNzUsInkiOjM2NS4yMzQzNzUsIndpZHRoIjo3MC4xMjUsImhlaWdodCI6NzAuMTI1fSwiY29udGFpbmVyIjp7IngiOjk4LjA2MjUsInkiOjMzOC44NTkzNzUsIndpZHRoIjoxMjIuODc1LCJoZWlnaHQiOjEyMi44NzV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTAzIiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjk5LjUsInkiOjU0Ni45NTMxMjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo5OS41LCJ5Ijo1NDQuNTQ2ODc1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDQiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkFyaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjozNTkuNDM3NSwieSI6MzY1LjIzNDM3NSwid2lkdGgiOjcwLjEyNSwiaGVpZ2h0Ijo3MC4xMjV9LCJjb250YWluZXIiOnsieCI6MzMzLjA2MjUsInkiOjMzOC44NTkzNzUsIndpZHRoIjoxMjIuODc1LCJoZWlnaHQiOjEyMi44NzV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTA1IiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjMzNC41LCJ5Ijo1NDYuOTUzMTI1LCJ3aWR0aCI6MTUsImhlaWdodCI6MTV9LCJjb250YWluZXIiOnsieCI6MzM0LjUsInkiOjU0NC41NDY4NzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNiIsInRhZyI6InN2ZyIsImxhYmVsIjoiQmVubnkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6NTk0LjQzNzUsInkiOjM2NS4yMzQzNzUsIndpZHRoIjo3MC4xMjUsImhlaWdodCI6NzAuMTI1fSwiY29udGFpbmVyIjp7IngiOjU2OC4wNjI1LCJ5IjozMzguODU5Mzc1LCJ3aWR0aCI6MTIyLjg3NSwiaGVpZ2h0IjoxMjIuODc1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNyIsInRhZyI6InN2ZyIsImxhYmVsIjoiRWxpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjgyOS40Mzc1LCJ5IjozNjUuMjM0Mzc1LCJ3aWR0aCI6NzAuMTI1LCJoZWlnaHQiOjcwLjEyNX0sImNvbnRhaW5lciI6eyJ4Ijo4MDMuMDYyNSwieSI6MzM4Ljg1OTM3NSwid2lkdGgiOjEyMi44NzUsImhlaWdodCI6MTIyLjg3NX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDgiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6ODA0LjUsInkiOjU0Ni45NTMxMjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo4MDQuNSwieSI6NTQ0LjU0Njg3NSwid2lkdGgiOjEyMCwiaGVpZ2h0IjoxOS44MjgxMjV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTA5IiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQ0OCwieSI6NjQwLjM3NSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQyNSwieSI6NjIzLjM3NSwid2lkdGgiOjE3NCwiaGVpZ2h0Ijo1Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTAiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDAyLjUsInkiOjcyNC4yODEyNSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQwLCJ5Ijo3MjMuMzc1LCJ3aWR0aCI6OTQ0LCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTEiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4Ijo0ODkuMjAzMTI1LCJ5IjoyMDMuMTcxODc1LCJ3aWR0aCI6NDUuNTkzNzUsImhlaWdodCI6NDUuNTkzNzV9LCJjb250YWluZXIiOnsieCI6NDc0LCJ5IjoxODcuOTY4NzUsIndpZHRoIjo3NiwiaGVpZ2h0Ijo3Nn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19XSwiY29udHJvbHMiOlt7ImxhYmVsIjoiTWlyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjoyMTUsImhlaWdodCI6Mjc1LjUxNTYyNX0seyJsYWJlbCI6IkFyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjoyMTUsImhlaWdodCI6Mjc1LjUxNTYyNX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MjE1LCJoZWlnaHQiOjI3NS41MTU2MjV9LHsibGFiZWwiOiJFbGlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MjE1LCJoZWlnaHQiOjI3NS41MTU2MjV9LHsibGFiZWwiOiJQYXJlbnQgTW9kZSIsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LHsibGFiZWwiOiJwcm9maWxlLXBpbiIsIndpZHRoIjozNDYsImhlaWdodCI6NjZ9LHsibGFiZWwiOiJDYW5jZWwiLCJ3aWR0aCI6MzQ2LCJoZWlnaHQiOjQ4fV19"
+                    },
+                    {
+                      "name": "wrong-pin-structure",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3Njh9LCJkb2N1bWVudCI6eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NzV9LCJhc3NldHMiOlt7ImlkIjoiQTAxIiwidGFnIjoiSU1HIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjQyLCJoZWlnaHQiOjQyfSwiY29udGFpbmVyIjp7IngiOjQwLCJ5IjoyOCwid2lkdGgiOjE3My42NTYyNSwiaGVpZ2h0Ijo0Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDIiLCJ0YWciOiJzdmciLCJsYWJlbCI6Ik1pcmkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6MTI0LjQzNzUsInkiOjM2NS4yMzQzNzUsIndpZHRoIjo3MC4xMjUsImhlaWdodCI6NzAuMTI1fSwiY29udGFpbmVyIjp7IngiOjk4LjA2MjUsInkiOjMzOC44NTkzNzUsIndpZHRoIjoxMjIuODc1LCJoZWlnaHQiOjEyMi44NzV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTAzIiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjk5LjUsInkiOjU0Ni45NTMxMjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo5OS41LCJ5Ijo1NDQuNTQ2ODc1LCJ3aWR0aCI6MTIwLCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDQiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkFyaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4IjozNTkuNDM3NSwieSI6MzY1LjIzNDM3NSwid2lkdGgiOjcwLjEyNSwiaGVpZ2h0Ijo3MC4xMjV9LCJjb250YWluZXIiOnsieCI6MzMzLjA2MjUsInkiOjMzOC44NTkzNzUsIndpZHRoIjoxMjIuODc1LCJoZWlnaHQiOjEyMi44NzV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTA1IiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjMzNC41LCJ5Ijo1NDYuOTUzMTI1LCJ3aWR0aCI6MTUsImhlaWdodCI6MTV9LCJjb250YWluZXIiOnsieCI6MzM0LjUsInkiOjU0NC41NDY4NzUsIndpZHRoIjoxMjAsImhlaWdodCI6MTkuODI4MTI1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNiIsInRhZyI6InN2ZyIsImxhYmVsIjoiQmVubnkgcHJvZmlsZSBwaG90byIsInJlY3QiOnsieCI6NTk0LjQzNzUsInkiOjM2NS4yMzQzNzUsIndpZHRoIjo3MC4xMjUsImhlaWdodCI6NzAuMTI1fSwiY29udGFpbmVyIjp7IngiOjU2OC4wNjI1LCJ5IjozMzguODU5Mzc1LCJ3aWR0aCI6MTIyLjg3NSwiaGVpZ2h0IjoxMjIuODc1fSwiY29udGFpbmVkRWRnZXMiOnsibGVmdCI6dHJ1ZSwicmlnaHQiOnRydWUsInRvcCI6dHJ1ZSwiYm90dG9tIjp0cnVlfX0seyJpZCI6IkEwNyIsInRhZyI6InN2ZyIsImxhYmVsIjoiRWxpIHByb2ZpbGUgcGhvdG8iLCJyZWN0Ijp7IngiOjgyOS40Mzc1LCJ5IjozNjUuMjM0Mzc1LCJ3aWR0aCI6NzAuMTI1LCJoZWlnaHQiOjcwLjEyNX0sImNvbnRhaW5lciI6eyJ4Ijo4MDMuMDYyNSwieSI6MzM4Ljg1OTM3NSwid2lkdGgiOjEyMi44NzUsImhlaWdodCI6MTIyLjg3NX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMDgiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6ODA0LjUsInkiOjU0Ni45NTMxMjUsIndpZHRoIjoxNSwiaGVpZ2h0IjoxNX0sImNvbnRhaW5lciI6eyJ4Ijo4MDQuNSwieSI6NTQ0LjU0Njg3NSwid2lkdGgiOjEyMCwiaGVpZ2h0IjoxOS44MjgxMjV9LCJjb250YWluZWRFZGdlcyI6eyJsZWZ0Ijp0cnVlLCJyaWdodCI6dHJ1ZSwidG9wIjp0cnVlLCJib3R0b20iOnRydWV9fSx7ImlkIjoiQTA5IiwidGFnIjoic3ZnIiwibGFiZWwiOiJkZWNvcmF0aXZlIGljb24iLCJyZWN0Ijp7IngiOjQ0OCwieSI6NjQwLjM3NSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQyNSwieSI6NjIzLjM3NSwid2lkdGgiOjE3NCwiaGVpZ2h0Ijo1Mn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTAiLCJ0YWciOiJzdmciLCJsYWJlbCI6ImRlY29yYXRpdmUgaWNvbiIsInJlY3QiOnsieCI6NDAyLjUsInkiOjcyNC4yODEyNSwid2lkdGgiOjE4LCJoZWlnaHQiOjE4fSwiY29udGFpbmVyIjp7IngiOjQwLCJ5Ijo3MjMuMzc1LCJ3aWR0aCI6OTQ0LCJoZWlnaHQiOjE5LjgyODEyNX0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19LHsiaWQiOiJBMTEiLCJ0YWciOiJzdmciLCJsYWJlbCI6IkVsaSBwcm9maWxlIHBob3RvIiwicmVjdCI6eyJ4Ijo0ODkuMjAzMTI1LCJ5IjoxNjUuNzgxMjUsIndpZHRoIjo0NS41OTM3NSwiaGVpZ2h0Ijo0NS41OTM3NX0sImNvbnRhaW5lciI6eyJ4Ijo0NzQsInkiOjE1MC41NzgxMjUsIndpZHRoIjo3NiwiaGVpZ2h0Ijo3Nn0sImNvbnRhaW5lZEVkZ2VzIjp7ImxlZnQiOnRydWUsInJpZ2h0Ijp0cnVlLCJ0b3AiOnRydWUsImJvdHRvbSI6dHJ1ZX19XSwiY29udHJvbHMiOlt7ImxhYmVsIjoiTWlyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjoyMTUsImhlaWdodCI6Mjc1LjUxNTYyNX0seyJsYWJlbCI6IkFyaU9wZW4gbXkgbGlicmFyeSDihpdQYXJlbnQgaGFuZG9mZiIsIndpZHRoIjoyMTUsImhlaWdodCI6Mjc1LjUxNTYyNX0seyJsYWJlbCI6IkJlbm55T3BlbiBteSBsaWJyYXJ5IOKGl1NlbGVjdGVkIHByb2ZpbGUiLCJ3aWR0aCI6MjE1LCJoZWlnaHQiOjI3NS41MTU2MjV9LHsibGFiZWwiOiJFbGlPcGVuIG15IGxpYnJhcnkg4oaXUGFyZW50IGhhbmRvZmYiLCJ3aWR0aCI6MjE1LCJoZWlnaHQiOjI3NS41MTU2MjV9LHsibGFiZWwiOiJQYXJlbnQgTW9kZSIsIndpZHRoIjoxNzQsImhlaWdodCI6NTJ9LHsibGFiZWwiOiJwcm9maWxlLXBpbiIsIndpZHRoIjozNDYsImhlaWdodCI6NjZ9LHsibGFiZWwiOiJDYW5jZWwiLCJ3aWR0aCI6MzQ2LCJoZWlnaHQiOjQ4fV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "353a10f32858d5e2e0f4-429d2428afc948269b41",
+          "file": "profile-handoff.spec.ts",
+          "line": 51,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "startup.spec.ts",
+      "file": "startup.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "synthetic startup: API attaches before delayed iframe document load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 287,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:12.878Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-155f529656942042ce98",
+          "file": "startup.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: late API cannot reconstruct a containment-stopped player",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 222,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:13.171Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-00eef268b022fa0b97b6",
+          "file": "startup.spec.ts",
+          "line": 49,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: late onReady and state events cannot reverse containment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 317,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:13.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-2928e2804dce0762762d",
+          "file": "startup.spec.ts",
+          "line": 68,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: missing provider readiness times out and removes frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20514,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:13.726Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-445673a6f7cc89764572",
+          "file": "startup.spec.ts",
+          "line": 86,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: __replaceFrame fails closed without unmonitored frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:34.249Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-16931938e455e841925e",
+          "file": "startup.spec.ts",
+          "line": 99,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: __throwOnReady fails closed without unmonitored frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 328,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:34.513Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-b57fd64d8750588220a1",
+          "file": "startup.spec.ts",
+          "line": 99,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: provider error before ready is terminal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 344,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:34.848Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-8a1c7b02dd40232f45d6",
+          "file": "startup.spec.ts",
+          "line": 109,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "supplemental-responsive.spec.ts",
+      "file": "supplemental-responsive.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "responsive pixels 360x800",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3932,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/360x800/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:35.209Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-360x800",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-360x800/attachments/visual-manifest-supplemental-responsive-360x800-6bb4a19185e474102f0ae32d47ccf0429b9acd3e.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-30fc096fe4fbbd996197",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 412x915",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3504,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/412x915/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:39.149Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-412x915",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-412x915/attachments/visual-manifest-supplemental-responsive-412x915-e649c8864698eef96e89c4d3530829c73f7650a6.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-231628c7ac1eccccb683",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 520x900",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3607,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/520x900/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:42.661Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-520x900",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-520x900/attachments/visual-manifest-supplemental-responsive-520x900-0a8215bdce12180dc9ff5be583d028cb1a22524c.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-2855520c5cf51f42b5ca",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 640x900",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3910,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/640x900/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:46.275Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-640x900",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-640x900/attachments/visual-manifest-supplemental-responsive-640x900-656c0c7b0c3e7f25d5b109d3a4f566628d6ba14b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-3ed93f2a8bf790b53e0c",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 820x1180",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2450,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/820x1180/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:50.192Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-820x1180",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-820x1180/attachments/visual-manifest-supplemental-responsive-820x1180-cd57cef76753bc8989079c6b28ec040ff39e7473.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-e972a5fc11e9c232a915",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 900x900",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2950,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/900x900/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:52.650Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-900x900",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-900x900/attachments/visual-manifest-supplemental-responsive-900x900-5181c5ebaaf41a3c3129f3d066f03428dc9baf15.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-782987ea83c2dfa3311c",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 1180x820",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2752,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1180x820/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:55.607Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-1180x820",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-1180x820/attachments/visual-manifest-supplemental-responsive-1180x820-c3a41b3654267d6b16f76dbfbd1dc8592ecfef07.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-259bb98605275490da5d",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "title": "responsive pixels 1280x800",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2896,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "VISUAL_EVIDENCE test-results/visual-evidence/candidate/1280x800/supplemental-responsive/manifest.json\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:55:58.368Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visual-manifest-supplemental-responsive-1280x800",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/supplemental-responsive-responsive-pixels-1280x800/attachments/visual-manifest-supplemental-responsive-1280x800-16465678815112affd992319d1880243d09af13a.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cf9b5e501ff4b9daae91-e9c023df817cc249d005",
+          "file": "supplemental-responsive.spec.ts",
+          "line": 51,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "visual.spec.ts",
+      "file": "visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "synthetic visual evidence: parent and child surfaces",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2095,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T03:56:01.280Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8324bb52c49185e48ff4-1ecc4c7050b725600ce5",
+          "file": "visual.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-19T03:50:43.572Z",
+    "duration": 328127.106,
+    "expected": 79,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

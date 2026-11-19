@@ -1,0 +1,164 @@
+[
+  {
+    "id": "V01",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/390-handoff.png",
+    "raster_sha256": "1657caf245cb526eb8afdbe7be6b6808f9d55d62682670b8a6842a829f256c51",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/390-handoff-structure.json",
+    "structure_sha256": "89014dca6d406c376f638e7aedd31e6bfd02ae25d69f919d72055678721fca0c",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assets": 11,
+    "edge_gates": 44,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V02",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/390-picker.png",
+    "raster_sha256": "6a268d4dc4c3c6c06b941ca3190bf98b52fdffdd710d64f5b343eb28ffff0ad8",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/390-picker-structure.json",
+    "structure_sha256": "7405255fc9c5abf876464c3bbd2fd793b89f1c6ea7a5dcb7fbb8d9a5b4ef5031",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assets": 10,
+    "edge_gates": 40,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V03",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/390-wrong-pin.png",
+    "raster_sha256": "917204a6e085dd544f07e59801eacfcbe2ce2d47e19c009d7fd7d16630b693e9",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/390-wrong-pin-structure.json",
+    "structure_sha256": "17ec3b0d16d4ad85051cb05cce3b29c7f54a6fc44041034a0e7891600714f015",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assets": 11,
+    "edge_gates": 44,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V04",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/768-handoff.png",
+    "raster_sha256": "01bbc1c9874fa8b6475d58bd843c1afa267b7c920ce7fec54ccb6d056861c8b5",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/768-handoff-structure.json",
+    "structure_sha256": "97dc6d56f313d7ef60a15cca7ced53e082646e5dab20a105d4f4f81aa37dfea1",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "assets": 11,
+    "edge_gates": 44,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V05",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/768-picker.png",
+    "raster_sha256": "4c512dfa150c2fc330b2f72363d56967631022d42b02b8dd8de70a7fa921066d",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/768-picker-structure.json",
+    "structure_sha256": "059d8db3efd286b6e8baad720d3a44a0de2f511cc09b4647b5c5b6d213cf6964",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "assets": 10,
+    "edge_gates": 40,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V06",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/768-wrong-pin.png",
+    "raster_sha256": "134b4685e0ccdb946b82093cccc2a612c870eb3616148a16908d80d77df24dea",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/768-wrong-pin-structure.json",
+    "structure_sha256": "4915bb66d47466b5f6da908f5093d09cdea10030e05c1dde7a449a5eaa2b5cd6",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "assets": 11,
+    "edge_gates": 44,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V07",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/1024-handoff.png",
+    "raster_sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/1024-handoff-structure.json",
+    "structure_sha256": "cdc40bc1f1762b7a24c245630379035570590886e412e997d5525592d1b5a801",
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "assets": 11,
+    "edge_gates": 44,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V08",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/1024-picker.png",
+    "raster_sha256": "a8dfc4dd2eb79fb703ef45d1caf35f649a033b2b41bf69514a7e14eb0d7305cd",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/1024-picker-structure.json",
+    "structure_sha256": "b506e40c2d6dfca4932e5085939772cd3b80965643451c8a6fccd70269686eaa",
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "assets": 10,
+    "edge_gates": 40,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  },
+  {
+    "id": "V09",
+    "raster": "docs/evidence/profile-handoff/qualified-pixels/1024-wrong-pin.png",
+    "raster_sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+    "structure": "docs/evidence/profile-handoff/qualified-pixels/1024-wrong-pin-structure.json",
+    "structure_sha256": "300e21369693ca895ab88b8a3e50e1521fa1cc6f1934959ec465fb5179bba0a2",
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "assets": 11,
+    "edge_gates": 44,
+    "structural_concerns": 0,
+    "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+    "source_ui_commit": "40e89db85ddb2fe182b265ce0232aecbe513c9fd",
+    "harness_successor": "2896fd2b0a78d30c503f353abe9f02e8c77aca79",
+    "scope": "Actual compiled Chromium synthetic UI. No hosted-auth/media/iPad physical evidence."
+  }
+]

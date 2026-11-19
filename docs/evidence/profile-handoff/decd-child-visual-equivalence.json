@@ -1,0 +1,90 @@
+{
+  "source": "decd2681e693de7ef33ea067610117c7467123b4",
+  "reference": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+  "actual_fresh_compiled_captures": [
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-32d2f-and-same-profile-return-390/handoff.png",
+      "sha256": "1657caf245cb526eb8afdbe7be6b6808f9d55d62682670b8a6842a829f256c51",
+      "reference": "docs/evidence/profile-handoff/final-pixels/390-handoff.png",
+      "reference_sha256": "1657caf245cb526eb8afdbe7be6b6808f9d55d62682670b8a6842a829f256c51",
+      "identical": true
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-32d2f-and-same-profile-return-390/picker.png",
+      "sha256": "6a268d4dc4c3c6c06b941ca3190bf98b52fdffdd710d64f5b343eb28ffff0ad8",
+      "reference": "docs/evidence/profile-handoff/final-pixels/390-picker.png",
+      "reference_sha256": "6a268d4dc4c3c6c06b941ca3190bf98b52fdffdd710d64f5b343eb28ffff0ad8",
+      "identical": true
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-32d2f-and-same-profile-return-390/wrong-pin.png",
+      "sha256": "d8bd40c87722f5488b32ca1672842733fd2952dede3347b1e20be0efa026cac2",
+      "reference": "docs/evidence/profile-handoff/final-pixels/390-wrong-pin.png",
+      "reference_sha256": "917204a6e085dd544f07e59801eacfcbe2ce2d47e19c009d7fd7d16630b693e9",
+      "identical": false,
+      "pixel_difference": {
+        "bbox": [
+          337,
+          641,
+          338,
+          642
+        ],
+        "max_channel_difference": 1,
+        "different_pixels": 1
+      }
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-53a17-and-same-profile-return-768/handoff.png",
+      "sha256": "01bbc1c9874fa8b6475d58bd843c1afa267b7c920ce7fec54ccb6d056861c8b5",
+      "reference": "docs/evidence/profile-handoff/final-pixels/768-handoff.png",
+      "reference_sha256": "01bbc1c9874fa8b6475d58bd843c1afa267b7c920ce7fec54ccb6d056861c8b5",
+      "identical": true
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-53a17-and-same-profile-return-768/picker.png",
+      "sha256": "4c512dfa150c2fc330b2f72363d56967631022d42b02b8dd8de70a7fa921066d",
+      "reference": "docs/evidence/profile-handoff/final-pixels/768-picker.png",
+      "reference_sha256": "4c512dfa150c2fc330b2f72363d56967631022d42b02b8dd8de70a7fa921066d",
+      "identical": true
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-53a17-and-same-profile-return-768/wrong-pin.png",
+      "sha256": "cca014ff4127133d48af08484cdc0bd2972d202dd4ea944f2e45c7f5959cc41a",
+      "reference": "docs/evidence/profile-handoff/final-pixels/768-wrong-pin.png",
+      "reference_sha256": "134b4685e0ccdb946b82093cccc2a612c870eb3616148a16908d80d77df24dea",
+      "identical": false,
+      "pixel_difference": {
+        "bbox": [
+          556,
+          731,
+          557,
+          732
+        ],
+        "max_channel_difference": 1,
+        "different_pixels": 1
+      }
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-d12eb-nd-same-profile-return-1024/handoff.png",
+      "sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+      "reference": "docs/evidence/profile-handoff/final-pixels/1024-handoff.png",
+      "reference_sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+      "identical": true
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-d12eb-nd-same-profile-return-1024/picker.png",
+      "sha256": "a8dfc4dd2eb79fb703ef45d1caf35f649a033b2b41bf69514a7e14eb0d7305cd",
+      "reference": "docs/evidence/profile-handoff/final-pixels/1024-picker.png",
+      "reference_sha256": "a8dfc4dd2eb79fb703ef45d1caf35f649a033b2b41bf69514a7e14eb0d7305cd",
+      "identical": true
+    },
+    {
+      "path": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-d12eb-nd-same-profile-return-1024/wrong-pin.png",
+      "sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+      "reference": "docs/evidence/profile-handoff/final-pixels/1024-wrong-pin.png",
+      "reference_sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+      "identical": true
+    }
+  ],
+  "scope": "Unchanged child-entry visual jury carryforward only; new Parent singular copy independently rechecked separately."
+}

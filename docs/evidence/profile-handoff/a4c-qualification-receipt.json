@@ -1,0 +1,43 @@
+{
+  "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+  "tree": "ef465c4aa9e9ddef1bd452a8fee32c6f22e56afc",
+  "src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+  "e2e_tree": "22928dcbf2598d8806338b5346f75a6821dce9f0",
+  "supabase_tree": "8e32428fe02bcd360ff244cb196ed140fa1b3450",
+  "local_build_id": "3380ZqVxeoIDU5ajpFGvM",
+  "browser_stats": {
+    "startTime": "2026-11-19T04:01:15.574Z",
+    "duration": 309311.255,
+    "expected": 83,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "unit": 396,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "optimized_build": "PASS",
+  "audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "production_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "ci": {
+    "run": 44455318300,
+    "number": 165,
+    "conclusion": "success"
+  },
+  "physical": "OPEN; oldef4observations separatelybound",
+  "hosted_new": "PENDING"
+}

@@ -1,0 +1,3594 @@
+{
+  "reviewer": "juror1",
+  "verdict": "PASS",
+  "frozen": true,
+  "independence": {
+    "peer_findings_seen": false,
+    "implementation_read": false,
+    "repair_history_read": false,
+    "prior_verdicts_read": false,
+    "review_basis": "Exact rasters, neutral records, supplied minimal product context, Human-Eye V2.0 and Blind Jury v1.0 only."
+  },
+  "authority": {
+    "human_eye": "https://app.notion.com/p/3ea584c4f74781f5946bef30a54c86c5",
+    "human_eye_version": "V2.0 production certified, fetched directly",
+    "blind_jury": "/workspace/scratch/b4fb31747e8d/handoff-authority-0/Autonomous-Visual-Production-V008/BLIND-JURY-REVIEW-v1.0.md"
+  },
+  "jury_contract": {
+    "selected_mode": "Final independent jury; controller mode and total size not disclosed to this juror",
+    "mode_reason": "Bounded final acceptance review assigned by controller",
+    "convergence_reviewers_used": "Not provided; deliberately not retrieved",
+    "final_jury_size": "Not provided to this juror",
+    "final_verdicts": {
+      "juror1": "PASS"
+    },
+    "jury_round_count": "This juror: one cold review",
+    "regressions_discovered": [],
+    "material_progress_status": "Not compared; historical candidate intentionally unavailable",
+    "golden_reused_or_rebuilt": "No Golden supplied or rebuilt",
+    "peer_findings_seen_before_freeze": "NO"
+  },
+  "findings": [],
+  "V2CoverageReceipt": {
+    "SOURCE_IDENTITY": {
+      "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+      "src_tree": "0ff5a019986798b5a2acbdd038aa607c78c25665",
+      "basis": "Supplied manifests plus verified 27 file hashes; no implementation read."
+    },
+    "REGION_COVERAGE": "9/9 complete document rasters, including all regions listed per capture",
+    "BOUNDED_ASSETS": "96/96",
+    "ASSET_EVIDENCE_CONSUMED": {
+      "V01": [
+        "V01:A01",
+        "V01:A02",
+        "V01:A03",
+        "V01:A04",
+        "V01:A05",
+        "V01:A06",
+        "V01:A07",
+        "V01:A08",
+        "V01:A09",
+        "V01:A10",
+        "V01:A11"
+      ],
+      "V02": [
+        "V02:A01",
+        "V02:A02",
+        "V02:A03",
+        "V02:A04",
+        "V02:A05",
+        "V02:A06",
+        "V02:A07",
+        "V02:A08",
+        "V02:A09",
+        "V02:A10"
+      ],
+      "V03": [
+        "V03:A01",
+        "V03:A02",
+        "V03:A03",
+        "V03:A04",
+        "V03:A05",
+        "V03:A06",
+        "V03:A07",
+        "V03:A08",
+        "V03:A09",
+        "V03:A10",
+        "V03:A11"
+      ],
+      "V04": [
+        "V04:A01",
+        "V04:A02",
+        "V04:A03",
+        "V04:A04",
+        "V04:A05",
+        "V04:A06",
+        "V04:A07",
+        "V04:A08",
+        "V04:A09",
+        "V04:A10",
+        "V04:A11"
+      ],
+      "V05": [
+        "V05:A01",
+        "V05:A02",
+        "V05:A03",
+        "V05:A04",
+        "V05:A05",
+        "V05:A06",
+        "V05:A07",
+        "V05:A08",
+        "V05:A09",
+        "V05:A10"
+      ],
+      "V06": [
+        "V06:A01",
+        "V06:A02",
+        "V06:A03",
+        "V06:A04",
+        "V06:A05",
+        "V06:A06",
+        "V06:A07",
+        "V06:A08",
+        "V06:A09",
+        "V06:A10",
+        "V06:A11"
+      ],
+      "V07": [
+        "V07:A01",
+        "V07:A02",
+        "V07:A03",
+        "V07:A04",
+        "V07:A05",
+        "V07:A06",
+        "V07:A07",
+        "V07:A08",
+        "V07:A09",
+        "V07:A10",
+        "V07:A11"
+      ],
+      "V08": [
+        "V08:A01",
+        "V08:A02",
+        "V08:A03",
+        "V08:A04",
+        "V08:A05",
+        "V08:A06",
+        "V08:A07",
+        "V08:A08",
+        "V08:A09",
+        "V08:A10"
+      ],
+      "V09": [
+        "V09:A01",
+        "V09:A02",
+        "V09:A03",
+        "V09:A04",
+        "V09:A05",
+        "V09:A06",
+        "V09:A07",
+        "V09:A08",
+        "V09:A09",
+        "V09:A10",
+        "V09:A11"
+      ]
+    },
+    "READABLE_VIEWS": {
+      "required": 9,
+      "consumed": 9,
+      "small_icon_crop_tiles": 54,
+      "method": "All 9 original rasters and all 9 actual-pixel crop sheets opened and emitted with view_image. Native 45\u201370px avatar contours readable in original rasters."
+    },
+    "STRUCTURAL_RECORDS": {
+      "required": 9,
+      "consumed": 9,
+      "all_asset_rects_containers_edges_and_controls_read": true
+    },
+    "EDGE_GATES": {
+      "resolved": 384,
+      "required": 384,
+      "resolution": "Each asset has LEFT RIGHT TOP BOTTOM resolution below. Intentional foreground modal occlusion is distinguished from clipped artwork; pixels control."
+    },
+    "APPLICATION_BINDING": "WatchNest compiled Chromium synthetic UI, three states at 390x844, 768x1024, 1024x768. Full document rasters are 390x942, 768x1039, 1024x775. These are not native viewport-height screenshots. No horizontal document excess. At 390, Parent Mode crosses the native viewport bottom and footer lies below it; both are complete in document extent. Modal cards fit within native viewports.",
+    "UNRESOLVED_CONFLICTS": [],
+    "HUMAN_GATES": {
+      "alignment": "PASS: centered headings/dialogs; card grid rows and label baselines align.",
+      "optical_centering": "PASS: circular avatars and modal rocket balanced within carriers.",
+      "spacing_rhythm": "PASS: consistent card spacing, internal rows and modal spacing; mobile wraps remain comfortable.",
+      "grouping": "PASS: four profiles grouped as one selection task; parent action separated; PIN/error/cancel grouped in modal.",
+      "hierarchy": "PASS: name/title and primary selection dominate; helper copy and status remain readable.",
+      "crop_story": "PASS: profile glyph identities complete when exposed; modal foreground intentionally masks background.",
+      "contrast": "PASS: active text and glyphs readable; dimmed background recedes; error remains legible. No numerical contrast audit claimed.",
+      "gestalt": "PASS: coherent navy/lavender/peach family interface; restrained consistent components across sizes."
+    },
+    "CONFIRMED_DEFECTS": [],
+    "POSSIBLE_CONCERNS": [],
+    "FINAL_RESULT": "CLEAN / PASS within supplied rendered scope"
+  },
+  "captures": [
+    {
+      "id": "V01",
+      "raster": "docs/evidence/profile-handoff/final-pixels/390-handoff.png",
+      "raster_sha256": "1657caf245cb526eb8afdbe7be6b6808f9d55d62682670b8a6842a829f256c51",
+      "structure": "docs/evidence/profile-handoff/final-pixels/390-handoff-structure.json",
+      "structure_sha256": "89014dca6d406c376f638e7aedd31e6bfd02ae25d69f919d72055678721fca0c",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V01.png",
+      "crop_sheet_sha256": "715e6b143314558fe288a4e2a20165ed92f757ffb30e80ea3e15098dac365890",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_extent": {
+        "width": 390,
+        "height": 942
+      },
+      "raster_dimensions": [
+        390,
+        942
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V01:A01",
+        "V01:A02",
+        "V01:A03",
+        "V01:A04",
+        "V01:A05",
+        "V01:A06",
+        "V01:A07",
+        "V01:A08",
+        "V01:A09",
+        "V01:A10",
+        "V01:A11"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V01:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 20,
+            "y": 24,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 20,
+            "y": 24,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V01:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 76.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V01:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 44.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 44.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V01:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 257.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V01:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 225.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V01:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 76.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V01:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 257.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V01:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 225.5,
+            "y": 733.75,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 731.34375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V01:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 131,
+            "y": 827.171875,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 108,
+            "y": 810.171875,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V01:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 85.5,
+            "y": 899.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 20,
+            "y": 898.171875,
+            "width": 350,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V01:A11",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 172.203125,
+            "y": 241.171875,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 157,
+            "y": 225.96875,
+            "width": 76,
+            "height": 76
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 44
+    },
+    {
+      "id": "V02",
+      "raster": "docs/evidence/profile-handoff/final-pixels/390-picker.png",
+      "raster_sha256": "6a268d4dc4c3c6c06b941ca3190bf98b52fdffdd710d64f5b343eb28ffff0ad8",
+      "structure": "docs/evidence/profile-handoff/final-pixels/390-picker-structure.json",
+      "structure_sha256": "7405255fc9c5abf876464c3bbd2fd793b89f1c6ea7a5dcb7fbb8d9a5b4ef5031",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V02.png",
+      "crop_sheet_sha256": "df9882e47418522c1ed389357151fd651a54acc1422998b33d9587aed8a03746",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_extent": {
+        "width": 390,
+        "height": 942
+      },
+      "raster_dimensions": [
+        390,
+        942
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V02:A01",
+        "V02:A02",
+        "V02:A03",
+        "V02:A04",
+        "V02:A05",
+        "V02:A06",
+        "V02:A07",
+        "V02:A08",
+        "V02:A09",
+        "V02:A10"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V02:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 20,
+            "y": 24,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 20,
+            "y": 24,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 76.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 44.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 44.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 257.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 225.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 76.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 257.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 225.5,
+            "y": 733.75,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 731.34375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 131,
+            "y": 827.171875,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 108,
+            "y": 810.171875,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V02:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 85.5,
+            "y": 899.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 20,
+            "y": 898.171875,
+            "width": 350,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 40
+    },
+    {
+      "id": "V03",
+      "raster": "docs/evidence/profile-handoff/final-pixels/390-wrong-pin.png",
+      "raster_sha256": "917204a6e085dd544f07e59801eacfcbe2ce2d47e19c009d7fd7d16630b693e9",
+      "structure": "docs/evidence/profile-handoff/final-pixels/390-wrong-pin-structure.json",
+      "structure_sha256": "17ec3b0d16d4ad85051cb05cce3b29c7f54a6fc44041034a0e7891600714f015",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V03.png",
+      "crop_sheet_sha256": "1673627235255dcb3a8d31f15d6d4f0ef3ae1acdc075554e48cf01f3bc068fae",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_extent": {
+        "width": 390,
+        "height": 942
+      },
+      "raster_dimensions": [
+        390,
+        942
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V03:A01",
+        "V03:A02",
+        "V03:A03",
+        "V03:A04",
+        "V03:A05",
+        "V03:A06",
+        "V03:A07",
+        "V03:A08",
+        "V03:A09",
+        "V03:A10",
+        "V03:A11"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V03:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 20,
+            "y": 24,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 20,
+            "y": 24,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V03:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 76.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V03:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 44.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 44.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V03:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 257.296875,
+            "y": 320.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 298.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V03:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 225.5,
+            "y": 478.5625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 476.15625,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V03:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 76.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 54.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V03:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 257.296875,
+            "y": 575.78125,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 235.5,
+            "y": 553.984375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V03:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 225.5,
+            "y": 733.75,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 225.5,
+            "y": 731.34375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V03:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 131,
+            "y": 827.171875,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 108,
+            "y": 810.171875,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V03:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 85.5,
+            "y": 899.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 20,
+            "y": 898.171875,
+            "width": 350,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V03:A11",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 172.203125,
+            "y": 203.78125,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 157,
+            "y": 188.578125,
+            "width": 76,
+            "height": 76
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 44
+    },
+    {
+      "id": "V04",
+      "raster": "docs/evidence/profile-handoff/final-pixels/768-handoff.png",
+      "raster_sha256": "01bbc1c9874fa8b6475d58bd843c1afa267b7c920ce7fec54ccb6d056861c8b5",
+      "structure": "docs/evidence/profile-handoff/final-pixels/768-handoff-structure.json",
+      "structure_sha256": "97dc6d56f313d7ef60a15cca7ced53e082646e5dab20a105d4f4f81aa37dfea1",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V04.png",
+      "crop_sheet_sha256": "ae435d713b3564bb79d5b0b85592b0c1be38dfe756d4f78753e02648e256904f",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "document_extent": {
+        "width": 768,
+        "height": 1039
+      },
+      "raster_dimensions": [
+        768,
+        1039
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V04:A01",
+        "V04:A02",
+        "V04:A03",
+        "V04:A04",
+        "V04:A05",
+        "V04:A06",
+        "V04:A07",
+        "V04:A08",
+        "V04:A09",
+        "V04:A10",
+        "V04:A11"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V04:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V04:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 185.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V04:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 154,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 154,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V04:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 525.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V04:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 494,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V04:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 185.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V04:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 525.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V04:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 494,
+            "y": 810.65625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 808.25,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V04:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 320,
+            "y": 904.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 297,
+            "y": 887.078125,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V04:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 274.5,
+            "y": 987.984375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 987.078125,
+            "width": 688,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V04:A11",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 361.203125,
+            "y": 331.171875,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 346,
+            "y": 315.96875,
+            "width": 76,
+            "height": 76
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 44
+    },
+    {
+      "id": "V05",
+      "raster": "docs/evidence/profile-handoff/final-pixels/768-picker.png",
+      "raster_sha256": "4c512dfa150c2fc330b2f72363d56967631022d42b02b8dd8de70a7fa921066d",
+      "structure": "docs/evidence/profile-handoff/final-pixels/768-picker-structure.json",
+      "structure_sha256": "059d8db3efd286b6e8baad720d3a44a0de2f511cc09b4647b5c5b6d213cf6964",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V05.png",
+      "crop_sheet_sha256": "ffdb077a014fcce2c240309fbffa1be5b16732521c9f5a7855f5747b97828dde",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "document_extent": {
+        "width": 768,
+        "height": 1039
+      },
+      "raster_dimensions": [
+        768,
+        1039
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V05:A01",
+        "V05:A02",
+        "V05:A03",
+        "V05:A04",
+        "V05:A05",
+        "V05:A06",
+        "V05:A07",
+        "V05:A08",
+        "V05:A09",
+        "V05:A10"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V05:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 185.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 154,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 154,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 525.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 494,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 185.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 525.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 494,
+            "y": 810.65625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 808.25,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 320,
+            "y": 904.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 297,
+            "y": 887.078125,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V05:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 274.5,
+            "y": 987.984375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 987.078125,
+            "width": 688,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 40
+    },
+    {
+      "id": "V06",
+      "raster": "docs/evidence/profile-handoff/final-pixels/768-wrong-pin.png",
+      "raster_sha256": "134b4685e0ccdb946b82093cccc2a612c870eb3616148a16908d80d77df24dea",
+      "structure": "docs/evidence/profile-handoff/final-pixels/768-wrong-pin-structure.json",
+      "structure_sha256": "4915bb66d47466b5f6da908f5093d09cdea10030e05c1dde7a449a5eaa2b5cd6",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V06.png",
+      "crop_sheet_sha256": "30fbc4582f22b82405e99da29a5a6a3816b39f7163b9a1502507e2c839f30a34",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "document_extent": {
+        "width": 768,
+        "height": 1039
+      },
+      "raster_dimensions": [
+        768,
+        1039
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V06:A01",
+        "V06:A02",
+        "V06:A03",
+        "V06:A04",
+        "V06:A05",
+        "V06:A06",
+        "V06:A07",
+        "V06:A08",
+        "V06:A09",
+        "V06:A10",
+        "V06:A11"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V06:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V06:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 185.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V06:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 154,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 154,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V06:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 525.796875,
+            "y": 374.59375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 352.796875,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V06:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 494,
+            "y": 538.015625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 535.609375,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V06:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 185.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 164,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V06:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 525.796875,
+            "y": 647.234375,
+            "width": 56.390625,
+            "height": 56.390625
+          },
+          "container": {
+            "x": 504,
+            "y": 625.4375,
+            "width": 100,
+            "height": 100
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V06:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 494,
+            "y": 810.65625,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 494,
+            "y": 808.25,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V06:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 320,
+            "y": 904.078125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 297,
+            "y": 887.078125,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V06:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 274.5,
+            "y": 987.984375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 987.078125,
+            "width": 688,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V06:A11",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 361.203125,
+            "y": 293.78125,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 346,
+            "y": 278.578125,
+            "width": 76,
+            "height": 76
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 44
+    },
+    {
+      "id": "V07",
+      "raster": "docs/evidence/profile-handoff/final-pixels/1024-handoff.png",
+      "raster_sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+      "structure": "docs/evidence/profile-handoff/final-pixels/1024-handoff-structure.json",
+      "structure_sha256": "cdc40bc1f1762b7a24c245630379035570590886e412e997d5525592d1b5a801",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V07.png",
+      "crop_sheet_sha256": "27a51071ce5d2eda5c8a6903cf6fbd437444fa01e29101d7b8fc5af7a47e9c9c",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "document_extent": {
+        "width": 1024,
+        "height": 775
+      },
+      "raster_dimensions": [
+        1024,
+        775
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V07:A01",
+        "V07:A02",
+        "V07:A03",
+        "V07:A04",
+        "V07:A05",
+        "V07:A06",
+        "V07:A07",
+        "V07:A08",
+        "V07:A09",
+        "V07:A10",
+        "V07:A11"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V07:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 124.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 98.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 99.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 99.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 359.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 333.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V07:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 334.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 334.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V07:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 594.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 568.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V07:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 829.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 803.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 804.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 804.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 448,
+            "y": 640.375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 425,
+            "y": 623.375,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 402.5,
+            "y": 724.28125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 723.375,
+            "width": 944,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V07:A11",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 489.203125,
+            "y": 203.171875,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 474,
+            "y": 187.96875,
+            "width": 76,
+            "height": 76
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 44
+    },
+    {
+      "id": "V08",
+      "raster": "docs/evidence/profile-handoff/final-pixels/1024-picker.png",
+      "raster_sha256": "a8dfc4dd2eb79fb703ef45d1caf35f649a033b2b41bf69514a7e14eb0d7305cd",
+      "structure": "docs/evidence/profile-handoff/final-pixels/1024-picker-structure.json",
+      "structure_sha256": "b506e40c2d6dfca4932e5085939772cd3b80965643451c8a6fccd70269686eaa",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V08.png",
+      "crop_sheet_sha256": "df9882e47418522c1ed389357151fd651a54acc1422998b33d9587aed8a03746",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "document_extent": {
+        "width": 1024,
+        "height": 775
+      },
+      "raster_dimensions": [
+        1024,
+        775
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V08:A01",
+        "V08:A02",
+        "V08:A03",
+        "V08:A04",
+        "V08:A05",
+        "V08:A06",
+        "V08:A07",
+        "V08:A08",
+        "V08:A09",
+        "V08:A10"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V08:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 124.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 98.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 99.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 99.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 359.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 333.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 334.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 334.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 594.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 568.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 829.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 803.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 804.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 804.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 448,
+            "y": 640.375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 425,
+            "y": 623.375,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V08:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 402.5,
+            "y": 724.28125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 723.375,
+            "width": 944,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 40
+    },
+    {
+      "id": "V09",
+      "raster": "docs/evidence/profile-handoff/final-pixels/1024-wrong-pin.png",
+      "raster_sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+      "structure": "docs/evidence/profile-handoff/final-pixels/1024-wrong-pin-structure.json",
+      "structure_sha256": "300e21369693ca895ab88b8a3e50e1521fa1cc6f1934959ec465fb5179bba0a2",
+      "crop_sheet": "docs/evidence/profile-handoff/final-readable/V09.png",
+      "crop_sheet_sha256": "9b1ad42d2fc28e0ee5e2777f55d4f64d687f978920edaebb20ff0508e271b853",
+      "hash_verification": {
+        "raster": true,
+        "structure": true,
+        "crop": true
+      },
+      "native_viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "document_extent": {
+        "width": 1024,
+        "height": 775
+      },
+      "raster_dimensions": [
+        1024,
+        775
+      ],
+      "region_coverage": [
+        "header/brand",
+        "heading/instructions",
+        "profile grid",
+        "parent action",
+        "footer",
+        "modal and error where present"
+      ],
+      "asset_ids_consumed": [
+        "V09:A01",
+        "V09:A02",
+        "V09:A03",
+        "V09:A04",
+        "V09:A05",
+        "V09:A06",
+        "V09:A07",
+        "V09:A08",
+        "V09:A09",
+        "V09:A10",
+        "V09:A11"
+      ],
+      "readable_crop_ids_consumed": [
+        "A01",
+        "A03",
+        "A05",
+        "A08",
+        "A09",
+        "A10"
+      ],
+      "assets": [
+        {
+          "id": "V09:A01",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 40,
+            "y": 28,
+            "width": 42,
+            "height": 42
+          },
+          "container": {
+            "x": 40,
+            "y": 28,
+            "width": 173.65625,
+            "height": 42
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V09:A02",
+          "label": "Miri profile photo",
+          "structural_rect": {
+            "x": 124.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 98.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V09:A03",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 99.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 99.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V09:A04",
+          "label": "Ari profile photo",
+          "structural_rect": {
+            "x": 359.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 333.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V09:A05",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 334.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 334.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V09:A06",
+          "label": "Benny profile photo",
+          "structural_rect": {
+            "x": 594.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 568.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V09:A07",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 829.4375,
+            "y": 365.234375,
+            "width": 70.125,
+            "height": 70.125
+          },
+          "container": {
+            "x": 803.0625,
+            "y": 338.859375,
+            "width": 122.875,
+            "height": 122.875
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V09:A08",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 804.5,
+            "y": 546.953125,
+            "width": 15,
+            "height": 15
+          },
+          "container": {
+            "x": 804.5,
+            "y": 544.546875,
+            "width": 120,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V09:A09",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 448,
+            "y": 640.375,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 425,
+            "y": 623.375,
+            "width": 174,
+            "height": 52
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Intentional modal foreground occlusion; visible fragments agree with layering; unobscured counterpart inspected in the same-viewport picker. No unexplained contour loss.",
+          "intentional_occlusion": true
+        },
+        {
+          "id": "V09:A10",
+          "label": "decorative icon",
+          "structural_rect": {
+            "x": 402.5,
+            "y": 724.28125,
+            "width": 18,
+            "height": 18
+          },
+          "container": {
+            "x": 40,
+            "y": 723.375,
+            "width": 944,
+            "height": 19.828125
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        },
+        {
+          "id": "V09:A11",
+          "label": "Eli profile photo",
+          "structural_rect": {
+            "x": 489.203125,
+            "y": 165.78125,
+            "width": 45.59375,
+            "height": 45.59375
+          },
+          "container": {
+            "x": 474,
+            "y": 150.578125,
+            "width": 76,
+            "height": 76
+          },
+          "structural_contained_edges": {
+            "left": true,
+            "right": true,
+            "top": true,
+            "bottom": true
+          },
+          "resolved_edges": {
+            "LEFT": "PASS",
+            "RIGHT": "PASS",
+            "TOP": "PASS",
+            "BOTTOM": "PASS"
+          },
+          "rendered_pixel_resolution": "Native raster inspected; small icon readable crop consumed where supplied. Complete visible contour; no unintended clipping.",
+          "intentional_occlusion": false
+        }
+      ],
+      "edges_resolved": 44
+    }
+  ],
+  "limitations": [
+    "Static actual Chromium render evidence only; no authenticated hosted-browser, backend/security, real iPad/device, media playback or interaction certification.",
+    "Foreground-occluded background artwork cannot be directly seen through an opaque modal; layering was reviewed in exact state and unobscured counterpart in same viewport picker.",
+    "No external visual Golden supplied; assessed against clarity, readability, containment and component consistency within minimal product context."
+  ]
+}
