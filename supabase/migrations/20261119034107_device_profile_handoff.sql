@@ -1,5 +1,11 @@
 -- A trusted device is not authority to choose a different child's identity.
 -- This additive migration leaves timers, approvals and other devices untouched.
+-- Phase 1 remains compatible with the current production application's legacy
+-- admission. Retiring legacy admission is a SEPARATE post-promotion operation.
+alter table public.child_sessions
+  add column admission_version smallint not null default 1
+    check (admission_version in (1,2));
+
 alter table public.household_devices
   add column active_profile_id uuid,
   add constraint household_devices_active_profile_family_fk
@@ -45,6 +51,7 @@ declare
   v_profile profiles;
   v_session uuid;
   v_now timestamptz;
+  v_previous_admission text;
 begin
   -- Match the lock order used by Parent security changes: Parent before device
   -- before profile before sessions. A changed PIN invalidates its verification
@@ -83,9 +90,15 @@ begin
   update child_sessions set revoked_at=v_now
     where device_id=p_device and revoked_at is null;
   update household_devices set active_profile_id=p_profile where id=p_device;
-  insert into child_sessions(profile_id,device_id,token_hash,expires_at)
-    values(p_profile,p_device,p_token_hash,p_expires)
+  -- The transaction-local marker is NOT a credential. It distinguishes this
+  -- reviewed service-only path from old deployed RPCs/direct inserts after the
+  -- separate retirement trigger is enabled. Always restore the prior value.
+  v_previous_admission:=current_setting('watchnest.device_handoff_admission',true);
+  perform set_config('watchnest.device_handoff_admission','2',true);
+  insert into child_sessions(profile_id,device_id,token_hash,expires_at,admission_version)
+    values(p_profile,p_device,p_token_hash,p_expires,2)
     returning id into v_session;
+  perform set_config('watchnest.device_handoff_admission',coalesce(v_previous_admission,''),true);
   return v_session;
 end
 $$;
