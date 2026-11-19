@@ -322,3 +322,24 @@ test("daily library denies exhausted access, renews only from a server response,
     fullPage: true,
   });
 });
+
+// Actual rendered singular copy across the three extension-capable states.
+test("one-minute extensions use singular copy while active, paused and blocked", async ({page}, info) => {
+  await page.setViewportSize({width:390,height:844});
+  await fixture(page, "parent");
+  let state = "active";
+  await page.route("**/api/parent/session-status", route => {
+    const now = new Date().toISOString();
+    return route.fulfill({json:{serverNow:now,profiles:dashboard.profiles.map(p=>({...p,session_duration_minutes:1,devices:[],access:{enabled:true,allowed:state==="active",state,mode:"once",remainingSeconds:60,pausedSeconds:state==="paused"?60:null,parentBlocked:state==="blocked",expiresAt:state==="active"?new Date(Date.now()+60000).toISOString():null,revision:1,serverNow:now}}))}});
+  });
+  for(const next of ["active","paused","blocked"]){
+    state=next;
+    await page.goto("/parent/controls");
+    const card=page.locator("section.panel").filter({has:page.getByRole("heading",{name:dashboard.profiles[0].display_name,exact:true})});
+    await card.locator("summary").click();
+    await card.getByLabel("Custom minutes").fill("1");
+    await expect(card.getByRole("button",{name:"Add 1 minute",exact:true})).toBeVisible();
+    await expect(card.getByText("Add 1 minutes",{exact:true})).toHaveCount(0);
+    await card.screenshot({path:info.outputPath(`one-minute-${state}.png`)});
+  }
+});

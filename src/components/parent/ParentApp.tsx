@@ -2644,7 +2644,7 @@ function SessionTimerCard({
                 disabled={busy || !authoritative || !validDuration}
                 onClick={() => control("extend", duration)}
               >
-                Add {duration || "…"} minutes
+                Add {duration || "…"} {duration === 1 ? "minute" : "minutes"}
               </button>
             )}
           </>
@@ -2677,7 +2677,7 @@ function SessionTimerCard({
                 disabled={busy || !authoritative || !validDuration}
                 onClick={() => control("extend", duration)}
               >
-                Add {duration || "…"} minutes
+                Add {duration || "…"} {duration === 1 ? "minute" : "minutes"}
               </button>
             )}
           </>
@@ -2704,7 +2704,7 @@ function SessionTimerCard({
               disabled={busy || !authoritative || !validDuration}
               onClick={() => control("extend", duration)}
             >
-              Add {duration || "…"} minutes
+              Add {duration || "…"} {duration === 1 ? "minute" : "minutes"}
             </button>
           </>
         ) : (
