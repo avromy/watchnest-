@@ -1,5 +1,45 @@
 import { test, expect } from "@playwright/test";
 import { fixture, profiles, videos } from "./fixtures";
+async function inspect(page: import("@playwright/test").Page) {
+  return page.evaluate(() => ({
+    viewport: { width: innerWidth, height: innerHeight },
+    document: {
+      width: document.documentElement.scrollWidth,
+      height: document.documentElement.scrollHeight,
+    },
+    assets: [...document.querySelectorAll("main img, main svg")].map((e, i) => {
+      const r = e.getBoundingClientRect();
+      const p = e.parentElement!.getBoundingClientRect();
+      return {
+        id: `A${String(i + 1).padStart(2, "0")}`,
+        tag: e.tagName,
+        label:
+          e.getAttribute("alt") ||
+          e.getAttribute("aria-label") ||
+          e.parentElement?.getAttribute("aria-label") ||
+          "decorative icon",
+        rect: { x: r.x, y: r.y, width: r.width, height: r.height },
+        container: { x: p.x, y: p.y, width: p.width, height: p.height },
+        containedEdges: {
+          left: r.left >= p.left - 0.5,
+          right: r.right <= p.right + 0.5,
+          top: r.top >= p.top - 0.5,
+          bottom: r.bottom <= p.bottom + 0.5,
+        },
+      };
+    }),
+    controls: [...document.querySelectorAll("main button, main input")].map(
+      (e) => {
+        const r = e.getBoundingClientRect();
+        return {
+          label: e.textContent?.trim() || e.getAttribute("aria-label") || e.id,
+          width: r.width,
+          height: r.height,
+        };
+      },
+    ),
+  }));
+}
 
 // Rendered interface regression with explicit synthetic server state. The actual
 // dispatch and SQL boundary are tested separately; this is not physical evidence.
@@ -43,6 +83,10 @@ for (const viewport of [
       path: info.outputPath("picker.png"),
       fullPage: true,
     });
+    await info.attach("picker-structure", {
+      body: JSON.stringify(await inspect(page)),
+      contentType: "application/json",
+    });
     await page.getByRole("button", { name: /Benny.*Open my library/ }).click();
     await expect(page.getByText("Benny", { exact: true })).toBeVisible();
     expect(entries[0].parentPin).toBeUndefined();
@@ -58,6 +102,10 @@ for (const viewport of [
       path: info.outputPath("handoff.png"),
       fullPage: true,
     });
+    await info.attach("handoff-structure", {
+      body: JSON.stringify(await inspect(page)),
+      contentType: "application/json",
+    });
     await page.getByLabel("4-digit PIN", { exact: true }).fill("0000");
     await expect(page.getByRole("dialog").getByRole("alert")).toHaveText(
       "That Parent PIN is not correct.",
@@ -65,6 +113,10 @@ for (const viewport of [
     await page.screenshot({
       path: info.outputPath("wrong-pin.png"),
       fullPage: true,
+    });
+    await info.attach("wrong-pin-structure", {
+      body: JSON.stringify(await inspect(page)),
+      contentType: "application/json",
     });
     await page.getByRole("button", { name: "Cancel", exact: true }).click();
     await expect(page.getByRole("dialog")).toHaveCount(0);

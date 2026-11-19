@@ -195,12 +195,16 @@ export default function ChildLogin() {
               <span className="profile-enter">
                 Open my library <span aria-hidden="true">↗</span>
               </span>
-              {(activeProfileId !== profile.id || profile.pin_enabled) && (
-                <span className="profile-lock">
-                  <Icon name="lock" width="15" />{" "}
-                  {activeProfileId !== profile.id ? "Parent handoff" : "PIN"}
-                </span>
-              )}
+              <span className="profile-lock">
+                {(activeProfileId !== profile.id || profile.pin_enabled) && (
+                  <Icon name="lock" width="15" />
+                )}
+                {activeProfileId !== profile.id
+                  ? "Parent handoff"
+                  : profile.pin_enabled
+                    ? "PIN"
+                    : "Selected profile"}
+              </span>
             </button>
           ))}
         </div>
