@@ -75,3 +75,80 @@ BROWSER Failed to load resource: the server responded with a status of 503 (Serv
   ✓  35 e2e/product.spec.ts:244:5 › synthetic UI: Parent phone controls one remote profile timer (4.5s)
   ✓  36 e2e/product.spec.ts:333:5 › synthetic UI: bounded Discover creates a request without a playable result (395ms)
   ✓  37 e2e/product.spec.ts:367:5 › synthetic UI: shared device opens the profile picker and Parent Mode stays protected (284ms)
+  ✓  38 e2e/product.spec.ts:387:5 › synthetic UI: mobile and tablet pages fit viewport (9.1s)
+  ✓  39 e2e/product.spec.ts:457:5 › synthetic UI: Safe Playback is a mandatory Child Mode boundary (230ms)
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/watch?v=escape' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+  ✓  40 e2e/product.spec.ts:478:5 › synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored (998ms)
+  ✓  41 e2e/product.spec.ts:602:5 › synthetic UI: a stale false flag cannot disable mandatory containment (204ms)
+  ✓  42 e2e/product.spec.ts:653:5 › synthetic UI: post-ready same-frame recommendation navigation fails closed (281ms)
+  ✓  43 e2e/product.spec.ts:697:5 › synthetic UI: pre-ready same-frame recommendation navigation fails closed (320ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓  44 e2e/product.spec.ts:738:5 › synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize (236ms)
+  ✓  45 e2e/product.spec.ts:756:5 › synthetic UI: transiently missing iPad player identity does not reject the approved video (223ms)
+  ✓  46 e2e/product.spec.ts:816:5 › synthetic UI: permanently unreadable player identity fails closed (3.1s)
+  ✓  47 e2e/product.spec.ts:856:5 › synthetic UI: mobile share text auto-resolves and retains a manual fallback (984ms)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  48 e2e/product.spec.ts:885:5 › synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure (333ms)
+  ✓  49 e2e/product.spec.ts:915:5 › synthetic UI: mobile channel selection immediately loads individual videos (428ms)
+  ✓  50 e2e/product.spec.ts:961:5 › synthetic UI: mobile playlist selection immediately loads individual videos (368ms)
+  ✓  51 e2e/product.spec.ts:1008:5 › synthetic UI: Parent Library offers an obvious playback preview (374ms)
+  ✓  52 e2e/product.spec.ts:1035:5 › synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics (464ms)
+  ✓  53 e2e/product.spec.ts:1071:5 › synthetic UI: a child finds approved videos in a 240-item library (1.2s)
+  ✓  54 e2e/product.spec.ts:1100:5 › synthetic UI: intermediate widths keep parent tools and child browsing within reach (4.8s)
+  ✓  55 e2e/product.spec.ts:1140:5 › synthetic UI: password visibility and recovery work with a keyboard (633ms)
+  ✓  56 e2e/product.spec.ts:1166:5 › synthetic UI: phone parent actions and collection choices remain touchable (476ms)
+  ✓  57 e2e/product.spec.ts:1194:5 › synthetic UI: collection search expands to approved library without requesting again (1.9s)
+CONTENT_REACH {"mode":"standard","viewport":{"width":360,"height":800},"artworkTop":576.5625,"titleBottom":696.46875,"limit":710.203125}
+CONTENT_REACH {"mode":"standard","viewport":{"width":390,"height":844},"artworkTop":576.5625,"titleBottom":704.90625,"limit":754.203125}
+CONTENT_REACH {"mode":"standard","viewport":{"width":768,"height":1024},"artworkTop":587.203125,"titleBottom":818.5625,"limit":1024}
+CONTENT_REACH {"mode":"standard","viewport":{"width":1024,"height":768},"artworkTop":506.34375,"titleBottom":713.546875,"limit":768}
+CONTENT_REACH {"mode":"simple","viewport":{"width":360,"height":800},"artworkTop":449.53125,"titleBottom":668.40625,"limit":710.203125}
+CONTENT_REACH {"mode":"simple","viewport":{"width":390,"height":844},"artworkTop":449.53125,"titleBottom":685.28125,"limit":754.203125}
+CONTENT_REACH {"mode":"simple","viewport":{"width":768,"height":1024},"artworkTop":499.171875,"titleBottom":733.46875,"limit":1024}
+CONTENT_REACH {"mode":"simple","viewport":{"width":1024,"height":768},"artworkTop":438.671875,"titleBottom":739.203125,"limit":768}
+  ✓  58 e2e/product.spec.ts:1223:5 › synthetic UI: initial child choices are visible and Simple controls stay secondary (1.6s)
+  ✓  59 e2e/product.spec.ts:1256:5 › synthetic UI: many Collections remain keyboard reachable without pushing videos away (2.0s)
+  ✓  60 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 390 (1.2s)
+  ✓  61 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 768 (992ms)
+  ✓  62 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 1024 (1.2s)
+  ✓  63 e2e/startup.spec.ts:29:5 › synthetic startup: API attaches before delayed iframe document load (301ms)
+  ✓  64 e2e/startup.spec.ts:49:5 › synthetic startup: late API cannot reconstruct a containment-stopped player (246ms)
+  ✓  65 e2e/startup.spec.ts:68:5 › synthetic startup: late onReady and state events cannot reverse containment (331ms)
+  ✓  66 e2e/startup.spec.ts:86:5 › synthetic startup: missing provider readiness times out and removes frame (20.5s)
+  ✓  67 e2e/startup.spec.ts:99:7 › synthetic startup: __replaceFrame fails closed without unmonitored frame (265ms)
+  ✓  68 e2e/startup.spec.ts:99:7 › synthetic startup: __throwOnReady fails closed without unmonitored frame (250ms)
+  ✓  69 e2e/startup.spec.ts:109:5 › synthetic startup: provider error before ready is terminal (300ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/360x800/supplemental-responsive/manifest.json
+  ✓  70 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 360x800 (4.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/412x915/supplemental-responsive/manifest.json
+  ✓  71 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 412x915 (3.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/520x900/supplemental-responsive/manifest.json
+  ✓  72 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 520x900 (3.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/640x900/supplemental-responsive/manifest.json
+  ✓  73 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 640x900 (4.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/820x1180/supplemental-responsive/manifest.json
+  ✓  74 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 820x1180 (2.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/900x900/supplemental-responsive/manifest.json
+  ✓  75 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 900x900 (2.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1180x820/supplemental-responsive/manifest.json
+  ✓  76 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1180x820 (2.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1280x800/supplemental-responsive/manifest.json
+  ✓  77 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1280x800 (2.8s)
+  ✓  78 e2e/visual.spec.ts:4:5 › synthetic visual evidence: parent and child surfaces (1.8s)
+(node:2114) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  79 e2e/fresh-child-stranger.spec.ts:48:5 › fresh younger child chooses a picture and returns to own library (1.3s)
+  ✓  80 e2e/fresh-child-stranger.spec.ts:68:5 › fresh older child retrieves saves and requests (948ms)
+  ✓  81 e2e/fresh-child-stranger.spec.ts:94:5 › fresh shared family switch PIN recovery and parent boundary (1.1s)
+FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+  ✓  82 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (1.2s)
+FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+  ✓  83 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (2.4s)
+  ✓  84 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (957ms)
+
+  84 passed (5.4m)
