@@ -17,7 +17,8 @@ vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({
   cookies: async () => ({
     get: (name: string) =>
-      name === `wn_${state.cookieRole}`
+      name === `wn_${state.cookieRole}` ||
+      (name === "wn_device" && state.cookieRole === "child")
         ? { value: "synthetic-token" }
         : undefined,
     set: (name: string) => state.cookieWrites.push(name),
@@ -77,33 +78,41 @@ vi.mock("@supabase/supabase-js", () => ({
               ? {
                   id: "verified-session",
                   profile_id: "verified-child",
+                  device_id: "verified-device",
                   created_at: new Date(now - 30000).toISOString(),
                 }
               : null
-            : table === "profiles"
-              ? { id: "verified-child", parent_id: "verified-family" }
-              : table === "family_videos"
-                ? [
-                    {
-                      video_id: v,
-                      tags: [],
-                      videos: {
-                        id: v,
-                        youtube_video_id: "abcdefghijk",
-                        title: "Synthetic",
-                        made_for_kids: state.audience,
-                        metadata_last_checked_at: checked,
-                        duration_seconds: 100,
-                        availability_status: "available",
-                        embeddable_status: "embeddable",
+            : table === "household_devices"
+              ? {
+                  id: "verified-device",
+                  parent_id: "verified-family",
+                  active_profile_id: "verified-child",
+                  expires_at: new Date(now + 86400000).toISOString(),
+                }
+              : table === "profiles"
+                ? { id: "verified-child", parent_id: "verified-family" }
+                : table === "family_videos"
+                  ? [
+                      {
+                        video_id: v,
+                        tags: [],
+                        videos: {
+                          id: v,
+                          youtube_video_id: "abcdefghijk",
+                          title: "Synthetic",
+                          made_for_kids: state.audience,
+                          metadata_last_checked_at: checked,
+                          duration_seconds: 100,
+                          availability_status: "available",
+                          embeddable_status: "embeddable",
+                        },
                       },
-                    },
-                  ]
-                : table === "profile_video_assignments"
-                  ? state.assigned
-                    ? [{ video_id: v }]
-                    : []
-                  : [];
+                    ]
+                  : table === "profile_video_assignments"
+                    ? state.assigned
+                      ? [{ video_id: v }]
+                      : []
+                    : [];
       const chain: any = {
         then: (resolve: any) =>
           Promise.resolve({

@@ -20,9 +20,9 @@ export default function Privacy() {
           <p>
             WatchNest provides a library of individual videos approved by a
             parent or caregiver. Each child can access only their assigned
-            library through WatchNest. If a parent enables Discover, a child
-            can search only within topics or channels that parent selected.
-            Results cannot play and can only be sent to Parent for approval.
+            library through WatchNest. If a parent enables Discover, a child can
+            search only within topics or channels that parent selected. Results
+            cannot play and can only be sent to Parent for approval.
           </p>
           <h2>YouTube is the video provider</h2>
           <p>
@@ -82,18 +82,19 @@ export default function Privacy() {
             turn each child PIN on or off, change or reset child PINs, and
             resolve child requests. A session deadline is access control; it
             does not measure watched minutes or create viewing analytics.
-            Requests stay in the family’s Parent Inbox. Private viewing information is not publicly
-            shared. WatchNest does not use advertising profiles or third-party
-            analytics SDKs.
+            Requests stay in the family’s Parent Inbox. Private viewing
+            information is not publicly shared. WatchNest does not use
+            advertising profiles or third-party analytics SDKs.
           </p>
           <h2>Shared devices</h2>
           <p>
             Keep the parent password private. Sign out of Parent Mode before
-            giving a shared device to a child. A child profile can open from the
-            private family link while its PIN protection is off. Turn protection
-            on and use a separate PIN for each child when profile entry must be
-            private. Each child session remains limited to that profile’s
-            assigned library in either mode.
+            giving a shared device to a child. A parent connects each family
+            device and authorizes the profile that uses it. Changing profiles on
+            that device requires a Parent handoff. Returning to the same profile
+            uses its optional child PIN. A private family link cannot bypass
+            these protections. Each child session remains limited to that
+            profile’s assigned library.
           </p>
           <h2>Data questions</h2>
           <p>

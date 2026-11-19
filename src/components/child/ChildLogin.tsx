@@ -11,6 +11,8 @@ export default function ChildLogin() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [selected, setSelected] = useState<Profile | null>(null);
   const [parentMode, setParentMode] = useState(false);
+  const [activeProfileId, setActiveProfileId] = useState<string | null>(null);
+  const [handoff, setHandoff] = useState(false);
   const [parentPinSet, setParentPinSet] = useState(false);
   const [pin, setPin] = useState("");
   const [busy, setBusy] = useState(true);
@@ -59,10 +61,12 @@ export default function ChildLogin() {
         const result = await api<{
           profiles: Profile[];
           parent_pin_set: boolean;
+          active_profile_id: string | null;
         }>("/api/auth/device");
         if (cancelled) return;
         setProfiles(result.profiles);
         setParentPinSet(result.parent_pin_set);
+        setActiveProfileId(result.active_profile_id ?? null);
         await api("/api/auth/parent-lock", {});
       } catch {
         if (!cancelled) router.replace("/login");
@@ -82,7 +86,8 @@ export default function ChildLogin() {
     try {
       await api("/api/auth/child", {
         profileId: profile.id,
-        passcode: enteredPin || undefined,
+        passcode: !handoff ? enteredPin || undefined : undefined,
+        parentPin: handoff ? enteredPin || undefined : undefined,
       });
       router.replace("/watch/home");
     } catch (reason) {
@@ -137,7 +142,9 @@ export default function ChildLogin() {
       <section className="picker-content" aria-labelledby="picker-title">
         <div className="picker-heading">
           <h1 id="picker-title">Who’s watching?</h1>
-          <p>Choose a profile to open its approved library.</p>
+          <p>
+            Choose your library. A parent helps when it’s someone else’s turn.
+          </p>
         </div>
         {error && !selected && !parentMode && (
           <p role="alert" className="error picker-error">
@@ -146,8 +153,14 @@ export default function ChildLogin() {
         )}
         {!profiles.length && (
           <div className="picker-empty">
-            <p>No profiles are available. Refresh to check again, or open Parent Mode for family settings.</p>
-            <button className="button-secondary" onClick={() => window.location.reload()}>
+            <p>
+              No profiles are available. Refresh to check again, or open Parent
+              Mode for family settings.
+            </p>
+            <button
+              className="button-secondary"
+              onClick={() => window.location.reload()}
+            >
               Refresh profiles
             </button>
           </div>
@@ -163,7 +176,12 @@ export default function ChildLogin() {
                 setError("");
                 setPin("");
                 submittedPin.current = "";
-                if (profile.pin_enabled) setSelected(profile);
+                const needsHandoff = activeProfileId !== profile.id;
+                setHandoff(needsHandoff);
+                if (needsHandoff && !parentPinSet) {
+                  router.push("/login?parent=1");
+                } else if (needsHandoff || profile.pin_enabled)
+                  setSelected(profile);
                 else void enterChild(profile);
               }}
             >
@@ -177,9 +195,10 @@ export default function ChildLogin() {
               <span className="profile-enter">
                 Open my library <span aria-hidden="true">↗</span>
               </span>
-              {profile.pin_enabled && (
+              {(activeProfileId !== profile.id || profile.pin_enabled) && (
                 <span className="profile-lock">
-                  <Icon name="lock" width="15" /> PIN
+                  <Icon name="lock" width="15" />{" "}
+                  {activeProfileId !== profile.id ? "Parent handoff" : "PIN"}
                 </span>
               )}
             </button>
@@ -192,6 +211,7 @@ export default function ChildLogin() {
             setError("");
             setPin("");
             submittedPin.current = "";
+            setHandoff(false);
             if (parentPinSet) setParentMode(true);
             else router.push("/login?parent=1");
           }}
@@ -228,11 +248,17 @@ export default function ChildLogin() {
               />
             )}
             <h2 id="pin-title">
-              {parentMode ? "Parent Mode" : `${selected?.display_name}’s PIN`}
+              {parentMode
+                ? "Parent Mode"
+                : handoff
+                  ? `Open ${selected?.display_name}’s library`
+                  : `${selected?.display_name}’s PIN`}
             </h2>
             <p>
-              {parentMode
-                ? "Enter the 4-digit Parent PIN."
+              {parentMode || handoff
+                ? handoff
+                  ? "Parent: enter your 4-digit PIN to hand over this device. This doesn’t change anyone’s time limit."
+                  : "Enter the 4-digit Parent PIN."
                 : "Enter the 4-digit PIN."}
             </p>
             <label className="sr-only" htmlFor="profile-pin">

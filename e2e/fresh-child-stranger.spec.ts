@@ -8,9 +8,9 @@ async function evidence(page: Page, info: TestInfo, name: string) {
   await page.screenshot({ path: info.outputPath(`${name}.png`), fullPage: true });
   await info.attach(name, { body: await page.locator('body').ariaSnapshot(), contentType: 'text/plain' });
 }
-async function family(page: Page, mode = 'standard') {
+async function family(page: Page, mode = 'standard', initialProfile = profiles[1]) {
   await fixture(page, 'child', mode);
-  let current = { ...profiles[1], experience_mode: mode, discover_enabled: true, discovery_topics: ['Drawing'], discovery_channels: [] };
+  let current = { ...initialProfile, experience_mode: mode, discover_enabled: true, discovery_topics: ['Drawing'], discovery_channels: [] };
   let favorite = false;
   let requested = false;
   const mutations: { path: string; body: any }[] = [];
@@ -20,10 +20,13 @@ async function family(page: Page, mode = 'standard') {
     const body = route.request().postDataJSON();
     const fulfill = (data: any, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(data) });
     if (method !== 'GET') mutations.push({ path, body });
+    if (path === '/api/auth/device') return fulfill({ profiles, parent_pin_set: true, active_profile_id: current.id });
     if (path === '/api/auth/child') {
       const selected = profiles.find(p => p.id === body.profileId);
       if (!selected) throw new Error('Fresh child fixture received an unknown profileId');
-      if (selected.pin_enabled && body.passcode !== '1234') return fulfill({ error: 'That PIN didn’t match. Try again.' }, 401);
+      const needsParent = selected.id !== current.id;
+      if (needsParent && body.parentPin !== '1234') return fulfill({ error: 'That PIN didn’t match. Try again.' }, 401);
+      if (!needsParent && selected.pin_enabled && body.passcode !== '1234') return fulfill({ error: 'That PIN didn’t match. Try again.' }, 401);
       current = { ...selected, experience_mode: mode, discover_enabled: true, discovery_topics: ['Drawing'], discovery_channels: [] };
       return fulfill({ profile: current });
     }
@@ -43,7 +46,7 @@ test.use({ viewport: { width: 768, height: 1024 } });
 test.afterEach(async ({ page }, info) => { if (info.status !== info.expectedStatus) await evidence(page, info, 'failure').catch(() => {}); });
 
 test('fresh younger child chooses a picture and returns to own library', async ({ page }, info) => {
-  await family(page, 'simple');
+  await family(page, 'simple', profiles[2]);
   await page.route('https://www.youtube.com/iframe_api', r => r.abort());
   await page.route('https://www.youtube-nocookie.com/**', r => r.fulfill({ contentType: 'text/html', body: '' }));
   await page.goto('/watch');
@@ -89,7 +92,7 @@ test('fresh older child retrieves saves and requests', async ({ page }, info) =>
 });
 
 test('fresh shared family switch PIN recovery and parent boundary', async ({ page }, info) => {
-  await family(page);
+  await family(page, 'standard', profiles[3]);
   await page.goto('/watch');
   await page.getByRole('button', { name: /Eli.*Open my library/ }).click();
   await expect(page.getByText('Eli', { exact: true })).toBeVisible();

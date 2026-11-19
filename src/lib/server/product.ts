@@ -165,6 +165,17 @@ export async function parent(allowMode = true) {
   return row;
 }
 
+async function revokeParentMode() {
+  const token = (await cookies()).get("wn_parent_mode")?.value;
+  if (token)
+    check(
+      await db()
+        .from("parent_mode_sessions")
+        .update({ revoked_at: new Date().toISOString() })
+        .eq("token_hash", digest(token)),
+    );
+}
+
 async function issueDevice(parentId: string) {
   const client = db();
   const current = (await cookies()).get("wn_device")?.value;
@@ -211,7 +222,7 @@ async function device() {
   const row = check(
     await db()
       .from("household_devices")
-      .select("id,parent_id,expires_at")
+      .select("id,parent_id,expires_at,active_profile_id")
       .eq("token_hash", digest(token))
       .is("revoked_at", null)
       .gt("expires_at", new Date().toISOString())
@@ -282,6 +293,13 @@ async function child() {
       .maybeSingle(),
   );
   if (!profile) throw new Failure("Profile unavailable.", 401);
+  const linked = await device();
+  if (
+    session.device_id !== linked.id ||
+    linked.parent_id !== profile.parent_id ||
+    linked.active_profile_id !== profile.id
+  )
+    throw new Failure("Ask a parent to open this profile on this device.", 401);
   const household = check(
     await client
       .from("parents")
@@ -978,6 +996,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       return reply({
         profiles: await profileViews(profiles),
         parent_pin_set: Boolean(household.parent_pin_hash),
+        active_profile_id: linked.active_profile_id ?? null,
       });
     }
     if (route === "auth/parent-lock" && method === "POST") {
@@ -1071,19 +1090,49 @@ export async function handle(request: globalThis.Request, path: string[]) {
           family: z.string().min(12).max(64).optional(),
           profileId: id,
           passcode: z.string().max(100).optional(),
+          parentPin: z
+            .string()
+            .regex(/^\d{4}$/)
+            .optional(),
         })
         .parse(body);
-      const linked = b.family ? null : await device();
-      await limit("child:" + (b.family || linked!.id) + ":" + b.profileId, 5);
-      const household = b.family
-        ? check(
-            await client
-              .from("parents")
-              .select("id")
-              .eq("family_code", b.family)
-              .maybeSingle(),
-          )
-        : { id: linked!.parent_id };
+      // A family link is a locator, never authority to discard a device's
+      // previous child identity. Enrollment still requires a Parent sign-in.
+      const linked = await device();
+      await limit("child:" + linked.id + ":" + b.profileId, 5);
+      const household = check(
+        await client
+          .from("parents")
+          .select("id,family_code,parent_pin_hash")
+          .eq("id", linked.parent_id)
+          .single(),
+      );
+      if (b.family && b.family !== household.family_code)
+        throw new Failure("This family link does not match this device.", 403);
+      let parentAuthorized = false;
+      if (b.parentPin !== undefined) {
+        // Share the Parent-mode bucket: two routes must not double PIN guesses.
+        await limit("parent-mode:" + linked.id, 5);
+        if (
+          !household.parent_pin_hash ||
+          !verifyPin(b.parentPin, household.parent_pin_hash)
+        )
+          throw new Failure("That Parent PIN is not correct.", 401);
+        parentAuthorized = true;
+      } else if (linked.active_profile_id !== b.profileId) {
+        try {
+          const verified = await parent();
+          parentAuthorized = verified.id === linked.parent_id;
+        } catch (reason) {
+          if (!(reason instanceof Failure) || reason.status !== 401)
+            throw reason;
+        }
+      }
+      if (linked.active_profile_id !== b.profileId && !parentAuthorized)
+        throw new Failure(
+          "Ask a parent to open this profile on this device.",
+          403,
+        );
       const p =
         household &&
         check(
@@ -1110,13 +1159,18 @@ export async function handle(request: globalThis.Request, path: string[]) {
           "WatchNest is not available for this profile right now.",
           403,
         );
-      if (p.pin_enabled) {
+      if (p.pin_enabled && !parentAuthorized) {
         if (!b.passcode || !verifyPin(b.passcode, p.pin_hash || ""))
           throw new Failure("Incorrect passcode.", 401);
       }
       const token = opaque();
       const admitted = check(
-        await client.rpc("wn_admit_child_session", {
+        await client.rpc("wn_admit_device_child_session", {
+          p_device: linked.id,
+          p_parent: linked.parent_id,
+          p_parent_authorized: parentAuthorized,
+          p_expected_parent_pin_hash: household.parent_pin_hash ?? null,
+          p_bypass_child_pin: parentAuthorized,
           p_profile: p.id,
           p_expected_pin_enabled: p.pin_enabled,
           p_expected_pin_hash: p.pin_enabled ? p.pin_hash : null,
@@ -1126,14 +1180,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
       if (!admitted)
         throw new Failure("Profile settings changed. Please try again.", 409);
-      if (linked) {
-        check(
-          await client
-            .from("child_sessions")
-            .update({ device_id: linked.id })
-            .eq("token_hash", digest(token)),
-        );
-      }
+      await revokeParentMode();
       await cookie("wn_child", token, 86400);
       await cookie("wn_parent", "", 0);
       await cookie("wn_refresh", "", 0);
@@ -1187,14 +1234,35 @@ async function parentRoute(
     const profileId = id.parse(body.profile_id);
     await ownedProfiles(p.id, [profileId]);
     const token = opaque();
-    check(
-      await client.from("child_sessions").insert({
-        profile_id: profileId,
-        device_id: (await device()).id,
-        token_hash: digest(token),
-        expires_at: new Date(Date.now() + 86400000).toISOString(),
+    const linked = await device();
+    if (linked.parent_id !== p.id)
+      throw new Failure("This device belongs to another family.", 403);
+    const target = check(
+      await client
+        .from("profiles")
+        .select("id,pin_enabled,pin_hash")
+        .eq("id", profileId)
+        .eq("parent_id", p.id)
+        .is("archived_at", null)
+        .single(),
+    );
+    const admitted = check(
+      await client.rpc("wn_admit_device_child_session", {
+        p_device: linked.id,
+        p_parent: p.id,
+        p_profile: profileId,
+        p_expected_pin_enabled: target.pin_enabled,
+        p_expected_pin_hash: target.pin_enabled ? target.pin_hash : null,
+        p_token_hash: digest(token),
+        p_expires: new Date(Date.now() + 86400000).toISOString(),
+        p_parent_authorized: true,
+        p_expected_parent_pin_hash: p.parent_pin_hash ?? null,
+        p_bypass_child_pin: true,
       }),
     );
+    if (!admitted)
+      throw new Failure("Profile settings changed. Please try again.", 409);
+    await revokeParentMode();
     await cookie("wn_child", token, 86400);
     await cookie("wn_parent", "", 0);
     await cookie("wn_refresh", "", 0);

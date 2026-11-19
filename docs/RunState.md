@@ -1,3 +1,17 @@
+# CURRENT — Parent-authorized device profile handoff in qualification
+
+Founder November18 physical test on HISTORICAL ef4/7sr: approved picture+sound PASS; recommendation containment Founder-reported PASS only in observed scope; targeted video stopped but profile switching allowed continued viewing: remote End now PARTIAL FAIL / P0 identity-bypass. These observations supersede earlier “all physical gates unknown” for ef4 only; not acceptance of306/newhandoff/daily reset.
+
+Recovered clean43c2ae8 branch premium-ui-ux-20261103/PR49→product-completion-20260930; no newerremoteimplementation. Ephemeral clone removed by maintenance, exact remote re-cloned, no lost local work claimed recovered. Canonical77/dplGiR and configured306stage2W1 reverified READY; existingdaily migration20261118192923 verified, NOT reapplied. Newdevicebindingmigration localonly, nothosted; production/oldstage still known bypass, no readiness claim.
+
+Repair source implemented: persistent device.active_profile_id; atomic service-only Parent-authorized sibling transition; currentParentPIN+childPINsnapshot/rate/ownershipchecks; oldsame-devicechildsessionsrevoked; everychildAPIrequireslivebounddevice; familycodecan'tbypass; Parentviewaschildsharespath. SameprofileoptionalPIN; siblinghandofftargetParentPINdoesnotgrantfullParentMode/changeanytimer. Parent UI presets/custom/Daily correction alreadyin306, retained. See ProfileHandoffAuthority/SecurityInvestigation/ReviewRouting. Current Root soleintegrator, disjointtest/SQLspecialists and independentreviewer.
+
+Qualification IN PROGRESS.18newSQL/26actualroutecases passed individually; firstfull385unit run beforelast2casespassed, lint/type/buildpreformatPASS; initialnewbrowser3/6failed due ambiguousalertlocator matchingNextannouncer, failurekept thenexactdialogalertselectorcorrected. Newfinal sourcefreeze/fullgates/CI/independentsecurity/leanvisual/5freshjury/freshStranger/hostedauth/device retest stillpending. No fabricatedphysicalPASS or transferfromef4. Next: finishcapture/independentreview/freeze, runallmechanicalgates, qualifiednewunaliasedstage+additiveDBreadbacks, secureactualParentQAthenminimalconsolidatedphysicalretet. NoOwneractionyetwhileindependentlanesremain. ExistingnotificationchannelpreflightactualpersonalGmailverified.
+
+Recovery DO NOT DELETE YET for this new handoffrepair until implementation/evidence/Notioncontinuation verifiedremote. Previous306rawcustody+privateNativearchive remain preserved. No newpaidservices/credentials, player/CSP/RLS/timerbudgetrewrite.
+
+---
+
 # CURRENT — staged timer306 / compatible DB applied / Owner authentication hold
 
 WATCHNEST_CONCEPT3_TIMER_HOSTED_AUTH_RELEASE_HOLD; not product/FounderReady. App30681533551d916c08161f29bbb9ba821f6c92f9/appsrc1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392. Existingbranchpremium-ui-ux-20261103/PR49targetproduct-completion-20260930. Exactlocal343unit/80browser/lint/type/build/FULL+PRODaudit0, CI16144377983202all3PASS; independent147freshsecurity/fullAudit0, finite55currentHumanEyeCLEAN/MatchPASS, coldfinalformPASS,5freshaa2juryvotesexplicitlycarriedonunchangedUIapp+current49exact6freshnonmaterialimages, no newjuryclaimed. AlloriginalFAILs retained.

@@ -26,7 +26,10 @@ vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({
   cookies: async () => ({
     get: (name: string) =>
-      name === `wn_${state.role}` ? { value: "token" } : undefined,
+      name === `wn_${state.role}` ||
+      (name === "wn_device" && state.role === "child")
+        ? { value: "token" }
+        : undefined,
     set: (...args: any[]) => state.cookieWrites.push(args),
   }),
 }));
@@ -113,11 +116,16 @@ vi.mock("@supabase/supabase-js", () => ({
           table === "parents"
             ? { id: "family", email: "Avromy@gmail.com" }
             : table === "child_sessions"
-              ? { id: "session", profile_id: "child" }
-              : table === "household_devices" && state.trustedDevice
+              ? { id: "session", profile_id: "child", device_id: "device" }
+              : table === "household_devices" &&
+                  (state.trustedDevice || state.role === "child")
                 ? {
                     id: "device",
                     parent_id: "family",
+                    active_profile_id:
+                      state.childAuthPin !== null
+                        ? "22222222-2222-4222-8222-222222222222"
+                        : "child",
                     expires_at: "2027-01-01T00:00:00.000Z",
                   }
                 : table === "profiles"
@@ -296,7 +304,7 @@ describe("authenticated route dispatch regression", () => {
       }),
     });
   });
-  it("opens a PIN-off profile from its family link without parent authentication", async () => {
+  it("does not treat a family link as authority to admit a PIN-off profile without a trusted device", async () => {
     configured();
     state.role = "none";
     state.childAuthPin = false;
@@ -311,14 +319,12 @@ describe("authenticated route dispatch regression", () => {
       }),
       ["auth", "child"],
     );
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(401);
     expect(state.getUserCalls).toBe(0);
-    expect(state.cookieWrites.map(([name]) => name)).toEqual([
-      "wn_child",
-      "wn_parent",
-      "wn_refresh",
-      "wn_parent_mode",
-    ]);
+    expect(state.cookieWrites).toEqual([]);
+    expect(
+      state.rpcs.some((call) => call.name === "wn_admit_device_child_session"),
+    ).toBe(false);
     expect(JSON.stringify(await response.json())).not.toContain("pin_hash");
   });
   it("keeps a PIN-on profile closed when the child credential is absent", async () => {
