@@ -213,7 +213,7 @@ for (const viewport of viewports) {
       await page.goto("/watch");
       await expect(page.getByRole("button", { name: "Refresh profiles", exact: true })).toBeVisible();
       await capture("family-profile-picker-empty");
-      await page.route("**/api/auth/device", route => route.fulfill(json({ profiles, parent_pin_set: true })));
+      await page.route("**/api/auth/device", route => route.fulfill(json({ profiles, parent_pin_set: true, active_profile_id: profiles[2].id })));
       await page.reload();
       await page.route("**/api/auth/child", route => route.fulfill(json({ error: "Your library is taking a moment. Please try again." }, 503)));
       await page.getByRole("button", { name: /Benny/ }).click();
