@@ -1,4 +1,16 @@
-# CURRENT — exact corrected build qualified; authenticated hosted / physical release hold
+# CURRENT — P0 incident repair staged; actual incident attribution / Parent authentication / physical release HOLD
+
+Application146a672f5b0744a13869dc29983e5942a0d7a233, src464c41e300e38b9c34cb4f6603f4f2019e4141c4; existing premium-ui-ux-20261103/PR49 unchanged. See docs/incident-20261120/IncidentReport.md and Resume.md for current repair, evidence, limitations and continuation. Optional-storage full-page crash reproduced locally and repaired; first-use volume default60 preserved; Parent request preview now lazy/modal/retry/no-mutation; collection/bulk failures surfaced and independent P2 refresh mismatch repaired. Actual live and prior-stage Founder crash causes and dead Preview remain unconfirmed independently; do not equate this source repair with completed hosted RCA.
+
+New configured stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB READY https://watchnest-pq53jywae-avromy.vercel.app exact146a672f. Actual guest browser configured:true/role:null, sign-in renders. Auto-assign production domains DISABLED/manual promotion confirmed; all3canonical aliases remain77a5017d938ded03b1530c2b72978cef27273d61/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac after READY. No promotion/merge/schema/family data writes. Daily20261118192923/handoff20261119042334 verified present; phase2 NOT applied.
+
+Local396unit/lint/type/build/full audit0;95browser PASS on pre-P2 source then19affected after rebuilt frozen146a672f PASS and2touch+keyboard preview PASS. Exact CI167/run44677008406 and final independent cold outcome in Resume/qualification. Independent89test/source/security PASS bound to final src; Human-Eye V2 bounded2viewport/14asset/56edge CLEAN. No blanket actual hosted/provider/device/full-product/jury acceptance. Preserve baseline crash FAIL and first-recheck harness failures. Current raw reports/screens/manifests under incident directory; completed oldConcept3 evidence remains scoped history.
+
+Secure existing Parent sign-in at exact repaired stage is the next hosted dependency. Never ask for passwords/PINs in chat; no copied cookies/minted accounts/auth bypass or changed child limits. Continue authenticated incident sweep separately on live and stage, then final affected independent qualification and one conditional iPad/phone safety session. No routine approval needed for qualified merge/promotion. Legacy phase2 and guarded rollback rules remain in ProfileHandoffReleasePlan. Recovery clearance and Attention receipt in Resume; product release remains HOLD.
+
+---
+
+# PREVIOUS — exact corrected profile-handoff build qualified; authenticated hosted / physical release hold
 
 Application decd2681e693de7ef33ea067610117c7467123b4, source tree 2d1d0370ac94b35d195d16a5be5696a5202f14e6. Exact final 396 unit / 84 browser (zero skipped, unexpected, flaky), lint/type/build PASS, full and production audits zero, CI166 / 44456800307 all three jobs SUCCESS. Independent security 97 targeted +16 SQL checks; five fresh unanimous Child-entry jurors; two lean reviews; cold Stranger P3 singular-minute copy repaired and fresh affected recheck PASS. Child carry-forward is bound to component hashes and measured seven identical / two one-pixel capture differences, not a fabricated new jury.
 

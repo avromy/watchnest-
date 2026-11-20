@@ -639,3 +639,23 @@ existing SVG icon consistency, responsive/accessibility and actual state capture
 Player/backend mutations prohibited. Candidate and production claims require
 exact frozen source, executable checks, genuine rendered independent receipts.
 The physical P0 gate remains unresolved; no inherited device PASS claimed.
+# P0 stability / requested Preview recovery — November19 ET / November20 UTC
+
+Current source146a672f/src464c41e3, stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB. Full recovered authority/mutation contract: incident-20261120/authority-and-preflight.md. Evidence statuses are scoped; no prior final jury is transferred.
+
+| Capability | Current authority consumed | Applied work / evidence | Result |
+|---|---|---|---|
+| Universal/project routing and infrastructure autonomy | Live Universal Router, Registry, OS, CTO and eight app files; InfrastructureV1.1 | Recovered exact existing branch/PR/aliases/migrations before mutation; supported connector publication after shell push lacked credentials; no duplicate DB operation; configured unaliased stage with native aliases readbacks | PASS bounded recovery/staging; product hold |
+| Founder Attention | Live3ed584c4f747819bb6cdd24c15664007 | Personal Gmail profile preflight succeeded; newstage auth boundary; final receipt in Resume | Active; only genuine owner auth notification |
+| Product Intelligence | Current adapter read; live app locks | Solved immediate incident, classified demonstrated optional-storage versus suspected provider causes; reusable lessons kept separate from family specifics | PASS bounded application; no commercial expansion |
+| AVP V008.2 / AppUI / reusable Website methods | DropboxALrdg ZIP hash2f40be4a... verified; full relevant modules read | Preserved Concept3/modal/player tokens; finite pointer/touch/keyboard/loading/error/close and responsive evidence; no Figma/redesign/asset import | PASS bounded production; final overall acceptance unresolved |
+| Functional/security independent review | Separate incident_security_review context; actual changed source | source-investigation/final-review;89targeted checks; original P2 found, repaired, final src semantic equivalence verified | PASS SOURCE+AUTOMATED only |
+| Mechanical/browser regression | Existing actual test harness and new incident regressions |396unit; local95full +19finalaffected +2touch; exact CI167 bound in Resume; no hosted fixture inference | PASS scoped; see qualification |
+| Browser | Current control-browser instructions read, connected Chrome | Live picker, oldstage/newstage sign-in and newstage configured:true; separate bounded console/server checks; native production safeguards read | BLOCKED authenticated Parent; no device PASS |
+| Human-Eye V2.0 | Live production authority3ea584c4f74781f5946bef30a54c86c5 | Independent exact2viewport/14asset/56edge finite receipt, neutral hashes/geometry, original incomplete receipt preserved | CLEAN only static synthetic dialog layout |
+| Cold Stranger v1.1 | DropboxALrSg ZIP20f37c4d... verified; complete skill/directive read | Fresh cold_parent_journey context, ordinary fixture access only before freeze; independent clicks/screens/journal | Final bounded result in cold report; actual hosted gate OPEN |
+| Match / Blind Jury / Founder Ready | Live router + current AVP variable-jury instructions | No old review recycled; five-person final high-risk jury and final acceptance deferred while actual authenticated incident investigation may change candidate | UNRESOLVED / release-blocking; no final invocation/PASS claim |
+| New brand/icons/assets | Existing Concept3 unchanged | No new identity/icon/type/photography system created | NOT TRIGGERED |
+| Continuous Learning/durability | Live3e6584c4f74781b7989cf9d1ffd88c9a | IncidentRCA/regressions/failed evidence, app learning, Notion/current checkpoint and deterministic Resume | See verified final durability receipt; not product readiness |
+
+---

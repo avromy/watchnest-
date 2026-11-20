@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { dashboard, fixture, profiles } from "./fixtures";
+import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
+
+test.use({hasTouch:true});
 
 for (const viewport of [
   { width: 390, height: 844 },
@@ -37,14 +42,66 @@ for (const viewport of [
     await page.goto("/parent/inbox");
     const preview = page.getByText("Preview", { exact: true });
     await expect(page.locator("iframe")).toHaveCount(0);
-    await preview.click();
+    await preview.tap();
     await expect(
       page.getByRole("dialog", { name: "Requested craft video" }),
     ).toBeVisible();
-    await page.screenshot({
+    const screenshot = await page.screenshot({
       path: info.outputPath("request-preview.png"),
-      fullPage: true,
     });
+    const geometry = await page.evaluate(() => {
+      const rect = (element: Element) => {
+        const r = element.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height };
+      };
+      const dialog = document.querySelector('[role="dialog"]')!;
+      return {
+        viewport: { width: innerWidth, height: innerHeight },
+        dialog: rect(dialog),
+        panel: rect(dialog.querySelector("section")!),
+        assets: Array.from(dialog.querySelectorAll("h2,button,iframe,p")).map(
+          (element) => ({
+            tag: element.tagName,
+            text:
+              element.tagName === "IFRAME"
+                ? "synthetic video frame"
+                : element.textContent,
+            rect: rect(element),
+          }),
+        ),
+        overflow: {
+          document: document.documentElement.scrollWidth,
+          body: document.body.scrollWidth,
+        },
+      };
+    });
+    writeFileSync(
+      info.outputPath("request-preview-manifest.json"),
+      JSON.stringify(
+        {
+          evidence:
+            "SYNTHETIC BROWSER / VIEWPORT SCREENSHOT; no hosted/provider/device claim",
+          source: execFileSync("git", ["rev-parse", "HEAD", "HEAD:src"], {
+            encoding: "utf8",
+          })
+            .trim()
+            .split("\n"),
+          buildId: readFileSync(".next/BUILD_ID", "utf8").trim(),
+          componentSha256: createHash("sha256")
+            .update(readFileSync("src/components/parent/RequestPreview.tsx"))
+            .digest("hex"),
+          cssSha256: createHash("sha256")
+            .update(readFileSync("src/components/parent/Parent.module.css"))
+            .digest("hex"),
+          screenshotSha256: createHash("sha256")
+            .update(screenshot)
+            .digest("hex"),
+          geometry,
+        },
+        null,
+        2,
+      ),
+    );
     const frame = page.locator("iframe");
     await expect(frame).toBeVisible();
     const box = await frame.boundingBox();

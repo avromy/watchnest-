@@ -1,0 +1,773 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/b4fb31747e8d/watchnest/node_modules/@playwright/test/cli.js",
+      "test",
+      "e2e/request-preview.spec.ts",
+      "e2e/startup.spec.ts"
+    ],
+    "configFile": "/workspace/scratch/b4fb31747e8d/watchnest/playwright.config.ts",
+    "rootDir": "/workspace/scratch/b4fb31747e8d/watchnest/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/b4fb31747e8d/watchnest/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/b4fb31747e8d/watchnest/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run start -- --hostname 127.0.0.1 --port 3001",
+      "url": "http://127.0.0.1:3001",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "request-preview.spec.ts",
+      "file": "request-preview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "requested video Preview opens on 390px without approval",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 674,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:44:37.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0813964c1a318548ab-35a80f931f6c0e44b2e1",
+          "file": "request-preview.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "requested video Preview opens on 820px without approval",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 594,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:44:38.486Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0813964c1a318548ab-f41d872da71c37c7d25c",
+          "file": "request-preview.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "request preview slow frame has retry and never mutates approval",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:44:39.090Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0813964c1a318548ab-01bbbceaac6310cc8a9e",
+          "file": "request-preview.spec.ts",
+          "line": 63,
+          "column": 5
+        },
+        {
+          "title": "Inbox collection creation failures are visible and retry retains input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 632,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:44:39.646Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0813964c1a318548ab-d7e4f982848c1f9ab04c",
+          "file": "request-preview.spec.ts",
+          "line": 84,
+          "column": 5
+        },
+        {
+          "title": "Library collection and removal failures surface without losing selection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30093,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/request-preview.spec.ts",
+                        "column": 60,
+                        "line": 110
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Add to Collection', { exact: true })\u001b[22m\n\n\n  108 |   await page.goto('/parent/library');\n  109 |   await page.getByRole('checkbox',{name:dashboard.videos[0].title,exact:true}).check();\n> 110 |   await page.getByLabel('Add to Collection', {exact:true}).selectOption(dashboard.collections[0].id);\n      |                                                            ^\n  111 |   await page.getByRole('button',{name:'Add selected to Collection',exact:true}).click();\n  112 |   await expect(page.getByText('Collection update unavailable')).toBeVisible();\n  113 |   await expect(page.getByRole('checkbox',{name:dashboard.videos[0].title,exact:true})).toBeChecked();\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/request-preview.spec.ts:110:60"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:44:40.291Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/request-preview-Library-co-75e57-ce-without-losing-selection/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/request-preview-Library-co-75e57-ce-without-losing-selection/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0813964c1a318548ab-454c094df05a1638b1d7",
+          "file": "request-preview.spec.ts",
+          "line": 103,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "startup.spec.ts",
+      "file": "startup.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "synthetic startup: denied preference storage cannot crash approved playback",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5293,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Play video', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: 'Play video', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Play video', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Play video', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: 'Play video', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Play video', exact: true })\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/startup.spec.ts:52:5",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/startup.spec.ts",
+                      "column": 5,
+                      "line": 52
+                    },
+                    "snippet": "  50 |   await expect(\n  51 |     page.getByRole(\"button\", { name: \"Play video\", exact: true }),\n> 52 |   ).toBeVisible();\n     |     ^\n  53 |   await expect(\n  54 |     page.getByText(\n  55 |       \"WatchNest couldn’t load this page. Your library stays protected.\","
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/startup.spec.ts",
+                        "column": 5,
+                        "line": 52
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Play video', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: 'Play video', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Play video', exact: true })\u001b[22m\n\n\n  50 |   await expect(\n  51 |     page.getByRole(\"button\", { name: \"Play video\", exact: true }),\n> 52 |   ).toBeVisible();\n     |     ^\n  53 |   await expect(\n  54 |     page.getByText(\n  55 |       \"WatchNest couldn’t load this page. Your library stays protected.\",\n    at /workspace/scratch/b4fb31747e8d/watchnest/e2e/startup.spec.ts:52:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:10.882Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/startup-synthetic-startup--81928-not-crash-approved-playback/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest/test-results/startup-synthetic-startup--81928-not-crash-approved-playback/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest/e2e/startup.spec.ts",
+                    "column": 5,
+                    "line": 52
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-4733cb7cccb5617b76ab",
+          "file": "startup.spec.ts",
+          "line": 33,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: volume preference null preserves intentional sound",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 434,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:16.838Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-aa79836be82c6ba33329",
+          "file": "startup.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: volume preference \"0\" preserves intentional sound",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:17.344Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-a25403f5f627c4474c9c",
+          "file": "startup.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: volume preference \"75\" preserves intentional sound",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 260,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:17.673Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-a961a5ead06eeba755f9",
+          "file": "startup.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: volume preference \"invalid\" preserves intentional sound",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 271,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:17.943Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-5d768bff597e4466ebbc",
+          "file": "startup.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: volume preference \"\" preserves intentional sound",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 297,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:18.225Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-3df1e8fbe7537dc296f1",
+          "file": "startup.spec.ts",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: API attaches before delayed iframe document load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 345,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:18.534Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-155f529656942042ce98",
+          "file": "startup.spec.ts",
+          "line": 80,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: late API cannot reconstruct a containment-stopped player",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:18.891Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-00eef268b022fa0b97b6",
+          "file": "startup.spec.ts",
+          "line": 115,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: late onReady and state events cannot reverse containment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 400,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:19.181Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-2928e2804dce0762762d",
+          "file": "startup.spec.ts",
+          "line": 151,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: missing provider readiness times out and removes frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:19.590Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-445673a6f7cc89764572",
+          "file": "startup.spec.ts",
+          "line": 186,
+          "column": 5
+        },
+        {
+          "title": "synthetic startup: __replaceFrame fails closed without unmonitored frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 214,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:40.014Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-16931938e455e841925e",
+          "file": "startup.spec.ts",
+          "line": 211,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: __throwOnReady fails closed without unmonitored frame",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 252,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:40.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-b57fd64d8750588220a1",
+          "file": "startup.spec.ts",
+          "line": 211,
+          "column": 7
+        },
+        {
+          "title": "synthetic startup: provider error before ready is terminal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T04:45:40.496Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-8a1c7b02dd40232f45d6",
+          "file": "startup.spec.ts",
+          "line": 231,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-20T04:44:35.746Z",
+    "duration": 65117.182,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

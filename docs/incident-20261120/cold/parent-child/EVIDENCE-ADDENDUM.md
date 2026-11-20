@@ -1,0 +1,3 @@
+# Evidence capture addendum
+
+After the blind report froze, a duplicate Requests current screenshot was captured with an explicit settle delay: `25-requests-settled.png`. Prefer it over05 for the visual packet because05 shows a transitioning active-nav highlight. No new product findings or product authority were consumed. The blind report is unchanged. Settled images21,22,23,24,25 are current key-page visuals. Screen09 Manage,12 Time and20 Help were directly visually inspected and aligned with their reported state. Browser closed. Only auditor-owned port3004 server contexts were interrupted; controller3001 untouched.

@@ -302,3 +302,16 @@ The remote timer records a prospective wall-clock access deadline and ephemeral
 device acknowledgement. It does not require video identity, progress, viewed
 minutes or engagement history. This preserves the separation between Parent
 access control and Made-for-Kids viewing analytics.
+# Incident recovery learning — November19 ET / November20 UTC
+
+PROJECT / demonstrated regression: optional localStorage access in a React mount effect escaped to the application error boundary. A persisted numeric preference also converted missing null into zero. Guard property/read/write access, retain the in-memory default on missing/invalid persistence, and preserve intentional zero. Baseline failed browser receipt plus denied-storage/quota/default/zero tests are in incident-20261120 and e2e/startup.spec.ts. This path exists in both live77 and oldstage decd, but actual Founder incident causation is not established; do not promote source reproduction to physical RCA.
+
+PROJECT / demonstrated failure recovery: Parent event promises outside shared action handling can reject without actionable feedback. A successful resource creation followed by a failed list refresh can leave a confirmed ID absent from the visible select even though a later action sends it. Preserve confirmed resource identity/title visibly until reconciliation and distinguish mutation failure from refresh failure. Independent reviewer caught this P2; original report and repaired visible-option/payload browser regression remain preserved.
+
+PROJECT / source fact and hypothesis boundary: requested-video Inbox disclosure mounted eager provider frames even when unopened; new preview mounts only on demand. Original native disclosure opened in local tests, so a report of an inert hosted click still requires actual authenticated click/console/network evidence. Resource exhaustion is a hypothesis, not a measured cause.
+
+PROCESS / calibration: testing topic-request search→preview does not cover direct requested-video Preview. Keep both journeys. Source presence, synthetic iframe load and server log absence cannot establish provider playback or physical-device health. A full-page modal screenshot may include below-viewport document pixels; preserve original concern and use actual viewport capture plus source/build/geometry/image binding before optical judgment. Never silently erase incomplete/failed review receipts.
+
+Reusable DOMAIN observations are retained as proposals through the current learning system, with no private family data and no uncontrolled universal skill revision. New application/source identity invalidates affected hosted/cold/physical acceptance; previous controls remain scoped evidence, never blanket certification.
+
+---
