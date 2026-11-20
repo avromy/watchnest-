@@ -1,3 +1,13 @@
+# CURRENT — authenticated stage checks completed; separate live Cloud sign-in interrupted
+
+Repairedstage146a672f / dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB was positively authenticated through secure WorkCloud browserAuth, then actual Parent settings verified. Actual read-only Preview identity/open/retry/close/reopen and unsaved1/5/10/Daily7AM observations are durable in docs/incident-20261120/CloudHostedAcceptance-20261120.md (commit8efead90492b32486ab3de9a968ecd3efe71d25b). No family timer/approval/settings command submitted.
+
+Separate canonical production secure-auth request timed out without confirmed result; runtime bindings lost. First recovery fresh Cloud tab at canonical /parent/dashboard visibly resolved /login. Production authentication NOTverified; timeout is not bad-password/site-crash/bot evidence. No automatic credential retry/localChrome fallback. Current Cloud tab8 is canonical sign-in; documented manual Cloud takeover is next minimum existing Parent account action. Never send secrets in chat. Stage session continuity after reset is unknown: inspect/reopen exactstage before asking stage login again. Previously verified stage evidence stays valid.
+
+Release HOLD, not crash-free/physical PASS. No merge/promotion/migration. Continue live read-only investigation after positive ParentUI in SAMECloud; remaining final independent/device gates remain. Recovery CLEAR TO DELETE, independent of readiness.
+
+---
+
 # CURRENT — Founder Cloud Browser correction — November20,2026
 
 Authentication and hosted acceptance MUST use this same Work Builder's CLOUD BROWSER (cdp), never connected/local Chrome or an extension. This supersedes every earlier connected-Chrome instruction and the prior email's browser direction. Do not transfer sessions, read/export credentials/cookies, mint accounts or bypass ParentPIN.
