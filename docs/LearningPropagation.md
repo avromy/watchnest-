@@ -315,3 +315,11 @@ PROCESS / calibration: testing topic-request search→preview does not cover dir
 Reusable DOMAIN observations are retained as proposals through the current learning system, with no private family data and no uncontrolled universal skill revision. New application/source identity invalidates affected hosted/cold/physical acceptance; previous controls remain scoped evidence, never blanket certification.
 
 ---
+
+## Integrity learning — November20,2026
+
+Observed stage GET/session42501 and independent realSDK reproduction exposed service-role client contamination: persistSession:false does not prevent in-memory user session installation by refreshSession. Keep user-auth mutations on a separate auth client, verify identity, then perform server-authorized database operations on an untouched service client. Do not solve by granting client roles family-table access. Session probes must distinguish expected auth denial from dependency outage; returning role:null on a database/Auth503 silently manufactures sign-out. Regression uses actual SDK with controlled HTTP, no credentials.
+
+Independent rendered network fault also exposed unhandled Sign out rejection. Access-removal UI needs honest uncertain-state feedback, bounded pending, duplicate suppression and explicit retry; never claim successful sign-out based on a click or clear visible state while server outcome is unknown.
+
+Founder correction: stop repeated sign-in handoffs when requested and continue all independent integrity work. Preserve exact release hold and remaining hosted/device scope. New configured-stage attempt was cancelled when planned alias list conflicted with hold; current all3canonical mappings reverified unchanged. No blind retry from ambiguous filtered configuration. App-level findings propagated here and Notion handoff; no unverified global skill update or family data mutation.

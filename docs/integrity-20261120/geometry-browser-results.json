@@ -1,0 +1,167 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@playwright/test/cli.js",
+      "test",
+      "e2e/independent-client-integrity.spec.ts",
+      "--grep",
+      "times out"
+    ],
+    "configFile": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/playwright.config.ts",
+    "rootDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run start -- --hostname 127.0.0.1 --port 3001",
+      "url": "http://127.0.0.1:3001",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "independent-client-integrity.spec.ts",
+      "file": "independent-client-integrity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "logout times out a hung request with honest feedback and permits retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T20:54:16.084Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "neutral-geometry",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-d44e3632a1fceb3e868a176a89616fba3d57639e.json"
+                    },
+                    {
+                      "name": "logout-pending-390",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-pending-390-69f8fc2314a27db54f58da441693905f4146d866.png"
+                    },
+                    {
+                      "name": "neutral-geometry",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-b4645bc3b0dfb0e6804e66e0e611569b7de74abc.json"
+                    },
+                    {
+                      "name": "logout-pending-820",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-pending-820-c6226e3e74dc8d3abfb08025c36cc486f515ee0b.png"
+                    },
+                    {
+                      "name": "neutral-geometry",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-dcdc5578aaa0f8718444501f68666103c3abadbb.json"
+                    },
+                    {
+                      "name": "logout-timeout-390",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-timeout-390-8e28c7417a65768429e1b6701c5cf5c4a50a829e.png"
+                    },
+                    {
+                      "name": "neutral-geometry",
+                      "contentType": "application/json",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-9c4eac844bf53b9bbe18aa664709afcb6c119c5e.json"
+                    },
+                    {
+                      "name": "logout-timeout-820",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-timeout-820-9492785403feee668dd6bc9bb27d62cabff131e3.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6594051b2bc1d000ac1a-7d72a74511997661eeef",
+          "file": "independent-client-integrity.spec.ts",
+          "line": 53,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-20T20:54:14.394Z",
+    "duration": 3101.999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

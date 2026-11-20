@@ -673,3 +673,7 @@ Current source146a672f/src464c41e3, stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB. Full
 | Continuous Learning/durability | Live3e6584c4f74781b7989cf9d1ffd88c9a | IncidentRCA/regressions/failed evidence, app learning, Notion/current checkpoint and deterministic Resume | See verified final durability receipt; not product readiness |
 
 ---
+
+## Integrity continuation — November20,2026
+
+Same Builder2, PR49. Existing authority/package receipts remain in prior incident ledger; no new universal package version claimed. Independent security reviewer invoked actual Supabase SDK controlled-transport red/green tests for refresh authority and dependency failure. Independent client reviewer inspected Parent/Child async paths and reproduced actual unhandled sign-out rejection against frozen146 built artifact; narrow fix and network/HTTP/hung/pending regressions authored. Human-Eye reviewer inspected changed source with exact hashes; final4state rebuilt screenshots and freshsource/build/geometry bindings independently checked:12regions/26assets/4readable/4structural/104edges,0conflicts/defects,CLEAN within exact finitevisualscope. Keyboard/AT/physical/fullapp acceptance excluded. Full400unit/database integration PASS; exact CI168 all3jobsSUCCESS with100browser/build/lint/type/prodaudit0; final local4logout+1geometry PASS. Scopes explicitly separate local/synthetic, previous146 hosted observations and open physical gates. See docs/integrity-20261120 for raw/final receipts. No old jury or hosted approval extended to changed code.

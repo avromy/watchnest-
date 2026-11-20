@@ -1,0 +1,10 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "## Runtime Logs\n\n**Project:** prj_tQi2cBAosldposlx61FcwnwDJ8OG\n**Deployment:** dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB\n**Time range:** 2026-11-19T20:33:22.763Z → 2026-11-20T20:33:22.763Z\n\n### 2026-11-20T17:15:09.590Z GET /api/session [error/function]\ndep=dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB branch=premium-ui-ux-20261103 request=hphp6-1795194908099-de6573b4aa95 domain=watchnest-pq53jywae-avromy.vercel.app environment=production region=iad1 runtime=nodejs26.x stream=stderr\n    [watchnest-data] operation failed { context: 'family-data', code: '42501', status: 403 }\n"
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}

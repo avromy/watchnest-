@@ -1,0 +1,26 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs e2e/independent-client-integrity.spec.ts
+
+[WebServer] (node:43) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] (node:56) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:68) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/independent-client-integrity.spec.ts:5:7 › logout network failure is visible and retryable without an unhandled error (628ms)
+  ✓  2 e2e/independent-client-integrity.spec.ts:5:7 › logout http failure is visible and retryable without an unhandled error (470ms)
+  ✓  3 e2e/independent-client-integrity.spec.ts:31:5 › logout holds a single pending request and recovers after completion (416ms)
+  ✓  4 e2e/independent-client-integrity.spec.ts:51:5 › logout times out a hung request with honest feedback and permits retry (851ms)
+
+  4 passed (4.4s)
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

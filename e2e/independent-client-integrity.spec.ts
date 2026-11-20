@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { fixture } from "./fixtures";
+import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 
 for (const failure of ["network", "http"] as const) {
   test(`logout ${failure} failure is visible and retryable without an unhandled error`, async ({ page }) => {
@@ -49,6 +51,56 @@ test("logout holds a single pending request and recovers after completion", asyn
 });
 
 test("logout times out a hung request with honest feedback and permits retry", async ({ page }) => {
+  const captureGeometry = async (imagePath: string) => {
+    const panel = page.getByRole("heading", { name: "Device access", exact: true }).locator("..");
+    const geometry = await panel.evaluate((element) => {
+      const rect = (node: Element) => {
+        const box = node.getBoundingClientRect();
+        return { x: box.x, y: box.y, width: box.width, height: box.height };
+      };
+      return {
+        viewport: { width: window.innerWidth, height: window.innerHeight },
+        scroll: { x: window.scrollX, y: window.scrollY },
+        panel: rect(element),
+        assets: Array.from(element.querySelectorAll("h2,p,button,svg")).map((node) => ({
+          tag: node.tagName,
+          text: node.textContent,
+          role: node.getAttribute("role"),
+          disabled: node instanceof HTMLButtonElement ? node.disabled : null,
+          rect: rect(node),
+          scrollWidth: node.scrollWidth,
+          clientWidth: node.clientWidth,
+          overflowX: getComputedStyle(node).overflowX,
+          overflowY: getComputedStyle(node).overflowY,
+        })),
+        overflow: { document: document.documentElement.scrollWidth, body: document.body.scrollWidth },
+      };
+    });
+    const reference = JSON.parse(readFileSync("docs/integrity-20261120/source-hashes.json", "utf8"));
+    const sha256 = Object.fromEntries(
+      ["src/lib/server/product.ts", "src/components/parent/ParentApp.tsx"].map((path) => [
+        path,
+        createHash("sha256").update(readFileSync(path)).digest("hex"),
+      ]),
+    );
+    const referenceSourceHashesMatch = Object.entries(sha256).every(
+      ([path, hash]) => reference.sha256[path] === hash,
+    );
+    const record = {
+      evidence: "NEUTRAL SYNTHETIC BROWSER GEOMETRY; no keyboard/AT/physical-touch/provider claim",
+      source: {
+        applicationCommitReference: reference.applicationCommit,
+        referenceSourceHashesMatch,
+        buildId: readFileSync(".next/BUILD_ID", "utf8").trim(),
+        sha256,
+      },
+      screenshotSha256: createHash("sha256").update(readFileSync(imagePath)).digest("hex"),
+      geometry,
+    };
+    const path = imagePath.replace(/\.png$/, ".geometry.json");
+    writeFileSync(path, JSON.stringify(record, null, 2));
+    await test.info().attach("neutral-geometry", { path, contentType: "application/json" });
+  };
   await fixture(page, "parent");
   let calls = 0;
   let release!: () => void;
@@ -73,6 +125,7 @@ test("logout times out a hung request with honest feedback and permits retry", a
       await page.getByRole("heading", { name: "Device access", exact: true }).scrollIntoViewIfNeeded();
       const path = test.info().outputPath(`logout-pending-${width}.png`);
       await page.screenshot({ path });
+      await captureGeometry(path);
       await test.info().attach(`logout-pending-${width}`, { path, contentType: "image/png" });
     }
     await page.clock.fastForward(15001);
@@ -86,6 +139,7 @@ test("logout times out a hung request with honest feedback and permits retry", a
       await alert.scrollIntoViewIfNeeded();
       const path = test.info().outputPath(`logout-timeout-${width}.png`);
       await page.screenshot({ path });
+      await captureGeometry(path);
       await test.info().attach(`logout-timeout-${width}`, { path, contentType: "image/png" });
     }
     await signOut.click();

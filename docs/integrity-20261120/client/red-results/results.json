@@ -1,0 +1,162 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/integrity-20261120/client/red.config.mjs",
+      "--grep",
+      "logout network"
+    ],
+    "configFile": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/integrity-20261120/client/red.config.mjs",
+    "rootDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/integrity-20261120/client/red-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "independent-client-integrity.spec.ts"
+        ],
+        "timeout": 15000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./red-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "./node_modules/.bin/next start --hostname 127.0.0.1 --port 3004",
+      "cwd": "/workspace/scratch/b4fb31747e8d/watchnest",
+      "url": "http://127.0.0.1:3004"
+    }
+  },
+  "suites": [
+    {
+      "title": "independent-client-integrity.spec.ts",
+      "file": "independent-client-integrity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "logout network failure is visible and retryable without an unhandled error",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 431,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Failed to fetch\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Failed to fetch\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/independent-client-integrity.spec.ts:20:20",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/independent-client-integrity.spec.ts",
+                      "column": 20,
+                      "line": 20
+                    },
+                    "snippet": "  18 |     await page.waitForTimeout(100);\n  19 |     await test.info().attach(\"client-errors\", { body: JSON.stringify(errors), contentType: \"application/json\" });\n> 20 |     expect(errors).toEqual([]);\n     |                    ^\n  21 |     await expect(page.getByRole(\"alert\").filter({ hasText: /could not sign out|synthetic sign-out unavailable/i })).toBeVisible();\n  22 |     await expect(signOut).toBeEnabled();\n  23 |     expect(errors).toEqual([]);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/independent-client-integrity.spec.ts",
+                        "column": 20,
+                        "line": 20
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Failed to fetch\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  18 |     await page.waitForTimeout(100);\n  19 |     await test.info().attach(\"client-errors\", { body: JSON.stringify(errors), contentType: \"application/json\" });\n> 20 |     expect(errors).toEqual([]);\n     |                    ^\n  21 |     await expect(page.getByRole(\"alert\").filter({ hasText: /could not sign out|synthetic sign-out unavailable/i })).toBeVisible();\n  22 |     await expect(signOut).toBeEnabled();\n  23 |     expect(errors).toEqual([]);\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/independent-client-integrity.spec.ts:20:20"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-20T20:36:26.624Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "client-errors",
+                      "contentType": "application/json",
+                      "body": "WyJGYWlsZWQgdG8gZmV0Y2giXQ=="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/integrity-20261120/client/red-results/independent-client-integri-01a76--without-an-unhandled-error/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/independent-client-integrity.spec.ts",
+                    "column": 20,
+                    "line": 20
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6594051b2bc1d000ac1a-487e0ef23c5f670057bc",
+          "file": "independent-client-integrity.spec.ts",
+          "line": 5,
+          "column": 7
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-20T20:36:25.496Z",
+    "duration": 1893.0260000000003,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

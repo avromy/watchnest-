@@ -1,0 +1,56 @@
+{
+  "applicationCommit": "0aac62ea0dd42d1f1301d98a4651d8b8f05e7394",
+  "buildId": "16cAFLfVdU9apUomQC7jN",
+  "files": [
+    {
+      "path": "docs/integrity-20261120/visual/logout-pending-390.png",
+      "sha256": "e283556614b464cd0193fa77f144392b080178ca8a1b8b2c0eb5a38c3b113240"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/readable-logout-timeout-820.png",
+      "sha256": "4c29fc70bdc6b1301eebecb3626d44884f052acd3bae3f8111060e6ed41c11e9"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/readable-logout-pending-390.png",
+      "sha256": "b3698fe05abde1a4952ecce76a122114d88e87295149dcd25adbad13bc45552a"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/logout-pending-820.png",
+      "sha256": "3382d1c90a5d0d3332abee9a15c3706b7bddd7fcf7722265fbc361b72a7a076a"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/logout-timeout-820.png",
+      "sha256": "5e755e5d539d25429afb9057725d4916a6fb734c6e4a0f6e16228321aa557be5"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/logout-timeout-390.png",
+      "sha256": "73d0946418bb2e9538b7e76d24db11cd2c833fdc5ab14255d3446bfc5c812014"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/readable-logout-pending-820.png",
+      "sha256": "8d08fd8bbe8370060b0b73c45d0dd5caea39a2f849d7ae0e7fe053f0d317a2b7"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/readable-logout-timeout-390.png",
+      "sha256": "5614582344c795706086fd328042c0f4e968487ec192ad5bcb8cd0397db94a6d"
+    }
+  ],
+  "geometryFiles": [
+    {
+      "path": "docs/integrity-20261120/visual/logout-pending-390.geometry.json",
+      "sha256": "0f274424e932ef4512304a73d48ee8eb20c96550f8e14c4699c46cf6b8e0d00a"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/logout-pending-820.geometry.json",
+      "sha256": "da3ebb0b9adb7e9466c98d16957748d9ede54954bdf15171bdb28a74e0cb233b"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/logout-timeout-390.geometry.json",
+      "sha256": "5cf0763e7abea3333a9a6f7e81a495f4e24b5cd4bc7f244c28c4a248bdbdbdec"
+    },
+    {
+      "path": "docs/integrity-20261120/visual/logout-timeout-820.geometry.json",
+      "sha256": "091910d919a6eee0bfdc58c7479a289fd290752c00d0f4614841e19c946ca714"
+    }
+  ]
+}

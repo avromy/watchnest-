@@ -1,0 +1,131 @@
+{
+  "evidence": "NEUTRAL SYNTHETIC BROWSER GEOMETRY; no keyboard/AT/physical-touch/provider claim",
+  "source": {
+    "applicationCommitReference": "0aac62ea0dd42d1f1301d98a4651d8b8f05e7394",
+    "referenceSourceHashesMatch": true,
+    "buildId": "16cAFLfVdU9apUomQC7jN",
+    "sha256": {
+      "src/lib/server/product.ts": "791bc2b7cccc16c01263eb0edca2d83b2179f1d054a4aff59549db7f2818e973",
+      "src/components/parent/ParentApp.tsx": "de974d847096242dfc27c30f50bac11a10be926483f7952ea24a15469f5a2dd8"
+    }
+  },
+  "screenshotSha256": "73d0946418bb2e9538b7e76d24db11cd2c833fdc5ab14255d3446bfc5c812014",
+  "geometry": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "scroll": {
+      "x": 0,
+      "y": 2047
+    },
+    "panel": {
+      "x": 16,
+      "y": 118.1875,
+      "width": 358,
+      "height": 394.703125
+    },
+    "assets": [
+      {
+        "tag": "H2",
+        "text": "Device access",
+        "role": null,
+        "disabled": null,
+        "rect": {
+          "x": 37,
+          "y": 139.1875,
+          "width": 316,
+          "height": 30.09375
+        },
+        "scrollWidth": 316,
+        "clientWidth": 316,
+        "overflowX": "visible",
+        "overflowY": "visible"
+      },
+      {
+        "tag": "P",
+        "text": "Switch profiles keeps this family iPad connected. Sign out removes WatchNest access from this browser.",
+        "role": null,
+        "disabled": null,
+        "rect": {
+          "x": 37,
+          "y": 185.109375,
+          "width": 316,
+          "height": 74.390625
+        },
+        "scrollWidth": 316,
+        "clientWidth": 316,
+        "overflowX": "visible",
+        "overflowY": "visible"
+      },
+      {
+        "tag": "BUTTON",
+        "text": " Switch profile",
+        "role": null,
+        "disabled": false,
+        "rect": {
+          "x": 37,
+          "y": 275.5,
+          "width": 165,
+          "height": 46
+        },
+        "scrollWidth": 163,
+        "clientWidth": 163,
+        "overflowX": "visible",
+        "overflowY": "visible"
+      },
+      {
+        "tag": "svg",
+        "text": "",
+        "role": null,
+        "disabled": null,
+        "rect": {
+          "x": 58,
+          "y": 289.5,
+          "width": 18,
+          "height": 18
+        },
+        "scrollWidth": 18,
+        "clientWidth": 18,
+        "overflowX": "hidden",
+        "overflowY": "hidden"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Sign out of this device",
+        "role": null,
+        "disabled": false,
+        "rect": {
+          "x": 37,
+          "y": 321.5,
+          "width": 195,
+          "height": 46
+        },
+        "scrollWidth": 193,
+        "clientWidth": 193,
+        "overflowX": "visible",
+        "overflowY": "visible"
+      },
+      {
+        "tag": "P",
+        "text": "Could not sign out. This browser may still be signed in. Please try again.",
+        "role": "alert",
+        "disabled": null,
+        "rect": {
+          "x": 37,
+          "y": 367.5,
+          "width": 316,
+          "height": 108.390625
+        },
+        "scrollWidth": 314,
+        "clientWidth": 314,
+        "overflowX": "visible",
+        "overflowY": "visible"
+      }
+    ],
+    "overflow": {
+      "document": 390,
+      "body": 390
+    }
+  }
+}
