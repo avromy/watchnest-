@@ -20,6 +20,7 @@ import type {
 } from "@/types/product";
 import { normalizeYouTubeThumbnailUrl } from "@/lib/youtube-thumbnail";
 import YouTubeEmbed from "../YouTubeEmbed";
+import RequestPreview from "./RequestPreview";
 import ProfileImage from "../ProfileImage";
 import Icon, { type IconName } from "../ui/Icon";
 import { extractYouTubeVideoUrls } from "@/lib/youtube";
@@ -1252,7 +1253,7 @@ export function AddVideos() {
   );
 }
 export function Library() {
-  const { data, act, busy, reload } = useParent();
+  const { data, act, busy } = useParent();
   const previewReturnFocus = useRef<HTMLButtonElement | null>(null);
   const [query, setQuery] = useState(""),
     [filter, setFilter] = useState(""),
@@ -1380,13 +1381,13 @@ export function Library() {
                   (item) => item.id === bulkCollection,
                 );
                 if (!target) return;
-                await api("/api/parent/collections", "PATCH", {
+                const saved = await act("/api/parent/collections", "PATCH", {
                   id: target.id,
                   video_ids: Array.from(
                     new Set([...target.video_ids, ...selected]),
                   ),
                 });
-                await reload();
+                if (!saved) return;
                 setSelected([]);
                 setBulkCollection("");
               }}
@@ -1406,11 +1407,14 @@ export function Library() {
                   )
                 )
                   return;
-                for (const videoId of selected)
-                  await api("/api/parent/videos", "DELETE", {
-                    video_id: videoId,
-                  });
-                await reload();
+                for (const videoId of selected) {
+                  if (
+                    !(await act("/api/parent/videos", "DELETE", {
+                      video_id: videoId,
+                    }))
+                  )
+                    return;
+                }
                 setSelected([]);
               }}
             >
@@ -2205,20 +2209,28 @@ function RequestApproval({
   const [profiles, setProfiles] = useState([request.profile_id]);
   const [collection, setCollection] = useState("");
   const [newTitle, setNewTitle] = useState("");
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState("");
+  const [createdCollection, setCreatedCollection] = useState<Collection | null>(
+    null,
+  );
+  const createPending = useRef(false);
   if (!request.youtube_video_id) return null;
   return (
     <div>
       <div className={styles.row}>
-        <button className="button" type="button" onClick={() => setOpen(!open)}>
+        <button
+          className="button"
+          type="button"
+          disabled={busy || creating}
+          onClick={() => setOpen(!open)}
+        >
           Approve
         </button>
-        <details>
-          <summary>Preview</summary>
-          <YouTubeEmbed
-            videoId={request.youtube_video_id}
-            title={request.video_title || request.message}
-          />
-        </details>
+        <RequestPreview
+          videoId={request.youtube_video_id}
+          title={request.video_title || request.message}
+        />
       </div>
       {open && (
         <form
@@ -2252,6 +2264,14 @@ function RequestApproval({
                   {item.title}
                 </option>
               ))}
+              {createdCollection &&
+                !data.collections.some(
+                  (item) => item.id === createdCollection.id,
+                ) && (
+                  <option value={createdCollection.id}>
+                    {createdCollection.title}
+                  </option>
+                )}
               <option value="__new">+ New Collection</option>
             </select>
           </label>
@@ -2267,26 +2287,53 @@ function RequestApproval({
               <button
                 type="button"
                 className="button-secondary"
-                disabled={busy || !newTitle.trim()}
+                disabled={busy || creating || !newTitle.trim()}
                 onClick={async () => {
-                  const created = await api<{ collection: Collection }>(
-                    "/api/parent/collections",
-                    "POST",
-                    { title: newTitle.trim(), video_ids: [] },
-                  );
-                  await reload();
-                  setCollection(created.collection.id);
-                  setNewTitle("");
+                  if (createPending.current) return;
+                  createPending.current = true;
+                  setCreating(true);
+                  setCreateError("");
+                  let confirmed = false;
+                  try {
+                    const created = await api<{ collection: Collection }>(
+                      "/api/parent/collections",
+                      "POST",
+                      { title: newTitle.trim(), video_ids: [] },
+                    );
+                    // Keep the confirmed identity even if the following refresh fails.
+                    confirmed = true;
+                    setCreatedCollection(created.collection);
+                    setCollection(created.collection.id);
+                    setNewTitle("");
+                    await reload();
+                  } catch (reason) {
+                    setCreateError(
+                      confirmed
+                        ? "Collection created and selected. The library refresh failed; refresh the page to check the latest library."
+                        : reason instanceof Error
+                          ? reason.message
+                          : "Could not create the collection. Please try again.",
+                    );
+                  } finally {
+                    createPending.current = false;
+                    setCreating(false);
+                  }
                 }}
               >
-                Create
+                {creating ? "Creating…" : "Create"}
               </button>
             </div>
+          )}
+          {createError && (
+            <p className="error" role="alert">
+              {createError}
+            </p>
           )}
           <button
             className="button"
             disabled={
               busy ||
+              creating ||
               !profiles.includes(request.profile_id) ||
               collection === "__new"
             }

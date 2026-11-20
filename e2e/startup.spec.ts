@@ -21,102 +21,252 @@ const apiStub = `class Player {
 window.YT = { Player }; window.onYouTubeIframeAPIReady?.();`;
 async function prepare(page: Page) {
   await fixture(page, "child");
-  await page.route("https://www.youtube-nocookie.com/**", route => route.fulfill({
-    status: 200, contentType: "text/html", body: "<!doctype html><p>Provider fixture</p>",
-  }));
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "text/html",
+      body: "<!doctype html><p>Provider fixture</p>",
+    }),
+  );
 }
 
-test("synthetic startup: API attaches before delayed iframe document load", async ({ page }) => {
+test("synthetic startup: denied preference storage cannot crash approved playback", async ({
+  page,
+}) => {
+  await prepare(page);
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "localStorage", {
+      get() {
+        throw new DOMException("Preference storage denied", "SecurityError");
+      },
+    });
+  });
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.fulfill({ contentType: "application/javascript", body: apiStub }),
+  );
+  await page.goto(`/watch/player/${dashboard.videos[0].id}`);
+  await expect(page.locator("iframe")).toBeVisible();
+  await expect(page.getByText("Loading the video player…")).toHaveCount(0);
+  await expect(
+    page.getByText(
+      "WatchNest couldn’t load this page. Your library stays protected.",
+    ),
+  ).toHaveCount(0);
+  expect(errors).toEqual([]);
+});
+
+for (const preference of [null, "0", "75", "invalid", ""]) {
+  test(`synthetic startup: volume preference ${JSON.stringify(preference)} preserves intentional sound`, async ({
+    page,
+  }) => {
+    await prepare(page);
+    await page.addInitScript((preference) => {
+      if (preference === null)
+        localStorage.removeItem("watchnest-player-volume");
+      else localStorage.setItem("watchnest-player-volume", preference);
+    }, preference);
+    await page.route("https://www.youtube.com/iframe_api", (route) =>
+      route.fulfill({ contentType: "application/javascript", body: apiStub }),
+    );
+    await page.goto(`/watch/player/${dashboard.videos[0].id}`);
+    const slider = page.getByRole("slider", { name: "Volume" });
+    await expect(slider).toHaveValue(
+      preference === "0" ? "0" : preference === "75" ? "75" : "60",
+    );
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    await page.evaluate(() => {
+      Storage.prototype.setItem = () => {
+        throw new DOMException("Quota full", "QuotaExceededError");
+      };
+    });
+    await slider.focus();
+    await slider.press("ArrowRight");
+    await expect(slider).toHaveValue(
+      preference === "0" ? "1" : preference === "75" ? "76" : "61",
+    );
+    expect(errors).toEqual([]);
+  });
+}
+
+test("synthetic startup: API attaches before delayed iframe document load", async ({
+  page,
+}) => {
   await prepare(page);
   // A delayed image keeps iframe load pending; API readiness must not wait for it.
   let release!: () => void;
-  const held = new Promise<void>(resolve => { release = resolve; });
-  await page.route("https://www.youtube-nocookie.com/**", async route => {
+  const held = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  await page.route("https://www.youtube-nocookie.com/**", async (route) => {
     if (route.request().url().includes("slow-image")) {
       await held;
-      await route.fulfill({status: 204});
-    } else await route.fulfill({status: 200, contentType:"text/html", body:'<img src="/slow-image">'});
+      await route.fulfill({ status: 204 });
+    } else
+      await route.fulfill({
+        status: 200,
+        contentType: "text/html",
+        body: '<img src="/slow-image">',
+      });
   });
-  await page.route("https://www.youtube.com/iframe_api", route => route.fulfill({contentType:"application/javascript",body:apiStub}));
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.fulfill({ contentType: "application/javascript", body: apiStub }),
+  );
   await page.goto(`/watch/player/${dashboard.videos[0].id}`);
   try {
-    await expect.poll(() => page.evaluate(() => (window as any).__constructs || 0)).toBe(1);
+    await expect
+      .poll(() => page.evaluate(() => (window as any).__constructs || 0))
+      .toBe(1);
     await expect(page.getByText("Loading the video player…")).toHaveCount(0);
     await expect(page.locator("iframe")).toHaveCount(1);
-  } finally { release(); }
+  } finally {
+    release();
+  }
 });
 
-test("synthetic startup: late API cannot reconstruct a containment-stopped player", async ({ page }) => {
+test("synthetic startup: late API cannot reconstruct a containment-stopped player", async ({
+  page,
+}) => {
   await prepare(page);
   let release!: () => void;
-  const held = new Promise<void>(resolve => { release = resolve; });
-  await page.route("https://www.youtube.com/iframe_api", async route => {
+  const held = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  await page.route("https://www.youtube.com/iframe_api", async (route) => {
     await held;
-    await route.fulfill({contentType:"application/javascript",body:apiStub});
+    await route.fulfill({
+      contentType: "application/javascript",
+      body: apiStub,
+    });
   });
   await page.goto(`/watch/player/${dashboard.videos[0].id}`);
-  await expect(page.frameLocator("iframe").getByText("Provider fixture")).toBeVisible();
-  await page.locator("iframe").evaluate(frame => frame.dispatchEvent(new Event("load")));
-  await expect(page.getByText("Only videos your parent added can play here.")).toBeVisible();
+  await expect(
+    page.frameLocator("iframe").getByText("Provider fixture"),
+  ).toBeVisible();
+  await page
+    .locator("iframe")
+    .evaluate((frame) => frame.dispatchEvent(new Event("load")));
+  await expect(
+    page.getByText("Only videos your parent added can play here."),
+  ).toBeVisible();
   release();
-  await expect.poll(() => page.evaluate(() => Boolean((window as any).YT?.Player))).toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => Boolean((window as any).YT?.Player)))
+    .toBe(true);
   expect(await page.evaluate(() => (window as any).__constructs || 0)).toBe(0);
-  await expect(page.getByText("Only videos your parent added can play here.")).toBeVisible();
+  await expect(
+    page.getByText("Only videos your parent added can play here."),
+  ).toBeVisible();
   await expect(page.locator("iframe")).toHaveCount(0);
 });
 
-test("synthetic startup: late onReady and state events cannot reverse containment", async ({ page }) => {
+test("synthetic startup: late onReady and state events cannot reverse containment", async ({
+  page,
+}) => {
   await prepare(page);
-  await page.addInitScript(() => { (window as any).__neverReady = true; });
-  await page.route("https://www.youtube.com/iframe_api", route => route.fulfill({contentType:"application/javascript",body:apiStub}));
+  await page.addInitScript(() => {
+    (window as any).__neverReady = true;
+  });
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.fulfill({ contentType: "application/javascript", body: apiStub }),
+  );
   await page.goto(`/watch/player/${dashboard.videos[0].id}`);
-  await expect.poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer))).toBe(true);
-  await expect(page.frameLocator("iframe").getByText("Provider fixture")).toBeVisible();
-  await page.locator("iframe").evaluate(frame => frame.dispatchEvent(new Event("load")));
-  await expect(page.getByText("Only videos your parent added can play here.")).toBeVisible();
+  await expect
+    .poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer)))
+    .toBe(true);
+  await expect(
+    page.frameLocator("iframe").getByText("Provider fixture"),
+  ).toBeVisible();
+  await page
+    .locator("iframe")
+    .evaluate((frame) => frame.dispatchEvent(new Event("load")));
+  await expect(
+    page.getByText("Only videos your parent added can play here."),
+  ).toBeVisible();
   await page.evaluate(() => {
     const p = (window as any).__startupPlayer;
-    p.events.onReady({target:p}); p.events.onStateChange({target:p,data:1});
-    p.events.onError({data:153});
+    p.events.onReady({ target: p });
+    p.events.onStateChange({ target: p, data: 1 });
+    p.events.onError({ data: 153 });
   });
-  await expect(page.getByText("Only videos your parent added can play here.")).toBeVisible();
+  await expect(
+    page.getByText("Only videos your parent added can play here."),
+  ).toBeVisible();
   await expect(page.locator("iframe")).toHaveCount(0);
 });
 
-test("synthetic startup: missing provider readiness times out and removes frame", async ({ page }) => {
+test("synthetic startup: missing provider readiness times out and removes frame", async ({
+  page,
+}) => {
   await prepare(page);
-  await page.addInitScript(() => { (window as any).__neverReady = true; });
-  await page.route("https://www.youtube.com/iframe_api", route => route.fulfill({contentType:"application/javascript",body:apiStub}));
+  await page.addInitScript(() => {
+    (window as any).__neverReady = true;
+  });
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.fulfill({ contentType: "application/javascript", body: apiStub }),
+  );
   await page.goto(`/watch/player/${dashboard.videos[0].id}`);
-  await expect.poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer))).toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer)))
+    .toBe(true);
   // Exercise the actual browser timer. A virtual clock also controls the
   // cross-origin fixture and cannot qualify this real-time startup deadline.
-  await expect(page.getByText("The video player could not start safely. Please try again.")).toBeVisible({ timeout: 25000 });
+  await expect(
+    page.getByText(
+      "The video player could not start safely. Please try again.",
+    ),
+  ).toBeVisible({ timeout: 25000 });
   await expect(page.locator("iframe")).toHaveCount(0);
 });
 
 for (const mode of ["__replaceFrame", "__throwOnReady"]) {
-  test(`synthetic startup: ${mode} fails closed without unmonitored frame`, async ({ page }) => {
+  test(`synthetic startup: ${mode} fails closed without unmonitored frame`, async ({
+    page,
+  }) => {
     await prepare(page);
-    await page.addInitScript(mode => { (window as any)[mode] = true; }, mode);
-    await page.route("https://www.youtube.com/iframe_api", route => route.fulfill({contentType:"application/javascript",body:apiStub}));
+    await page.addInitScript((mode) => {
+      (window as any)[mode] = true;
+    }, mode);
+    await page.route("https://www.youtube.com/iframe_api", (route) =>
+      route.fulfill({ contentType: "application/javascript", body: apiStub }),
+    );
     await page.goto(`/watch/player/${dashboard.videos[0].id}`);
-    await expect(page.getByText("The video player could not start safely. Please try again.")).toBeVisible();
+    await expect(
+      page.getByText(
+        "The video player could not start safely. Please try again.",
+      ),
+    ).toBeVisible();
     await expect(page.locator("iframe")).toHaveCount(0);
   });
 }
 
-test("synthetic startup: provider error before ready is terminal", async ({ page }) => {
+test("synthetic startup: provider error before ready is terminal", async ({
+  page,
+}) => {
   await prepare(page);
-  await page.addInitScript(() => { (window as any).__neverReady = true; });
-  await page.route("https://www.youtube.com/iframe_api", route => route.fulfill({contentType:"application/javascript",body:apiStub}));
+  await page.addInitScript(() => {
+    (window as any).__neverReady = true;
+  });
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.fulfill({ contentType: "application/javascript", body: apiStub }),
+  );
   await page.goto(`/watch/player/${dashboard.videos[0].id}`);
-  await expect.poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer))).toBe(true);
-  await page.evaluate(() => (window as any).__startupPlayer.events.onError({data:153}));
-  await expect(page.getByText("The video player could not verify WatchNest. Ask Parent for help.")).toBeVisible();
+  await expect
+    .poll(() => page.evaluate(() => Boolean((window as any).__startupPlayer)))
+    .toBe(true);
+  await page.evaluate(() =>
+    (window as any).__startupPlayer.events.onError({ data: 153 }),
+  );
+  await expect(
+    page.getByText(
+      "The video player could not verify WatchNest. Ask Parent for help.",
+    ),
+  ).toBeVisible();
   await page.evaluate(() => {
     const p = (window as any).__startupPlayer;
-    p.events.onReady({target:p});
+    p.events.onReady({ target: p });
   });
   await expect(page.locator("iframe")).toHaveCount(0);
 });
