@@ -1,3 +1,9 @@
+# CURRENT — integrity audit; stop repeated authentication handoffs
+
+Founder now requests full app-integrity testing and cancels further login/PIN handoffs. New stage server error42501 on GET /api/session found; actualSDK reproduction isolates refresh-client authority loss plus swallowed dependency errors. Independent Sign out network failure reproduced and repaired. See docs/integrity-20261120/IntegrityReport.md and independent receipts. Full revised gates running; do not reuse146 acceptance for changed auth/error code. Canonical77/dpl_GiR unchanged, no migration/family-setting writes. Release HOLD. Cloud runtime inventory has no tabs; no login request or connectedChrome fallback. Finish all independent checks and preserve exact successor before any unavoidable hosted/device gate.
+
+---
+
 # CURRENT — authenticated stage checks completed; separate live Cloud sign-in interrupted
 
 Repairedstage146a672f / dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB was positively authenticated through secure WorkCloud browserAuth, then actual Parent settings verified. Actual read-only Preview identity/open/retry/close/reopen and unsaved1/5/10/Daily7AM observations are durable in docs/incident-20261120/CloudHostedAcceptance-20261120.md (commit8efead90492b32486ab3de9a968ecd3efe71d25b). No family timer/approval/settings command submitted.

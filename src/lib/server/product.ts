@@ -131,12 +131,23 @@ export async function parent(allowMode = true) {
   }
   const client = db();
   let { data, error } = await client.auth.getUser(token);
+  if (error && (!error.status || error.status >= 500))
+    throw new Failure("Sign-in service is unavailable. Please retry.", 503);
   if (error) {
     const refresh = (await cookies()).get("wn_refresh")?.value;
     if (refresh) {
-      const fresh = await client.auth.refreshSession({
+      // Refresh installs a user session on its client. Keep that session off the
+      // service-role client used for server-authorized family database access.
+      const auth = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        { auth: { persistSession: false, autoRefreshToken: false } },
+      );
+      const fresh = await auth.auth.refreshSession({
         refresh_token: refresh,
       });
+      if (fresh.error && (!fresh.error.status || fresh.error.status >= 500))
+        throw new Failure("Sign-in service is unavailable. Please retry.", 503);
       if (fresh.data.session) {
         await cookie(
           "wn_parent",
@@ -152,6 +163,8 @@ export async function parent(allowMode = true) {
       }
     }
   }
+  if (error && (!error.status || error.status >= 500))
+    throw new Failure("Sign-in service is unavailable. Please retry.", 503);
   if (error || !data.user?.email)
     throw new Failure("Please sign in again.", 401);
   requireConfirmedFounder(data.user);
@@ -743,15 +756,21 @@ export async function handle(request: globalThis.Request, path: string[]) {
           },
           configured: true,
         });
-      } catch {}
+      } catch (reason) {
+        if (!(reason instanceof Failure) || reason.status >= 500) throw reason;
+      }
       try {
         const c = await child();
         return reply({ role: "child", profile: c.profile, configured: true });
-      } catch {}
+      } catch (reason) {
+        if (!(reason instanceof Failure) || reason.status >= 500) throw reason;
+      }
       try {
         await device();
         return reply({ role: "device", configured: true });
-      } catch {}
+      } catch (reason) {
+        if (!(reason instanceof Failure) || reason.status >= 500) throw reason;
+      }
       return reply({ role: null, configured: true });
     }
     // Session exit must never depend on an anonymous caller's rate budget.

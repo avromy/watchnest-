@@ -90,12 +90,14 @@ async function api<T>(
   path: string,
   method = "GET",
   body?: unknown,
+  signal?: AbortSignal,
 ): Promise<T> {
   const response = await fetch(path, {
     method,
     headers: body ? { "Content-Type": "application/json" } : undefined,
     body: body ? JSON.stringify(body) : undefined,
     cache: "no-store",
+    signal,
   });
   const data = await response.json();
   if (!response.ok)
@@ -3154,6 +3156,8 @@ export function Controls() {
 
 export function Settings() {
   const router = useRouter();
+  const [logoutBusy, setLogoutBusy] = useState(false);
+  const [logoutError, setLogoutError] = useState("");
   const [pin, setPin] = useState(""),
     [confirmPin, setConfirmPin] = useState(""),
     [pinMessage, setPinMessage] = useState(""),
@@ -3342,13 +3346,33 @@ export function Settings() {
           </button>
           <button
             className="button-quiet"
+            disabled={logoutBusy}
             onClick={async () => {
-              await api("/api/auth/logout", "POST", {});
-              router.replace("/login");
+              if (logoutBusy) return;
+              setLogoutBusy(true);
+              setLogoutError("");
+              const controller = new AbortController();
+              const timeout = window.setTimeout(() => controller.abort(), 15000);
+              try {
+                await api("/api/auth/logout", "POST", {}, controller.signal);
+                router.replace("/login");
+              } catch {
+                setLogoutError(
+                  "Could not sign out. This browser may still be signed in. Please try again.",
+                );
+                setLogoutBusy(false);
+              } finally {
+                window.clearTimeout(timeout);
+              }
             }}
           >
-            Sign out of this device
+            {logoutBusy ? "Signing out…" : "Sign out of this device"}
           </button>
+          {logoutError && (
+            <p className="error" role="alert">
+              {logoutError}
+            </p>
+          )}
         </section>
         <section className="panel">
           <h2>Playback on this device</h2>
