@@ -1,3 +1,17 @@
+# CURRENT — Founder Cloud Browser correction — November20,2026
+
+Authentication and hosted acceptance MUST use this same Work Builder's CLOUD BROWSER (cdp), never connected/local Chrome or an extension. This supersedes every earlier connected-Chrome instruction and the prior email's browser direction. Do not transfer sessions, read/export credentials/cookies, mint accounts or bypass ParentPIN.
+
+Reverified PR49 open/draft/unmerged, branch premium-ui-ux-20261103 head4717166841b7e7e306ae70672123971751aee309 at recovery. Application146a672f5b0744a13869dc29983e5942a0d7a233, READY stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB at https://watchnest-pq53jywae-avromy.vercel.app/login?parent=1 . Canonical remains77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac; no merge/promotion/migration/data/settings changes.
+
+Actually opened exactstage in Work Cloud Browser cdp tab20. Visible Sign in, Email and Password; not authenticated. Current cloud-desktop and actual browserAuth instructions consumed. Supported secure browserAuth request is available; credentials are filled by browser-client without returning values to the agent. No Chrome session used in this correction. User action is existing Parent sign-in and existingPIN directly through secure cloud authentication if prompted. A submitted form is not success: verify fresh positive Parent UI in SAME cloud session before hosted QA. If request cancelled, respect it; if unavailable use documented Cloud Browser takeover only, not local Chrome.
+
+After positive auth continue separate live/stage incident RCA and actual hosted preview open/close/retry/identity/no-approval-side-effects, Parent/Child controls, errors, persistence/isolation/handoff and timers. Keep real family settings read-only. Storage-denial injection may need existing regression harness if unsupported by live read-only browser; label that limitation, never claim hosted injection from synthetic results. No device certification from Cloud Browser. One conditional physical iPad/phone safety session remains after hosted qualification; high-risk final independent gates and qualified autonomous promotion/phase2/rollback controls remain binding.
+
+Earlier source396unit/96browser/independent scoped receipts remain valid within exact source/synthetic scope only. No new hosted PASS or physical PASS. Release HOLD. Resume only from verified positive Cloud Parent session; tabs may expire and must be reopened at exactstage if needed.
+
+---
+
 # CURRENT — P0 incident repair staged; actual incident attribution / Parent authentication / physical release HOLD
 
 Application146a672f5b0744a13869dc29983e5942a0d7a233, src464c41e300e38b9c34cb4f6603f4f2019e4141c4; existing premium-ui-ux-20261103/PR49 unchanged. See docs/incident-20261120/IncidentReport.md and Resume.md for current repair, evidence, limitations and continuation. Optional-storage full-page crash reproduced locally and repaired; first-use volume default60 preserved; Parent request preview now lazy/modal/retry/no-mutation; collection/bulk failures surfaced and independent P2 refresh mismatch repaired. Actual live and prior-stage Founder crash causes and dead Preview remain unconfirmed independently; do not equate this source repair with completed hosted RCA.
