@@ -1,0 +1,26 @@
+{
+  "application": "146a672f5b0744a13869dc29983e5942a0d7a233",
+  "src": "464c41e300e38b9c34cb4f6603f4f2019e4141c4",
+  "ciMergeCommit": "ed1b6df5380da5e48dad60de4f3ccd0404b6ac37",
+  "run": 44677008406,
+  "number": 167,
+  "conclusion": "success",
+  "jobs": [
+    "qualification-mode",
+    "quality-checks",
+    "baseline-visual-evidence"
+  ],
+  "equivalence": "git diff --quiet CI merge application over src/package/lock/config/e2e/scripts exit0; src trees equal",
+  "selectedNativeLogLines": [
+    "2026-11-20T04:50:28.3715583Z found 0 vulnerabilities",
+    "2026-11-20T04:50:28.5007395Z ##[group]Run npm run lint",
+    "2026-11-20T04:50:35.2562615Z ##[group]Run npm run typecheck",
+    "2026-11-20T04:50:51.6224620Z \u001b[2m Test Files \u001b[22m \u001b[1m\u001b[32m29 passed\u001b[39m\u001b[22m\u001b[90m (29)\u001b[39m",
+    "2026-11-20T04:50:51.6232920Z \u001b[2m      Tests \u001b[22m \u001b[1m\u001b[32m396 passed\u001b[39m\u001b[22m\u001b[90m (396)\u001b[39m",
+    "2026-11-20T04:50:51.7164099Z ##[group]Run npm run build",
+    "2026-11-20T04:56:40.4049500Z   96 passed (5.6m)",
+    "2026-11-20T04:56:44.8144463Z Artifact watchnest-synthetic-browser-evidence-ed1b6df5380da5e48dad60de4f3ccd0404b6ac37.zip successfully finalized. Artifact ID 14603715095",
+    "2026-11-20T04:56:45.3694771Z found 0 vulnerabilities"
+  ],
+  "scope": "Automated/synthetic; not authenticated hosted, YouTube playback, physical device or Founder Ready"
+}

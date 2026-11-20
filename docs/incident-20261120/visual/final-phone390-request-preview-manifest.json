@@ -1,0 +1,95 @@
+{
+  "evidence": "SYNTHETIC BROWSER / VIEWPORT SCREENSHOT; no hosted/provider/device claim",
+  "source": [
+    "146a672f5b0744a13869dc29983e5942a0d7a233",
+    "464c41e300e38b9c34cb4f6603f4f2019e4141c4"
+  ],
+  "buildId": "FPvzedrgAp9khP2082u8t",
+  "componentSha256": "360a4781c67c173d9b90ce2be2ea61ee1013a11bac510cceca5a616f6cafa0db",
+  "cssSha256": "2466ba962ac8f55000d36728efa4ef852792db06e44de524821f21abf0889b2a",
+  "screenshotSha256": "399d26e4b9c9af999b827f1a086b8c7a2b776e7da83ff5e23ccd39ad28cec4d8",
+  "geometry": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "dialog": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "panel": {
+      "x": 8,
+      "y": 134.265625,
+      "width": 374,
+      "height": 575.453125
+    },
+    "assets": [
+      {
+        "tag": "H2",
+        "text": "Requested craft video",
+        "rect": {
+          "x": 29,
+          "y": 155.265625,
+          "width": 261.609375,
+          "height": 30.09375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Close preview",
+        "rect": {
+          "x": 29,
+          "y": 213.1875,
+          "width": 138,
+          "height": 46
+        }
+      },
+      {
+        "tag": "IFRAME",
+        "text": "synthetic video frame",
+        "rect": {
+          "x": 29,
+          "y": 275.1875,
+          "width": 332,
+          "height": 186.75
+        }
+      },
+      {
+        "tag": "P",
+        "text": "If the video is available, use YouTube’s Play button to preview it.",
+        "rect": {
+          "x": 29,
+          "y": 461.9375,
+          "width": 332,
+          "height": 49.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Retry preview",
+        "rect": {
+          "x": 29,
+          "y": 527.53125,
+          "width": 138,
+          "height": 46
+        }
+      },
+      {
+        "tag": "P",
+        "text": "Parent preview uses YouTube’s player. YouTube controls its recommendations and availability. Previewing does not add this video to any child’s library.",
+        "rect": {
+          "x": 29,
+          "y": 573.53125,
+          "width": 332,
+          "height": 99.1875
+        }
+      }
+    ],
+    "overflow": {
+      "document": 390,
+      "body": 390
+    }
+  }
+}

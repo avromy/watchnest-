@@ -1,0 +1,146 @@
+{
+  "postgres": "PostgreSQL 17.11 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit",
+  "columns": [
+    {
+      "name": "id",
+      "type": "uuid",
+      "nullable": "NO",
+      "default": "gen_random_uuid()"
+    },
+    {
+      "name": "parent_id",
+      "type": "uuid",
+      "nullable": "NO",
+      "default": null
+    },
+    {
+      "name": "display_name",
+      "type": "text",
+      "nullable": "NO",
+      "default": null
+    },
+    {
+      "name": "avatar_key",
+      "type": "text",
+      "nullable": "NO",
+      "default": "'default'::text"
+    },
+    {
+      "name": "color_key",
+      "type": "text",
+      "nullable": "NO",
+      "default": "'soft_blue'::text"
+    },
+    {
+      "name": "pin_enabled",
+      "type": "boolean",
+      "nullable": "NO",
+      "default": "false"
+    },
+    {
+      "name": "pin_hash",
+      "type": "text",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "nullable": "NO",
+      "default": "now()"
+    },
+    {
+      "name": "archived_at",
+      "type": "timestamp with time zone",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "experience_mode",
+      "type": "text",
+      "nullable": "NO",
+      "default": "'standard'::text"
+    },
+    {
+      "name": "photo_path",
+      "type": "text",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "available_from_minute",
+      "type": "smallint",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "available_until_minute",
+      "type": "smallint",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "session_duration_minutes",
+      "type": "smallint",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "session_expires_at",
+      "type": "timestamp with time zone",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "discover_enabled",
+      "type": "boolean",
+      "nullable": "NO",
+      "default": "false"
+    },
+    {
+      "name": "discovery_topics",
+      "type": "ARRAY",
+      "nullable": "NO",
+      "default": "'{}'::text[]"
+    },
+    {
+      "name": "discovery_channels",
+      "type": "jsonb",
+      "nullable": "NO",
+      "default": "'[]'::jsonb"
+    },
+    {
+      "name": "session_state_revision",
+      "type": "bigint",
+      "nullable": "NO",
+      "default": "0"
+    },
+    {
+      "name": "session_paused_seconds",
+      "type": "integer",
+      "nullable": "YES",
+      "default": null
+    },
+    {
+      "name": "session_updated_at",
+      "type": "timestamp with time zone",
+      "nullable": "YES",
+      "default": null
+    }
+  ],
+  "safe_check": "CHECK ((safe_playback_enabled = true))",
+  "function_acls": [
+    {
+      "name": "wn_control_profile_session",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "name": "wn_end_profile_session",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "name": "wn_start_profile_session",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    }
+  ]
+}

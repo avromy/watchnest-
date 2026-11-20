@@ -1,0 +1,31 @@
+{
+  "kind": "hosted release hold; root live-browser observations",
+  "sourcePreview": "83ecc0931bcae18d5c3f14e4f9461be6e9c72969",
+  "qualifiedApplicationSource": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+  "preview": {
+    "id": "dpl_F4mP5fCsSD8iJGqsMQnuRUpJCXZ7",
+    "url": "https://watchnest-qhc3d4mpm-avromy.vercel.app",
+    "state": "READY",
+    "sessionResponse": {
+      "role": null,
+      "configured": false
+    }
+  },
+  "production": {
+    "id": "dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+    "source": "77a5017d938ded03b1530c2b72978cef27273d61",
+    "url": "https://watchnest-rho.vercel.app",
+    "sessionResponse": {
+      "role": null,
+      "configured": true
+    }
+  },
+  "method": "Root existing Vercel browser; no sharelink/protection bypass/auth secret used. This is root observation, not Builder self-execution claim.",
+  "uiProductionForms": "Canceled; canonical domain assignment shown, no skip-domain control observed.",
+  "cli": "Official CLI66 installed; owner-only device authorization pending. Disabled authorize action observed after one reload, no reason visible. No new grant/token obtained.",
+  "plannedStageCommand": "vercel deploy --prod --skip-domain",
+  "releaseHold": true,
+  "hostedAuthenticatedPass": false,
+  "physicalDevicePass": false,
+  "productionMutation": false
+}

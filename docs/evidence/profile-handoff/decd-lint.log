@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 lint
+> eslint .
+
+
+/workspace/scratch/b4fb31747e8d/watchnest/docs/evidence/profile-handoff/stranger/explore.mjs
+   7:8   warning  'fs' is defined but never used                @typescript-eslint/no-unused-vars
+  15:15  warning  'journal' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

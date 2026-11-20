@@ -1,0 +1,4599 @@
+{
+  "candidate": "99239ee38de7f8509f1016e6e1d03bb42d3999bf",
+  "applicationTree": "6f223458b04a6ae684889597ad48d6e7866b6c88",
+  "optimizedBuildId": "OmhRh2gK5dZDlrhj8NfLk",
+  "verdict": "PASS \u2014 bounded affected visual recheck",
+  "humanEye": "CLEAN within the twelve enumerated fresh affected screenshots; no material visual defect or unresolved affected edge conflict",
+  "matchCheck": "PASS against written daily timer authority and Concept3 visual direction for this bounded delta",
+  "tdV01": {
+    "priorCandidate": "6619bf920b0ea69fece24b4ada4b6901035cbc55",
+    "priorVerdict": "FAIL preserved at docs/TimerDailyVisualReview-20261118.md/.json",
+    "newStatus": "RESOLVED",
+    "foreground": [
+      184,
+      189,
+      209
+    ],
+    "background": [
+      21,
+      26,
+      50
+    ],
+    "fontSize": "16px",
+    "contrastRatio": 9.16846174129268,
+    "pixelObservation": "Remaining time is legible above library, complete glyph edges, no new horizontal clipping or displacement of initial phone video titles",
+    "freshAnchors": [
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "width": 1024,
+        "height": 768
+      },
+      {
+        "width": 1440,
+        "height": 1000
+      }
+    ]
+  },
+  "parentExpired": {
+    "newAction": "Add 5 minutes today",
+    "modeVisible": "Daily Allowance \u00b7 renews at7AM",
+    "allCardControlsAtLeast44x44": true,
+    "actionBounds": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "bounds": {
+          "x": 37,
+          "y": 1193.0625,
+          "width": 316,
+          "height": 46,
+          "top": 1193.0625,
+          "right": 353,
+          "bottom": 1239.0625,
+          "left": 37
+        },
+        "name": "Add 5 minutes today",
+        "sourcePng": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/390x844-parent-expired-card.png",
+        "sourceSha256": "e4d7aa0c3d00c89333132a761e86425deb39b2152239c0bd71c255381868fa70",
+        "fourEdges": "clear in native full-card screenshot"
+      },
+      {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "bounds": {
+          "x": 57,
+          "y": 1211.453125,
+          "width": 290,
+          "height": 46,
+          "top": 1211.453125,
+          "right": 347,
+          "bottom": 1257.453125,
+          "left": 57
+        },
+        "name": "Add 5 minutes today",
+        "sourcePng": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/768x1024-parent-expired-card.png",
+        "sourceSha256": "11fb08057c6bffae1b5b19da212079aa60c543330c178232747b84279abafd02",
+        "fourEdges": "clear in native full-card screenshot"
+      },
+      {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "bounds": {
+          "x": 57,
+          "y": 1117.515625,
+          "width": 240,
+          "height": 46,
+          "top": 1117.515625,
+          "right": 297,
+          "bottom": 1163.515625,
+          "left": 57
+        },
+        "name": "Add 5 minutes today",
+        "sourcePng": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1024x768-parent-expired-card.png",
+        "sourceSha256": "ce6afc44e570cc9e6482fcbea5e14e390d4ff7dbd9c14e8d81761a99a741a483",
+        "fourEdges": "clear in native full-card screenshot"
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "bounds": {
+          "x": 279,
+          "y": 1065.15625,
+          "width": 337,
+          "height": 46,
+          "top": 1065.15625,
+          "right": 616,
+          "bottom": 1111.15625,
+          "left": 279
+        },
+        "name": "Add 5 minutes today",
+        "sourcePng": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1440x1000-parent-expired-card.png",
+        "sourceSha256": "33daae5b824e062caab639b30adb840ee4385f3a00afa3c4c62261ea877a5c3a",
+        "fourEdges": "clear in native full-card screenshot"
+      }
+    ],
+    "observation": "Full label and contour visible, 46px high, wraps into full-width lower row on narrow cards; no clipped field, status, explanatory copy or action observed"
+  },
+  "captureManifest": {
+    "source": "99239ee38de7f8509f1016e6e1d03bb42d3999bf",
+    "appTree": "6f223458b04a6ae684889597ad48d6e7866b6c88",
+    "buildId": "OmhRh2gK5dZDlrhj8NfLk",
+    "baseURL": "http://127.0.0.1:3047",
+    "fixtureSha256": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+    "dailyHarnessSha256": "b3d2c9e7c0ca9b7906f2e26dee34ca744766b41615f7448842d7af2bd66b0c51",
+    "helperSha256": "5e4456a712f0472522bcfd293f4b1103a7ece071fcd41a4d0cf38c0aaca87541",
+    "compiledFixtureSha256": "c83998e2882d0355bd1f8b438d69ca238efde39daffd13757d034a6a7dd7c438",
+    "synthetic": true,
+    "physicalDevice": false,
+    "captures": [
+      {
+        "state": "active",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/390x844-daily-active.png",
+        "sha256": "607cd898658048096bc6197f9772074c85df2fca703921cb1f2821eb36f4bd17",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "inventory": {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "document": {
+            "width": 390,
+            "height": 1210
+          },
+          "headings": [
+            "Your library",
+            "Collections",
+            "All videos",
+            "Build a paper rocket",
+            "A gentle piano lesson",
+            "Draw a friendly fox"
+          ],
+          "controls": [
+            {
+              "tag": "A",
+              "name": "Skip to content",
+              "bounds": {
+                "x": 16,
+                "y": -80,
+                "width": 154,
+                "height": 52.796875,
+                "top": -80,
+                "right": 170,
+                "bottom": -27.203125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ari",
+              "bounds": {
+                "x": 268,
+                "y": 18,
+                "width": 104,
+                "height": 48,
+                "top": 18,
+                "right": 372,
+                "bottom": 66,
+                "left": 268
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Library",
+              "bounds": {
+                "x": 18,
+                "y": 763.203125,
+                "width": 177,
+                "height": 72.796875,
+                "top": 763.203125,
+                "right": 195,
+                "bottom": 836,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ask Parent",
+              "bounds": {
+                "x": 195,
+                "y": 763.203125,
+                "width": 177,
+                "height": 72.796875,
+                "top": 763.203125,
+                "right": 372,
+                "bottom": 836,
+                "left": 195
+              }
+            },
+            {
+              "tag": "INPUT",
+              "name": "",
+              "bounds": {
+                "x": 63.140625,
+                "y": 208.953125,
+                "width": 293.859375,
+                "height": 54,
+                "top": 208.953125,
+                "right": 357,
+                "bottom": 262.953125,
+                "left": 63.140625
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " All videos",
+              "bounds": {
+                "x": 18,
+                "y": 280.953125,
+                "width": 110,
+                "height": 48,
+                "top": 280.953125,
+                "right": 128,
+                "bottom": 328.953125,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " Favorites",
+              "bounds": {
+                "x": 135,
+                "y": 280.953125,
+                "width": 109,
+                "height": 48,
+                "top": 280.953125,
+                "right": 244,
+                "bottom": 328.953125,
+                "left": 135
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hidden",
+              "bounds": {
+                "x": 251,
+                "y": 280.953125,
+                "width": 71,
+                "height": 48,
+                "top": 280.953125,
+                "right": 322,
+                "bottom": 328.953125,
+                "left": 251
+              }
+            },
+            {
+              "tag": "SELECT",
+              "name": "Recently addedA\u2013Z",
+              "bounds": {
+                "x": 18,
+                "y": 335.953125,
+                "width": 148,
+                "height": 48,
+                "top": 335.953125,
+                "right": 166,
+                "bottom": 383.953125,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "2 videosLittle MakersMake and discover",
+              "bounds": {
+                "x": 21,
+                "y": 447.65625,
+                "width": 250,
+                "height": 98,
+                "top": 447.65625,
+                "right": 271,
+                "bottom": 545.65625,
+                "left": 21
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Build a paper rocket",
+              "bounds": {
+                "x": 18,
+                "y": 617.359375,
+                "width": 171,
+                "height": 236.1875,
+                "top": 617.359375,
+                "right": 189,
+                "bottom": 853.546875,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Build a paper rocket to Favorites",
+              "bounds": {
+                "x": 18,
+                "y": 803.546875,
+                "width": 48,
+                "height": 48,
+                "top": 803.546875,
+                "right": 66,
+                "bottom": 851.546875,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Build a paper rocket from your library",
+              "bounds": {
+                "x": 79,
+                "y": 755.546875,
+                "width": 110,
+                "height": 48,
+                "top": 755.546875,
+                "right": 189,
+                "bottom": 803.546875,
+                "left": 79
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play A gentle piano lesson",
+              "bounds": {
+                "x": 201,
+                "y": 617.359375,
+                "width": 171,
+                "height": 236.1875,
+                "top": 617.359375,
+                "right": 372,
+                "bottom": 853.546875,
+                "left": 201
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add A gentle piano lesson to Favorites",
+              "bounds": {
+                "x": 201,
+                "y": 803.546875,
+                "width": 48,
+                "height": 48,
+                "top": 803.546875,
+                "right": 249,
+                "bottom": 851.546875,
+                "left": 201
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide A gentle piano lesson from your library",
+              "bounds": {
+                "x": 262,
+                "y": 755.546875,
+                "width": 110,
+                "height": 48,
+                "top": 755.546875,
+                "right": 372,
+                "bottom": 803.546875,
+                "left": 262
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Draw a friendly fox",
+              "bounds": {
+                "x": 18,
+                "y": 877.546875,
+                "width": 171,
+                "height": 236.1875,
+                "top": 877.546875,
+                "right": 189,
+                "bottom": 1113.734375,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Draw a friendly fox to Favorites",
+              "bounds": {
+                "x": 18,
+                "y": 1063.734375,
+                "width": 48,
+                "height": 48,
+                "top": 1063.734375,
+                "right": 66,
+                "bottom": 1111.734375,
+                "left": 18
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Draw a friendly fox from your library",
+              "bounds": {
+                "x": 79,
+                "y": 1015.734375,
+                "width": 110,
+                "height": 48,
+                "top": 1015.734375,
+                "right": 189,
+                "bottom": 1063.734375,
+                "left": 79
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "SPAN",
+              "bounds": {
+                "x": 18,
+                "y": 26,
+                "width": 136.09375,
+                "height": 32,
+                "top": 26,
+                "right": 154.09375,
+                "bottom": 58,
+                "left": 18
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 2,
+              "kind": "IMG",
+              "bounds": {
+                "x": 18,
+                "y": 26,
+                "width": 32,
+                "height": 32,
+                "top": 26,
+                "right": 50,
+                "bottom": 58,
+                "left": 18
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 3,
+              "kind": "svg",
+              "bounds": {
+                "x": 281.796875,
+                "y": 31.796875,
+                "width": 20.390625,
+                "height": 20.390625,
+                "top": 31.796875,
+                "right": 302.1875,
+                "bottom": 52.1875,
+                "left": 281.796875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 4,
+              "kind": "svg",
+              "bounds": {
+                "x": 343,
+                "y": 33,
+                "width": 18,
+                "height": 18,
+                "top": 33,
+                "right": 361,
+                "bottom": 51,
+                "left": 343
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 5,
+              "kind": "svg",
+              "bounds": {
+                "x": 97,
+                "y": 773.203125,
+                "width": 19,
+                "height": 19,
+                "top": 773.203125,
+                "right": 116,
+                "bottom": 792.203125,
+                "left": 97
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 6,
+              "kind": "svg",
+              "bounds": {
+                "x": 274,
+                "y": 773.203125,
+                "width": 19,
+                "height": 19,
+                "top": 773.203125,
+                "right": 293,
+                "bottom": 792.203125,
+                "left": 274
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 7,
+              "kind": "svg",
+              "bounds": {
+                "x": 33,
+                "y": 226.875,
+                "width": 18.140625,
+                "height": 18.140625,
+                "top": 226.875,
+                "right": 51.140625,
+                "bottom": 245.015625,
+                "left": 33
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 8,
+              "kind": "svg",
+              "bounds": {
+                "x": 30,
+                "y": 295.453125,
+                "width": 19,
+                "height": 19,
+                "top": 295.453125,
+                "right": 49,
+                "bottom": 314.453125,
+                "left": 30
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 9,
+              "kind": "svg",
+              "bounds": {
+                "x": 147,
+                "y": 295.453125,
+                "width": 19,
+                "height": 19,
+                "top": 295.453125,
+                "right": 166,
+                "bottom": 314.453125,
+                "left": 147
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 10,
+              "kind": "svg",
+              "bounds": {
+                "x": 54,
+                "y": 480.65625,
+                "width": 32,
+                "height": 32,
+                "top": 480.65625,
+                "right": 86,
+                "bottom": 512.65625,
+                "left": 54
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 11,
+              "kind": "svg",
+              "bounds": {
+                "x": 84.5,
+                "y": 646.453125,
+                "width": 38,
+                "height": 38,
+                "top": 646.453125,
+                "right": 122.5,
+                "bottom": 684.453125,
+                "left": 84.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 12,
+              "kind": "svg",
+              "bounds": {
+                "x": 32,
+                "y": 817.546875,
+                "width": 20,
+                "height": 20,
+                "top": 817.546875,
+                "right": 52,
+                "bottom": 837.546875,
+                "left": 32
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 13,
+              "kind": "svg",
+              "bounds": {
+                "x": 154.5,
+                "y": 817.046875,
+                "width": 21,
+                "height": 21,
+                "top": 817.046875,
+                "right": 175.5,
+                "bottom": 838.046875,
+                "left": 154.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 14,
+              "kind": "svg",
+              "bounds": {
+                "x": 267.5,
+                "y": 646.453125,
+                "width": 38,
+                "height": 38,
+                "top": 646.453125,
+                "right": 305.5,
+                "bottom": 684.453125,
+                "left": 267.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 15,
+              "kind": "svg",
+              "bounds": {
+                "x": 215,
+                "y": 817.546875,
+                "width": 20,
+                "height": 20,
+                "top": 817.546875,
+                "right": 235,
+                "bottom": 837.546875,
+                "left": 215
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 16,
+              "kind": "svg",
+              "bounds": {
+                "x": 337.5,
+                "y": 817.046875,
+                "width": 21,
+                "height": 21,
+                "top": 817.046875,
+                "right": 358.5,
+                "bottom": 838.046875,
+                "left": 337.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 17,
+              "kind": "svg",
+              "bounds": {
+                "x": 84.5,
+                "y": 906.640625,
+                "width": 38,
+                "height": 38,
+                "top": 906.640625,
+                "right": 122.5,
+                "bottom": 944.640625,
+                "left": 84.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 18,
+              "kind": "svg",
+              "bounds": {
+                "x": 32,
+                "y": 1077.734375,
+                "width": 20,
+                "height": 20,
+                "top": 1077.734375,
+                "right": 52,
+                "bottom": 1097.734375,
+                "left": 32
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 19,
+              "kind": "svg",
+              "bounds": {
+                "x": 154.5,
+                "y": 1077.234375,
+                "width": 21,
+                "height": 21,
+                "top": 1077.234375,
+                "right": 175.5,
+                "bottom": 1098.234375,
+                "left": 154.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            }
+          ],
+          "statuses": [
+            {
+              "text": "Daily time \u00b7 1 min left",
+              "color": "rgb(184, 189, 209)",
+              "fontSize": "16px",
+              "background": "rgba(0, 0, 0, 0)",
+              "parents": [
+                {
+                  "tag": "MAIN",
+                  "class": "child-shell premium-child-library",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "DIV",
+                  "class": "child-experience",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "BODY",
+                  "class": "",
+                  "background": "rgb(247, 246, 251)"
+                },
+                {
+                  "tag": "HTML",
+                  "class": "",
+                  "background": "rgba(0, 0, 0, 0)"
+                }
+              ]
+            }
+          ],
+          "iframeCount": 0
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "active",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/768x1024-daily-active.png",
+        "sha256": "6e1aca530e1f71a25ddca5372dd9930358d037549f1725d427252cff060e98b8",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "inventory": {
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "document": {
+            "width": 768,
+            "height": 1407
+          },
+          "headings": [
+            "Your library",
+            "Collections",
+            "All videos",
+            "Build a paper rocket",
+            "A gentle piano lesson",
+            "Draw a friendly fox"
+          ],
+          "controls": [
+            {
+              "tag": "A",
+              "name": "Skip to content",
+              "bounds": {
+                "x": 16,
+                "y": -80,
+                "width": 154,
+                "height": 52.796875,
+                "top": -80,
+                "right": 170,
+                "bottom": -27.203125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ari",
+              "bounds": {
+                "x": 613.28125,
+                "y": 24,
+                "width": 124,
+                "height": 54,
+                "top": 24,
+                "right": 737.28125,
+                "bottom": 78,
+                "left": 613.28125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Library",
+              "bounds": {
+                "x": 266,
+                "y": 22,
+                "width": 94,
+                "height": 56,
+                "top": 22,
+                "right": 360,
+                "bottom": 78,
+                "left": 266
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ask Parent",
+              "bounds": {
+                "x": 378,
+                "y": 22,
+                "width": 124,
+                "height": 56,
+                "top": 22,
+                "right": 502,
+                "bottom": 78,
+                "left": 378
+              }
+            },
+            {
+              "tag": "INPUT",
+              "name": "",
+              "bounds": {
+                "x": 80.796875,
+                "y": 257.59375,
+                "width": 637.484375,
+                "height": 54,
+                "top": 257.59375,
+                "right": 718.28125,
+                "bottom": 311.59375,
+                "left": 80.796875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " All videos",
+              "bounds": {
+                "x": 30.71875,
+                "y": 330.59375,
+                "width": 141,
+                "height": 48,
+                "top": 330.59375,
+                "right": 171.71875,
+                "bottom": 378.59375,
+                "left": 30.71875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " Favorites",
+              "bounds": {
+                "x": 179.71875,
+                "y": 330.59375,
+                "width": 139,
+                "height": 48,
+                "top": 330.59375,
+                "right": 318.71875,
+                "bottom": 378.59375,
+                "left": 179.71875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hidden",
+              "bounds": {
+                "x": 326.71875,
+                "y": 330.59375,
+                "width": 95,
+                "height": 48,
+                "top": 330.59375,
+                "right": 421.71875,
+                "bottom": 378.59375,
+                "left": 326.71875
+              }
+            },
+            {
+              "tag": "SELECT",
+              "name": "Recently addedA\u2013Z",
+              "bounds": {
+                "x": 585.28125,
+                "y": 330.59375,
+                "width": 152,
+                "height": 48,
+                "top": 330.59375,
+                "right": 737.28125,
+                "bottom": 378.59375,
+                "left": 585.28125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "2 videosLittle MakersMake and discover",
+              "bounds": {
+                "x": 33.71875,
+                "y": 442.296875,
+                "width": 280,
+                "height": 114,
+                "top": 442.296875,
+                "right": 313.71875,
+                "bottom": 556.296875,
+                "left": 33.71875
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Build a paper rocket",
+              "bounds": {
+                "x": 30.71875,
+                "y": 628,
+                "width": 342.28125,
+                "height": 336.53125,
+                "top": 628,
+                "right": 373,
+                "bottom": 964.53125,
+                "left": 30.71875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Build a paper rocket to Favorites",
+              "bounds": {
+                "x": 30.71875,
+                "y": 914.53125,
+                "width": 48,
+                "height": 48,
+                "top": 914.53125,
+                "right": 78.71875,
+                "bottom": 962.53125,
+                "left": 30.71875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Build a paper rocket from your library",
+              "bounds": {
+                "x": 263,
+                "y": 866.53125,
+                "width": 110,
+                "height": 48,
+                "top": 866.53125,
+                "right": 373,
+                "bottom": 914.53125,
+                "left": 263
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play A gentle piano lesson",
+              "bounds": {
+                "x": 395,
+                "y": 628,
+                "width": 342.28125,
+                "height": 336.53125,
+                "top": 628,
+                "right": 737.28125,
+                "bottom": 964.53125,
+                "left": 395
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add A gentle piano lesson to Favorites",
+              "bounds": {
+                "x": 395,
+                "y": 914.53125,
+                "width": 48,
+                "height": 48,
+                "top": 914.53125,
+                "right": 443,
+                "bottom": 962.53125,
+                "left": 395
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide A gentle piano lesson from your library",
+              "bounds": {
+                "x": 627.28125,
+                "y": 866.53125,
+                "width": 110,
+                "height": 48,
+                "top": 866.53125,
+                "right": 737.28125,
+                "bottom": 914.53125,
+                "left": 627.28125
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Draw a friendly fox",
+              "bounds": {
+                "x": 30.71875,
+                "y": 990.53125,
+                "width": 342.28125,
+                "height": 336.53125,
+                "top": 990.53125,
+                "right": 373,
+                "bottom": 1327.0625,
+                "left": 30.71875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Draw a friendly fox to Favorites",
+              "bounds": {
+                "x": 30.71875,
+                "y": 1277.0625,
+                "width": 48,
+                "height": 48,
+                "top": 1277.0625,
+                "right": 78.71875,
+                "bottom": 1325.0625,
+                "left": 30.71875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Draw a friendly fox from your library",
+              "bounds": {
+                "x": 263,
+                "y": 1229.0625,
+                "width": 110,
+                "height": 48,
+                "top": 1229.0625,
+                "right": 373,
+                "bottom": 1277.0625,
+                "left": 263
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "SPAN",
+              "bounds": {
+                "x": 30.71875,
+                "y": 32,
+                "width": 165.921875,
+                "height": 38,
+                "top": 32,
+                "right": 196.640625,
+                "bottom": 70,
+                "left": 30.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 2,
+              "kind": "IMG",
+              "bounds": {
+                "x": 30.71875,
+                "y": 32,
+                "width": 38,
+                "height": 38,
+                "top": 32,
+                "right": 68.71875,
+                "bottom": 70,
+                "left": 30.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 3,
+              "kind": "svg",
+              "bounds": {
+                "x": 628.6875,
+                "y": 38.40625,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 38.40625,
+                "right": 653.875,
+                "bottom": 63.59375,
+                "left": 628.6875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 4,
+              "kind": "svg",
+              "bounds": {
+                "x": 704.28125,
+                "y": 42,
+                "width": 18,
+                "height": 18,
+                "top": 42,
+                "right": 722.28125,
+                "bottom": 60,
+                "left": 704.28125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 5,
+              "kind": "svg",
+              "bounds": {
+                "x": 270,
+                "y": 38.5,
+                "width": 20,
+                "height": 20,
+                "top": 38.5,
+                "right": 290,
+                "bottom": 58.5,
+                "left": 270
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 6,
+              "kind": "svg",
+              "bounds": {
+                "x": 382,
+                "y": 38.5,
+                "width": 20,
+                "height": 20,
+                "top": 38.5,
+                "right": 402,
+                "bottom": 58.5,
+                "left": 382
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 7,
+              "kind": "svg",
+              "bounds": {
+                "x": 49.71875,
+                "y": 275.046875,
+                "width": 19.078125,
+                "height": 19.078125,
+                "top": 275.046875,
+                "right": 68.796875,
+                "bottom": 294.125,
+                "left": 49.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 8,
+              "kind": "svg",
+              "bounds": {
+                "x": 49.71875,
+                "y": 345.09375,
+                "width": 19,
+                "height": 19,
+                "top": 345.09375,
+                "right": 68.71875,
+                "bottom": 364.09375,
+                "left": 49.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 9,
+              "kind": "svg",
+              "bounds": {
+                "x": 198.71875,
+                "y": 345.09375,
+                "width": 19,
+                "height": 19,
+                "top": 345.09375,
+                "right": 217.71875,
+                "bottom": 364.09375,
+                "left": 198.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 10,
+              "kind": "svg",
+              "bounds": {
+                "x": 74.71875,
+                "y": 483.296875,
+                "width": 32,
+                "height": 32,
+                "top": 483.296875,
+                "right": 106.71875,
+                "bottom": 515.296875,
+                "left": 74.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 11,
+              "kind": "svg",
+              "bounds": {
+                "x": 182.859375,
+                "y": 705.265625,
+                "width": 38,
+                "height": 38,
+                "top": 705.265625,
+                "right": 220.859375,
+                "bottom": 743.265625,
+                "left": 182.859375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 12,
+              "kind": "svg",
+              "bounds": {
+                "x": 174.859375,
+                "y": 697.265625,
+                "width": 54,
+                "height": 54,
+                "top": 697.265625,
+                "right": 228.859375,
+                "bottom": 751.265625,
+                "left": 174.859375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 13,
+              "kind": "svg",
+              "bounds": {
+                "x": 44.71875,
+                "y": 928.53125,
+                "width": 20,
+                "height": 20,
+                "top": 928.53125,
+                "right": 64.71875,
+                "bottom": 948.53125,
+                "left": 44.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 14,
+              "kind": "svg",
+              "bounds": {
+                "x": 338.5,
+                "y": 928.03125,
+                "width": 21,
+                "height": 21,
+                "top": 928.03125,
+                "right": 359.5,
+                "bottom": 949.03125,
+                "left": 338.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 15,
+              "kind": "svg",
+              "bounds": {
+                "x": 547.140625,
+                "y": 705.265625,
+                "width": 38,
+                "height": 38,
+                "top": 705.265625,
+                "right": 585.140625,
+                "bottom": 743.265625,
+                "left": 547.140625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 16,
+              "kind": "svg",
+              "bounds": {
+                "x": 539.140625,
+                "y": 697.265625,
+                "width": 54,
+                "height": 54,
+                "top": 697.265625,
+                "right": 593.140625,
+                "bottom": 751.265625,
+                "left": 539.140625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 17,
+              "kind": "svg",
+              "bounds": {
+                "x": 409,
+                "y": 928.53125,
+                "width": 20,
+                "height": 20,
+                "top": 928.53125,
+                "right": 429,
+                "bottom": 948.53125,
+                "left": 409
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 18,
+              "kind": "svg",
+              "bounds": {
+                "x": 702.78125,
+                "y": 928.03125,
+                "width": 21,
+                "height": 21,
+                "top": 928.03125,
+                "right": 723.78125,
+                "bottom": 949.03125,
+                "left": 702.78125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 19,
+              "kind": "svg",
+              "bounds": {
+                "x": 182.859375,
+                "y": 1067.796875,
+                "width": 38,
+                "height": 38,
+                "top": 1067.796875,
+                "right": 220.859375,
+                "bottom": 1105.796875,
+                "left": 182.859375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 20,
+              "kind": "svg",
+              "bounds": {
+                "x": 174.859375,
+                "y": 1059.796875,
+                "width": 54,
+                "height": 54,
+                "top": 1059.796875,
+                "right": 228.859375,
+                "bottom": 1113.796875,
+                "left": 174.859375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 21,
+              "kind": "svg",
+              "bounds": {
+                "x": 44.71875,
+                "y": 1291.0625,
+                "width": 20,
+                "height": 20,
+                "top": 1291.0625,
+                "right": 64.71875,
+                "bottom": 1311.0625,
+                "left": 44.71875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 22,
+              "kind": "svg",
+              "bounds": {
+                "x": 338.5,
+                "y": 1290.5625,
+                "width": 21,
+                "height": 21,
+                "top": 1290.5625,
+                "right": 359.5,
+                "bottom": 1311.5625,
+                "left": 338.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            }
+          ],
+          "statuses": [
+            {
+              "text": "Daily time \u00b7 1 min left",
+              "color": "rgb(184, 189, 209)",
+              "fontSize": "16px",
+              "background": "rgba(0, 0, 0, 0)",
+              "parents": [
+                {
+                  "tag": "MAIN",
+                  "class": "child-shell premium-child-library",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "DIV",
+                  "class": "child-experience",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "BODY",
+                  "class": "",
+                  "background": "rgb(247, 246, 251)"
+                },
+                {
+                  "tag": "HTML",
+                  "class": "",
+                  "background": "rgba(0, 0, 0, 0)"
+                }
+              ]
+            }
+          ],
+          "iframeCount": 0
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "active",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1024x768-daily-active.png",
+        "sha256": "2ba8306a98cd40819eac4fa320d46dac52f4c1b4f79a16f90b81e5c8f8c66b3b",
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "inventory": {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "document": {
+            "width": 1024,
+            "height": 940
+          },
+          "headings": [
+            "Your library",
+            "Collections",
+            "All videos",
+            "Build a paper rocket",
+            "A gentle piano lesson",
+            "Draw a friendly fox"
+          ],
+          "controls": [
+            {
+              "tag": "A",
+              "name": "Skip to content",
+              "bounds": {
+                "x": 16,
+                "y": -80,
+                "width": 154,
+                "height": 52.796875,
+                "top": -80,
+                "right": 170,
+                "bottom": -27.203125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ari",
+              "bounds": {
+                "x": 859.046875,
+                "y": 24,
+                "width": 124,
+                "height": 54,
+                "top": 24,
+                "right": 983.046875,
+                "bottom": 78,
+                "left": 859.046875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Library",
+              "bounds": {
+                "x": 394,
+                "y": 22,
+                "width": 94,
+                "height": 56,
+                "top": 22,
+                "right": 488,
+                "bottom": 78,
+                "left": 394
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ask Parent",
+              "bounds": {
+                "x": 506,
+                "y": 22,
+                "width": 124,
+                "height": 56,
+                "top": 22,
+                "right": 630,
+                "bottom": 78,
+                "left": 506
+              }
+            },
+            {
+              "tag": "INPUT",
+              "name": "",
+              "bounds": {
+                "x": 354.984375,
+                "y": 172.796875,
+                "width": 609.0625,
+                "height": 54,
+                "top": 172.796875,
+                "right": 964.046875,
+                "bottom": 226.796875,
+                "left": 354.984375
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " All videos",
+              "bounds": {
+                "x": 304.953125,
+                "y": 245.796875,
+                "width": 133,
+                "height": 48,
+                "top": 245.796875,
+                "right": 437.953125,
+                "bottom": 293.796875,
+                "left": 304.953125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " Favorites",
+              "bounds": {
+                "x": 445.953125,
+                "y": 245.796875,
+                "width": 131,
+                "height": 48,
+                "top": 245.796875,
+                "right": 576.953125,
+                "bottom": 293.796875,
+                "left": 445.953125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hidden",
+              "bounds": {
+                "x": 584.953125,
+                "y": 245.796875,
+                "width": 87,
+                "height": 48,
+                "top": 245.796875,
+                "right": 671.953125,
+                "bottom": 293.796875,
+                "left": 584.953125
+              }
+            },
+            {
+              "tag": "SELECT",
+              "name": "Recently addedA\u2013Z",
+              "bounds": {
+                "x": 831.046875,
+                "y": 245.796875,
+                "width": 152,
+                "height": 48,
+                "top": 245.796875,
+                "right": 983.046875,
+                "bottom": 293.796875,
+                "left": 831.046875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "2 videosLittle MakersMake and discover",
+              "bounds": {
+                "x": 43.953125,
+                "y": 359.46875,
+                "width": 280,
+                "height": 114,
+                "top": 359.46875,
+                "right": 323.953125,
+                "bottom": 473.46875,
+                "left": 43.953125
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Build a paper rocket",
+              "bounds": {
+                "x": 40.953125,
+                "y": 547.140625,
+                "width": 299.359375,
+                "height": 312.375,
+                "top": 547.140625,
+                "right": 340.3125,
+                "bottom": 859.515625,
+                "left": 40.953125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Build a paper rocket to Favorites",
+              "bounds": {
+                "x": 40.953125,
+                "y": 809.53125,
+                "width": 48,
+                "height": 48,
+                "top": 809.53125,
+                "right": 88.953125,
+                "bottom": 857.53125,
+                "left": 40.953125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Build a paper rocket from your library",
+              "bounds": {
+                "x": 230.3125,
+                "y": 761.53125,
+                "width": 110,
+                "height": 48,
+                "top": 761.53125,
+                "right": 340.3125,
+                "bottom": 809.53125,
+                "left": 230.3125
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play A gentle piano lesson",
+              "bounds": {
+                "x": 362.3125,
+                "y": 547.140625,
+                "width": 299.359375,
+                "height": 312.375,
+                "top": 547.140625,
+                "right": 661.671875,
+                "bottom": 859.515625,
+                "left": 362.3125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add A gentle piano lesson to Favorites",
+              "bounds": {
+                "x": 362.3125,
+                "y": 809.53125,
+                "width": 48,
+                "height": 48,
+                "top": 809.53125,
+                "right": 410.3125,
+                "bottom": 857.53125,
+                "left": 362.3125
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide A gentle piano lesson from your library",
+              "bounds": {
+                "x": 551.671875,
+                "y": 761.53125,
+                "width": 110,
+                "height": 48,
+                "top": 761.53125,
+                "right": 661.671875,
+                "bottom": 809.53125,
+                "left": 551.671875
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Draw a friendly fox",
+              "bounds": {
+                "x": 683.671875,
+                "y": 547.140625,
+                "width": 299.375,
+                "height": 312.390625,
+                "top": 547.140625,
+                "right": 983.046875,
+                "bottom": 859.53125,
+                "left": 683.671875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Draw a friendly fox to Favorites",
+              "bounds": {
+                "x": 683.671875,
+                "y": 809.53125,
+                "width": 48,
+                "height": 48,
+                "top": 809.53125,
+                "right": 731.671875,
+                "bottom": 857.53125,
+                "left": 683.671875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Draw a friendly fox from your library",
+              "bounds": {
+                "x": 873.046875,
+                "y": 761.53125,
+                "width": 110,
+                "height": 48,
+                "top": 761.53125,
+                "right": 983.046875,
+                "bottom": 809.53125,
+                "left": 873.046875
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "SPAN",
+              "bounds": {
+                "x": 40.953125,
+                "y": 32,
+                "width": 165.921875,
+                "height": 38,
+                "top": 32,
+                "right": 206.875,
+                "bottom": 70,
+                "left": 40.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 2,
+              "kind": "IMG",
+              "bounds": {
+                "x": 40.953125,
+                "y": 32,
+                "width": 38,
+                "height": 38,
+                "top": 32,
+                "right": 78.953125,
+                "bottom": 70,
+                "left": 40.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 3,
+              "kind": "svg",
+              "bounds": {
+                "x": 874.453125,
+                "y": 38.40625,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 38.40625,
+                "right": 899.640625,
+                "bottom": 63.59375,
+                "left": 874.453125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 4,
+              "kind": "svg",
+              "bounds": {
+                "x": 950.046875,
+                "y": 42,
+                "width": 18,
+                "height": 18,
+                "top": 42,
+                "right": 968.046875,
+                "bottom": 60,
+                "left": 950.046875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 5,
+              "kind": "svg",
+              "bounds": {
+                "x": 398,
+                "y": 38.5,
+                "width": 20,
+                "height": 20,
+                "top": 38.5,
+                "right": 418,
+                "bottom": 58.5,
+                "left": 398
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 6,
+              "kind": "svg",
+              "bounds": {
+                "x": 510,
+                "y": 38.5,
+                "width": 20,
+                "height": 20,
+                "top": 38.5,
+                "right": 530,
+                "bottom": 58.5,
+                "left": 510
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 7,
+              "kind": "svg",
+              "bounds": {
+                "x": 323.953125,
+                "y": 190.28125,
+                "width": 19.03125,
+                "height": 19.03125,
+                "top": 190.28125,
+                "right": 342.984375,
+                "bottom": 209.3125,
+                "left": 323.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 8,
+              "kind": "svg",
+              "bounds": {
+                "x": 319.953125,
+                "y": 260.296875,
+                "width": 19,
+                "height": 19,
+                "top": 260.296875,
+                "right": 338.953125,
+                "bottom": 279.296875,
+                "left": 319.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 9,
+              "kind": "svg",
+              "bounds": {
+                "x": 460.953125,
+                "y": 260.296875,
+                "width": 19,
+                "height": 19,
+                "top": 260.296875,
+                "right": 479.953125,
+                "bottom": 279.296875,
+                "left": 460.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 10,
+              "kind": "svg",
+              "bounds": {
+                "x": 84.953125,
+                "y": 400.46875,
+                "width": 32,
+                "height": 32,
+                "top": 400.46875,
+                "right": 116.953125,
+                "bottom": 432.46875,
+                "left": 84.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 11,
+              "kind": "svg",
+              "bounds": {
+                "x": 171.625,
+                "y": 612.328125,
+                "width": 38,
+                "height": 38,
+                "top": 612.328125,
+                "right": 209.625,
+                "bottom": 650.328125,
+                "left": 171.625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 12,
+              "kind": "svg",
+              "bounds": {
+                "x": 163.625,
+                "y": 604.328125,
+                "width": 54,
+                "height": 54,
+                "top": 604.328125,
+                "right": 217.625,
+                "bottom": 658.328125,
+                "left": 163.625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 13,
+              "kind": "svg",
+              "bounds": {
+                "x": 54.953125,
+                "y": 823.53125,
+                "width": 20,
+                "height": 20,
+                "top": 823.53125,
+                "right": 74.953125,
+                "bottom": 843.53125,
+                "left": 54.953125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 14,
+              "kind": "svg",
+              "bounds": {
+                "x": 305.8125,
+                "y": 823.03125,
+                "width": 21,
+                "height": 21,
+                "top": 823.03125,
+                "right": 326.8125,
+                "bottom": 844.03125,
+                "left": 305.8125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 15,
+              "kind": "svg",
+              "bounds": {
+                "x": 492.984375,
+                "y": 612.328125,
+                "width": 38,
+                "height": 38,
+                "top": 612.328125,
+                "right": 530.984375,
+                "bottom": 650.328125,
+                "left": 492.984375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 16,
+              "kind": "svg",
+              "bounds": {
+                "x": 484.984375,
+                "y": 604.328125,
+                "width": 54,
+                "height": 54,
+                "top": 604.328125,
+                "right": 538.984375,
+                "bottom": 658.328125,
+                "left": 484.984375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 17,
+              "kind": "svg",
+              "bounds": {
+                "x": 376.3125,
+                "y": 823.53125,
+                "width": 20,
+                "height": 20,
+                "top": 823.53125,
+                "right": 396.3125,
+                "bottom": 843.53125,
+                "left": 376.3125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 18,
+              "kind": "svg",
+              "bounds": {
+                "x": 627.171875,
+                "y": 823.03125,
+                "width": 21,
+                "height": 21,
+                "top": 823.03125,
+                "right": 648.171875,
+                "bottom": 844.03125,
+                "left": 627.171875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 19,
+              "kind": "svg",
+              "bounds": {
+                "x": 814.359375,
+                "y": 612.328125,
+                "width": 38,
+                "height": 38,
+                "top": 612.328125,
+                "right": 852.359375,
+                "bottom": 650.328125,
+                "left": 814.359375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 20,
+              "kind": "svg",
+              "bounds": {
+                "x": 806.359375,
+                "y": 604.328125,
+                "width": 54,
+                "height": 54,
+                "top": 604.328125,
+                "right": 860.359375,
+                "bottom": 658.328125,
+                "left": 806.359375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 21,
+              "kind": "svg",
+              "bounds": {
+                "x": 697.671875,
+                "y": 823.53125,
+                "width": 20,
+                "height": 20,
+                "top": 823.53125,
+                "right": 717.671875,
+                "bottom": 843.53125,
+                "left": 697.671875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 22,
+              "kind": "svg",
+              "bounds": {
+                "x": 948.546875,
+                "y": 823.03125,
+                "width": 21,
+                "height": 21,
+                "top": 823.03125,
+                "right": 969.546875,
+                "bottom": 844.03125,
+                "left": 948.546875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            }
+          ],
+          "statuses": [
+            {
+              "text": "Daily time \u00b7 1 min left",
+              "color": "rgb(184, 189, 209)",
+              "fontSize": "16px",
+              "background": "rgba(0, 0, 0, 0)",
+              "parents": [
+                {
+                  "tag": "MAIN",
+                  "class": "child-shell premium-child-library",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "DIV",
+                  "class": "child-experience",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "BODY",
+                  "class": "",
+                  "background": "rgb(247, 246, 251)"
+                },
+                {
+                  "tag": "HTML",
+                  "class": "",
+                  "background": "rgba(0, 0, 0, 0)"
+                }
+              ]
+            }
+          ],
+          "iframeCount": 0
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "active",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1440x1000-daily-active.png",
+        "sha256": "ae0b5493c5a4f43aee1b942b8fd50c085a7c45d0ec8f438b90bfd0c97d0ff825",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "inventory": {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "document": {
+            "width": 1440,
+            "height": 1000
+          },
+          "headings": [
+            "Your library",
+            "Collections",
+            "All videos",
+            "Build a paper rocket",
+            "A gentle piano lesson",
+            "Draw a friendly fox"
+          ],
+          "controls": [
+            {
+              "tag": "A",
+              "name": "Skip to content",
+              "bounds": {
+                "x": 16,
+                "y": -80,
+                "width": 154,
+                "height": 52.796875,
+                "top": -80,
+                "right": 170,
+                "bottom": -27.203125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ari",
+              "bounds": {
+                "x": 1258.40625,
+                "y": 24,
+                "width": 124,
+                "height": 54,
+                "top": 24,
+                "right": 1382.40625,
+                "bottom": 78,
+                "left": 1258.40625
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Library",
+              "bounds": {
+                "x": 602,
+                "y": 22,
+                "width": 94,
+                "height": 56,
+                "top": 22,
+                "right": 696,
+                "bottom": 78,
+                "left": 602
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Ask Parent",
+              "bounds": {
+                "x": 714,
+                "y": 22,
+                "width": 124,
+                "height": 56,
+                "top": 22,
+                "right": 838,
+                "bottom": 78,
+                "left": 714
+              }
+            },
+            {
+              "tag": "INPUT",
+              "name": "",
+              "bounds": {
+                "x": 371.984375,
+                "y": 172.796875,
+                "width": 991.421875,
+                "height": 54,
+                "top": 172.796875,
+                "right": 1363.40625,
+                "bottom": 226.796875,
+                "left": 371.984375
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " All videos",
+              "bounds": {
+                "x": 321.59375,
+                "y": 245.796875,
+                "width": 133,
+                "height": 48,
+                "top": 245.796875,
+                "right": 454.59375,
+                "bottom": 293.796875,
+                "left": 321.59375
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": " Favorites",
+              "bounds": {
+                "x": 462.59375,
+                "y": 245.796875,
+                "width": 131,
+                "height": 48,
+                "top": 245.796875,
+                "right": 593.59375,
+                "bottom": 293.796875,
+                "left": 462.59375
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hidden",
+              "bounds": {
+                "x": 601.59375,
+                "y": 245.796875,
+                "width": 87,
+                "height": 48,
+                "top": 245.796875,
+                "right": 688.59375,
+                "bottom": 293.796875,
+                "left": 601.59375
+              }
+            },
+            {
+              "tag": "SELECT",
+              "name": "Recently addedA\u2013Z",
+              "bounds": {
+                "x": 1230.40625,
+                "y": 245.796875,
+                "width": 152,
+                "height": 48,
+                "top": 245.796875,
+                "right": 1382.40625,
+                "bottom": 293.796875,
+                "left": 1230.40625
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "2 videosLittle MakersMake and discover",
+              "bounds": {
+                "x": 60.59375,
+                "y": 363.890625,
+                "width": 280,
+                "height": 114,
+                "top": 363.890625,
+                "right": 340.59375,
+                "bottom": 477.890625,
+                "left": 60.59375
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Build a paper rocket",
+              "bounds": {
+                "x": 57.59375,
+                "y": 555.984375,
+                "width": 314.703125,
+                "height": 321.015625,
+                "top": 555.984375,
+                "right": 372.296875,
+                "bottom": 877,
+                "left": 57.59375
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Build a paper rocket to Favorites",
+              "bounds": {
+                "x": 57.59375,
+                "y": 827,
+                "width": 48,
+                "height": 48,
+                "top": 827,
+                "right": 105.59375,
+                "bottom": 875,
+                "left": 57.59375
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Build a paper rocket from your library",
+              "bounds": {
+                "x": 262.296875,
+                "y": 779,
+                "width": 110,
+                "height": 48,
+                "top": 779,
+                "right": 372.296875,
+                "bottom": 827,
+                "left": 262.296875
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play A gentle piano lesson",
+              "bounds": {
+                "x": 394.296875,
+                "y": 555.984375,
+                "width": 314.703125,
+                "height": 321.015625,
+                "top": 555.984375,
+                "right": 709,
+                "bottom": 877,
+                "left": 394.296875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add A gentle piano lesson to Favorites",
+              "bounds": {
+                "x": 394.296875,
+                "y": 827,
+                "width": 48,
+                "height": 48,
+                "top": 827,
+                "right": 442.296875,
+                "bottom": 875,
+                "left": 394.296875
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide A gentle piano lesson from your library",
+              "bounds": {
+                "x": 599,
+                "y": 779,
+                "width": 110,
+                "height": 48,
+                "top": 779,
+                "right": 709,
+                "bottom": 827,
+                "left": 599
+              }
+            },
+            {
+              "tag": "A",
+              "name": "Play Draw a friendly fox",
+              "bounds": {
+                "x": 731,
+                "y": 555.984375,
+                "width": 314.703125,
+                "height": 321.015625,
+                "top": 555.984375,
+                "right": 1045.703125,
+                "bottom": 877,
+                "left": 731
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Add Draw a friendly fox to Favorites",
+              "bounds": {
+                "x": 731,
+                "y": 827,
+                "width": 48,
+                "height": 48,
+                "top": 827,
+                "right": 779,
+                "bottom": 875,
+                "left": 731
+              }
+            },
+            {
+              "tag": "BUTTON",
+              "name": "Hide Draw a friendly fox from your library",
+              "bounds": {
+                "x": 935.703125,
+                "y": 779,
+                "width": 110,
+                "height": 48,
+                "top": 779,
+                "right": 1045.703125,
+                "bottom": 827,
+                "left": 935.703125
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "SPAN",
+              "bounds": {
+                "x": 57.59375,
+                "y": 32,
+                "width": 165.921875,
+                "height": 38,
+                "top": 32,
+                "right": 223.515625,
+                "bottom": 70,
+                "left": 57.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 2,
+              "kind": "IMG",
+              "bounds": {
+                "x": 57.59375,
+                "y": 32,
+                "width": 38,
+                "height": 38,
+                "top": 32,
+                "right": 95.59375,
+                "bottom": 70,
+                "left": 57.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 3,
+              "kind": "svg",
+              "bounds": {
+                "x": 1273.8125,
+                "y": 38.40625,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 38.40625,
+                "right": 1299,
+                "bottom": 63.59375,
+                "left": 1273.8125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 4,
+              "kind": "svg",
+              "bounds": {
+                "x": 1349.40625,
+                "y": 42,
+                "width": 18,
+                "height": 18,
+                "top": 42,
+                "right": 1367.40625,
+                "bottom": 60,
+                "left": 1349.40625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 5,
+              "kind": "svg",
+              "bounds": {
+                "x": 606,
+                "y": 38.5,
+                "width": 20,
+                "height": 20,
+                "top": 38.5,
+                "right": 626,
+                "bottom": 58.5,
+                "left": 606
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 6,
+              "kind": "svg",
+              "bounds": {
+                "x": 718,
+                "y": 38.5,
+                "width": 20,
+                "height": 20,
+                "top": 38.5,
+                "right": 738,
+                "bottom": 58.5,
+                "left": 718
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 7,
+              "kind": "svg",
+              "bounds": {
+                "x": 340.59375,
+                "y": 190.09375,
+                "width": 19.390625,
+                "height": 19.390625,
+                "top": 190.09375,
+                "right": 359.984375,
+                "bottom": 209.484375,
+                "left": 340.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 8,
+              "kind": "svg",
+              "bounds": {
+                "x": 336.59375,
+                "y": 260.296875,
+                "width": 19,
+                "height": 19,
+                "top": 260.296875,
+                "right": 355.59375,
+                "bottom": 279.296875,
+                "left": 336.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 9,
+              "kind": "svg",
+              "bounds": {
+                "x": 477.59375,
+                "y": 260.296875,
+                "width": 19,
+                "height": 19,
+                "top": 260.296875,
+                "right": 496.59375,
+                "bottom": 279.296875,
+                "left": 477.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 10,
+              "kind": "svg",
+              "bounds": {
+                "x": 101.59375,
+                "y": 404.890625,
+                "width": 32,
+                "height": 32,
+                "top": 404.890625,
+                "right": 133.59375,
+                "bottom": 436.890625,
+                "left": 101.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 11,
+              "kind": "svg",
+              "bounds": {
+                "x": 195.9375,
+                "y": 625.484375,
+                "width": 38,
+                "height": 38,
+                "top": 625.484375,
+                "right": 233.9375,
+                "bottom": 663.484375,
+                "left": 195.9375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 12,
+              "kind": "svg",
+              "bounds": {
+                "x": 187.9375,
+                "y": 617.484375,
+                "width": 54,
+                "height": 54,
+                "top": 617.484375,
+                "right": 241.9375,
+                "bottom": 671.484375,
+                "left": 187.9375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 13,
+              "kind": "svg",
+              "bounds": {
+                "x": 71.59375,
+                "y": 841,
+                "width": 20,
+                "height": 20,
+                "top": 841,
+                "right": 91.59375,
+                "bottom": 861,
+                "left": 71.59375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 14,
+              "kind": "svg",
+              "bounds": {
+                "x": 337.796875,
+                "y": 840.5,
+                "width": 21,
+                "height": 21,
+                "top": 840.5,
+                "right": 358.796875,
+                "bottom": 861.5,
+                "left": 337.796875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 15,
+              "kind": "svg",
+              "bounds": {
+                "x": 532.640625,
+                "y": 625.484375,
+                "width": 38,
+                "height": 38,
+                "top": 625.484375,
+                "right": 570.640625,
+                "bottom": 663.484375,
+                "left": 532.640625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 16,
+              "kind": "svg",
+              "bounds": {
+                "x": 524.640625,
+                "y": 617.484375,
+                "width": 54,
+                "height": 54,
+                "top": 617.484375,
+                "right": 578.640625,
+                "bottom": 671.484375,
+                "left": 524.640625
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 17,
+              "kind": "svg",
+              "bounds": {
+                "x": 408.296875,
+                "y": 841,
+                "width": 20,
+                "height": 20,
+                "top": 841,
+                "right": 428.296875,
+                "bottom": 861,
+                "left": 408.296875
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 18,
+              "kind": "svg",
+              "bounds": {
+                "x": 674.5,
+                "y": 840.5,
+                "width": 21,
+                "height": 21,
+                "top": 840.5,
+                "right": 695.5,
+                "bottom": 861.5,
+                "left": 674.5
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 19,
+              "kind": "svg",
+              "bounds": {
+                "x": 869.34375,
+                "y": 625.484375,
+                "width": 38,
+                "height": 38,
+                "top": 625.484375,
+                "right": 907.34375,
+                "bottom": 663.484375,
+                "left": 869.34375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 20,
+              "kind": "svg",
+              "bounds": {
+                "x": 861.34375,
+                "y": 617.484375,
+                "width": 54,
+                "height": 54,
+                "top": 617.484375,
+                "right": 915.34375,
+                "bottom": 671.484375,
+                "left": 861.34375
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 21,
+              "kind": "svg",
+              "bounds": {
+                "x": 745,
+                "y": 841,
+                "width": 20,
+                "height": 20,
+                "top": 841,
+                "right": 765,
+                "bottom": 861,
+                "left": 745
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            },
+            {
+              "id": 22,
+              "kind": "svg",
+              "bounds": {
+                "x": 1011.203125,
+                "y": 840.5,
+                "width": 21,
+                "height": 21,
+                "top": 840.5,
+                "right": 1032.203125,
+                "bottom": 861.5,
+                "left": 1011.203125
+              },
+              "opacity": "1",
+              "visibility": "visible"
+            }
+          ],
+          "statuses": [
+            {
+              "text": "Daily time \u00b7 1 min left",
+              "color": "rgb(184, 189, 209)",
+              "fontSize": "16px",
+              "background": "rgba(0, 0, 0, 0)",
+              "parents": [
+                {
+                  "tag": "MAIN",
+                  "class": "child-shell premium-child-library",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "DIV",
+                  "class": "child-experience",
+                  "background": "rgb(21, 26, 50)"
+                },
+                {
+                  "tag": "BODY",
+                  "class": "",
+                  "background": "rgb(247, 246, 251)"
+                },
+                {
+                  "tag": "HTML",
+                  "class": "",
+                  "background": "rgba(0, 0, 0, 0)"
+                }
+              ]
+            }
+          ],
+          "iframeCount": 0
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "top",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/390x844-parent-expired-top.png",
+        "sha256": "fb5b54b744fe68dc19a29a25b531b25e212b41488592bb9f90d9ca23b721869d",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "documentWidth": 390,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 37,
+                "y": 526.21875,
+                "width": 316,
+                "height": 50,
+                "top": 526.21875,
+                "right": 353,
+                "bottom": 576.21875,
+                "left": 37
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 37,
+                "y": 625.28125,
+                "width": 316,
+                "height": 50,
+                "top": 625.28125,
+                "right": 353,
+                "bottom": 675.28125,
+                "left": 37
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 37,
+                "y": 735.25,
+                "width": 81,
+                "height": 46,
+                "top": 735.25,
+                "right": 118,
+                "bottom": 781.25,
+                "left": 37
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 126,
+                "y": 735.25,
+                "width": 81,
+                "height": 46,
+                "top": 735.25,
+                "right": 207,
+                "bottom": 781.25,
+                "left": 126
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 215,
+                "y": 735.25,
+                "width": 89,
+                "height": 46,
+                "top": 735.25,
+                "right": 304,
+                "bottom": 781.25,
+                "left": 215
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 37,
+                "y": 789.25,
+                "width": 89,
+                "height": 46,
+                "top": 789.25,
+                "right": 126,
+                "bottom": 835.25,
+                "left": 37
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 134,
+                "y": 789.25,
+                "width": 89,
+                "height": 46,
+                "top": 789.25,
+                "right": 223,
+                "bottom": 835.25,
+                "left": 134
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 231,
+                "y": 789.25,
+                "width": 89,
+                "height": 46,
+                "top": 789.25,
+                "right": 320,
+                "bottom": 835.25,
+                "left": 231
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 37,
+                "y": 843.25,
+                "width": 89,
+                "height": 46,
+                "top": 843.25,
+                "right": 126,
+                "bottom": 889.25,
+                "left": 37
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 37,
+                "y": 1069.0625,
+                "width": 316,
+                "height": 46,
+                "top": 1069.0625,
+                "right": 353,
+                "bottom": 1115.0625,
+                "left": 37
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 37,
+                "y": 1193.0625,
+                "width": 316,
+                "height": 46,
+                "top": 1193.0625,
+                "right": 353,
+                "bottom": 1239.0625,
+                "left": 37
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 37,
+                "y": 1135.0625,
+                "width": 316,
+                "height": 50,
+                "top": 1135.0625,
+                "right": 353,
+                "bottom": 1185.0625,
+                "left": 37
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 37,
+                "y": 1247.0625,
+                "width": 170,
+                "height": 46,
+                "top": 1247.0625,
+                "right": 207,
+                "bottom": 1293.0625,
+                "left": 37
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 45.40625,
+                "y": 419.84375,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 419.84375,
+                "right": 70.59375,
+                "bottom": 445.03125,
+                "left": 45.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "card",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/390x844-parent-expired-card.png",
+        "sha256": "e4d7aa0c3d00c89333132a761e86425deb39b2152239c0bd71c255381868fa70",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "documentWidth": 390,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 37,
+                "y": 526.21875,
+                "width": 316,
+                "height": 50,
+                "top": 526.21875,
+                "right": 353,
+                "bottom": 576.21875,
+                "left": 37
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 37,
+                "y": 625.28125,
+                "width": 316,
+                "height": 50,
+                "top": 625.28125,
+                "right": 353,
+                "bottom": 675.28125,
+                "left": 37
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 37,
+                "y": 735.25,
+                "width": 81,
+                "height": 46,
+                "top": 735.25,
+                "right": 118,
+                "bottom": 781.25,
+                "left": 37
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 126,
+                "y": 735.25,
+                "width": 81,
+                "height": 46,
+                "top": 735.25,
+                "right": 207,
+                "bottom": 781.25,
+                "left": 126
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 215,
+                "y": 735.25,
+                "width": 89,
+                "height": 46,
+                "top": 735.25,
+                "right": 304,
+                "bottom": 781.25,
+                "left": 215
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 37,
+                "y": 789.25,
+                "width": 89,
+                "height": 46,
+                "top": 789.25,
+                "right": 126,
+                "bottom": 835.25,
+                "left": 37
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 134,
+                "y": 789.25,
+                "width": 89,
+                "height": 46,
+                "top": 789.25,
+                "right": 223,
+                "bottom": 835.25,
+                "left": 134
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 231,
+                "y": 789.25,
+                "width": 89,
+                "height": 46,
+                "top": 789.25,
+                "right": 320,
+                "bottom": 835.25,
+                "left": 231
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 37,
+                "y": 843.25,
+                "width": 89,
+                "height": 46,
+                "top": 843.25,
+                "right": 126,
+                "bottom": 889.25,
+                "left": 37
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 37,
+                "y": 1069.0625,
+                "width": 316,
+                "height": 46,
+                "top": 1069.0625,
+                "right": 353,
+                "bottom": 1115.0625,
+                "left": 37
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 37,
+                "y": 1193.0625,
+                "width": 316,
+                "height": 46,
+                "top": 1193.0625,
+                "right": 353,
+                "bottom": 1239.0625,
+                "left": 37
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 37,
+                "y": 1135.0625,
+                "width": 316,
+                "height": 50,
+                "top": 1135.0625,
+                "right": 353,
+                "bottom": 1185.0625,
+                "left": 37
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 37,
+                "y": 1247.0625,
+                "width": 170,
+                "height": 46,
+                "top": 1247.0625,
+                "right": 207,
+                "bottom": 1293.0625,
+                "left": 37
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 45.40625,
+                "y": 419.84375,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 419.84375,
+                "right": 70.59375,
+                "bottom": 445.03125,
+                "left": 45.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "top",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/768x1024-parent-expired-top.png",
+        "sha256": "e9b57afe6e7b1a3ea7c8a7f679ebfc3daeb37dcfbb4086783675b558faa77e5a",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "documentWidth": 768,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 57,
+                "y": 544.609375,
+                "width": 290,
+                "height": 50,
+                "top": 544.609375,
+                "right": 347,
+                "bottom": 594.609375,
+                "left": 57
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 57,
+                "y": 643.671875,
+                "width": 290,
+                "height": 50,
+                "top": 643.671875,
+                "right": 347,
+                "bottom": 693.671875,
+                "left": 57
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 57,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 138,
+                "bottom": 799.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 146,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 227,
+                "bottom": 799.640625,
+                "left": 146
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 235,
+                "y": 753.640625,
+                "width": 89,
+                "height": 46,
+                "top": 753.640625,
+                "right": 324,
+                "bottom": 799.640625,
+                "left": 235
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 57,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 146,
+                "bottom": 853.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 154,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 243,
+                "bottom": 853.640625,
+                "left": 154
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 251,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 340,
+                "bottom": 853.640625,
+                "left": 251
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 57,
+                "y": 861.640625,
+                "width": 89,
+                "height": 46,
+                "top": 861.640625,
+                "right": 146,
+                "bottom": 907.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 57,
+                "y": 1087.453125,
+                "width": 290,
+                "height": 46,
+                "top": 1087.453125,
+                "right": 347,
+                "bottom": 1133.453125,
+                "left": 57
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 57,
+                "y": 1211.453125,
+                "width": 290,
+                "height": 46,
+                "top": 1211.453125,
+                "right": 347,
+                "bottom": 1257.453125,
+                "left": 57
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 57,
+                "y": 1153.453125,
+                "width": 290,
+                "height": 50,
+                "top": 1153.453125,
+                "right": 347,
+                "bottom": 1203.453125,
+                "left": 57
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 57,
+                "y": 1265.453125,
+                "width": 170,
+                "height": 46,
+                "top": 1265.453125,
+                "right": 227,
+                "bottom": 1311.453125,
+                "left": 57
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 65.40625,
+                "y": 438.234375,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 438.234375,
+                "right": 90.59375,
+                "bottom": 463.421875,
+                "left": 65.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "card",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/768x1024-parent-expired-card.png",
+        "sha256": "11fb08057c6bffae1b5b19da212079aa60c543330c178232747b84279abafd02",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "documentWidth": 768,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 57,
+                "y": 544.609375,
+                "width": 290,
+                "height": 50,
+                "top": 544.609375,
+                "right": 347,
+                "bottom": 594.609375,
+                "left": 57
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 57,
+                "y": 643.671875,
+                "width": 290,
+                "height": 50,
+                "top": 643.671875,
+                "right": 347,
+                "bottom": 693.671875,
+                "left": 57
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 57,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 138,
+                "bottom": 799.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 146,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 227,
+                "bottom": 799.640625,
+                "left": 146
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 235,
+                "y": 753.640625,
+                "width": 89,
+                "height": 46,
+                "top": 753.640625,
+                "right": 324,
+                "bottom": 799.640625,
+                "left": 235
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 57,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 146,
+                "bottom": 853.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 154,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 243,
+                "bottom": 853.640625,
+                "left": 154
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 251,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 340,
+                "bottom": 853.640625,
+                "left": 251
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 57,
+                "y": 861.640625,
+                "width": 89,
+                "height": 46,
+                "top": 861.640625,
+                "right": 146,
+                "bottom": 907.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 57,
+                "y": 1087.453125,
+                "width": 290,
+                "height": 46,
+                "top": 1087.453125,
+                "right": 347,
+                "bottom": 1133.453125,
+                "left": 57
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 57,
+                "y": 1211.453125,
+                "width": 290,
+                "height": 46,
+                "top": 1211.453125,
+                "right": 347,
+                "bottom": 1257.453125,
+                "left": 57
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 57,
+                "y": 1153.453125,
+                "width": 290,
+                "height": 50,
+                "top": 1153.453125,
+                "right": 347,
+                "bottom": 1203.453125,
+                "left": 57
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 57,
+                "y": 1265.453125,
+                "width": 170,
+                "height": 46,
+                "top": 1265.453125,
+                "right": 227,
+                "bottom": 1311.453125,
+                "left": 57
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 65.40625,
+                "y": 438.234375,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 438.234375,
+                "right": 90.59375,
+                "bottom": 463.421875,
+                "left": 65.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "top",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1024x768-parent-expired-top.png",
+        "sha256": "c46a4605da5c0f3aa8641d4fd344db7cbbaf934520993706bf01d55c0d9c5e35",
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "documentWidth": 1024,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 57,
+                "y": 544.609375,
+                "width": 418,
+                "height": 50,
+                "top": 544.609375,
+                "right": 475,
+                "bottom": 594.609375,
+                "left": 57
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 57,
+                "y": 643.671875,
+                "width": 418,
+                "height": 50,
+                "top": 643.671875,
+                "right": 475,
+                "bottom": 693.671875,
+                "left": 57
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 57,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 138,
+                "bottom": 799.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 146,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 227,
+                "bottom": 799.640625,
+                "left": 146
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 235,
+                "y": 753.640625,
+                "width": 89,
+                "height": 46,
+                "top": 753.640625,
+                "right": 324,
+                "bottom": 799.640625,
+                "left": 235
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 332,
+                "y": 753.640625,
+                "width": 89,
+                "height": 46,
+                "top": 753.640625,
+                "right": 421,
+                "bottom": 799.640625,
+                "left": 332
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 57,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 146,
+                "bottom": 853.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 154,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 243,
+                "bottom": 853.640625,
+                "left": 154
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 251,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 340,
+                "bottom": 853.640625,
+                "left": 251
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 57,
+                "y": 993.515625,
+                "width": 418,
+                "height": 46,
+                "top": 993.515625,
+                "right": 475,
+                "bottom": 1039.515625,
+                "left": 57
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 57,
+                "y": 1117.515625,
+                "width": 240,
+                "height": 46,
+                "top": 1117.515625,
+                "right": 297,
+                "bottom": 1163.515625,
+                "left": 57
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 57,
+                "y": 1059.515625,
+                "width": 418,
+                "height": 50,
+                "top": 1059.515625,
+                "right": 475,
+                "bottom": 1109.515625,
+                "left": 57
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 305,
+                "y": 1117.515625,
+                "width": 170,
+                "height": 46,
+                "top": 1117.515625,
+                "right": 475,
+                "bottom": 1163.515625,
+                "left": 305
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 65.40625,
+                "y": 438.234375,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 438.234375,
+                "right": 90.59375,
+                "bottom": 463.421875,
+                "left": 65.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "card",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1024x768-parent-expired-card.png",
+        "sha256": "ce6afc44e570cc9e6482fcbea5e14e390d4ff7dbd9c14e8d81761a99a741a483",
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "documentWidth": 1024,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 57,
+                "y": 544.609375,
+                "width": 418,
+                "height": 50,
+                "top": 544.609375,
+                "right": 475,
+                "bottom": 594.609375,
+                "left": 57
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 57,
+                "y": 643.671875,
+                "width": 418,
+                "height": 50,
+                "top": 643.671875,
+                "right": 475,
+                "bottom": 693.671875,
+                "left": 57
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 57,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 138,
+                "bottom": 799.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 146,
+                "y": 753.640625,
+                "width": 81,
+                "height": 46,
+                "top": 753.640625,
+                "right": 227,
+                "bottom": 799.640625,
+                "left": 146
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 235,
+                "y": 753.640625,
+                "width": 89,
+                "height": 46,
+                "top": 753.640625,
+                "right": 324,
+                "bottom": 799.640625,
+                "left": 235
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 332,
+                "y": 753.640625,
+                "width": 89,
+                "height": 46,
+                "top": 753.640625,
+                "right": 421,
+                "bottom": 799.640625,
+                "left": 332
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 57,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 146,
+                "bottom": 853.640625,
+                "left": 57
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 154,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 243,
+                "bottom": 853.640625,
+                "left": 154
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 251,
+                "y": 807.640625,
+                "width": 89,
+                "height": 46,
+                "top": 807.640625,
+                "right": 340,
+                "bottom": 853.640625,
+                "left": 251
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 57,
+                "y": 993.515625,
+                "width": 418,
+                "height": 46,
+                "top": 993.515625,
+                "right": 475,
+                "bottom": 1039.515625,
+                "left": 57
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 57,
+                "y": 1117.515625,
+                "width": 240,
+                "height": 46,
+                "top": 1117.515625,
+                "right": 297,
+                "bottom": 1163.515625,
+                "left": 57
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 57,
+                "y": 1059.515625,
+                "width": 418,
+                "height": 50,
+                "top": 1059.515625,
+                "right": 475,
+                "bottom": 1109.515625,
+                "left": 57
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 305,
+                "y": 1117.515625,
+                "width": 170,
+                "height": 46,
+                "top": 1117.515625,
+                "right": 475,
+                "bottom": 1163.515625,
+                "left": 305
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 65.40625,
+                "y": 438.234375,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 438.234375,
+                "right": 90.59375,
+                "bottom": 463.421875,
+                "left": 65.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "top",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1440x1000-parent-expired-top.png",
+        "sha256": "10cb60bd9108a4f1d5402bf556bd61d7d03581ddf8310d93c4bb23cacd60b428",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentWidth": 1440,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 279,
+                "y": 492.25,
+                "width": 515,
+                "height": 50,
+                "top": 492.25,
+                "right": 794,
+                "bottom": 542.25,
+                "left": 279
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 279,
+                "y": 591.3125,
+                "width": 515,
+                "height": 50,
+                "top": 591.3125,
+                "right": 794,
+                "bottom": 641.3125,
+                "left": 279
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 279,
+                "y": 701.28125,
+                "width": 81,
+                "height": 46,
+                "top": 701.28125,
+                "right": 360,
+                "bottom": 747.28125,
+                "left": 279
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 368,
+                "y": 701.28125,
+                "width": 81,
+                "height": 46,
+                "top": 701.28125,
+                "right": 449,
+                "bottom": 747.28125,
+                "left": 368
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 457,
+                "y": 701.28125,
+                "width": 89,
+                "height": 46,
+                "top": 701.28125,
+                "right": 546,
+                "bottom": 747.28125,
+                "left": 457
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 554,
+                "y": 701.28125,
+                "width": 89,
+                "height": 46,
+                "top": 701.28125,
+                "right": 643,
+                "bottom": 747.28125,
+                "left": 554
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 651,
+                "y": 701.28125,
+                "width": 89,
+                "height": 46,
+                "top": 701.28125,
+                "right": 740,
+                "bottom": 747.28125,
+                "left": 651
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 279,
+                "y": 755.28125,
+                "width": 89,
+                "height": 46,
+                "top": 755.28125,
+                "right": 368,
+                "bottom": 801.28125,
+                "left": 279
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 376,
+                "y": 755.28125,
+                "width": 89,
+                "height": 46,
+                "top": 755.28125,
+                "right": 465,
+                "bottom": 801.28125,
+                "left": 376
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 279,
+                "y": 941.15625,
+                "width": 515,
+                "height": 46,
+                "top": 941.15625,
+                "right": 794,
+                "bottom": 987.15625,
+                "left": 279
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 279,
+                "y": 1065.15625,
+                "width": 337,
+                "height": 46,
+                "top": 1065.15625,
+                "right": 616,
+                "bottom": 1111.15625,
+                "left": 279
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 279,
+                "y": 1007.15625,
+                "width": 515,
+                "height": 50,
+                "top": 1007.15625,
+                "right": 794,
+                "bottom": 1057.15625,
+                "left": 279
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 624,
+                "y": 1065.15625,
+                "width": 170,
+                "height": 46,
+                "top": 1065.15625,
+                "right": 794,
+                "bottom": 1111.15625,
+                "left": 624
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 287.40625,
+                "y": 385.875,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 385.875,
+                "right": 312.59375,
+                "bottom": 411.0625,
+                "left": 287.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      },
+      {
+        "state": "parent-expired",
+        "region": "card",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/1440x1000-parent-expired-card.png",
+        "sha256": "33daae5b824e062caab639b30adb840ee4385f3a00afa3c4c62261ea877a5c3a",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "inventory": {
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentWidth": 1440,
+          "controls": [
+            {
+              "name": "Give Time \u00b7 one-timeDaily Allowance \u00b7 renews at 7 AM",
+              "bounds": {
+                "x": 279,
+                "y": 492.25,
+                "width": 515,
+                "height": 50,
+                "top": 492.25,
+                "right": 794,
+                "bottom": 542.25,
+                "left": 279
+              }
+            },
+            {
+              "name": "",
+              "bounds": {
+                "x": 279,
+                "y": 591.3125,
+                "width": 515,
+                "height": 50,
+                "top": 591.3125,
+                "right": 794,
+                "bottom": 641.3125,
+                "left": 279
+              }
+            },
+            {
+              "name": "1 min",
+              "bounds": {
+                "x": 279,
+                "y": 701.28125,
+                "width": 81,
+                "height": 46,
+                "top": 701.28125,
+                "right": 360,
+                "bottom": 747.28125,
+                "left": 279
+              }
+            },
+            {
+              "name": "5 min",
+              "bounds": {
+                "x": 368,
+                "y": 701.28125,
+                "width": 81,
+                "height": 46,
+                "top": 701.28125,
+                "right": 449,
+                "bottom": 747.28125,
+                "left": 368
+              }
+            },
+            {
+              "name": "10 min",
+              "bounds": {
+                "x": 457,
+                "y": 701.28125,
+                "width": 89,
+                "height": 46,
+                "top": 701.28125,
+                "right": 546,
+                "bottom": 747.28125,
+                "left": 457
+              }
+            },
+            {
+              "name": "20 min",
+              "bounds": {
+                "x": 554,
+                "y": 701.28125,
+                "width": 89,
+                "height": 46,
+                "top": 701.28125,
+                "right": 643,
+                "bottom": 747.28125,
+                "left": 554
+              }
+            },
+            {
+              "name": "30 min",
+              "bounds": {
+                "x": 651,
+                "y": 701.28125,
+                "width": 89,
+                "height": 46,
+                "top": 701.28125,
+                "right": 740,
+                "bottom": 747.28125,
+                "left": 651
+              }
+            },
+            {
+              "name": "45 min",
+              "bounds": {
+                "x": 279,
+                "y": 755.28125,
+                "width": 89,
+                "height": 46,
+                "top": 755.28125,
+                "right": 368,
+                "bottom": 801.28125,
+                "left": 279
+              }
+            },
+            {
+              "name": "60 min",
+              "bounds": {
+                "x": 376,
+                "y": 755.28125,
+                "width": 89,
+                "height": 46,
+                "top": 755.28125,
+                "right": 465,
+                "bottom": 801.28125,
+                "left": 376
+              }
+            },
+            {
+              "name": "Save 5 min daily allowance",
+              "bounds": {
+                "x": 279,
+                "y": 941.15625,
+                "width": 515,
+                "height": 46,
+                "top": 941.15625,
+                "right": 794,
+                "bottom": 987.15625,
+                "left": 279
+              }
+            },
+            {
+              "name": "Add 5 minutes today",
+              "bounds": {
+                "x": 279,
+                "y": 1065.15625,
+                "width": 337,
+                "height": 46,
+                "top": 1065.15625,
+                "right": 616,
+                "bottom": 1111.15625,
+                "left": 279
+              }
+            },
+            {
+              "name": "End now",
+              "bounds": {
+                "x": 279,
+                "y": 1007.15625,
+                "width": 515,
+                "height": 50,
+                "top": 1007.15625,
+                "right": 794,
+                "bottom": 1057.15625,
+                "left": 279
+              }
+            },
+            {
+              "name": "Remove time limit",
+              "bounds": {
+                "x": 624,
+                "y": 1065.15625,
+                "width": 170,
+                "height": 46,
+                "top": 1065.15625,
+                "right": 794,
+                "bottom": 1111.15625,
+                "left": 624
+              }
+            }
+          ],
+          "assets": [
+            {
+              "id": 1,
+              "kind": "svg",
+              "bounds": {
+                "x": 287.40625,
+                "y": 385.875,
+                "width": 25.1875,
+                "height": 25.1875,
+                "top": 385.875,
+                "right": 312.59375,
+                "bottom": 411.0625,
+                "left": 287.40625
+              }
+            }
+          ]
+        },
+        "actualConsumed": "Viewed directly at native size",
+        "affectedEdges": {
+          "top": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "right": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "bottom": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view",
+          "left": "clear for affected countdown/action text, focus contour and card/control boundaries in the recorded view"
+        }
+      }
+    ],
+    "browser": "143.0.7499.0"
+  },
+  "sourceBindings": {
+    "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/capture.mjs": "5e4456a712f0472522bcfd293f4b1103a7ece071fcd41a4d0cf38c0aaca87541",
+    "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/fixtures.mjs": "c83998e2882d0355bd1f8b438d69ca238efde39daffd13757d034a6a7dd7c438",
+    "/workspace/scratch/b4fb31747e8d/daily-timer-visual-99239ee/manifest.json": "016e1aff5b344349f10994040c3509f7542de5795565ff06458e2e88d39e46b9",
+    "/workspace/scratch/b4fb31747e8d/watchnest/docs/TimerDailyAuthority-20261118.md": "deaddec1158d882999a9a9ea7f0030002b413dc13eedaa32f3bfa6e2977fbcc1"
+  },
+  "scope": "Fresh four-anchor Child active daily countdown plus four Parent expired top contexts and four full Miri cards. All12 consumed; previous broader55+19 visual review remains historical rather than silently rebound as new pixels.",
+  "independence": "No peer review conclusions read for timer task; exact candidate visually judged from own captures",
+  "unresolvedAffectedConflicts": [],
+  "limitations": [
+    "Local optimized build and synthetic API fixtures only; no real family data",
+    "Preserved fixture resetAt is now+12hours and therefore not evidence of true7AM server resolution",
+    "No database/real persistence/authentication/hosted migration/physical playback certification",
+    "Existing fixed mobile navigation may cover unchanged scrolling-library card controls in full-document screenshots; no whole-app edge clearance claimed",
+    "No shared tests/output/build/source edited by reviewer; own server3047 stopped after capture"
+  ]
+}

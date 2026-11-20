@@ -12,6 +12,13 @@ export type Profile = {
   session_expires_at?: string | null;
   session_paused_seconds?: number | null;
   session_state_revision?: number;
+  session_mode?: "once" | "daily";
+  daily_allowance_minutes?: number | null;
+  daily_reset_at?: string | null;
+  daily_started?: boolean;
+  daily_period_timezone?: string | null;
+  session_parent_blocked?: boolean;
+  session_limit_disabled?: boolean;
   session_updated_at?: string | null;
   discover_enabled?: boolean;
   discovery_topics?: string[];

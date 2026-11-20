@@ -1,0 +1,20 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs e2e/profile-handoff.spec.ts
+
+[WebServer] (node:46) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:59) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:71) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/profile-handoff.spec.ts:11:7 › profile handoff: Parent approval and same-profile return 390 (1.3s)
+  ✓  2 e2e/profile-handoff.spec.ts:11:7 › profile handoff: Parent approval and same-profile return 768 (1.1s)
+  ✓  3 e2e/profile-handoff.spec.ts:11:7 › profile handoff: Parent approval and same-profile return 1024 (1.2s)
+
+  3 passed (5.6s)

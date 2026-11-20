@@ -1,0 +1,10 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"result\": {\n    \"deployment\": {\n      \"id\": \"dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac\",\n      \"name\": \"watchnest\",\n      \"url\": \"watchnest-6akyjvbcj-avromy.vercel.app\",\n      \"type\": \"LAMBDAS\",\n      \"state\": \"READY\",\n      \"createdAt\": 1793642118878,\n      \"creator\": {\n        \"uid\": \"FbK2fmQvUaYN1OIasgsDxpwb\",\n        \"username\": \"avromy-4714\"\n      },\n      \"project\": {\n        \"id\": \"prj_tQi2cBAosldposlx61FcwnwDJ8OG\",\n        \"name\": \"watchnest\",\n        \"framework\": \"nextjs\"\n      },\n      \"meta\": {\n        \"githubCommitRef\": \"product-completion-20260930\",\n        \"githubCommitSha\": \"77a5017d938ded03b1530c2b72978cef27273d61\",\n        \"githubCommitMessage\": \"Qualify readiness deadline with real browser timer\",\n        \"githubRepo\": \"watchnest-\",\n        \"githubOrg\": \"avromy\"\n      },\n      \"alias\": [\n        \"watchnest-rho.vercel.app\",\n        \"watchnest-avromy.vercel.app\",\n        \"watchnest-git-product-completion-20260930-avromy.vercel.app\"\n      ],\n      \"target\": \"production\",\n      \"regions\": [\n        \"iad1\"\n      ],\n      \"buildingAt\": 1793642120008,\n      \"ready\": 1793642133491,\n      \"readyState\": \"READY\",\n      \"source\": \"git\",\n      \"aliasError\": null\n    }\n  }\n}"
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}

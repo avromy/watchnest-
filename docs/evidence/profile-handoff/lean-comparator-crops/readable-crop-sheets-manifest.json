@@ -1,0 +1,200 @@
+[
+  {
+    "capture_id": "V01",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/390-handoff.png",
+    "source_raster_sha256": "1657caf245cb526eb8afdbe7be6b6808f9d55d62682670b8a6842a829f256c51",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/390-handoff-structure.json",
+    "source_structure_sha256": "89014dca6d406c376f638e7aedd31e6bfd02ae25d69f919d72055678721fca0c",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V01.png",
+    "crop_sheet_sha256": "715e6b143314558fe288a4e2a20165ed92f757ffb30e80ea3e15098dac365890",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V02",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/390-picker.png",
+    "source_raster_sha256": "6a268d4dc4c3c6c06b941ca3190bf98b52fdffdd710d64f5b343eb28ffff0ad8",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/390-picker-structure.json",
+    "source_structure_sha256": "7405255fc9c5abf876464c3bbd2fd793b89f1c6ea7a5dcb7fbb8d9a5b4ef5031",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V02.png",
+    "crop_sheet_sha256": "df9882e47418522c1ed389357151fd651a54acc1422998b33d9587aed8a03746",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V03",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/390-wrong-pin.png",
+    "source_raster_sha256": "917204a6e085dd544f07e59801eacfcbe2ce2d47e19c009d7fd7d16630b693e9",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/390-wrong-pin-structure.json",
+    "source_structure_sha256": "17ec3b0d16d4ad85051cb05cce3b29c7f54a6fc44041034a0e7891600714f015",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V03.png",
+    "crop_sheet_sha256": "1673627235255dcb3a8d31f15d6d4f0ef3ae1acdc075554e48cf01f3bc068fae",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V04",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/768-handoff.png",
+    "source_raster_sha256": "01bbc1c9874fa8b6475d58bd843c1afa267b7c920ce7fec54ccb6d056861c8b5",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/768-handoff-structure.json",
+    "source_structure_sha256": "97dc6d56f313d7ef60a15cca7ced53e082646e5dab20a105d4f4f81aa37dfea1",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V04.png",
+    "crop_sheet_sha256": "ae435d713b3564bb79d5b0b85592b0c1be38dfe756d4f78753e02648e256904f",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V05",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/768-picker.png",
+    "source_raster_sha256": "4c512dfa150c2fc330b2f72363d56967631022d42b02b8dd8de70a7fa921066d",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/768-picker-structure.json",
+    "source_structure_sha256": "059d8db3efd286b6e8baad720d3a44a0de2f511cc09b4647b5c5b6d213cf6964",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V05.png",
+    "crop_sheet_sha256": "ffdb077a014fcce2c240309fbffa1be5b16732521c9f5a7855f5747b97828dde",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V06",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/768-wrong-pin.png",
+    "source_raster_sha256": "134b4685e0ccdb946b82093cccc2a612c870eb3616148a16908d80d77df24dea",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/768-wrong-pin-structure.json",
+    "source_structure_sha256": "4915bb66d47466b5f6da908f5093d09cdea10030e05c1dde7a449a5eaa2b5cd6",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V06.png",
+    "crop_sheet_sha256": "30fbc4582f22b82405e99da29a5a6a3816b39f7163b9a1502507e2c839f30a34",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V07",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/1024-handoff.png",
+    "source_raster_sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/1024-handoff-structure.json",
+    "source_structure_sha256": "cdc40bc1f1762b7a24c245630379035570590886e412e997d5525592d1b5a801",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V07.png",
+    "crop_sheet_sha256": "27a51071ce5d2eda5c8a6903cf6fbd437444fa01e29101d7b8fc5af7a47e9c9c",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V08",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/1024-picker.png",
+    "source_raster_sha256": "a8dfc4dd2eb79fb703ef45d1caf35f649a033b2b41bf69514a7e14eb0d7305cd",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/1024-picker-structure.json",
+    "source_structure_sha256": "b506e40c2d6dfca4932e5085939772cd3b80965643451c8a6fccd70269686eaa",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V08.png",
+    "crop_sheet_sha256": "df9882e47418522c1ed389357151fd651a54acc1422998b33d9587aed8a03746",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  },
+  {
+    "capture_id": "V09",
+    "source_raster": "docs/evidence/profile-handoff/qualified-pixels/1024-wrong-pin.png",
+    "source_raster_sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+    "source_structure": "docs/evidence/profile-handoff/qualified-pixels/1024-wrong-pin-structure.json",
+    "source_structure_sha256": "300e21369693ca895ab88b8a3e50e1521fa1cc6f1934959ec465fb5179bba0a2",
+    "crop_sheet": "docs/evidence/profile-handoff/lean-comparator-crops/V09.png",
+    "crop_sheet_sha256": "9b1ad42d2fc28e0ee5e2777f55d4f64d687f978920edaebb20ff0508e271b853",
+    "sheet_dimensions": {
+      "width": 1320,
+      "height": 230
+    },
+    "transform": "Actual source pixels: each asset rect expanded 3 source pixels, floor left/top and ceil right/bottom; nearest-neighbor 4x; pasted at x=index*220,y=24 on white sheet. Labels Axx at x=index*220+4,y=4. No contour reconstruction.",
+    "asset_ids_left_to_right": [
+      "A01",
+      "A03",
+      "A05",
+      "A08",
+      "A09",
+      "A10"
+    ]
+  }
+]

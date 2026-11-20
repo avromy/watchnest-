@@ -1,0 +1,1879 @@
+{
+  "candidate": {
+    "source": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+    "app": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "build": "oFLqPPG7G1UKn-j9z5BTR",
+    "images": "See references, not an independent pixel verdict"
+  },
+  "verdict": "PASS",
+  "humanEye": "CLEAN_WITHIN_FINITE_AFFECTED_SCOPE",
+  "matchCheck": "PASS_WRITTEN_TIMER_AND_CONCEPT3_VISUAL_DIRECTION",
+  "coverage": {
+    "packet": {
+      "source": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+      "app": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+      "build": "oFLqPPG7G1UKn-j9z5BTR",
+      "images": [
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+          "sha256": "cc421fe31f214682041fac783b746e61f92c81d6738026a628c6903cb139bfcf"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+          "sha256": "18af13eccc301c328ca8efe91a7990d96d3907eb1d208d867cbed896c6b321af"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+          "sha256": "95a718ccdefde5e58c35d73eec2fff8f89c471ef4ec357d26dbd277f87617c2b"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+          "sha256": "7885ab88280f019fd66597ed204375e03329b541aed5b837efde94e3da980166"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+          "sha256": "3355ec1ff5c29110bb45d36efe71f291728648f7cb20be967b918365fae5d651"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+          "sha256": "ea44f520285333facdf9e88302adacb0f34ecbfdd2d18da8073760746fd0b64f"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-top.png",
+          "sha256": "e21976ba371a00635b362263b7e175459f2248cb3d8a3eed648de730a6b1529e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--editor-card.png",
+          "sha256": "ecd9961afdbe79a0fddbd1420e96ac9eddb2582860fb16907ecd8d1357624b79"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+          "sha256": "7111e24fefe1e205870509c5acb3ea5970ad8985d60fd79cc3044d05e1550059"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+          "sha256": "c41853f10877c8715ca481899977c0f09af73db55d8e809d1538e5b18e9655a4"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+          "sha256": "166a1d725acebf09d9098757f7ee85dd9c3d5a3b0aab997658272ac242709688"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-top.png",
+          "sha256": "cdfb95a70cc4d2ea91f02e525d5d4d94d3221418b5268552fe1e052e13cb23fb"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+          "sha256": "1443dc3d857098584d33c273ec99f171774e6645a8dc1f1072a34c41c3fff1c5"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-top.png",
+          "sha256": "7796d90e278e6edb3666b997b76099f686484ce9bd5b8ba4e7e17f49defdbf65"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+          "sha256": "aa41686bacaa2498b287401512e8ccafc391d1fa8736c923630d84ab4e90c674"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+          "sha256": "bd056cf99ce75257a00cd588597942a93144be9ae5a36e069fec52b14df48d69"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+          "sha256": "3e082f88e37eb9451d009f557ae31aa2312cc47a449decca381a24ed54d9ee34"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-top.png",
+          "sha256": "070257538f35129e896aa9f4d25286d93253580557a4b634b55c5ddea68310cf"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--editor-card.png",
+          "sha256": "b03e373b18b983ee986c8b2b9c511e59bcba3efee02271fa88204032f25c9330"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+          "sha256": "1d23967c117975570476b1f2d1e6209717eb22d21768d9d648d0778f0f5d129b"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+          "sha256": "9500fa4376d5489d9ea9366da6c1af85e882273ecde0609ee8ec3796ca6fa874"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+          "sha256": "3dd5a3f7f93350301cbc859f8929d661a6bab161c56208e497346292f1f088af"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-top.png",
+          "sha256": "10fc063be8c090fe2066b17010147ba1d72b2d6f7eee38774fbabec9cb0a516e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+          "sha256": "412e5c543ae17bcadf0b1170a0a60068ad0b3cce949b52eb7cf994376484e0b3"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-top.png",
+          "sha256": "29694049c14cdc3a680c3aeb32eeb41a28e06291054e50baf15c1cb528f19adb"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+          "sha256": "c2ca06e8190b2ea3ca5e3f9923a21c77aaf99c2eb12557bb7efeea397f354839"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+          "sha256": "b5b63619aaf5601dc59fcfdd0064a4e4fa1b3b91435a206e9aeeeadae2c4e51e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+          "sha256": "f619e224e4c978239ac8205e1092a3e50b74813a45eea1dc33b44e91919231c8"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-top.png",
+          "sha256": "a20dbb9fe0dc5cf7f3ced5ed86722e03dd2617ee12ae371d859c1ff2e752e777"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--editor-card.png",
+          "sha256": "21c590e9a329481761b6c5e78041b19cbca3285bba9443249469dd0b4a42bb73"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+          "sha256": "7c769d4bba5523aae3bbb5c4bb8f0a00527de87d2f4389a67327893b3948c36d"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+          "sha256": "eb960d38f94cee567951062be131f58200ef993192fd2f512d58b03ad8bd8f29"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+          "sha256": "022e54800b010c5a4e26c28796c9da880f81ae116c8ee9b43f8d4fe5d9008368"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-top.png",
+          "sha256": "8bdbe5e50012591aa03b73bfbca3714996322450ac3cf81c5e40b0523ce55b93"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-card.png",
+          "sha256": "cb46757a3dba3eb7a90558d405a11b08c9b0cd8b657c93d35d07cf6c2310224c"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-top.png",
+          "sha256": "ea5639629a90375ef917ca5a8e6e6dd422ca8db921b8697d1633cb34e054b82e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+          "sha256": "3a374850837fb1167c93c498778f5f76a0428c59e25e1ff520c5b78524dc9677"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+          "sha256": "ff5ba77947aa6e4ba0ca15e07b2ac17ddded5b018f3da66417bb035889e9df7a"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+          "sha256": "fb275beb5bec4fc386971cfe4909d8188f005882cf2aa2ebedb1fec77245d3b3"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-top.png",
+          "sha256": "c97ba423da67695a4c2d0fb8a6ecc5230245a020b2205a76acc8cf89d114927e"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--editor-card.png",
+          "sha256": "99f8cb0845302562114c0ec7f948e70b58576ef70b5d2aefea4f6fda1da95afc"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+          "sha256": "1054c9fb2131cfcf650b3e9fa3cc03eadfd647e502b7f9a24bee8b73ce7965e0"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+          "sha256": "f61286d05aeed704776b003510a28ab88be2488610b46d07c1f11f96a18aeacc"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+          "sha256": "5bdf53c420d959220c53629d29375cb41c18eddf28322c4d0334de09817e872c"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-top.png",
+          "sha256": "91bc8985cb8dd8f31cdccfa3b80a54d6bbd3be3fc5bb6fa33b552a428a1aa8a6"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+          "sha256": "0fdf44457b6d670236a1ca0fe6580f7a623b5197165aabb8b8b3af6b2649f4ab"
+        },
+        {
+          "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-top.png",
+          "sha256": "b55974f5334d8cfc1a6147aed1c121dfcef02be5db6fa798ead6b7b571441180"
+        }
+      ]
+    },
+    "ownManifest": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/manifest.json",
+    "references": [
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+        "sha256": "cc421fe31f214682041fac783b746e61f92c81d6738026a628c6903cb139bfcf",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+        "sha256": "18af13eccc301c328ca8efe91a7990d96d3907eb1d208d867cbed896c6b321af",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+        "sha256": "95a718ccdefde5e58c35d73eec2fff8f89c471ef4ec357d26dbd277f87617c2b",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+        "sha256": "7885ab88280f019fd66597ed204375e03329b541aed5b837efde94e3da980166",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+        "sha256": "3355ec1ff5c29110bb45d36efe71f291728648f7cb20be967b918365fae5d651",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+        "sha256": "ea44f520285333facdf9e88302adacb0f34ecbfdd2d18da8073760746fd0b64f",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-top.png",
+        "sha256": "e21976ba371a00635b362263b7e175459f2248cb3d8a3eed648de730a6b1529e",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--editor-card.png",
+        "sha256": "ecd9961afdbe79a0fddbd1420e96ac9eddb2582860fb16907ecd8d1357624b79",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              468,
+              850
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-000.png"
+          },
+          {
+            "box": [
+              0,
+              850,
+              468,
+              1042
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-001.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+        "sha256": "7111e24fefe1e205870509c5acb3ea5970ad8985d60fd79cc3044d05e1550059",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+        "sha256": "c41853f10877c8715ca481899977c0f09af73db55d8e809d1538e5b18e9655a4",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+        "sha256": "166a1d725acebf09d9098757f7ee85dd9c3d5a3b0aab997658272ac242709688",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-top.png",
+        "sha256": "cdfb95a70cc4d2ea91f02e525d5d4d94d3221418b5268552fe1e052e13cb23fb",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+        "sha256": "1443dc3d857098584d33c273ec99f171774e6645a8dc1f1072a34c41c3fff1c5",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1024x768--ready-top.png",
+        "sha256": "7796d90e278e6edb3666b997b76099f686484ce9bd5b8ba4e7e17f49defdbf65",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              1024,
+              768
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-002.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+        "sha256": "aa41686bacaa2498b287401512e8ccafc391d1fa8736c923630d84ab4e90c674",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+        "sha256": "bd056cf99ce75257a00cd588597942a93144be9ae5a36e069fec52b14df48d69",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+        "sha256": "3e082f88e37eb9451d009f557ae31aa2312cc47a449decca381a24ed54d9ee34",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-top.png",
+        "sha256": "070257538f35129e896aa9f4d25286d93253580557a4b634b55c5ddea68310cf",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--editor-card.png",
+        "sha256": "b03e373b18b983ee986c8b2b9c511e59bcba3efee02271fa88204032f25c9330",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              565,
+              850
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-003.png"
+          },
+          {
+            "box": [
+              0,
+              850,
+              565,
+              1042
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-004.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+        "sha256": "1d23967c117975570476b1f2d1e6209717eb22d21768d9d648d0778f0f5d129b",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+        "sha256": "9500fa4376d5489d9ea9366da6c1af85e882273ecde0609ee8ec3796ca6fa874",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+        "sha256": "3dd5a3f7f93350301cbc859f8929d661a6bab161c56208e497346292f1f088af",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-top.png",
+        "sha256": "10fc063be8c090fe2066b17010147ba1d72b2d6f7eee38774fbabec9cb0a516e",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+        "sha256": "412e5c543ae17bcadf0b1170a0a60068ad0b3cce949b52eb7cf994376484e0b3",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-top.png",
+        "sha256": "29694049c14cdc3a680c3aeb32eeb41a28e06291054e50baf15c1cb528f19adb",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-1440x1000--ready-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+        "sha256": "c2ca06e8190b2ea3ca5e3f9923a21c77aaf99c2eb12557bb7efeea397f354839",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+        "sha256": "b5b63619aaf5601dc59fcfdd0064a4e4fa1b3b91435a206e9aeeeadae2c4e51e",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+        "sha256": "f619e224e4c978239ac8205e1092a3e50b74813a45eea1dc33b44e91919231c8",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-top.png",
+        "sha256": "a20dbb9fe0dc5cf7f3ced5ed86722e03dd2617ee12ae371d859c1ff2e752e777",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--editor-card.png",
+        "sha256": "21c590e9a329481761b6c5e78041b19cbca3285bba9443249469dd0b4a42bb73",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              358,
+              850
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-005.png"
+          },
+          {
+            "box": [
+              0,
+              850,
+              358,
+              1078
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-006.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+        "sha256": "7c769d4bba5523aae3bbb5c4bb8f0a00527de87d2f4389a67327893b3948c36d",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+        "sha256": "eb960d38f94cee567951062be131f58200ef993192fd2f512d58b03ad8bd8f29",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+        "sha256": "022e54800b010c5a4e26c28796c9da880f81ae116c8ee9b43f8d4fe5d9008368",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-top.png",
+        "sha256": "8bdbe5e50012591aa03b73bfbca3714996322450ac3cf81c5e40b0523ce55b93",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-card.png",
+        "sha256": "cb46757a3dba3eb7a90558d405a11b08c9b0cd8b657c93d35d07cf6c2310224c",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              358,
+              388
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-007.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-390x844--ready-top.png",
+        "sha256": "ea5639629a90375ef917ca5a8e6e6dd422ca8db921b8697d1633cb34e054b82e",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              390,
+              844
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-008.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+        "sha256": "3a374850837fb1167c93c498778f5f76a0428c59e25e1ff520c5b78524dc9677",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+        "sha256": "ff5ba77947aa6e4ba0ca15e07b2ac17ddded5b018f3da66417bb035889e9df7a",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+        "sha256": "fb275beb5bec4fc386971cfe4909d8188f005882cf2aa2ebedb1fec77245d3b3",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-top.png",
+        "sha256": "c97ba423da67695a4c2d0fb8a6ecc5230245a020b2205a76acc8cf89d114927e",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--blocked-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--editor-card.png",
+        "sha256": "99f8cb0845302562114c0ec7f948e70b58576ef70b5d2aefea4f6fda1da95afc",
+        "method": "fresh-native",
+        "regions": [
+          {
+            "box": [
+              0,
+              0,
+              340,
+              850
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-009.png"
+          },
+          {
+            "box": [
+              0,
+              850,
+              340,
+              1129
+            ],
+            "view": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-010.png"
+          }
+        ],
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+        "sha256": "1054c9fb2131cfcf650b3e9fa3cc03eadfd647e502b7f9a24bee8b73ce7965e0",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+        "sha256": "f61286d05aeed704776b003510a28ab88be2488610b46d07c1f11f96a18aeacc",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+        "sha256": "5bdf53c420d959220c53629d29375cb41c18eddf28322c4d0334de09817e872c",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-top.png",
+        "sha256": "91bc8985cb8dd8f31cdccfa3b80a54d6bbd3be3fc5bb6fa33b552a428a1aa8a6",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--paused-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+        "sha256": "0fdf44457b6d670236a1ca0fe6580f7a623b5197165aabb8b8b3af6b2649f4ab",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/aa2ba2b/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-top.png",
+        "sha256": "b55974f5334d8cfc1a6147aed1c121dfcef02be5db6fa798ead6b7b571441180",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-evidence/8669371/affected-pixels/daily-timer-daily-timer-real-pixels-768x1024--ready-top.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/390x844-daily-active.png",
+        "sha256": "607cd898658048096bc6197f9772074c85df2fca703921cb1f2821eb36f4bd17",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/390x844-daily-active.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/768x1024-daily-active.png",
+        "sha256": "6e1aca530e1f71a25ddca5372dd9930358d037549f1725d427252cff060e98b8",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/768x1024-daily-active.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1024x768-daily-active.png",
+        "sha256": "2ba8306a98cd40819eac4fa320d46dac52f4c1b4f79a16f90b81e5c8f8c66b3b",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/1024x768-daily-active.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1440x1000-daily-active.png",
+        "sha256": "ae0b5493c5a4f43aee1b942b8fd50c085a7c45d0ec8f438b90bfd0c97d0ff825",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/1440x1000-daily-active.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/390x844-parent-mixed-full.png",
+        "sha256": "7ac11b28906658bdad6e87edf65bbf08f665a428eeee6ff7490e7b20f496a9a6",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/390x844-parent-mixed-full.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/768x1024-parent-mixed-full.png",
+        "sha256": "7ecb861a7e6c25e8fc6900f700fd08d95d3ae0ecdf046110e4c14800a86254b7",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/768x1024-parent-mixed-full.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1024x768-parent-mixed-full.png",
+        "sha256": "2b69b9b9004010b6aa4416632784d235537776b18440a16d92c5264b874cc93d",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/1024x768-parent-mixed-full.png",
+        "consumed": true
+      },
+      {
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1440x1000-parent-mixed-full.png",
+        "sha256": "5ddc9232510a776ab0b14b0d97f356727422df4d42f492c801be39d3d447cb55",
+        "method": "exact-byte carry from actually consumed866 PNG",
+        "consumedOriginal": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-8669371/1440x1000-parent-mixed-full.png",
+        "consumed": true
+      }
+    ],
+    "freshViews": [
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-000.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-001.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-002.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-003.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-004.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-005.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-006.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-007.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-008.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-009.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-010.png"
+    ],
+    "complete": true,
+    "actualViewedFreshSheets": [
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-000.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-001.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-002.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-003.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-004.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-005.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-006.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-007.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-008.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-009.png",
+      "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/E-010.png"
+    ]
+  },
+  "counts": {
+    "finalReferences": 55,
+    "exactByteCarriesFromActuallyViewed866": 48,
+    "newUniqueRastersFreshViewed": 7,
+    "newNativeRegionsActuallyViewed": 11,
+    "additionalActualHoverViewportRasters": 1
+  },
+  "additionalHoverPixel": {
+    "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1024x768-editor-hover10-viewport.png",
+    "sha256": "3f1db8ceccaef49e1661950c1075a8ca6bee1ef060662b3aacd73ef0d20ad7db",
+    "box": [
+      0,
+      0,
+      1024,
+      768
+    ],
+    "consumed": true,
+    "description": "Scrolled viewport intentionally clips upper card; selected5 lavender/insetoutline remains distinct from simultaneously hovered10 lightlavender. Full4editoredges covered by finalpacket."
+  },
+  "settledEditorMetricBinding": {
+    "source": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+    "appTree": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "buildId": "oFLqPPG7G1UKn-j9z5BTR",
+    "baseURL": "http://127.0.0.1:3047",
+    "fixtureSha256": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+    "dailyHarnessSha256": "33b37e6445c1320f039067396f7c4160a5eeeb059f49eaf633be424c99e56df1",
+    "helperSha256": "3692ac7176a871617e7f3dbc1485b29bd247b1bfb95e91e214ebe4751e1cab42",
+    "compiledFixtureSha256": "c83998e2882d0355bd1f8b438d69ca238efde39daffd13757d034a6a7dd7c438",
+    "synthetic": true,
+    "physicalDevice": false,
+    "captures": [
+      {
+        "state": "editor-hover10",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1024x768-editor-selected-settled.png",
+        "sha256": "aa74a488c8c3b67a02ccaf4cb30f516a364891651fdb5570188dacfd7a0635b9",
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        }
+      }
+    ],
+    "fixtureClock": {
+      "timezone": "America/New_York",
+      "resetAt": "2026-11-19T12:00:00.000Z",
+      "boundaryFunction": "Exact nextDailyReset from current e2e/daily-timer.spec.ts",
+      "mixedStates": [
+        "Miri active",
+        "Ari paused",
+        "Benny blocked",
+        "Eli unlimited"
+      ],
+      "parentSnapshot": "One shared snapshotNow for outer timestamp and deadlines; unlimited uses once mode and null daily allowance/reset"
+    },
+    "browser": "143.0.7499.0",
+    "editorMetrics": [
+      {
+        "neutral": {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "input": {
+            "x": 37,
+            "y": 835.5625,
+            "width": 316,
+            "height": 50,
+            "top": 835.5625,
+            "right": 353,
+            "bottom": 885.5625,
+            "left": 37
+          },
+          "save": {
+            "x": 37,
+            "y": 939.3125,
+            "width": 316,
+            "height": 46,
+            "top": 939.3125,
+            "right": 353,
+            "bottom": 985.3125,
+            "left": 37
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 37,
+                "y": 690.5,
+                "width": 73,
+                "height": 46,
+                "top": 690.5,
+                "right": 110,
+                "bottom": 736.5,
+                "left": 37
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 118,
+                "y": 690.5,
+                "width": 73,
+                "height": 46,
+                "top": 690.5,
+                "right": 191,
+                "bottom": 736.5,
+                "left": 118
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 199,
+                "y": 690.5,
+                "width": 73,
+                "height": 46,
+                "top": 690.5,
+                "right": 272,
+                "bottom": 736.5,
+                "left": 199
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 280,
+                "y": 690.5,
+                "width": 73,
+                "height": 46,
+                "top": 690.5,
+                "right": 353,
+                "bottom": 736.5,
+                "left": 280
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 37,
+                "y": 744.5,
+                "width": 73,
+                "height": 46,
+                "top": 744.5,
+                "right": 110,
+                "bottom": 790.5,
+                "left": 37
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 118,
+                "y": 744.5,
+                "width": 73,
+                "height": 46,
+                "top": 744.5,
+                "right": 191,
+                "bottom": 790.5,
+                "left": 118
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 199,
+                "y": 744.5,
+                "width": 73,
+                "height": 46,
+                "top": 744.5,
+                "right": 272,
+                "bottom": 790.5,
+                "left": 199
+              }
+            }
+          ]
+        },
+        "hovered": null
+      },
+      {
+        "neutral": {
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "input": {
+            "x": 57,
+            "y": 988.765625,
+            "width": 290,
+            "height": 50,
+            "top": 988.765625,
+            "right": 347,
+            "bottom": 1038.765625,
+            "left": 57
+          },
+          "save": {
+            "x": 57,
+            "y": 1092.515625,
+            "width": 290,
+            "height": 46,
+            "top": 1092.515625,
+            "right": 347,
+            "bottom": 1138.515625,
+            "left": 57
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 843.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 843.703125,
+                "right": 123.5,
+                "bottom": 889.703125,
+                "left": 57
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 131.5,
+                "y": 843.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 843.703125,
+                "right": 198,
+                "bottom": 889.703125,
+                "left": 131.5
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 206,
+                "y": 843.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 843.703125,
+                "right": 272.5,
+                "bottom": 889.703125,
+                "left": 206
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 280.5,
+                "y": 843.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 843.703125,
+                "right": 347,
+                "bottom": 889.703125,
+                "left": 280.5
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 897.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 897.703125,
+                "right": 123.5,
+                "bottom": 943.703125,
+                "left": 57
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 131.5,
+                "y": 897.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 897.703125,
+                "right": 198,
+                "bottom": 943.703125,
+                "left": 131.5
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 206,
+                "y": 897.703125,
+                "width": 66.5,
+                "height": 46,
+                "top": 897.703125,
+                "right": 272.5,
+                "bottom": 943.703125,
+                "left": 206
+              }
+            }
+          ]
+        },
+        "hovered": null
+      },
+      {
+        "neutral": {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "input": {
+            "x": 57,
+            "y": 810.953125,
+            "width": 418,
+            "height": 50,
+            "top": 810.953125,
+            "right": 475,
+            "bottom": 860.953125,
+            "left": 57
+          },
+          "save": {
+            "x": 57,
+            "y": 914.703125,
+            "width": 418,
+            "height": 46,
+            "top": 914.703125,
+            "right": 475,
+            "bottom": 960.703125,
+            "left": 57
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 665.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 665.890625,
+                "right": 155.5,
+                "bottom": 711.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 163.5,
+                "y": 665.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 665.890625,
+                "right": 262,
+                "bottom": 711.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 665.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 665.890625,
+                "right": 368.5,
+                "bottom": 711.890625,
+                "left": 270
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 376.5,
+                "y": 665.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 665.890625,
+                "right": 475,
+                "bottom": 711.890625,
+                "left": 376.5
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 719.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 719.890625,
+                "right": 155.5,
+                "bottom": 765.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 163.5,
+                "y": 719.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 719.890625,
+                "right": 262,
+                "bottom": 765.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 719.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 719.890625,
+                "right": 368.5,
+                "bottom": 765.890625,
+                "left": 270
+              }
+            }
+          ]
+        },
+        "hovered": {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "input": {
+            "x": 57,
+            "y": 184.953125,
+            "width": 418,
+            "height": 50,
+            "top": 184.953125,
+            "right": 475,
+            "bottom": 234.953125,
+            "left": 57
+          },
+          "save": {
+            "x": 57,
+            "y": 288.703125,
+            "width": 418,
+            "height": 46,
+            "top": 288.703125,
+            "right": 475,
+            "bottom": 334.703125,
+            "left": 57
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 39.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 39.890625,
+                "right": 155.5,
+                "bottom": 85.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 163.5,
+                "y": 39.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 39.890625,
+                "right": 262,
+                "bottom": 85.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgb(239, 236, 251)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 39.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 39.890625,
+                "right": 368.5,
+                "bottom": 85.890625,
+                "left": 270
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 376.5,
+                "y": 39.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 39.890625,
+                "right": 475,
+                "bottom": 85.890625,
+                "left": 376.5
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 93.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 93.890625,
+                "right": 155.5,
+                "bottom": 139.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 163.5,
+                "y": 93.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 93.890625,
+                "right": 262,
+                "bottom": 139.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 93.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 93.890625,
+                "right": 368.5,
+                "bottom": 139.890625,
+                "left": 270
+              }
+            }
+          ]
+        }
+      },
+      {
+        "neutral": {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "input": {
+            "x": 279,
+            "y": 905.59375,
+            "width": 515,
+            "height": 50,
+            "top": 905.59375,
+            "right": 794,
+            "bottom": 955.59375,
+            "left": 279
+          },
+          "save": {
+            "x": 279,
+            "y": 1009.34375,
+            "width": 515,
+            "height": 46,
+            "top": 1009.34375,
+            "right": 794,
+            "bottom": 1055.34375,
+            "left": 279
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 279,
+                "y": 760.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 760.53125,
+                "right": 401.75,
+                "bottom": 806.53125,
+                "left": 279
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 409.75,
+                "y": 760.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 760.53125,
+                "right": 532.5,
+                "bottom": 806.53125,
+                "left": 409.75
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 540.5,
+                "y": 760.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 760.53125,
+                "right": 663.25,
+                "bottom": 806.53125,
+                "left": 540.5
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 671.25,
+                "y": 760.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 760.53125,
+                "right": 794,
+                "bottom": 806.53125,
+                "left": 671.25
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 279,
+                "y": 814.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 814.53125,
+                "right": 401.75,
+                "bottom": 860.53125,
+                "left": 279
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 409.75,
+                "y": 814.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 814.53125,
+                "right": 532.5,
+                "bottom": 860.53125,
+                "left": 409.75
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 540.5,
+                "y": 814.53125,
+                "width": 122.75,
+                "height": 46,
+                "top": 814.53125,
+                "right": 663.25,
+                "bottom": 860.53125,
+                "left": 540.5
+              }
+            }
+          ]
+        },
+        "hovered": null
+      }
+    ]
+  },
+  "hoverMetricBinding": {
+    "source": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+    "appTree": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+    "buildId": "oFLqPPG7G1UKn-j9z5BTR",
+    "baseURL": "http://127.0.0.1:3047",
+    "fixtureSha256": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+    "dailyHarnessSha256": "33b37e6445c1320f039067396f7c4160a5eeeb059f49eaf633be424c99e56df1",
+    "helperSha256": "d2bc1ba4d097cbbaefd61e283e55f562167b2d800119c0b7fcb44927609a12cd",
+    "compiledFixtureSha256": "c83998e2882d0355bd1f8b438d69ca238efde39daffd13757d034a6a7dd7c438",
+    "synthetic": true,
+    "physicalDevice": false,
+    "captures": [
+      {
+        "state": "editor-hover10",
+        "path": "/workspace/scratch/b4fb31747e8d/daily-timer-visual-aa2ba2b/1024x768-editor-hover10-viewport.png",
+        "sha256": "3f1db8ceccaef49e1661950c1075a8ca6bee1ef060662b3aacd73ef0d20ad7db",
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        }
+      }
+    ],
+    "fixtureClock": {
+      "timezone": "America/New_York",
+      "resetAt": "2026-11-19T12:00:00.000Z",
+      "boundaryFunction": "Exact nextDailyReset from current e2e/daily-timer.spec.ts",
+      "mixedStates": [
+        "Miri active",
+        "Ari paused",
+        "Benny blocked",
+        "Eli unlimited"
+      ],
+      "parentSnapshot": "One shared snapshotNow for outer timestamp and deadlines; unlimited uses once mode and null daily allowance/reset"
+    },
+    "browser": "143.0.7499.0",
+    "editorMetrics": [
+      {
+        "neutral": {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "input": {
+            "x": 57,
+            "y": 943.953125,
+            "width": 418,
+            "height": 50
+          },
+          "save": {
+            "x": 57,
+            "y": 1015.703125,
+            "width": 418,
+            "height": 46
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 706.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 706.890625,
+                "right": 155.5,
+                "bottom": 752.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 163.5,
+                "y": 706.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 706.890625,
+                "right": 262,
+                "bottom": 752.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 706.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 706.890625,
+                "right": 368.5,
+                "bottom": 752.890625,
+                "left": 270
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 376.5,
+                "y": 706.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 706.890625,
+                "right": 475,
+                "bottom": 752.890625,
+                "left": 376.5
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 760.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 760.890625,
+                "right": 155.5,
+                "bottom": 806.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 163.5,
+                "y": 760.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 760.890625,
+                "right": 262,
+                "bottom": 806.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 760.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 760.890625,
+                "right": 368.5,
+                "bottom": 806.890625,
+                "left": 270
+              }
+            }
+          ]
+        },
+        "hovered": {
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "input": {
+            "x": 57,
+            "y": 184.953125,
+            "width": 418,
+            "height": 50
+          },
+          "save": {
+            "x": 57,
+            "y": 279.703125,
+            "width": 418,
+            "height": 46
+          },
+          "presets": [
+            {
+              "text": "1 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 30.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 30.890625,
+                "right": 155.5,
+                "bottom": 76.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "5 min",
+              "pressed": "true",
+              "background": "rgb(184, 173, 255)",
+              "color": "rgb(21, 26, 50)",
+              "shadow": "rgb(101, 82, 184) 0px 0px 0px 2px inset",
+              "bounds": {
+                "x": 163.5,
+                "y": 30.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 30.890625,
+                "right": 262,
+                "bottom": 76.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "10 min",
+              "pressed": "false",
+              "background": "rgb(239, 236, 251)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 30.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 30.890625,
+                "right": 368.5,
+                "bottom": 76.890625,
+                "left": 270
+              }
+            },
+            {
+              "text": "20 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 376.5,
+                "y": 30.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 30.890625,
+                "right": 475,
+                "bottom": 76.890625,
+                "left": 376.5
+              }
+            },
+            {
+              "text": "30 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 57,
+                "y": 84.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 84.890625,
+                "right": 155.5,
+                "bottom": 130.890625,
+                "left": 57
+              }
+            },
+            {
+              "text": "45 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 163.5,
+                "y": 84.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 84.890625,
+                "right": 262,
+                "bottom": 130.890625,
+                "left": 163.5
+              }
+            },
+            {
+              "text": "60 min",
+              "pressed": "false",
+              "background": "rgba(0, 0, 0, 0)",
+              "color": "rgb(101, 107, 128)",
+              "shadow": "none",
+              "bounds": {
+                "x": 270,
+                "y": 84.890625,
+                "width": 98.5,
+                "height": 46,
+                "top": 84.890625,
+                "right": 368.5,
+                "bottom": 130.890625,
+                "left": 270
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "closedFindings": [
+    {
+      "id": "TD-V01",
+      "closure": "Readable Child remaining banner; final4active captures exactSHA carry from actually consumed866"
+    },
+    {
+      "id": "TD-V02",
+      "closure": "All4 fresh editor rasters show input/helper/Save adjacent; atomic settled DOM gap53.75px each; button46px high."
+    },
+    {
+      "id": "TD-V03",
+      "closure": "All4 neutral final editors show persistent5 selection; actual1024 viewport proves simultaneous hover10 differs."
+    }
+  ],
+  "measurementConflictResolution": "Earlier editor-metrics.json used sequential async bounds during layout settling and produced21.75px phone vs53.75elsewhere. Superseded by settled-editor-metrics.json: finite running animations finished,2RAFs, atomic same-evaluation input/save measurements53.75 atall4. No silent reuse of preliminaryphone21.75.",
+  "scopeLimits": [
+    "Finite timer affected pixels, not entire app",
+    "Local synthetic optimized Chromium; not hosted or physical devices",
+    "No fresh loading/error/dialog states supplied or claimed",
+    "No assertion of full80suite completion, functional enforcement or release readiness",
+    "Other diagnostic card/fullpage images outside final55 are not exhaustively consumed; only explicitly listed hoverviewport is additional final evidence"
+  ],
+  "independence": "No currentpeerreports/votes read. Earlier jurycategorysummary and rootplannedrefinement exposure disclosed in866 review; same reviewer with historical context, not a freshblindjury. Findings and closure based on own pixel inspection.",
+  "preservedPreviousReports": [
+    "TimerDailyVisualReview-20261118.md FAIL6619",
+    "TimerDailyVisualRecheck-99239ee-20261118.md boundedPASS",
+    "TimerDailyVisualFinal-11b0ae7-20261118.md NOTCLEANprecision",
+    "TimerDailyVisualFinal-8669371-20261118.md affectededitorFAIL"
+  ]
+}

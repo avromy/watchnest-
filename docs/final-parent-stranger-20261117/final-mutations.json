@@ -1,0 +1,171 @@
+[
+  {
+    "path": "/api/parent/videos/lookup",
+    "body": {
+      "urls": [
+        "https://www.youtube.com/watch?v=abcdefghijk"
+      ]
+    }
+  },
+  {
+    "path": "/api/parent/videos",
+    "body": {
+      "youtube_video_ids": [
+        "abcdefghijk"
+      ],
+      "profile_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "collection_id": "20000000-0000-4000-8000-000000000001"
+    }
+  },
+  {
+    "path": "/api/parent/videos",
+    "body": {
+      "video_id": "10000000-0000-4000-8000-000000000001",
+      "profile_ids": [
+        "00000000-0000-4000-8000-000000000002",
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "tags": [
+        "crafts"
+      ]
+    }
+  },
+  {
+    "path": "/api/parent/collections",
+    "body": {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "title": "Making things",
+      "description": "Make and discover",
+      "video_ids": [
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000003"
+      ]
+    }
+  },
+  {
+    "path": "/api/parent/requests",
+    "body": {
+      "id": "30000000-0000-4000-8000-000000000001",
+      "status": "resolved"
+    }
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "start",
+      "duration_minutes": 20
+    }
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "start",
+      "duration_minutes": 20
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "extend",
+      "duration_minutes": 15
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "end"
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "start",
+      "duration_minutes": 20
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "extend",
+      "duration_minutes": 15
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000001",
+      "action": "end"
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/requests",
+    "body": {
+      "id": "30000000-0000-4000-8000-000000000001",
+      "status": "resolved"
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/videos",
+    "body": {
+      "video_id": "10000000-0000-4000-8000-000000000001",
+      "profile_ids": [
+        "00000000-0000-4000-8000-000000000002",
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "tags": [
+        "crafts"
+      ]
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/collections",
+    "body": {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "title": "Making things",
+      "description": "Make and discover",
+      "video_ids": [
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000003",
+        "10000000-0000-4000-8000-000000000004"
+      ]
+    },
+    "fixture": "stateful"
+  },
+  {
+    "path": "/api/parent/videos",
+    "body": {
+      "youtube_video_ids": [
+        "synthetic01"
+      ],
+      "profile_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "collection_id": "20000000-0000-4000-8000-000000000001"
+    },
+    "fixture": "new-video-stateful"
+  },
+  {
+    "path": "/api/parent/profiles",
+    "body": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "avatar_key": "sun",
+      "pin_enabled": true
+    }
+  }
+]

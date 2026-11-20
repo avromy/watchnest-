@@ -1,3 +1,362 @@
+# CURRENT — integrity audit; stop repeated authentication handoffs
+
+Founder now requests full app-integrity testing and cancels further login/PIN handoffs. New stage server error42501 on GET /api/session found; actualSDK reproduction isolates refresh-client authority loss plus swallowed dependency errors. Independent Sign out network failure reproduced and repaired. See docs/integrity-20261120/IntegrityReport.md and independent receipts. Application0aac62ea0dd42d1f1301d98a4651d8b8f05e7394 published/fetched exact; CI168/run44813525026 all3jobsSUCCESS,400unit/100browser/build/lint/type/prodaudit0, exact merge9533bb9 tree171267d equals0aac. Final local4/4logout and1/1geometry rerun PASS. Independentsecurity4red/4green; final changed-card visual receipt in docs/integrity-20261120/visual. Do not reuse146 hosted acceptance for changed auth/error code. Automaticpreview dpl_EbP5YCNB1u6UGqjc56Zobif5oeUg READY; configuredstage attempt dpl_4t6k1de618Capk3c9cF7ptGFQPAF CANCELED on ambiguous planned canonicalalias, all3canonicals individually reverified old77/dplGiR; no configured successor qualification claimed. Verify direct manual-assignment guard before any further configured stage. Canonical77/dpl_GiR unchanged, no migration/family-setting writes. Release HOLD. Cloud runtime inventory has no tabs; no login request or connectedChrome fallback. Finish all independent checks and preserve exact successor before any unavoidable hosted/device gate.
+
+---
+
+# CURRENT — authenticated stage checks completed; separate live Cloud sign-in interrupted
+
+Repairedstage146a672f / dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB was positively authenticated through secure WorkCloud browserAuth, then actual Parent settings verified. Actual read-only Preview identity/open/retry/close/reopen and unsaved1/5/10/Daily7AM observations are durable in docs/incident-20261120/CloudHostedAcceptance-20261120.md (commit8efead90492b32486ab3de9a968ecd3efe71d25b). No family timer/approval/settings command submitted.
+
+Separate canonical production secure-auth request timed out without confirmed result; runtime bindings lost. First recovery fresh Cloud tab at canonical /parent/dashboard visibly resolved /login. Production authentication NOTverified; timeout is not bad-password/site-crash/bot evidence. No automatic credential retry/localChrome fallback. Current Cloud tab8 is canonical sign-in; documented manual Cloud takeover is next minimum existing Parent account action. Never send secrets in chat. Stage session continuity after reset is unknown: inspect/reopen exactstage before asking stage login again. Previously verified stage evidence stays valid.
+
+Release HOLD, not crash-free/physical PASS. No merge/promotion/migration. Continue live read-only investigation after positive ParentUI in SAMECloud; remaining final independent/device gates remain. Recovery CLEAR TO DELETE, independent of readiness.
+
+---
+
+# CURRENT — Founder Cloud Browser correction — November20,2026
+
+Authentication and hosted acceptance MUST use this same Work Builder's CLOUD BROWSER (cdp), never connected/local Chrome or an extension. This supersedes every earlier connected-Chrome instruction and the prior email's browser direction. Do not transfer sessions, read/export credentials/cookies, mint accounts or bypass ParentPIN.
+
+Reverified PR49 open/draft/unmerged, branch premium-ui-ux-20261103 head4717166841b7e7e306ae70672123971751aee309 at recovery. Application146a672f5b0744a13869dc29983e5942a0d7a233, READY stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB at https://watchnest-pq53jywae-avromy.vercel.app/login?parent=1 . Canonical remains77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac; no merge/promotion/migration/data/settings changes.
+
+Actually opened exactstage in Work Cloud Browser cdp tab20. Visible Sign in, Email and Password; not authenticated. Current cloud-desktop and actual browserAuth instructions consumed. Supported secure browserAuth request is available; credentials are filled by browser-client without returning values to the agent. No Chrome session used in this correction. User action is existing Parent sign-in and existingPIN directly through secure cloud authentication if prompted. A submitted form is not success: verify fresh positive Parent UI in SAME cloud session before hosted QA. If request cancelled, respect it; if unavailable use documented Cloud Browser takeover only, not local Chrome.
+
+After positive auth continue separate live/stage incident RCA and actual hosted preview open/close/retry/identity/no-approval-side-effects, Parent/Child controls, errors, persistence/isolation/handoff and timers. Keep real family settings read-only. Storage-denial injection may need existing regression harness if unsupported by live read-only browser; label that limitation, never claim hosted injection from synthetic results. No device certification from Cloud Browser. One conditional physical iPad/phone safety session remains after hosted qualification; high-risk final independent gates and qualified autonomous promotion/phase2/rollback controls remain binding.
+
+Earlier source396unit/96browser/independent scoped receipts remain valid within exact source/synthetic scope only. No new hosted PASS or physical PASS. Release HOLD. Resume only from verified positive Cloud Parent session; tabs may expire and must be reopened at exactstage if needed.
+
+---
+
+# CURRENT — P0 incident repair staged; actual incident attribution / Parent authentication / physical release HOLD
+
+Application146a672f5b0744a13869dc29983e5942a0d7a233, src464c41e300e38b9c34cb4f6603f4f2019e4141c4; existing premium-ui-ux-20261103/PR49 unchanged. See docs/incident-20261120/IncidentReport.md and Resume.md for current repair, evidence, limitations and continuation. Optional-storage full-page crash reproduced locally and repaired; first-use volume default60 preserved; Parent request preview now lazy/modal/retry/no-mutation; collection/bulk failures surfaced and independent P2 refresh mismatch repaired. Actual live and prior-stage Founder crash causes and dead Preview remain unconfirmed independently; do not equate this source repair with completed hosted RCA.
+
+New configured stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB READY https://watchnest-pq53jywae-avromy.vercel.app exact146a672f. Actual guest browser configured:true/role:null, sign-in renders. Auto-assign production domains DISABLED/manual promotion confirmed; all3canonical aliases remain77a5017d938ded03b1530c2b72978cef27273d61/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac after READY. No promotion/merge/schema/family data writes. Daily20261118192923/handoff20261119042334 verified present; phase2 NOT applied.
+
+Local396unit/lint/type/build/full audit0;95browser PASS on pre-P2 source then19affected after rebuilt frozen146a672f PASS and2touch+keyboard preview PASS. Exact CI167/run44677008406 and final independent cold outcome in Resume/qualification. Independent89test/source/security PASS bound to final src; Human-Eye V2 bounded2viewport/14asset/56edge CLEAN. No blanket actual hosted/provider/device/full-product/jury acceptance. Preserve baseline crash FAIL and first-recheck harness failures. Current raw reports/screens/manifests under incident directory; completed oldConcept3 evidence remains scoped history.
+
+Secure existing Parent sign-in at exact repaired stage is the next hosted dependency. Never ask for passwords/PINs in chat; no copied cookies/minted accounts/auth bypass or changed child limits. Continue authenticated incident sweep separately on live and stage, then final affected independent qualification and one conditional iPad/phone safety session. No routine approval needed for qualified merge/promotion. Legacy phase2 and guarded rollback rules remain in ProfileHandoffReleasePlan. Recovery clearance and Attention receipt in Resume; product release remains HOLD.
+
+---
+
+# PREVIOUS — exact corrected profile-handoff build qualified; authenticated hosted / physical release hold
+
+Application decd2681e693de7ef33ea067610117c7467123b4, source tree 2d1d0370ac94b35d195d16a5be5696a5202f14e6. Exact final 396 unit / 84 browser (zero skipped, unexpected, flaky), lint/type/build PASS, full and production audits zero, CI166 / 44456800307 all three jobs SUCCESS. Independent security 97 targeted +16 SQL checks; five fresh unanimous Child-entry jurors; two lean reviews; cold Stranger P3 singular-minute copy repaired and fresh affected recheck PASS. Child carry-forward is bound to component hashes and measured seven identical / two one-pixel capture differences, not a fabricated new jury.
+
+Compatible phase1 actually APPLIED as provider migration 20261119042334/device_profile_handoff (source filename 20261119034107). Actual hosted rolled-back synthetic probe22/22 PASS, fixtures zero, family profile/household/assignment digests unchanged. Prior daily migration not reapplied. Advisors unchanged (18 existing INFO table findings; one pre-existing password-protection WARN). Phase2 legacy-session retirement NOT APPLIED; explicit post-qualified-promotion operation, never for checkpoint. See ProfileHandoffHostedOutcome-20261119 and ProfileHandoffResume-20261119.
+
+Configured stage READY: dpl_Gy16rRsVjrcVEAkjg6WuwYja2fcg / https://watchnest-ngz5hkjr4-avromy.vercel.app, exact decd source, target production WITHOUT canonical promotion. Actual post-READY all three production aliases remain 77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Canonical https://watchnest-rho.vercel.app NOT UPDATED. Auto-assign production domains visibly unchecked; no setting/header/secret changes. Guest configured:true and auth denials observed; authenticated Parent/Child hosted workflows OPEN. Recent warning/error/fatal grouped runtime query returned no groups in its bounded window; not blanket health proof.
+
+Owner-only next dependency: securely sign into the existing Parent account in this Builder's shared browser, exact stage /login?parent=1. Never send passwords/PINs in chat. Complete real authenticated QA without changing real child budgets; then request ONE minimal consolidated family-iPad/phone test of affected profile handoff/timer/fullscreen stop. Historical ef4 picture+sound and observed recommendation containment PASS remain historical; remote stop PARTIAL FAIL, not new-stage certification. No new physical PASS.
+
+Release HOLD — no merge/promotion until actual hosted and physical gates pass. Then autonomously merge/promote existing PR49→product-completion-20260930, verify aliases/auth/runtime/data, execute atomic phase2 and verify legacy denial/v2 preservation. After phase2 old artifacts are forensic only; rollback must retain guarded v2 admission or fail closed. No routine Founder approval. Recovery clearance requires verified final Git/Notion checkpoint; independent of product readiness.
+
+---
+
+# CURRENT — production mandate, final correction qualifying; safe hosted phase1 prepared
+
+Founder explicitly reconfirmed automatic qualifiedmerge/promotion to https://watchnest-rho.vercel.app onNovember18; no additionalroutineapproval. ExistingPR49/premiumbranch/productionbranch unchanged. LatestfrozenSource decd2681e693de7ef33ea067610117c7467123b4 fixes solecold P3 “Add1minutes” in3Parentstates, newbrowserregression. Sourcea4c predecessor passed396unit/83browser/lint/type/build/full+prodaudits0 andCI16544455318300SUCCESS, independent97+16SQLsecuritychecks,5freshunanimouschild-entryvisualjurors with9native+9readable/96assets/384edges each. Newdecd freshfullgates+affectedcoldrecheck IN PROGRESS; no newblanketPASSclaimed. Actualold ef4 physicalpicture+soundPASS/recommendationsFounderreportedPASS/remotePARTIALFAIL retainsexactscope, notnewstageproof.
+
+Newdeviceadmissionphase1 SQLnowversioned: serviceonlynewRPC mintsadmission_version2; existinglegacydefault1 stayscompatiblecurrent77. Separatephase2operation outsideautoloadmigrations drainsoldwrites, installslegacyinsertbarrierandrevokesallactivev1 ONLYAFTERqualifiedcanonicalpromotion. This closesheldoldorigin/skewtokenbypass withoutdeploymentdeletion/WAFpolicy/newinfra. NoSQL/hostedmutationhasyetoccurredforthisrepair. Existing daily20261118192923 confirmed, doNOTreapply. Newsourcephase1SHA266de6...; phase2SHA93900b...; exactplan ProfileHandoffReleasePlan andSQLsecurityreview. Future rollbackafterphase2 mustpreservenewguardedadmissionor failclosed, neverunrevokev1/removebarrier torestoreunsafeoldapp.
+
+ProviderpreflightactualRLS/servicegrants/compositeprofilesunique/oldfunctionMD5s/noexternaldevice-sessiontriggers/sanitizedprofile-parent-assignmentdigests captured. ActualVercelProductionEnvironmentUI AutoAssignUNCHECKED/manualpromotionwarning/currentbranch verified, nosecret/configchanges. Canonical77/dplGiR and306stage2W1 unchanged. Newa4c previewCR6 READY onlyunconfiguredsourceinput, nothostedPASS. Rootreviewedwhollyrolledback22-casehostedphase1probe; localdryrunPASSnotnativehostedproof. Inspectexternalparent/profiletriggersandlatestnativehistorybeforeapply, oneatomicqualifiedsourceoperation only. HostednewParentauth/timer/profile QA thenONEminimalconditionalphysicaltest remainopen; noOwneractionyetwhileautonomouslanesremain.
+
+Next: complete exactdecd qualification/freshaffectedrecheck, verifieddurableoperationrecord then applycompatiblephase1+readbacks/rollbackprobe; stageexactdecdproduction-configuredwithoutaliases, validatecanonicalstill77; secureexistingParentloginONLYifactuallyneeded. Afterhosted/physicalgatespassmergeandpromoteAUTONOMOUSLY +atomicphase2+canonicalruntime/data/securityverification. Do notstopatprevieworcallstagecanonical. See ProfileHandoffReleasePlan for exactrecipe.
+
+DO NOT DELETE YET fornewrepair: finalnewrawpixel/Stranger/jury artifacts andpost-hostedNotionoutcomes stillneedverifieddurablecloseout. Sourcealreadyremotelypreserved; prior306privatearchive/8Concept3custodies remain. Noreset/newOwner/paidservice/credentials/familybudgetmutation/player/CSPrewrite.
+
+---
+
+# CURRENT — Parent-authorized device profile handoff in qualification
+
+Founder November18 physical test on HISTORICAL ef4/7sr: approved picture+sound PASS; recommendation containment Founder-reported PASS only in observed scope; targeted video stopped but profile switching allowed continued viewing: remote End now PARTIAL FAIL / P0 identity-bypass. These observations supersede earlier “all physical gates unknown” for ef4 only; not acceptance of306/newhandoff/daily reset.
+
+Recovered clean43c2ae8 branch premium-ui-ux-20261103/PR49→product-completion-20260930; no newerremoteimplementation. Ephemeral clone removed by maintenance, exact remote re-cloned, no lost local work claimed recovered. Canonical77/dplGiR and configured306stage2W1 reverified READY; existingdaily migration20261118192923 verified, NOT reapplied. Newdevicebindingmigration localonly, nothosted; production/oldstage still known bypass, no readiness claim.
+
+Repair source implemented: persistent device.active_profile_id; atomic service-only Parent-authorized sibling transition; currentParentPIN+childPINsnapshot/rate/ownershipchecks; oldsame-devicechildsessionsrevoked; everychildAPIrequireslivebounddevice; familycodecan'tbypass; Parentviewaschildsharespath. SameprofileoptionalPIN; siblinghandofftargetParentPINdoesnotgrantfullParentMode/changeanytimer. Parent UI presets/custom/Daily correction alreadyin306, retained. See ProfileHandoffAuthority/SecurityInvestigation/ReviewRouting. Current Root soleintegrator, disjointtest/SQLspecialists and independentreviewer.
+
+Qualification IN PROGRESS.18newSQL/26actualroutecases passed individually; firstfull385unit run beforelast2casespassed, lint/type/buildpreformatPASS; initialnewbrowser3/6failed due ambiguousalertlocator matchingNextannouncer, failurekept thenexactdialogalertselectorcorrected. Newfinal sourcefreeze/fullgates/CI/independentsecurity/leanvisual/5freshjury/freshStranger/hostedauth/device retest stillpending. No fabricatedphysicalPASS or transferfromef4. Next: finishcapture/independentreview/freeze, runallmechanicalgates, qualifiednewunaliasedstage+additiveDBreadbacks, secureactualParentQAthenminimalconsolidatedphysicalretet. NoOwneractionyetwhileindependentlanesremain. ExistingnotificationchannelpreflightactualpersonalGmailverified.
+
+Recovery DO NOT DELETE YET for this new handoffrepair until implementation/evidence/Notioncontinuation verifiedremote. Previous306rawcustody+privateNativearchive remain preserved. No newpaidservices/credentials, player/CSP/RLS/timerbudgetrewrite.
+
+---
+
+# CURRENT — staged timer306 / compatible DB applied / Owner authentication hold
+
+WATCHNEST_CONCEPT3_TIMER_HOSTED_AUTH_RELEASE_HOLD; not product/FounderReady. App30681533551d916c08161f29bbb9ba821f6c92f9/appsrc1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392. Existingbranchpremium-ui-ux-20261103/PR49targetproduct-completion-20260930. Exactlocal343unit/80browser/lint/type/build/FULL+PRODaudit0, CI16144377983202all3PASS; independent147freshsecurity/fullAudit0, finite55currentHumanEyeCLEAN/MatchPASS, coldfinalformPASS,5freshaa2juryvotesexplicitlycarriedonunchangedUIapp+current49exact6freshnonmaterialimages, no newjuryclaimed. AlloriginalFAILs retained.
+
+ACTUALDBmigration20261118192923 APPLIED to existingysukwpeowpcixdzkexky, fromsourcefile20261118173600_daily_session_allowance.sql/sourceSHA95d27cc0.../locktimeout-prefixedpayload158bb184....8columns/8bodyMD5s/grants/invoker/RLS/Safecheckverified; realprofilesremainonce. Actual17-check rollbackprobePASS/proberesidue0, no realtimer/Dailysetting/approval/PIN/timezone writes. Advisorfindingssameexcludingtimestamps18INFO+1preexistingWARN, no newfindings. Native2sessionread-lockattemptINCONCLUSIVE because no overlap; don't claimtrueconcurrency. Do notreapplysourcefile blindlyunder differentproviderhistorytimestamp or restoreoldRPCsweakeningParentblocks. SeeTimerDailyHostedOutcome/evidence.
+
+ACTUALexact306production-configuredSTAGE READY dpl_2W1LqfsR1rzKMYyDnnei7AnCSvde https://watchnest-5z2w8ot76-avromy.vercel.app . CanonicalALL3hosts still77a5017d938ded03b1530c2b72978cef27273d61/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac, rollbackpreserved; autoAssignFALSE stays, no merge/promotion. Stageusesexistingproject/environment viareviewedredeploy306preview/withLatestCommitfalse, no source/config/alias override orsecretcopy. Branchaliasmoves; uniqueURLonly.
+
+Livecloudtab56/browser1 /api/session role:null/configured:true; ParentandChildAPIbodiesrequire signin; protectedcontrolsroutes tohttps://watchnest-5z2w8ot76-avromy.vercel.app/login . Email/passwordonlyvisiblemethod, ParentPINifasked; no Buildercredentialentry. MinimumOwner-onlysecure signin inSHAREDcloudbrowserneeded forpositivehostedQA, thenRootcontinuesactualParent/Child/auth/persistence/isolation andsupportedconcurrentrequests withoutrealbudgettestmutations. CurrentOwnerauthrequestnotissuedatthisdocumentationdraft; firstinspectfreshstatein casealreadycompleted. Neverguess/reset/mintcredentials/readsecretvalues. Localextensionlostorigincontext; cloudfallbackworks. FullrestartrecipeTimerDailyResume; no researchrestart/otherbranch/owner.
+
+GenuinefamilyiPadapprovedpicture+sound/normal+nativefullscreenrecommendationcontainment/phoneEndnowstoppingbothanddenyingresume OPEN. Requestoneconsolidatedconditionalphysicalsessiononlyafterhostedqualification; startupfailurestopandexacterror/devicefiltercontext, no securityweakening. Oldef4signin/testrequesthistorical. No Founderdesign/PR/deployapprovalrequired; only unavoidableauth/deviceactions.
+
+NewrawarchiveandactualBefore/AfterPNGs saved successfully; archive84,434,238bytes/SHA3d76f08cf7556f111ff296e593e9be5012709369660f72879901c2658a7275c1,8100logicalpaths/1822blobs/allCRC+SHAverified. Gitpublicreceipt, privateNotionidentitiesmustbeverified atfinalclosure. Original6619archive and8Concept3custodiespreserved. CURRENTDO NOT DELETE YET untilthisactualcheckpoint andfinalprivatecustody/learning/attentionwritesareverified. Clearanceisrecoveryonly, notproductreadiness.
+
+---
+
+# CURRENT — exact306 local/CI/independent qualification complete; hosted/device hold
+
+Immutable30681533551d916c08161f29bbb9ba821f6c92f9, app1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392, E2E8966026e9384a3f7136a8041cc88a8d08bd52712, SQL2a36c8a7c89bb4413086bfa19686ea90695af54b. SameBuilder2/branchpremium-ui-ux-20261103/draftPR49targetproduct-completion-20260930. Freshlocal343unit/80browser/lint/type/build/FULL+PRODaudit0PASS andCI161/run44377983202SUCCESS. Dependencyindependent147fresh+fullAudit0PASSbound306. Finalfinite55visual49exactcarry+6freshnonmaterialHumanEyeCLEAN/writtenMatchPASS. Fivefreshaa2juryvotescarriedonlyonunchangedUIapp+independentcurrentrenderverification; no newjuryexecutionclaimed. ColdfinalformPASSunchangedapp. OriginalFAILs/timing/data-order limits retained.
+
+Nextauthorisedoperation: reviewedadditivebackward-compatibletimerSQL +exact306production-configuredSTAGE, per TimerDailyHostedPlan. Before-imagefunctions/schema/preflightMD5s/expectednewfunctionbodiesdurable; realprofilesmustremainonce, noFamilyDailyactivationmerelyforQA. Hostedlatestmigrationstill20261027134442; no newtimerDDLyetanexactsourcepreviewG3READY. Stageoperationmustuseexisting306previewdpl_G3kjfG7yVbhyafJBoxh7xsFem2KU,targetproduction,withLatestCommit:false,autoAssignFALSE; uniqueURLonly; no source/config/secret override. Verifyall3canonicalhosts77/dplGiRbefore/after. No mergeroutineOwnerapprovalornewpaidresources.
+
+THISISPRE-OPERATIONcheckpoint. Ifinterrupted, firstreadactualSupabasemigrationhistory/columns/functionbody/grantsandVercel306productionstages; neverassumeplannedwritescompletedorretryunknownoutcome. Recordactualmigrationversion/payloadhash/advisors/readbacksandnewstageID/URLafteroperation. CanonicalApp77rollbackheld. NeverblindlyrestoreoldRPCsafterParentlocksorrewindfamilydata. ActualhostednewParentauth/child/currenttimerRLS/persistenceverificationandgenuineiPadpicture/sound/recommendationcontainment/nativefullscreenphoneEndnow remainOPEN. Oldef4authproofandphysicalrequestarehistorical. MinimumOwner-onlysigninrequestonlyafterallindependentwork/custodycomplete, thenONEconditionalphysicalsessionafterhostedQA. NoOwneractionyet.
+
+DO NOT DELETE YET: newtimer rawhistory/finalreviewarchives +finalNotioncustody/restartreceipt notcomplete. Gitcurrentcode, old6619historyarchive and8priorConcept3custodiespreserved. No product/FounderReadyclaim. Exactcurrentgateledger/plan supersedesearlierpendinggatesbelow.
+
+---
+
+# CURRENT — timer UI independently accepted; dependency successor qualification pending — November18
+
+Same soleBuilder2/premium-ui-ux-20261103/PR49→product-completion-20260930. Appaa2/appsrc1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392 passed local343unit/80browser/lint/type/build/prodaudit0, CI160all3jobsSUCCESS. FinalfiniteHumanEyeCLEAN/MatchPASS, coldformPASS, fiveFRESHfinaljurors5/5scopedPASS; originalFAILsretained. Newdeveloper-tool audit findings are compatiblypatched with full/prodaudit0 andclean-ci; one sharedproductionnanoidpatch recorded, not dev-onlyclaim. This containingcommit changespackages/lock/evidence only, App/SQLsourceunchanged. Fresh343/80/build/full+prodaudit and exact-pixel comparison stillPENDING before qualificationcarryforward.
+
+Next deterministicstep: fullnewsourcegates inclALLdependency audit, independentdependency/securityreacceptance, compareall55actual timerPNGs/sourceApp hashes toaa2 (reuse5juryonlywhereunchangedverified). Preservefinalrawhistory/currentarchives and verifiedprivateNotioncustody. Then qualify additivebackward-compatibleSQL migration againstold77 baseline androllback; stageexactnewcandidateproduction-configuredwithautoAssignFALSE, no canonicalpromotion. CurrentDBmigrationstill20261027134442, no newtimerDDL. ActualnewhostedParentauth/child/remote/sessionproofOPEN; oldef4hostedPASSdoesnotcertifynewtimer. Genuinefamily-iPadpicture/sound, recommendationcontainment/nativefullscreen andphoneEndnow remainOPEN. Onlyrequestoneconditionalphysicalsessionafterauthhostedqualification; oldphysicalrequestsuperseded. NoOwneractionyet. Canonicalall3hostsremain77/dplGiR; no merges/promotions.
+
+DO NOT DELETE YET: latesttimerraw/reviewassetcustody/Notionclosure stillpending; source/historyrecoverableinGit, original6619archive andearlierConcept3eightcustodiespreserved. Neverrestartresearch, discardRootdesign, useoldermain orclaimphysicalPASS.
+
+---
+
+# CURRENT — timer action-first repair in qualification — November18
+
+Same Builder2/premium-ui-ux-20261103/draftPR49. Founder custom1–240minutes and7AM Daily semantics implemented; canonical77/dplGiR unchanged, no newtimerDDL. Sources992 and coherent-fixture11b each passed lint/type/343unit/build/audit0/full79. Security147scopedPASS. Original6619full78/79FAIL preserved. Final11b fivefreshjury NOTunanimous:4FAIL/1PASS because immediate Parent controls are below lengthy settings. Human-Eye also held CLEAN for6vs5syntheticclockprecision conflict. NO FounderReady/releasePASS.
+
+Root accepted rejection: per-child immediate controls now before configuration, collapsed native settings disclosure, compact distinct Daily/one-off summary, removed redundant heading, matching DOM/visual End/Pause order. Display uses each profile's own server snapshot clock with outer fallback. Browser fixture now samples one consistent instant; new paired-clock and above-fold touch bounds assertions retain existing clipping checks. Necessary backend/SQL/player/auth files unchanged by this repair. Source containing this checkpoint is WIP; optimizedbuild/scopedtype/lintPASS are preliminary, fullnewtests and fresh independent reacceptance stillrequired.
+
+Next: finish compact7timer+intermediate diagnostic, preserveoutput, freeze source, full lint/type/343unit/build/audit/browser80 +CI; independent leanHumanEye/cold/affectedsecurity, thenfresh5jury onlyafterclean. No competing source owner. Preserve originalFAILs/rawimages/jury receipts. Hosted migration must first pass exact-source/backward-compatibility/rollback gate; then isolated production-configured Vercelstage withautoAssignFALSE, verifycanonical77before/after; actualauth/physical gates remainOPEN. No staging proof from oldef4 qualifiesnewtimer. No Owneractionyet; oldphysicalrequest superseded. Current newtimerdurability incomplete:DO NOT DELETE YET.
+
+---
+
+# CURRENT — authenticated hosted read-only QA complete; physical-device hold — November18
+
+Exact ef4 stage dpl_4D5qjPzrJ6iR9U2XhXBhESt7fTyW actually owner-signed-in/unlocked; Root completed bounded Parent/Child read-only hosted journeys and reload/isolation checks. Full sanitized receipt and limits: Concept3HostedQualification-20261118.md. No actual family records/settings/timer commands changed. No app/harness changes; ef4 local/CI/final independent acceptance remains applicable. Canonical77/dpl_GiR reverified READY, autoAssignFALSE held. Physical picture+sound, normal/nativefullscreen recommendation containment and Parent-phone fullscreen End-now remain OPEN. Next is ONE consolidated conditional real iPad+phone session on exact frozen stage; startup failure stops the later tests. No production promotion/FounderReady claim. Existing source/asset custody and recovery checkpoint2ac remain preserved; current documentation successor records this transition.
+
+---
+
+# CURRENT — Concept3 independent qualification complete; hosted/device release hold — November18
+
+Frozen app/harness ef4c4bb30a16ae273f04a426d979480a808930ab, tree d57c0f675876bec6b19779dfd9229ccb1267c314, appsrc9771c2e229ff3e286f7443d9146d31ff22405303. Local lint/type/200unit/build/audit0/full73 and exact CI154 all3jobs PASS. Independent bounded62-protected-source PASS. Child finite154-state Human-Eye CLEAN/MatchPASS; Parent201-state finalPASS; five fresh final jurors unanimously scopedPASS, receipts and firewall in Concept3FinalJury. No source change after freeze. OriginalFAILs preserved.
+
+Exact final production-configured stage READY dpl_4D5qjPzrJ6iR9U2XhXBhESt7fTyW / https://watchnest-7sr8rb8rf-avromy.vercel.app , ef4. Actual public session role:null/configured:true, /login; authenticated hosted QA OPEN. ALL3canonicalhosts still77a5017/dpl_GiR. Keep autoAssignFALSE, rollback77; no merge/promotion. Physical picture+sound, normal/nativefullscreen recommendations, fullscreen phoneEnd-now remain OPEN. State WATCHNEST_CONCEPT3_QUALIFICATION_RELEASE_HOLD; not FounderReady/productReady. Next exact step: secure existing Parent sign-in on unique finalstage, then bounded hostedQA, then ONE conditional genuine physical session. No routine design/PR/deploy approval.
+
+Evidence archives/upload identities verified in docs/evidence/concept3-ef4c4bb/archive-receipts.json; individual reviewers and exact restart in Concept3ReleaseHold-20261118.md. Raw and derivative evidence is synthetic only, no familyphotos/credentials exported. Final GitHub/Notion durability/clearance receipt will bind exact documentation successor.
+
+---
+
+# CURRENT — ef4 mechanical/source gates passed, final review mapping pending — November18
+
+Exactef4c4bb/tree d57c0f6/appsrc9771c2e frozen, no source changes planned absent confirmed material defect. Local lint/type/200unit/build/audit0/full73 PASS; read-back73expected/0unexpected/skipped/flaky249945.471ms. Exact CI154/run44253438924 all3jobsSUCCESS. Independent ef4 source/security review PASS within62-protected-blob scope. [Coverage and boundaries](Concept3SourceSkillCoverage-20261118.md); compact capture/index+CI receipts under docs/evidence/concept3-ef4c4bb.
+
+Stable external packet concept3-evidence/ef4c4bb has28families355states956visualPNGs+40other testPNGs (996total). All declared capture hashes recomputed0mismatches. Not visualacceptance: HumanEye finalef4mapping/nonidenticaldeltas ongoing; final5freshjury NOTSTARTED. OriginalFAILs/rounds preserved. Parent/Child complete priorpacket consumption does not certify uninspected finaldeltas. Raw Library archive upload remains Root-pending.
+
+Current production-configured APIstage NZvsource0f predatesef4, not finalef4hostedacceptance. Allcanonical77 stable, autoAssignFALSE held. Hostedauthenticated/physicalpicture-sound/recommendation containment/nativefullscreen phoneEndnow remainOPEN. FounderReady/productReadyBLOCKED. This is doc-only checkpoint, no app/harness/config changes, tests/jobs/manualdeploy/notification/promotion. Root completes finalreviewfreeze next.
+
+---
+
+# CURRENT — success-icon/capture-coherence successor freeze — November18
+
+Exacta8c0dbe full73/local lint/type/200unit/build/audit0PASS is preserved outside default output at concept3-evidence/a8c0dbe. Read-back browser stats73expected/0unexpected/skipped/flaky,237176.538ms. Independent Child D2finalPASS232native-key transitions/16actualPNGs binds a8; source-security handler review62protectedblobsPASS remains scoped. Original D2FAILs/repair history remain. HumanEye fullChild+Parentmapping is ongoing, not finalCLEAN.
+
+Root froze ONLY3paths: ChildExperience.css fixes confirmed C3V02 success-check SVG to centered block/lavender; premium/supplemental captures park pointer0,0 and await finite running animations before inventory/raster, explicitly recorded as intervention. Existing scroll/correctness predicates unchanged. Hover-transition metadata/raster mismatches are evidence-coherence issues, not demonstrated app defects. New exactfull73/28families355states capture/completeHumanEye/Jury/hosted/physical gates PENDING; olda8PASS cannot certify newbytes. Parent/protected sources unchanged. No furtherappchange absent confirmed materialdefect. KeepautoAssignFALSE/production77rollback; no promotion or notification.
+
+Root fresh aggregate-only DB read verified SafePlayback CHECK true, unsafe0, latestmigration20261027134442; no rowidentifiers/auth/familydata or mutation recorded. Publisher writes only authorized frozen source/docs, never raw historicalPNG/logs/unfinishedbulk reviewJSON. Root next rebuilds/fullcaptures and preserves packet before another test.
+
+---
+
+# CURRENT — native-Tab D2 repair and expanded tablet evidence freeze — November18
+
+0f full71/local lint/type/200unit/build/audit0PASS and exactCI151/run44250643904 all3jobsSUCCESS are preserved facts, not new-source acceptance. Independent native-Tab recheck stillFAIL D2on0f; original report retained. Root now froze THREEpaths: ChildLibrary explicit nearest/instant onFocus scrolling; product regression uses19actualTabs, focusedlastitem and complete horizontalcard containment rather than programmatic last.focus; visual harness adds Parent details atALL4anchors (+2tests→73). Root optimizedbuild+nativeTabtarget diagnosticPASS; new exactfull73/actual-pixel/finalHumanEye/Jury/hosted/device gates PENDING. No all-newPASS.
+
+New API-staged0f build READY dpl_NZv8bccyrmLXyo5MknhuKr54oQ18 at unique watchnest-sv32lq236-avromy.vercel.app, productiontarget/configured:true/role:null. Direct fresh resolution ofALL3canonicalhostnames remains77/dpl_GiR; initialmetadataaliasarray does not supersede actualhostnamereadback. autoAssignFALSE stays; no promotion. Stage0fpredatescallback/newsource. Parent finalvisualreview started against unchanged0fParentbytes; expanded tablet detail gates NOT waived. Root runs fullfrozen73 and preservespacket before another test. Publisher does not editapp, merge/manualdeploy/settings or touchhistoricalPNGs/logs.
+
+---
+
+# CURRENT — D2 focus repair frozen, renewed exact71 pending — November18
+
+Exactea5 full71/local lint/type/200unit/build/audit0PASS and CI150/run44249693504 all3jobsSUCCESS retained as prior-source evidence. Original bd8 local69 vs CI149FAIL/auditSKIPPED and independentFAIL history preserved. ea5 full packet safely copied outside test-results at concept3-evidence/ea5e213/test-results. Independent Child recheck D1/R1/R2PASS, but D2keyboardfocusvisibility HOLD remains until fresh successor verification; no final Child signoff.
+
+Root now froze ONLY ChildExperience.css +product.spec.ts focus repair: remove shelf snap,8px scrollpadding/margin, inside-card outline-4px; stronger focusedlastcard horizontalbounds assertion+focusPNG. Earlier diagnostic build/targetPASS precedes final outline offset and is not final acceptance. New exactfull71/build/security/render/independent gates PENDING. Source publisher makes no app edits, merge/manualdeploy/config changes. Protected backend/player/CSP/timer and Parent source stay unchanged. Root runs rebuilt frozen gates and copies packet before another test.
+
+---
+
+# CURRENT — bounded Concept3 repair successor frozen for qualification — November18
+
+Root froze Child-only R1 content reach/R2 Discover hierarchy/D1 Simple-mode repair for publication. Baseline firstConcept3bd8d local69/200/build/lint/type/audit0PASS remains separate from actual CI149FAIL (one Requests-selector ambiguity; auditSKIPPED) and original Visual/Reporter/ChildStrangerFAIL. Original Parent boundedPASS retains unchanged Parent blobs only, not new global acceptance. Root's new targeted8-state reach/disclosure diagnostic PASS retained its initialtwo failures/thresholds. New FULL71 exact-source/browser/render/security/independent/hosted/device gates PENDING, not PASS.
+
+Source publication scope:8changedChildsrc/e2e files +CIworkflow. Product Requests selector now Parent-nav scoped; historical baseline workflow uses immutable671b77 harness with immutable77application, never Concept3-only labels on oldsource. No candidate correctness assertion removed. Parent production files and protected backend/player/CSP/RLS/timer code unchanged by repair. Round1 receipts/compactCI149byteindex and originalFAIL reports are preserved; original LOCAL26manifest packet was lost to default test-results cleanup, distinct verified CI ZIP is not its recovery. Root will copy next full packet outside test-results BEFORE any subsequent test command.
+
+Root fresh Vercel UI readback: autoAssign Custom Production Domains checkbox0/manualpromotion warning; no mutation. KeepFALSE. Production77 and oldgreenHHstage remain preserved. Oldgreen hosted Parent read-only metadata/preview/pages worked, then normal Parent expiry returned device role/sign-in denial; no timerbackend failure or command proven. Not Concept3 acceptance. No family data/auth artifacts retained. Root owns frozen71gates next; no merge/manualdeploy/settingschange.
+
+---
+
+# CURRENT — first Concept3 WIP source freeze for qualification — November18
+
+Root has integrated and frozen the first Concept3/Premium Family Streaming candidate for WIP publication on existing premium-ui-ux-20261103/PR49. No dominant green; prior green visual acceptance remains STALE for changed identity/pixels/IA/interactions. Child has one Library landing, compact Collections/navigation,2×2 portrait picker and flat lavender avatars; Parent has task-first Overview/directTime navigation/results-before-approval and secondary-control disclosures. Exact scope/owners in Concept3Implementation-20261118.md; actual authority/UX receipts included.
+
+Root-reported diagnostics:200unit/build/lint/type PASS in draft;30browser flows PASS on EARLIER draft. These are not final frozen-source acceptance. Full exact-candidate suite/security/render/independent/hosted/device qualification PENDING; no overallPASS. Only changed src/public/e2e +eslint.config.mjs and threeConcept3docs/RunState/Ledger are published. Historical docs/evidence dirt/captures/helpers remain excluded and untouched. No app edits by publishing lane, no merge/manualdeploy/project-setting mutation.
+
+Production77/oldgreenHHstage remain preserved; autoAssignCustomDomainsFALSE/releasehold remains. Oldstage is not Concept3. ExistingPINhandoff unavailable; do not repeat notification/auth or physical test request. Root runs frozen gates next and supplies results. Earlier local-only/unfrozen entries below are historical, superseded by this source-freeze entry.
+
+---
+
+# CURRENT — Concept3 implementation active, previous visual authority superseded — November18
+
+Binding Founder decision: Concept3 / Premium Family Streaming, NO DOMINANT GREEN. Prior green-led visual direction and old selection A are superseded. Exact recovered remote baseline671b77d5f9293a0c9e1be21463c4fcae5da7e8dd/appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad is preserved. Historical382 engineering tests remain baseline facts; prior visual/HumanEye/jury/Stranger PASS is STALE for changed Concept3 pixels/identity/IA/interactions, not new acceptance. See [implementation scope/evidence contract](Concept3Implementation-20261118.md) and [actual current authority recovery](Concept3AuthorityRecovery-20261118.md).
+
+Root alone integrates/releases child/global/icon presentation. concept3_ux owns ONLY ParentApp.tsx/Parent.module.css. Documentation lane edits these local receipts only; no app edits, commit/push/deploy until Root instruction. Implementation IN PROGRESS, candidate UNFROZEN, new Concept3 tests/actual-pixel/independent/hosted/device gates NOT YET RUN. Root supplies new freeze/test results. Protected player/auth/PIN/CSP/RLS/timer/data contract stays locked.
+
+Canonical production remains77/dpl_GiR. Existing HHstage/source6be0cab is OLD GREEN, not Concept3. Keep autoAssignCustomDomainsFALSE/release hold. Existing PIN handoff is unavailable to Founder; do NOT repeat notifications/push auth or request physical testing now. Safe independent implementation continues. Preserve all dirty historical evidence. This current entry supersedes earlier next-action/readiness headings below; no new PASS/Founder Ready/product-ready claim.
+
+---
+
+# CURRENT — trusted-device hosted progress; existing Parent PIN handoff — November18
+
+Fresh staged `/api/session` established role:device,configured:true, superseding the stale login-view/password interpretation below. Unique candidate remains https://watchnest-5ens0lo6f-avromy.vercel.app /dpl_HH939UpRsidw913WvZocu6qkZv6v/source6be0cab; app/harness unchanged382. Root completed bounded hosted Child read-only/metadata checks:4 matching identities,1 expired session stayed denied,3 eligible Home views,one library/search/Collections/scoped-recovery path,Favorites/Hidden labels and allowed-topic non-playable discovery. No real Play/fullscreen/media/timer command or family-content/settings mutation. [Exact sanitized evidence and limits](HostedReadOnlyQA-20261118.md).
+
+MINIMUM OWNER ACTION NOW: enter the EXISTING4-digit Parent PIN in the handed-over Cloud browser's open Parent Mode modal. No PIN was entered/guessed. Do not send credentials in chat/notification, request another email/password, or repeat automated credential retrieval/direct entry. Vercel MFA/CLI are not current blockers. Root returned picker→ParentModePIN after child checks. After entry, continue hosted Parent read-only/metadata QA at the UNIQUE staged URL, not a branch alias/doc preview. Physical conditional testing comes only AFTER hosted QA completes.
+
+Canonical77/dpl_GiR remains unchanged; autoAssignCustomDomains FALSE MUST remain OFF through hold. All source/automated/independent synthetic gates stay scoped PASS. Parent hosted qualification and physical approved-playback/containment/fullscreen remote-stop gates remain OPEN; no merge/promotion or Founder Ready. This current entry supersedes earlier sign-in/MFA/CLI handoffs, whose history remains below.
+
+---
+
+# CURRENT — staged production build ready; WatchNest sign-in handoff — November18
+
+This current entry supersedes the earlier pending Vercel identity verification and CLI-only blocker. Those failures remain historical below and in immutable10aa2073be724c68302328deaca7907772238fb1. Source/design are unchanged; no new implementation owner.
+
+Owner-authorized fresh Vercel verification succeeded despite a transport submission_failed report: actual UI/API independently showed the staged deployment READY. Staged ID dpl_HH939UpRsidw913WvZocu6qkZv6v, exact source6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436, target production, unique URL https://watchnest-5ens0lo6f-avromy.vercel.app. UI showed STAGED / Assigning Custom Domains Skipped. Its only observed alias was the feature-branch alias; no canonical production domain moved. Fresh API readback independently resolved canonical77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac with all3 canonical aliases. No staged ID is missing anymore; Vercel MFA is CLOSED, not the current blocker. CLI was never authorized and is unnecessary for the working supported project-setting route.
+
+Root's live browser stage/api/session returned role:null,configured:true. Parent dashboard redirected to/login. A managed credential attempt for the existing WatchNest Parent account became unavailable after waiting; a fresh live tab again showed the Sign in heading, no auth error and no authenticated session. This does not establish bad credentials. STOP automatic credential requests/direct entry. Minimum owner-only action: sign in to the existing WatchNest Parent account in the handed-over Cloud browser; never send credentials in chat or notifications.
+
+Use the UNIQUE staged URL above, not the feature-branch alias: later documentation-only previews may repoint that alias to a backend-unconfigured preview. Current project autoAssignCustomDomains FALSE MUST remain OFF through staged qualification/release hold; original TRUE remains the recorded setting rollback value. Do not submit another deployment, restore domain auto-assignment, merge or promote now.
+
+After owner sign-in, continue least-privilege hosted read-only/metadata QA on the exact staged build, with no private family/auth artifacts saved. Only after hosted qualification request one consolidated conditional physical-iPad test at the frozen candidate. All final source/automated/independent visual/jury/cold lanes remain PASS within their recorded synthetic limits. Hosted authenticated and physical playback/containment/native-fullscreen remote-stop gates remain OPEN; Founder Ready and terminal production readiness remain BLOCKED.
+
+---
+
+# CURRENT correction — supported staging, owner verification pending — November 18
+
+This entry supersedes the earlier CLI-only blocker and restart instructions. Historical records remain below and at immutable6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436. No code/design change or new implementation owner.
+
+Root verified the documented Vercel project-setting staging route. Actual UI baseline Auto-assign Custom Production Domains was ON. Root updated only autoAssignCustomDomains:false; reloaded Production Environment UI showed checkbox0 and warned that production deployments require manual promotion. Canonical watchnest-rho.vercel.app was listed as a production custom domain. The actual Redeploy confirmation for exact6be0cab Production removed the canonical assigned-domain list and explicitly stated custom domains would not be assigned because auto-assignment was disabled.
+
+Root submitted Redeploy ONCE. Vercel then required email identity verification; the secure verification attempt was rejected as invalid or expired. No automatic credential retry or Resend occurred. The existing verification UI/pending intent awaits the owner. No new staged deployment ID is confirmed: post-challenge canonical API readback still showed77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac with all three canonical aliases, and the latest10 production listing had no new6be0cab deployment. Do not repeat Create/Redeploy while this pending intent may resume after verification.
+
+Current project autoAssignCustomDomains is FALSE and MUST remain OFF through verification, staging and release hold. Original TRUE is recorded as the setting rollback value; do not restore it while verification might resume a production build. CLI authorization is no longer necessary for this supported route; the earlier CLI attempt was cancelled without a grant/token. No auth code, auth URL, browser state, personal account image or session directory is preserved.
+
+Minimum next action: owner completes the existing provider identity-verification step, using Resend personally if needed. Then inspect the resulting deployment/listing first; only if no deployment exists and the pending intent is clearly closed may the release owner decide whether another single supported staging submission is needed. Bind actual staged ID/SHA/configuration and verify canonical aliases still77 before hosted read-only qualification. Physical conditional testing comes AFTER hosted qualification of a frozen candidate, not now. All final independent lanes remain PASS only within their synthetic limits; Founder Ready and production promotion remain BLOCKED.
+
+Official basis: https://vercel.com/docs/deployments/promoting-a-deployment (Dashboard staging via Production → Branch Tracking → auto-assignment OFF); https://vercel.com/docs/rest-api/projects/update-an-existing-project (autoAssignCustomDomains boolean).
+
+---
+
+# CURRENT — qualified UI candidate, release hold — November 18
+
+**WATCHNEST_PREMIUM_UI_UX_QUALIFIED_RELEASE_HOLD**, not production ready. Final frozen app/harness38244d2c6ea6b7bb113f3e39338b63cf4eae1e82/appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Local69browser/200unit/lint/type/build and CI148 alljobsPASS. Targeted independent visual repair verification PASS;5 fresh final jurors unanimous sampled-synthetic PASS (104/79/93/83/88 PNG samples, not exhaustive). Final Child/Parent cold interactions bounded PASS; original failures and recommendations preserved.
+
+Preview source83ecc /dpl_F4mP5fCsSD8iJGqsMQnuRUpJCXZ7 READY; only branch pause guard removed. Root live runtime probe preview/api/session role:null,configured:false; canonical production role:null,configured:true. DO NOT promote unconfigured preview. Production remains77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No production/environment/schema/family-data mutation.
+
+Vercel browser sign-in succeeded, but supported production-environment staging remains blocked on pending owner-only CLI device authorization. Provider authorization action was disabled after one reload; no provider reason observed, no new CLI grant/token obtained. No authorization code/URL/session/personal image retained. Root cancelled UI production forms assigning canonical domains; no deployment submitted there. Planned supported CLI command only after correct account/project verification: `vercel deploy --prod --skip-domain`; hosted checks and physical-device acceptance before any promotion.
+
+[Exact restart recipe](ResumeCheckpoint-20261117.md) and [Founder gate BLOCKED receipt](FounderReadyGate-20261117.md) govern continuation. Final archives/Notion verification remains root-owned; DO NOT DELETE YET until verified. No routine Founder design approval or new design phase. Physical approved playback/recommendation containment/native-fullscreen End now gates OPEN.
+
+---
+
+# ACTIVE final review and hosted qualification — November 18
+
+Frozen source38244d2c6ea6b7bb113f3e39338b63cf4eae1e82 / appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad unchanged. Local69browser/200unit/lint/type/build and CI148 alljobsPASS. Independent targeted visual repair verification now PASS within its finite synthetic scope; original FAIL evidence preserved. Five fresh final jurors ongoing; no final jury verdict yet.
+
+Root observed successful Google sign-in to existing WatchNest Vercel project. Hosted access blocker is lifted, but supported staging/domain-skip inspection and authenticated hosted runtime qualification are NOT yet observed/PASS. Production canonical remains77a5017 /dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No production promotion. Physical family-iPad gates remain OPEN. Exact privatearchive custody is maintained in existing CTO Handoff; source records archivehashes without private account credentials.
+
+---
+
+# ACTIVE final candidate qualification — November 18, 2026
+
+Current frozen application/harness source38244d2c6ea6b7bb113f3e39338b63cf4eae1e82, treea4b851b4230bf5b649d9ff32c9588db74b87a4d6, appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Existing premium-ui-ux-20261103 / PR49 targetproduct-completion-20260930. Explicit Founder resume remains active; this is not a newproject or designrestart.
+
+Local final lint/type/200unit/build and complete69browserPASS;26manifestfamilies293states931PNGs. Includes narrow V01/V02 presentationrepairs and SI01 scopedsearch recovery. Original failures/false-positive stress clearance remain preserved. Independent focusedpixelrecheck/freshStranger/fivefinaljurors pending; no designPASS or FounderReady claimed here. CI148 exact382ALL3JOBSSUCCESS. [Exact qualification and evidence](QualificationResume-20261117.md).
+
+Production/rollback remains77a5017d938ded03b1530c2b72978cef27273d61 /dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Featurebranch deployment guard unchanged. No production/environment/schema/data mutation. Authenticatedhostedcandidate and genuine family-iPad approvedpicture/sound, recommendationsnormal/nativefullscreen, phoneEndnow picture/sound-stop gates OPEN. ReleaseHOLD untilactualgatespass. Nextowneraction is focusedfinalsourceindependentreview, not routineFounderdesignapproval.
+
+---
+
+# ACTIVE resumed qualification — November 17/18, 2026
+
+Explicit Founder RESUME lifts November10 pause. Existing branch premium-ui-ux-20261103 / PR49, sole integration owner Builder2. Recovered immutable68dc623084e1b91e4b2cd83e041c3257b4ce3809; current tested candidatecf764cb6087b394fbb9d97b687413c2084e2e708. See [current exact qualification receipt](QualificationResume-20261117.md). No new design direction or competing implementation owner.
+
+Next16.4.3 build was blocked by vendor security fatal; compatible exact16.4.6 patch now builds;200unit tests/lint/typecheck and production audit0vulnerabilities PASS. Corrected shared synthetic session-status fixture plus strict route/runtime assertions; complete renewed64browser tests PASS,22manifest families captured. Prior green stress test with8TypeErrors is explicitly stale. Current independent visual/UX/security/cold review not yet complete. Physical iPad approved playback/containment/native fullscreen End now and authenticated hosted candidate gates remain OPEN; no overall readiness.
+
+Production/rollback remains77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Existing frozen old preview backend-unconfigured; current feature pause guard retained pending qualified preview. No production/config/schema/family-data change. Continue deterministic qualification; do not obey historical paused headings below as current instructions.
+
+---
+
+# USER PAUSED — November 10, 2026
+
+Do not launch work until explicit Founder resume. WIP copy/task refinement on
+existing premium branch is preserved; no new release acceptance or production
+change. See [exact paused state and restart procedure](PauseCheckpoint-20261110.md).
+Branch-only Vercel deployment guard must be removed/re-enabled on resume before
+preview qualification. Historical qualified candidate below does not certify
+the new four-file refinement.
+
+---
+
+# Premium transformation — rendered candidate qualified; production held — 2026-11-04
+
+Application `c670d55a9bf22aa493f685fa62f79fda89151247`, tree
+`536c97e884065ac79338695d47bba7e2fc098c7f`; same-app evidence successor
+`39524edde3f24f2fca5535f2860338e3eb81b94a`. [PR49](https://github.com/avromy/watchnest-/pull/49)
+on isolated premium-ui-ux-20261103 targets product-completion-20260930. Sole
+owner Builder2; main remains older foundation. No production promotion.
+
+CI139 PASS200 tests/64 browser flows/14 baseline families/lint/type/build/audit.
+CI140 same-app followup PASS200/14 targeted with corrected source metadata and
+finite capture views. Five fresh final jurors unanimous design PASS. Independent
+Human-Eye final252 states/771 capture paths/4315 assets: all17260 edge outcomes
+resolved,0 material defects. Six independently chosen Parent/child journeys PASS;
+fresh separate repaired-request recheck PASS. All limited synthetic Chromium scope.
+Source/security protected64 equality PASS; player code/hash unchanged. Original
+failures and optional nonblocking design notes retained, not erased.
+
+Current production/rollback remains `77a5017d938ded03b1530c2b72978cef27273d61`
+/ `dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`. Frozen UI preview
+`dpl_Gov7twBYTsX6ejKF2EWzphcojk3U` is READY, backend unconfigured. No data,
+credentials, schema, timer configuration or environment mutation.
+
+Open release gates: actual approved iPad picture/sound, recommendations inline/
+native fullscreen and phone End now native picture/sound stop; authenticated hosted
+candidate qualification also pending. The latter configuration may safely remain
+deferred while P0 physical evidence is absent. Never promote synthetic evidence.
+Not WATCHNEST_PREMIUM_UI_UX_PRODUCTION_READY or Founder Ready.
+
+[Complete frozen release hold, evidence, exact rollback, one minimum conditional
+physical observation and deterministic continuation](PremiumReleaseHold-20261104.md).
+Raw and derivative evidence privately archived; custody in existing CTO Handoff.
+Final verified private checkpoint controls chat delete clearance separately from
+product readiness. Continue without redesign approval or Founder PR coordination.
+
+---
+
+# Frozen production release — 2026-11-02
+
+Application `77a5017d938ded03b1530c2b72978cef27273d61`, deployment
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`, canonical production READY. CI125
+PASS: 200 tests, 32 browser flows, lint/typecheck/build/audit. Independent
+technical/security source reviews PASS. Hosted session/CSP/API denials/runtime
+health verified. No database/data/config changes.
+
+State: WATCHNEST_IPAD_STARTUP_REPAIR_DEPLOYED_PHYSICAL_CONFIRMATION_REQUIRED.
+Not playback-restored or Founder Ready. [Exact release, coverage receipt,
+rollback and deterministic physical-observation/resume contract](IPadStartupRelease-20261102.md).
+One conditional physical session begins with approved picture/sound; only if
+successful, recommendations normal/fullscreen then phone End now. Stop on first
+failure. DO NOT DELETE YET. This evidence-only successor does not alter frozen
+application/deployment.
+
+---
+
 # Current recovery checkpoint — 2026-11-02
 
 P0 iPad playback is reopened. Builder 2 is sole active implementation owner.

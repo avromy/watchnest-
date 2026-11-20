@@ -1,0 +1,131 @@
+{
+  "candidate": "c670d55a9bf22aa493f685fa62f79fda89151247",
+  "baseline": "77a5017d938ded03b1530c2b72978cef27273d61",
+  "run": 41783295237,
+  "comparisons": [
+    {
+      "file": "child-home-1024x768-comparison.jpg",
+      "sha256": "cc703eaf81a8bbb82db928da5f611cdd475500336f5a61baaf7e7c059d98a992",
+      "state": "child-home",
+      "viewport": "1024x768",
+      "sources": [
+        {
+          "side": "before",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-before/visual-evidence/before-77a5017/1024x768/child-home-full.png",
+          "sha256": "fce2118293101bcd40fce1618387b79efffd01756faf711760acc78d8652dd8d",
+          "visibleBox": [
+            0,
+            0,
+            1024,
+            768
+          ]
+        },
+        {
+          "side": "candidate",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-candidate/test-results/visual-evidence/candidate/1024x768/child-home-full.png",
+          "sha256": "adace24bdff817461d07ded303052e5e21dd847ba5681d5ec092159a49e2d809",
+          "visibleBox": [
+            0,
+            0,
+            1024,
+            768
+          ]
+        }
+      ],
+      "note": "Mechanical first-viewport crops side by side; JPEG compressed. Original PNG identities retained; no content retouching. Synthetic browser fixtures and SVG artwork; not physical or genuine provider acceptance."
+    },
+    {
+      "file": "family-profile-picker-1024x768-comparison.jpg",
+      "sha256": "543dd90943963c9d8675f77e79a1a6a53ab82cf85bdaa46b1ef652fde588a1c2",
+      "state": "family-profile-picker",
+      "viewport": "1024x768",
+      "sources": [
+        {
+          "side": "before",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-before/visual-evidence/before-77a5017/1024x768/family-profile-picker-full.png",
+          "sha256": "3f7ba4115e0caac2813074fc6cc5ce1a3e8e7b3887575c2fb26d976c0c066e92",
+          "visibleBox": [
+            0,
+            0,
+            1024,
+            768
+          ]
+        },
+        {
+          "side": "candidate",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-candidate/test-results/visual-evidence/candidate/1024x768/family-profile-picker-full.png",
+          "sha256": "2f5dd4433c1e322a4fcff0768958de2a6d2093ffb2d69be9cf2ba3d71afb1e48",
+          "visibleBox": [
+            0,
+            0,
+            1024,
+            768
+          ]
+        }
+      ],
+      "note": "Mechanical first-viewport crops side by side; JPEG compressed. Original PNG identities retained; no content retouching. Synthetic browser fixtures and SVG artwork; not physical or genuine provider acceptance."
+    },
+    {
+      "file": "parent-dashboard-390x844-comparison.jpg",
+      "sha256": "13641156d19e1cfbf3b10f1286b0842dbe78f282227b202c899487d924f5949a",
+      "state": "parent-dashboard",
+      "viewport": "390x844",
+      "sources": [
+        {
+          "side": "before",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-before/visual-evidence/before-77a5017/390x844/parent-dashboard-full.png",
+          "sha256": "d23d0762f96af128e5942088b887b4c6f4e4bd841eaa7a59d9ad76957cf04782",
+          "visibleBox": [
+            0,
+            0,
+            390,
+            844
+          ]
+        },
+        {
+          "side": "candidate",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-candidate/test-results/visual-evidence/candidate/390x844/parent-dashboard-full.png",
+          "sha256": "36c356e6dcd43d303872b01442026af649a3b8739b4837665352cf99a317f4fb",
+          "visibleBox": [
+            0,
+            0,
+            390,
+            844
+          ]
+        }
+      ],
+      "note": "Mechanical first-viewport crops side by side; JPEG compressed. Original PNG identities retained; no content retouching. Synthetic browser fixtures and SVG artwork; not physical or genuine provider acceptance."
+    },
+    {
+      "file": "parent-add-video-390x844-comparison.jpg",
+      "sha256": "a42ba105a728d2d5886859a2973108d051cb21a4d81322b3437680d7ad4965d3",
+      "state": "parent-add-video",
+      "viewport": "390x844",
+      "sources": [
+        {
+          "side": "before",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-before/visual-evidence/before-77a5017/390x844/parent-add-video-full.png",
+          "sha256": "50bf89ef31de3f98ce58041a10777320e58f8d4ead69fca34ae528693cde6268",
+          "visibleBox": [
+            0,
+            0,
+            390,
+            844
+          ]
+        },
+        {
+          "side": "candidate",
+          "source": "/workspace/scratch/b4fb31747e8d/watchnest-review/ci139-candidate/test-results/visual-evidence/candidate/390x844/parent-add-video-full.png",
+          "sha256": "570c95e13bfd5eee8588971fd0da79595af7fc1f13b6223ddbc71f0b93f9b96f",
+          "visibleBox": [
+            0,
+            0,
+            390,
+            844
+          ]
+        }
+      ],
+      "note": "Mechanical first-viewport crops side by side; JPEG compressed. Original PNG identities retained; no content retouching. Synthetic browser fixtures and SVG artwork; not physical or genuine provider acceptance."
+    }
+  ]
+}

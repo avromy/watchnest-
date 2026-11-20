@@ -62,3 +62,65 @@ describe("sessionAccess", () => {
     });
   });
 });
+
+describe("daily access snapshots", () => {
+  const now = Date.parse("2026-11-18T15:00:00Z");
+  it("offers a pending daily window without fabricating a deadline or autoplay", () => {
+    expect(
+      sessionAccess(
+        {
+          session_mode: "daily",
+          daily_allowance_minutes: 5,
+          daily_started: false,
+          session_duration_minutes: 5,
+          daily_reset_at: "2026-11-19T12:00:00Z",
+        },
+        now,
+      ),
+    ).toMatchObject({
+      state: "ready",
+      allowed: true,
+      remainingSeconds: 300,
+      expiresAt: null,
+      mode: "daily",
+    });
+  });
+  it("Parent block dominates pending renewal and removed limits", () => {
+    expect(
+      sessionAccess(
+        {
+          session_mode: "daily",
+          daily_started: false,
+          daily_allowance_minutes: 5,
+          session_parent_blocked: true,
+        },
+        now,
+      ),
+    ).toMatchObject({ state: "blocked", allowed: false });
+    expect(
+      sessionAccess(
+        {
+          session_mode: "once",
+          session_limit_disabled: true,
+          session_parent_blocked: true,
+          session_duration_minutes: 1,
+          session_expires_at: "2026-11-18T14:00:00Z",
+        },
+        now,
+      ),
+    ).toMatchObject({ state: "blocked", allowed: false, limitDisabled: true });
+  });
+  it("pause dominates a renewed daily allowance", () => {
+    expect(
+      sessionAccess(
+        {
+          session_mode: "daily",
+          daily_started: false,
+          daily_allowance_minutes: 5,
+          session_paused_seconds: 300,
+        },
+        now,
+      ),
+    ).toMatchObject({ state: "paused", allowed: false });
+  });
+});

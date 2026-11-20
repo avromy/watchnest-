@@ -1,0 +1,50 @@
+{
+  "kind": "sanitized staged deployment/current canonical API readbacks plus separately attributed root browser observations",
+  "stage": {
+    "id": "dpl_HH939UpRsidw913WvZocu6qkZv6v",
+    "url": "https://watchnest-5ens0lo6f-avromy.vercel.app",
+    "projectId": "prj_tQi2cBAosldposlx61FcwnwDJ8OG",
+    "state": "READY",
+    "target": "production",
+    "source": "redeploy",
+    "commit": "6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436",
+    "branch": "premium-ui-ux-20261103",
+    "aliases": [
+      "watchnest-git-premium-ui-ux-20261103-avromy.vercel.app"
+    ]
+  },
+  "canonical": {
+    "id": "dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+    "state": "READY",
+    "commit": "77a5017d938ded03b1530c2b72978cef27273d61",
+    "aliases": [
+      "watchnest-rho.vercel.app",
+      "watchnest-avromy.vercel.app",
+      "watchnest-git-product-completion-20260930-avromy.vercel.app"
+    ]
+  },
+  "rootBrowserReadOnly": {
+    "stageSession": {
+      "role": null,
+      "configured": true
+    },
+    "parentDashboardRedirect": "/login",
+    "parentApiError": "Parent sign-in required.",
+    "childLibraryError": "Child sign-in required.",
+    "httpStatuses": "not observed/not claimed",
+    "freshTab": "Sign in heading, no auth error, no authenticated session"
+  },
+  "currentOwnerAction": "Sign in manually to existing WatchNest Parent account at unique staged URL in handed-over Cloud browser; no credentials in chat or notification.",
+  "credentialAutomation": "Managed attempt unavailable after waiting; STOP further automatic credential requests/direct entry. No invalid-password diagnosis.",
+  "setting": {
+    "autoAssignCustomDomains": false,
+    "originalRollbackValue": true,
+    "rule": "Must remain OFF through stage/hold."
+  },
+  "qualifiedSource": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+  "applicationSourceTree": "461eb4dc14b9a5adb79047d681a8c85478e740ad",
+  "hostedAuthenticatedPass": false,
+  "physicalPass": false,
+  "canonicalPromotion": false,
+  "authArtifactsPersisted": false
+}

@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-10",
+  "kind": "published reference screenshots; not interactive competitor tests or WatchNest assets",
+  "references": [
+    {
+      "name": "netflix-tv.jpg",
+      "page": "https://www.netflix.com/tudum/articles/netflix-new-homepage-layout-user-guide",
+      "published_image_url": "https://dnm.nflximg.net/api/v6/s0XAg4q_jvYbSSbLvySyUsliNSg/AAAAQeo9UOj9jrtx99WPAFrRITh0nDIJJq3egfzKmNGSlpwJKWjZzDmgj_uqR0lcBkAnvzm6tc0ZsO15ifCAmvneNI9kiBzHQzyycS8lU_zdTk62lXH44oRjTQsb9ZlVNJG5ZfEkjP94GbFKo3mOpRjEGb13I1I.jpg?r=bc8",
+      "bytes": 53013,
+      "sha256": "740b065ae0d6aaf1238e2ee3a10f60211b523baa136e3d4c4f8c1371b0ad7696",
+      "dimensions": [
+        495,
+        278
+      ],
+      "personally_inspected": true,
+      "inspection": "native publisher image",
+      "historical_only": false
+    },
+    {
+      "name": "apple-current-ipad.webp",
+      "page": "https://apps.apple.com/us/app/apple-tv/id1174078549?platform=ipad",
+      "published_image_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fa/0d/1a/fa0d1a08-ab4c-2ebd-3338-4133c02a37d4/iPadPro12p9-TV-RaveA-USEN-Wrapper1.png/1286x1714bb.webp",
+      "bytes": 92720,
+      "sha256": "dbab2263ef1411f98c9a911f1c8f8de759be2d8c8711c2b05983d963be205f09",
+      "dimensions": [
+        1286,
+        1714
+      ],
+      "personally_inspected": true,
+      "inspection": "native publisher image",
+      "historical_only": false
+    },
+    {
+      "name": "youtube-kids-ipad.webp",
+      "page": "https://apps.apple.com/us/app/youtube-kids/id936971630?platform=ipad",
+      "published_image_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/34/e7/17/34e717d3-71d1-070b-ad5e-511bc9a93c4b/APP_IPAD_PRO_3GEN_129-0.png/1286x964bb.webp",
+      "bytes": 84586,
+      "sha256": "27c8bbeffe300756bb4d302476b97d94d91181a7d66d70ca2b25db3eb8d18f0d",
+      "dimensions": [
+        1286,
+        964
+      ],
+      "personally_inspected": true,
+      "inspection": "native publisher image",
+      "historical_only": false
+    },
+    {
+      "name": "disney-home.png",
+      "page": "https://www.disneyplus.com/explore/articles/disney-plus-app-redesign-new-features",
+      "published_image_url": "https://cnbl-cdn.bamgrid.com/assets/142fd2b2e4c77cd1d6cbd11fa60b9ddf5de0f5e00b18167ac950193cf9c1bfc3/original",
+      "bytes": 15109628,
+      "sha256": "142fd2b2e4c77cd1d6cbd11fa60b9ddf5de0f5e00b18167ac950193cf9c1bfc3",
+      "dimensions": [
+        5760,
+        3240
+      ],
+      "personally_inspected": true,
+      "inspection": "proportional1400px readingview",
+      "historical_only": false
+    },
+    {
+      "name": "apple-tv-ipad.jpg",
+      "page": "https://www.apple.com/newsroom/2023/12/redesigned-apple-tv-app-elevates-the-viewing-experience/",
+      "published_image_url": "https://www.apple.com/newsroom/images/2023/12/redesigned-apple-tv-app-simplifies-the-viewing-experience/article/Apple-TV-app-iPadOS-App-Store_big.jpg.large.jpg",
+      "bytes": 121595,
+      "sha256": "170d71ec36c5fd6740609c484d0d8e840d419a1232db6c788b27a40151224845",
+      "dimensions": [
+        980,
+        700
+      ],
+      "personally_inspected": true,
+      "inspection": "native publisher image",
+      "historical_only": true
+    }
+  ]
+}

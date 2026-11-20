@@ -1,0 +1,26 @@
+{
+  "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "archive": "WatchNest-Timer-Evidence-3068153.zip",
+  "bytes": 84434238,
+  "sha256": "3d76f08cf7556f111ff296e593e9be5012709369660f72879901c2658a7275c1",
+  "logical_files": 8100,
+  "unique_blobs": 1822,
+  "logical_bytes": 549692958,
+  "unique_bytes": 181803506,
+  "zip_crc_and_all_blob_sha_verified": true,
+  "private_identity_location": "Verified Notion CTO Handoff / Founder Workspace; no private Library IDs published here.",
+  "images": [
+    {
+      "file": "WatchNest-Timer-Before-11b0ae7.png",
+      "bytes": 38982,
+      "sha256": "fb5b54b744fe68dc19a29a25b531b25e212b41488592bb9f90d9ca23b721869d",
+      "scope": "Actual implemented Chromium UI with synthetic data, not physical iPad or authenticated hosted proof."
+    },
+    {
+      "file": "WatchNest-Timer-After-3068153.png",
+      "bytes": 41207,
+      "sha256": "eb960d38f94cee567951062be131f58200ef993192fd2f512d58b03ad8bd8f29",
+      "scope": "Actual implemented Chromium UI with synthetic data, not physical iPad or authenticated hosted proof."
+    }
+  ]
+}

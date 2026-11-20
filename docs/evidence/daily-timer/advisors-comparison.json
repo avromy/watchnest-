@@ -1,0 +1,23 @@
+{
+  "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "new_findings": [],
+  "before_counts": {
+    "INFO": 1,
+    "WARN": 1
+  },
+  "after_counts": {
+    "INFO": 1,
+    "WARN": 1
+  },
+  "same_advisor_records": false,
+  "raw_custody": "Private timer evidence archive: hosted-advisors-before.json / hosted-advisors-after.json; no claim of zero pre-existing advisory findings.",
+  "same_advisor_records_excluding_observation_times": true,
+  "underlying_findings_before": {
+    "rls_enabled_no_policy": 18,
+    "auth_leaked_password_protection": 1
+  },
+  "underlying_findings_after": {
+    "rls_enabled_no_policy": 18,
+    "auth_leaked_password_protection": 1
+  }
+}

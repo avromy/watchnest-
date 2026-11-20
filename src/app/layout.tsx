@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./premium-tokens.css";
 export const metadata: Metadata = {
   title: { default: "WatchNest", template: "%s · WatchNest" },
   description:
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#193f35",
+  themeColor: "#151a32",
 };
 export default function RootLayout({
   children,

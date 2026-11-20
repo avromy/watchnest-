@@ -1,0 +1,65 @@
+[
+  {
+    "id": "V01",
+    "path": "docs/evidence/profile-handoff/390-handoff.png",
+    "sha256": "80fc02e6e9f68c57326fb53f08a2a75f31586e9cb50779452bdebaea1e1a1021",
+    "width": 390,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V02",
+    "path": "docs/evidence/profile-handoff/390-picker.png",
+    "sha256": "a5edae186d5c9a1d1b8426f42c5d380136dc8e3783184bd8f7d469abda19458e",
+    "width": 390,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V03",
+    "path": "docs/evidence/profile-handoff/390-wrong-pin.png",
+    "sha256": "6dd7d3c0c509d746674c0b8d3fa625f750318aa4662fc3dd72f19889f400d7f6",
+    "width": 390,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V04",
+    "path": "docs/evidence/profile-handoff/768-handoff.png",
+    "sha256": "04012438455a32eeb7a50088400ea042a59c0037f56bf5fc6881eadbf5dbd3b0",
+    "width": 768,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V05",
+    "path": "docs/evidence/profile-handoff/768-picker.png",
+    "sha256": "c0472bc1ab51f40fbbea507adf5b2a72f6a344484b1d3bb33a077281495307e1",
+    "width": 768,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V06",
+    "path": "docs/evidence/profile-handoff/768-wrong-pin.png",
+    "sha256": "d9154ba896dd592cd6d8934b530216cbbb7f980a1ecee384b82cf4b771342224",
+    "width": 768,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V07",
+    "path": "docs/evidence/profile-handoff/1024-handoff.png",
+    "sha256": "4a862d06cd085e3e490b0bc87a91ad04ccaa13fc61a7635983d1e88c538f3ece",
+    "width": 1024,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V08",
+    "path": "docs/evidence/profile-handoff/1024-picker.png",
+    "sha256": "7f9c16f0f77748a3f1f2a1fc62da24cfd17df79eef638a1b83df315dc599eb1a",
+    "width": 1024,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  },
+  {
+    "id": "V09",
+    "path": "docs/evidence/profile-handoff/1024-wrong-pin.png",
+    "sha256": "887423f26cc3b40b0b5cc3b8dc8275c536ac3ba0d8dc3274f1a9168fc86261f0",
+    "width": 1024,
+    "scope": "actual compiled Chromium UI; synthetic family data; not physical-device or authenticated hosted proof"
+  }
+]

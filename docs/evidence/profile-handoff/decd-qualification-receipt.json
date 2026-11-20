@@ -1,0 +1,48 @@
+{
+  "source": "decd2681e693de7ef33ea067610117c7467123b4",
+  "tree": "10a9090e8ef468d13b3b86600f111b85be6a5166",
+  "src_tree": "2d1d0370ac94b35d195d16a5be5696a5202f14e6",
+  "e2e_tree": "c2ffed9a7233d958201cfe09ad0a8e88a3752b52",
+  "supabase_tree": "8e32428fe02bcd360ff244cb196ed140fa1b3450",
+  "local_build_id": "DDBwryLSO78IguawSYjDm",
+  "browser_stats": {
+    "startTime": "2026-11-19T04:14:11.471Z",
+    "duration": 323286.00899999996,
+    "expected": 84,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "unit": 396,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "optimized_build": "PASS",
+  "audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "production_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "ci": {
+    "run": 44456800307,
+    "number": 166,
+    "conclusion": "success",
+    "jobs": {
+      "qualification-mode": "success",
+      "quality-checks": "success",
+      "baseline-visual-evidence": "success"
+    }
+  },
+  "physical": "OPEN; oldef4observations separatelybound",
+  "hosted_new": "PENDING"
+}

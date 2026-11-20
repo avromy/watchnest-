@@ -1,0 +1,49 @@
+[
+  {
+    "path": "/api/parent/videos/lookup",
+    "body": {
+      "urls": [
+        "https://www.youtube.com/watch?v=abcdefghijk"
+      ]
+    }
+  },
+  {
+    "path": "/api/parent/videos",
+    "body": {
+      "youtube_video_ids": [
+        "abcdefghijk"
+      ],
+      "profile_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ]
+    }
+  },
+  {
+    "path": "/api/parent/requests",
+    "body": {
+      "id": "30000000-0000-4000-8000-000000000001",
+      "status": "resolved"
+    }
+  },
+  {
+    "path": "/api/parent/session-timer",
+    "body": {
+      "profile_id": "00000000-0000-4000-8000-000000000002",
+      "action": "start",
+      "duration_minutes": 20
+    }
+  },
+  {
+    "path": "/api/parent/videos",
+    "body": {
+      "video_id": "10000000-0000-4000-8000-000000000001",
+      "profile_ids": [
+        "00000000-0000-4000-8000-000000000002",
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "tags": [
+        "crafts"
+      ]
+    }
+  }
+]

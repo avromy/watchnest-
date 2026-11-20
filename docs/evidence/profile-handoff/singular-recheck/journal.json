@@ -1,0 +1,145 @@
+{
+  "source": "decd2681e693de7ef33ea067610117c7467123b4",
+  "verdict": "PASS",
+  "limits": "Actual compiled Next app with browser-intercepted synthetic API and review-only state adapter; no backend persistence/auth/device/hosted verification.",
+  "journal": [
+    {
+      "action": "navigate actual parent Time link; open first child settings; fill Custom minutes",
+      "value": 1
+    },
+    {
+      "action": "click Give 1 minute"
+    },
+    {
+      "state": "active",
+      "url": "http://127.0.0.1:3007/parent/controls",
+      "geometry": {
+        "text": "Add 1 minute",
+        "rect": {
+          "x": 37,
+          "y": 399.46875,
+          "width": 316,
+          "height": 46
+        },
+        "focused": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(120, 98, 219)"
+      },
+      "overflow": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "body": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nTime controls\nMiri\n\n1 min left\n\nGive Time · one-time session\n\nEnd now\nPause\nAdd 15 minutes\nAdd 1 minute\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nTime mode\nGive Time · one-time\nDaily Allowance · renews at 7 AM\n\nOne-time only. Replaces Daily Allowance and won’t renew tomorrow.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\nCustom minutes\n\nChoose 1–240 whole minutes.\n\nStart new 1 min session\nRemove time limit\n\nTime counts down while video is paused or WatchNest is in the background. Parent Pause saves the remaining time.\n\nAri\n\n1 min left\n\nGive Time · one-time session\n\nEnd now\nPause\nAdd 15 minutes\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nBenny\n\n1 min left\n\nGive Time · one-time session\n\nEnd now\nPause\nAdd 15 minutes\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nEli\n\n1 min left\n\nGive Time · one-time session\n\nEnd now\nPause\nAdd 15 minutes\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\n\nRemote changes reach a connected child device in a few seconds. If a device is offline, it cannot receive an early End command until it reconnects, but it cannot continue beyond its last confirmed deadline.\n\nUsing Guided Access\n\nWatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.\n\nDiscover permissions\nAvailable hours\n\nSession time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time.",
+      "mutations": [
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "start",
+          "duration_minutes": 1
+        }
+      ]
+    },
+    {
+      "action": "click Pause first child"
+    },
+    {
+      "state": "paused",
+      "url": "http://127.0.0.1:3007/parent/controls",
+      "geometry": {
+        "text": "Add 1 minute",
+        "rect": {
+          "x": 37,
+          "y": 399.46875,
+          "width": 316,
+          "height": 46
+        },
+        "focused": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(120, 98, 219)"
+      },
+      "overflow": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "body": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nTime controls\nMiri\n\nPaused · 1 min saved\n\nGive Time · one-time session\n\nEnd now\nResume\nAdd 15 minutes\nAdd 1 minute\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nTime mode\nGive Time · one-time\nDaily Allowance · renews at 7 AM\n\nOne-time only. Replaces Daily Allowance and won’t renew tomorrow.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\nCustom minutes\n\nChoose 1–240 whole minutes.\n\nStart new 1 min session\nRemove time limit\n\nTime counts down while video is paused or WatchNest is in the background. Parent Pause saves the remaining time.\n\nAri\n\nPaused · 1 min saved\n\nGive Time · one-time session\n\nEnd now\nResume\nAdd 15 minutes\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nBenny\n\nPaused · 1 min saved\n\nGive Time · one-time session\n\nEnd now\nResume\nAdd 15 minutes\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nEli\n\nPaused · 1 min saved\n\nGive Time · one-time session\n\nEnd now\nResume\nAdd 15 minutes\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\n\nRemote changes reach a connected child device in a few seconds. If a device is offline, it cannot receive an early End command until it reconnects, but it cannot continue beyond its last confirmed deadline.\n\nUsing Guided Access\n\nWatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.\n\nDiscover permissions\nAvailable hours\n\nSession time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time.",
+      "mutations": [
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "start",
+          "duration_minutes": 1
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "pause"
+        }
+      ]
+    },
+    {
+      "action": "click End now first child"
+    },
+    {
+      "state": "blocked",
+      "url": "http://127.0.0.1:3007/parent/controls",
+      "geometry": {
+        "text": "Add 1 minute",
+        "rect": {
+          "x": 199,
+          "y": 287.46875,
+          "width": 154,
+          "height": 46
+        },
+        "focused": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(120, 98, 219)"
+      },
+      "overflow": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "body": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nTime controls\nMiri\n\nStopped by Parent\n\nGive Time · one-time session\n\nAllow access\nAdd 1 minute\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nTime mode\nGive Time · one-time\nDaily Allowance · renews at 7 AM\n\nOne-time only. Replaces Daily Allowance and won’t renew tomorrow.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\nCustom minutes\n\nChoose 1–240 whole minutes.\n\nGive 1 minute\n\nAccess is stopped by Parent. Removing a time limit won’t unlock this child. Give new time, or add time and allow access.\n\nRemove time limit\n\nTime counts down while video is paused or WatchNest is in the background. Parent Pause saves the remaining time.\n\nAri\n\nStopped by Parent\n\nGive Time · one-time session\n\nAllow access\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nBenny\n\nStopped by Parent\n\nGive Time · one-time session\n\nAllow access\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nEli\n\nStopped by Parent\n\nGive Time · one-time session\n\nAllow access\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\n\nRemote changes reach a connected child device in a few seconds. If a device is offline, it cannot receive an early End command until it reconnects, but it cannot continue beyond its last confirmed deadline.\n\nUsing Guided Access\n\nWatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.\n\nDiscover permissions\nAvailable hours\n\nSession time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time.",
+      "mutations": [
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "start",
+          "duration_minutes": 1
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "pause"
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "end"
+        }
+      ]
+    },
+    {
+      "action": "click blocked Add 1 minute",
+      "mutations": [
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "start",
+          "duration_minutes": 1
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "pause"
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "end"
+        },
+        {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "extend",
+          "duration_minutes": 1
+        }
+      ]
+    }
+  ]
+}

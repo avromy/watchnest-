@@ -1,0 +1,48 @@
+{
+  "sourceCommit": "ef4c4bb30a16ae273f04a426d979480a808930ab",
+  "applicationSourceTree": "9771c2e229ff3e286f7443d9146d31ff22405303",
+  "mode": "C high-risk final jury",
+  "reason": "Major redesign and Founder rejection of earlier brand direction",
+  "rounds": 1,
+  "jurySize": 5,
+  "verdict": "UNANIMOUS SCOPED PASS",
+  "jurors": [
+    {
+      "juror": 1,
+      "verdict": "PASS",
+      "inspectedPNGEntries": 50,
+      "receipt": "Concept3FinalJuror1-20261118.json",
+      "sha256": "421c20953719f7c797ccdb2cf5fbd20c6648532556c5095f385d8ead342ecc9f"
+    },
+    {
+      "juror": 2,
+      "verdict": "PASS",
+      "inspectedPNGEntries": 50,
+      "receipt": "Concept3FinalJuror2-20261118.json",
+      "sha256": "756f62cb20bfdc037dabed9d751d9518245df2db86b875590585a31c21c6cfd0"
+    },
+    {
+      "juror": 3,
+      "verdict": "PASS",
+      "inspectedPNGEntries": 43,
+      "receipt": "Concept3FinalJuror3-20261118.json",
+      "sha256": "c508522db20add41715d3c43225cfac93b959b7e92757348dda109e19a023c96"
+    },
+    {
+      "juror": 4,
+      "verdict": "PASS",
+      "inspectedPNGEntries": 42,
+      "receipt": "Concept3FinalJuror4-20261118.json",
+      "sha256": "b995fb02f458f22c57bd80ce83eabc2a20c88a9dafba2a9dc4238ed69bf17e18"
+    },
+    {
+      "juror": 5,
+      "verdict": "PASS",
+      "inspectedPNGEntries": 52,
+      "receipt": "Concept3FinalJuror5-20261118.json",
+      "sha256": "55197dba13de6883b772f2476944393534ff3847597ad3947d1075f7078a1ddb"
+    }
+  ],
+  "independence": "Five fresh contexts; neutral shared target/candidate only; each froze before peer exposure. Child lean reviewer disclosed late status-summary exposure separately; final fresh jurors remained independent.",
+  "limits": "Actual synthetic Chromium pixels only; no authenticated hosted/physical iPad/YouTube acceptance."
+}

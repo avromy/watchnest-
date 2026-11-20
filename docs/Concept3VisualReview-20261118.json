@@ -1,0 +1,482 @@
+{
+  "SOURCE_IDENTITY": {
+    "commit": "bd8d15d7220f5496e73a562c77b34ceb8aae2370",
+    "appTree": "67fd57e88e9adb42ec2f795e1e6473fba650a40c",
+    "harness": "0ea362700c1fa0db251b00c67570c09cc60a25e2d9470371f73bed6ccb4452d8",
+    "fixture": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56"
+  },
+  "REGION_COVERAGE": {
+    "documentOverviews": 36,
+    "nativeViewports": 2,
+    "entireBundleComplete": false
+  },
+  "BOUNDED_ASSETS": {
+    "explicitlyCleared": 25,
+    "entireBundleComplete": false
+  },
+  "ASSET_EVIDENCE_CONSUMED": [
+    "child-home/390x844/A001",
+    "child-home/390x844/A002",
+    "child-home/390x844/A003",
+    "child-home/390x844/A004",
+    "child-home/390x844/A005",
+    "child-home/390x844/A006",
+    "child-home/390x844/A007",
+    "child-home/390x844/A008",
+    "child-home/390x844/A009",
+    "child-home/390x844/A010",
+    "child-collection/390x844/A001",
+    "child-collection/390x844/A002",
+    "child-collection/390x844/A003",
+    "child-collection/390x844/A004",
+    "child-collection/390x844/A005",
+    "child-collection/390x844/A006",
+    "child-collection/390x844/A007",
+    "child-collection/390x844/A008",
+    "child-collection/390x844/A009",
+    "child-collection/390x844/A010",
+    "child-collection/390x844/A011",
+    "child-collection/390x844/A012",
+    "child-collection/390x844/A013",
+    "child-collection/390x844/A014",
+    "child-collection/390x844/A015"
+  ],
+  "READABLE_VIEWS": {
+    "consumedFiles": 38,
+    "overviewOnly": 10,
+    "complete": false
+  },
+  "STRUCTURAL_RECORDS": {
+    "detailedConsumed": [
+      "390x844/child-home boundedAssets",
+      "390x844/child-collection boundedAssets"
+    ],
+    "coreManifestSummaries": [
+      "390x844",
+      "768x1024",
+      "1024x768",
+      "1440x1000"
+    ],
+    "overlaysConsumed": 0,
+    "complete": false
+  },
+  "EDGE_GATES": {
+    "resolved": 100,
+    "requiredForNamed25AssetSubset": 100,
+    "directions": [
+      "LEFT",
+      "RIGHT",
+      "TOP",
+      "BOTTOM"
+    ],
+    "entireBundleComplete": false
+  },
+  "APPLICATION_BINDING": "http://127.0.0.1:3001 synthetic Chromium; finite phone390x844/tablet768x1024 subset; no hosted or physical certification",
+  "UNRESOLVED_CONFLICTS": 0,
+  "HUMAN_GATES": {
+    "alignmentOpticalCropContrast": "No confirmed issue in readable subset, quantitative contrast untested",
+    "spacingGroupingHierarchy": "C3-V01",
+    "gestalt": "Coherent calm Parent/dark child distinction; phone content reach fails"
+  },
+  "CONFIRMED_DEFECTS": [
+    {
+      "id": "C3-V01",
+      "severity": "medium",
+      "type": 2,
+      "state": "child-home / child-library",
+      "viewport": "390x844",
+      "region": "first viewport",
+      "target": "Immersive child streaming and usable responsive hierarchy/findability",
+      "actual": "First thumbnails begin y750.5 behind fixed bottom navigation around y755; no complete playable tile/title initially visible.",
+      "evidence": [
+        "390x844/child-home-top.png",
+        "390x844 manifest child-home A011/A014"
+      ],
+      "smallestCorrection": "Compact phone filters/chrome so at least one complete playable tile/title is initially visible; preserve Collections/search and touch targets."
+    }
+  ],
+  "POSSIBLE_CONCERNS": [
+    "Long-page small copy/icons unresolved at overview scale.",
+    "Dialog internal edges/loading/focus, landscape/desktop/intermediates not consumed.",
+    "Full-document fixed nav overlap is not proof of permanent inaccessible content; collection bottom viewport clears card controls."
+  ],
+  "FINAL_RESULT": "MATCH FAIL C3-V01; Human-Eye NOT CLEAN / INCOMPLETE COVERAGE",
+  "actualConsumedFiles": [
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-collection-full.png",
+      "sha256": "d470960ace56ccd7653d47db4451fcef0abc5f8e58d108f2a3faab72b2586f32",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-collection-search-empty-full.png",
+      "sha256": "56352f1ec0a51154f12ce9702087450a33db375d8a89ce998fb7a81bb76ee1cc",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-collection-search-expanded-full.png",
+      "sha256": "6fd80ef99458350c97b3b8307b965fcb281e0ec0c06a8071fd73e40bc0497b4e",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-discover-results-full.png",
+      "sha256": "e727f99f1246e4f6b1a50fbc91fd254683126adb8558a64a30fbcbb56f48740b",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-empty-library-full.png",
+      "sha256": "533b0cfacf19a8bba17d573d4740c45b9e8c3732a7e40d7fc78065ad271cef38",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-favorites-full.png",
+      "sha256": "439b11f3f631669259e75f18747e7f3069feab3462c43923c77b1541812d761d",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-home-full.png",
+      "sha256": "21d3fd209d480a69d449dfdb05859dee11eeca9910d96aaa2658b023f1c9bf83",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-library-error-full.png",
+      "sha256": "b25af24317e2e50ba9e5227a6b41e9f65aa6ba51fc6d2aab74ffd4beceedf63b",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-library-full.png",
+      "sha256": "21d3fd209d480a69d449dfdb05859dee11eeca9910d96aaa2658b023f1c9bf83",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-request-form-full.png",
+      "sha256": "1b32aef27d77686add8708d4315790d913a3c585faf63074bb78c6d79e0a3f22",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-request-sent-pending-full.png",
+      "sha256": "4115550497893ab2a0c53b90ff05fa9efdb4e57728ebfa3e45c5ead44c5fad31",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-search-empty-full.png",
+      "sha256": "867b9146c63a91ea86038e5e4c7e6903a38ab1bdff8c4a970e39a08885d8f1a6",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-times-up-full.png",
+      "sha256": "18fc22d5c79ece77f231bb7625e73661b6392533dc78be57cf9a0cfea19cb098",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/family-profile-picker-full.png",
+      "sha256": "e484856d85ab2a24517a2735402720af1d89586a460ac740a8a248c38d77ff3d",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-add-video-full.png",
+      "sha256": "f63da56f6f95ab09d64fb8cb2a9938a588327723ce5728701eff58cdba8e6382",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-children-full.png",
+      "sha256": "ebf58dbcbf619ce00e2aeb565666c276392d027aad8051afb65f27f1f5df438d",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-collections-full.png",
+      "sha256": "a8e2f66a9f2d63b06178b64a0d0ecbea5745551faff3e1e25559f995e70b3b02",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-controls-available-hours-full.png",
+      "sha256": "e7d5544595ea2aa135e197a5321219b6e9bd5c1d65d8840226dacf508da82418",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-controls-discover-permissions-full.png",
+      "sha256": "14395c8c5f36f8e85b71aa720d73cb97a288966083d0186cd50332d7da3b182d",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-controls-full.png",
+      "sha256": "19004c2b9b6f38cad22790e7d3d929738cc5446d42d335cde76945801d3dbebf",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-dashboard-full.png",
+      "sha256": "26588e3640ac3f98b573788489ff12550227f29efc73d2cdb2dcab2b24e9a5a6",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-inbox-full.png",
+      "sha256": "fd2ee04ef1360689c6dff3daa686a988db7ec083a361c78b40e7cd2f8327feb2",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-library-full.png",
+      "sha256": "fff5ff00b1e089e9a8b01d931e9d03e0556265f5fe878c2482b4871b9e4d2900",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-password-recovery-full.png",
+      "sha256": "bbc2482f6659b920e1abf00ce4d8df737848a0a44b29a73014ff900aeb6694a8",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-pin-dialog-full.png",
+      "sha256": "537572bf577d8083f019c98fb04e6f0c2e80803103cb23a00c20147fbd258446",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-preview-dialog-full.png",
+      "sha256": "de325b6eaae125fa62a0b70be320f1f5c26858dd4415bceedcadbd6bb278af97",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-settings-full.png",
+      "sha256": "6ef2048101e7520c609471ddab13cd6befb32b25d08beada0655c9cde4fb67b4",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-sign-in-full.png",
+      "sha256": "46ad8552b9ccee3cca7efe9a1f9977be22c46763686495d70bb9e4d3b8f66f77",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-collection-full.png",
+      "sha256": "4f318f569c3207da7768c3e3550f9912a79971560f1b68170be5e322ef2c95dd",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-collection-search-empty-full.png",
+      "sha256": "065bc095daefab4c4f7f859a5cdcff8fd7f3a6a344250b5187bff3e40163dcf4",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-collection-search-expanded-full.png",
+      "sha256": "a61e17bc3099717666c7287b7eca9f04f894ca6400b0dd587b98d8351777a8ed",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-discover-results-full.png",
+      "sha256": "75328f44aa78f3ebdc5f18c7dc763f4a0d69ffba410c92be70de14ac4a6af006",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-empty-library-full.png",
+      "sha256": "221870adf17d80dca40ce1b19f6762c5779ec28176b8c328bcc2368390878a10",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-favorites-full.png",
+      "sha256": "bff78cfe83e04130493b1787ecd57e0cfb55d2ec288f5ff71ec888dfbb46b8fb",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-home-full.png",
+      "sha256": "6063ef26fa9666e6c21e5d1d939e9a1415fafc4847944913ce2e90c4b4359648",
+      "view": "contact overview",
+      "readableDetails": false
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-library-error-full.png",
+      "sha256": "ec9f13f232f9748334a4189d0a90ea9aabcf00f25efc1bf97e59857264d01d87",
+      "view": "contact overview",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-home-top.png",
+      "sha256": "b044ecc17d78a7049f44f7934f0ab5ea55db5cb317db6bdda8b4ab67a6bea902",
+      "view": "native direct",
+      "readableDetails": true
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/child-collection-bottom.png",
+      "sha256": "6cbb2f52dd6d6470f60f5f59dbb9b8a1d2066e1c344606f4671001dc2c651876",
+      "view": "native direct",
+      "readableDetails": true
+    }
+  ],
+  "contactViewsConsumed": [
+    "../comparator_views/phone-0.png",
+    "../comparator_views/phone-1.png",
+    "../comparator_views/phone-2.png",
+    "../comparator_views/phone-3.png",
+    "../comparator_views/phone-4.png",
+    "../comparator_views/phone-5.png",
+    "../comparator_views/phone-6.png",
+    "../comparator_views/phone-7.png",
+    "../comparator_views/phone-8.png",
+    "../comparator_views/phone-9.png",
+    "../comparator_views/768x1024-0.png",
+    "../comparator_views/768x1024-1.png",
+    "../comparator_views/768x1024-2.png",
+    "../comparator_views/768x1024-3.png"
+  ],
+  "manifestInventoryOnlyNotPixelConsumption": [
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1024x768/child-details/manifest.json",
+      "captures": 8,
+      "assetRecords": 176
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1024x768/child-entry/manifest.json",
+      "captures": 3,
+      "assetRecords": 32
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1024x768/manifest.json",
+      "captures": 29,
+      "assetRecords": 504
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1024x768/player-states/manifest.json",
+      "captures": 10,
+      "assetRecords": 23
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1024x768/recovery-states/manifest.json",
+      "captures": 7,
+      "assetRecords": 77
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1180x820/supplemental-responsive/manifest.json",
+      "captures": 5,
+      "assetRecords": 160
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1280x800/supplemental-responsive/manifest.json",
+      "captures": 5,
+      "assetRecords": 160
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1440x1000/manifest.json",
+      "captures": 28,
+      "assetRecords": 482
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1440x1000/parent-details/manifest.json",
+      "captures": 27,
+      "assetRecords": 342
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1440x1000/player-states/manifest.json",
+      "captures": 10,
+      "assetRecords": 23
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/1440x1000/recovery-states/manifest.json",
+      "captures": 7,
+      "assetRecords": 77
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/360x800/supplemental-responsive/manifest.json",
+      "captures": 6,
+      "assetRecords": 157
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/manifest.json",
+      "captures": 28,
+      "assetRecords": 446
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/parent-details/manifest.json",
+      "captures": 27,
+      "assetRecords": 341
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/player-states/manifest.json",
+      "captures": 10,
+      "assetRecords": 23
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/390x844/recovery-states/manifest.json",
+      "captures": 7,
+      "assetRecords": 77
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/412x915/supplemental-responsive/manifest.json",
+      "captures": 6,
+      "assetRecords": 157
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/520x900/supplemental-responsive/manifest.json",
+      "captures": 6,
+      "assetRecords": 157
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/640x900/supplemental-responsive/manifest.json",
+      "captures": 6,
+      "assetRecords": 157
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-details/manifest.json",
+      "captures": 8,
+      "assetRecords": 176
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/child-entry/manifest.json",
+      "captures": 3,
+      "assetRecords": 32
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/manifest.json",
+      "captures": 28,
+      "assetRecords": 482
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/player-states/manifest.json",
+      "captures": 10,
+      "assetRecords": 23
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/768x1024/recovery-states/manifest.json",
+      "captures": 7,
+      "assetRecords": 77
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/820x1180/supplemental-responsive/manifest.json",
+      "captures": 5,
+      "assetRecords": 160
+    },
+    {
+      "path": "test-results/visual-evidence/concept3-bd8d15d/900x900/supplemental-responsive/manifest.json",
+      "captures": 5,
+      "assetRecords": 160
+    }
+  ]
+}

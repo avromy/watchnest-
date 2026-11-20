@@ -1,0 +1,1064 @@
+{
+  "reviewer": "independent lean Reporter",
+  "source_app_tree": "a589773a55ce26125f507b2e4f7ad769eaac3713",
+  "raster_and_structure_hashes_verified": true,
+  "method": "Independent rectangle containment recomputation against supplied neutral structures; visual review of each corresponding raster. This is not physical-device or full Human-Eye protocol certification.",
+  "assets": [
+    {
+      "view": "V01",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V01",
+      "asset": "A11",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V02",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V03",
+      "asset": "A11",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V04",
+      "asset": "A11",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V05",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V06",
+      "asset": "A11",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V07",
+      "asset": "A11",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V08",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A01",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A02",
+      "label": "Miri profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A03",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A04",
+      "label": "Ari profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A05",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A06",
+      "label": "Benny profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A07",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A08",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A09",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A10",
+      "label": "decorative icon",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    },
+    {
+      "view": "V09",
+      "asset": "A11",
+      "label": "Eli profile photo",
+      "edges": {
+        "left": true,
+        "right": true,
+        "top": true,
+        "bottom": true
+      }
+    }
+  ]
+}

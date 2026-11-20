@@ -1,0 +1,295 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs
+
+[WebServer] (node:642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 83 tests using 1 worker
+
+(node:667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/daily-timer.spec.ts:23:5 › custom one-minute grant, validation and explicit daily mode (1.9s)
+  ✓   2 e2e/daily-timer.spec.ts:90:5 › each Parent countdown pairs its deadline with its own server snapshot (422ms)
+  ✓   3 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 390x844 (17.1s)
+  ✓   4 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 768x1024 (17.2s)
+  ✓   5 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 1024x768 (17.2s)
+  ✓   6 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 1440x1000 (17.4s)
+  ✓   7 e2e/daily-timer.spec.ts:254:5 › daily library denies exhausted access, renews only from a server response, and retains Parent block (425ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/manifest.json
+  ✓   8 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-phone 390x844 (13.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/player-states/manifest.json
+  ✓   9 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-phone 390x844 (2.8s)
+  ✘  10 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-phone 390x844 (5.7s)
+(node:903) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/parent-details/manifest.json
+  ✓  11 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-phone 390x844 (13.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/manifest.json
+  ✓  12 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-portrait 768x1024 (12.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/player-states/manifest.json
+  ✓  13 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-portrait 768x1024 (2.9s)
+  ✘  14 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-portrait 768x1024 (5.6s)
+(node:1052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/parent-details/manifest.json
+  ✓  15 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details ipad-portrait 768x1024 (13.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-details/manifest.json
+  ✓  16 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-portrait 768x1024 (3.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-entry/manifest.json
+  ✓  17 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-portrait 768x1024 (1.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/manifest.json
+  ✓  18 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-landscape 1024x768 (13.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/player-states/manifest.json
+  ✓  19 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-landscape 1024x768 (2.7s)
+  ✘  20 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-landscape 1024x768 (5.5s)
+(node:1242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/parent-details/manifest.json
+  ✓  21 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details ipad-landscape 1024x768 (14.1s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-details/manifest.json
+  ✓  22 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-landscape 1024x768 (3.7s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-entry/manifest.json
+  ✓  23 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-landscape 1024x768 (1.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/manifest.json
+  ✓  24 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-desktop 1440x1000 (12.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/player-states/manifest.json
+  ✓  25 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-desktop 1440x1000 (3.1s)
+  ✘  26 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-desktop 1440x1000 (5.6s)
+(node:1434) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/parent-details/manifest.json
+  ✓  27 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-desktop 1440x1000 (13.3s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  28 e2e/product.spec.ts:31:5 › real HTTP: absent infrastructure fails closed; no sample family or iframe (249ms)
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ✓  29 e2e/product.spec.ts:52:5 › real HTTP: public entry, protected parent redirect, and unknown page (337ms)
+  ✓  30 e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access (487ms)
+  ✓  31 e2e/product.spec.ts:102:5 › synthetic UI: child searches local library and asks parent on no match (491ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓  32 e2e/product.spec.ts:140:5 › synthetic UI: a video-card tap requests immersive playback before navigation (310ms)
+BROWSER Failed to load resource: the server responded with a status of 403 (Forbidden)
+  ✓  33 e2e/product.spec.ts:172:5 › synthetic UI: WatchNest deadline destroys playback and blocks reload (1.2s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  34 e2e/product.spec.ts:244:5 › synthetic UI: Parent phone controls one remote profile timer (4.4s)
+  ✓  35 e2e/product.spec.ts:333:5 › synthetic UI: bounded Discover creates a request without a playable result (474ms)
+  ✓  36 e2e/product.spec.ts:367:5 › synthetic UI: shared device opens the profile picker and Parent Mode stays protected (300ms)
+  ✓  37 e2e/product.spec.ts:387:5 › synthetic UI: mobile and tablet pages fit viewport (9.9s)
+  ✓  38 e2e/product.spec.ts:457:5 › synthetic UI: Safe Playback is a mandatory Child Mode boundary (272ms)
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/watch?v=escape' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+  ✓  39 e2e/product.spec.ts:478:5 › synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored (1.0s)
+  ✓  40 e2e/product.spec.ts:602:5 › synthetic UI: a stale false flag cannot disable mandatory containment (473ms)
+  ✓  41 e2e/product.spec.ts:653:5 › synthetic UI: post-ready same-frame recommendation navigation fails closed (334ms)
+  ✓  42 e2e/product.spec.ts:697:5 › synthetic UI: pre-ready same-frame recommendation navigation fails closed (246ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓  43 e2e/product.spec.ts:738:5 › synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize (262ms)
+  ✓  44 e2e/product.spec.ts:756:5 › synthetic UI: transiently missing iPad player identity does not reject the approved video (214ms)
+  ✓  45 e2e/product.spec.ts:816:5 › synthetic UI: permanently unreadable player identity fails closed (3.1s)
+  ✓  46 e2e/product.spec.ts:856:5 › synthetic UI: mobile share text auto-resolves and retains a manual fallback (884ms)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  47 e2e/product.spec.ts:885:5 › synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure (317ms)
+  ✓  48 e2e/product.spec.ts:915:5 › synthetic UI: mobile channel selection immediately loads individual videos (394ms)
+  ✓  49 e2e/product.spec.ts:961:5 › synthetic UI: mobile playlist selection immediately loads individual videos (553ms)
+  ✓  50 e2e/product.spec.ts:1008:5 › synthetic UI: Parent Library offers an obvious playback preview (399ms)
+  ✓  51 e2e/product.spec.ts:1035:5 › synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics (285ms)
+  ✓  52 e2e/product.spec.ts:1071:5 › synthetic UI: a child finds approved videos in a 240-item library (1.4s)
+  ✓  53 e2e/product.spec.ts:1100:5 › synthetic UI: intermediate widths keep parent tools and child browsing within reach (4.9s)
+  ✓  54 e2e/product.spec.ts:1140:5 › synthetic UI: password visibility and recovery work with a keyboard (350ms)
+  ✓  55 e2e/product.spec.ts:1166:5 › synthetic UI: phone parent actions and collection choices remain touchable (577ms)
+  ✓  56 e2e/product.spec.ts:1194:5 › synthetic UI: collection search expands to approved library without requesting again (2.2s)
+CONTENT_REACH {"mode":"standard","viewport":{"width":360,"height":800},"artworkTop":576.5625,"titleBottom":696.46875,"limit":710.203125}
+CONTENT_REACH {"mode":"standard","viewport":{"width":390,"height":844},"artworkTop":576.5625,"titleBottom":704.90625,"limit":754.203125}
+CONTENT_REACH {"mode":"standard","viewport":{"width":768,"height":1024},"artworkTop":587.203125,"titleBottom":818.5625,"limit":1024}
+CONTENT_REACH {"mode":"standard","viewport":{"width":1024,"height":768},"artworkTop":506.34375,"titleBottom":713.546875,"limit":768}
+CONTENT_REACH {"mode":"simple","viewport":{"width":360,"height":800},"artworkTop":449.53125,"titleBottom":668.40625,"limit":710.203125}
+CONTENT_REACH {"mode":"simple","viewport":{"width":390,"height":844},"artworkTop":449.53125,"titleBottom":685.28125,"limit":754.203125}
+CONTENT_REACH {"mode":"simple","viewport":{"width":768,"height":1024},"artworkTop":499.171875,"titleBottom":733.46875,"limit":1024}
+CONTENT_REACH {"mode":"simple","viewport":{"width":1024,"height":768},"artworkTop":438.671875,"titleBottom":739.203125,"limit":768}
+  ✓  57 e2e/product.spec.ts:1223:5 › synthetic UI: initial child choices are visible and Simple controls stay secondary (1.7s)
+  ✓  58 e2e/product.spec.ts:1256:5 › synthetic UI: many Collections remain keyboard reachable without pushing videos away (2.4s)
+  ✓  59 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 390 (1.1s)
+  ✓  60 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 768 (994ms)
+  ✓  61 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 1024 (1.1s)
+  ✓  62 e2e/startup.spec.ts:29:5 › synthetic startup: API attaches before delayed iframe document load (287ms)
+  ✓  63 e2e/startup.spec.ts:49:5 › synthetic startup: late API cannot reconstruct a containment-stopped player (222ms)
+  ✓  64 e2e/startup.spec.ts:68:5 › synthetic startup: late onReady and state events cannot reverse containment (317ms)
+  ✓  65 e2e/startup.spec.ts:86:5 › synthetic startup: missing provider readiness times out and removes frame (20.5s)
+  ✓  66 e2e/startup.spec.ts:99:7 › synthetic startup: __replaceFrame fails closed without unmonitored frame (254ms)
+  ✓  67 e2e/startup.spec.ts:99:7 › synthetic startup: __throwOnReady fails closed without unmonitored frame (328ms)
+  ✓  68 e2e/startup.spec.ts:109:5 › synthetic startup: provider error before ready is terminal (344ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/360x800/supplemental-responsive/manifest.json
+  ✓  69 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 360x800 (3.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/412x915/supplemental-responsive/manifest.json
+  ✓  70 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 412x915 (3.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/520x900/supplemental-responsive/manifest.json
+  ✓  71 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 520x900 (3.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/640x900/supplemental-responsive/manifest.json
+  ✓  72 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 640x900 (3.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/820x1180/supplemental-responsive/manifest.json
+  ✓  73 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 820x1180 (2.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/900x900/supplemental-responsive/manifest.json
+  ✓  74 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 900x900 (3.0s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1180x820/supplemental-responsive/manifest.json
+  ✓  75 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1180x820 (2.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1280x800/supplemental-responsive/manifest.json
+  ✓  76 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1280x800 (2.9s)
+  ✓  77 e2e/visual.spec.ts:4:5 › synthetic visual evidence: parent and child surfaces (2.1s)
+(node:2351) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  78 e2e/fresh-child-stranger.spec.ts:48:5 › fresh younger child chooses a picture and returns to own library (1.2s)
+  ✓  79 e2e/fresh-child-stranger.spec.ts:68:5 › fresh older child retrieves saves and requests (1.2s)
+  ✓  80 e2e/fresh-child-stranger.spec.ts:94:5 › fresh shared family switch PIN recovery and parent boundary (949ms)
+FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+  ✓  81 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (1.4s)
+FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+  ✓  82 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (2.1s)
+  ✓  83 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (737ms)
+
+
+  1) e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-phone 390x844 ──────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+    Expected: "Your library is taking a moment. Please try again."
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms
+      - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+
+
+      218 |       await page.route("**/api/auth/child", route => route.fulfill(json({ error: "Your library is taking a moment. Please try again." }, 503)));
+      219 |       await page.getByRole("button", { name: /Benny/ }).click();
+    > 220 |       await expect(page.getByRole("alert").filter({ hasText: "Your library is taking a moment. Please try again." })).toHaveText("Your library is taking a moment. Please try again.");
+          |                                                                                                                       ^
+      221 |       await capture("family-profile-picker-entry-error");
+      222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };
+      223 |       await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
+        at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119
+
+    Error Context: test-results/premium-visual-premium-evi-17c40-states-parent-phone-390x844/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/premium-visual-premium-evi-17c40-states-parent-phone-390x844/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/premium-visual-premium-evi-17c40-states-parent-phone-390x844/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-portrait 768x1024 ────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+    Expected: "Your library is taking a moment. Please try again."
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms
+      - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+
+
+      218 |       await page.route("**/api/auth/child", route => route.fulfill(json({ error: "Your library is taking a moment. Please try again." }, 503)));
+      219 |       await page.getByRole("button", { name: /Benny/ }).click();
+    > 220 |       await expect(page.getByRole("alert").filter({ hasText: "Your library is taking a moment. Please try again." })).toHaveText("Your library is taking a moment. Please try again.");
+          |                                                                                                                       ^
+      221 |       await capture("family-profile-picker-entry-error");
+      222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };
+      223 |       await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
+        at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119
+
+    Error Context: test-results/premium-visual-premium-evi-9f7b5-ates-ipad-portrait-768x1024/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/premium-visual-premium-evi-9f7b5-ates-ipad-portrait-768x1024/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/premium-visual-premium-evi-9f7b5-ates-ipad-portrait-768x1024/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-landscape 1024x768 ───
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+    Expected: "Your library is taking a moment. Please try again."
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms
+      - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+
+
+      218 |       await page.route("**/api/auth/child", route => route.fulfill(json({ error: "Your library is taking a moment. Please try again." }, 503)));
+      219 |       await page.getByRole("button", { name: /Benny/ }).click();
+    > 220 |       await expect(page.getByRole("alert").filter({ hasText: "Your library is taking a moment. Please try again." })).toHaveText("Your library is taking a moment. Please try again.");
+          |                                                                                                                       ^
+      221 |       await capture("family-profile-picker-entry-error");
+      222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };
+      223 |       await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
+        at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119
+
+    Error Context: test-results/premium-visual-premium-evi-b2777-tes-ipad-landscape-1024x768/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/premium-visual-premium-evi-b2777-tes-ipad-landscape-1024x768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/premium-visual-premium-evi-b2777-tes-ipad-landscape-1024x768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-desktop 1440x1000 ──
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+    Expected: "Your library is taking a moment. Please try again."
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' }) with timeout 5000ms
+      - waiting for getByRole('alert').filter({ hasText: 'Your library is taking a moment. Please try again.' })
+
+
+      218 |       await page.route("**/api/auth/child", route => route.fulfill(json({ error: "Your library is taking a moment. Please try again." }, 503)));
+      219 |       await page.getByRole("button", { name: /Benny/ }).click();
+    > 220 |       await expect(page.getByRole("alert").filter({ hasText: "Your library is taking a moment. Please try again." })).toHaveText("Your library is taking a moment. Please try again.");
+          |                                                                                                                       ^
+      221 |       await capture("family-profile-picker-entry-error");
+      222 |       const empty = { ...dashboard, profiles: [], videos: [], collections: [], requests: [], attention: [], workflow: { ...dashboard.workflow, approvedVideos: 0, activeChildren: 0, assignedVideos: 0, unassignedVideos: 0, openRequests: 0, byChild: [] } };
+      223 |       await page.route("**/api/parent/dashboard", route => route.fulfill(json(empty)));
+        at /workspace/scratch/b4fb31747e8d/watchnest/e2e/premium-visual.spec.ts:220:119
+
+    Error Context: test-results/premium-visual-premium-evi-1012a-es-parent-desktop-1440x1000/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/premium-visual-premium-evi-1012a-es-parent-desktop-1440x1000/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/premium-visual-premium-evi-1012a-es-parent-desktop-1440x1000/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-phone 390x844 ───────
+    e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-portrait 768x1024 ─────
+    e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-landscape 1024x768 ────
+    e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-desktop 1440x1000 ───
+  79 passed (5.5m)

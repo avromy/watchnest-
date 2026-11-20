@@ -1,0 +1,25 @@
+{
+  "operation": "create_library_file",
+  "status": "succeeded",
+  "path": "/Work - App Dev/WatchNest_Concept3_Recovery_Delta_20261118.tar.gz",
+  "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+  "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+  "file_name": "WatchNest_Concept3_Recovery_Delta_20261118.tar.gz",
+  "current_version_number": 0,
+  "restored_from_version_number": null,
+  "xattrs": [
+    {
+      "name": "user.library-file-version",
+      "value": "0"
+    }
+  ],
+  "directory_id": "6a749fae9f808191b996e5bc65b6808f",
+  "mime_type": "application/x-tar",
+  "library_artifact_type": "other",
+  "file_size_bytes": 9986524,
+  "external_connectors_accessed": false,
+  "sha256": "809b31173a0237e0517c8f2ac2c970b77fe2e047a98f71b2c8f1f1d71683099a",
+  "fileCount": 116,
+  "localMetadataApplied": true,
+  "scope": "New final derivative delta and historical generated working-tree overlays. Not new source acceptance; originals preserved. No hosted family material or credentials."
+}

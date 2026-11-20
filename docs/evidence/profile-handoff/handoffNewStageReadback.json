@@ -1,0 +1,10 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"result\": {\n    \"deployment\": {\n      \"id\": \"dpl_Gy16rRsVjrcVEAkjg6WuwYja2fcg\",\n      \"name\": \"watchnest\",\n      \"url\": \"watchnest-ngz5hkjr4-avromy.vercel.app\",\n      \"type\": \"LAMBDAS\",\n      \"state\": \"READY\",\n      \"createdAt\": 1795062285728,\n      \"creator\": {\n        \"uid\": \"FbK2fmQvUaYN1OIasgsDxpwb\",\n        \"username\": \"avromy-4714\"\n      },\n      \"project\": {\n        \"id\": \"prj_tQi2cBAosldposlx61FcwnwDJ8OG\",\n        \"name\": \"watchnest\",\n        \"framework\": \"nextjs\"\n      },\n      \"meta\": {\n        \"githubCommitRef\": \"premium-ui-ux-20261103\",\n        \"githubCommitSha\": \"decd2681e693de7ef33ea067610117c7467123b4\",\n        \"githubCommitMessage\": \"Use singular copy for one-minute Parent extensions\",\n        \"githubRepo\": \"watchnest-\",\n        \"githubOrg\": \"avromy\"\n      },\n      \"alias\": [\n        \"watchnest-git-premium-ui-ux-20261103-avromy.vercel.app\"\n      ],\n      \"target\": \"production\",\n      \"regions\": [\n        \"iad1\"\n      ],\n      \"buildingAt\": 1795062286692,\n      \"ready\": 1795062300402,\n      \"readyState\": \"READY\",\n      \"source\": \"redeploy\",\n      \"aliasError\": null\n    }\n  }\n}"
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}

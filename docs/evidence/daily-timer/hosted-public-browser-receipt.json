@@ -1,0 +1,22 @@
+{
+  "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "deployment": "dpl_2W1LqfsR1rzKMYyDnnei7AnCSvde",
+  "stage": "https://watchnest-5z2w8ot76-avromy.vercel.app",
+  "observed_api_session": {
+    "role": null,
+    "configured": true
+  },
+  "observed_parent_api": {
+    "error": "Parent sign-in required."
+  },
+  "observed_child_session_access_api": {
+    "error": "Child sign-in required."
+  },
+  "protected_controls_redirected_to": "https://watchnest-5z2w8ot76-avromy.vercel.app/login",
+  "visible_methods": [
+    "email and password"
+  ],
+  "credentials_entered_by_builder": false,
+  "authenticated_positive_hosted_proof": "OPEN",
+  "scope": "Live cloud Chromium navigation/visible UI bodies, no HTTP status/header measurement or physical device certification; no credential/family screenshots saved."
+}

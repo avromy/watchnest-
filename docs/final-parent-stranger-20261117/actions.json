@@ -1,0 +1,487 @@
+[
+  {
+    "step": 1,
+    "action": "Open Parent dashboard on phone",
+    "expect": "Family overview and next task",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nFamily overview\n3\nApproved videos\n1\nCollections\n1\nPending requests\n\nNEXT UP\n\n1 request from the children\n\nAri asked for Lego trains\n\nReview requests\n→\n\nCHILDREN\n\nTheir libraries\nManage family →\nMiri\n\n0 approved videos\n\nPIN protected\nAri\n\n3 approved videos · 1 request\n\nPIN protected\nBenny\n\n0 approved videos\n\nNo profile PIN\nEli\n\n0 approved videos\n\nNo profile PIN\nWatch sessions\nStart a session, add time, or end playback from here.\n→"
+  },
+  {
+    "step": 2,
+    "action": "Add videos",
+    "expect": "Paste YouTube link",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nMove existing family picks"
+  },
+  {
+    "step": 3,
+    "action": "Paste video links",
+    "expect": "URL entry",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nMove existing family picks"
+  },
+  {
+    "step": 4,
+    "action": "Paste YouTube URL",
+    "expect": "Metadata preview",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nMove existing family picks\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nLittle Makers\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview"
+  },
+  {
+    "step": 5,
+    "action": "Preview first video",
+    "expect": "Metadata and safe parent preview",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nMove existing family picks\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nLittle Makers\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\nBuild a paper rocket\nClose preview\n\nYouTube’s player frame loaded.\n\nPress Play and confirm this exact video starts before approving it. A loaded player alone is not playback proof.\n\nSource: Little Makers. Audience status: not marked Made for Kids.\n\nParent preview uses YouTube’s player. YouTube controls its branding, links and some recommendations. If YouTube shows an availability or embedding message, do not approve the video."
+  },
+  {
+    "step": 6,
+    "action": "Select first video; Miri; Little Makers",
+    "expect": "Approve enabled",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nMove existing family picks\n\nMAKE IT THEIRS\n\n1 selected for approval\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nLittle Makers\n+ New Collection\nApprove 1 selected video\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview"
+  },
+  {
+    "step": 7,
+    "action": "Approve 1 selected video",
+    "expect": "Confirmation",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nMove existing family picks\n1 individually selected video approved.\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nLittle Makers\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview",
+    "mutations": [
+      {
+        "path": "/api/parent/videos/lookup",
+        "body": {
+          "urls": [
+            "https://www.youtube.com/watch?v=abcdefghijk"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/videos",
+        "body": {
+          "youtube_video_ids": [
+            "abcdefghijk"
+          ],
+          "profile_ids": [
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "collection_id": "20000000-0000-4000-8000-000000000001"
+        }
+      }
+    ]
+  },
+  {
+    "step": 8,
+    "action": "Library",
+    "expect": "Manage approved library",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove"
+  },
+  {
+    "step": 9,
+    "action": "Manage first approved video",
+    "expect": "Assignment edit",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\n1 selected · Choose who can watch\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\n\nOnly the children selected here will retain access. Selecting none removes all child access.\n\nTags, separated by commas\nAdd to Collection\nChoose a Collection\nLittle Makers\nAdd selected to Collection Save Remove selected Cancel selection\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove"
+  },
+  {
+    "step": 10,
+    "action": "Add Miri and Save",
+    "expect": "Saved assignment",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove"
+  },
+  {
+    "step": 11,
+    "action": "Collections",
+    "expect": "Collection organization",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nCOLLECTIONS\n\nOrganize collections\n\nGroup approved videos by show, creator, or topic.\n\nYour collections\nLittle Makers\n\nMake and discover · 2 videos\n\nEdit collection\nShare with children\nCreate a collection\nName\nDescription (optional)\nApproved videos\nBuild a paper rocket\nA gentle piano lesson\nDraw a friendly fox\nSave collection"
+  },
+  {
+    "step": 12,
+    "action": "Edit collection",
+    "expect": "Edit title/order/videos",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nCOLLECTIONS\n\nOrganize collections\n\nGroup approved videos by show, creator, or topic.\n\nYour collections\nLittle Makers\n\nMake and discover · 2 videos\n\nEdit collection\nShare with children\nEdit collection\nName\nDescription (optional)\nApproved videos\nBuild a paper rocket\nA gentle piano lesson\nDraw a friendly fox\nSave collectionCancel edit"
+  },
+  {
+    "step": 13,
+    "action": "Rename Collection and Save",
+    "expect": "Saved edit",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nVideos\nCollections\nAdd videos\n\nCOLLECTIONS\n\nOrganize collections\n\nGroup approved videos by show, creator, or topic.\n\nYour collections\nLittle Makers\n\nMake and discover · 2 videos\n\nEdit collection\nShare with children\nCreate a collection\n\nCollection saved.\n\nName\nDescription (optional)\nApproved videos\nBuild a paper rocket\nA gentle piano lesson\nDraw a friendly fox\nSave collection"
+  },
+  {
+    "step": 14,
+    "action": "Requests 1",
+    "expect": "Review Ari request",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\n\nPARENT INBOX\n\n1 request\n\nSee what caught their eye. You decide what joins the library.\n\nCheck video availability\nAsked by the children\n\nARI · TOPIC\n\nLego trains\n\n11/17/2026\n\nAfter adding a video, return here to mark this request as fulfilled.\n\nFind a video\nMark as fulfilled\nNot now\nLibrary attention\n\nNo library issues reported."
+  },
+  {
+    "step": 15,
+    "action": "Mark as fulfilled",
+    "expect": "Request resolved",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\n\nPARENT INBOX\n\n1 request\n\nSee what caught their eye. You decide what joins the library.\n\nCheck video availability\nAsked by the children\n\nARI · TOPIC\n\nLego trains\n\n11/17/2026\n\nAfter adding a video, return here to mark this request as fulfilled.\n\nFind a video\nMark as fulfilled\nNot now\nLibrary attention\n\nNo library issues reported.",
+    "mutations": [
+      {
+        "path": "/api/parent/videos/lookup",
+        "body": {
+          "urls": [
+            "https://www.youtube.com/watch?v=abcdefghijk"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/videos",
+        "body": {
+          "youtube_video_ids": [
+            "abcdefghijk"
+          ],
+          "profile_ids": [
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "collection_id": "20000000-0000-4000-8000-000000000001"
+        }
+      },
+      {
+        "path": "/api/parent/videos",
+        "body": {
+          "video_id": "10000000-0000-4000-8000-000000000001",
+          "profile_ids": [
+            "00000000-0000-4000-8000-000000000002",
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "tags": [
+            "crafts"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/collections",
+        "body": {
+          "id": "20000000-0000-4000-8000-000000000001",
+          "title": "Making things",
+          "description": "Make and discover",
+          "video_ids": [
+            "10000000-0000-4000-8000-000000000001",
+            "10000000-0000-4000-8000-000000000003"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/requests",
+        "body": {
+          "id": "30000000-0000-4000-8000-000000000001",
+          "status": "resolved"
+        }
+      }
+    ]
+  },
+  {
+    "step": 16,
+    "action": "Family",
+    "expect": "Profiles and protection",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli"
+  },
+  {
+    "step": 17,
+    "action": "Time & discovery",
+    "expect": "Session start/extend/end controls",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nBenny\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nEli\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nRemote changes reach a connected child device in a few seconds. If a device is offline, it cannot receive an early End command until it reconnects, but it cannot continue beyond its last confirmed deadline.\n\nUsing Guided Access\n\nWatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.\n\nDiscover\nMiri\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nAri\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nBenny\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nEli\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nAvailable hours\nMiri\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nAri\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nBenny\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nEli\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\n\nSession time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time."
+  },
+  {
+    "step": 18,
+    "action": "Give Miri 20 minutes",
+    "expect": "Active session",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nBenny\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nEli\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nRemote changes reach a connected child device in a few seconds. If a device is offline, it cannot receive an early End command until it reconnects, but it cannot continue beyond its last confirmed deadline.\n\nUsing Guided Access\n\nWatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.\n\nDiscover\nMiri\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nAri\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nBenny\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nEli\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nAvailable hours\nMiri\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nAri\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nBenny\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nEli\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\n\nSession time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time.",
+    "mutations": [
+      {
+        "path": "/api/parent/videos/lookup",
+        "body": {
+          "urls": [
+            "https://www.youtube.com/watch?v=abcdefghijk"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/videos",
+        "body": {
+          "youtube_video_ids": [
+            "abcdefghijk"
+          ],
+          "profile_ids": [
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "collection_id": "20000000-0000-4000-8000-000000000001"
+        }
+      },
+      {
+        "path": "/api/parent/videos",
+        "body": {
+          "video_id": "10000000-0000-4000-8000-000000000001",
+          "profile_ids": [
+            "00000000-0000-4000-8000-000000000002",
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "tags": [
+            "crafts"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/collections",
+        "body": {
+          "id": "20000000-0000-4000-8000-000000000001",
+          "title": "Making things",
+          "description": "Make and discover",
+          "video_ids": [
+            "10000000-0000-4000-8000-000000000001",
+            "10000000-0000-4000-8000-000000000003"
+          ]
+        }
+      },
+      {
+        "path": "/api/parent/requests",
+        "body": {
+          "id": "30000000-0000-4000-8000-000000000001",
+          "status": "resolved"
+        }
+      },
+      {
+        "path": "/api/parent/session-timer",
+        "body": {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "start",
+          "duration_minutes": 20
+        }
+      }
+    ]
+  },
+  {
+    "step": 19,
+    "action": "Give 20 minutes with stateful synthetic status",
+    "expect": "Active controls",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\n20 min left\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nAdd 15 minutes\nPause\nEnd now\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nBenny\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nEli\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nRemote changes reach a connected child device in a few seconds. If a device is offline, it cannot receive an early End command until it reconnects, but it cannot continue beyond its last confirmed deadline.\n\nUsing Guided Access\n\nWatchNest stops playback when its timer ends. Guided Access can keep your child inside WatchNest, but Apple does not let this website read or control the Guided Access timer. Use Guided Access for navigation protection and the WatchNest timer for stopping video and sound.\n\nDiscover\nMiri\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nAri\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nBenny\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nEli\n\nEvery result still needs Parent approval.\n\nDiscover videos\nTopics they may search\nSave Discover\nAvailable hours\nMiri\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nAri\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nBenny\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\nEli\n\nAvailable anytime\n\nAvailable from\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nUntil\nAny time\n5:00 AM\n5:30 AM\n6:00 AM\n6:30 AM\n7:00 AM\n7:30 AM\n8:00 AM\n8:30 AM\n9:00 AM\n9:30 AM\n10:00 AM\n10:30 AM\n11:00 AM\n11:30 AM\n12:00 PM\n12:30 PM\n1:00 PM\n1:30 PM\n2:00 PM\n2:30 PM\n3:00 PM\n3:30 PM\n4:00 PM\n4:30 PM\n5:00 PM\n5:30 PM\n6:00 PM\n6:30 PM\n7:00 PM\n7:30 PM\n8:00 PM\n8:30 PM\n9:00 PM\n9:30 PM\n10:00 PM\n10:30 PM\n11:00 PM\nSave schedule\n\nSession time is a wall-clock access deadline. WatchNest does not measure or reconstruct YouTube watch time."
+  },
+  {
+    "step": 20,
+    "action": "Add 15 minutes",
+    "expect": "35 minutes",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\n20 min left\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nAdd 15 minutes\nPause\nEnd now\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\n",
+    "mutations": [
+      {
+        "path": "/api/parent/session-timer",
+        "body": {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "start",
+          "duration_minutes": 20
+        },
+        "fixture": "stateful"
+      },
+      {
+        "path": "/api/parent/session-timer",
+        "body": {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "extend",
+          "duration_minutes": 15
+        },
+        "fixture": "stateful"
+      }
+    ]
+  },
+  {
+    "step": 21,
+    "action": "End now",
+    "expect": "Ended state",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\n20 min left\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nAdd 15 minutes\nPause\nEnd now\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nBenny\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 mi",
+    "mutations": [
+      {
+        "path": "/api/parent/session-timer",
+        "body": {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "extend",
+          "duration_minutes": 15
+        },
+        "fixture": "stateful"
+      },
+      {
+        "path": "/api/parent/session-timer",
+        "body": {
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "action": "end"
+        },
+        "fixture": "stateful"
+      }
+    ]
+  },
+  {
+    "step": 22,
+    "action": "Settings",
+    "expect": "Family protection explanation",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nSETTINGS\n\nFamily settings.\n\nProtect Parent Mode and manage this device.\n\nPROTECTION LEVELS\n\nProtection options\n\nSafe Playback protects every Child Mode session. Add an iPad option if it fits your family.\n\nREQUIRED\n1. Safe Playback\n\nRequired in Child Mode. Only Parent-approved videos may play.\n\nAlways on\nNo special iPad setup needed\nOPTIONAL\n2. Enhanced YouTube protection\n\nKeep normal web access while trying to restrict unrestricted YouTube.\n\nLimited on iPad\n\nApple does not currently provide a reliable family setting that blocks only YouTube pages while guaranteeing embedded playback. Do not use Approved Websites Only; it can stop videos from playing.\n\nRemoving the YouTube app still adds useful protection.\n\nMAXIMUM\n3. Dedicated WatchNest device\n\nFor an iPad used mainly for WatchNest.\n\nIn Safari, add WatchNest to the Home Screen.\nOpen the new WatchNest icon and confirm a video plays.\nRemove or restrict the YouTube app.\nTurn Safari off in Screen Time.\nOptional: use Guided Access for a focused session.\n\nDevice restrictions are extra protection. Safe Playback remains the WatchNest control.\n\nCheck this browser\nParent Mode PIN\n\nUse this 4-digit PIN to enter Parent Mode from the profile picker.\n\nNew Parent PIN\nConfirm PIN\nSave Parent PIN\nDevice access\n\nSwitch profiles keeps this family iPad connected. Sign out removes WatchNest access from this browser.\n\nSwitch profileSign out of this device\nPlayback on this device\nAds and YouTube Premium\nVolume\nOffline and travel"
+  },
+  {
+    "step": 23,
+    "action": "Return to Time & discovery after end",
+    "expect": "Ended confirmation",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\nTime’s up\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nBenn"
+  },
+  {
+    "step": 24,
+    "action": "Add 15 minutes and await status poll",
+    "expect": "35 min left",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\n35 min left\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nAdd 15 minutes\nPause\nEnd now\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, includin"
+  },
+  {
+    "step": 25,
+    "action": "End now and await status poll",
+    "expect": "Ended",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\nTime’s up\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nBenn"
+  },
+  {
+    "step": 26,
+    "action": "Mismatched child PIN then Save changes",
+    "expect": "Clear validation without losing form",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nFamily\nProfiles\nTime & discovery\nSettings\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\n\nThe PINs do not match.\n\nSave changes\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli"
+  },
+  {
+    "step": 27,
+    "action": "Fulfill request using stateful fixture",
+    "expect": "Resolved request disappears",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\n\nPARENT INBOX\n\nYou’re all caught up.\n\nSee what caught their eye. You decide what joins the library.\n\nCheck video availability\nAsked by the children\nAll caught up\n\nRequests arrive here when a child uses Ask Parent.\n\nLibrary attention\n\nNo library issues reported."
+  },
+  {
+    "step": 28,
+    "action": "Manage library: add Miri and save with stateful fixture",
+    "expect": "Ari and Miri assignment shown",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nMiri · Ari\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove"
+  },
+  {
+    "step": 29,
+    "action": "Rename Collection using stateful fixture",
+    "expect": "Making things title",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nCOLLECTIONS\n\nOrganize collections\n\nGroup approved videos by show, creator, or topic.\n\nYour collections\nMaking things\n\nMake and discover · 2 videos\n\nEdit collection\nShare with children\nCreate a collection\n\nCollection saved.\n\nName\nDescription (optional)\nApproved videos\nBuild a paper rocket\nA gentle piano lesson\nDraw a friendly fox\nSave collection"
+  },
+  {
+    "step": 30,
+    "action": "Invalid video URL then Load videos",
+    "expect": "Recoverable validation",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nPaste a YouTube video link, then choose Load videos.\nMove existing family picks"
+  },
+  {
+    "step": 31,
+    "persona": "Fresh Parent",
+    "action": "Open home unauthenticated",
+    "expect": "Account entry choices",
+    "actual": "Skip to content\nWatchNest\nSign in\n\nOpen your family’s WatchNest.\n\nEmail\nPassword\nShow password\nSign in\nForgot password?\nPrivacy and YouTube playback"
+  },
+  {
+    "step": 32,
+    "persona": "Fresh/second Parent",
+    "action": "Submit empty sign-in",
+    "expect": "Required field validation",
+    "actual": {
+      "text": "Skip to content\nWatchNest\nSign in\n\nOpen your family’s WatchNest.\n\nEmail\nPassword\nShow password\nSign in\nForgot password?\nPrivacy and YouTube playback",
+      "invalid": 2
+    }
+  },
+  {
+    "step": 33,
+    "action": "Fill synthetic credentials and Show password",
+    "expect": "Visible password with hide control",
+    "actual": "Skip to content\nWatchNest\nSign in\n\nOpen your family’s WatchNest.\n\nEmail\nPassword\nHide password\nSign in\nForgot password?\nPrivacy and YouTube playback"
+  },
+  {
+    "step": 34,
+    "action": "Forgot password?",
+    "expect": "Reset form and return",
+    "actual": "Skip to content\nWatchNest\nReset your password\n\nWe’ll email you a secure reset link.\n\nEmail\nSend reset link\nBack to sign in\nPrivacy and YouTube playback"
+  },
+  {
+    "step": 35,
+    "action": "Correct invalid URL to new synthetic individual video; select Miri/Collection and approve",
+    "expect": "Approved confirmation",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nPaste YouTube video links\nPaste one YouTube video link per line\n\nValid links load automatically. Paste several at once.\n\nLoad videos\nMove existing family picks\n1 individually selected video approved.\n\nMAKE IT THEIRS\n\nChoose videos below\n1 video found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nMaking things\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nFold a paper boat\n\nLittle Makers\n\nAlready approved\nMiri\n\nSelect this video\nPreview"
+  },
+  {
+    "step": 36,
+    "action": "Videos after new approval",
+    "expect": "New approved card assigned to Miri",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nMiri · Ari\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n3 min\nFold a paper boat\n\nLittle Makers\n\nMiri\n\nPreview\nManage\nRemove"
+  },
+  {
+    "step": 37,
+    "persona": "Returning Parent desktop",
+    "action": "Overview at1440x1000",
+    "expect": "Same hierarchy, easier scan",
+    "actual": "Skip to content\nWatchNest\nParent\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nFamily overview\n3\nApproved videos\n1\nCollections\n0\nPending requests\n\nCHILDREN\n\nTheir libraries\nManage family →\nMiri\n\n0 approved videos\n\nPIN protected\nAri\n\n3 approved videos · 1 request\n\nPIN protected\nBenny\n\n0 approved videos\n\nNo profile PIN\nEli\n\n0 approved videos\n\nNo profile PIN\nWatch sessions\nStart a session, add time, or end playback from here.\n→"
+  },
+  {
+    "step": 38,
+    "action": "Watch sessions desktop",
+    "expect": "Time controls direct",
+    "actual": "Skip to content\nWatchNest\nParent\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nProfiles\nTime & discovery\nSettings\n\nCONTROLS\n\nTime & discovery.\n\nChoose when each child can watch and what they may ask you to add.\n\nSession time\nMiri\n\nTime’s up\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\nTurn timer off\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n\nAri\n\nNo session timer\n\nSession length\n15 minutes\n20 minutes\n30 minutes\n45 minutes\n60 minutes\n90 minutes\n120 minutes\nGive 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance.\n"
+  },
+  {
+    "step": 39,
+    "action": "Tab keyboard focus",
+    "expect": "Visible focus control",
+    "actual": {
+      "tag": "SELECT",
+      "text": "15 minutes20 minutes30 minutes45 minutes60 minutes90 minutes120 minutes",
+      "outline": "rgb(154, 113, 16) solid 3px"
+    }
+  },
+  {
+    "step": 40,
+    "action": "Check this browser",
+    "expect": "Browser guidance without claiming full protection",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nProfiles\nTime & discovery\nSettings\n\nSETTINGS\n\nFamily settings.\n\nProtect Parent Mode and manage this device.\n\nPROTECTION LEVELS\n\nProtection options\n\nSafe Playback protects every Child Mode session. Add an iPad option if it fits your family.\n\nREQUIRED\n1. Safe Playback\n\nRequired in Child Mode. Only Parent-approved videos may play.\n\nAlways on\nNo special iPad setup needed\nOPTIONAL\n2. Enhanced YouTube protection\n\nKeep normal web access while trying to restrict unrestricted YouTube.\n\nLimited on iPad\n\nApple does not currently provide a reliable family setting that blocks only YouTube pages while guaranteeing embedded playback. Do not use Approved Websites Only; it can stop videos from playing.\n\nRemoving the YouTube app still adds useful protection.\n\nMAXIMUM\n3. Dedicated WatchNest device\n\nFor an iPad used mainly for WatchNest.\n\nIn Safari, add WatchNest to the Home Screen.\nOpen the new WatchNest icon and confirm a video plays.\nRemove or restrict the YouTube app.\nTurn Safari off in Screen Time.\nOptional: use Guided Access for a focused session.\n\nDevice restrictions are extra protection. Safe Playback remains the WatchNest control.\n\nCheck this browser\n\nSafe Playback is always on. Open the Home Screen app for the strongest device setup. No touch input detected. YouTube app and Safari restrictions must be confirmed in iPad Settings.\n\nParent Mode PIN\n\nUse this 4-digit PIN to enter Parent Mode from the profile picker.\n\nNew Parent PIN\nConfirm PIN\nSave Parent PIN\nDevice access\n\nSwitch profiles keeps this family iPad connected. Sign out removes WatchNest access from this browser.\n\nSwitch profileSign out of this device\nPlayback on this device\nAds and YouTube Premium\nVolume\nOffline and travel"
+  },
+  {
+    "step": 41,
+    "action": "Open Miri Photo or avatar disclosure",
+    "expect": "Avatar/photo choice",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nProfiles\nTime & discovery\nSettings\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nPhoto or avatar\nUpload photo\n\nPhotos are cropped and compressed on this device, then stored privately. JPG, PNG, or WebP; up to 25 MB before processing.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli"
+  },
+  {
+    "step": 42,
+    "action": "Choose sun avatar and Save changes",
+    "expect": "Save feedback",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nProfiles\nTime & discovery\nSettings\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nPhoto or avatar\nUpload photo\n\nPhotos are cropped and compressed on this device, then stored privately. JPG, PNG, or WebP; up to 25 MB before processing.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\n\nChanges saved.\n\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli",
+    "mutations": [
+      {
+        "path": "/api/parent/profiles",
+        "body": {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "avatar_key": "sun",
+          "pin_enabled": true
+        }
+      }
+    ]
+  },
+  {
+    "step": 43,
+    "action": "Search library unmatched term",
+    "expect": "Empty result with recovery",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nNo matches\n\nTry a different search or child.\n\nFind videos"
+  },
+  {
+    "step": 44,
+    "action": "Replace search with paper",
+    "expect": "Matching cards recover",
+    "actual": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nThe family library.\n\nYour approved picks. Shared with just the right children.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nMiri · Ari\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n3 min\nFold a paper boat\n\nLittle Makers\n\nMiri\n\nPreview\nManage\nRemove"
+  },
+  {
+    "step": 45,
+    "action": "Search with synthetic503",
+    "expect": "Actionable error, input preserved",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nMove existing family picks\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nMaking things\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nMiri · Ari\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview"
+  },
+  {
+    "step": 46,
+    "action": "Retry Search after service recovery",
+    "expect": "Results without retyping",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nMove existing family picks\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nMaking things\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nMiri · Ari\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview"
+  },
+  {
+    "step": 47,
+    "action": "Search with corrected query-inclusive503 route",
+    "expect": "Actionable error and preserved input",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nVideo search is temporarily unavailable. Try again.\nMove existing family picks\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nMaking things\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nMiri · Ari\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview"
+  },
+  {
+    "step": 48,
+    "action": "Retry after503",
+    "expect": "Results recover",
+    "actual": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nMove existing family picks\n\nMAKE IT THEIRS\n\nChoose videos below\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nMaking things\n+ New Collection\nApprove selected videos\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nMiri · Ari\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview"
+  }
+]

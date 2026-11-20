@@ -1,0 +1,55 @@
+{
+  "kind": "Concept3 round1 diagnostic source/capture index; NOT acceptance",
+  "sourceCommit": "bd8d15d7220f5496e73a562c77b34ceb8aae2370",
+  "sourceTree": "703feeffd9853782e914a23ff9728361bfe9ede6",
+  "applicationSourceTree": "67fd57e88e9adb42ec2f795e1e6473fba650a40c",
+  "files": {
+    "src/components/child/ChildPlayer.tsx": "9323dfeaf7f811be72328bb0cfdbb0f6d3453b69ae7f96acfbce7ea67bd3b42e",
+    "next.config.mjs": "d0d2540ba5f4948d58ea5626572024a9090eff02eb6a7d452a919e1eb1f43f0e",
+    "package.json": "1a0d0e2721f6ae9fc4a1dd3ba5be9cec7b8c92e0a84d5f8e584e75dcf36dd797",
+    "package-lock.json": "0023e058a4ecfa1c4e8ecd3d0abe5ebc454bce0b8a7895b705d8486fb13f295e",
+    "e2e/fixtures.ts": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+    "e2e/product.spec.ts": "f570da5510d4f2a30412c753ddcee6b613f8a80dc8186061e5742c2e2c9a640d",
+    "e2e/premium-visual.spec.ts": "0ea362700c1fa0db251b00c67570c09cc60a25e2d9470371f73bed6ccb4452d8",
+    "e2e/supplemental-responsive.spec.ts": "fd33af212abf0dae6b19c06a2581fae78d80b72457d95b7f2fd9b7e4fdb80c0c",
+    "playwright.config.ts": "898585d4efe228215ff41c110e9f54cb3d6b1676ae3fdc5c4d41ee70de8fa9e9",
+    "eslint.config.mjs": "689e0f29218e4ea7c29963476f1bbaafc900e13c60bd5e7cc752a8fa0cf0aa9c"
+  },
+  "packageVersions": {
+    "@supabase/supabase-js": "2.101.1",
+    "next": "16.4.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "server-only": "0.0.1",
+    "zod": "^4.6.7"
+  },
+  "captureExpectedRoot": "test-results/visual-evidence/concept3-bd8d15d",
+  "captureStatus": "Original local packet not recovered. Distinct CI149 provider artifact downloaded/byte-hash verified and separately inventoried; do not conflate consumption or source merge metadata.",
+  "captureFiles": [],
+  "captureCounts": null,
+  "runtimeEvidence": "Independent round1 reports bind synthetic Chromium/localhost:3001 and this source; original manifest runtime remains to be inventoried. No physical or hosted Concept3 acceptance.",
+  "localResultsReportedByRoot": {
+    "browserTests": 69,
+    "browserConclusion": "PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unitTests": 200,
+    "unitConclusion": "PASS",
+    "optimizedBuild": "PASS",
+    "productionAuditVulnerabilities": 0,
+    "scope": "Root-reported exact first-candidate local facts; raw local result packet not yet located here."
+  },
+  "ci149": {
+    "runId": 44246932538,
+    "conclusion": "failure",
+    "qualityE2E": "failure",
+    "failedTest": "Parent navigation covers management, inbox, independent access: Requests link strict-mode ambiguity matched2elements",
+    "audit": "skipped",
+    "baselineVisual": "failure",
+    "rawLog": "ci149-quality.log",
+    "jobReceipt": "ci149-results.json"
+  },
+  "independentResult": "Visual MATCH FAIL/HumanEye NOT CLEAN; Reporter FAIL; ChildStranger FAIL. No Concept3 acceptance. Parent bounded review evolving independently.",
+  "repairStatus": "Root child-only repair in progress, not frozen; not represented by this source index.",
+  "distinctCIArtifact": "ci149-capture-index.json"
+}

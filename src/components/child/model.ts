@@ -12,6 +12,13 @@ export type Profile = {
   session_expires_at?: string | null;
   session_paused_seconds?: number | null;
   session_state_revision?: number;
+  session_mode?: "once" | "daily";
+  daily_allowance_minutes?: number | null;
+  daily_reset_at?: string | null;
+  daily_started?: boolean;
+  daily_period_timezone?: string | null;
+  session_parent_blocked?: boolean;
+  session_limit_disabled?: boolean;
   discover_enabled?: boolean;
   discovery_topics?: string[];
   discovery_channels?: { id: string; title: string }[];
@@ -23,7 +30,14 @@ export type SessionAccess = {
   remainingSeconds: number | null;
   pausedSeconds: number | null;
   revision: number;
-  state: "unlimited" | "active" | "paused" | "expired";
+  state: "unlimited" | "active" | "paused" | "expired" | "ready" | "blocked";
+  mode?: "once" | "daily";
+  dailyAllowanceMinutes?: number | null;
+  resetAt?: string | null;
+  timezone?: string | null;
+  parentBlocked?: boolean;
+  dailyStarted?: boolean;
+  limitDisabled?: boolean;
   serverNow: string;
 };
 export type DiscoveryResult = {

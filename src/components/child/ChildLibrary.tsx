@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import "./ChildExperience.css";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -17,7 +18,7 @@ import ProfileImage from "../ProfileImage";
 import Icon from "../ui/Icon";
 import { requestImmersivePlayback } from "@/lib/immersive-playback";
 
-type Tab = "home" | "library" | "discover";
+type Tab = "library" | "discover";
 
 function VideoGrid({
   videos,
@@ -91,17 +92,22 @@ function VideoGrid({
               fill={video.favorite ? "currentColor" : "none"}
             />
           </button>
-          <button
-            className="hide-video-button"
-            aria-label={
-              video.hidden
-                ? `Restore ${video.title} to your library`
-                : `Hide ${video.title} from your library`
-            }
-            onClick={() => onHide(video)}
-          >
-            {video.hidden ? "Restore" : "Hide"}
-          </button>
+          <details className="video-options">
+            <summary aria-label={`More options for ${video.title}`}>
+              <Icon name="more" width="21" />
+            </summary>
+            <button
+              className="hide-video-button"
+              aria-label={
+                video.hidden
+                  ? `Restore ${video.title} to your library`
+                  : `Hide ${video.title} from your library`
+              }
+              onClick={() => onHide(video)}
+            >
+              {video.hidden ? "Restore" : "Hide"}
+            </button>
+          </details>
         </article>
       ))}
     </div>
@@ -113,18 +119,29 @@ export default function ChildLibrary() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [videos, setVideos] = useState<Video[]>([]);
   const [collections, setCollections] = useState<Collection[]>([]);
-  const [tab, setTab] = useState<Tab>("home");
+  const [tab, setTab] = useState<Tab>("library");
   const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("newest");
+  const [discoverSearched, setDiscoverSearched] = useState(false);
   const [collection, setCollection] = useState<Collection | null>(null);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [hiddenOnly, setHiddenOnly] = useState(false);
+  const librarySearchLabel = collection
+    ? "Search this collection"
+    : favoritesOnly
+      ? "Search Favorites"
+      : hiddenOnly
+        ? "Search hidden videos"
+        : "Search your library";
   const [undoVideo, setUndoVideo] = useState<Video | null>(null);
   const [error, setError] = useState("");
   const [kind, setKind] = useState("topic");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [sessionAccess, setSessionAccess] = useState<SessionAccess | null>(null);
+  const [sessionAccess, setSessionAccess] = useState<SessionAccess | null>(
+    null,
+  );
   const [requests, setRequests] = useState<ChildRequest[]>([]);
   const [discoverQuery, setDiscoverQuery] = useState("");
   const [boundary, setBoundary] = useState("");
@@ -132,19 +149,38 @@ export default function ChildLibrary() {
   const [discoverBusy, setDiscoverBusy] = useState(false);
 
   useEffect(() => {
-    if (!sessionAccess?.enabled || !sessionAccess.expiresAt || !sessionAccess.allowed) return;
-    const delay = Date.parse(sessionAccess.expiresAt) - Date.parse(sessionAccess.serverNow);
+    if (
+      !sessionAccess?.enabled ||
+      !sessionAccess.expiresAt ||
+      !sessionAccess.allowed
+    )
+      return;
+    const delay =
+      Date.parse(sessionAccess.expiresAt) - Date.parse(sessionAccess.serverNow);
     const timer = window.setTimeout(
-      () => setSessionAccess((current) => current ? { ...current, allowed: false, remainingSeconds: 0 } : current),
+      () =>
+        setSessionAccess((current) =>
+          current
+            ? { ...current, allowed: false, remainingSeconds: 0 }
+            : current,
+        ),
       Math.max(0, delay),
     );
     return () => window.clearTimeout(timer);
-  }, [sessionAccess?.expiresAt, sessionAccess?.serverNow, sessionAccess?.enabled, sessionAccess?.allowed]);
+  }, [
+    sessionAccess?.expiresAt,
+    sessionAccess?.serverNow,
+    sessionAccess?.enabled,
+    sessionAccess?.allowed,
+  ]);
 
   useEffect(() => {
-    api<{ profile: Profile; videos: Video[]; collections: Collection[]; session_access?: SessionAccess }>(
-      "/api/child/library",
-    )
+    api<{
+      profile: Profile;
+      videos: Video[];
+      collections: Collection[];
+      session_access?: SessionAccess;
+    }>("/api/child/library")
       .then((data) => {
         setProfile(data.profile);
         setVideos(data.videos);
@@ -152,45 +188,96 @@ export default function ChildLibrary() {
         setSessionAccess(data.session_access || null);
         const firstTopic = data.profile.discovery_topics?.[0];
         const firstChannel = data.profile.discovery_channels?.[0];
-        setBoundary(firstTopic ? `topic:${firstTopic}` : firstChannel ? `channel:${firstChannel.id}` : "");
+        setBoundary(
+          firstTopic
+            ? `topic:${firstTopic}`
+            : firstChannel
+              ? `channel:${firstChannel.id}`
+              : "",
+        );
         void api<{ requests: ChildRequest[] }>("/api/child/requests")
-          .then((value) => setRequests(Array.isArray(value.requests) ? value.requests : []))
+          .then((value) =>
+            setRequests(Array.isArray(value.requests) ? value.requests : []),
+          )
           .catch(() => {});
       })
       .catch((reason) => setError(reason.message));
   }, []);
 
+  useEffect(() => {
+    if (!profile) return;
+    let disposed = false;
+    let inFlight = false;
+    let timeout: number | undefined;
+    let controller: AbortController | undefined;
+    let abortTimer: number | undefined;
+    const refresh = async () => {
+      if (disposed || inFlight) return;
+      inFlight = true;
+      controller = new AbortController();
+      abortTimer = window.setTimeout(() => controller?.abort(), 4000);
+      try {
+        const response = await fetch("/api/child/session-access", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        const result = await response.json();
+        if (
+          !response.ok ||
+          typeof result.session_access?.allowed !== "boolean" ||
+          !Number.isInteger(result.session_access.revision) ||
+          !Number.isFinite(Date.parse(result.session_access.serverNow))
+        )
+          throw new Error("Unconfirmed time");
+        if (!disposed)
+          setSessionAccess((current) =>
+            !current || result.session_access.revision >= current.revision
+              ? result.session_access
+              : current,
+          );
+      } catch {
+        if (!disposed)
+          setSessionAccess((current) =>
+            current ? { ...current, allowed: false } : current,
+          );
+      } finally {
+        inFlight = false;
+        window.clearTimeout(abortTimer);
+        if (!disposed) timeout = window.setTimeout(refresh, 5000);
+      }
+    };
+    timeout = window.setTimeout(refresh, 5000);
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      disposed = true;
+      controller?.abort();
+      window.clearTimeout(abortTimer);
+      window.clearTimeout(timeout);
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", refresh);
+    };
+  }, [profile]);
+
   const filtered = useMemo(
     () =>
-      videos.filter(
-        (video) =>
-          (hiddenOnly ? video.hidden : !video.hidden) &&
-          (!collection || collection.video_ids.includes(video.id)) &&
-          (!favoritesOnly || video.favorite) &&
-          `${video.title} ${video.channel_title} ${(video.tags || []).join(" ")} ${(video.collections || []).map((item) => item.title).join(" ")}`
-            .toLocaleLowerCase()
-            .includes(query.trim().toLocaleLowerCase()),
-      ),
-    [videos, collection, favoritesOnly, hiddenOnly, query],
+      videos
+        .filter(
+          (video) =>
+            (hiddenOnly ? video.hidden : !video.hidden) &&
+            (!collection || collection.video_ids.includes(video.id)) &&
+            (!favoritesOnly || video.favorite) &&
+            `${video.title} ${video.channel_title} ${(video.tags || []).join(" ")} ${(video.collections || []).map((item) => item.title).join(" ")}`
+              .toLocaleLowerCase()
+              .includes(query.trim().toLocaleLowerCase()),
+        )
+        .sort((a, b) =>
+          sort === "title"
+            ? a.title.localeCompare(b.title)
+            : (b.added_at || "").localeCompare(a.added_at || ""),
+        ),
+    [videos, collection, favoritesOnly, hiddenOnly, query, sort],
   );
-  const continuing = videos
-    .filter(
-      (video) =>
-        !video.hidden &&
-        video.made_for_kids === false &&
-        video.progress &&
-        video.progress.current_time_seconds > 0 &&
-        !video.progress.completed_at,
-    )
-    .sort((a, b) =>
-      (b.progress?.updated_at || "").localeCompare(
-        a.progress?.updated_at || "",
-      ),
-    );
-  const recent = videos
-    .filter((video) => !video.hidden)
-    .sort((a, b) => (b.added_at || "").localeCompare(a.added_at || ""));
-  const favorites = videos.filter((video) => video.favorite && !video.hidden);
 
   function navigate(next: Tab) {
     setTab(next);
@@ -260,6 +347,11 @@ export default function ChildLibrary() {
       await api("/api/child/requests", { kind, message: message.trim() });
       setSent(true);
       setMessage("");
+      void api<{ requests: ChildRequest[] }>("/api/child/requests")
+        .then((data) =>
+          setRequests(Array.isArray(data.requests) ? data.requests : []),
+        )
+        .catch(() => {});
     } catch (reason) {
       setError((reason as Error).message);
     } finally {
@@ -278,6 +370,7 @@ export default function ChildLibrary() {
         `/api/child/discover?q=${encodeURIComponent(discoverQuery.trim())}&kind=${boundaryKind}&boundary=${encodeURIComponent(parts.join(":"))}`,
       );
       setDiscoverResults(data.results);
+      setDiscoverSearched(true);
     } catch (reason) {
       setError((reason as Error).message);
     } finally {
@@ -293,7 +386,9 @@ export default function ChildLibrary() {
         kind: "video",
         request_token: video.request_token,
       });
-      const data = await api<{ requests: ChildRequest[] }>("/api/child/requests");
+      const data = await api<{ requests: ChildRequest[] }>(
+        "/api/child/requests",
+      );
       setRequests(Array.isArray(data.requests) ? data.requests : []);
     } catch (reason) {
       setError((reason as Error).message);
@@ -304,7 +399,11 @@ export default function ChildLibrary() {
 
   if (!profile)
     return (
-      <main id="main-content" className="child-shell">
+      <main
+        id="main-content"
+        className="child-shell premium-child-library"
+        data-experience-mode="standard"
+      >
         <div className="picker-loading" role="status">
           {error ? (
             <>
@@ -321,7 +420,11 @@ export default function ChildLibrary() {
     );
 
   return (
-    <main id="main-content" className="child-shell">
+    <main
+      id="main-content"
+      className="child-shell premium-child-library"
+      data-experience-mode={profile?.experience_mode || "standard"}
+    >
       <header className="child-header">
         <span className="brand">
           <img src="/icon.svg" alt="" width="38" height="38" />
@@ -344,13 +447,6 @@ export default function ChildLibrary() {
       </header>
       <nav className="child-nav" aria-label="WatchNest">
         <button
-          aria-current={tab === "home" ? "page" : undefined}
-          onClick={() => navigate("home")}
-        >
-          <Icon name="home" />
-          Home
-        </button>
-        <button
           aria-current={tab === "library" ? "page" : undefined}
           onClick={() => navigate("library")}
         >
@@ -365,6 +461,13 @@ export default function ChildLibrary() {
           {profile.discover_enabled ? "Discover" : "Ask Parent"}
         </button>
       </nav>
+      {sessionAccess?.enabled && sessionAccess.allowed && (
+        <p className="child-time-remaining" role="status">
+          {sessionAccess.mode === "daily" ? "Daily time" : "Your time"} ·{" "}
+          {Math.max(0, Math.ceil((sessionAccess.remainingSeconds || 0) / 60))}{" "}
+          min left
+        </p>
+      )}
       {error && (
         <p role="alert" className="error">
           {error}
@@ -384,147 +487,322 @@ export default function ChildLibrary() {
           </button>
         </div>
       )}
-      {sessionAccess?.enabled && !sessionAccess.allowed && tab !== "discover" ? (
+      {sessionAccess?.enabled &&
+      !sessionAccess.allowed &&
+      tab !== "discover" ? (
         <section className="request-card time-up-card">
-          <p className="eyebrow">WatchNest session</p>
-          <h1>Time’s up for now</h1>
-          <p>Ask Parent when you’re ready for more time.</p>
-          <button className="button" onClick={switchProfile}>Choose profile</button>
+          <div className="time-up-symbol">
+            <Icon name="clock" width="44" />
+          </div>
+          <p className="eyebrow">Watch time</p>
+          <h1>
+            {sessionAccess.state === "paused"
+              ? "Parent paused WatchNest"
+              : "Time’s up for now"}
+          </h1>
+          <p>
+            {sessionAccess.state === "paused"
+              ? "Parent can resume when it’s time to watch again."
+              : sessionAccess.parentBlocked
+                ? "Parent will let you know when it’s time to watch again."
+                : sessionAccess.mode === "daily"
+                  ? "Your daily time renews at 7 AM. Your videos will be here."
+                  : "Your videos will be here when it’s time to watch again."}
+          </p>
+          <button className="button" onClick={switchProfile}>
+            Choose profile
+          </button>
         </section>
       ) : tab === "discover" ? (
         <section className="request-card discover-page">
-          <div className="request-icon">
-            <Icon name="search" width="30" />
-          </div>
-          <h1>{profile.discover_enabled ? "Discover" : "Ask Parent"}</h1>
-          <p>Find something you’d like Parent to add.</p>
+          <h1>
+            {profile.discover_enabled
+              ? "Discover something new"
+              : "What would you love to watch?"}
+          </h1>
+          <p>
+            {profile.discover_enabled
+              ? "Choose a video to ask Parent."
+              : "Tell Parent what you’d like to add."}
+          </p>
           {profile.discover_enabled && boundary && (
             <form onSubmit={searchDiscover}>
               <label>
                 Search in
-                <select className="field" value={boundary} onChange={(event) => setBoundary(event.target.value)}>
-                  {(profile.discovery_topics || []).map((topic) => <option key={topic} value={`topic:${topic}`}>{topic}</option>)}
-                  {(profile.discovery_channels || []).map((channel) => <option key={channel.id} value={`channel:${channel.id}`}>{channel.title}</option>)}
+                <select
+                  className="field"
+                  value={boundary}
+                  onChange={(event) => setBoundary(event.target.value)}
+                >
+                  {(profile.discovery_topics || []).map((topic) => (
+                    <option key={topic} value={`topic:${topic}`}>
+                      {topic}
+                    </option>
+                  ))}
+                  {(profile.discovery_channels || []).map((channel) => (
+                    <option key={channel.id} value={`channel:${channel.id}`}>
+                      {channel.title}
+                    </option>
+                  ))}
                 </select>
               </label>
               <label>
                 What do you want to find?
-                <input className="field" type="search" maxLength={120} value={discoverQuery} onChange={(event) => setDiscoverQuery(event.target.value)} required />
+                <input
+                  className="field"
+                  type="search"
+                  maxLength={120}
+                  value={discoverQuery}
+                  onChange={(event) => setDiscoverQuery(event.target.value)}
+                  required
+                />
               </label>
-              <button className="button" disabled={discoverBusy || !discoverQuery.trim()}>{discoverBusy ? "Searching…" : "Search"}</button>
+              <button
+                className="button"
+                disabled={discoverBusy || !discoverQuery.trim()}
+              >
+                {discoverBusy ? "Searching…" : "Search"}
+              </button>
             </form>
+          )}
+          {discoverSearched && !discoverBusy && !discoverResults.length && (
+            <div className="child-empty" role="status">
+              <Icon name="search" width="32" />
+              <h2>No matches this time</h2>
+              <p>Try a different word, or send Parent an idea below.</p>
+            </div>
           )}
           {!!discoverResults.length && (
             <div className="child-video-grid discover-results">
               {discoverResults.map((video) => {
-                const existing = requests.find((item) => item.youtube_video_id === video.youtube_video_id);
+                const existing = requests.find(
+                  (item) => item.youtube_video_id === video.youtube_video_id,
+                );
+                const assigned = videos.some(
+                  (item) => item.youtube_video_id === video.youtube_video_id,
+                );
                 return (
-                  <article className="child-video-card" key={video.youtube_video_id}>
-                    <div className="child-artwork"><img src={video.thumbnail_url} alt="" /></div>
-                    <div className="child-video-copy"><h3>{video.title}</h3><p>{video.channel_title}</p></div>
-                    <button className="button" disabled={discoverBusy || existing?.status === "pending"} onClick={() => requestVideo(video)}>
-                      {existing?.status === "pending" ? "Waiting for Parent" : existing?.status === "resolved" ? "Added to your library" : existing?.status === "dismissed" ? "Ask again" : "Ask Parent"}
+                  <article
+                    className="child-video-card"
+                    key={video.youtube_video_id}
+                  >
+                    <div className="child-artwork">
+                      <img src={video.thumbnail_url} alt="" />
+                    </div>
+                    <div className="child-video-copy">
+                      <h3>{video.title}</h3>
+                      <p>{video.channel_title}</p>
+                    </div>
+                    <button
+                      className="button-secondary"
+                      disabled={
+                        discoverBusy ||
+                        existing?.status === "pending" ||
+                        assigned
+                      }
+                      onClick={() => requestVideo(video)}
+                    >
+                      {existing?.status === "pending"
+                        ? "Waiting for Parent"
+                        : assigned
+                          ? "Added to your library"
+                          : existing?.status === "resolved" ||
+                              existing?.status === "dismissed"
+                            ? "Ask again"
+                            : "Ask Parent"}
                     </button>
                   </article>
                 );
               })}
             </div>
           )}
-          <details open={!profile.discover_enabled || !!message}>
-            <summary>Ask Parent another way</summary>
-          {sent ? (
-            <div className="request-success" role="status">
-              <Icon name="check" width="30" />
-              <h2>Sent to Parent</h2>
-              <button className="button-secondary" onClick={() => setSent(false)}>Send another</button>
-            </div>
-          ) : (
-            <form onSubmit={request}>
-              <label>
-                What are you looking for?
-                <select
-                  className="field"
-                  value={kind}
-                  onChange={(event) => setKind(event.target.value)}
+          <details
+            className="request-another"
+            open={!profile.discover_enabled || !!message || sent}
+          >
+            <summary>
+              {profile.discover_enabled
+                ? "Ask Parent another way"
+                : "Send an idea"}
+            </summary>
+            {sent ? (
+              <div className="request-success" role="status">
+                <Icon name="check" width="30" />
+                <h2>Sent to Parent</h2>
+                <p>They’ll see your idea in their inbox.</p>
+                <button
+                  className="button-secondary"
+                  onClick={() => setSent(false)}
                 >
-                  <option value="topic">A topic</option>
-                  <option value="show">A show</option>
-                  <option value="creator">A creator</option>
-                  <option value="video">A video</option>
-                </select>
-              </label>
-              <label>
-                Tell Parent
-                <textarea
-                  className="field"
-                  rows={3}
-                  maxLength={200}
-                  value={message}
-                  onChange={(event) => setMessage(event.target.value)}
-                  placeholder="Drawing a puppy, Peppa Pig, science…"
-                  required
-                />
-              </label>
-              <button className="button" disabled={busy || !message.trim()}>
-                {busy ? "Sending…" : "Send request"}
-              </button>
-            </form>
-          )}
+                  Send another
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={request}>
+                <label>
+                  What are you looking for?
+                  <select
+                    className="field"
+                    value={kind}
+                    onChange={(event) => setKind(event.target.value)}
+                  >
+                    <option value="topic">A topic</option>
+                    <option value="show">A show</option>
+                    <option value="creator">A creator</option>
+                    <option value="video">A video</option>
+                  </select>
+                </label>
+                <label>
+                  Tell Parent
+                  <textarea
+                    className="field"
+                    rows={3}
+                    maxLength={200}
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    placeholder="Drawing a puppy, Peppa Pig, science…"
+                    required
+                  />
+                </label>
+                <button className="button" disabled={busy || !message.trim()}>
+                  {busy ? "Sending…" : "Send request"}
+                </button>
+              </form>
+            )}
           </details>
           {!!requests.length && (
             <div className="request-history">
               <h2>My requests</h2>
-              {requests.slice(0, 12).map((item) => <p key={item.id}><strong>{item.video_title || item.message}</strong><br /><span className="muted">{item.status === "pending" ? "Waiting for Parent" : item.status === "resolved" ? "Added to your library" : "Not added"}</span></p>)}
+              {requests.slice(0, 12).map((item) => (
+                <p key={item.id}>
+                  <strong>{item.video_title || item.message}</strong>
+                  <br />
+                  <span className="muted">
+                    {item.status === "pending"
+                      ? "Waiting for Parent"
+                      : item.status === "resolved"
+                        ? videos.some(
+                            (video) =>
+                              video.youtube_video_id === item.youtube_video_id,
+                          )
+                          ? "In your library"
+                          : "Reviewed by Parent"
+                        : "Not added"}
+                  </span>
+                </p>
+              ))}
             </div>
           )}
         </section>
-      ) : tab === "library" ? (
+      ) : (
         <>
-          <div className="child-page-title">
-            <div>
-              <p>Library</p>
-              <h1>
-                {collection
-                  ? collection.title
-                  : favoritesOnly
-                    ? "Favorites"
-                    : "All videos"}
-              </h1>
+          <div className="library-heading-tools">
+            <div className="child-page-title">
+              <div>
+                <h1>
+                  {collection
+                    ? collection.title
+                    : favoritesOnly
+                      ? "Favorites"
+                      : hiddenOnly
+                        ? "Hidden videos"
+                        : "Your library"}
+                </h1>
+                <p className="library-count">
+                  {filtered.length} {filtered.length === 1 ? "video" : "videos"}
+                  {collection ? " in this collection" : " to explore"}
+                </p>
+              </div>
+            </div>
+            <div className="library-tools">
+              <label className="child-search">
+                <Icon name="search" width="20" />
+                <span className="sr-only">{librarySearchLabel}</span>
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={librarySearchLabel}
+                  autoComplete="off"
+                />
+              </label>
+              <button
+                aria-pressed={!favoritesOnly && !hiddenOnly && !collection}
+                onClick={() => {
+                  setFavoritesOnly(false);
+                  setHiddenOnly(false);
+                  setCollection(null);
+                }}
+              >
+                <Icon name="library" width="19" /> All videos
+              </button>
+              <button
+                aria-pressed={favoritesOnly}
+                onClick={() => {
+                  setFavoritesOnly(!favoritesOnly);
+                  setHiddenOnly(false);
+                  setCollection(null);
+                }}
+              >
+                <Icon name="heart" width="19" /> Favorites
+              </button>
+              {profile.experience_mode === "simple" ? (
+                <details className="library-more">
+                  <summary>
+                    <Icon name="more" width="20" />
+                    <span>More</span>
+                  </summary>
+                  <div className="library-more-panel">
+                    <button
+                      aria-pressed={hiddenOnly}
+                      onClick={() => {
+                        setHiddenOnly(!hiddenOnly);
+                        setFavoritesOnly(false);
+                        setCollection(null);
+                      }}
+                    >
+                      Hidden
+                    </button>
+                    <label className="library-sort">
+                      <span className="sr-only">Sort videos</span>
+                      <select
+                        value={sort}
+                        onChange={(event) => setSort(event.target.value)}
+                      >
+                        <option value="newest">Recently added</option>
+                        <option value="title">A–Z</option>
+                      </select>
+                    </label>
+                  </div>
+                </details>
+              ) : (
+                <>
+                  <button
+                    aria-pressed={hiddenOnly}
+                    onClick={() => {
+                      setHiddenOnly(!hiddenOnly);
+                      setFavoritesOnly(false);
+                      setCollection(null);
+                    }}
+                  >
+                    Hidden
+                  </button>
+                  <label className="library-sort">
+                    <span className="sr-only">Sort videos</span>
+                    <select
+                      value={sort}
+                      onChange={(event) => setSort(event.target.value)}
+                    >
+                      <option value="newest">Recently added</option>
+                      <option value="title">A–Z</option>
+                    </select>
+                  </label>
+                </>
+              )}
             </div>
           </div>
-          <div className="library-tools">
-            <label className="child-search">
-              <Icon name="search" width="20" />
-              <span className="sr-only">Search your library</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search your library"
-              />
-            </label>
-            <button
-              aria-pressed={favoritesOnly}
-              onClick={() => {
-                setFavoritesOnly(!favoritesOnly);
-                setHiddenOnly(false);
-                setCollection(null);
-              }}
-            >
-              <Icon name="heart" width="19" /> Favorites
-            </button>
-            <button
-              aria-pressed={hiddenOnly}
-              onClick={() => {
-                setHiddenOnly(!hiddenOnly);
-                setFavoritesOnly(false);
-                setCollection(null);
-              }}
-            >
-              Hidden
-            </button>
-          </div>
-          {!collection &&
+          {!query.trim() &&
+            !collection &&
             !favoritesOnly &&
             !hiddenOnly &&
             collections.length > 0 && (
@@ -532,9 +810,41 @@ export default function ChildLibrary() {
                 <div className="row-heading">
                   <h2>Collections</h2>
                 </div>
-                <div className="collection-row">
+                <div
+                  className="collection-row"
+                  role="group"
+                  aria-label="Collections"
+                  tabIndex={0}
+                >
                   {collections.map((item) => (
-                    <button key={item.id} onClick={() => setCollection(item)}>
+                    <button
+                      key={item.id}
+                      onFocus={(event) =>
+                        event.currentTarget.scrollIntoView({
+                          block: "nearest",
+                          inline: "nearest",
+                          behavior: "instant",
+                        })
+                      }
+                      onClick={() => setCollection(item)}
+                    >
+                      <span className="collection-art" aria-hidden="true">
+                        {(() => {
+                          const cover = videos.find(
+                            (video) =>
+                              !video.hidden &&
+                              item.video_ids.includes(video.id),
+                          );
+                          const thumbnail =
+                            cover &&
+                            normalizeYouTubeThumbnailUrl(cover.thumbnail_url);
+                          return thumbnail ? (
+                            <img src={thumbnail} alt="" loading="lazy" />
+                          ) : (
+                            <Icon name="collection" width="32" />
+                          );
+                        })()}
+                      </span>
                       <span>{item.video_ids.length} videos</span>
                       <strong>{item.title}</strong>
                       <small>{item.description || "Open Collection"}</small>
@@ -556,13 +866,31 @@ export default function ChildLibrary() {
             </button>
           )}
           {filtered.length ? (
-            <VideoGrid
-              videos={filtered}
-              onFavorite={toggleFavorite}
-              onHide={toggleHidden}
-            />
+            <section className="library-results" aria-label="Library videos">
+              {!query.trim() &&
+                !collection &&
+                !favoritesOnly &&
+                !hiddenOnly &&
+                collections.length > 0 &&
+                profile.experience_mode !== "simple" && (
+                  <div className="row-heading">
+                    <h2>All videos</h2>
+                  </div>
+                )}
+              <VideoGrid
+                videos={filtered}
+                onFavorite={toggleFavorite}
+                onHide={toggleHidden}
+              />
+            </section>
           ) : (
             <div className="child-empty">
+              <Icon
+                name={
+                  favoritesOnly ? "heart" : hiddenOnly ? "library" : "search"
+                }
+                width="36"
+              />
               <h2>
                 {query
                   ? "Nothing found"
@@ -574,110 +902,32 @@ export default function ChildLibrary() {
               </h2>
               <p>
                 {query
-                  ? "Try another word or ask Parent."
+                  ? collection || favoritesOnly || hiddenOnly
+                    ? "Try another word, or search all your videos."
+                    : "Try another word or ask Parent."
                   : favoritesOnly
                     ? "Tap the heart on a video to save it here."
                     : hiddenOnly
                       ? "Videos you hide will appear here."
                       : "Ask Parent to add something."}
               </p>
-              {query && (
-                <button className="button" onClick={askFromSearch}>
-                  Ask Parent for “{query}”
-                </button>
-              )}
-            </div>
-          )}
-        </>
-      ) : (
-        <>
-          <div className="child-welcome">
-            <div>
-              <p>Hi, {profile.display_name}</p>
-              <h1>What would you like to watch?</h1>
-            </div>
-            <button
-              className="search-shortcut"
-              onClick={() => navigate("library")}
-            >
-              <Icon name="search" width="22" />
-              Search
-            </button>
-          </div>
-          {continuing.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Continue Watching</h2>
-              </div>
-              <VideoGrid
-                videos={continuing.slice(0, 6)}
-                onFavorite={toggleFavorite}
-                onHide={toggleHidden}
-              />
-            </section>
-          )}
-          {favorites.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Favorites</h2>
-                <button
-                  onClick={() => {
-                    setTab("library");
-                    setFavoritesOnly(true);
-                  }}
-                >
-                  See all
-                </button>
-              </div>
-              <VideoGrid
-                videos={favorites.slice(0, 6)}
-                onFavorite={toggleFavorite}
-                onHide={toggleHidden}
-              />
-            </section>
-          )}
-          {collections.length > 0 && (
-            <section>
-              <div className="row-heading">
-                <h2>Collections</h2>
-                <button onClick={() => navigate("library")}>See all</button>
-              </div>
-              <div className="collection-row">
-                {collections.slice(0, 5).map((item) => (
+              {query &&
+                (collection || favoritesOnly || hiddenOnly ? (
                   <button
-                    key={item.id}
+                    className="button"
                     onClick={() => {
-                      setTab("library");
-                      setCollection(item);
+                      setCollection(null);
+                      setFavoritesOnly(false);
+                      setHiddenOnly(false);
                     }}
                   >
-                    <span>{item.video_ids.length} videos</span>
-                    <strong>{item.title}</strong>
-                    <small>{item.description || "Open Collection"}</small>
+                    Search all videos
+                  </button>
+                ) : (
+                  <button className="button" onClick={askFromSearch}>
+                    Ask Parent for “{query}”
                   </button>
                 ))}
-              </div>
-            </section>
-          )}
-          {videos.length ? (
-            <section>
-              <div className="row-heading">
-                <h2>Recently Added</h2>
-                <button onClick={() => navigate("library")}>See all</button>
-              </div>
-              <VideoGrid
-                videos={recent.slice(0, 9)}
-                onFavorite={toggleFavorite}
-                onHide={toggleHidden}
-              />
-            </section>
-          ) : (
-            <div className="child-empty">
-              <h2>Your library is ready</h2>
-              <p>Ask Parent to add your first video.</p>
-              <button className="button" onClick={() => navigate("discover")}>
-                Ask Parent
-              </button>
             </div>
           )}
         </>

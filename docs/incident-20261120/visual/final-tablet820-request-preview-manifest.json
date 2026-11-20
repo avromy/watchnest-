@@ -1,0 +1,95 @@
+{
+  "evidence": "SYNTHETIC BROWSER / VIEWPORT SCREENSHOT; no hosted/provider/device claim",
+  "source": [
+    "146a672f5b0744a13869dc29983e5942a0d7a233",
+    "464c41e300e38b9c34cb4f6603f4f2019e4141c4"
+  ],
+  "buildId": "FPvzedrgAp9khP2082u8t",
+  "componentSha256": "360a4781c67c173d9b90ce2be2ea61ee1013a11bac510cceca5a616f6cafa0db",
+  "cssSha256": "2466ba962ac8f55000d36728efa4ef852792db06e44de524821f21abf0889b2a",
+  "screenshotSha256": "b594030cb90e69ae144cda5a4b6011366b70387b120670ed98a83dd20c325a76",
+  "geometry": {
+    "viewport": {
+      "width": 820,
+      "height": 1180
+    },
+    "dialog": {
+      "x": 0,
+      "y": 0,
+      "width": 820,
+      "height": 1180
+    },
+    "panel": {
+      "x": 24,
+      "y": 254.734375,
+      "width": 772,
+      "height": 670.515625
+    },
+    "assets": [
+      {
+        "tag": "H2",
+        "text": "Requested craft video",
+        "rect": {
+          "x": 49,
+          "y": 279.765625,
+          "width": 261.609375,
+          "height": 30.09375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Close preview",
+        "rect": {
+          "x": 633,
+          "y": 279.734375,
+          "width": 138,
+          "height": 46
+        }
+      },
+      {
+        "tag": "IFRAME",
+        "text": "synthetic video frame",
+        "rect": {
+          "x": 49,
+          "y": 341.734375,
+          "width": 722,
+          "height": 406.125
+        }
+      },
+      {
+        "tag": "P",
+        "text": "If the video is available, use YouTube’s Play button to preview it.",
+        "rect": {
+          "x": 49,
+          "y": 747.859375,
+          "width": 722,
+          "height": 24.796875
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Retry preview",
+        "rect": {
+          "x": 49,
+          "y": 788.65625,
+          "width": 138,
+          "height": 46
+        }
+      },
+      {
+        "tag": "P",
+        "text": "Parent preview uses YouTube’s player. YouTube controls its recommendations and availability. Previewing does not add this video to any child’s library.",
+        "rect": {
+          "x": 49,
+          "y": 834.65625,
+          "width": 722,
+          "height": 49.59375
+        }
+      }
+    ],
+    "overflow": {
+      "document": 820,
+      "body": 820
+    }
+  }
+}

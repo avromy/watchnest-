@@ -1,0 +1,45 @@
+{
+  "source": "a4c94870e723e07648bb7a8ce491cef0b0d1a700",
+  "scope": "Bounded actualcompiledsyntheticvisualUI; noauth/media/device/backendcertification",
+  "reviewers": [
+    {
+      "file": "docs/evidence/profile-handoff/jury/juror1.json",
+      "sha256": "26c04166a67ad5d7475b04fb5c123c612faf34bfb1449ad54641e07f8f462eac",
+      "verdict": "PASS",
+      "size": 108685
+    },
+    {
+      "file": "docs/evidence/profile-handoff/jury/juror2.json",
+      "sha256": "a7d297513b161c61bc48a08cdc206ef026805e1469d2859c0a568b86e7938308",
+      "verdict": "PASS",
+      "size": 129476
+    },
+    {
+      "file": "docs/evidence/profile-handoff/jury/juror3.json",
+      "sha256": "91aedafab27229305179f7963b1c6da695dd3d6a588561e91eab40f5cc16fb38",
+      "verdict": "PASS",
+      "size": 125679
+    },
+    {
+      "file": "docs/evidence/profile-handoff/jury/juror4.json",
+      "sha256": "1568bfb468b1771cef2c76d97614d1bd2b81fd9c3ef2e6ee9699b3b8f580b54b",
+      "verdict": "PASS",
+      "size": 147342
+    },
+    {
+      "file": "docs/evidence/profile-handoff/jury/juror5.json",
+      "sha256": "649339cc095a2e62c36597197d53192a2abbeb93048e7a323879dbe418e97dcd",
+      "verdict": "PASS",
+      "size": 156126
+    }
+  ],
+  "independence": "Fivefreshcontexts, nopeerfindings/source/repairhistory, frozenbeforeaggregation",
+  "per_reviewer": {
+    "rasters": 9,
+    "readable_sheets": 9,
+    "structures": 9,
+    "hashes": 27,
+    "assets": 96,
+    "edges": 384
+  }
+}

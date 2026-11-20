@@ -116,8 +116,29 @@ export async function fixture(
         parent: { email: "synthetic@example.test", parent_pin_set: true },
       };
     else if (path === "/api/auth/device")
-      response = { profiles, parent_pin_set: true };
+      response = {
+        profiles,
+        parent_pin_set: true,
+        active_profile_id: profiles[0].id,
+      };
     else if (path === "/api/parent/dashboard") response = dashboard;
+    else if (path === "/api/parent/session-status")
+      response = {
+        serverNow: new Date().toISOString(),
+        profiles: profiles.map((profile) => ({
+          ...profile,
+          access: {
+            enabled: false,
+            allowed: true,
+            state: "unlimited",
+            remainingSeconds: null,
+            pausedSeconds: null,
+            revision: 0,
+            expiresAt: null,
+          },
+          devices: [],
+        })),
+      };
     else if (path === "/api/auth/children") response = { profiles };
     else if (path === "/api/auth/child") response = { profile: profiles[1] };
     else if (path === "/api/child/library")

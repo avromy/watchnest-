@@ -1,3 +1,44 @@
+# Concept3 qualification learning — November18
+
+Classification: PROJECT / PROCESS / CALIBRATION. No universal skill rewrite. Current Founder Concept3 supersedes earlier internal green choice while retaining engineering and unaffected task research; technical review is not authority to override explicit taste direction.
+
+A programmatic focus check passed while real Tab navigation clipped a horizontal Collection card. Preserve that failed check; regression now uses actual forward/reverse keyboard events, whole-card containment and activation. Explicit nearest/instant focus scrolling repaired the real defect; independent232 transitions and current73 suite preserve the calibration.
+
+Paint eligibility and PNG capture must describe the same settled instant. Hover transitions produced metadata/raster disagreement. Disclosed pointer parking/finite-animation settling fixed capture coherence while retaining correctness and scroll assertions. Camera overlap under fixed navigation left tiny edges unobserved; supplemental real viewport images close them. A first supplemental fixture reordered videos because Date.now millisecond ties changed sort order. Reject its equivalence; explicit fixture relative timestamps then match original title order and every image URL/bounds. Original absolute timestamps were unavailable and were never claimed recovered. Geometry/hash equality supports mapping; independent actual pixels close visual acceptance.
+
+Snapshot raw output before another Playwright run cleans it. First local rejected packet was not recovered; a separately bound same-source CI artifact and surviving derivatives retain distinct provenance. Final raw, historical repairs, review journals and initial generated working-tree overlays now have verified durable custody, not just expiring CI links. Source equality, CI success, public configured:true and actual hosted authentication are separate evidence claims. Fresh final jury contexts preserve independence; a lean reviewer’s late peer-summary exposure is disclosed rather than hidden.
+
+Exact ef4 has local200unit/73browser, lint/type/build/audit0 and CI154 success; finite Child/Parent visual acceptance and five fresh unanimous scoped jury PASS. Hosted authenticated and genuine iPad/YouTube/fullscreen remote-stop remain open. Keep canonical77 and manual promotion through the release hold. API staging uses existing reviewed source/config without CLI-token or privileged-secret copying. READY targetproduction is staging when canonical aliases remain old; verify actual hostname resolution, not early intended alias arrays. No family data/security mutation was used to manufacture test success.
+
+---
+
+# Premium qualification — project/process propagation — 2026-11-04
+
+See PremiumLearning-20261104.md and final source-bound receipts. This checkpoint
+supersedes pending premium review statuses, not historical incident evidence.
+
+Applied lessons: inspect successful empty responses and actual recurring Parent
+request completion; fix UI gaps through existing authorized APIs instead of
+relaxing frozen task outcomes. Distinguish ambiguous test locators/fixtures from
+real UI failures, preserving both. Fresh contexts are required for cold verdicts;
+inherited history cannot be erased by a role label. Verified instant capture
+scroll and finite overlapping readable views resolve screenshot occlusion gaps.
+Exact PNG/asset equivalence supports bounded reuse only when mapping and source
+identity are proved; every changed patch requires actual independent inspection.
+
+R1–R5 failures/repairs and five fresh final design PASS votes are preserved.
+CI139200/64/14 and CI140200/14 PASS; independent security protected64 equality
+PASS. Raw evidence and post-CI neutral review derivatives are privately archived
+with byte hashes and custody in the existing Notion handoff. Do not rely on
+14-day CI retention or conversation memory. No private skill package copied to
+public GitHub, no global skill rewrite from one project.
+
+Production remains77a5017; physical playback/containment/native-fullscreen remote
+stop and authenticated hosted candidate gates remain open. A READY unconfigured
+preview must never be promoted as production. No final-product/physical claim.
+
+---
+
 # UX redesign learning propagation — 2026-10-02
 
 ## 2026-10-27 — PROJECT / PROCESS: safety promises cannot be optional state
@@ -261,3 +302,24 @@ The remote timer records a prospective wall-clock access deadline and ephemeral
 device acknowledgement. It does not require video identity, progress, viewed
 minutes or engagement history. This preserves the separation between Parent
 access control and Made-for-Kids viewing analytics.
+# Incident recovery learning — November19 ET / November20 UTC
+
+PROJECT / demonstrated regression: optional localStorage access in a React mount effect escaped to the application error boundary. A persisted numeric preference also converted missing null into zero. Guard property/read/write access, retain the in-memory default on missing/invalid persistence, and preserve intentional zero. Baseline failed browser receipt plus denied-storage/quota/default/zero tests are in incident-20261120 and e2e/startup.spec.ts. This path exists in both live77 and oldstage decd, but actual Founder incident causation is not established; do not promote source reproduction to physical RCA.
+
+PROJECT / demonstrated failure recovery: Parent event promises outside shared action handling can reject without actionable feedback. A successful resource creation followed by a failed list refresh can leave a confirmed ID absent from the visible select even though a later action sends it. Preserve confirmed resource identity/title visibly until reconciliation and distinguish mutation failure from refresh failure. Independent reviewer caught this P2; original report and repaired visible-option/payload browser regression remain preserved.
+
+PROJECT / source fact and hypothesis boundary: requested-video Inbox disclosure mounted eager provider frames even when unopened; new preview mounts only on demand. Original native disclosure opened in local tests, so a report of an inert hosted click still requires actual authenticated click/console/network evidence. Resource exhaustion is a hypothesis, not a measured cause.
+
+PROCESS / calibration: testing topic-request search→preview does not cover direct requested-video Preview. Keep both journeys. Source presence, synthetic iframe load and server log absence cannot establish provider playback or physical-device health. A full-page modal screenshot may include below-viewport document pixels; preserve original concern and use actual viewport capture plus source/build/geometry/image binding before optical judgment. Never silently erase incomplete/failed review receipts.
+
+Reusable DOMAIN observations are retained as proposals through the current learning system, with no private family data and no uncontrolled universal skill revision. New application/source identity invalidates affected hosted/cold/physical acceptance; previous controls remain scoped evidence, never blanket certification.
+
+---
+
+## Integrity learning — November20,2026
+
+Observed stage GET/session42501 and independent realSDK reproduction exposed service-role client contamination: persistSession:false does not prevent in-memory user session installation by refreshSession. Keep user-auth mutations on a separate auth client, verify identity, then perform server-authorized database operations on an untouched service client. Do not solve by granting client roles family-table access. Session probes must distinguish expected auth denial from dependency outage; returning role:null on a database/Auth503 silently manufactures sign-out. Regression uses actual SDK with controlled HTTP, no credentials.
+
+Independent rendered network fault also exposed unhandled Sign out rejection. Access-removal UI needs honest uncertain-state feedback, bounded pending, duplicate suppression and explicit retry; never claim successful sign-out based on a click or clear visible state while server outcome is unknown.
+
+Founder correction: stop repeated sign-in handoffs when requested and continue all independent integrity work. Preserve exact release hold and remaining hosted/device scope. New configured-stage attempt was cancelled when planned alias list conflicted with hold; current all3canonical mappings reverified unchanged. No blind retry from ambiguous filtered configuration. App-level findings propagated here and Notion handoff; no unverified global skill update or family data mutation.

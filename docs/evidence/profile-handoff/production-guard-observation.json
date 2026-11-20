@@ -1,0 +1,13 @@
+{
+  "project": "prj_tQi2cBAosldposlx61FcwnwDJ8OG",
+  "team": "team_dTgQEg6sITPfNF8attwZNXcH",
+  "surface": "ActualVercelUI viaexistingauthCloudBrowser",
+  "verified_url": "https://vercel.com/avromy/watchnest/settings/environments/production",
+  "production_branch": "product-completion-20260930",
+  "auto_assign_custom_production_domains": false,
+  "visible_warning": "Production deployments will need to be manually promoted.",
+  "settings_mutations": false,
+  "canonical_source": "77a5017d938ded03b1530c2b72978cef27273d61",
+  "canonical_deployment": "dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+  "scope": "No secret values revealed or copied; optional existing2FA setup notice deferred, no credentials/securityconfigurationchange."
+}

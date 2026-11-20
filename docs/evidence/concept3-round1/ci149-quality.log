@@ -1,0 +1,543 @@
+﻿2026-11-18T05:49:49.4213783Z Current runner version: '2.338.2'
+2026-11-18T05:49:49.4234140Z ##[group]Runner Image Provisioner
+2026-11-18T05:49:49.4234860Z Hosted Compute Agent
+2026-11-18T05:49:49.4235305Z Version: 20261103.629
+2026-11-18T05:49:49.4235791Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-18T05:49:49.4236308Z Build Date: 2026-11-03T17:26:59Z
+2026-11-18T05:49:49.4237179Z Worker ID: {f328f613-25c6-4cca-8bd4-461eb17b86c9}
+2026-11-18T05:49:49.4237732Z Region: centralus
+2026-11-18T05:49:49.4238156Z Cloud: Azure
+2026-11-18T05:49:49.4238593Z ##[endgroup]
+2026-11-18T05:49:49.4239969Z ##[group]Operating System
+2026-11-18T05:49:49.4240413Z Ubuntu
+2026-11-18T05:49:49.4240824Z 26.04.1
+2026-11-18T05:49:49.4241216Z LTS
+2026-11-18T05:49:49.4241598Z ##[endgroup]
+2026-11-18T05:49:49.4242038Z ##[group]Runner Image
+2026-11-18T05:49:49.4242477Z Image: ubuntu-26.04
+2026-11-18T05:49:49.4242898Z Version: 20261111.196.1
+2026-11-18T05:49:49.4243846Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-18T05:49:49.4244946Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-18T05:49:49.4245617Z ##[endgroup]
+2026-11-18T05:49:49.4246672Z ##[group]GITHUB_TOKEN Permissions
+2026-11-18T05:49:49.4248736Z Contents: read
+2026-11-18T05:49:49.4249325Z Metadata: read
+2026-11-18T05:49:49.4249759Z ##[endgroup]
+2026-11-18T05:49:49.4252103Z Secret source: Actions
+2026-11-18T05:49:49.4252843Z Cache mode: write
+2026-11-18T05:49:49.4253633Z Prepare workflow directory
+2026-11-18T05:49:49.4512966Z Prepare all required actions
+2026-11-18T05:49:49.4551995Z Getting action download info
+2026-11-18T05:49:49.6858408Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-18T05:49:49.8157467Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-11-18T05:49:49.9551014Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-18T05:49:50.1870059Z Complete job name: quality-checks
+2026-11-18T05:49:50.2481419Z ##[group]Run actions/checkout@v4
+2026-11-18T05:49:50.2482002Z with:
+2026-11-18T05:49:50.2482519Z   repository: avromy/watchnest-
+2026-11-18T05:49:50.2485514Z   token: ***
+2026-11-18T05:49:50.2486151Z   ssh-strict: true
+2026-11-18T05:49:50.2486733Z   ssh-user: git
+2026-11-18T05:49:50.2487114Z   persist-credentials: true
+2026-11-18T05:49:50.2487540Z   clean: true
+2026-11-18T05:49:50.2487937Z   sparse-checkout-cone-mode: true
+2026-11-18T05:49:50.2488362Z   fetch-depth: 1
+2026-11-18T05:49:50.2488732Z   fetch-tags: false
+2026-11-18T05:49:50.2489112Z   show-progress: true
+2026-11-18T05:49:50.2489501Z   lfs: false
+2026-11-18T05:49:50.2489866Z   submodules: false
+2026-11-18T05:49:50.2490237Z   set-safe-directory: true
+2026-11-18T05:49:50.2490665Z   allow-unsafe-pr-checkout: false
+2026-11-18T05:49:50.2491264Z ##[endgroup]
+2026-11-18T05:49:50.4927306Z Syncing repository: avromy/watchnest-
+2026-11-18T05:49:50.4929062Z ##[group]Getting Git version info
+2026-11-18T05:49:50.4930093Z Working directory is '/home/runner/work/watchnest-/watchnest-'
+2026-11-18T05:49:50.4930952Z [command]/usr/bin/git version
+2026-11-18T05:49:50.4957118Z git version 2.56.1
+2026-11-18T05:49:50.4976150Z ##[endgroup]
+2026-11-18T05:49:50.4995523Z Temporarily overriding HOME='/home/runner/work/_temp/171a2aee-b87b-4e51-b39d-ffbd4f3c142e' before making global git config changes
+2026-11-18T05:49:50.4997459Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-18T05:49:50.5009712Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/watchnest-/watchnest-
+2026-11-18T05:49:50.5079388Z Deleting the contents of '/home/runner/work/watchnest-/watchnest-'
+2026-11-18T05:49:50.5080698Z ##[group]Initializing the repository
+2026-11-18T05:49:50.5086006Z [command]/usr/bin/git init /home/runner/work/watchnest-/watchnest-
+2026-11-18T05:49:50.5179260Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-18T05:49:50.5180591Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-18T05:49:50.5181373Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-18T05:49:50.5182032Z hint: call:
+2026-11-18T05:49:50.5182447Z hint:
+2026-11-18T05:49:50.5182927Z hint: 	git config --global init.defaultBranch <name>
+2026-11-18T05:49:50.5183465Z hint:
+2026-11-18T05:49:50.5183973Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-18T05:49:50.5184797Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-18T05:49:50.5185422Z hint:
+2026-11-18T05:49:50.5185816Z hint: 	git branch -m <name>
+2026-11-18T05:49:50.5186258Z hint:
+2026-11-18T05:49:50.5187127Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-18T05:49:50.5189023Z Initialized empty Git repository in /home/runner/work/watchnest-/watchnest-/.git/
+2026-11-18T05:49:50.5197576Z [command]/usr/bin/git remote add origin https://github.com/avromy/watchnest-
+2026-11-18T05:49:50.5240602Z ##[endgroup]
+2026-11-18T05:49:50.5241543Z ##[group]Disabling automatic garbage collection
+2026-11-18T05:49:50.5243205Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-18T05:49:50.5269150Z ##[endgroup]
+2026-11-18T05:49:50.5270718Z ##[group]Setting up auth
+2026-11-18T05:49:50.5274549Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-18T05:49:50.5302038Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-18T05:49:50.5631359Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-18T05:49:50.5661906Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-18T05:49:50.5839654Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-18T05:49:50.5861997Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-18T05:49:50.6031697Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-18T05:49:50.6062389Z ##[endgroup]
+2026-11-18T05:49:50.6063098Z ##[group]Fetching the repository
+2026-11-18T05:49:50.6069808Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1df9463b1518c43a1452520550ec9afa97eeb79e:refs/remotes/pull/49/merge
+2026-11-18T05:49:52.1322494Z From https://github.com/avromy/watchnest-
+2026-11-18T05:49:52.1323711Z  * [new ref]         1df9463b1518c43a1452520550ec9afa97eeb79e -> pull/49/merge
+2026-11-18T05:49:52.1327293Z ##[endgroup]
+2026-11-18T05:49:52.1328451Z ##[group]Determining the checkout info
+2026-11-18T05:49:52.1329640Z ##[endgroup]
+2026-11-18T05:49:52.1335314Z [command]/usr/bin/git sparse-checkout disable
+2026-11-18T05:49:52.1388240Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-18T05:49:52.1412920Z ##[group]Checking out the ref
+2026-11-18T05:49:52.1417875Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/49/merge
+2026-11-18T05:49:52.2021429Z Note: switching to 'refs/remotes/pull/49/merge'.
+2026-11-18T05:49:52.2022368Z 
+2026-11-18T05:49:52.2023028Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-18T05:49:52.2024907Z changes and commit them, and you can discard any commits you make in this
+2026-11-18T05:49:52.2026791Z state without impacting any branches by switching back to a branch.
+2026-11-18T05:49:52.2027875Z 
+2026-11-18T05:49:52.2028596Z If you want to create a new branch to retain commits you create, you may
+2026-11-18T05:49:52.2029884Z do so (now or later) by using -c with the switch command. Example:
+2026-11-18T05:49:52.2030829Z 
+2026-11-18T05:49:52.2031183Z   git switch -c <new-branch-name>
+2026-11-18T05:49:52.2031675Z 
+2026-11-18T05:49:52.2031952Z Or undo this operation with:
+2026-11-18T05:49:52.2032483Z 
+2026-11-18T05:49:52.2032884Z   git switch -
+2026-11-18T05:49:52.2033423Z 
+2026-11-18T05:49:52.2033997Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-18T05:49:52.2034905Z 
+2026-11-18T05:49:52.2035836Z HEAD is now at 1df9463 Merge bd8d15d7220f5496e73a562c77b34ceb8aae2370 into 77a5017d938ded03b1530c2b72978cef27273d61
+2026-11-18T05:49:52.2039309Z ##[endgroup]
+2026-11-18T05:49:52.2076907Z [command]/usr/bin/git log -1 --format=%H
+2026-11-18T05:49:52.2095558Z 1df9463b1518c43a1452520550ec9afa97eeb79e
+2026-11-18T05:49:52.2447317Z ##[group]Run actions/setup-node@v4
+2026-11-18T05:49:52.2448215Z with:
+2026-11-18T05:49:52.2448863Z   node-version: 24
+2026-11-18T05:49:52.2449589Z   cache: npm
+2026-11-18T05:49:52.2450298Z   always-auth: false
+2026-11-18T05:49:52.2451063Z   check-latest: false
+2026-11-18T05:49:52.2458228Z   token: ***
+2026-11-18T05:49:52.2458925Z ##[endgroup]
+2026-11-18T05:49:52.3867313Z (node:2201) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-18T05:49:52.3869442Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-18T05:49:52.3875087Z Found in cache @ /opt/hostedtoolcache/node/24.22.2/x64
+2026-11-18T05:49:52.3877413Z ##[group]Environment details
+2026-11-18T05:49:55.6435961Z node: v24.22.2
+2026-11-18T05:49:55.6437519Z npm: 11.19.1
+2026-11-18T05:49:55.6437783Z yarn: 1.22.22
+2026-11-18T05:49:55.6438945Z ##[endgroup]
+2026-11-18T05:49:55.6451404Z [command]/opt/hostedtoolcache/node/24.22.2/x64/bin/npm config get cache
+2026-11-18T05:49:55.8897579Z /home/runner/.npm
+2026-11-18T05:49:56.0670659Z Cache hit for: node-cache-Linux-x64-npm-7ddbef88b51008f673c4d8fa38fb1a8a9bc92632ea259d28eda336ae8c7e063b
+2026-11-18T05:49:56.0753056Z (node:2201) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-18T05:49:57.2441284Z Received 79691776 of 277469861 (28.7%), 75.9 MBs/sec
+2026-11-18T05:49:58.2446129Z Received 260046848 of 277469861 (93.7%), 123.9 MBs/sec
+2026-11-18T05:49:58.5239584Z Received 277469861 of 277469861 (100.0%), 116.1 MBs/sec
+2026-11-18T05:49:58.5260181Z Cache Size: ~265 MB (277469861 B)
+2026-11-18T05:49:58.5342028Z [command]/usr/bin/tar -xf /home/runner/work/_temp/51884128-0931-4df2-999b-950e48899174/cache.tzst -P -C /home/runner/work/watchnest-/watchnest- --use-compress-program unzstd
+2026-11-18T05:49:58.8341784Z Cache restored successfully
+2026-11-18T05:49:58.8433295Z Cache restored from key: node-cache-Linux-x64-npm-7ddbef88b51008f673c4d8fa38fb1a8a9bc92632ea259d28eda336ae8c7e063b
+2026-11-18T05:49:58.8591936Z ##[group]Run npm ci
+2026-11-18T05:49:58.8592394Z [36;1mnpm ci[0m
+2026-11-18T05:49:58.8672699Z shell: /usr/bin/bash -e {0}
+2026-11-18T05:49:58.8673033Z ##[endgroup]
+2026-11-18T05:50:09.1545398Z npm warn deprecated eslint@9.39.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2026-11-18T05:50:12.1157080Z 
+2026-11-18T05:50:12.1158129Z added 474 packages, and audited 475 packages in 13s
+2026-11-18T05:50:12.1158719Z 
+2026-11-18T05:50:12.1158919Z 167 packages are looking for funding
+2026-11-18T05:50:12.1159282Z   run `npm fund` for details
+2026-11-18T05:50:12.3251225Z 
+2026-11-18T05:50:12.3256024Z 24 vulnerabilities (7 moderate, 17 high)
+2026-11-18T05:50:12.3256647Z 
+2026-11-18T05:50:12.3257170Z To address issues that do not require attention, run:
+2026-11-18T05:50:12.3257678Z   npm audit fix
+2026-11-18T05:50:12.3257909Z 
+2026-11-18T05:50:12.3258171Z To address all issues (including breaking changes), run:
+2026-11-18T05:50:12.3258780Z   npm audit fix --force
+2026-11-18T05:50:12.3261798Z 
+2026-11-18T05:50:12.3262185Z Run `npm audit` for details.
+2026-11-18T05:50:12.3263391Z npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+2026-11-18T05:50:12.3264177Z npm warn install-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)
+2026-11-18T05:50:12.3264850Z npm warn install-scripts
+2026-11-18T05:50:12.3265617Z npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+2026-11-18T05:50:12.3831964Z ##[group]Run npm run lint
+2026-11-18T05:50:12.3832383Z [36;1mnpm run lint[0m
+2026-11-18T05:50:12.3868208Z shell: /usr/bin/bash -e {0}
+2026-11-18T05:50:12.3868616Z ##[endgroup]
+2026-11-18T05:50:12.4705345Z 
+2026-11-18T05:50:12.4706297Z > watchnest@0.1.0 lint
+2026-11-18T05:50:12.4707144Z > eslint .
+2026-11-18T05:50:12.4707375Z 
+2026-11-18T05:50:17.2584465Z ##[group]Run npm run typecheck
+2026-11-18T05:50:17.2584808Z [36;1mnpm run typecheck[0m
+2026-11-18T05:50:17.2615620Z shell: /usr/bin/bash -e {0}
+2026-11-18T05:50:17.2615952Z ##[endgroup]
+2026-11-18T05:50:17.3376613Z 
+2026-11-18T05:50:17.3377803Z > watchnest@0.1.0 typecheck
+2026-11-18T05:50:17.3378546Z > tsc --noEmit
+2026-11-18T05:50:17.3378953Z 
+2026-11-18T05:50:20.4670113Z ##[group]Run npm run test -- --run
+2026-11-18T05:50:20.4670434Z [36;1mnpm run test -- --run[0m
+2026-11-18T05:50:20.4699641Z shell: /usr/bin/bash -e {0}
+2026-11-18T05:50:20.4699958Z ##[endgroup]
+2026-11-18T05:50:20.5462040Z 
+2026-11-18T05:50:20.5463034Z > watchnest@0.1.0 test
+2026-11-18T05:50:20.5463432Z > vitest --run
+2026-11-18T05:50:20.5463576Z 
+2026-11-18T05:50:20.7806836Z 
+2026-11-18T05:50:20.7809988Z [1m[30m[46m RUN [49m[39m[22m [36mv5.0.3 [39m[90m/home/runner/work/watchnest-/watchnest-[39m
+2026-11-18T05:50:20.7810750Z 
+2026-11-18T05:50:21.3292830Z [90mstderr[2m | src/lib/server/product-dispatch.test.ts[2m > [22m[2mauthenticated route dispatch regression[2m > [22m[2mkeeps an already-valid trusted device signed in when renewal storage is temporarily unavailable
+2026-11-18T05:50:21.3318346Z [22m[39m[watchnest-device] renewal skipped { code: [32m'TRANSIENT'[39m, status: [33m503[39m }
+2026-11-18T05:50:21.3338979Z 
+2026-11-18T05:50:21.3579255Z [90mstderr[2m | src/lib/server/independent-route-resume.test.ts[2m > [22m[2mindependent route security resume (mocked DB/Auth, actual handle)[2m > [22m[2mchild remote sign-out failure reports 503 but clears all browser cookies
+2026-11-18T05:50:21.3598400Z [22m[39m[watchnest-data] operation failed { context: [32m'family-data'[39m, code: [32m'unknown'[39m, status: [33m503[39m }
+2026-11-18T05:50:21.3625468Z 
+2026-11-18T05:50:21.3627543Z [90mstderr[2m | src/lib/server/independent-route-resume.test.ts[2m > [22m[2mindependent route security resume (mocked DB/Auth, actual handle)[2m > [22m[2mparent remote sign-out failure reports 503 but clears all browser cookies
+2026-11-18T05:50:21.3629614Z [22m[39m[watchnest-data] operation failed { context: [32m'family-data'[39m, code: [32m'unknown'[39m, status: [33m503[39m }
+2026-11-18T05:50:21.3630250Z 
+2026-11-18T05:50:21.3688007Z  [32m✓[39m src/lib/server/independent-route-resume.test.ts [2m([22m[2m23 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+2026-11-18T05:50:21.4444765Z [90mstderr[2m | src/lib/server/product-dispatch.test.ts[2m > [22m[2mverified parent ownership and cache retention[2m > [22m[2mreturns YouTube search results even when the optional search cache is unavailable
+2026-11-18T05:50:21.4461098Z [22m[39m[watchnest-search] expired cache cleanup skipped { code: [32m'CACHE_UNAVAILABLE'[39m, status: [33m503[39m }
+2026-11-18T05:50:21.4488768Z 
+2026-11-18T05:50:21.4518824Z [90mstderr[2m | src/lib/server/product-dispatch.test.ts[2m > [22m[2mverified parent ownership and cache retention[2m > [22m[2mreturns YouTube search results even when the optional search cache is unavailable
+2026-11-18T05:50:21.4545079Z [22m[39m[watchnest-search] cache read skipped { code: [32m'CACHE_UNAVAILABLE'[39m }
+2026-11-18T05:50:21.4566890Z 
+2026-11-18T05:50:21.4598993Z [90mstderr[2m | src/lib/server/product-dispatch.test.ts[2m > [22m[2mverified parent ownership and cache retention[2m > [22m[2mreturns YouTube search results even when the optional search cache is unavailable
+2026-11-18T05:50:21.4607615Z [22m[39m[watchnest-search] cache write skipped { code: [32m'CACHE_UNAVAILABLE'[39m }
+2026-11-18T05:50:21.4608034Z 
+2026-11-18T05:50:21.4687991Z  [32m✓[39m src/lib/server/product-dispatch.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 152[2mms[22m[39m
+2026-11-18T05:50:23.6109392Z  [32m✓[39m src/lib/server/independent-security-resume.test.ts [2m([22m[2m21 tests[22m[2m)[22m[33m 2499[2mms[22m[39m
+2026-11-18T05:50:23.6332325Z  [32m✓[39m src/lib/server/session-discovery.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 2088[2mms[22m[39m
+2026-11-18T05:50:23.9479810Z  [32m✓[39m src/lib/server/independent-dashboard-resume.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+2026-11-18T05:50:24.1539328Z  [32m✓[39m src/lib/server/product-database.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 2498[2mms[22m[39m
+2026-11-18T05:50:24.2863983Z  [32m✓[39m src/lib/server/dashboard-policy.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+2026-11-18T05:50:24.5879209Z  [32m✓[39m src/lib/server/recovery-sdk.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+2026-11-18T05:50:24.7830717Z  [32m✓[39m src/lib/server/product-security.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 325[2mms[22m[39m
+2026-11-18T05:50:24.9448765Z  [32m✓[39m src/lib/assignments.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-18T05:50:25.0319247Z  [32m✓[39m src/lib/server/youtube-metadata.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-18T05:50:25.1170982Z  [32m✓[39m src/lib/server/youtube-search-data.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+2026-11-18T05:50:25.4073365Z  [32m✓[39m src/lib/server/independent-maintenance-resume.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 1644[2mms[22m[39m
+2026-11-18T05:50:25.4738972Z  [32m✓[39m src/lib/server/product.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+2026-11-18T05:50:25.5660563Z  [32m✓[39m src/lib/youtube-player.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+2026-11-18T05:50:25.6189282Z  [32m✓[39m src/lib/youtube.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+2026-11-18T05:50:25.7097260Z  [32m✓[39m src/lib/next-up.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+2026-11-18T05:50:25.7719396Z  [32m✓[39m src/components/child/model.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+2026-11-18T05:50:25.8729162Z  [32m✓[39m src/lib/session-access.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-11-18T05:50:26.0639167Z  [32m✓[39m src/lib/youtube-search.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+2026-11-18T05:50:26.0743037Z  [32m✓[39m src/lib/watch-progress.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+2026-11-18T05:50:26.3218464Z  [32m✓[39m src/types/domain.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 3[2mms[22m[39m
+2026-11-18T05:50:26.3318665Z  [32m✓[39m src/lib/access-window.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-18T05:50:26.4491622Z  [32m✓[39m src/lib/youtube-thumbnail.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+2026-11-18T05:50:26.5362510Z  [32m✓[39m src/lib/server/final-family-beta.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 1373[2mms[22m[39m
+2026-11-18T05:50:26.5397217Z 
+2026-11-18T05:50:26.5401682Z [2m Test Files [22m [1m[32m25 passed[39m[22m[90m (25)[39m
+2026-11-18T05:50:26.5402360Z [2m      Tests [22m [1m[32m200 passed[39m[22m[90m (200)[39m
+2026-11-18T05:50:26.5402793Z [2m   Start at [22m 05:50:20
+2026-11-18T05:50:26.5405194Z [2m   Duration [22m 5.75s[2m (tests 83%, import 10%, transform 5%, worker 1%)[22m
+2026-11-18T05:50:26.5416779Z 
+2026-11-18T05:50:26.5418302Z [2m    Isolate [22m [33m25 workers spawned[39m[2m · ~124ms startup each (spawn + environment, per file)[22m
+2026-11-18T05:50:26.5419555Z [2m            [22m [2mat least ~909ms faster with [22m[33misolate: false[39m[2m — reuses workers across files instead of one per file[22m
+2026-11-18T05:50:26.5422221Z 
+2026-11-18T05:50:26.5830570Z ##[group]Run npm run build
+2026-11-18T05:50:26.5830871Z [36;1mnpm run build[0m
+2026-11-18T05:50:26.5858173Z shell: /usr/bin/bash -e {0}
+2026-11-18T05:50:26.5858526Z ##[endgroup]
+2026-11-18T05:50:26.6606374Z 
+2026-11-18T05:50:26.6607674Z > watchnest@0.1.0 build
+2026-11-18T05:50:26.6608529Z > next build
+2026-11-18T05:50:26.6608863Z 
+2026-11-18T05:50:26.9316419Z ▲ Next.js 16.4.6 (Turbopack)
+2026-11-18T05:50:26.9418977Z ✓ Running next.config.mjs took 10ms
+2026-11-18T05:50:26.9420418Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+2026-11-18T05:50:26.9824991Z Attention: Next.js now collects completely anonymous telemetry regarding usage.
+2026-11-18T05:50:26.9825846Z This information is used to shape Next.js' roadmap and prioritize features.
+2026-11-18T05:50:26.9826884Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+2026-11-18T05:50:26.9827674Z https://nextjs.org/telemetry
+2026-11-18T05:50:26.9827926Z 
+2026-11-18T05:50:27.0077947Z 
+2026-11-18T05:50:27.0258629Z   Creating an optimized production build ...
+2026-11-18T05:50:31.1647112Z ✓ Compiled successfully in 4.1s
+2026-11-18T05:50:31.1703397Z   Running TypeScript ...
+2026-11-18T05:50:34.6804553Z   Finished TypeScript in 3.5s ...
+2026-11-18T05:50:34.6822624Z   Collecting page data using 3 workers ...
+2026-11-18T05:50:35.1358871Z   Generating static pages using 3 workers (0/20) ...
+2026-11-18T05:50:35.2973419Z   Generating static pages using 3 workers (5/20) 
+2026-11-18T05:50:35.3714926Z   Generating static pages using 3 workers (10/20) 
+2026-11-18T05:50:35.3716076Z   Generating static pages using 3 workers (15/20) 
+2026-11-18T05:50:35.4134668Z ✓ Generating static pages using 3 workers (20/20) in 278ms
+2026-11-18T05:50:35.4173396Z   Finalizing page optimization ...
+2026-11-18T05:50:35.4267078Z 
+2026-11-18T05:50:35.4285673Z Route (app)
+2026-11-18T05:50:35.4286341Z ┌ ƒ /
+2026-11-18T05:50:35.4286939Z ├ ○ /_not-found
+2026-11-18T05:50:35.4287323Z ├ ƒ /api/[...path]
+2026-11-18T05:50:35.4287740Z ├ ƒ /api/parent/profile-photo/[profileId]
+2026-11-18T05:50:35.4288144Z ├ ○ /login
+2026-11-18T05:50:35.4288493Z ├ ○ /login/reset
+2026-11-18T05:50:35.4288822Z ├ ○ /parent
+2026-11-18T05:50:35.4289062Z ├ ○ /parent/add-video
+2026-11-18T05:50:35.4289394Z ├ ○ /parent/assignments
+2026-11-18T05:50:35.4289647Z ├ ○ /parent/children
+2026-11-18T05:50:35.4289917Z ├ ○ /parent/collections
+2026-11-18T05:50:35.4290407Z ├ ○ /parent/controls
+2026-11-18T05:50:35.4290764Z ├ ○ /parent/dashboard
+2026-11-18T05:50:35.4291221Z ├ ○ /parent/inbox
+2026-11-18T05:50:35.4291560Z ├ ○ /parent/library
+2026-11-18T05:50:35.4292011Z ├ ○ /parent/profiles
+2026-11-18T05:50:35.4292453Z ├ ƒ /parent/profiles/[profileId]/edit
+2026-11-18T05:50:35.4292834Z ├ ○ /parent/profiles/new
+2026-11-18T05:50:35.4293290Z ├ ○ /parent/settings
+2026-11-18T05:50:35.4293636Z ├ ○ /privacy
+2026-11-18T05:50:35.4293937Z ├ ○ /watch
+2026-11-18T05:50:35.4294321Z ├ ○ /watch/home
+2026-11-18T05:50:35.4294734Z ├ ƒ /watch/player/[videoId]
+2026-11-18T05:50:35.4295094Z ├ ƒ /watch/profile/[profileId]/home
+2026-11-18T05:50:35.4295450Z ├ ƒ /watch/profile/[profileId]/player/[videoId]
+2026-11-18T05:50:35.4295972Z └ ƒ /watch/profile/[profileId]/search
+2026-11-18T05:50:35.4296209Z 
+2026-11-18T05:50:35.4296215Z 
+2026-11-18T05:50:35.4297087Z ○  (Static)   prerendered as static content
+2026-11-18T05:50:35.4297570Z ƒ  (Dynamic)  server-rendered on demand
+2026-11-18T05:50:35.4297817Z 
+2026-11-18T05:50:35.9755722Z ##[group]Run npm run test:e2e
+2026-11-18T05:50:35.9756056Z [36;1mnpm run test:e2e[0m
+2026-11-18T05:50:35.9784860Z shell: /usr/bin/bash -e {0}
+2026-11-18T05:50:35.9785227Z env:
+2026-11-18T05:50:35.9785505Z   WATCHNEST_EVIDENCE_LABEL: candidate
+2026-11-18T05:50:35.9785857Z   WATCHNEST_PR_HEAD_SHA: bd8d15d7220f5496e73a562c77b34ceb8aae2370
+2026-11-18T05:50:35.9786214Z ##[endgroup]
+2026-11-18T05:50:36.0501054Z 
+2026-11-18T05:50:36.0501540Z > watchnest@0.1.0 test:e2e
+2026-11-18T05:50:36.0501986Z > node scripts/run-browser-tests.mjs
+2026-11-18T05:50:36.0502315Z 
+2026-11-18T05:50:39.4470100Z 
+2026-11-18T05:50:39.4470869Z Running 69 tests using 1 worker
+2026-11-18T05:50:39.4471099Z 
+2026-11-18T05:50:41.7832205Z   ✓   1 e2e/fresh-child-stranger.spec.ts:45:5 › fresh younger child chooses a picture and returns to own library (893ms)
+2026-11-18T05:50:42.6980048Z   ✓   2 e2e/fresh-child-stranger.spec.ts:65:5 › fresh older child retrieves saves and requests (907ms)
+2026-11-18T05:50:43.5670618Z   ✓   3 e2e/fresh-child-stranger.spec.ts:91:5 › fresh shared family switch PIN recovery and parent boundary (860ms)
+2026-11-18T05:50:44.3659610Z FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+2026-11-18T05:50:44.6901161Z   ✓   4 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (1.1s)
+2026-11-18T05:50:45.5156016Z FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+2026-11-18T05:50:46.5905145Z   ✓   5 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (1.9s)
+2026-11-18T05:50:47.3053496Z   ✓   6 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (706ms)
+2026-11-18T05:50:59.3590420Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/manifest.json
+2026-11-18T05:50:59.3710800Z   ✓   7 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-phone 390x844 (11.6s)
+2026-11-18T05:51:01.3247449Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/player-states/manifest.json
+2026-11-18T05:51:01.3335553Z   ✓   8 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-phone 390x844 (2.0s)
+2026-11-18T05:51:04.0564414Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/recovery-states/manifest.json
+2026-11-18T05:51:04.0709506Z   ✓   9 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-phone 390x844 (2.7s)
+2026-11-18T05:51:15.5627399Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/parent-details/manifest.json
+2026-11-18T05:51:15.5739252Z   ✓  10 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-phone 390x844 (11.5s)
+2026-11-18T05:51:25.3784344Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/manifest.json
+2026-11-18T05:51:25.3882923Z   ✓  11 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-portrait 768x1024 (9.8s)
+2026-11-18T05:51:27.5462522Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/player-states/manifest.json
+2026-11-18T05:51:27.5545756Z   ✓  12 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-portrait 768x1024 (2.2s)
+2026-11-18T05:51:30.1090902Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/recovery-states/manifest.json
+2026-11-18T05:51:30.1178777Z   ✓  13 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-portrait 768x1024 (2.6s)
+2026-11-18T05:51:32.5891539Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-details/manifest.json
+2026-11-18T05:51:32.5997025Z   ✓  14 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-portrait 768x1024 (2.5s)
+2026-11-18T05:51:33.3477001Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-entry/manifest.json
+2026-11-18T05:51:33.3574721Z   ✓  15 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-portrait 768x1024 (750ms)
+2026-11-18T05:51:44.9591303Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/manifest.json
+2026-11-18T05:51:44.9678700Z   ✓  16 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-landscape 1024x768 (11.6s)
+2026-11-18T05:51:47.1636098Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/player-states/manifest.json
+2026-11-18T05:51:47.1719013Z   ✓  17 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-landscape 1024x768 (2.2s)
+2026-11-18T05:51:49.9117769Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/recovery-states/manifest.json
+2026-11-18T05:51:49.9216613Z   ✓  18 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-landscape 1024x768 (2.7s)
+2026-11-18T05:51:52.6590951Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-details/manifest.json
+2026-11-18T05:51:52.6683948Z   ✓  19 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-landscape 1024x768 (2.7s)
+2026-11-18T05:51:53.3944977Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-entry/manifest.json
+2026-11-18T05:51:53.4038418Z   ✓  20 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-landscape 1024x768 (728ms)
+2026-11-18T05:52:03.4959104Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/manifest.json
+2026-11-18T05:52:03.5052263Z   ✓  21 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-desktop 1440x1000 (10.1s)
+2026-11-18T05:52:05.8544635Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/player-states/manifest.json
+2026-11-18T05:52:05.8639218Z   ✓  22 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-desktop 1440x1000 (2.4s)
+2026-11-18T05:52:08.3533213Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/recovery-states/manifest.json
+2026-11-18T05:52:08.3624023Z   ✓  23 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-desktop 1440x1000 (2.5s)
+2026-11-18T05:52:19.4748298Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/parent-details/manifest.json
+2026-11-18T05:52:19.4844756Z   ✓  24 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-desktop 1440x1000 (11.1s)
+2026-11-18T05:52:19.7045572Z BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+2026-11-18T05:52:19.7464209Z   ✓  25 e2e/product.spec.ts:31:5 › real HTTP: absent infrastructure fails closed; no sample family or iframe (237ms)
+2026-11-18T05:52:20.0326832Z BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+2026-11-18T05:52:20.1111881Z   ✓  26 e2e/product.spec.ts:52:5 › real HTTP: public entry, protected parent redirect, and unknown page (356ms)
+2026-11-18T05:52:20.5922229Z {
+2026-11-18T05:52:20.5923030Z   viewport: [ 1280, 720 ],
+2026-11-18T05:52:20.5927553Z   bodyRect: {
+2026-11-18T05:52:20.5928228Z     x: 0,
+2026-11-18T05:52:20.5928806Z     y: 0,
+2026-11-18T05:52:20.5929791Z     width: 1280,
+2026-11-18T05:52:20.5930268Z     height: 1459.46875,
+2026-11-18T05:52:20.5930681Z     top: 0,
+2026-11-18T05:52:20.5930964Z     right: 1280,
+2026-11-18T05:52:20.5931290Z     bottom: 1459.46875,
+2026-11-18T05:52:20.5931564Z     left: 0
+2026-11-18T05:52:20.5931845Z   },
+2026-11-18T05:52:20.5932330Z   heading: [ { text: 'Child profiles', style: 'block', rect: [Object] } ],
+2026-11-18T05:52:20.5932827Z   bodyStyle: 'block'
+2026-11-18T05:52:20.5933147Z }
+2026-11-18T05:52:20.7025212Z   ✘  27 e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access (529ms)
+2026-11-18T05:52:21.6945148Z   ✓  28 e2e/product.spec.ts:102:5 › synthetic UI: child searches local library and asks parent on no match (475ms)
+2026-11-18T05:52:21.9853408Z BROWSER Failed to load resource: net::ERR_FAILED
+2026-11-18T05:52:22.0123037Z   ✓  29 e2e/product.spec.ts:140:5 › synthetic UI: a video-card tap requests immersive playback before navigation (302ms)
+2026-11-18T05:52:23.1972399Z BROWSER Failed to load resource: the server responded with a status of 403 (Forbidden)
+2026-11-18T05:52:23.2319700Z   ✓  30 e2e/product.spec.ts:172:5 › synthetic UI: WatchNest deadline destroys playback and blocks reload (1.2s)
+2026-11-18T05:52:27.4650816Z BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+2026-11-18T05:52:27.9907337Z   ✓  31 e2e/product.spec.ts:244:5 › synthetic UI: Parent phone controls one remote profile timer (4.7s)
+2026-11-18T05:52:28.4543290Z   ✓  32 e2e/product.spec.ts:333:5 › synthetic UI: bounded Discover creates a request without a playable result (452ms)
+2026-11-18T05:52:28.7075808Z   ✓  33 e2e/product.spec.ts:367:5 › synthetic UI: shared device opens the profile picker and Parent Mode stays protected (245ms)
+2026-11-18T05:52:37.9035602Z   ✓  34 e2e/product.spec.ts:387:5 › synthetic UI: mobile and tablet pages fit viewport (9.2s)
+2026-11-18T05:52:38.2131964Z   ✓  35 e2e/product.spec.ts:457:5 › synthetic UI: Safe Playback is a mandatory Child Mode boundary (299ms)
+2026-11-18T05:52:38.4923623Z BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+2026-11-18T05:52:38.4937648Z 
+2026-11-18T05:52:38.6238740Z BROWSER Blocked opening 'https://www.youtube.com/' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+2026-11-18T05:52:38.7567164Z BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+2026-11-18T05:52:38.7568868Z 
+2026-11-18T05:52:38.8928836Z BROWSER Blocked opening 'https://www.youtube.com/watch?v=escape' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+2026-11-18T05:52:39.2281842Z   ✓  36 e2e/product.spec.ts:478:5 › synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored (1.0s)
+2026-11-18T05:52:39.4364114Z   ✓  37 e2e/product.spec.ts:602:5 › synthetic UI: a stale false flag cannot disable mandatory containment (200ms)
+2026-11-18T05:52:39.7157849Z   ✓  38 e2e/product.spec.ts:653:5 › synthetic UI: post-ready same-frame recommendation navigation fails closed (271ms)
+2026-11-18T05:52:39.9378557Z   ✓  39 e2e/product.spec.ts:697:5 › synthetic UI: pre-ready same-frame recommendation navigation fails closed (213ms)
+2026-11-18T05:52:40.1058882Z BROWSER Failed to load resource: net::ERR_FAILED
+2026-11-18T05:52:40.1678262Z   ✓  40 e2e/product.spec.ts:738:5 › synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize (222ms)
+2026-11-18T05:52:40.4264507Z   ✓  41 e2e/product.spec.ts:756:5 › synthetic UI: transiently missing iPad player identity does not reject the approved video (247ms)
+2026-11-18T05:52:43.4834834Z   ✓  42 e2e/product.spec.ts:816:5 › synthetic UI: permanently unreadable player identity fails closed (3.0s)
+2026-11-18T05:52:44.3681694Z   ✓  43 e2e/product.spec.ts:856:5 › synthetic UI: mobile share text auto-resolves and retains a manual fallback (876ms)
+2026-11-18T05:52:44.6157663Z BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+2026-11-18T05:52:44.7096091Z   ✓  44 e2e/product.spec.ts:885:5 › synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure (332ms)
+2026-11-18T05:52:45.0932512Z   ✓  45 e2e/product.spec.ts:915:5 › synthetic UI: mobile channel selection immediately loads individual videos (376ms)
+2026-11-18T05:52:45.4922454Z   ✓  46 e2e/product.spec.ts:961:5 › synthetic UI: mobile playlist selection immediately loads individual videos (389ms)
+2026-11-18T05:52:45.8858194Z   ✓  47 e2e/product.spec.ts:1008:5 › synthetic UI: Parent Library offers an obvious playback preview (386ms)
+2026-11-18T05:52:46.1678699Z   ✓  48 e2e/product.spec.ts:1035:5 › synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics (271ms)
+2026-11-18T05:52:47.1738657Z   ✓  49 e2e/product.spec.ts:1071:5 › synthetic UI: a child finds approved videos in a 240-item library (997ms)
+2026-11-18T05:52:51.5149281Z   ✓  50 e2e/product.spec.ts:1100:5 › synthetic UI: intermediate widths keep parent tools and child browsing within reach (4.3s)
+2026-11-18T05:52:51.8061493Z   ✓  51 e2e/product.spec.ts:1140:5 › synthetic UI: password visibility and recovery work with a keyboard (283ms)
+2026-11-18T05:52:52.2680430Z   ✓  52 e2e/product.spec.ts:1166:5 › synthetic UI: phone parent actions and collection choices remain touchable (453ms)
+2026-11-18T05:52:54.4557814Z   ✓  53 e2e/product.spec.ts:1194:5 › synthetic UI: collection search expands to approved library without requesting again (2.2s)
+2026-11-18T05:52:54.7724076Z   ✓  54 e2e/startup.spec.ts:29:5 › synthetic startup: API attaches before delayed iframe document load (304ms)
+2026-11-18T05:52:55.0477384Z   ✓  55 e2e/startup.spec.ts:49:5 › synthetic startup: late API cannot reconstruct a containment-stopped player (267ms)
+2026-11-18T05:52:55.3893410Z   ✓  56 e2e/startup.spec.ts:68:5 › synthetic startup: late onReady and state events cannot reverse containment (332ms)
+2026-11-18T05:53:15.6449689Z   ✓  57 e2e/startup.spec.ts:86:5 › synthetic startup: missing provider readiness times out and removes frame (20.2s)
+2026-11-18T05:53:15.9028419Z   ✓  58 e2e/startup.spec.ts:99:7 › synthetic startup: __replaceFrame fails closed without unmonitored frame (250ms)
+2026-11-18T05:53:16.1762170Z   ✓  59 e2e/startup.spec.ts:99:7 › synthetic startup: __throwOnReady fails closed without unmonitored frame (266ms)
+2026-11-18T05:53:16.4848478Z   ✓  60 e2e/startup.spec.ts:109:5 › synthetic startup: provider error before ready is terminal (301ms)
+2026-11-18T05:53:19.9007487Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/360x800/supplemental-responsive/manifest.json
+2026-11-18T05:53:19.9100187Z   ✓  61 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 360x800 (3.4s)
+2026-11-18T05:53:22.7374675Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/412x915/supplemental-responsive/manifest.json
+2026-11-18T05:53:22.7470723Z   ✓  62 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 412x915 (2.8s)
+2026-11-18T05:53:25.9774789Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/520x900/supplemental-responsive/manifest.json
+2026-11-18T05:53:25.9893564Z   ✓  63 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 520x900 (3.2s)
+2026-11-18T05:53:29.3558779Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/640x900/supplemental-responsive/manifest.json
+2026-11-18T05:53:29.3646334Z   ✓  64 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 640x900 (3.4s)
+2026-11-18T05:53:31.4154364Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/820x1180/supplemental-responsive/manifest.json
+2026-11-18T05:53:31.4243502Z   ✓  65 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 820x1180 (2.1s)
+2026-11-18T05:53:33.9425832Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/900x900/supplemental-responsive/manifest.json
+2026-11-18T05:53:33.9517493Z   ✓  66 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 900x900 (2.5s)
+2026-11-18T05:53:36.1657907Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1180x820/supplemental-responsive/manifest.json
+2026-11-18T05:53:36.1769164Z   ✓  67 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1180x820 (2.2s)
+2026-11-18T05:53:38.4974960Z VISUAL_EVIDENCE test-results/visual-evidence/candidate/1280x800/supplemental-responsive/manifest.json
+2026-11-18T05:53:38.5067440Z   ✓  68 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1280x800 (2.3s)
+2026-11-18T05:53:40.1242782Z   ✓  69 e2e/visual.spec.ts:4:5 › synthetic visual evidence: parent and child surfaces (1.6s)
+2026-11-18T05:53:40.2367269Z 
+2026-11-18T05:53:40.2371654Z 
+2026-11-18T05:53:40.2382648Z   1) e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access 
+2026-11-18T05:53:40.2383484Z 
+2026-11-18T05:53:40.2386994Z     Error: locator.click: Error: strict mode violation: getByRole('link', { name: /Requests/ }) resolved to 2 elements:
+2026-11-18T05:53:40.2388722Z         1) <a href="/parent/inbox">…</a> aka getByRole('link', { name: 'Requests 1', exact: true })
+2026-11-18T05:53:40.2389828Z         2) <a href="/parent/inbox">…</a> aka getByRole('link', { name: 'Requests 1 waiting for you' })
+2026-11-18T05:53:40.2390345Z 
+2026-11-18T05:53:40.2390574Z     Call log:
+2026-11-18T05:53:40.2391020Z       - waiting for getByRole('link', { name: /Requests/ })
+2026-11-18T05:53:40.2391375Z 
+2026-11-18T05:53:40.2391381Z 
+2026-11-18T05:53:40.2391744Z       91 |     page.getByRole("heading", { name: "Eli", exact: true }),
+2026-11-18T05:53:40.2392393Z       92 |   ).toBeVisible();
+2026-11-18T05:53:40.2392898Z     > 93 |   await page.getByRole("link", { name: /Requests/ }).click();
+2026-11-18T05:53:40.2393549Z          |                                                      ^
+2026-11-18T05:53:40.2393991Z       94 |   await expect(
+2026-11-18T05:53:40.2394499Z       95 |     page.getByRole("heading", { name: "Lego trains" }),
+2026-11-18T05:53:40.2395021Z       96 |   ).toBeVisible();
+2026-11-18T05:53:40.2395581Z         at /home/runner/work/watchnest-/watchnest-/e2e/product.spec.ts:93:54
+2026-11-18T05:53:40.2396008Z 
+2026-11-18T05:53:40.2396767Z     Error Context: test-results/product-synthetic-UI-paren-f812f-nbox-and-independent-access/error-context.md
+2026-11-18T05:53:40.2397519Z 
+2026-11-18T05:53:40.2398143Z     attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-11-18T05:53:40.2399092Z     test-results/product-synthetic-UI-paren-f812f-nbox-and-independent-access/trace.zip
+2026-11-18T05:53:40.2399741Z     Usage:
+2026-11-18T05:53:40.2399985Z 
+2026-11-18T05:53:40.2400529Z         npx playwright show-trace test-results/product-synthetic-UI-paren-f812f-nbox-and-independent-access/trace.zip
+2026-11-18T05:53:40.2401118Z 
+2026-11-18T05:53:40.2401717Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-11-18T05:53:40.2402044Z 
+2026-11-18T05:53:40.2402229Z   1 failed
+2026-11-18T05:53:40.2402926Z     e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access 
+2026-11-18T05:53:40.2403589Z   68 passed (3.0m)
+2026-11-18T05:53:40.2828906Z ##[error]Process completed with exit code 1.
+2026-11-18T05:53:40.2935755Z ##[group]Run actions/upload-artifact@v4
+2026-11-18T05:53:40.2936085Z with:
+2026-11-18T05:53:40.2936740Z   name: watchnest-synthetic-browser-evidence-1df9463b1518c43a1452520550ec9afa97eeb79e
+2026-11-18T05:53:40.2937695Z   path: test-results/visual-evidence/**/*.png
+test-results/visual-evidence/**/*.json
+test-results/visual-evidence/**/*.yml
+test-results/fresh-*/**/*.png
+test-results/browser-results.json
+docs/evidence/*-synthetic.png
+
+2026-11-18T05:53:40.2938480Z   if-no-files-found: warn
+2026-11-18T05:53:40.2938790Z   retention-days: 14
+2026-11-18T05:53:40.2939056Z   compression-level: 6
+2026-11-18T05:53:40.2939360Z   overwrite: false
+2026-11-18T05:53:40.2939618Z   include-hidden-files: false
+2026-11-18T05:53:40.2939900Z ##[endgroup]
+2026-11-18T05:53:40.4409308Z (node:3991) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-18T05:53:40.4410214Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-18T05:53:40.6200274Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-18T05:53:40.6201997Z The least common ancestor is /home/runner/work/watchnest-/watchnest-. This will be the root directory of the artifact
+2026-11-18T05:53:40.6202650Z With the provided path, there will be 1178 files uploaded
+2026-11-18T05:53:40.6203120Z Artifact name is valid!
+2026-11-18T05:53:40.6203407Z Root directory input is valid!
+2026-11-18T05:53:40.8914920Z Beginning upload of artifact content to blob storage
+2026-11-18T05:53:41.2187796Z (node:3991) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-18T05:53:41.8002753Z Uploaded bytes 8388608
+2026-11-18T05:53:42.0571577Z Uploaded bytes 16777216
+2026-11-18T05:53:42.0604662Z Uploaded bytes 25165824
+2026-11-18T05:53:42.3834682Z Uploaded bytes 33554432
+2026-11-18T05:53:42.6435257Z Uploaded bytes 41943040
+2026-11-18T05:53:42.9454948Z Uploaded bytes 50331648
+2026-11-18T05:53:43.0345956Z Uploaded bytes 51557525
+2026-11-18T05:53:43.0776046Z Finished uploading artifact content to blob storage!
+2026-11-18T05:53:43.0778379Z SHA256 digest of uploaded artifact zip is 054cd1a309f54a5b1eb2ce7aa57fc850ca682931631ae0c77ea97c5eb4ef35d1
+2026-11-18T05:53:43.0780196Z Finalizing artifact upload
+2026-11-18T05:53:43.4456371Z Artifact watchnest-synthetic-browser-evidence-1df9463b1518c43a1452520550ec9afa97eeb79e.zip successfully finalized. Artifact ID 14401659808
+2026-11-18T05:53:43.4457863Z Artifact watchnest-synthetic-browser-evidence-1df9463b1518c43a1452520550ec9afa97eeb79e has been successfully uploaded! Final size is 51557525 bytes. Artifact ID is 14401659808
+2026-11-18T05:53:43.4464115Z Artifact download URL: https://github.com/avromy/watchnest-/actions/runs/44246932538/artifacts/14401659808
+2026-11-18T05:53:43.4718025Z Post job cleanup.
+2026-11-18T05:53:43.5376887Z [command]/usr/bin/git version
+2026-11-18T05:53:43.5417102Z git version 2.56.1
+2026-11-18T05:53:43.5450507Z Temporarily overriding HOME='/home/runner/work/_temp/e936048a-c205-4474-8a2d-fca35e06606d' before making global git config changes
+2026-11-18T05:53:43.5451397Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-18T05:53:43.5455641Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/watchnest-/watchnest-
+2026-11-18T05:53:43.5491053Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-18T05:53:43.5523120Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-18T05:53:43.5737373Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-18T05:53:43.5758639Z http.https://github.com/.extraheader
+2026-11-18T05:53:43.5767652Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-18T05:53:43.5807205Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-18T05:53:43.6037827Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-18T05:53:43.6089130Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-18T05:53:43.6390497Z Cleaning up orphan processes
+2026-11-18T05:53:43.6668409Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
