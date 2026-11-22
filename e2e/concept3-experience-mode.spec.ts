@@ -10,7 +10,10 @@ async function captureModeState(
 ) {
   for (const width of [390, 820]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1180 });
-    await card.scrollIntoViewIfNeeded();
+    if (state === "save-error") {
+      await card.getByRole("button", { name: "Save changes", exact: true }).scrollIntoViewIfNeeded();
+      await expect(card.getByRole("alert")).toBeInViewport({ ratio: 0.5 });
+    } else await card.scrollIntoViewIfNeeded();
     const path = test.info().outputPath(`experience-${state}-${width}.png`);
     await page.screenshot({ path, fullPage: true, animations: "disabled" });
     const records = await card.locator("h2,p,label,select,button,svg").evaluateAll((elements) =>
@@ -90,6 +93,7 @@ test("failed experience save preserves the draft for retry without changing stor
   await card.getByRole("combobox", { name: "Library experience", exact: true }).selectOption("simple");
   await card.getByRole("button", { name: "Save changes", exact: true }).click();
   await expect(page.getByRole("alert").filter({ hasText: "Synthetic profile save unavailable" })).toBeVisible();
+  await expect(card.getByRole("alert")).toHaveText("Save could not be confirmed. Please retry.");
   await expect(card.getByRole("combobox", { name: "Library experience", exact: true })).toHaveValue("simple");
   await expect(card.getByRole("button", { name: "Save changes", exact: true })).toBeEnabled();
   expect(family.profiles[1].experience_mode).toBe("standard");

@@ -1954,6 +1954,8 @@ function ChildSettings({ profile }: { profile: Profile }) {
             setPin("");
             setConfirmPin("");
             setMessage("Changes saved.");
+          } else {
+            setError("Save could not be confirmed. Please retry.");
           }
         }}
       >
