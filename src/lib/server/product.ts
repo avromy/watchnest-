@@ -2087,6 +2087,7 @@ async function childRoute(
           p_revision: Math.min(b.revision, access.revision),
           p_playback_active: b.playback_active && access.allowed,
         }),
+        "child-session-ack",
       );
     return reply({ session_access: access });
   }
@@ -2363,6 +2364,7 @@ async function childRoute(
         p_watched: 0,
         p_completed: b.completed,
       }),
+      "child-progress-record",
     );
     return reply({ ok: true });
   }

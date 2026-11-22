@@ -1850,6 +1850,9 @@ function ChildSettings({ profile }: { profile: Profile }) {
     [confirmPin, setConfirmPin] = useState(""),
     [enabled, setEnabled] = useState(profile.pin_enabled),
     [avatar, setAvatar] = useState(profile.avatar_key || "leaf"),
+    [experienceMode, setExperienceMode] = useState<Profile["experience_mode"]>(
+      profile.experience_mode || "standard",
+    ),
     [message, setMessage] = useState(""),
     [error, setError] = useState(""),
     [photoFile, setPhotoFile] = useState<File | null>(null),
@@ -1943,6 +1946,7 @@ function ChildSettings({ profile }: { profile: Profile }) {
             await act("/api/parent/profiles", "PATCH", {
               id: profile.id,
               avatar_key: avatar,
+              experience_mode: experienceMode,
               pin_enabled: enabled,
               ...(pin ? { passcode: pin } : {}),
             })
@@ -2068,6 +2072,24 @@ function ChildSettings({ profile }: { profile: Profile }) {
             </p>
           </fieldset>
         </details>
+        <label>
+          Library experience
+          <select
+            className="field"
+            value={experienceMode}
+            disabled={busy}
+            onChange={(event) =>
+              setExperienceMode(event.target.value as Profile["experience_mode"])
+            }
+          >
+            <option value="standard">Standard</option>
+            <option value="simple">Simple</option>
+          </select>
+        </label>
+        <p className="muted">
+          Simple uses larger video choices and keeps extra controls under More.
+          Standard shows those controls directly.
+        </p>
         <label className={styles.toggle}>
           <input
             type="checkbox"
