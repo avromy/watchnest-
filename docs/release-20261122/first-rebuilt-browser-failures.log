@@ -1,0 +1,190 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs e2e/concept3-experience-mode.spec.ts e2e/request-preview.spec.ts e2e/independent-client-integrity.spec.ts e2e/fresh-parent-stranger.spec.ts e2e/fresh-child-stranger.spec.ts
+
+[WebServer] (node:43) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] (node:56) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 19 tests using 1 worker
+
+(node:68) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 e2e/concept3-experience-mode.spec.ts:27:5 › existing Standard profiles remain Standard until explicitly saved (5.5s)
+(node:146) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 e2e/concept3-experience-mode.spec.ts:35:5 › Parent can save Simple, reload its persisted fixture value, and open the existing Simple library (30.1s)
+(node:222) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 e2e/concept3-experience-mode.spec.ts:55:5 › failed experience save preserves the draft for retry without changing stored fixture mode (30.1s)
+(node:298) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 e2e/independent-client-integrity.spec.ts:7:7 › logout network failure is visible and retryable without an unhandled error (834ms)
+  ✓   5 e2e/independent-client-integrity.spec.ts:7:7 › logout http failure is visible and retryable without an unhandled error (765ms)
+  ✓   6 e2e/independent-client-integrity.spec.ts:33:5 › logout holds a single pending request and recovers after completion (703ms)
+  ✘   7 e2e/independent-client-integrity.spec.ts:53:5 › logout times out a hung request with honest feedback and permits retry (2.3s)
+(node:421) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 e2e/request-preview.spec.ts:13:7 › requested video Preview opens on 390px without approval (1.3s)
+  ✓   9 e2e/request-preview.spec.ts:13:7 › requested video Preview opens on 820px without approval (1.8s)
+  ✓  10 e2e/request-preview.spec.ts:122:5 › request preview slow frame has retry and never mutates approval (1.3s)
+  ✓  11 e2e/request-preview.spec.ts:162:5 › Inbox collection creation failures are visible and retry retains input (1.2s)
+  ✓  12 e2e/request-preview.spec.ts:204:5 › Library collection and removal failures surface without losing selection (711ms)
+  ✓  13 e2e/request-preview.spec.ts:253:5 › confirmed Inbox collection stays visibly selected after a failed refresh (869ms)
+(node:577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  14 e2e/fresh-child-stranger.spec.ts:48:5 › fresh younger child chooses a picture and returns to own library (1.6s)
+  ✓  15 e2e/fresh-child-stranger.spec.ts:68:5 › fresh older child retrieves saves and requests (2.4s)
+  ✓  16 e2e/fresh-child-stranger.spec.ts:94:5 › fresh shared family switch PIN recovery and parent boundary (1.7s)
+FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+  ✓  17 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (2.1s)
+FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+  ✓  18 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (2.8s)
+  ✓  19 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (1.2s)
+
+
+  1) e2e/concept3-experience-mode.spec.ts:27:5 › existing Standard profiles remain Standard until explicitly saved 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByLabel('Library experience', { exact: true })
+    Expected: 4
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByLabel('Library experience', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Library experience', { exact: true })
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      28 |   const { writes } = await prepare(page);
+      29 |   const selectors = page.getByLabel("Library experience", { exact: true });
+    > 30 |   await expect(selectors).toHaveCount(4);
+         |                           ^
+      31 |   for (const selector of await selectors.all()) await expect(selector).toHaveValue("standard");
+      32 |   expect(writes).toEqual([]);
+      33 | });
+        at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:30:27
+
+    Error Context: test-results/concept3-experience-mode-e-9901d-dard-until-explicitly-saved/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/concept3-experience-mode-e-9901d-dard-until-explicitly-saved/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/concept3-experience-mode-e-9901d-dard-until-explicitly-saved/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e/concept3-experience-mode.spec.ts:35:5 › Parent can save Simple, reload its persisted fixture value, and open the existing Simple library 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('section.panel').filter({ has: getByRole('heading', { name: 'Ari', exact: true }) }).getByLabel('Library experience', { exact: true })
+
+
+      35 | async function prepare(page: import("@playwright/test").Page) {
+      36 |   await fixture(page, "parent");
+    > 37 |   const family = structuredClone(dashboard);
+         |                                             ^
+      38 |   const writes: Record<string, unknown>[] = [];
+      39 |   let rejectSave = false;
+      40 |   await page.route("**/api/parent/dashboard", (route) => route.fulfill({ json: family }));
+        at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:37:64
+
+    Error Context: test-results/concept3-experience-mode-P-bc631-the-existing-Simple-library/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/concept3-experience-mode-P-bc631-the-existing-Simple-library/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/concept3-experience-mode-P-bc631-the-existing-Simple-library/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e/concept3-experience-mode.spec.ts:55:5 › failed experience save preserves the draft for retry without changing stored fixture mode 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('section.panel').filter({ has: getByRole('heading', { name: 'Ari', exact: true }) }).getByLabel('Library experience', { exact: true })
+
+
+      56 |
+      57 | test("existing Standard profiles remain Standard until explicitly saved", async ({ page }) => {
+    > 58 |   const { writes, card } = await prepare(page);
+         |                                                ^
+      59 |   const selectors = page.getByRole("combobox", { name: "Library experience", exact: true });
+      60 |   await expect(selectors).toHaveCount(4);
+      61 |   for (const selector of await selectors.all()) await expect(selector).toHaveValue("standard");
+        at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:58:64
+
+    Error Context: test-results/concept3-experience-mode-f-c6c9e-hanging-stored-fixture-mode/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/concept3-experience-mode-f-c6c9e-hanging-stored-fixture-mode/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/concept3-experience-mode-f-c6c9e-hanging-stored-fixture-mode/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) e2e/independent-client-integrity.spec.ts:53:5 › logout times out a hung request with honest feedback and permits retry 
+
+    Error: browserContext.close: ENOENT: no such file or directory, open '/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/.playwright-artifacts-3/traces/6594051b2bc1d000ac1a-7d72a74511997661eeef-recording6.trace'
+
+    Error: ENOENT: no such file or directory, open '/workspace/scratch/b4fb31747e8d/watchnest-integrity/test-results/.playwright-artifacts-3/d83464d5f9dcceb9e5dd0d96cafc1430.zip'
+
+    attachment #1: neutral-geometry (application/json) ─────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-d44e3632a1fceb3e868a176a89616fba3d57639e.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: logout-pending-390 (image/png) ──────────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-pending-390-69f8fc2314a27db54f58da441693905f4146d866.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: neutral-geometry (application/json) ─────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-b4645bc3b0dfb0e6804e66e0e611569b7de74abc.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: logout-pending-820 (image/png) ──────────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-pending-820-c6226e3e74dc8d3abfb08025c36cc486f515ee0b.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: neutral-geometry (application/json) ─────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-dcdc5578aaa0f8718444501f68666103c3abadbb.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: logout-timeout-390 (image/png) ──────────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-timeout-390-8e28c7417a65768429e1b6701c5cf5c4a50a829e.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #7: neutral-geometry (application/json) ─────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/neutral-geometry-9c4eac844bf53b9bbe18aa664709afcb6c119c5e.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #8: logout-timeout-820 (image/png) ──────────────────────────────────────────────────
+    test-results/independent-client-integri-2dd64--feedback-and-permits-retry/attachments/logout-timeout-820-9492785403feee668dd6bc9bb27d62cabff131e3.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/independent-client-integri-2dd64--feedback-and-permits-retry/error-context.md
+
+  4 failed
+    e2e/concept3-experience-mode.spec.ts:27:5 › existing Standard profiles remain Standard until explicitly saved 
+    e2e/concept3-experience-mode.spec.ts:35:5 › Parent can save Simple, reload its persisted fixture value, and open the existing Simple library 
+    e2e/concept3-experience-mode.spec.ts:55:5 › failed experience save preserves the draft for retry without changing stored fixture mode 
+    e2e/independent-client-integrity.spec.ts:53:5 › logout times out a hung request with honest feedback and permits retry 
+  15 passed (1.6m)
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

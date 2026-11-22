@@ -1,0 +1,10 @@
+{
+  "candidate": "2fba88712bd74c868e27ff5d0e0f067332340507",
+  "srcTree": "c7aa895727fa7301c4f6d39835c42b7dce5e44c0",
+  "buildId": "wICT7dc10sArd3kGmfb-q",
+  "files": {
+    "src/components/parent/ParentApp.tsx": "c19696be0220260df6c26dea2bd1ff2bb640c454c6621aece622f7fa1c076c93",
+    "src/lib/server/product.ts": "85e3b2d227eef91eb85b0c1015839fd7b4da21ff295679a0015e58175b42a112",
+    "e2e/concept3-experience-mode.spec.ts": "49ea46a779505e3b8ba5dd1c94ddfea73884487b7d5e5853ab0d543818e606c5"
+  }
+}

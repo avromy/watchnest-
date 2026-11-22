@@ -323,3 +323,11 @@ Observed stage GET/session42501 and independent realSDK reproduction exposed ser
 Independent rendered network fault also exposed unhandled Sign out rejection. Access-removal UI needs honest uncertain-state feedback, bounded pending, duplicate suppression and explicit retry; never claim successful sign-out based on a click or clear visible state while server outcome is unknown.
 
 Founder correction: stop repeated sign-in handoffs when requested and continue all independent integrity work. Preserve exact release hold and remaining hosted/device scope. New configured-stage attempt was cancelled when planned alias list conflicted with hold; current all3canonical mappings reverified unchanged. No blind retry from ambiguous filtered configuration. App-level findings propagated here and Notion handoff; no unverified global skill update or family data mutation.
+
+## IntegratedConcept3 continuation learning
+
+PROJECT/PROCESS: featureimplementedinAPIandchildfixturesisnotParentreachablefeature. Addexplicitconfigurationworkflowcoverage(default,noimplicitwrite,successreload,errorretainsdraft). FIELDfeedbackmustbelocatednearactualscrolledinteraction; globalalertalonecanbeoffviewport. UncertainSavecopymustnotclaimmutationfailedwhenpost-saverefreshmayhavefailed.
+
+PROCESS: Playwright exactgetByLabelonimplicitselectlabelcanmisscomputedAXcombobox; confirmactualAXandqueryrole/namebeforecallingproductdefect. Neverrunrunnerssharingartifactdirectoryconcurrently; preserveharnessFAILandrerunserially.
+
+ROUTING: providerAPIsettingsprojectionnotshowingguardflagcannotcertifysafealiasassignment; testproductionaliasassumptionneverbya live deployment. Sourcegatesremainusablewhileprovideraccessblocked; identityandphysicalgatesarenotwaived.

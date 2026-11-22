@@ -1,0 +1,12 @@
+{
+  "candidate": "2fba88712bd74c868e27ff5d0e0f067332340507",
+  "scope": "Browser save request and rehydration from stateful synthetic fixture; no real backend persistence claim",
+  "saved": {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "avatar_key": "bird",
+    "experience_mode": "simple",
+    "pin_enabled": true
+  },
+  "afterReload": "simple",
+  "pass": true
+}

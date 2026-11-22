@@ -1,0 +1,364 @@
+[
+  {
+    "path": "/parent/add-video",
+    "text": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nMove existing family picks",
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "placeholder": "A show, a creator, a new curiosity…",
+        "name": ""
+      }
+    ],
+    "buttons": [
+      " Switch profile",
+      " Search YouTube",
+      " Paste video links",
+      "Videos",
+      "Channels",
+      "Playlists",
+      "Search"
+    ],
+    "links": [
+      {
+        "text": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "text": "WatchNest",
+        "href": "/parent/dashboard"
+      },
+      {
+        "text": "Overview",
+        "href": "/parent/dashboard"
+      },
+      {
+        "text": "Library",
+        "href": "/parent/library"
+      },
+      {
+        "text": "Requests\n1",
+        "href": "/parent/inbox"
+      },
+      {
+        "text": "Time",
+        "href": "/parent/controls"
+      },
+      {
+        "text": "Family",
+        "href": "/parent/children"
+      },
+      {
+        "text": "Videos",
+        "href": "/parent/library"
+      },
+      {
+        "text": "Collections",
+        "href": "/parent/collections"
+      },
+      {
+        "text": "Add videos",
+        "href": "/parent/add-video"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "path": "/parent/children",
+    "text": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nProfiles\nSettings\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli",
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "password",
+        "placeholder": "4 digits",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "password",
+        "placeholder": "Enter it again",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "password",
+        "placeholder": "4 digits",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "password",
+        "placeholder": "Enter it again",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      }
+    ],
+    "buttons": [
+      " Switch profile",
+      "Save changes",
+      "View as Miri",
+      "Save changes",
+      "View as Ari",
+      "Save changes",
+      "View as Benny",
+      "Save changes",
+      "View as Eli"
+    ],
+    "links": [
+      {
+        "text": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "text": "WatchNest",
+        "href": "/parent/dashboard"
+      },
+      {
+        "text": "Add videos",
+        "href": "/parent/add-video"
+      },
+      {
+        "text": "Overview",
+        "href": "/parent/dashboard"
+      },
+      {
+        "text": "Library",
+        "href": "/parent/library"
+      },
+      {
+        "text": "Requests\n1",
+        "href": "/parent/inbox"
+      },
+      {
+        "text": "Time",
+        "href": "/parent/controls"
+      },
+      {
+        "text": "Family",
+        "href": "/parent/children"
+      },
+      {
+        "text": "Profiles",
+        "href": "/parent/children"
+      },
+      {
+        "text": "Settings",
+        "href": "/parent/settings"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "path": "/parent/library",
+    "text": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nVideos\nCollections\nAdd videos\n\nYOUR APPROVED LIBRARY\n\nFamily library\n\nSearch and organize the videos you’ve approved.\n\nSearch approved videos\nChild library\nAll children\nMiri\nAri\nBenny\nEli\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAri\n\nPreview\nManage\nRemove\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAri\n\nPreview\nManage\nRemove",
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "placeholder": "Title, creator or tag",
+        "name": ""
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "placeholder": "",
+        "name": ""
+      }
+    ],
+    "buttons": [
+      " Switch profile",
+      "Preview",
+      "Manage",
+      "Remove",
+      "Preview",
+      "Manage",
+      "Remove",
+      "Preview",
+      "Manage",
+      "Remove"
+    ],
+    "links": [
+      {
+        "text": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "text": "WatchNest",
+        "href": "/parent/dashboard"
+      },
+      {
+        "text": "Add videos",
+        "href": "/parent/add-video"
+      },
+      {
+        "text": "Overview",
+        "href": "/parent/dashboard"
+      },
+      {
+        "text": "Library",
+        "href": "/parent/library"
+      },
+      {
+        "text": "Requests\n1",
+        "href": "/parent/inbox"
+      },
+      {
+        "text": "Time",
+        "href": "/parent/controls"
+      },
+      {
+        "text": "Family",
+        "href": "/parent/children"
+      },
+      {
+        "text": "Videos",
+        "href": "/parent/library"
+      },
+      {
+        "text": "Collections",
+        "href": "/parent/collections"
+      },
+      {
+        "text": "Add videos",
+        "href": "/parent/add-video"
+      },
+      {
+        "text": "Add videos",
+        "href": "/parent/add-video"
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "path": "/watch/home",
+    "text": "Skip to content\nWatchNest\nAri\nLibrary\nAsk Parent\nYour library\n\n3 videos to explore\n\nSearch your library\nAll videos\nFavorites\nHidden\nSort videos\nRecently added\nA–Z\nCollections\n2 videos\nLittle Makers\nAll videos\n4:00\nA gentle piano lesson\n\nMusic Room\n\n5:00\nDraw a friendly fox\n\nLittle Makers\n\n3:00\nBuild a paper rocket\n\nLittle Makers",
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "placeholder": "Search your library",
+        "name": ""
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": ""
+      }
+    ],
+    "buttons": [
+      "Ari",
+      "Library",
+      "Ask Parent",
+      " All videos",
+      " Favorites",
+      "Hidden",
+      "2 videosLittle MakersMake and discover",
+      "",
+      "",
+      ""
+    ],
+    "links": [
+      {
+        "text": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "text": "4:00\nA gentle piano lesson\n\nMusic Room",
+        "href": "/watch/player/10000000-0000-4000-8000-000000000002"
+      },
+      {
+        "text": "5:00\nDraw a friendly fox\n\nLittle Makers",
+        "href": "/watch/player/10000000-0000-4000-8000-000000000003"
+      },
+      {
+        "text": "3:00\nBuild a paper rocket\n\nLittle Makers",
+        "href": "/watch/player/10000000-0000-4000-8000-000000000001"
+      }
+    ],
+    "overflow": false
+  }
+]

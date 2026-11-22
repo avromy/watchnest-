@@ -1,0 +1,267 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/release-20261122/experience-red.config.mjs"
+    ],
+    "configFile": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/release-20261122/experience-red.config.mjs",
+    "rootDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/release-20261122/experience-red-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "concept3-experience-mode.spec.ts"
+        ],
+        "timeout": 15000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./experience-red-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "./node_modules/.bin/next start --hostname 127.0.0.1 --port 3004",
+      "cwd": "/workspace/scratch/b4fb31747e8d/watchnest-integrity",
+      "url": "http://127.0.0.1:3004"
+    }
+  },
+  "suites": [
+    {
+      "title": "concept3-experience-mode.spec.ts",
+      "file": "concept3-experience-mode.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "existing Standard profiles remain Standard until explicitly saved",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5267,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Library experience', { exact: true })\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByLabel('Library experience', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Library experience', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Library experience', { exact: true })\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByLabel('Library experience', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Library experience', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:30:27",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts",
+                      "column": 27,
+                      "line": 30
+                    },
+                    "snippet": "  28 |   const { writes } = await prepare(page);\n  29 |   const selectors = page.getByLabel(\"Library experience\", { exact: true });\n> 30 |   await expect(selectors).toHaveCount(4);\n     |                           ^\n  31 |   for (const selector of await selectors.all()) await expect(selector).toHaveValue(\"standard\");\n  32 |   expect(writes).toEqual([]);\n  33 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts",
+                        "column": 27,
+                        "line": 30
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('Library experience', { exact: true })\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByLabel('Library experience', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Library experience', { exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  28 |   const { writes } = await prepare(page);\n  29 |   const selectors = page.getByLabel(\"Library experience\", { exact: true });\n> 30 |   await expect(selectors).toHaveCount(4);\n     |                           ^\n  31 |   for (const selector of await selectors.all()) await expect(selector).toHaveValue(\"standard\");\n  32 |   expect(writes).toEqual([]);\n  33 | });\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:30:27"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T02:05:50.387Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/release-20261122/experience-red-results/concept3-experience-mode-e-9901d-dard-until-explicitly-saved/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts",
+                    "column": 27,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d184ac0fda59cda1fc6c-7614ec12ae5deaf1ec58",
+          "file": "concept3-experience-mode.spec.ts",
+          "line": 27,
+          "column": 5
+        },
+        {
+          "title": "Parent can save Simple, reload its persisted fixture value, and open the existing Simple library",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 15161,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 15000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 15000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 15000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts",
+                        "column": 64,
+                        "line": 37
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('section.panel').filter({ has: getByRole('heading', { name: 'Ari', exact: true }) }).getByLabel('Library experience', { exact: true })\u001b[22m\n\n\n  35 | test(\"Parent can save Simple, reload its persisted fixture value, and open the existing Simple library\", async ({ page }) => {\n  36 |   const { card, writes, family } = await prepare(page);\n> 37 |   await card.getByLabel(\"Library experience\", { exact: true }).selectOption(\"simple\");\n     |                                                                ^\n  38 |   expect(writes).toEqual([]);\n  39 |   await card.getByRole(\"button\", { name: \"Save changes\", exact: true }).click();\n  40 |   await expect(card.getByText(\"Changes saved.\", { exact: true })).toBeVisible();\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:37:64"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T02:05:57.259Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/release-20261122/experience-red-results/concept3-experience-mode-P-bc631-the-existing-Simple-library/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d184ac0fda59cda1fc6c-350d90c4f7bef89b8258",
+          "file": "concept3-experience-mode.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "failed experience save preserves the draft for retry without changing stored fixture mode",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 15479,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 15000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 15000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 15000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts",
+                        "column": 64,
+                        "line": 58
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('section.panel').filter({ has: getByRole('heading', { name: 'Ari', exact: true }) }).getByLabel('Library experience', { exact: true })\u001b[22m\n\n\n  56 |   const { card, family, rejectNextSaves, allowSaves } = await prepare(page);\n  57 |   rejectNextSaves();\n> 58 |   await card.getByLabel(\"Library experience\", { exact: true }).selectOption(\"simple\");\n     |                                                                ^\n  59 |   await card.getByRole(\"button\", { name: \"Save changes\", exact: true }).click();\n  60 |   await expect(page.getByRole(\"alert\").filter({ hasText: \"Synthetic profile save unavailable\" })).toBeVisible();\n  61 |   await expect(card.getByLabel(\"Library experience\", { exact: true })).toHaveValue(\"simple\");\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/concept3-experience-mode.spec.ts:58:64"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-22T02:06:13.491Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/release-20261122/experience-red-results/concept3-experience-mode-f-c6c9e-hanging-stored-fixture-mode/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d184ac0fda59cda1fc6c-73a77a515535b1b65ea9",
+          "file": "concept3-experience-mode.spec.ts",
+          "line": 55,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-22T02:05:48.430Z",
+    "duration": 41023.816999999995,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

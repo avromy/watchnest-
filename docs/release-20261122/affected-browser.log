@@ -1,0 +1,45 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs e2e/concept3-experience-mode.spec.ts e2e/request-preview.spec.ts e2e/independent-client-integrity.spec.ts e2e/fresh-parent-stranger.spec.ts e2e/fresh-child-stranger.spec.ts
+
+[WebServer] (node:44) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] (node:57) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 19 tests using 1 worker
+
+(node:69) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/concept3-experience-mode.spec.ts:57:5 › existing Standard profiles remain Standard until explicitly saved (1.2s)
+  ✓   2 e2e/concept3-experience-mode.spec.ts:66:5 › Parent can save Simple, reload its persisted fixture value, and open the existing Simple library (1.4s)
+  ✓   3 e2e/concept3-experience-mode.spec.ts:87:5 › failed experience save preserves the draft for retry without changing stored fixture mode (992ms)
+  ✓   4 e2e/independent-client-integrity.spec.ts:7:7 › logout network failure is visible and retryable without an unhandled error (757ms)
+  ✓   5 e2e/independent-client-integrity.spec.ts:7:7 › logout http failure is visible and retryable without an unhandled error (662ms)
+  ✓   6 e2e/independent-client-integrity.spec.ts:33:5 › logout holds a single pending request and recovers after completion (441ms)
+  ✓   7 e2e/independent-client-integrity.spec.ts:53:5 › logout times out a hung request with honest feedback and permits retry (915ms)
+  ✓   8 e2e/request-preview.spec.ts:13:7 › requested video Preview opens on 390px without approval (638ms)
+  ✓   9 e2e/request-preview.spec.ts:13:7 › requested video Preview opens on 820px without approval (713ms)
+  ✓  10 e2e/request-preview.spec.ts:122:5 › request preview slow frame has retry and never mutates approval (520ms)
+  ✓  11 e2e/request-preview.spec.ts:162:5 › Inbox collection creation failures are visible and retry retains input (643ms)
+  ✓  12 e2e/request-preview.spec.ts:204:5 › Library collection and removal failures surface without losing selection (474ms)
+  ✓  13 e2e/request-preview.spec.ts:253:5 › confirmed Inbox collection stays visibly selected after a failed refresh (698ms)
+(node:337) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  14 e2e/fresh-child-stranger.spec.ts:48:5 › fresh younger child chooses a picture and returns to own library (1.4s)
+  ✓  15 e2e/fresh-child-stranger.spec.ts:68:5 › fresh older child retrieves saves and requests (1.2s)
+  ✓  16 e2e/fresh-child-stranger.spec.ts:94:5 › fresh shared family switch PIN recovery and parent boundary (1.1s)
+FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+  ✓  17 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (1.4s)
+FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+  ✓  18 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (2.3s)
+  ✓  19 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (1.0s)
+
+  19 passed (23.0s)
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
