@@ -1,0 +1,12 @@
+{
+  "application": "1c1228faef321e8cc3a4b30429a64e6897977575",
+  "testSuccessor": "a2aa711a082d3063de0ac1b753687177bb99ea5d",
+  "src": "9c247f77cf64143c320b204587e2f3d1e7f487e4",
+  "buildId": "aYe4z0JOy0gpJ3IlJFL44",
+  "sha256": {
+    "src/lib/server/product.ts": "9431d13f8281a9f67076659c6733b3b3082737278bdc3eb9729192e9cbe12bcc",
+    "src/lib/profile-access-status.ts": "27d1e5cb64e7024601f30c2f6fd2add91d0721d7538e982ba717e244c05558c1",
+    "src/components/child/ChildLogin.tsx": "a8dcb36c915947e2c8d01baced28cb1d2fa7bd7e0dc1f911fe5cfcb4cac48e1e",
+    "src/components/parent/ParentApp.tsx": "481d38751ffe040e815f14e97ac12cda3b0304572235210668a9cf8337fb9a61"
+  }
+}

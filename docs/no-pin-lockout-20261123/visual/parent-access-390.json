@@ -1,0 +1,104 @@
+{
+  "scope": "synthetic Parent access only",
+  "geometry": {
+    "region": {
+      "x": 37,
+      "y": 3247.625,
+      "width": 316,
+      "height": 478.171875
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "scroll": {
+      "x": 0,
+      "y": 2972
+    },
+    "assets": [
+      {
+        "text": "Access on this device",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3247.625,
+          "width": 316,
+          "height": 21.890625
+        }
+      },
+      {
+        "text": "Check entry limits if this child cannot open their library. Viewing time and schedules still apply.",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3281.03125,
+          "width": 316,
+          "height": 74.390625
+        }
+      },
+      {
+        "text": "Check access",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3371.421875,
+          "width": 132,
+          "height": 46
+        }
+      },
+      {
+        "text": "Child PIN is off. No child PIN wait applies.",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3417.421875,
+          "width": 316,
+          "height": 24.796875
+        }
+      },
+      {
+        "text": "Device entry is limited until 11/23/2026, 7:00:40 AM.",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3458.21875,
+          "width": 316,
+          "height": 49.59375
+        }
+      },
+      {
+        "text": "Checked at 11/23/2026, 7:00:00 AM. Check again for the latest status.",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3523.8125,
+          "width": 316,
+          "height": 49.59375
+        }
+      },
+      {
+        "text": "A verified Parent can open this library without changing its PIN, entry limits, viewing time, or schedule.",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3589.40625,
+          "width": 316,
+          "height": 74.390625
+        }
+      },
+      {
+        "text": "Open Benny’s library as Parent",
+        "role": null,
+        "rect": {
+          "x": 37,
+          "y": 3679.796875,
+          "width": 254,
+          "height": 46
+        }
+      }
+    ]
+  },
+  "buildId": "aYe4z0JOy0gpJ3IlJFL44",
+  "parentSourceSha256": "481d38751ffe040e815f14e97ac12cda3b0304572235210668a9cf8337fb9a61",
+  "imageSha256": "c59ab3e762b1e564af1066a019ba50814bbb7b365928abb1678293db3c07f70c"
+}

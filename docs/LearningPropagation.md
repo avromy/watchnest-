@@ -331,3 +331,11 @@ PROJECT/PROCESS: featureimplementedinAPIandchildfixturesisnotParentreachablefeat
 PROCESS: Playwright exactgetByLabelonimplicitselectlabelcanmisscomputedAXcombobox; confirmactualAXandqueryrole/namebeforecallingproductdefect. Neverrunrunnerssharingartifactdirectoryconcurrently; preserveharnessFAILandrerunserially.
 
 ROUTING: providerAPIsettingsprojectionnotshowingguardflagcannotcertifysafealiasassignment; testproductionaliasassumptionneverbya live deployment. Sourcegatesremainusablewhileprovideraccessblocked; identityandphysicalgatesarenotwaived.
+
+## Credential budget incorrectly applied to credential-free entry
+
+PROJECT/DOMAIN: select throttle semantics from authoritative profile requirements, not merely the endpoint name. Counting all successful credential-free admissions as credential guesses creates a false lockout. Separate abuse budgets from actual credential-verification budgets, preserve ownership and timer gates, and expose accurate Parent-scoped status rather than a generic account-lockout explanation.
+
+PROCESS: a mock rate RPC returning one boolean cannot detect accumulated successful-attempt exhaustion. Use per-key/window count-aware regressions, old-spent-bucket cases and actual no-PIN UI journeys. Keep actual Founder evidence separate from synthetic wrong-PIN security cases. Source threshold/text is not the unseen family's established attempt count/message.
+
+Recovery must be explicit, scoped, audited and honest about outcome. Parent admission must not clear counters or grant time; test downstream playback denial after recovery, not merely session admission success. Read-only status must avoid unrelated cleanup writes. No family-specific private facts propagated into universal skill packages.

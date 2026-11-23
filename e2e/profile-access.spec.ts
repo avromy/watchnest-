@@ -1,4 +1,6 @@
 import { test, expect } from "@playwright/test";
+import { createHash } from "node:crypto";
+import { readFileSync, writeFileSync } from "node:fs";
 import { fixture, profiles } from "./fixtures";
 
 test("synthetic Parent access: PIN-off status is distinct from device wait", async ({
@@ -19,7 +21,7 @@ test("synthetic Parent access: PIN-off status is distinct from device wait", asy
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/parent/children");
   const access = page.getByRole("region", {
-    name: "Miri access on this device",
+    name: "Benny access on this device",
   });
   await access
     .getByRole("button", { name: "Check access", exact: true })
@@ -34,10 +36,18 @@ test("synthetic Parent access: PIN-off status is distinct from device wait", asy
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  await page.screenshot({
-    path: test.info().outputPath("parent-access-mobile.png"),
-    fullPage: true,
-  });
+  for (const width of [390, 820]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : 1180 });
+    await access.scrollIntoViewIfNeeded();
+    const path = test.info().outputPath(`parent-access-${width}.png`);
+    await page.screenshot({ path, fullPage: true });
+    const geometry = await access.evaluate((node) => {
+      const rect = (el: Element) => { const r=el.getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height}; };
+      return {region:rect(node),viewport:{width:innerWidth,height:innerHeight},scroll:{x:scrollX,y:scrollY},assets:Array.from(node.querySelectorAll("h3,p,button")).map(el=>({text:el.textContent,role:el.getAttribute("role"),rect:rect(el)}))};
+    });
+    const sha=(p:string)=>createHash("sha256").update(readFileSync(p)).digest("hex");
+    writeFileSync(path.replace(".png",".json"),JSON.stringify({scope:"synthetic Parent access only",geometry,buildId:readFileSync(".next/BUILD_ID","utf8").trim(),parentSourceSha256:sha("src/components/parent/ParentApp.tsx"),imageSha256:sha(path)},null,2));
+  }
 });
 
 test("synthetic Parent access: failed checks and denied recovery remain visible", async ({

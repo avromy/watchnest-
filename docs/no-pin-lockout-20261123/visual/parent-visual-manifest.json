@@ -1,0 +1,31 @@
+{
+  "applicationSourceFreeze": "1c1228faef321e8cc3a4b30429a64e6897977575",
+  "actualBuildId": "aYe4z0JOy0gpJ3IlJFL44",
+  "actualParentSourceSha256": "481d38751ffe040e815f14e97ac12cda3b0304572235210668a9cf8337fb9a61",
+  "files": [
+    {
+      "path": "docs/no-pin-lockout-20261123/visual/parent-access-390.json",
+      "sha256": "598d37ac982fdef22c957000d14309e4488091d611a0ab1227d0168daabd9f0c"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/visual/parent-access-390.png",
+      "sha256": "c59ab3e762b1e564af1066a019ba50814bbb7b365928abb1678293db3c07f70c"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/visual/parent-access-820.json",
+      "sha256": "8c463f209432c850e76da3305cb882c4dc5ede14eea383e22f3b75142b906bc7"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/visual/parent-access-820.png",
+      "sha256": "b92eb25c0ffafee7e128d790521c74a9b89e4f75ca9d30f176fe3633618af16d"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/visual/readable-parent-access-390.png",
+      "sha256": "e20db043b3d46a6a2164d8c037eb1991dcd7325d8e154d55ba7b1c3139b5ff77"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/visual/readable-parent-access-820.png",
+      "sha256": "e20db043b3d46a6a2164d8c037eb1991dcd7325d8e154d55ba7b1c3139b5ff77"
+    }
+  ]
+}

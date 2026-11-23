@@ -21,3 +21,9 @@ LiveRPCdefinitionread-onlyverified: fixedwindow beginsfirstrequest, incrementsal
 NoPINadmissionrepair/regressions assigned separatelyfromParentinspection/recoveryUI. PreserveParentPINsharedthrottle, childPINthrottlewhenactuallyrequired, device/ownership/handoff/atomicadmission/window/timer/approvalprotections. HarmlessnoPINentry mustnotconsultspentcredentialbucket. Generaladmission/networkabusethrottle retainsseparatereason/budget. Parentexplicitrecoverymustbeowned/auditedandmustnotgranttimeorclearanotherfamily'scounter. Existinglegitimatecountersonlivearenotsilentlyreset.
 
 Environmentstartupinitiallyreportedoffline409; subsequentavailableexecutorworked. Continuedfrompreserveddirtyworktree, noreset/newBuilder. All8governancefilesconsumed; currentFounder correctionoverridesearlierassumptions. ExistingrepairedConcept3unchangedexceptboundednewlockoutrepair. Hosted/domain/physicalreleaseholdremains; no routinesignoffneededoncequalified.
+
+## Readback and release boundary
+
+Read-only aggregate queries found five matched PIN-off device/profile limiter rows, maximumattempts3 and zero currently active blocks; no matched legacy family-link rows. No row/key/token was exported and no counter cleared. This snapshot cannot attribute the daughter's historical error or prove her present access. The confirmed defect is an admission throttle, not proof of a disabled Supabase account.
+
+Repair source1c1228fa and test-only successora2aa711a preserve the integrated Concept3 work. CI172passed419unit/database and112browser flows plus build/type/lint/audit0; independent75 safetycases and narrow Parentvisual16assets/64edges passed. All are explicitly local/synthetic/source scopes. Source/candidate identity, deployment hold, Parent recovery semantics and minimum external dependency are in Recovery.md. New recovery controls are not currently live.

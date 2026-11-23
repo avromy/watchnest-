@@ -1,3 +1,19 @@
+# CURRENT — no-PIN child lockout correction; repair held for release
+
+Founder firsthand correction: daughter has NO child PIN; she was selecting her own profile, not entering a wrong PIN. Exact incident text/count/device sequence/duration/build remain unknown. This supersedes any earlier wrong-PIN attribution. Source-confirmed defect exists in canonical77 and candidate2fba: successful no-PIN admission unconditionally consumed child credential budget5/900. Read-only snapshots show no currently active matched no-PIN block, not disproof of history. No real counters/PINs/time limits changed.
+
+Source repair1c1228faef321e8cc3a4b30429a64e6897977575 and test-only successora2aa711a082d3063de0ac1b753687177bb99ea5d share src9c247f77cf64143c320b204587e2f3d1e7f487e4. Child5 budget applies only when authoritative profile requires child PIN; separate120/60 device admission abuse limit and original network/Parent safeguards retained. Child no-PIN pending feedback added. Parent Family profiles add read-only Check access and audited explicit Parent recovery; no resets or viewing-time grants. See docs/no-pin-lockout-20261123/Recovery.md and Incident.md.
+
+419 local unit/database tests, independent75 focused safety tests, Parent9 and no-PIN7 browser cases, finalParentcapture2 PASS. Parent narrowHumanEye16assets/64edges CLEAN. Failed synthetic baseline, launch/config and strict-alert harness receipts preserved. CI172/run45088393241 all3jobsSUCCESS:419unit/112browser/build/lint/type/prodaudit0. ExactCImerge/app tree equivalence verified. Existing Concept3/stability/Preview/timer/Daily/handoff work preserved.
+
+Canonical live remains77a5017d938ded03b1530c2b72978cef27273d61/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. The family's actual incident URL/build is not established. Cloud Browser production-settings check still shows Vercel Login; no authenticated provider context verified, no repeated handoff. API guard projection insufficient; no new configured-stage/alias experiment, merge/promotion/migration. Phase2 remains unapplied. Current Parent recovery controls exist only in held candidate.
+
+First external dependency: safe provider access/manual alias-plan verification, then configured exact candidate and authenticated hosted Parent/Child/no-PIN/Preview/recovery acceptance. Physical iPad safety checks and final independent release gates remain required afterward. Qualified autonomous promotion authorized, no routine approval. Preserve compatible rollback, guardedv2 or failclosed after eventualphase2; do not restore legacy bypass.
+
+Email notification was previously unavailable from missing mailbox routing link_id; recheck supported notification capability before claiming a send. Founder correction/evidence must be saved in Notion. Recovery clearance is separate from product readiness.
+
+---
+
 # CURRENT — integrated Concept3 follow-up; exact release HOLD
 
 Frozenapplication2fba88712bd74c868e27ff5d0e0f067332340507/src c7aa895727fa7301c4f6d39835c42b7dce5e44c0 on samepremiumbranch/PR49. Original0aacstability/Preview/sessionfixes preserved. AddedmissingParentSimple/Standardcontrol and localuncertainSavefeedbackafterindependentgapreview; serverdiagnosticlabels only. See docs/release-20261122/Qualification.md, Recovery.md, freeze.json andindependentreceipts.
