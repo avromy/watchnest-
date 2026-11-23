@@ -440,9 +440,15 @@ describe("actual route profile handoff enforcement (synthetic Auth/DB)", () => {
     expect((await post("auth/child", { profileId: sibling })).status).toBe(200);
     expect(admissions()[0].args.p_parent_authorized).toBe(true);
   });
-  it("rejects verified Parent authority from another household", async () => {
+  it("rejects verified Parent authority from another household without a configured Parent PIN", async () => {
+    state.parentHash = "";
     state.cookies.wn_parent = "synthetic-parent";
     state.authParent = "10000000-0000-4000-8000-000000000002";
+    expect((await post("auth/child", { profileId: sibling })).status).toBe(403);
+    expect(admissions()).toEqual([]);
+  });
+  it("does not treat a missing Parent PIN as permission for an unauthenticated sibling change", async () => {
+    state.parentHash = "";
     expect((await post("auth/child", { profileId: sibling })).status).toBe(403);
     expect(admissions()).toEqual([]);
   });

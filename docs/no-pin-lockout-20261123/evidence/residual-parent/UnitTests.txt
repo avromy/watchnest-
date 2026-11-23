@@ -1,0 +1,63 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+ RUN  v5.0.3 /workspace/scratch/b4fb31747e8d/watchnest-integrity
+
+············································································stderr | src/lib/server/product-dispatch.test.ts > authenticated route dispatch regression > keeps an already-valid trusted device signed in when renewal storage is temporarily unavailable
+[watchnest-device] renewal skipped { code: 'TRANSIENT', status: 503 }
+
+·········stderr | src/lib/server/profile-handoff-route.test.ts > actual route profile handoff enforcement (synthetic Auth/DB) > fails closed before issuing a child cookie if outstanding Parent Mode revocation fails
+[watchnest-data] operation failed {
+  context: 'family-data',
+  code: 'SYNTHETIC_REVOKE_FAILED',
+  status: 503
+}
+
+······················stderr | src/lib/server/product-dispatch.test.ts > verified parent ownership and cache retention > returns YouTube search results even when the optional search cache is unavailable
+[watchnest-search] expired cache cleanup skipped { code: 'CACHE_UNAVAILABLE', status: 503 }
+
+stderr | src/lib/server/product-dispatch.test.ts > verified parent ownership and cache retention > returns YouTube search results even when the optional search cache is unavailable
+[watchnest-search] cache read skipped { code: 'CACHE_UNAVAILABLE' }
+
+stderr | src/lib/server/product-dispatch.test.ts > verified parent ownership and cache retention > returns YouTube search results even when the optional search cache is unavailable
+[watchnest-search] cache write skipped { code: 'CACHE_UNAVAILABLE' }
+
+···················································································stderr | src/lib/server/independent-route-resume.test.ts > independent route security resume (mocked DB/Auth, actual handle) > child remote sign-out failure reports 503 but clears all browser cookies
+[watchnest-data] operation failed { context: 'family-data', code: 'unknown', status: 503 }
+
+stderr | src/lib/server/independent-route-resume.test.ts > independent route security resume (mocked DB/Auth, actual handle) > parent remote sign-out failure reports 503 but clears all browser cookies
+[watchnest-data] operation failed { context: 'family-data', code: 'unknown', status: 503 }
+
+·························································stderr | src/lib/server/profile-access-route.test.ts > Parent access inspection and recovery boundaries > does not admit when recovery audit fails
+[watchnest-data] operation failed { context: 'family-data', code: 'SYNTHETIC_AUDIT_FAILED', status: 503 }
+
+·················stderr | src/lib/server/session-authority-sdk.test.ts > real SDK: session dependency outage is 503 rather than anonymous role downgrade
+[watchnest-data] operation failed { context: 'family-data', code: '08006', status: 503 }
+
+·········stderr | src/lib/server/session-authority-sdk.test.ts > real SDK: transient auth network-failure is 503 rather than anonymous downgrade
+TypeError: synthetic auth network unavailable
+    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/src/lib/server/session-authority-sdk.test.ts:176:19
+    at Mock (file:///workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/vitest/dist/chunks/spy.DgMTfhrK.js:323:40)
+    at fetch (/workspace/scratch/b4fb31747e8d/watchnest-integrity/src/lib/server/session-authority-sdk.test.ts:29:38)
+    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/lib/helpers.js:109:29
+    at _handleRequest (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/lib/fetch.js:101:24)
+    at _request (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/lib/fetch.js:91:24)
+    at SupabaseAuthClient._getUser (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js:2463:51)
+    at SupabaseAuthClient.getUser (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js:2449:31)
+    at parent (/workspace/scratch/b4fb31747e8d/watchnest-integrity/src/lib/server/product.ts:134:43)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+·····················································································································································
+
+ Test Files  31 passed (31)
+      Tests  422 passed (422)
+   Start at  10:55:46
+   Duration  7.07s (tests 89%, import 7%, transform 4%, worker 1%)
+
+    Isolate  31 workers spawned · ~234ms startup each (spawn + environment, per file)
+             at least ~672ms faster with isolate: false — reuses workers across files instead of one per file
+
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

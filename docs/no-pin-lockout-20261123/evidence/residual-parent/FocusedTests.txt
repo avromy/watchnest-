@@ -1,0 +1,37 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+ RUN  v5.0.3 /workspace/scratch/b4fb31747e8d/watchnest-integrity
+
+stderr | src/lib/server/session-authority-sdk.test.ts > real SDK: session dependency outage is 503 rather than anonymous role downgrade
+[watchnest-data] operation failed { context: 'family-data', code: '08006', status: 503 }
+
+stderr | src/lib/server/session-authority-sdk.test.ts > real SDK: transient auth network-failure is 503 rather than anonymous downgrade
+TypeError: synthetic auth network unavailable
+    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/src/lib/server/session-authority-sdk.test.ts:176:19
+    at Mock (file:///workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/vitest/dist/chunks/spy.DgMTfhrK.js:323:40)
+    at fetch (/workspace/scratch/b4fb31747e8d/watchnest-integrity/src/lib/server/session-authority-sdk.test.ts:29:38)
+    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/lib/helpers.js:109:29
+    at _handleRequest (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/lib/fetch.js:101:24)
+    at _request (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/lib/fetch.js:91:24)
+    at SupabaseAuthClient._getUser (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js:2463:51)
+    at SupabaseAuthClient.getUser (/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js:2449:31)
+    at parent (/workspace/scratch/b4fb31747e8d/watchnest-integrity/src/lib/server/product.ts:134:43)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+····stderr | src/lib/server/profile-access-route.test.ts > Parent access inspection and recovery boundaries > does not admit when recovery audit fails
+[watchnest-data] operation failed { context: 'family-data', code: 'SYNTHETIC_AUDIT_FAILED', status: 503 }
+
+·····································stderr | src/lib/server/profile-handoff-route.test.ts > actual route profile handoff enforcement (synthetic Auth/DB) > fails closed before issuing a child cookie if outstanding Parent Mode revocation fails
+[watchnest-data] operation failed {
+  context: 'family-data',
+  code: 'SYNTHETIC_REVOKE_FAILED',
+  status: 503
+}
+
+······································
+
+ Test Files  4 passed (4)
+      Tests  79 passed (79)
+   Start at  10:55:15
+   Duration  1.75s (tests 63%, import 23%, transform 14%, worker 1%)
+
