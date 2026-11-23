@@ -424,7 +424,18 @@ describe("actual route profile handoff enforcement (synthetic Auth/DB)", () => {
     ).toBe(200);
     expect(admissions()[0].args.p_parent_authorized).toBe(false);
   });
-  it("authorizes a change with an existing verified Parent session only for that household", async () => {
+  it.each(["wn_parent", "wn_refresh", "wn_parent_mode"])(
+    "requires an explicit handoff PIN despite a residual %s session",
+    async (cookieName) => {
+      state.cookies[cookieName] = "synthetic-parent";
+      expect((await post("auth/child", { profileId: sibling })).status).toBe(403);
+      expect(admissions()).toEqual([]);
+      expect((await post("auth/child", { profileId: sibling, parentPin: "8452" })).status).toBe(200);
+      expect(admissions()[0].args.p_parent_authorized).toBe(true);
+    },
+  );
+  it("retains signed-in Parent enrollment when no Parent PIN is configured", async () => {
+    state.parentHash = "";
     state.cookies.wn_parent = "synthetic-parent";
     expect((await post("auth/child", { profileId: sibling })).status).toBe(200);
     expect(admissions()[0].args.p_parent_authorized).toBe(true);

@@ -1,3 +1,13 @@
+# CURRENT — physical sibling handoff FAIL; residual Parent-session repair under qualification
+
+Founder actual exact5859 stage reported Ari picture/sound/fullscreen; Builder End now produced Parent Stopped by Parent and Founder screenshot Time’s up for now. Ari stayed blocked after return including Parent PIN. Founder explicitly confirmed Miri entry/playback did NOT require Parent PIN: physical handoff FAIL, release blocker. See no-pin-lockout-20261123/PhysicalHandoffFailure.md (verbatim evidence, limits, read-only chronology).
+
+Reproduced narrow source path: auth/child accepted residual verified Parent cookies for sibling entry without target PIN. New guard requires explicit handoff PIN when configured; no-PIN own entry and verified no-ParentPIN enrollment preserved. All3 new regressions failed200vs403 before fix; focused79/full422 unit/database PASS, build/type/lint/audit0 PASS locally. Browser renewal in progress. Independent source review PASS within scope; exact physical RCA still unproven and successor hosted/device acceptance pending. Original5859 stage must NOT be promoted. All affected prior acceptance is STALE for changed code; Concept3 rendered source unchanged.
+
+Fresh canonical reread still77/GiR, old stageCfHz unchanged. No merge/promotion/alias/migration/phase2/family settings or counter reset. Current Ari Parent stop remains; no Allow/Give/Daily. Next finish successor automated qualification → freeze/stage safely → affected hosted/device/final independent gates → qualified autonomous canonical release, preserve rollback. No new routine approval/login requested.
+
+---
+
 # CURRENT — PIN accepted; cold Parent review complete within scope; exact device safety gate
 
 Native secure chat PIN submission succeeded and fresh SAME Work Cloud Browser Parent dashboard was verified. Manual takeover did not load for Founder; that delivery failure was recovered through native browserAuth, with no secrets in chat or connectedChrome. Old interrupted-PIN hold is superseded for this verified session. See no-pin-lockout-20261123/ParentPinReturn.md.

@@ -1147,7 +1147,14 @@ export async function handle(request: globalThis.Request, path: string[]) {
         )
           throw new Failure("That Parent PIN is not correct.", 401);
         parentAuthorized = true;
-      } else if (linked.active_profile_id !== b.profileId) {
+      } else if (
+        linked.active_profile_id !== b.profileId &&
+        !household.parent_pin_hash
+      ) {
+        // A PIN-configured family requires a deliberate, target-specific PIN
+        // handoff even if a stale tab still carries a valid Parent session.
+        // Explicit Parent management uses parent/view-as-child instead. Families
+        // without a Parent PIN retain verified full sign-in enrollment.
         try {
           const verified = await parent();
           parentAuthorized = verified.id === linked.parent_id;
