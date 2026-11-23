@@ -208,8 +208,12 @@ export default function ChildLogin() {
             </button>
           ))}
         </div>
+        {busy && !selected && !parentMode && (
+          <p role="status">Opening library…</p>
+        )}
         <button
           className="parent-entry"
+          disabled={busy}
           onClick={(event) => {
             modalTrigger.current = event.currentTarget;
             setError("");

@@ -1,4 +1,5 @@
 import "server-only";
+import { throttleStatus } from "../profile-access-status";
 import { isWithinAccessWindow } from "@/lib/access-window";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
@@ -359,7 +360,12 @@ async function metadataMaintenance(client: ReturnType<typeof db>) {
       status: expiredCache.status || 503,
     });
 }
-async function limit(key: string, max: number, seconds = 900) {
+async function limit(
+  key: string,
+  max: number,
+  seconds = 900,
+  message = "Too many attempts. Please wait before trying again.",
+) {
   const allowed = check(
     await db().rpc("wn_rate_limit", {
       p_key: digest(key),
@@ -367,11 +373,7 @@ async function limit(key: string, max: number, seconds = 900) {
       p_seconds: seconds,
     }),
   );
-  if (!allowed)
-    throw new Failure(
-      "Too many attempts. Please wait before trying again.",
-      429,
-    );
+  if (!allowed) throw new Failure(message, 429);
 }
 async function ownedProfiles(parentId: string, profileIds: string[]) {
   if (!profileIds.length) return;
@@ -1118,7 +1120,14 @@ export async function handle(request: globalThis.Request, path: string[]) {
       // A family link is a locator, never authority to discard a device's
       // previous child identity. Enrollment still requires a Parent sign-in.
       const linked = await device();
-      await limit("child:" + linked.id + ":" + b.profileId, 5);
+      // Routine PIN-off returns are admissions, not credential guesses. Keep
+      // device abuse bounded separately from the tighter PIN budgets below.
+      await limit(
+        "child-entry:" + linked.id,
+        120,
+        60,
+        "This device is opening profiles too quickly. Ask Parent to check access on this device.",
+      );
       const household = check(
         await client
           .from("parents")
@@ -1179,6 +1188,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
           403,
         );
       if (p.pin_enabled && !parentAuthorized) {
+        await limit("child:" + linked.id + ":" + b.profileId, 5);
         if (!b.passcode || !verifyPin(b.passcode, p.pin_hash || ""))
           throw new Failure("Incorrect passcode.", 401);
       }
@@ -1211,7 +1221,11 @@ export async function handle(request: globalThis.Request, path: string[]) {
     if (route.startsWith("parent/")) {
       const p = await parent();
       await limit("parent-actions:" + p.id, 300, 60);
-      if (route !== "parent/session-status") await metadataMaintenance(client);
+      if (
+        route !== "parent/session-status" &&
+        route !== "parent/profile-access"
+      )
+        await metadataMaintenance(client);
       return await parentRoute(route, method, body, p, request);
     }
     if (route.startsWith("child/")) {
@@ -1249,6 +1263,63 @@ async function parentRoute(
   request: globalThis.Request,
 ) {
   const client = db();
+  if (route === "parent/profile-access" && method === "GET") {
+    const profileId = id.parse(
+      new URL(request.url).searchParams.get("profileId"),
+    );
+    await ownedProfiles(p.id, [profileId]);
+    // Inspection validates the existing device without renewing or mutating it.
+    const deviceToken = (await cookies()).get("wn_device")?.value;
+    if (!deviceToken)
+      throw new Failure("Sign in to connect this family device.", 401);
+    const linked = check(
+      await client
+        .from("household_devices")
+        .select("id,parent_id")
+        .eq("token_hash", digest(deviceToken))
+        .is("revoked_at", null)
+        .gt("expires_at", new Date().toISOString())
+        .maybeSingle(),
+    );
+    if (!linked)
+      throw new Failure(
+        "This family device session expired. Sign in again.",
+        401,
+      );
+    if (linked.parent_id !== p.id)
+      throw new Failure("This device belongs to another family.", 403);
+    const target = check(
+      await client
+        .from("profiles")
+        .select("pin_enabled")
+        .eq("id", profileId)
+        .eq("parent_id", p.id)
+        .is("archived_at", null)
+        .single(),
+    );
+    const readWindow = async (key: string) =>
+      check(
+        await client
+          .from("login_limits")
+          .select("window_started,attempts")
+          .eq("key", digest(key))
+          .maybeSingle(),
+      );
+    // A historical PIN bucket has no authority over a profile with its PIN off.
+    const pinWindow = target.pin_enabled
+      ? await readWindow("child:" + linked.id + ":" + profileId)
+      : null;
+    const entryWindow = await readWindow("child-entry:" + linked.id);
+    const now = Date.now();
+    return reply({
+      serverNow: new Date(now).toISOString(),
+      pin: {
+        required: target.pin_enabled,
+        ...throttleStatus(pinWindow, 5, 900, now),
+      },
+      admission: throttleStatus(entryWindow, 120, 60, now),
+    });
+  }
   if (route === "parent/view-as-child" && method === "POST") {
     const profileId = id.parse(body.profile_id);
     await ownedProfiles(p.id, [profileId]);
@@ -1265,6 +1336,22 @@ async function parentRoute(
         .is("archived_at", null)
         .single(),
     );
+    // Record explicit Parent recovery before admission; a failed audit prevents
+    // recovery from proceeding. No rate-limit, PIN, or timer state is cleared.
+    if (body.recovery === true)
+      check(
+        await client.from("audit_events").insert({
+          parent_id: p.id,
+          actor_type: "parent",
+          action: "parent_profile_recovery_requested",
+          entity_type: "profile",
+          entity_id: profileId,
+          metadata_json: {
+            device_id: linked.id,
+            method: "verified_parent_admission",
+          },
+        }),
+      );
     const admitted = check(
       await client.rpc("wn_admit_device_child_session", {
         p_device: linked.id,

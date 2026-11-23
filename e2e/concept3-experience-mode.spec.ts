@@ -78,7 +78,7 @@ test("Parent can save Simple, reload its persisted fixture value, and open the e
   await captureModeState(page, card, "saved-simple");
   await page.reload();
   await expect(card.getByRole("combobox", { name: "Library experience", exact: true })).toHaveValue("simple");
-  await card.getByRole("button", { name: "View as Ari", exact: true }).click();
+  await card.getByRole("button", { name: "Open Ari’s library as Parent", exact: true }).click();
   await expect(page).toHaveURL(/\/watch\/home$/);
   await expect(page.locator('[data-experience-mode="simple"]')).toBeVisible();
   await expect(page.locator(".library-more summary")).toHaveText("More");

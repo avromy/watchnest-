@@ -19,6 +19,10 @@ const state = vi.hoisted(() => ({
   revokeError: false,
   admitResult: "40000000-0000-4000-8000-000000000001" as string | null,
   rateAllowed: true,
+  rateBuckets: {} as Record<string, { attempts: number; started: number }>,
+  rateNow: Date.now(),
+  availableFrom: null as number | null,
+  availableUntil: null as number | null,
   parentStopped: false,
 }));
 vi.mock("server-only", () => ({}));
@@ -46,13 +50,18 @@ vi.mock("@supabase/supabase-js", () => ({
     },
     rpc: async (name: string, args: any) => {
       state.calls.push({ name, args });
+      if (name === "wn_rate_limit") {
+        const previous = state.rateBuckets[args.p_key];
+        const expired = !previous || previous.started < state.rateNow - args.p_seconds * 1000;
+        const bucket = expired ? { attempts: 1, started: state.rateNow } : { ...previous, attempts: previous.attempts + 1 };
+        state.rateBuckets[args.p_key] = bucket;
+        return { data: state.rateAllowed && bucket.attempts <= args.p_limit, error: null };
+      }
       return {
         data:
           name === "wn_admit_device_child_session"
             ? state.admitResult
-            : name === "wn_rate_limit"
-              ? state.rateAllowed
-              : name === "wn_resolve_profile_session"
+            : name === "wn_resolve_profile_session"
                 ? {
                     profile_state: {
                       session_parent_blocked: state.parentStopped,
@@ -97,6 +106,8 @@ vi.mock("@supabase/supabase-js", () => ({
             pin_enabled: state.childPinEnabled,
             pin_hash: state.childHash,
             archived_at: null,
+            available_from_minute: state.availableFrom,
+            available_until_minute: state.availableUntil,
           };
           data =
             filters.parent_id && filters.parent_id !== p.parent_id
@@ -166,7 +177,7 @@ vi.mock("@supabase/supabase-js", () => ({
   }),
 }));
 import { handle } from "./product";
-import { hashPin } from "./product-security";
+import { digest, hashPin } from "./product-security";
 const parentHash = hashPin("8452");
 const childHash = hashPin("1937");
 const current = "20000000-0000-4000-8000-000000000001";
@@ -216,10 +227,57 @@ beforeEach(() => {
   state.revokeError = false;
   state.admitResult = "40000000-0000-4000-8000-000000000001";
   state.rateAllowed = true;
+  state.rateBuckets = {};
+  state.rateNow = Date.now();
+  state.availableFrom = null;
+  state.availableUntil = null;
   state.parentStopped = false;
 });
-afterEach(() => vi.unstubAllEnvs());
+afterEach(() => { vi.unstubAllEnvs(); vi.useRealTimers(); });
 describe("actual route profile handoff enforcement (synthetic Auth/DB)", () => {
+  it("allows seven normal same-profile PIN-off entries without spending PIN guess budget", async () => {
+    const statuses: number[] = [];
+    for (let attempt = 0; attempt < 7; attempt++) statuses.push((await post("auth/child", { profileId: current })).status);
+    expect(statuses).toEqual(Array(7).fill(200));
+    expect(state.calls.filter((call) => call.name === "wn_rate_limit" && call.args.p_limit === 5)).toEqual([]);
+  });
+  it("does not reuse an exhausted historical child PIN bucket for a PIN-off profile", async () => {
+    state.rateBuckets[digest("child:30000000-0000-4000-8000-000000000001:" + current)] = { attempts: 6, started: state.rateNow };
+    expect((await post("auth/child", { profileId: current })).status).toBe(200);
+  });
+  it("shares five real Parent PIN guesses across handoff and Parent Mode", async () => {
+    for (let attempt = 0; attempt < 3; attempt++) expect((await post("auth/child", { profileId: sibling, parentPin: "0000" })).status).toBe(401);
+    for (let attempt = 0; attempt < 2; attempt++) expect((await post("auth/parent-mode", { pin: "0000" })).status).toBe(401);
+    expect((await post("auth/parent-mode", { pin: "8452" })).status).toBe(429);
+    expect((await post("auth/child", { profileId: current })).status).toBe(200);
+  });
+  it("still limits actual child PIN guesses to five per window, then permits a fresh window", async () => {
+    state.childPinEnabled = true;
+    for (let attempt = 0; attempt < 5; attempt++) expect((await post("auth/child", { profileId: current, passcode: "0000" })).status).toBe(401);
+    expect((await post("auth/child", { profileId: current, passcode: "1937" })).status).toBe(429);
+    state.rateNow += 900001;
+    expect((await post("auth/child", { profileId: current, passcode: "1937" })).status).toBe(200);
+  });
+  it("does not let harmless PIN-off entries consume a later genuine child PIN attempt", async () => {
+    for (let attempt = 0; attempt < 7; attempt++) await post("auth/child", { profileId: current });
+    state.childPinEnabled = true;
+    expect((await post("auth/child", { profileId: current, passcode: "1937" })).status).toBe(200);
+  });
+  it("retains a separate high device admission bound for PIN-off traffic", async () => {
+    for (let attempt = 0; attempt < 120; attempt++) expect((await post("auth/child", { profileId: current })).status).toBe(200);
+    expect((await post("auth/child", { profileId: current })).status).toBe(429);
+    state.rateNow += 60001;
+    expect((await post("auth/child", { profileId: current })).status).toBe(200);
+  });
+  it("keeps available-hours and sibling authorization restrictions after repeated PIN-off entries", async () => {
+    for (let attempt = 0; attempt < 7; attempt++) await post("auth/child", { profileId: current });
+    expect((await post("auth/child", { profileId: sibling })).status).toBe(403);
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-11-23T17:00:00Z"));
+    state.availableFrom = 0;
+    state.availableUntil = 1;
+    expect((await post("auth/child", { profileId: current })).status).toBe(403);
+  });
   it("keeps routine same-profile PIN-off admission available without Parent authority", async () => {
     const result = await post("auth/child", { profileId: current });
     expect(result.status).toBe(200);
@@ -233,7 +291,8 @@ describe("actual route profile handoff enforcement (synthetic Auth/DB)", () => {
   });
   it("keeps a Parent-stopped profile denied after routine same-profile re-entry", async () => {
     state.parentStopped = true;
-    expect((await post("auth/child", { profileId: current })).status).toBe(200);
+    for (let entry = 0; entry < 7; entry++)
+      expect((await post("auth/child", { profileId: current })).status).toBe(200);
     const access = await get("child/session-access");
     expect(access.status).toBe(200);
     expect((await access.json()).session_access).toMatchObject({

@@ -24,6 +24,7 @@ import RequestPreview from "./RequestPreview";
 import ProfileImage from "../ProfileImage";
 import Icon, { type IconName } from "../ui/Icon";
 import { extractYouTubeVideoUrls } from "@/lib/youtube";
+import type { ProfileAccessStatus } from "@/lib/profile-access-status";
 
 type Dashboard = {
   profiles: Profile[];
@@ -1843,9 +1844,105 @@ async function optimizedProfilePhoto(
   }
 }
 
+function ProfileAccess({ profile }: { profile: Profile }) {
+  const router = useRouter();
+  const [status, setStatus] = useState<ProfileAccessStatus | null>(null);
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+  const expiry = (value: string | null) =>
+    value ? new Date(value).toLocaleString() : "";
+  return (
+    <section aria-label={`${profile.display_name} access on this device`}>
+      <h3>Access on this device</h3>
+      <p className="muted">
+        Check entry limits if this child cannot open their library. Viewing time
+        and schedules still apply.
+      </p>
+      <button
+        className="button-secondary"
+        disabled={busy}
+        onClick={async () => {
+          setBusy(true);
+          setError("");
+          setStatus(null);
+          try {
+            setStatus(
+              await api<ProfileAccessStatus>(
+                `/api/parent/profile-access?profileId=${profile.id}`,
+              ),
+            );
+          } catch (reason) {
+            setError(
+              reason instanceof Error
+                ? reason.message
+                : "Could not check access. Try again.",
+            );
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        Check access
+      </button>
+      {status && (
+        <div role="status">
+          <p>
+            {!status.pin.required
+              ? "Child PIN is off. No child PIN wait applies."
+              : status.pin.limited
+                ? `Child PIN attempts are limited until ${expiry(status.pin.windowExpiresAt)}.`
+                : "Child PIN entry is available."}
+          </p>
+          <p>
+            {status.admission.limited
+              ? `Device entry is limited until ${expiry(status.admission.windowExpiresAt)}.`
+              : "Device entry is available."}
+          </p>
+          <p className="muted">
+            Checked at {expiry(status.serverNow)}. Check again for the latest
+            status.
+          </p>
+        </div>
+      )}
+      <p className="muted">
+        A verified Parent can open this library without changing its PIN, entry
+        limits, viewing time, or schedule.
+      </p>
+      <button
+        className="button-secondary"
+        disabled={busy}
+        onClick={async () => {
+          setBusy(true);
+          setError("");
+          try {
+            await api("/api/parent/view-as-child", "POST", {
+              profile_id: profile.id,
+              recovery: true,
+            });
+            router.replace("/watch/home");
+          } catch (reason) {
+            setError(
+              reason instanceof Error
+                ? reason.message
+                : "Could not open this profile.",
+            );
+            setBusy(false);
+          }
+        }}
+      >
+        Open {profile.display_name}’s library as Parent
+      </button>
+      {error && (
+        <p className="error" role="alert">
+          {error}
+        </p>
+      )}
+    </section>
+  );
+}
+
 function ChildSettings({ profile }: { profile: Profile }) {
   const { act, busy, reload } = useParent();
-  const router = useRouter();
   const [pin, setPin] = useState(""),
     [confirmPin, setConfirmPin] = useState(""),
     [enabled, setEnabled] = useState(profile.pin_enabled),
@@ -2081,7 +2178,9 @@ function ChildSettings({ profile }: { profile: Profile }) {
             value={experienceMode}
             disabled={busy}
             onChange={(event) =>
-              setExperienceMode(event.target.value as Profile["experience_mode"])
+              setExperienceMode(
+                event.target.value as Profile["experience_mode"],
+              )
             }
           >
             <option value="standard">Standard</option>
@@ -2160,26 +2259,7 @@ function ChildSettings({ profile }: { profile: Profile }) {
           </p>
         )}
       </form>
-      <button
-        className="button-secondary"
-        onClick={async () => {
-          setError("");
-          try {
-            await api("/api/parent/view-as-child", "POST", {
-              profile_id: profile.id,
-            });
-            router.replace("/watch/home");
-          } catch (reason) {
-            setError(
-              reason instanceof Error
-                ? reason.message
-                : "Could not open this profile.",
-            );
-          }
-        }}
-      >
-        View as {profile.display_name}
-      </button>
+      <ProfileAccess profile={profile} />
     </section>
   );
 }
@@ -3376,7 +3456,10 @@ export function Settings() {
               setLogoutBusy(true);
               setLogoutError("");
               const controller = new AbortController();
-              const timeout = window.setTimeout(() => controller.abort(), 15000);
+              const timeout = window.setTimeout(
+                () => controller.abort(),
+                15000,
+              );
               try {
                 await api("/api/auth/logout", "POST", {}, controller.signal);
                 router.replace("/login");
