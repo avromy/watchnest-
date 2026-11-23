@@ -1,3 +1,7 @@
+# CURRENT — PROJECT / PROCESS provider staging lesson
+
+Authenticated provider account is separate from authenticated application account. Project latestDeployment may identify an unpromoted production-target stage: only canonical alias readbacks identify live traffic. Initial planned aliases are not finalassignment evidence; savedmanualguard plus finalREADY/aliasreadbacks must be reconciled. Domainisolation does not isolate productiondatabase. Connector autherrorwrappers can misclassify legitimate app401; actualCloudvisible denial clarifies without bypass. No appauthretry after Founder no-repeat instruction. Current Gmailrouting now advertises explicit authorized account link IDs; older missinglink failures do not establish permanent notification unavailability. See no-pin-lockout-20261123/HostedStage.md; no universal skillmanual modified.
+
 # Concept3 qualification learning — November18
 
 Classification: PROJECT / PROCESS / CALIBRATION. No universal skill rewrite. Current Founder Concept3 supersedes earlier internal green choice while retaining engineering and unaffected task research; technical review is not authority to override explicit taste direction.
