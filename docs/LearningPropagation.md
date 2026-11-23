@@ -1,3 +1,7 @@
+# CURRENT — PROJECT / DOMAIN / PROCESS: cold Parent workload and scope
+
+A separate returning-Parent rendered auditor discovered high-volume queue friction (93requests) and collection membership scanning (96choices) without Builder conclusions. Treat search/triage improvements as product recommendations, not unproven P0. Preserve click journal before authority comparison. Prefilled-link helper text can create an expectation mismatch even while manualLoad works; distinguish recoverable polish from dead controls. Capture bytes saved browser-side were not available in executor shared path, so no persistent visual packet was fabricated. Scoped visual observation does not satisfy full Stranger/all-persona/device gates. See no-pin-lockout-20261123/ColdHostedParentReview.md. No wider universal manuals modified.
+
 # CURRENT — PROCESS / ROUTING: native protected form recovered failed manual handoff
 
 A manual Cloud Browser takeover may not render on a user's current client even when the remote page is usable. Do not generalize that to unsupported Cloud Browser or request secrets in chat. After explicit return of control, recover the same-origin page and use the advertised native browserAuth form. Read capability documentation within the active runtime: a remembered earlier read may not satisfy its runtime guard. Here no credential was submitted by the local documentation rejection; the subsequent protected PIN submission and positive Parent dashboard resolved the gate. No universal system changes from this bounded observation.
