@@ -952,7 +952,10 @@ export async function handle(request: globalThis.Request, path: string[]) {
           message: "Check your email for account recovery.",
         });
       }
-      if (!b.password || b.password.length < 12)
+      if (!b.password) throw new Failure("Enter your password.");
+      // Sign-in verifies an existing credential with the identity provider;
+      // the new-password policy applies only when creating a credential.
+      if (b.action === "signup" && b.password.length < 12)
         throw new Failure("Use a password with at least 12 characters.");
       const result =
         b.action === "signup"

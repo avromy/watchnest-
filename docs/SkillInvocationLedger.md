@@ -1,3 +1,7 @@
+# November24 auth validation defect receipt
+
+Actual81CloudbrowserAuthsubmitted→visible12characterloginerror, NOTauthenticated. Supabase0.1.2 fullinstructions/currentofficialsignInWithPassword/changelogconsumed; sourceboundaryactualdispatch3regressionsRED then7casesGREEN. Full430unit/DB,type,buildPASS; lint0errors3archivalwarnings/audit0. Independent incident_security_review exactdeltaPASS +31dispatchtestsindependentPASS, limitedscope. No visualmutation or finalphysicalPASS. Browser/hostedCIrenewalpending; newexactstageactualauthneeded. Evidence login-policy-20261124/Incident.md and independentreport. ProjectPROCESSlearningcreationpolicyisnotexistingloginpolicy.
+
 # Controlled authentication retry and checkpoint recovery receipt
 
 ProjectOS/registry/8governance/Founder/CTO/repository/deploymentstate recovered. Native browserAuth instructions and actualformconsumed; oneauthorizedrequest INTERRUPTEDBYUSER, firstfreshsameoriginParentpage→login. No credentialretry or externalbrowserfallback. Deployment/live/schema inspectedreadonly; CI174success preserved/no rerun. Authenticatedhosted/physical/finalgatesBLOCKED, no acceptanceclaim. Threecheckpointfiles restored from immutable3d115 after literalundefinedfound; validatepresence/length/historyandreadback beforeclearance. Evidence ControlledAuthRetry.md. No new source/security/visualskillPASS claimed merelyfromrecovery.

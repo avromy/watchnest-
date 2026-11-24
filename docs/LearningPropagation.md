@@ -1,3 +1,7 @@
+# PROJECT/DOMAIN auth learning — creation policy must not block verification of existing credentials
+
+Observedactualhosted12charactererror afterprotectedsubmission. Sharedlogin/signupguardpreventedproviderverification. Separateempty/maxbounds forsignin fromnewpasswordstrength; preserveproviderfailure/accountconfirmation/throttles/no cookies onfailure. Beforeescalatingauthenticationhandoffissues, distinguishtransportunknown fromactualwebsitevalidation. Neverforceusercredentialreset asworkaround forapplicationvalidationbug. Source/unitPASS remainsnotactualauthenticatedPASS. Projectrecordonly; no universalpackagechangeclaimed.
+
 # PROCESS correction — runtime reset must fail closed on checkpoint input
 
 Threepriorprependoperations wrote validnewprefix plus literalundefined afterstoredvalueswerecleared. Exact-contentreadback matchedcorruptintendedtext butdidnotprovecompleteness. Restore fullpriorcontents from immutable3d115; assert loadedstringtype/nonempty/minimumlength and no undefinedsentinel beforewrite; verify preservedhistory aswellasbytes. Protectedauthenticationabortedrequest isunknownsubmission, freshlogin meansnoverifiedParentaccess, neverwrongPIN/appfailure byinference. No automaticauthretryafterconsumedauthorization. Projectscopelearningonly.

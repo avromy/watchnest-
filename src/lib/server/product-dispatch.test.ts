@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 const state = vi.hoisted(() => ({
   role: "parent",
+  loginCalls: 0,
+  signupCalls: 0,
+  loginRejected: false,
   tables: [] as string[],
   signup: false,
   video: false,
@@ -86,24 +89,35 @@ vi.mock("@supabase/supabase-js", () => ({
           error: state.refreshInvalid ? { message: "invalid" } : null,
         };
       },
-      signInWithPassword: async () => ({
-        data: {
-          user: { id: "owner", email: "Avromy@gmail.com" },
-          session: {
-            access_token: "test",
-            refresh_token: "test",
-            expires_in: 3600,
+      signInWithPassword: async () => {
+        state.loginCalls++;
+        if (state.loginRejected)
+          return {
+            data: { user: null, session: null },
+            error: { message: "invalid credentials" },
+          };
+        return {
+          data: {
+            user: { id: "owner", email: "Avromy@gmail.com" },
+            session: {
+              access_token: "test",
+              refresh_token: "test",
+              expires_in: 3600,
+            },
           },
-        },
-        error: null,
-      }),
-      signUp: async () => ({
-        data: {
-          user: { id: "unverified", email: "Avromy@gmail.com" },
-          session: null,
-        },
-        error: null,
-      }),
+          error: null,
+        };
+      },
+      signUp: async () => {
+        state.signupCalls++;
+        return {
+          data: {
+            user: { id: "unverified", email: "Avromy@gmail.com" },
+            session: null,
+          },
+          error: null,
+        };
+      },
     },
     rpc: async (name: string, args: any) => {
       state.rpcs.push({ name, args });
@@ -222,6 +236,9 @@ afterEach(() => {
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
   state.tables = [];
+  state.loginCalls = 0;
+  state.signupCalls = 0;
+  state.loginRejected = false;
   state.role = "parent";
   state.video = false;
   state.stale = false;
@@ -463,7 +480,9 @@ describe("verified parent ownership and cache retention", () => {
                         title: "A safe result",
                         channelId: "channel",
                         channelTitle: "Creator",
-                        thumbnails: { default: { url: "https://i.ytimg.com/x.jpg" } },
+                        thumbnails: {
+                          default: { url: "https://i.ytimg.com/x.jpg" },
+                        },
                       },
                       contentDetails: { duration: "PT2M" },
                       status: {
@@ -480,7 +499,9 @@ describe("verified parent ownership and cache retention", () => {
       }),
     );
     const response = await handle(
-      new Request("https://test.local/api/parent/videos/search?q=science&type=video"),
+      new Request(
+        "https://test.local/api/parent/videos/search?q=science&type=video",
+      ),
       ["parent", "videos", "search"],
     );
     expect(response.status).toBe(200);
@@ -642,5 +663,64 @@ describe("default Supabase recovery session callback", () => {
       "test",
       expect.objectContaining({ httpOnly: true }),
     ]);
+  });
+});
+
+describe("existing Parent password sign-in policy", () => {
+  async function authenticate(action: string, password: string) {
+    configured();
+    return handle(
+      new Request("https://test.local/api/auth/parent", {
+        method: "POST",
+        headers: {
+          origin: "https://test.local",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ action, email: "Avromy@gmail.com", password }),
+      }),
+      ["auth", "parent"],
+    );
+  }
+  it("delegates a nonempty legacy password below the creation minimum to the provider", async () => {
+    const response = await authenticate("login", "fixture8");
+    expect(response.status).toBe(200);
+    expect(state.loginCalls).toBe(1);
+    expect(state.getUserCalls).toBe(1);
+    expect(
+      state.cookieWrites.some(([name, value]) => name === "wn_parent" && value),
+    ).toBe(true);
+  });
+  it("does not authenticate a rejected short password or issue any session cookies", async () => {
+    state.loginRejected = true;
+    const response = await authenticate("login", "fixture8");
+    expect(response.status).toBe(401);
+    expect(state.loginCalls).toBe(1);
+    expect(state.tables).toEqual([]);
+    expect(state.cookieWrites).toEqual([]);
+  });
+  it.each(["signup", "update-password"])(
+    "retains the 12-character creation policy for %s",
+    async (action) => {
+      const response = await authenticate(action, "fixture8");
+      expect(response.status).toBe(400);
+      expect(state.loginCalls).toBe(0);
+      expect(state.signupCalls).toBe(0);
+      expect(state.cookieWrites).toEqual([]);
+    },
+  );
+  it.each(["", "x".repeat(201)])(
+    "rejects empty or oversized login input before provider calls",
+    async (password) => {
+      expect((await authenticate("login", password)).status).toBe(400);
+      expect(state.loginCalls).toBe(0);
+      expect(state.cookieWrites).toEqual([]);
+    },
+  );
+  it("still rejects an unconfirmed account after provider authentication with a legacy password", async () => {
+    state.unconfirmed = true;
+    expect((await authenticate("login", "fixture8")).status).toBe(403);
+    expect(state.loginCalls).toBe(1);
+    expect(state.tables).toEqual([]);
+    expect(state.cookieWrites).toEqual([]);
   });
 });
