@@ -1,6 +1,8 @@
 # Scoped independent correction review — D1/D2/D3
 
-Date: 2026-11-24. Reviewer: original independent returning-Parent auditor, after cold report frozen. Candidate inspected: working-tree diff in `/workspace/scratch/b4fb31747e8d/watchnest-integrity/src/components/parent/ParentApp.tsx`, against git index `b20e00b`; diff displayed destination blob abbreviation `8a31198`. Diff SHA-256: `62dc423547315d3671a0e0b5e667de61483379aacc6e9f2ee63a5065382c09ba`. Review is source-only and restricted to the three original findings. No browser, authentication, or family-account action was performed.
+Date: 2026-11-24. Reviewer: original independent returning-Parent auditor, after cold report frozen. Candidate inspected: working-tree diff in `/workspace/scratch/b4fb31747e8d/watchnest-integrity/src/components/parent/ParentApp.tsx`, against git index `b20e00b`. Reconciled exact current file blob via `git hash-object`: `3e90cd99ca020216c5a6d3a2243ca5c5846564ba`. Root identifies this as published in commit `69a023a8ee143513d24ac8af7284f9c6d365d192`; that commit object is not present in this local checkout, so published-commit association is root-supplied rather than independently verified here. Review is source-only and restricted to the three original findings. No browser, authentication, or family-account action was performed.
+
+Reconciliation: initial displayed diff used abbreviated destination `8a31198`; the final current diff uses `3e90cd9`. Independent comparison with the initially reviewed patch shows formatting-only differences: helper prose wraps before “approve.” and the collection-count separator is emitted as explicit JSX space across lines. The helper words, conditional labels/destinations, pluralization logic and resulting semantics are unchanged. The scoped conclusions below therefore apply to exact blob `3e90cd99ca020216c5a6d3a2243ca5c5846564ba`.
 
 | Finding | Exact correction assessed | Scoped conclusion |
 |---|---|---|

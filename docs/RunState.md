@@ -1,3 +1,15 @@
+# CURRENT — integrated69 candidate staged; hosted authentication and safety gates HOLD
+
+Runtime69a023a8ee143513d24ac8af7284f9c6d365d192, exact isolated production-configured READY stage dpl_GiqgvG8eDZHe4WsVvznGe7UD4aY2 / https://watchnest-dbybelcbs-avromy.vercel.app . Final premium-branch alias only. All3canonicals checked pre/immediate/postREADY unchanged77a5017d / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No merge/promotion/phase2/family change.
+
+Login repair0c CI175/run45447491797 all3jobs SUCCESS. Independent actual0c cold Parent hosted slice found request Preview open/close/focus and safe metadata review working within scope, plus3objective UI copy/label/count issues corrected in69 with independent narrow source review.69localbuild/type/eslintPASS; CI176/run45453253200 still running browser gates at this write. Do not transfer0c CI or browser acceptance to changed69 without affected requalification.
+
+Actual0c ParentUI observed once, later provider-protected session-status redirectedVercel; Time status error disabled actions. CachedParentUI did not survive fresh reload. Fresh69 SAMEWorkCloudtab7 /login?parent=1 currently Vercel login; no positive currentParent. Additional WatchNest native auth request was AUTOMATIC-APPROVAL-REVIEW REJECTED because priorone-retryauthorization consumed; no prompt created. Require explicit renewed Founderpermission before ONE further protected access sequence; no workaround/sessiontransfer/localChrome/secretcollection. Do not claim appcredentialfailure or botblock from normalproviderlogin.
+
+Historicallive/priorstagecrashes unresolved; oldphysical siblingFAIL retained; exact69 hosted/physical/final independent gates pending. No realcounter/PIN/budget/content/reset and Ari explicitstop retained. Full findings/authtransitions/rollback/learning/deterministiccontinuation: docs/login-policy-20261124/FinalRecovery.md . Independent ColdParentAudit.md and ColdParentCorrections.md remain scoped, notwholeproductPASS.
+
+---
+
 # CURRENT — login compatibility repair0c2cd94 staged; Vercel browser-access boundary; CI175 running
 
 # Login repair isolated stage — November24,2026
