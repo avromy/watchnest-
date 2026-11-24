@@ -591,7 +591,11 @@ export function Overview() {
                       ? "/parent/add-video"
                       : "/parent/children"
                   }
-                  aria-label={`Manage ${profile.display_name}’s library`}
+                  aria-label={
+                    (library?.assignedVideos ?? 0) === 0
+                      ? `Add videos for ${profile.display_name}`
+                      : `Manage ${profile.display_name}’s profile`
+                  }
                   className={styles.circleLink}
                 >
                   <Icon
@@ -892,7 +896,9 @@ export function AddVideos() {
             placeholder="https://www.youtube.com/watch?v=…"
           />
           <p className="muted">
-            Valid links load automatically. Paste several at once.
+            Pasted links load automatically. For a prefilled link, choose Load
+            videos to review it. Nothing is approved until you choose to
+            approve.
           </p>
           <button className="button-secondary" type="submit" disabled={loading}>
             {loading ? "Loading…" : "Load videos"}
@@ -1635,7 +1641,8 @@ export function Collections() {
                 <h3>{c.title}</h3>
                 <p className="muted">
                   {c.description || "A family collection"} ·{" "}
-                  {c.video_ids.length} videos
+                  {c.video_ids.length}{" "}
+                  {c.video_ids.length === 1 ? "video" : "videos"}
                 </p>
                 <button
                   className="button-secondary"
