@@ -1,3 +1,22 @@
+# CURRENT — login compatibility repair0c2cd94 staged; Vercel browser-access boundary; CI175 running
+
+# Login repair isolated stage — November24,2026
+
+Runtime0c2cd945fab699bab89750e473127d3c072d6126, srctree71eea410ea9070fe8afd61b496705e6af2cdd24d. Exact automaticpreviewdpl_5scdYYv2W19whzMcSs1kb29wkt9B READY.
+Reused previouspositive manual-production-domain safeguard (AutoAssignOFF). Productionconfiguredredeploy request usedexactpreviewdeploymentId, withLatestCommit:false, no source/env/schemaoverride.
+New isolatedstage dpl_3RsemrxM75oFZGe6i9TYV6N1w3tX READY at https://watchnest-d9wx9j0iw-avromy.vercel.app. Source0c2cd94, targetproduction, READYfinalalias onlypremiumbranch. Initialplannedaliasincludedwatchnest-avromy; all3actualcanonicals independentlyreadbeforecreation/immediatelyafter/afterREADY unchanged77a5017d938ded03b1530c2b72978cef27273d61/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No promotion/merge/phase2.
+
+ActualSAMEWorkCloud openedexactnewstage/login?parent=1; it redirectedtoVercelaccountlogin. This is providerDeploymentProtection, separatefromWatchNestvalidation/auth. No WatchNestnewstageParentUI observed. Nativecredentialvaluesfromprevious81formnotread/reused/transferred.
+ConsumedcurrentAccessProtectedVercelDeploymentsinstructions: preferexistingcalleraccount; don'tdisableprotection; CloudBrowserAPIadvertisesnoorigin-scopedheadercapability, so localCLI/OIDCheaderpathcannotqualifySAMECloudbrowser. ExistingVercelconnectorcanreaddeployment/builds butisnotanapplicationParentsession. Discoveredget_access_to_vercel_url/web_fetch generate/reusebearersharelinks; no linkgenerated, no bypasssecret/tokenretrieved, no protectionsweakened. Retainproviderboundaryunlessexistingaccountsecuredsigninrecoversit. Do notrepeatblindloginsorcredentialworkarounds.
+Savedmanualpromotionguardpreviouslyverifiedandcanonicalpre/postreadbackretained; providerbrowseraccessfreshloginisdistinctfromguardstate. No unsafealiasexperiment.
+
+Local430unit/database31files, scoped72, type/buildPASS, lint0errors3pre-existingarchivalwarnings/audit0. IndependentsecuritysourcecompatibilityreviewPASS+31dispatchtestsindependentlyPASS. CI175/run45447491797 runningfullbrowseratthischeckpoint; notyetclaimedPASS. Original112browserpriorCIretainsoldscopeonly; newsourcevalidationaffectsauthmustqualify.
+CurrentreleaseHOLD: providerbrowseraccess plus actualnewstageParentauth/hostedacceptance, boundedaffectedrealdevicehandoff/AV/fullscreenEndnow/noresume/containment/timercontrols andfinalindependentgates. OldphysicalbypassFAILretained; historicalcrashesunresolved. Ari explicitstopunchanged; no familybudget/content/PIN/counter/reset.
+Continue allremainingindependentchecks, then minimumsupportedsecureOwneraccesswhenunavoidable. No routineFounderdesign/PR/promotionapproval.
+
+
+---
+
 # CURRENT — actual hosted Parent login blocked by creation-password policy; narrow repair under qualification
 
 # Existing Parent sign-in validation defect — November24,2026

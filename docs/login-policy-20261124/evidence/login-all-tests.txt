@@ -1,0 +1,22 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> watchnest@0.1.0 test
+> vitest --run
+
+
+ RUN  v5.0.3 /workspace/scratch/b4fb31747e8d/watchnest-integrity
+
+
+ Test Files  31 passed (31)
+      Tests  430 passed (430)
+   Start at  12:18:21
+   Duration  7.23s (tests 80%, import 11%, transform 8%, worker 1%)
+
+    Isolate  31 workers spawned · ~358ms startup each (spawn + environment, per file)
+             at least ~1.03s faster with isolate: false — reuses workers across files instead of one per file
+
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
