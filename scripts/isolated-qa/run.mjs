@@ -69,8 +69,8 @@ try {
   browser = await chromium.launch({ executablePath: await browserRuntime(), args: ["--no-sandbox"] });
   const page = await browser.newPage({ viewport: { width: 820, height: 1180 } });
   await page.route("**/*", route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
-  async function call(path, method = "GET", data) {
-    const res = await page.request.fetch(origin + "/api/" + path, {
+  async function call(path, method = "GET", data, device = page) {
+    const res = await device.request.fetch(origin + "/api/" + path, {
       method, data, headers: { Origin: origin }, maxRedirects: 0,
     });
     assert.ok(res.ok(), method + " " + path.split("?")[0] + " returned " + res.status());
@@ -126,12 +126,28 @@ try {
   assert.equal(sql("select count(*) from public.audit_events where action='parent_profile_recovery_requested'"), "1");
   console.log("PASS recovery audited, six ordinary PIN-free returns, stopped child remained blocked");
   await call("auth/profile-exit", "POST", {});
-  await call("auth/child", "POST", {profileId: artist, parentPin: pin});
+  await page.goto(origin + "/watch");
+  await page.getByRole("button", {name:/QA Artist.*Open my library/}).click();
+  await expect(page.getByRole("dialog")).toContainText("hand over this device");
+  await page.getByLabel("4-digit PIN", {exact:true}).fill(pin);
+  await page.waitForURL("**/watch/home");
   assert.equal((await call("session")).profile.id, artist);
   const active = (await call("child/session-access")).session_access;
   assert.equal(active.mode, "daily");
   assert.equal(active.allowed, true);
   assert.equal(active.dailyStarted, true);
+  // The second browser context represents another enrolled device. It never shares cookies.
+  const remote = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await call("auth/parent", "POST", {action:"login", email, password}, remote);
+  assert.equal((await call("session", "GET", undefined, remote)).role, "parent");
+  await call("parent/session-timer", "POST", {profile_id:artist, action:"end"}, remote);
+  assert.equal((await call("child/session-access")).session_access.allowed, false);
+  await page.reload();
+  await expect(page.getByText(/Time.s up for now/i)).toBeVisible();
+  await call("auth/logout", "POST", {}, remote);
+  assert.equal((await call("session", "GET", undefined, remote)).role, null);
+  await remote.close();
+  console.log("PASS second-device End now, child denied after reload");
   await call("auth/parent-mode", "POST", {pin});
   assert.equal((await call("session")).role, "parent");
   await call("auth/logout", "POST", {});

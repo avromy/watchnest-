@@ -5,6 +5,10 @@ on:
     paths:
       - .github/workflows/isolated-auth.yml
       - scripts/isolated-qa/**
+      - src/**
+      - supabase/migrations/**
+      - package*.json
+      - next.config.mjs
 permissions:
   contents: read
 jobs:
@@ -17,10 +21,14 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
           persist-credentials: false
-      - name: Verify application inputs match the frozen release
+      - name: Record exact application inputs and release equivalence
         run: |
-          git diff --exit-code 69a023a8ee143513d24ac8af7284f9c6d365d192 HEAD -- . ':!docs/**' ':!.github/**' ':!scripts/isolated-qa/**'
-          git rev-parse HEAD HEAD:src
+          git rev-parse HEAD HEAD:src HEAD:supabase/migrations
+          if git diff --quiet 69a023a8ee143513d24ac8af7284f9c6d365d192 HEAD -- . ':!docs/**' ':!.github/**' ':!scripts/isolated-qa/**'; then
+            echo "Application inputs match frozen release 69a023a."
+          else
+            echo "Testing the new PR candidate. Results apply only to the printed revisions."
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 24
