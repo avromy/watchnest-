@@ -1,0 +1,39 @@
+name: Isolated WatchNest auth
+on:
+  pull_request:
+    branches: [product-completion-20260930]
+    paths:
+      - .github/workflows/isolated-auth.yml
+      - scripts/isolated-qa/**
+permissions:
+  contents: read
+jobs:
+  ordinary-auth:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify application inputs match the frozen release
+        run: |
+          git diff --exit-code 69a023a8ee143513d24ac8af7284f9c6d365d192 HEAD -- . ':!docs/**' ':!.github/**' ':!scripts/isolated-qa/**'
+          git rev-parse HEAD HEAD:src
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 3.4.0
+      - name: Start disposable backend and test ordinary sessions
+        run: bash scripts/isolated-qa/run.sh
+      - name: Stop disposable backend
+        if: always()
+        run: |
+          if test -d "$RUNNER_TEMP/wn-qa/supabase"; then
+            cd "$RUNNER_TEMP/wn-qa"
+            supabase stop --no-backup >/dev/null
+          fi
