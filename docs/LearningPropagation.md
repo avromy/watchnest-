@@ -1,3 +1,9 @@
+# CURRENT — Builder 3 project learning
+
+The staged deploy can retain Vercel access and a linked device context while Parent authorization is absent. Record the three states separately. A protected staging origin backed by production is unsuitable for writable synthetic QA. Require an independently verified QA backend before testing synthetic timer, PIN, or recovery writes. See [Builder 3 recovery](builder-3/Recovery.md).
+
+---
+
 # CURRENT — exact69 authenticated hosted checks verified; Parent return PIN declined
 
 Fresh sameCloud Parent settings survived fullreload. Actual69 Preview click/retry/close/keyboard/focus and matchingvideoiframe verified; noapproval. Timer1/5/10/custom37 andDaily7AM testedunsaved. AriCheckaccess saysPINoff/noPINwait/deviceentryavailable. ParentopenAri andoneordinarysameprofileentry leadTime’sup, stopintact; Miri pickerexplicitParentPINhandoff required/cancelled. These browser/device session transitions areNOTpurelyreadonly, butnofamilysettings/budget/PIN/content/counterreset. ParallelParenttabs laterlostauthority; exactfailuretimingvsroletransitionunknown, notestablishedregression. IndependentD1/2/3renderedcorrectionsPASSwithin scope; securitysourcecontinuityPASS/integratedHOLD.

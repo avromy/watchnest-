@@ -1,3 +1,9 @@
+# CURRENT — Builder 3 recovery verified, release held
+
+[Builder 3 recovery](builder-3/Recovery.md) records the fresh exact candidate, CI, aliases, manual promotion, migration, browser, runtime error and QA infrastructure readbacks. Stage reached the linked picker without new Vercel sign-in. Parent authority remains unverified. No competing branch activity surfaced. Hosted synthetic backend, final independent and real-device gates remain open.
+
+---
+
 # CURRENT — exact69 authenticated hosted checks verified; Parent return PIN declined
 
 Fresh sameCloud Parent settings survived fullreload. Actual69 Preview click/retry/close/keyboard/focus and matchingvideoiframe verified; noapproval. Timer1/5/10/custom37 andDaily7AM testedunsaved. AriCheckaccess saysPINoff/noPINwait/deviceentryavailable. ParentopenAri andoneordinarysameprofileentry leadTime’sup, stopintact; Miri pickerexplicitParentPINhandoff required/cancelled. These browser/device session transitions areNOTpurelyreadonly, butnofamilysettings/budget/PIN/content/counterreset. ParallelParenttabs laterlostauthority; exactfailuretimingvsroletransitionunknown, notestablishedregression. IndependentD1/2/3renderedcorrectionsPASSwithin scope; securitysourcecontinuityPASS/integratedHOLD.

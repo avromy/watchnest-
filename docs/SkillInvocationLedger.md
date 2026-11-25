@@ -1,3 +1,9 @@
+# CURRENT — Builder 3 recovery receipts
+
+Founder Attention protocol applied to the current run. Founder Gmail profile readback passed preflight. Project recovery and exact candidate guard checks are in [Builder 3 recovery](builder-3/Recovery.md). Scope is read-only verification. Current final independent reviews and coverage remain open. Existing exact-candidate receipts retain their original scopes.
+
+---
+
 # CURRENT — exact69 authenticated hosted checks verified; Parent return PIN declined
 
 Fresh sameCloud Parent settings survived fullreload. Actual69 Preview click/retry/close/keyboard/focus and matchingvideoiframe verified; noapproval. Timer1/5/10/custom37 andDaily7AM testedunsaved. AriCheckaccess saysPINoff/noPINwait/deviceentryavailable. ParentopenAri andoneordinarysameprofileentry leadTime’sup, stopintact; Miri pickerexplicitParentPINhandoff required/cancelled. These browser/device session transitions areNOTpurelyreadonly, butnofamilysettings/budget/PIN/content/counterreset. ParallelParenttabs laterlostauthority; exactfailuretimingvsroletransitionunknown, notestablishedregression. IndependentD1/2/3renderedcorrectionsPASSwithin scope; securitysourcecontinuityPASS/integratedHOLD.
