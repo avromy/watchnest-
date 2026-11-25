@@ -845,7 +845,9 @@ export async function handle(request: globalThis.Request, path: string[]) {
           z
             .object({
               access_token: z.string().min(20).max(8192),
-              refresh_token: z.string().min(20).max(1024),
+              // Supabase also issues 12-character opaque refresh tokens.
+              // The provider grant and identity checks below verify them.
+              refresh_token: z.string().min(12).max(1024),
               type: z.literal("recovery"),
             })
             .strict(),

@@ -73,7 +73,9 @@ try {
   assert.ok([302, 303].includes(confirmation.status), "confirmation response");
   browser = await chromium.launch({ executablePath: await browserRuntime(), args: ["--no-sandbox"] });
   const page = await browser.newPage({ viewport: { width: 820, height: 1180 } });
-  await page.route("**/*", route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
+  // Intercept only external requests. Local recovery links carry a browser-only
+  // fragment that must survive ordinary navigation without any request rewrite.
+  await page.route(url => url.origin !== origin, route => route.abort());
   async function call(path, method = "GET", data, device = page) {
     const res = await device.request.fetch(origin + "/api/" + path, {
       method, data, headers: { Origin: origin }, maxRedirects: 0,
@@ -168,6 +170,13 @@ try {
   assert.ok([302, 303].includes(redirect.status));
   const landing = new URL(redirect.headers.get("location"));
   assert.ok(landing.origin === origin && landing.pathname === "/login/reset");
+  const fragment = new URLSearchParams(landing.hash.slice(1));
+  const form = fragment.get("type") === "recovery" ? "implicit" : landing.searchParams.has("token_hash") ? "hashed" : "unknown";
+  const refreshLength = fragment.get("refresh_token")?.length;
+  console.log("CHECK recovery redirect " + form + " " + (refreshLength === 12 ? "legacy" : refreshLength ? "other" : "absent"));
+  page.on("response", response => {
+    if (response.url() === origin + "/api/auth/callback") console.log("CHECK recovery callback " + response.status());
+  });
   await page.goto(landing.href);
   const replacement = randomBytes(24).toString("base64url");
   await page.getByLabel("New password", { exact: true }).fill(replacement);
