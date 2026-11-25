@@ -1239,7 +1239,8 @@ export function AddVideos() {
             </p>
             <p className="notice">
               Press Play and confirm this exact video starts before approving
-              it. A loaded player alone is not playback proof.
+              it. If Play is missing, close and reopen the preview. Leave the
+              video unapproved until it plays.
             </p>
             <p className="muted">
               Source: {preview.channel_title || "YouTube"}. Audience status:{" "}
@@ -2898,6 +2899,11 @@ function SessionTimerCard({
           </>
         )}
       </div>
+      {(state === "expired" || state === "unlimited" || state === "ready") && (
+        <p className="muted">
+          End now blocks viewing until a parent allows it again.
+        </p>
+      )}
       <p className={styles.deviceStatus} role="status">
         <span data-connected={authoritative && connected.length > 0} />
         {deviceStatus}

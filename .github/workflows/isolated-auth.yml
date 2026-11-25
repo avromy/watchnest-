@@ -41,6 +41,7 @@ jobs:
       - name: Stop disposable backend
         if: always()
         run: |
+          trap 'rm -f -- "$RUNNER_TEMP/wn-qa/stack.log" "$RUNNER_TEMP/wn-qa/connections.json" "$RUNNER_TEMP/wn-qa/qa.log"' EXIT
           if test -d "$RUNNER_TEMP/wn-qa/supabase"; then
             cd "$RUNNER_TEMP/wn-qa"
             supabase stop --no-backup >/dev/null

@@ -35,4 +35,13 @@ if ! supabase start -x studio,edge-runtime,imgproxy,realtime,logflare,vector >"$
 fi
 supabase status -o json >"$work/connections.json"
 cd "$repo"
-node scripts/isolated-qa/run.mjs "$work/connections.json"
+# Browser assertion errors can contain typed values or callback URLs. Publish
+# only the run's named success markers and, on failure, its first source line.
+result=0
+node scripts/isolated-qa/run.mjs "$work/connections.json" >"$work/qa.log" 2>&1 || result=$?
+sed -nE '/^PASS [A-Za-z0-9 ,.-]+$/p' "$work/qa.log"
+if (( result != 0 )); then
+  echo "Isolated authentication check failed"
+  sed -nE 's|.*scripts/isolated-qa/run\.mjs:([0-9]+):[0-9]+.*|run.mjs line \1|p' "$work/qa.log" | head -1
+fi
+exit "$result"
