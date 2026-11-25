@@ -408,7 +408,10 @@ export default function ChildLibrary() {
           {error ? (
             <>
               <p>{error}</p>
-              <Link className="button" href="/watch">
+              <button className="button" onClick={() => window.location.reload()}>
+                Try again
+              </button>
+              <Link className="button button-secondary" href="/watch">
                 Choose profile
               </Link>
             </>

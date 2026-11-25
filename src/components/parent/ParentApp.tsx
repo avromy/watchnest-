@@ -647,6 +647,7 @@ export function AddVideos() {
     [nextPageToken, setNextPageToken] = useState<string | null>(null),
     [preview, setPreview] = useState<Video | null>(null),
     [previewLoaded, setPreviewLoaded] = useState(false),
+    [previewAttempt, setPreviewAttempt] = useState(0),
     [error, setError] = useState(""),
     [loading, setLoading] = useState(false),
     [message, setMessage] = useState(""),
@@ -1226,6 +1227,7 @@ export function AddVideos() {
               </button>
             </div>
             <YouTubeEmbed
+              key={previewAttempt}
               className={styles.player}
               videoId={preview.youtube_video_id}
               title={preview.title}
@@ -1239,9 +1241,18 @@ export function AddVideos() {
             </p>
             <p className="notice">
               Press Play and confirm this exact video starts before approving
-              it. If Play is missing, close and reopen the preview. Leave the
+              it. If Play is missing, reload the player. Leave the
               video unapproved until it plays.
             </p>
+            <button
+              className="button-secondary"
+              onClick={() => {
+                setPreviewLoaded(false);
+                setPreviewAttempt((attempt) => attempt + 1);
+              }}
+            >
+              Reload player
+            </button>
             <p className="muted">
               Source: {preview.channel_title || "YouTube"}. Audience status:{" "}
               {preview.made_for_kids === true
@@ -2196,8 +2207,8 @@ function ChildSettings({ profile }: { profile: Profile }) {
           </select>
         </label>
         <p className="muted">
-          Simple uses larger video choices and keeps extra controls under More.
-          Standard shows those controls directly.
+          Simple keeps extra controls under More. Standard shows them alongside
+          the video filters.
         </p>
         <label className={styles.toggle}>
           <input
@@ -2894,14 +2905,14 @@ function SessionTimerCard({
               disabled={busy || !authoritative}
               onClick={() => control("end")}
             >
-              End now
+              Block viewing
             </button>
           </>
         )}
       </div>
       {(state === "expired" || state === "unlimited" || state === "ready") && (
         <p className="muted">
-          End now blocks viewing until a parent allows it again.
+          Viewing stays blocked until a parent allows it again.
         </p>
       )}
       <p className={styles.deviceStatus} role="status">

@@ -728,6 +728,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           <p role="alert" className="error">
             {error}
           </p>
+          {(errorKind === "network" || errorKind === "initialization" || errorKind === "unknown") && (
+            <button
+              className="button button-secondary"
+              style={{ marginRight: 12 }}
+              onClick={() => setReplay((value) => value + 1)}
+            >
+              Try again
+            </button>
+          )}
           <Link className="button" href="/watch/home">
             Back to Library
           </Link>

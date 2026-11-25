@@ -210,7 +210,11 @@ for (const viewport of [
       await page.screenshot({ path: info.outputPath(`${value}-top.png`) });
       await card.screenshot({ path: info.outputPath(`${value}-card.png`) });
       const immediate = card.getByRole("button", {
-        name: value === "blocked" ? "Allow access" : "End now",
+        name: value === "blocked"
+          ? "Allow access"
+          : value === "active" || value === "paused"
+            ? "End now"
+            : "Block viewing",
         exact: true,
       });
       const immediateBounds = await immediate.boundingBox();

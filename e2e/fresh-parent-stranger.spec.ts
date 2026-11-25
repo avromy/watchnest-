@@ -24,6 +24,10 @@ async function previewWithoutApproval(page: Page, changes: {path:string;body:any
   await page.getByRole('button',{name:'Preview',exact:true}).first().click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.getByRole('dialog').getByRole('heading',{name:candidate.title})).toBeVisible();
+  const frame = page.getByRole('dialog').locator('iframe');
+  const source = await frame.getAttribute('src');
+  await page.getByRole('button',{name:'Reload player'}).click();
+  await expect(frame).toHaveAttribute('src',source!);
   await page.screenshot({path:screenshot,fullPage:true});
   await page.getByRole('button',{name:'Close preview',exact:true}).click();
   expect(changes.filter(c=>c.path==='/api/parent/videos').length).toBe(before);
@@ -40,8 +44,9 @@ test('fresh busy Parent follows a child topic request to preview and approval',a
   await expect(page.getByRole('heading',{name:candidate.title,exact:true})).toBeVisible();
   await previewWithoutApproval(page,changes,info.outputPath('busy-parent-preview.png'));
   await page.getByRole('checkbox',{name:'Ari',exact:true}).check();
-  await page.screenshot({path:info.outputPath('busy-parent-ready-to-approve.png'),fullPage:true});
   await page.getByRole('checkbox',{name:'Select this video',exact:true}).check();
+  await expect(page.getByRole('button',{name:'Approve 1 selected video',exact:true})).toBeEnabled();
+  await page.screenshot({path:info.outputPath('busy-parent-ready-to-approve.png'),fullPage:true});
   await page.getByRole('button',{name:'Approve 1 selected video',exact:true}).click();
   await expect.poll(()=>changes.filter(c=>c.path==='/api/parent/videos').length).toBe(1);
   console.log('FRESH_PARENT_APPROVAL',JSON.stringify(changes));
