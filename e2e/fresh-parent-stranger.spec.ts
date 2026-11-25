@@ -25,8 +25,11 @@ async function previewWithoutApproval(page: Page, changes: {path:string;body:any
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.getByRole('dialog').getByRole('heading',{name:candidate.title})).toBeVisible();
   const frame = page.getByRole('dialog').locator('iframe');
+  await expect(frame).toHaveAttribute('src', /youtube-nocookie\.com\/embed\//);
   const source = await frame.getAttribute('src');
+  const reloaded = page.waitForRequest(request => request.isNavigationRequest() && request.url() === source);
   await page.getByRole('button',{name:'Reload player'}).click();
+  await reloaded;
   await expect(frame).toHaveAttribute('src',source!);
   await page.screenshot({path:screenshot,fullPage:true});
   await page.getByRole('button',{name:'Close preview',exact:true}).click();

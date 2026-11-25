@@ -65,6 +65,29 @@ test('fresh younger child chooses a picture and returns to own library', async (
   await evidence(page, info, 'younger-return');
 });
 
+test('child retry reloads the library and respects a subsequent stop on the player', async ({ page }) => {
+  await family(page);
+  await page.route('**/api/child/library', route => route.fulfill({
+    status: 503, json: { error: 'Could not reach the library. Please try again.' },
+  }), { times: 1 });
+  await page.goto('/watch/home');
+  await page.getByRole('button', { name: 'Try again', exact: true }).click();
+  const video = page.getByRole('link', { name: /^Play / }).first();
+  await expect(video).toBeVisible();
+  let playerRequests = 0;
+  await page.route('**/api/child/player?**', route => {
+    playerRequests++;
+    return route.fulfill(playerRequests === 1
+      ? { status: 503, json: { error: 'Could not reach the player. Please try again.' } }
+      : { status: 403, json: { error: 'Time is up for now.' } });
+  });
+  await video.click();
+  await page.getByRole('button', { name: 'Try again', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Time’s up for now' })).toBeVisible();
+  expect(playerRequests).toBe(2);
+  await expect(page.locator('iframe')).toHaveCount(0);
+});
+
 test('fresh older child retrieves saves and requests', async ({ page }, info) => {
   const mutations = await family(page);
   await page.goto('/watch');
