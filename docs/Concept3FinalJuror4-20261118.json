@@ -1,0 +1,907 @@
+{
+  "reviewer": "Independent final juror 4",
+  "frozenAt": "2026-11-18T07:13:02.227212+00:00",
+  "verdict": "PASS",
+  "scope": "Synthetic Chromium visual/UX candidate acceptance only",
+  "sourceCommit": "ef4c4bb30a16ae273f04a426d979480a808930ab",
+  "sourceTree": "d57c0f675876bec6b19779dfd9229ccb1267c314",
+  "applicationSourceTree": "9771c2e229ff3e286f7443d9146d31ff22405303",
+  "independence": "Frozen before reading any peer report, vote, repair history, Builder rationale, agent status or peer message. No source changes, new app captures, commits, deployment or subagents.",
+  "materialDefects": [],
+  "suggestions": [
+    {
+      "id": "S1",
+      "severity": "nonblocking",
+      "issue": "Parent topic request fulfillment requires returning manually after adding a video. The instruction is candid, but the two-step cross-page work is avoidable friction. Carry request context into Add and offer completion on approval.",
+      "evidence": [
+        "J17",
+        "J18"
+      ]
+    },
+    {
+      "id": "S2",
+      "severity": "nonblocking",
+      "issue": "Phone Add uses considerable vertical space before the first result. Preserve the current clarity while considering a more compact post-search mode or collapse of the search panel.",
+      "evidence": [
+        "J13",
+        "X06"
+      ]
+    },
+    {
+      "id": "S3",
+      "severity": "nonblocking",
+      "issue": "Collection view uses All videos both as a filter and a back link; label the latter Back to library for unambiguous child navigation.",
+      "evidence": [
+        "X01"
+      ]
+    },
+    {
+      "id": "S4",
+      "severity": "nonblocking",
+      "issue": "Player startup error says Please try again, while the only visible recovery is Back to Library. Match wording to available recovery or provide Retry.",
+      "evidence": [
+        "X05"
+      ]
+    },
+    {
+      "id": "S5",
+      "severity": "nonblocking",
+      "issue": "Child heart and ellipsis controls are visually conventional but unlabeled. Consider a contextual text hint for younger children; this review does not establish accessible names or screen-reader behavior.",
+      "evidence": [
+        "J02",
+        "J05",
+        "X01"
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic API and SVG artwork; not deployed/authenticated family evidence",
+    "Not physical iPad/Safari and not genuine YouTube playback",
+    "Thumbnails/preview content do not certify current production artwork quality",
+    "Still images cannot establish keyboard interaction, contrast ratios, screen-reader behavior, real remote timing, deployed authentication, genuine playback or physical iPad behavior.",
+    "42 PNGs opened using view_image; the complete manifest inventory guided sampling. No claim to have viewed every state or every capture."
+  ],
+  "pixelConsumptionJournal": [
+    {
+      "id": "J01",
+      "state": "family-profile-picker",
+      "route": "/watch",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/family-profile-picker-full.png",
+      "sha256": "873aa4b6fc0938e98135e6b5bebf69ba645b978f47db2b0690e3fa3b48032344",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Large distinct profile cards; PIN indicators and separate Parent Mode are legible.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J02",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-top.png",
+      "sha256": "9e28c5802a3447fcf63d14118f60b24d5149032f4ddc6096a9d113366d47e8ea",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Approved library leads; navy shell, lavender selection, restrained collection tile; two readable thumbnail columns.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J03",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-middle-1.png",
+      "sha256": "273e205ef2d92a0b8fe14e4131fcc9d7a74c97c9172999f7c0e1c1b9d2ab7d04",
+      "region": "Readable viewport: LEFT RIGHT, document y=944",
+      "scroll": {
+        "x": 0,
+        "y": 944
+      },
+      "pixelObservation": "Long title wrapping remains contained; heart and overflow actions align predictably.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J04",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/child-library-top.png",
+      "sha256": "0fd20a85571b6ad7dc7906759ff1df65de670642dc71e02ceb993381468b6141",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Landscape distributes search/filter area and three video columns without a promotional hero.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J05",
+      "state": "child-simple-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/child-simple-library-top.png",
+      "sha256": "a8149c815cfb4906bfa844285bc55530f6377db6d3fa35680d2c5417a23ee522",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Simple library reduces filters; More is visibly secondary; large content targets remain.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J06",
+      "state": "child-search-results",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/child-search-results-top.png",
+      "sha256": "f5e49ce096a2c90ef8e3b7f575ef46c7634b004267f0f0773fc7d233c8ac33f9",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Focused search has a clear lavender outline; filtered cards remain readable.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J07",
+      "state": "child-search-empty",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-search-empty-full.png",
+      "sha256": "7aef971ce060e3f4e230e781412c429210f4295fbcc9772a94298da106f37f55",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Empty result has clear recovery and Ask Parent action.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J08",
+      "state": "child-discover-results",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-discover-results-top.png",
+      "sha256": "cf5993fe369e9e4d79dfa25d49b14b97dd39c904ee3c183d566e6a9582de1a94",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Discover explicitly asks Parent; search and one result hierarchy is comprehensible.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J09",
+      "state": "child-discover-results",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-discover-results-bottom.png",
+      "sha256": "cf39f9d640ef37b9b9f3e78062356b855fba44533ded920ac0c2543a72481bbc",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 146
+      },
+      "pixelObservation": "Bottom shows request status and retained Ask Parent control; no bottom clipping.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J10",
+      "state": "child-times-up",
+      "route": "/watch/player/10000000-0000-4000-8000-000000000001",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-times-up-full.png",
+      "sha256": "85d37f76d28e60a62af2525f0938b797bee5d11763436ff94d300bae80869ea6",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Time expiry states stopped video and provides clear exit actions.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J11",
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-dashboard-top.png",
+      "sha256": "e13cd0964e028bee31d568044420554a950d65d55f672ec8ea7aa5bbb62b4fd1",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Phone Parent overview prioritizes Add, Requests, Time; compact labeled nav fits.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J12",
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-dashboard-top.png",
+      "sha256": "d8c38c7bb9214b44bfaf12f9085ae87a259aefa8f593903b1e47b374dd697b27",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Desktop overview hierarchy is clear; peach request strip is useful rather than promotional.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J13",
+      "state": "parent-add-video",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-add-video-top.png",
+      "sha256": "21660ab4540836623f737c4ec081e25ee642659b0b980366b3a1373c38f7532a",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Phone Add has distinguishable search/paste and video/channel/playlist modes.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J14",
+      "state": "parent-add-video",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-add-video-full.png",
+      "sha256": "ab7d931a0136a1286ab23d34d7e1b10a7a6a1f41bae9ba10606f802d402ebb76",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Desktop Add input and submit are adjacent; secondary move-existing accordion stays quiet.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J15",
+      "state": "parent-approval-assignment",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-approval-assignment-bottom.png",
+      "sha256": "dccbf19943254b21a9309a6774371f9ec67285437e99e14b993330f5976e0960",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1113
+      },
+      "pixelObservation": "Phone selected video and approval children chips fit; Approve is obvious.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J16",
+      "state": "parent-approval-assignment",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/parent-approval-assignment-bottom.png",
+      "sha256": "8359db83acd87f3b7736cfd8eca3d9454014ee1acd9f8fc9d41f955ebc36521c",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 491
+      },
+      "pixelObservation": "Desktop approval panel sits beside selected item; optional collection and final action visible.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J17",
+      "state": "parent-inbox",
+      "route": "/parent/inbox",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-inbox-top.png",
+      "sha256": "10036df11bbf35034b579b0b9344a070782482dc62c36c54052a03ef75e7afbb",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Phone Requests clearly differentiates Find, Fulfilled and Not now; manual return instruction is explicit.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J18",
+      "state": "parent-inbox",
+      "route": "/parent/inbox",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-inbox-full.png",
+      "sha256": "4ff94edbd8e4ca10fbb6dda04f746e55f62f91b2a52b2ae28f67eb7b96c19139",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Desktop request controls grouped with request; empty library-attention panel is spacious.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J19",
+      "state": "parent-remote-timer-active",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-remote-timer-active-top.png",
+      "sha256": "a07c38aceee011f577b4cc80c9b863278211431c2f0d5b3ee5c91cc88e904388",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Active timer phone card separates End now from Add/Pause; device status is visible.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J20",
+      "state": "parent-remote-timer-active",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/parent-remote-timer-active-top.png",
+      "sha256": "d742ef6116fe58936f02adcbdb5c5c6e632bf64b6ad03c5d6bec995d0708cf42",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Desktop active timer and idle timer states differ; semantics and destructive action are readable.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J21",
+      "state": "parent-children",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-children-top.png",
+      "sha256": "f804711cd08b2f947d20d390171bedbc03e272aec746db3510b1a1f1b0d66514",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Phone child profile PIN form contained; family subnav is labeled.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J22",
+      "state": "parent-children",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-children-top.png",
+      "sha256": "16a3bb0692189350d4998c5041f29513002fd6914aaa5806c447b2a9641b6b83",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Desktop profile forms align; save and View as actions have distinct weight.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J23",
+      "state": "parent-approval-assignment",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/parent-details/parent-approval-assignment-bottom.png",
+      "sha256": "3ad7e53ae8e9ffce0d99327f62bfe5e39aa977895469b740d9cb8fdc6b19890a",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 887
+      },
+      "pixelObservation": "Portrait approval section fits width; children chips and submit remain reachable.",
+      "openedWith": "view_image"
+    },
+    {
+      "id": "J24",
+      "state": "parent-controls",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/parent-controls-top.png",
+      "sha256": "e10fd837fcc6fe17cc9f165a3e9e0d272a13779166808588786da0c964e4eb96",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "pixelObservation": "Landscape Time nav and two cards fit; primary session actions are visible.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "child-collection",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-collection-full.png",
+      "sha256": "496a64a17a534c46abc1efa9e9961b411f38f627cd2961961393fbd8fe021279",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X01",
+      "pixelObservation": "Collection has contained thumbnails, duration badges and clear back link; duplicate All videos label is a minor ambiguity.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "child-request-form",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-request-form-full.png",
+      "sha256": "819d576a8ee25898f677efb50ce35cda51fe242391fefaedf85005ccac8e1ed7",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X02",
+      "pixelObservation": "Topic request form remains readable and Send request is prominent.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "child-pin-error",
+      "route": "/watch",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-entry/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-entry/child-pin-error-full.png",
+      "sha256": "e15f3913f8f09ab812ad2919afc2616224b4522c7834cac5d9e578ae3182808f",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X03",
+      "pixelObservation": "PIN error modal clearly identifies child and failure; focus outline and Cancel visible.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "player-synthetic-ready-next",
+      "route": "/watch/player/10000000-0000-4000-8000-000000000002",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/player-states/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/player-states/player-synthetic-ready-next-full.png",
+      "sha256": "04c6056a71b602d9f20d30d0f3960ff89db6f8dd3c83f71c40447fba0214d588",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X04",
+      "pixelObservation": "Synthetic player uses immersive content region and clear library exit; fixture green is content, not app branding.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "player-startup-error",
+      "route": "/watch/player/10000000-0000-4000-8000-000000000002",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/player-states/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/player-states/player-startup-error-full.png",
+      "sha256": "3407bfb2facb3d30f62ecaf493c3e2847f2285fc4587ab7696753d859dda5c21",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X05",
+      "pixelObservation": "Startup failure has clear route back; wording asks retry but offers only library exit.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-youtube-search-results",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-youtube-search-results-full.png",
+      "sha256": "8a67b552e74a3708d335ca0183a0c853781988892b9cd953c4ea33e2464967dc",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X06",
+      "pixelObservation": "Phone result selection, preview and assignment stay within card widths; substantial vertical travel.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-approval-success",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-approval-success-full.png",
+      "sha256": "594161b4b4127588eded7aac30ca0c6482a83ca8af6333a7605c4374ae715638",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X07",
+      "pixelObservation": "Approval success text is present; retained selected child context; no screenshot proof of persistence.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-collection-edit",
+      "route": "/parent/collections",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-collection-edit-full.png",
+      "sha256": "46cb193743b4660bfcef734e5f6e388fab4d6811dc33c424d5e813e2aa06f13f",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X08",
+      "pixelObservation": "Collection edit form and internally scrolling video list fit phone; Save and Cancel clear.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-remote-timer-offline",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/recovery-states/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/recovery-states/parent-remote-timer-offline-full.png",
+      "sha256": "9d60b929054fa3b33b0402219abc231816819f9f58c414d74faf36e764b23810",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X09",
+      "pixelObservation": "Offline timer state explains last check-in and limitations; long four-child page remains contained.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-children",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-children-bottom.png",
+      "sha256": "28eeb796980fa4d31733cce153fbce4ff6eb8d38e298b778201027567c26bdf1",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1967
+      },
+      "id": "X10",
+      "pixelObservation": "Last phone profile actions visible and bottom clear.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-library",
+      "route": "/parent/library",
+      "viewport": {
+        "name": "responsive-360",
+        "width": 360,
+        "height": 800
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/parent-library-full.png",
+      "sha256": "1fb5eea7b1e8975ec6fc4d5abc874936fc12b570031bbd1993d080ec3020d44f",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X11",
+      "pixelObservation": "Full parent-library document opened; overview of repeated cards only, then readable top/bottom opened separately. Full capture has unloaded lower artwork, not used to assert live missing assets.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "responsive-640",
+        "width": 640,
+        "height": 900
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/child-library-full.png",
+      "sha256": "bb5ae44fc636ade4c535654a55c1ccddd46d1790b44594e96cab04c52d22f2c4",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X12",
+      "pixelObservation": "Full child-library document opened; bottom nav fixed at initial viewport. Readable middle and bottom opened separately to assess containment.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "responsive-900",
+        "width": 900,
+        "height": 900
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/900x900/supplemental-responsive/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/900x900/supplemental-responsive/parent-dashboard-full.png",
+      "sha256": "82eda4999cc0ecbe3055607933aa82ab664e2e40a29489b5bbb7498ab7690dac",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X13",
+      "pixelObservation": "900px Parent uses horizontal navigation; stacked task cards and two child columns fit.",
+      "openedWith": "view_image"
+    },
+    {
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-bottom.png",
+      "sha256": "b9849322f988ac6587e4acaf6b0e1f845ff1ea5680d9271fdda88ef7332fec48",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1793
+      },
+      "id": "X14",
+      "pixelObservation": "Portrait library bottom shows final rows and last actions with no clipping.",
+      "openedWith": "view_image"
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/parent-library-top.png",
+      "sha256": "aaf268ec4ef9a61d23f6cd4bbe11aeceec178441eedbfea72d4a5118b2c4205b",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "id": "X15",
+      "state": "parent-library",
+      "route": "/parent/library",
+      "viewport": {
+        "name": "responsive-360",
+        "width": 360,
+        "height": 800
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/manifest.json",
+      "pixelObservation": "360px Parent navigation, labels and filter fields fit readable width.",
+      "openedWith": "view_image"
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/parent-library-bottom.png",
+      "sha256": "dd67584ccd7ea59d66664bbfa3b74e9bb3cd99806bb5b8af37eddfe45dc905f1",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 5645
+      },
+      "id": "X16",
+      "state": "parent-library",
+      "route": "/parent/library",
+      "viewport": {
+        "name": "responsive-360",
+        "width": 360,
+        "height": 800
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/manifest.json",
+      "pixelObservation": "360px final card artwork has loaded in viewport; Preview, Manage, Remove and bottom contained.",
+      "openedWith": "view_image"
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/child-library-middle-1.png",
+      "sha256": "4f551a39313e778acf9d38c22b9d6719fc974974f568c3accccf15d5a0d3edea",
+      "region": "Readable viewport: LEFT RIGHT, document y=820",
+      "scroll": {
+        "x": 0,
+        "y": 820
+      },
+      "id": "X17",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "responsive-640",
+        "width": 640,
+        "height": 900
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/manifest.json",
+      "pixelObservation": "640px library middle keeps two columns and readable title wraps; bottom navigation overlays current viewport as expected.",
+      "openedWith": "view_image"
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/child-library-bottom.png",
+      "sha256": "5c6a07d9ea92c516a488915c1dad9be1de534acc2474171719d37626569f6105",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1677
+      },
+      "id": "X18",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "responsive-640",
+        "width": 640,
+        "height": 900
+      },
+      "manifest": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/manifest.json",
+      "pixelObservation": "640px final heart/overflow actions sit above bottom navigation with adequate bottom content reach.",
+      "openedWith": "view_image"
+    }
+  ],
+  "inventoryCount": 28
+}

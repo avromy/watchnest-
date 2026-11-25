@@ -1,0 +1,127 @@
+{
+  "candidateApplicationCommit": "2fba88712bd74c868e27ff5d0e0f067332340507",
+  "buildId": "wICT7dc10sArd3kGmfb-q",
+  "parentSourceSha256": "c19696be0220260df6c26dea2bd1ff2bb640c454c6621aece622f7fa1c076c93",
+  "files": [
+    {
+      "path": "docs/release-20261122/visual/experience-default-standard-390-4fa6cfa9a303d94ee664d41925f827c940199c5b.png",
+      "sha256": "98d2884ce6b91ce53e64995d84789bea58b4bfe8af3234f37479e80b8392abe4"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-default-standard-390-geometry.json",
+      "sha256": "42f84a1d7cc91a5b5fc43146f580e2ba0b7f894b023f5a80415a54b8eef3b7f7"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-default-standard-390.png",
+      "sha256": "98d2884ce6b91ce53e64995d84789bea58b4bfe8af3234f37479e80b8392abe4"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-default-standard-820-6c5174fa80facaad6bced61092eb7cdff4ac12ad.png",
+      "sha256": "12829cd5c59f67dc047fc69540d619c0324571ba3924c869fda6d4d430d81c93"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-default-standard-820-geometry.json",
+      "sha256": "8ae818749cd960d3ae1c82e2855ff2452cfd6429f2ebbbc38b960e5fca0dddb9"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-default-standard-820.png",
+      "sha256": "12829cd5c59f67dc047fc69540d619c0324571ba3924c869fda6d4d430d81c93"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-save-error-390-c34704870c97f023cfe02a9846476b111d6bf7e0.png",
+      "sha256": "46990233808a1beff257c29e7250b57f969e616045ac1fd5fab82338b835fc8f"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-save-error-390-geometry.json",
+      "sha256": "616d8348bdb4c7d467e292230084def01db1c6bb40689de79a47eb395fde860f"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-save-error-390.png",
+      "sha256": "10200945c58020d87f0cb5d1af9193980bc5f2335aa8eea8c6e44616883b06c2"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-save-error-820-0989dd7fc259c32f935cbeae0f941f1940bf99e3.png",
+      "sha256": "d9f94ac69cf7f293edf63d92d442e7df5da3860b7d561f9b750680e7a7e936f3"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-save-error-820-geometry.json",
+      "sha256": "715366cef68f60c340121fc226bd0f2926f47d7bd2c5da79513e88abf4807214"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-save-error-820.png",
+      "sha256": "d94916a70b4d064c6a1ab5b7698b52dc867a57838bc35593613a8c4cfd5daca4"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-saved-simple-390-20d8482c0c9017b0afbd201e0b430b595a34e736.png",
+      "sha256": "2d7c0fb353430808e742e9e32bd9ac579bb265dd8e54e6bad201c79a9a8621a8"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-saved-simple-390-geometry.json",
+      "sha256": "ec78eb6db589e1ac882a3e021709afb58012cd1ab759d5e1386db94c9fbb4a3f"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-saved-simple-390.png",
+      "sha256": "2d7c0fb353430808e742e9e32bd9ac579bb265dd8e54e6bad201c79a9a8621a8"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-saved-simple-820-f7956df38e9c302c3688a17e1bfc159c515bd24b.png",
+      "sha256": "0722f965ed2ed41d9d2daf552cf1bb3be6f8b999fdf6ad0a37307ad5ecf8044f"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-saved-simple-820-geometry.json",
+      "sha256": "21190dff639720675b6d2eff85f95bf86f47d32eae26882d6c2668c40b1c40e6"
+    },
+    {
+      "path": "docs/release-20261122/visual/experience-saved-simple-820.png",
+      "sha256": "0722f965ed2ed41d9d2daf552cf1bb3be6f8b999fdf6ad0a37307ad5ecf8044f"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-default-standard-390-actions.png",
+      "sha256": "10702698b78386a2fe8f26c134f5fd5506cbd2d11fee75ad21fbe8e04511e5ca"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-default-standard-390-control.png",
+      "sha256": "eab73171e50665f359643c14bc141303f28aa99e68fc2e255d5d4c1073cc2243"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-default-standard-820-actions.png",
+      "sha256": "4723ff51cf1c8d48c38696ea7bd5938e61c7ee597d4dc7ca72531d5f8cf01116"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-default-standard-820-control.png",
+      "sha256": "c39520d6ac4b177b3e9eb453914c6f5044284d41d6e5c1f109bd7951673be714"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-save-error-390-actions.png",
+      "sha256": "48f09fee825934d49eba08e77a833bc980d34781fd2f3d44d877543ceeefe628"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-save-error-390-control.png",
+      "sha256": "3d098bc12255fafcbfdd958502adee7093e9d09e790b5d32e99073dc197c5e10"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-save-error-820-actions.png",
+      "sha256": "213a72d5f226815116081a652db793720713870a4e71a23a43ba74867f6308b4"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-save-error-820-control.png",
+      "sha256": "cd02ec4255de6f0cc07b181388ff9aeafafe8b5a655711d4c7039d178fdbd183"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-saved-simple-390-actions.png",
+      "sha256": "ca49a51797222ed8cb876a8d938f88ba0afe641f5fe00c3aed49ddee60e37899"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-saved-simple-390-control.png",
+      "sha256": "7d773b9f371dde1d712034fc27a94b213a3867a2b3588b51a8746341204e1159"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-saved-simple-820-actions.png",
+      "sha256": "e2333e2685fe3e7059fbee432bebb5b76ae0f0ce2c1a6224461e4279b429a521"
+    },
+    {
+      "path": "docs/release-20261122/visual/readable-experience-saved-simple-820-control.png",
+      "sha256": "3d098bc12255fafcbfdd958502adee7093e9d09e790b5d32e99073dc197c5e10"
+    }
+  ]
+}

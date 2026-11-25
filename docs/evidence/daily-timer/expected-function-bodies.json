@@ -1,0 +1,13 @@
+{
+  "migration_source_sha256": "95d27cc0acd2a7757b2891f624b2f65b9762981be69f21f1bbf144df4e4cd6df",
+  "function_body_md5": {
+    "wn_session_clock": "e458914a93bf2f3a40802d487544971c",
+    "wn_daily_session_period": "cb866aa81afe2dd2894814a3e38273f0",
+    "wn_profile_session_snapshot": "7f27a08b8a4ca1d0188dfe78b8b5e29a",
+    "wn_resolve_profile_session": "dd2cb983a88471afcda518da778950a8",
+    "wn_control_profile_session_v2": "cfc37fa33e4116a92c7dad399be661b3",
+    "wn_control_profile_session": "effdb036306456486ea6bc8d616221bc",
+    "wn_start_profile_session": "973e742f0a2e8cfdcab247ac53e33e14",
+    "wn_end_profile_session": "e275d577e38c4170be1228a2a613331f"
+  }
+}

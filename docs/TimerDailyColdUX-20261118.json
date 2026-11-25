@@ -1,0 +1,457 @@
+{
+  "source": "6619bf920b0ea69fece24b4ada4b6901035cbc55",
+  "appTree": "1dca2590e6ca5043a3c37b30309b923204162fd6",
+  "audit": "Independent cold task-led Parent timer UX / rendered functional dispatch",
+  "verdict": "PASS",
+  "verdictScope": "Rendered Parent timer UI and exact control dispatch only. No material objective defect found in exercised scope.",
+  "releaseAuthority": "FAIL / HELD: not a release authorization; hosted/physical/security/real-database gates remain outside this synthetic audit.",
+  "independence": {
+    "peerReportsRead": false,
+    "builderRationaleRead": false,
+    "firstImpressionFreeze": "first-impression.md",
+    "caveat": "Written target read before first impression by assignment; therefore task-led cold review, not wholly specification-blind Stranger Test."
+  },
+  "environment": {
+    "server": "own optimized Next start http://127.0.0.1:3023",
+    "phone": "390x844 Chromium",
+    "desktop": "1280x900 Chromium",
+    "data": "synthetic e2e fixture; explicit status states injected; no backend transitions asserted"
+  },
+  "objectiveDefects": [],
+  "recommendations": [
+    {
+      "id": "CUX-R1",
+      "classification": "Strong product recommendation",
+      "priority": "P1",
+      "finding": "Reduce phone scroll burden: first primary action begins below initial viewport and full expanded four-child page is very tall.",
+      "proposal": "Show concise per-child summary and expand editor for chosen child; move repeated explanatory copy to one nearby shared help area. Preserve pre-action one-off/daily consequences."
+    },
+    {
+      "id": "CUX-R2",
+      "classification": "Strong product recommendation",
+      "priority": "P1",
+      "finding": "Exhausted daily state offers Save daily allowance rather than a labelled extra-today action. One-off option warns it disables daily recurrence, so additional-time path is not self-explanatory.",
+      "proposal": "Clarify the approved additional-grant path and its effect on tomorrow; do not infer backend failure from this UI-only observation."
+    }
+  ],
+  "journal": [
+    {
+      "step": 1,
+      "name": "Invalid custom 0",
+      "expected": "inline correction, primary disabled",
+      "actual": {
+        "alert": "Enter a whole number from 1 to 240.",
+        "disabled": true
+      }
+    },
+    {
+      "step": 2,
+      "name": "Invalid custom 1.5",
+      "expected": "inline correction, primary disabled",
+      "actual": {
+        "alert": "Enter a whole number from 1 to 240.",
+        "disabled": true
+      }
+    },
+    {
+      "step": 3,
+      "name": "Invalid custom 241",
+      "expected": "inline correction, primary disabled",
+      "actual": {
+        "alert": "Enter a whole number from 1 to 240.",
+        "disabled": true
+      }
+    },
+    {
+      "step": 4,
+      "name": "Custom 1",
+      "expected": "dispatch exact whole minutes one-off",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "start",
+        "duration_minutes": 1
+      }
+    },
+    {
+      "step": 5,
+      "name": "Custom 5",
+      "expected": "dispatch exact whole minutes one-off",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "start",
+        "duration_minutes": 5
+      }
+    },
+    {
+      "step": 6,
+      "name": "Custom 10",
+      "expected": "dispatch exact whole minutes one-off",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "start",
+        "duration_minutes": 10
+      }
+    },
+    {
+      "step": 7,
+      "name": "Custom 240",
+      "expected": "dispatch exact whole minutes one-off",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "start",
+        "duration_minutes": 240
+      }
+    },
+    {
+      "step": 8,
+      "name": "Choose Daily Allowance",
+      "expected": "pre-action reset and no rollover explanation",
+      "actual": "Miri\n\nNo session timer\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nSave 1 min daily allowance\nEnd now\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 9,
+      "name": "Save Daily 1",
+      "expected": "dispatch daily 1",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "daily",
+        "duration_minutes": 1
+      }
+    },
+    {
+      "step": 10,
+      "name": "Render 04-active",
+      "expected": "reflect supplied synthetic API state",
+      "actual": "Miri\n\n10 min left\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nDaily Allowance: 10 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nSave 10 min daily allowance\nAdd 15 minutes\nAdd 10 minutes\nPause\nEnd now\nRemove time limit\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 11,
+      "name": "Pause",
+      "expected": "pause action",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "pause"
+      }
+    },
+    {
+      "step": 12,
+      "name": "Render 05-paused",
+      "expected": "reflect supplied synthetic API state",
+      "actual": "Miri\n\nPaused \u00b7 7 min saved\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nDaily Allowance: 10 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nSave 10 min daily allowance\nResume\nAdd 15 minutes\nAdd 10 minutes\nEnd now\nRemove time limit\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 13,
+      "name": "Resume",
+      "expected": "resume action",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "resume"
+      }
+    },
+    {
+      "step": 14,
+      "name": "Extend paused",
+      "expected": "extend action keeps pause (backend not asserted)",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "extend",
+        "duration_minutes": 15
+      }
+    },
+    {
+      "step": 15,
+      "name": "End now",
+      "expected": "end action",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "end"
+      }
+    },
+    {
+      "step": 16,
+      "name": "Render 06-blocked",
+      "expected": "reflect supplied synthetic API state",
+      "actual": "Miri\n\nStopped by Parent\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nAccess is stopped by Parent. Removing a time limit won\u2019t unlock this child. Give new time, or add time and allow access.\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nDaily Allowance: 10 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nSave 10 min daily allowance\nAllow access\nAdd 10 minutes\nRemove time limit\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 17,
+      "name": "Extend blocked",
+      "expected": "extend action no implied unlock",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "extend",
+        "duration_minutes": 10
+      }
+    },
+    {
+      "step": 18,
+      "name": "Remove limit",
+      "expected": "disable action",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "disable"
+      }
+    },
+    {
+      "step": 19,
+      "name": "Render 07-blocked-limit-removed",
+      "expected": "reflect supplied synthetic API state",
+      "actual": "Miri\n\nStopped by Parent\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nAccess is stopped by Parent. Removing a time limit won\u2019t unlock this child. Give new time, or add time and allow access.\n\nA one-time window. Giving time switches Daily Allowance off; it won\u2019t renew tomorrow.\n\nGive 20 minutes\nAllow access\nAdd 20 minutes\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 20,
+      "name": "Allow access",
+      "expected": "explicit resume action",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "resume"
+      }
+    },
+    {
+      "step": 21,
+      "name": "Render 08-ready",
+      "expected": "reflect supplied synthetic API state",
+      "actual": "Miri\n\n5 min available today\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nDaily Allowance: 5 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nSave 5 min daily allowance\nPause\nEnd now\nRemove time limit\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 22,
+      "name": "Render 09-exhausted",
+      "expected": "reflect supplied synthetic API state",
+      "actual": "Miri\n\nTime\u2019s up\n\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nDaily Allowance: 5 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nSave 5 min daily allowance\nEnd now\nRemove time limit\n\nNo child device has checked in yet.\n\nActive time counts down by the clock, including while a video is paused or WatchNest is in the background. Pausing from here saves the remaining allowance."
+    },
+    {
+      "step": 23,
+      "name": "Page width",
+      "expected": "no horizontal overflow",
+      "actual": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "step": 24,
+      "name": "Keyboard numeric editing and Tab",
+      "expected": "7 valid and next preset reachable",
+      "actual": {
+        "value": "7",
+        "focused": "1 min",
+        "inputMode": "numeric"
+      }
+    },
+    {
+      "step": 25,
+      "name": "Touch controls",
+      "expected": "primary 44px or larger",
+      "actual": [
+        {
+          "text": "1 min",
+          "width": 81,
+          "height": 46
+        },
+        {
+          "text": "5 min",
+          "width": 81,
+          "height": 46
+        },
+        {
+          "text": "10 min",
+          "width": 89,
+          "height": 46
+        },
+        {
+          "text": "20 min",
+          "width": 89,
+          "height": 46
+        },
+        {
+          "text": "30 min",
+          "width": 89,
+          "height": 46
+        },
+        {
+          "text": "45 min",
+          "width": 89,
+          "height": 46
+        },
+        {
+          "text": "60 min",
+          "width": 89,
+          "height": 46
+        },
+        {
+          "text": "Save 7 min daily allowance",
+          "width": 316,
+          "height": 46
+        },
+        {
+          "text": "End now",
+          "width": 316,
+          "height": 50
+        },
+        {
+          "text": "Remove time limit",
+          "width": 170,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "step": 26,
+      "name": "Desktop",
+      "expected": "responsive screenshot captured",
+      "actual": {
+        "width": 1280
+      }
+    }
+  ],
+  "visualUnits": [
+    {
+      "screenshot": "01-entry.png",
+      "sha256": "26588e3640ac3f98b573788489ff12550227f29efc73d2cdb2dcab2b24e9a5a6",
+      "screen": "Returning Parent overview",
+      "reach": "Navigate to Time",
+      "review": "Discoverable Time navigation and Time controls link. Keep as is.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "02-time.png",
+      "sha256": "00a5a351b6bb0f6d8b4bd891a4a25a5e76dd37a8e9c1a77beed3050e1b17da80",
+      "screen": "Unlimited / one-off editor",
+      "reach": "Time navigation",
+      "review": "Clear custom input, inclusive presets and recurrence-off explanation. Phone page is long; reduce repeated explanatory material as a recommendation.",
+      "disposition": "Recommendation only",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "03-daily-selection.png",
+      "sha256": "9aea89d27d1640ca10b6f56be1692ec85cfb8e5fdf13cc4c00a88fa4ffa857ba",
+      "screen": "Daily selection before save",
+      "reach": "Select Daily Allowance and enter 1",
+      "review": "7 AM family-zone, library-open start and no rollover are explained before commit. Keep distinction.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "04-active.png",
+      "sha256": "722a52b317f8647494e5a9b7ad1555dbd577c783c8e47bd60e55f6380921321d",
+      "screen": "Active daily window",
+      "reach": "Supply synthetic active authority and reload",
+      "review": "Remaining time, daily renewal zone, Extend/Pause/End/Remove controls visible. Device confirmation copy is distinct.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "05-paused.png",
+      "sha256": "bc919187e724c70644615e662bef53368b7c42caddafd763a283fd86bf3c0255",
+      "screen": "Parent paused daily",
+      "reach": "Supply synthetic paused authority and reload",
+      "review": "Saved minutes and Resume visible. Pause persistence copy present.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "06-blocked.png",
+      "sha256": "a885b21e74033ac02db1c968094045d9af8f722203893f71d9b0fe9dbb9edfb6",
+      "screen": "Parent End lock",
+      "reach": "Supply synthetic blocked authority and reload",
+      "review": "Stopped by Parent, separate Add and Allow access; removal warning explicit.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "07-blocked-limit-removed.png",
+      "sha256": "73a9e9d4e6d3d659d24c5d3c6b8bc7d263327ecdb64ff297768bf07d13107eeb",
+      "screen": "Removed limit with End lock",
+      "reach": "Supply synthetic limitDisabled blocked state",
+      "review": "Stopped by Parent remains visible and Allow access remains a separate deliberate control.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "08-ready.png",
+      "sha256": "f0eef8b75ac65effcb75fd1c4be2d984f1115640a4d43ee66f8eb09fd45caa78",
+      "screen": "Daily pending first child access",
+      "reach": "Supply synthetic ready state",
+      "review": "Available today is distinct from remaining active minutes. Copy explains library start.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "09-exhausted.png",
+      "sha256": "e9a6fb3000246d3a1475d7f220e20bf91a151035fa591324bde7caf9a0bf9160",
+      "screen": "Daily exhausted",
+      "reach": "Supply synthetic expired state",
+      "review": "Time\u2019s up with next renewal visible. Recommendation: clearer labelled route for additional time without accidental recurrence change.",
+      "disposition": "Recommendation only",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    },
+    {
+      "screenshot": "10-desktop.png",
+      "sha256": "1ff89da88f5c57a8daad12f0d60ed70851d3835fda288351a5eba1743adafbe9",
+      "screen": "Desktop time controls",
+      "reach": "Resize 1280\u00d7900",
+      "review": "Two-column layout retains hierarchy and no overlap. Repeated cards remain tall.",
+      "disposition": "Keep as is",
+      "decisionFields": [
+        "Approve as is",
+        "Approve recommendation",
+        "Reject recommendation",
+        "Modify/comment"
+      ]
+    }
+  ],
+  "limitations": [
+    "Actual phone software keyboard and physical tap reach not tested; numeric inputMode and desktop keyboard focus/editing checked.",
+    "No child playback, native fullscreen, autoplay or rollover runtime proof.",
+    "No real Supabase, hosted migration, DB concurrency, actual persistence, reset or offline authorization proof. Synthetic states demonstrate presentation only.",
+    "No broad onboarding or all-persona audit; scope is timer correction Parent task.",
+    "One exploratory run used inconsistent profile/status fixture and timed out on expected Add 10 vs rendered Add 20. Final run aligned dashboard profile state and passed. No app defect inferred."
+  ],
+  "nextStep": "Root integrates this frozen report and evaluates recommendations; no mandatory repair from this scoped audit."
+}

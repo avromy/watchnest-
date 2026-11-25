@@ -1,0 +1,403 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/b4fb31747e8d/watchnest-integrity/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/no-pin-lockout-20261123/browser/no-pin.config.mts"
+    ],
+    "configFile": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/no-pin.config.mts",
+    "rootDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "no-pin-entry.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run start -- --hostname 127.0.0.1 --port 3127",
+      "url": "http://127.0.0.1:3127",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "no-pin-entry.spec.ts",
+      "file": "no-pin-entry.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "own active no-PIN profile opens without credentials and survives picker/library reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 842,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:13.896Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "own-no-pin-home-reloaded",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results/no-pin-entry-own-active-no-023f4-vives-picker-library-reload/attachments/own-no-pin-home-reloaded-b0d0e62c5d9709e07553818dd6dcd64ca80c79d2.png"
+                    },
+                    {
+                      "name": "own-no-pin-home-reloaded-binding",
+                      "contentType": "application/json",
+                      "body": "ewogICJzY29wZSI6ICJzeW50aGV0aWMgYnJvd3NlciBjb250cmFjdCwgbm8gaG9zdGVkL2RldmljZS9hdXRoLWNvdW50ZXIgY2xhaW0iLAogICJidWlsZElkIjogImFZZTR6MEpPeTBncEozSWxKRkw0NCIsCiAgImNoaWxkTG9naW5TaGEyNTYiOiAiYThkY2IzNmM5MTU5NDdlMmM4ZDAxYmFjZWQyOGNiMWQyZmE3YmQ3ZTBkYzFmOTExZmU1Y2ZjYjRjYWM0OGUxZSIsCiAgInNjcmVlbnNob3RTaGEyNTYiOiAiM2Q2MDNlNjY1MWJhOGQ2Y2JkYmFmYjY1ZTAyYzJmYTA4MDNiZDE3NDAyOGJiODRhODgzYTU4YTQ1MzFkMDM3NCIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-63693cf7a165ecc5d370",
+          "file": "no-pin-entry.spec.ts",
+          "line": 76,
+          "column": 5
+        },
+        {
+          "title": "repeated real pointer taps while no-PIN admission is slow send one request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 455,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:15.101Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "own-no-pin-slow-pending",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results/no-pin-entry-repeated-real-a8fa4-on-is-slow-send-one-request/attachments/own-no-pin-slow-pending-8a741ab6d087f75c16479311e0537a70893afbf0.png"
+                    },
+                    {
+                      "name": "own-no-pin-slow-pending-binding",
+                      "contentType": "application/json",
+                      "body": "ewogICJzY29wZSI6ICJzeW50aGV0aWMgYnJvd3NlciBjb250cmFjdCwgbm8gaG9zdGVkL2RldmljZS9hdXRoLWNvdW50ZXIgY2xhaW0iLAogICJidWlsZElkIjogImFZZTR6MEpPeTBncEozSWxKRkw0NCIsCiAgImNoaWxkTG9naW5TaGEyNTYiOiAiYThkY2IzNmM5MTU5NDdlMmM4ZDAxYmFjZWQyOGNiMWQyZmE3YmQ3ZTBkYzFmOTExZmU1Y2ZjYjRjYWM0OGUxZSIsCiAgInNjcmVlbnNob3RTaGEyNTYiOiAiYzkwYjkwZjNhYzMwMjgxYWZhZTJiZjQ4ZDc1NTc0MjAwYjRiZjczYTQ3MjEwMjBiMWFhMDAyZjZkMDg3ZTQ4YSIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-ffeb791d4452da94e9d6",
+          "file": "no-pin-entry.spec.ts",
+          "line": 92,
+          "column": 5
+        },
+        {
+          "title": "network failure is visible and no-PIN retry succeeds without a passcode",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:15.570Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "own-no-pin-network-retry",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results/no-pin-entry-network-failu-fdcd5-succeeds-without-a-passcode/attachments/own-no-pin-network-retry-c362abd6fa7a32bdfbc8fee1ac9ff2b0f3be108f.png"
+                    },
+                    {
+                      "name": "own-no-pin-network-retry-binding",
+                      "contentType": "application/json",
+                      "body": "ewogICJzY29wZSI6ICJzeW50aGV0aWMgYnJvd3NlciBjb250cmFjdCwgbm8gaG9zdGVkL2RldmljZS9hdXRoLWNvdW50ZXIgY2xhaW0iLAogICJidWlsZElkIjogImFZZTR6MEpPeTBncEozSWxKRkw0NCIsCiAgImNoaWxkTG9naW5TaGEyNTYiOiAiYThkY2IzNmM5MTU5NDdlMmM4ZDAxYmFjZWQyOGNiMWQyZmE3YmQ3ZTBkYzFmOTExZmU1Y2ZjYjRjYWM0OGUxZSIsCiAgInNjcmVlbnNob3RTaGEyNTYiOiAiZWRkZWI5ODliOTA2OTg5NmIyNjljMjk2MzJmODA2ZTExMDUwZGZhMzQyOGM2OTBiZjczOGQ1OTVlYWZkNGYxZCIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-47d63827ec88853adecb",
+          "file": "no-pin-entry.spec.ts",
+          "line": 114,
+          "column": 5
+        },
+        {
+          "title": "offline admission and reconnect retain credential-free own-profile entry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 705,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:16.220Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-808ecd103c09e41e17ab",
+          "file": "no-pin-entry.spec.ts",
+          "line": 133,
+          "column": 5
+        },
+        {
+          "title": "a sibling with PIN off still requires explicit Parent PIN handoff",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 409,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:16.947Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-d9e519913bea33a8588e",
+          "file": "no-pin-entry.spec.ts",
+          "line": 150,
+          "column": 5
+        },
+        {
+          "title": "Parent Mode remains PIN gated from own no-PIN profile picker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:17.365Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-aaccfd2e7888b87b1fc4",
+          "file": "no-pin-entry.spec.ts",
+          "line": 164,
+          "column": 5
+        },
+        {
+          "title": "remote End now refusal persists across no-PIN retry and reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 350,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"Parent ended this session. Ask Parent when it is time again.\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <p role=\"alert\" class=\"error picker-error\">Parent ended this session. Ask Parent when it is …</p> aka getByText('Parent ended this session.')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"Parent ended this session. Ask Parent when it is time again.\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <p role=\"alert\" class=\"error picker-error\">Parent ended this session. Ask Parent when it is …</p> aka getByText('Parent ended this session.')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/no-pin-entry.spec.ts:184:43",
+                    "location": {
+                      "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/no-pin-entry.spec.ts",
+                      "column": 43,
+                      "line": 184
+                    },
+                    "snippet": "  182 |   for (let attempt = 0; attempt < 2; attempt++) {\n  183 |     await own(page).click();\n> 184 |     await expect(page.getByRole(\"alert\")).toHaveText(\"Parent ended this session. Ask Parent when it is time again.\");\n      |                                           ^\n  185 |     await expect(page).toHaveURL(/\\/watch$/);\n  186 |     await expect(own(page)).toBeEnabled();\n  187 |     await expect(page.getByRole(\"dialog\")).toHaveCount(0);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/no-pin-entry.spec.ts",
+                        "column": 43,
+                        "line": 184
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"Parent ended this session. Ask Parent when it is time again.\"\u001b[39m\nError: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <p role=\"alert\" class=\"error picker-error\">Parent ended this session. Ask Parent when it is …</p> aka getByText('Parent ended this session.')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n  182 |   for (let attempt = 0; attempt < 2; attempt++) {\n  183 |     await own(page).click();\n> 184 |     await expect(page.getByRole(\"alert\")).toHaveText(\"Parent ended this session. Ask Parent when it is time again.\");\n      |                                           ^\n  185 |     await expect(page).toHaveURL(/\\/watch$/);\n  186 |     await expect(own(page)).toBeEnabled();\n  187 |     await expect(page.getByRole(\"dialog\")).toHaveCount(0);\n    at /workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/no-pin-entry.spec.ts:184:43"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-23T00:21:17.699Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results/no-pin-entry-remote-End-no-4cda9-oss-no-PIN-retry-and-reload/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results/no-pin-entry-remote-End-no-4cda9-oss-no-PIN-retry-and-reload/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/no-pin-lockout-20261123/browser/results/no-pin-entry-remote-End-no-4cda9-oss-no-PIN-retry-and-reload/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/scratch/b4fb31747e8d/watchnest-integrity/e2e/no-pin-entry.spec.ts",
+                    "column": 43,
+                    "line": 184
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "339e9bacf1738f2df6ce-dada0e84792e5c8faf03",
+          "file": "no-pin-entry.spec.ts",
+          "line": 178,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-23T00:21:12.189Z",
+    "duration": 5946.848,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "preview-only deployment pause release",
+  "priorRemoteCommit": "bc3367debc6fe190385e97396e80bd9247402530",
+  "qualifiedApplicationCommit": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+  "applicationSourceTree": "461eb4dc14b9a5adb79047d681a8c85478e740ad",
+  "branch": "premium-ui-ux-20261103",
+  "projectId": "prj_tQi2cBAosldposlx61FcwnwDJ8OG",
+  "change": "Delete vercel.json containing only this feature branch deploymentEnabled=false guard. Restore default Git preview creation. No production promotion.",
+  "priorGuard": {
+    "git": {
+      "deploymentEnabled": {
+        "premium-ui-ux-20261103": false
+      }
+    }
+  },
+  "preservedFiles": [
+    "src",
+    "public",
+    "e2e",
+    "package.json",
+    "package-lock.json",
+    "playwright.config.ts",
+    "next.config.mjs"
+  ],
+  "nextConfigSha256": "d0d2540ba5f4948d58ea5626572024a9090eff02eb6a7d452a919e1eb1f43f0e",
+  "invokedRouting": "Current Vercel deployments-cicd read/applied; feature Git previews are separate from production. No environment secret fetched.",
+  "authorization": "Explicit root integration-owner instruction to re-enable feature preview only.",
+  "previewStatus": "Not observed at source checkpoint",
+  "hostedAuthentication": "Not proven",
+  "productionMutation": false
+}

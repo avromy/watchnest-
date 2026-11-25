@@ -1,0 +1,15 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> watchnest@0.1.0 lint
+> eslint .
+
+
+/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/evidence/profile-handoff/stranger/explore.mjs
+   7:8   warning  'fs' is defined but never used                @typescript-eslint/no-unused-vars
+  15:15  warning  'journal' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/b4fb31747e8d/watchnest-integrity/docs/release-20261122/cold/journey.mjs
+  1:167  warning  'fs' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+

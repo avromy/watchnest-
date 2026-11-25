@@ -1,0 +1,224 @@
+{
+  "verdict": "FAIL",
+  "scope": "Independent blind finite rendered-UI packet review only",
+  "source": "11b0ae78b576be3922d2893fec53bc5732a4cc25",
+  "app_tree": "6f223458b04a6ae684889597ad48d6e7866b6c88",
+  "build": "HVDZVyKg9-IHAy-NwqiAC",
+  "observations": [
+    "Inspected 35 distinct listed PNGs at their supplied pixel dimensions through view_image, with no rescaling/collage substituted for inspection. Coverage includes every ready/active/paused/blocked/expired Parent state card at 390, 768 portrait, 1024 landscape and 1440; Child exhausted, Parent-stopped and renewed; and all four independent active Child countdown anchors.",
+    "Parent and Child identities are legible. Selected duration and remaining/saved/available state are distinguished. Daily renewal, wall-clock counting, no rollover, and explicit Parent block persistence are explained in the rendered copy.",
+    "Parent navigation is consistently named and selected Time state is visually obvious. Main buttons and input focus have clear contrast and generous visible dimensions. Card layouts wrap without clipped controls at all four widths. Typography, lavender accents, icon family and rounded surfaces are coherent.",
+    "Child exhausted and Parent-stopped screens use calm language and a clear Choose profile action. Active countdown remains visible near the top at all four anchors. Child phone library preserves usable card titles and bottom navigation; the full-page capture shows a fixed bar crossing first-row metadata, which alone does not establish that content cannot be reached by scrolling.",
+    "An overall visually calm surface is undermined by the order and vertical footprint of the Parent card: active management actions follow the configuration form, presets, policy explanation, renewal summary and save control."
+  ],
+  "material_defects": [
+    {
+      "id": "J1-M1",
+      "category": "Parent efficiency / action placement",
+      "severity": "material",
+      "title": "Routine live access controls are buried below the configuration stack",
+      "evidence": [
+        "390 active-top: first viewport ends in presets, with no Pause, End now or Add minutes visible. Matching active-card places End now around y750 and Pause around y863 within the card, whose page top is around y387; these actions occur around page y1137 and y1250.",
+        "768 active-top: first viewport shows presets and policy copy but no live action; matching active-card puts End now around y754 and Pause around y866 within the card starting around page y400.",
+        "1024 active-top: first viewport ends at the custom input/helper region; matching active-card puts End now around y660 and Pause around y718 inside a card starting around y400.",
+        "1440 active-top: even a 1000px-tall viewport reaches only the Save daily allowance control; End now and Pause are still below it.",
+        "Paused, blocked and expired cards retain this order, similarly delaying Resume, Allow access and Add minutes today."
+      ],
+      "impact": "A Parent opening Time controls to interrupt, resume or recover a child must pass a substantial setup/policy form before reaching the action. The page presents configuration as the primary task even during active or interrupted access. This is material friction for a time-control surface across the target phone and iPad sizes.",
+      "required_change": "Expose current status and context-appropriate live actions directly below each child header, before duration configuration and explanatory copy. Keep configuration and recurrence information in a secondary region. Re-capture active/paused/blocked/expired states at all four sizes."
+    }
+  ],
+  "optional_improvements": [
+    "Replace the exposed America/New_York token with a human-readable timezone label.",
+    "Make duration presets look more clearly tappable; they currently resemble unbordered muted text.",
+    "Reduce repeated instructional paragraphs using progressive disclosure after the essential wall-clock/renewal meaning is established.",
+    "For Parent-stopped Child state, a state-specific heading could distinguish deliberate Parent stop from exhausted daily time more immediately.",
+    "Muted Ask Parent is readable but its disabled meaning, if disabled, is not established by these still images. A visible reason or enabled recovery affordance would make the state clearer."
+  ],
+  "limits": [
+    "Synthetic authorized API fixtures and actual rendered Chromium screenshots; not physical device evidence.",
+    "No backend enforcement, timer correctness, persistence, network/API security, deployed behavior, interaction success, screen-reader semantics, touch target hitboxes, native fullscreen, picture or sound certification.",
+    "No Child paused screenshot was listed in the supplied index; Child pause recovery is therefore not certified.",
+    "Static screenshots establish visual presentation, not whether disabled-looking controls are truly disabled or whether a fixed bar permanently occludes content.",
+    "No source files, peer verdicts, Builder explanations, browser jobs or deployments were read or changed."
+  ],
+  "reviewed_at_utc": "2026-11-18T18:32:10.041823+00:00",
+  "actual_consumption": [
+    {
+      "filename": "daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-exhausted.png",
+      "sha256": "cc421fe31f214682041fac783b746e61f92c81d6738026a628c6903cb139bfcf"
+    },
+    {
+      "filename": "daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-parent-blocked.png",
+      "sha256": "18af13eccc301c328ca8efe91a7990d96d3907eb1d208d867cbed896c6b321af"
+    },
+    {
+      "filename": "daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-library--a617e-se-and-retains-Parent-block--daily-renewed.png",
+      "sha256": "95a718ccdefde5e58c35d73eec2fff8f89c471ef4ec357d26dbd277f87617c2b"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--active-card.png",
+      "sha256": "01243be4ed1b7bc0b0610d405cc5b686dff2f9359f3a535994a08989675edd93"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--blocked-card.png",
+      "sha256": "b3374efdcac5f37f3dbaae44525ca06313f69d76f89257738a14dd869a1ba409"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--expired-card.png",
+      "sha256": "feec5fc51769da53e6afee272dd9e56e9207c0ce38f08a2669cd3131d6af001f"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--paused-card.png",
+      "sha256": "1edc41956e20fd74f8b2a6713fbcbd5c5dab934698e469ea485b3440493584c8"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--ready-card.png",
+      "sha256": "d955dd1d7d53251fcafa7477d4c380c4a994442634fa55488fee39e08d1f8c46"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--active-card.png",
+      "sha256": "fe6f2f0bbe4917b4b3a265857cb4deb295745bbab853f6c36d205f55b3f623c4"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--blocked-card.png",
+      "sha256": "815df6d4266b053c3a61adc4a82d3dd25dd3a2d616609c3b8537d1c2490a7cff"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--expired-card.png",
+      "sha256": "2d9a0c60ade5f72e01b02e2a298d34154de1f633e7a3494e9d1f08a0ba5385f1"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--paused-card.png",
+      "sha256": "e3ef3cabe84c1ae882502eead01bb635930c41d9f41a4c5288467c553e754e07"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--ready-card.png",
+      "sha256": "0274ed7fc28c65dc858c6b91fa61d4dafcfa647b3f4019b454f049c7648e7c6a"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--active-card.png",
+      "sha256": "d4dbb32899db86eb652cba152f78c3da2976539353eb89eb3735e84d404bfecf"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--blocked-card.png",
+      "sha256": "d70c3ba6afb5615d3e8bd5a6197f7d8f7556a5884ca538839255fbc626b32f9e"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--expired-card.png",
+      "sha256": "5ada79770e5b972588bc8a574c74e8259f128b4f11ed05f18bacc5cbf48d4401"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--paused-card.png",
+      "sha256": "f528edf417e366e9cc0c565ada7627e0eab124c102d2ad58796cd5b3a3069ccf"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--ready-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--ready-card.png",
+      "sha256": "c4a4f5187894d7442f4dbb33a422b002e8dedfc432791238c900795206e60984"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--active-card.png",
+      "sha256": "00ac532c737ef975e89ec639437219ca9f6c664a370b7207f4243e4f11005be9"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--blocked-card.png",
+      "sha256": "55a0689854916f2ff1e6c9bb3c1fe5cb0e3149e889bc2e7b0bad0ec7032f8d5f"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--expired-card.png",
+      "sha256": "91eb7f516d882fef50667d19d983d3ca6f83299a788e57ea41b56a31dff0c276"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--paused-card.png",
+      "sha256": "624b37853f884a81c80f8439b944d2e7741732a7eb1f4da00a63490ab87dd438"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--ready-card.png",
+      "sha256": "a227986a7714696f43e2ae53e3241ab3236ddb66191eecd3dc0b6331cb0e2e07"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--active-top.png",
+      "sha256": "dca31fd7b69884a02b6d492e9fdf71cfd3a6fce2913752552d7d0e08e2279a14"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--active-top.png",
+      "sha256": "f12d31d566906c397e346b15f6a16b14df6a8bdc15f3f44a388fad64a10fc4cc"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--active-top.png",
+      "sha256": "4566c1497d39002ce45849f8a06deb4490935471e62b03727b1d202eb6b90e5b"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--active-top.png",
+      "sha256": "77a42868a3fb0ae09a78ef58f9f960baf639a95d71d8658abfc414062ee0db05"
+    },
+    {
+      "filename": "independent--1024x768-daily-active.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/independent--1024x768-daily-active.png",
+      "sha256": "2ba8306a98cd40819eac4fa320d46dac52f4c1b4f79a16f90b81e5c8f8c66b3b"
+    },
+    {
+      "filename": "independent--1440x1000-daily-active.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/independent--1440x1000-daily-active.png",
+      "sha256": "ae0b5493c5a4f43aee1b942b8fd50c085a7c45d0ec8f438b90bfd0c97d0ff825"
+    },
+    {
+      "filename": "independent--390x844-daily-active.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/independent--390x844-daily-active.png",
+      "sha256": "607cd898658048096bc6197f9772074c85df2fca703921cb1f2821eb36f4bd17"
+    },
+    {
+      "filename": "independent--768x1024-daily-active.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/independent--768x1024-daily-active.png",
+      "sha256": "6e1aca530e1f71a25ddca5372dd9930358d037549f1725d427252cff060e98b8"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1024x768--expired-top.png",
+      "sha256": "dd6a547be320de645299d628c7db8b0d887bd3b71a4dcd65b91f697e99a74411"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-390x844--expired-top.png",
+      "sha256": "fb5b54b744fe68dc19a29a25b531b25e212b41488592bb9f90d9ca23b721869d"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-768x1024--expired-top.png",
+      "sha256": "41c0072d6acbb85396dfb5a6cf817e31cad8d704cd3a86a53ec70b2da8cfa117"
+    },
+    {
+      "filename": "daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+      "path": "/workspace/scratch/b4fb31747e8d/daily-timer-final-neutral/daily-timer-daily-timer-real-pixels-1440x1000--expired-top.png",
+      "sha256": "7bc952a8384682d88bf46f83c7b48a2ed6865786167b15ce495280c42cfca1b0"
+    }
+  ],
+  "consumed_count": 35
+}

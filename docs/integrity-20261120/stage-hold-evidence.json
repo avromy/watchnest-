@@ -1,0 +1,32 @@
+{
+  "manualAssignmentGuardUpdate": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"result\": {\n    \"id\": \"prj_tQi2cBAosldposlx61FcwnwDJ8OG\",\n    \"name\": \"watchnest\",\n    \"framework\": \"nextjs\",\n    \"accountId\": \"team_dTgQEg6sITPfNF8attwZNXcH\",\n    \"createdAt\": 1790824271263,\n    \"updatedAt\": 1794972249887,\n    \"nodeVersion\": \"24.x\",\n    \"live\": false,\n    \"latestDeployment\": null,\n    \"domains\": [],\n    \"passwordProtection\": {\n      \"enabled\": false,\n      \"deploymentType\": null\n    },\n    \"ssoProtection\": {\n      \"enabled\": true,\n      \"deploymentType\": \"all_except_custom_domains\"\n    },\n    \"trustedIps\": {\n      \"enabled\": false,\n      \"deploymentType\": null,\n      \"addresses\": [],\n      \"protectionMode\": null\n    }\n  }\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "cancelledStageCreation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"result\": {\n    \"deployment\": {\n      \"id\": \"dpl_4t6k1de618Capk3c9cF7ptGFQPAF\",\n      \"name\": \"watchnest\",\n      \"url\": \"watchnest-chj8pfu2m-avromy.vercel.app\",\n      \"type\": \"LAMBDAS\",\n      \"state\": \"INITIALIZING\",\n      \"createdAt\": 1795207291029,\n      \"creator\": {\n        \"uid\": \"FbK2fmQvUaYN1OIasgsDxpwb\",\n        \"username\": \"avromy-4714\"\n      },\n      \"project\": {\n        \"id\": \"prj_tQi2cBAosldposlx61FcwnwDJ8OG\",\n        \"name\": \"watchnest\",\n        \"framework\": \"nextjs\"\n      },\n      \"meta\": {\n        \"githubCommitRef\": \"premium-ui-ux-20261103\",\n        \"githubCommitSha\": \"0aac62ea0dd42d1f1301d98a4651d8b8f05e7394\",\n        \"githubCommitMessage\": \"Preserve database authority across login refresh and recover failed sign-out\",\n        \"githubRepo\": \"watchnest-\",\n        \"githubOrg\": \"avromy\"\n      },\n      \"alias\": [\n        \"watchnest-avromy.vercel.app\",\n        \"watchnest-git-premium-ui-ux-20261103-avromy.vercel.app\"\n      ],\n      \"target\": \"production\",\n      \"regions\": [\n        \"iad1\"\n      ],\n      \"buildingAt\": 1795207291029,\n      \"readyState\": \"INITIALIZING\",\n      \"source\": \"redeploy\"\n    }\n  }\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "canonicalAfterCancel": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"result\": {\n    \"deployment\": {\n      \"id\": \"dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac\",\n      \"name\": \"watchnest\",\n      \"url\": \"watchnest-6akyjvbcj-avromy.vercel.app\",\n      \"type\": \"LAMBDAS\",\n      \"state\": \"READY\",\n      \"createdAt\": 1793642118878,\n      \"creator\": {\n        \"uid\": \"FbK2fmQvUaYN1OIasgsDxpwb\",\n        \"username\": \"avromy-4714\"\n      },\n      \"project\": {\n        \"id\": \"prj_tQi2cBAosldposlx61FcwnwDJ8OG\",\n        \"name\": \"watchnest\",\n        \"framework\": \"nextjs\"\n      },\n      \"meta\": {\n        \"githubCommitRef\": \"product-completion-20260930\",\n        \"githubCommitSha\": \"77a5017d938ded03b1530c2b72978cef27273d61\",\n        \"githubCommitMessage\": \"Qualify readiness deadline with real browser timer\",\n        \"githubRepo\": \"watchnest-\",\n        \"githubOrg\": \"avromy\"\n      },\n      \"alias\": [\n        \"watchnest-rho.vercel.app\",\n        \"watchnest-avromy.vercel.app\",\n        \"watchnest-git-product-completion-20260930-avromy.vercel.app\"\n      ],\n      \"target\": \"production\",\n      \"regions\": [\n        \"iad1\"\n      ],\n      \"buildingAt\": 1793642120008,\n      \"ready\": 1793642133491,\n      \"readyState\": \"READY\",\n      \"source\": \"git\",\n      \"aliasError\": null\n    }\n  }\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}

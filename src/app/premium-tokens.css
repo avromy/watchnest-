@@ -1,0 +1,26 @@
+/* Concept 3: shared family streaming system. Presentation only. */
+:root {
+  --wn-navy: #151a32;
+  --wn-action: #6552b8;
+  --wn-background: #f7f6fb;
+  --wn-ink: #20243c;
+  --wn-muted: #656b80;
+  --wn-lavender: #b8adff;
+  --wn-coral: #ffad96;
+  --wn-surface: #ffffff;
+  --wn-border: #dddfea;
+  /* Compatibility aliases used by existing, behavior-preserved components. */
+  --wn-evergreen: var(--wn-navy);
+  --wn-ivory: var(--wn-background);
+  --wn-amber: var(--wn-coral);
+  --wn-space-1: 4px;
+  --wn-space-2: 8px;
+  --wn-space-3: 12px;
+  --wn-space-4: 16px;
+  --wn-space-6: 24px;
+  --wn-space-8: 32px;
+  --wn-radius-control: 12px;
+  --wn-radius-card: 18px;
+  --wn-radius-feature: 24px;
+  --wn-touch: 48px;
+}

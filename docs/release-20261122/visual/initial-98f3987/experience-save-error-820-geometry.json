@@ -1,0 +1,302 @@
+{
+  "state": "save-error",
+  "viewport": {
+    "width": 820,
+    "height": 1180
+  },
+  "coordinateSystem": "document pixels; full-page screenshot",
+  "records": [
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 462.203125,
+      "y": 507.53125,
+      "width": 45.59375,
+      "height": 45.59375,
+      "disabled": false
+    },
+    {
+      "tag": "H2",
+      "text": "Ari",
+      "x": 539,
+      "y": 504.609375,
+      "width": 91,
+      "height": 27.359375,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "4-digit PIN on",
+      "x": 539,
+      "y": 534.96875,
+      "width": 91,
+      "height": 21.0625,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 447,
+      "y": 683.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 457.203125,
+      "y": 693.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 503,
+      "y": 683.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 513.203125,
+      "y": 693.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 559,
+      "y": 683.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 569.203125,
+      "y": 693.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 615,
+      "y": 683.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 625.203125,
+      "y": 693.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 671,
+      "y": 683.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 681.203125,
+      "y": 693.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 447,
+      "y": 747.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 457.203125,
+      "y": 757.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 503,
+      "y": 747.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 513.203125,
+      "y": 757.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 559,
+      "y": 747.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 569.203125,
+      "y": 757.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 615,
+      "y": 747.328125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 625.203125,
+      "y": 757.53125,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Upload photo",
+      "x": 447,
+      "y": 819.328125,
+      "width": 316,
+      "height": 71.4375,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 557,
+      "y": 832.328125,
+      "width": 18,
+      "height": 18,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "Photos are cropped and compressed on this device, then stored privately. JPG, PNG, or WebP; up to 25 MB before processing.",
+      "x": 447,
+      "y": 914.765625,
+      "width": 316,
+      "height": 58.03125,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Library experienceStandardSimple",
+      "x": 447,
+      "y": 671.328125,
+      "width": 316,
+      "height": 82.796875,
+      "disabled": false
+    },
+    {
+      "tag": "SELECT",
+      "text": "StandardSimple",
+      "x": 447,
+      "y": 704.125,
+      "width": 316,
+      "height": 50,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "Simple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.",
+      "x": 447,
+      "y": 766.125,
+      "width": 316,
+      "height": 74.390625,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Require a PINAsk for a 4-digit PIN before opening Ari’s library.",
+      "x": 447,
+      "y": 856.515625,
+      "width": 316,
+      "height": 97.453125,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "New PIN (optional)",
+      "x": 447,
+      "y": 977.96875,
+      "width": 151,
+      "height": 83.59375,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Confirm PIN",
+      "x": 612,
+      "y": 977.96875,
+      "width": 151,
+      "height": 83.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Save changes",
+      "x": 447,
+      "y": 1081.5625,
+      "width": 134,
+      "height": 46,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "View as Ari",
+      "x": 447,
+      "y": 1147.5625,
+      "width": 316,
+      "height": 46,
+      "disabled": false
+    }
+  ],
+  "buildId": "5Cj3i3D9NqbEWp0ghmGX8",
+  "parentSourceSha256": "95861452332ab8ea842213473a630e470e9494bf1bd3ba2878b029a8f46dab75",
+  "imageSha256": "d9f94ac69cf7f293edf63d92d442e7df5da3860b7d561f9b750680e7a7e936f3",
+  "scope": "synthetic browser, not hosted/device or independent visual acceptance"
+}

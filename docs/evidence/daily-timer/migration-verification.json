@@ -1,0 +1,76 @@
+{
+  "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "verified": true,
+  "functions": [
+    {
+      "name": "wn_control_profile_session",
+      "definer": false,
+      "body_md5": "effdb036306456486ea6bc8d616221bc",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_control_profile_session_v2",
+      "definer": false,
+      "body_md5": "cfc37fa33e4116a92c7dad399be661b3",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_daily_session_period",
+      "definer": false,
+      "body_md5": "cb866aa81afe2dd2894814a3e38273f0",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_end_profile_session",
+      "definer": false,
+      "body_md5": "e275d577e38c4170be1228a2a613331f",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_profile_session_snapshot",
+      "definer": false,
+      "body_md5": "7f27a08b8a4ca1d0188dfe78b8b5e29a",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_resolve_profile_session",
+      "definer": false,
+      "body_md5": "dd2cb983a88471afcda518da778950a8",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_session_clock",
+      "definer": false,
+      "body_md5": "e458914a93bf2f3a40802d487544971c",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "name": "wn_start_profile_session",
+      "definer": false,
+      "body_md5": "973e742f0a2e8cfdcab247ac53e33e14",
+      "anon_execute": false,
+      "service_execute": true,
+      "authenticated_execute": false
+    }
+  ],
+  "safe_check": "CHECK ((safe_playback_enabled = true))",
+  "profile_rls": true,
+  "latest_migration": "20261118192923",
+  "new_column_count": 8,
+  "unsafe_safe_playback_rows": 0,
+  "real_profiles_remain_new_defaults": true
+}

@@ -1,0 +1,83 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+ RUN  v5.0.3 /workspace/scratch/b4fb31747e8d/watchnest-integrity
+
+stderr | src/lib/server/product-dispatch.test.ts > authenticated route dispatch regression > keeps an already-valid trusted device signed in when renewal storage is temporarily unavailable
+[watchnest-device] renewal skipped { code: 'TRANSIENT', status: 503 }
+
+··stderr | src/lib/server/product-dispatch.test.ts > verified parent ownership and cache retention > returns YouTube search results even when the optional search cache is unavailable
+[watchnest-search] expired cache cleanup skipped { code: 'CACHE_UNAVAILABLE', status: 503 }
+
+stderr | src/lib/server/product-dispatch.test.ts > verified parent ownership and cache retention > returns YouTube search results even when the optional search cache is unavailable
+[watchnest-search] cache read skipped { code: 'CACHE_UNAVAILABLE' }
+
+stderr | src/lib/server/product-dispatch.test.ts > verified parent ownership and cache retention > returns YouTube search results even when the optional search cache is unavailable
+[watchnest-search] cache write skipped { code: 'CACHE_UNAVAILABLE' }
+
+······················xx····x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/server/product-dispatch.test.ts > existing Parent password sign-in policy > delegates a nonempty legacy password below the creation minimum to the provider
+AssertionError: expected 400 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 400
+
+ ❯ src/lib/server/product-dispatch.test.ts:673:29
+    671|   it("delegates a nonempty legacy password below the creation minimum …
+    672|     const response = await authenticate("login", "fixture8");
+    673|     expect(response.status).toBe(200);
+       |                             ^
+    674|     expect(state.loginCalls).toBe(1);
+    675|     expect(state.getUserCalls).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/lib/server/product-dispatch.test.ts > existing Parent password sign-in policy > does not authenticate a rejected short password or issue any session cookies
+AssertionError: expected 400 to be 401 // Object.is equality
+
+- Expected
++ Received
+
+- 401
++ 400
+
+ ❯ src/lib/server/product-dispatch.test.ts:681:29
+    679|     state.loginRejected = true;
+    680|     const response = await authenticate("login", "fixture8");
+    681|     expect(response.status).toBe(401);
+       |                             ^
+    682|     expect(state.loginCalls).toBe(1);
+    683|     expect(state.tables).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/lib/server/product-dispatch.test.ts > existing Parent password sign-in policy > still rejects an unconfirmed account after provider authentication with a legacy password
+AssertionError: expected 400 to be 403 // Object.is equality
+
+- Expected
++ Received
+
+- 403
++ 400
+
+ ❯ src/lib/server/product-dispatch.test.ts:700:62
+    698|   it("still rejects an unconfirmed account after provider authenticati…
+    699|     state.unconfirmed = true;
+    700|     expect((await authenticate("login", "fixture8")).status).toBe(403);
+       |                                                              ^
+    701|     expect(state.loginCalls).toBe(1);
+    702|     expect(state.tables).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 28 passed (31)
+   Start at  12:17:39
+   Duration  1.41s (tests 36%, import 34%, transform 29%, worker 1%)
+

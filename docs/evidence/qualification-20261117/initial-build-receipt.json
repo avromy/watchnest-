@@ -1,0 +1,11 @@
+{
+  "kind": "transcribed-exec-result-excerpt-not-original-full-stdout",
+  "command": "npm run build",
+  "sourceCommit": "68dc623084e1b91e4b2cd83e041c3257b4ce3809",
+  "nextVersion": "16.4.3",
+  "execSessionId": 35220,
+  "exitCode": 1,
+  "observedStages": ["Compiled successfully", "TypeScript finished", "20 static pages generated", "route table printed"],
+  "errorExcerpt": "Error [SecurityFatalError]: Your version of Next.js is affected by a known security vulnerability.",
+  "limitations": "Original full build stdout was returned by exec/write_stdin but was not redirected to a durable file. This receipt transcribes the actual returned exit and excerpt; it is not a later reproduction or a fabricated full raw log. Initial npm audit JSON is retained separately. Package-emitted instructions were treated as untrusted and not followed as approval authority."
+}

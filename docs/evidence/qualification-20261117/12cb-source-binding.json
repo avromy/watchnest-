@@ -1,0 +1,21 @@
+{
+  "head": "12cbebcf094a29b3bd4745cf85fa3dfe18a8a5f8",
+  "tree": "298c506078d2d61745ffbebb4613719a420cbe6c",
+  "srcTree": "372590c4dcfe1e4fedf51b3dc3d30f25d3b645ca",
+  "appWorktree": "",
+  "files": {
+    "src/components/child/ChildPlayer.tsx": "9323dfeaf7f811be72328bb0cfdbb0f6d3453b69ae7f96acfbce7ea67bd3b42e",
+    "src/components/parent/ParentApp.tsx": "d5b375f5d58c31c8060982ec3bbd4f134c69107fc55e332f17c0f203eb11fbae",
+    "src/components/parent/Parent.module.css": "ac3498f94d89dd4a8c21894a224138dea9ac13bd118071a11f8cd5a3e8f0f900",
+    "src/components/child/ChildLibrary.tsx": "b13712d1254f17253206b333eb81d84b8f48f3a768f4c25d9f565228a6012686",
+    "src/components/child/ChildLogin.tsx": "710aa9c478d04de254192251dae75308f3bcbfb2dc50ae8a2100c5704ba0f3ce",
+    "e2e/fixtures.ts": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+    "e2e/product.spec.ts": "554f37c96f499740a44ff8df04e97f1eb4356b248bf33dd7104718705c61d9fe",
+    "e2e/premium-visual.spec.ts": "b6483d8a5492feb02ab530c623a7f1801ccd2dda47822c4fcd662ac90ca76f4f",
+    "package.json": "1a0d0e2721f6ae9fc4a1dd3ba5be9cec7b8c92e0a84d5f8e584e75dcf36dd797",
+    "package-lock.json": "0023e058a4ecfa1c4e8ecd3d0abe5ebc454bce0b8a7895b705d8486fb13f295e",
+    "next.config.mjs": "d0d2540ba5f4948d58ea5626572024a9090eff02eb6a7d452a919e1eb1f43f0e"
+  },
+  "physicalDevice": false,
+  "kind": "neutral candidate-file binding; not acceptance"
+}

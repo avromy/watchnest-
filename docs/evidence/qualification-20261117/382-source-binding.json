@@ -1,0 +1,34 @@
+{
+  "head": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+  "tree": "a4b851b4230bf5b649d9ff32c9588db74b87a4d6",
+  "srcTree": "461eb4dc14b9a5adb79047d681a8c85478e740ad",
+  "appWorktree": "",
+  "files": {
+    "src/components/child/ChildPlayer.tsx": "9323dfeaf7f811be72328bb0cfdbb0f6d3453b69ae7f96acfbce7ea67bd3b42e",
+    "src/components/parent/ParentApp.tsx": "d5b375f5d58c31c8060982ec3bbd4f134c69107fc55e332f17c0f203eb11fbae",
+    "src/components/parent/Parent.module.css": "5a8a7ffbd62422d159a68c6dcbebb42ddf832c874c6a58a7932d96b84a39668c",
+    "src/components/child/ChildLibrary.tsx": "ebf51bc84a8536af7512ae2e46242620d0e93e0db831e7e024dd7d1ccb72d002",
+    "src/components/child/ChildLogin.tsx": "710aa9c478d04de254192251dae75308f3bcbfb2dc50ae8a2100c5704ba0f3ce",
+    "e2e/fixtures.ts": "c37259e3fb7c900fc071f60315671757350786189f65d9a753c3253eb54e7f56",
+    "e2e/product.spec.ts": "a6d2c1d6c935ccfe56c7a593816acf27261dbf782903f66bc9e0b555b2e764ee",
+    "e2e/premium-visual.spec.ts": "540e535fccdea2d46f20f6dfa4dd6112f60b0ba8206ab73b15e8b58a08dd0513",
+    "package.json": "1a0d0e2721f6ae9fc4a1dd3ba5be9cec7b8c92e0a84d5f8e584e75dcf36dd797",
+    "package-lock.json": "0023e058a4ecfa1c4e8ecd3d0abe5ebc454bce0b8a7895b705d8486fb13f295e",
+    "next.config.mjs": "d0d2540ba5f4948d58ea5626572024a9090eff02eb6a7d452a919e1eb1f43f0e",
+    "src/components/child/ChildExperience.css": "8e7a01cd586b668cdc95be9cc050d831ba0d7915afd7ab3d9f185b5d6ec68e83",
+    "e2e/supplemental-responsive.spec.ts": "627e1d673f776d46a849dcee5b6efd4524becf7f39c7b17496c07584b2a976e5"
+  },
+  "physicalDevice": false,
+  "kind": "neutral candidate-file binding; not acceptance",
+  "runtime": {
+    "node": "v24.22.1",
+    "next": "16.4.6",
+    "playwright": "1.63.0",
+    "chromium": "143.0.7499.0",
+    "builtAppSource": "working SI01 bytes before commit382",
+    "candidateAppSource": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+    "appSourceIdentical": true,
+    "physicalDevice": false,
+    "hosted": false
+  }
+}

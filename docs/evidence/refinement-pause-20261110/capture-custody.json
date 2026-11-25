@@ -1,0 +1,18 @@
+{
+  "baseline": "39ab79fe808bcac4f5eb343156d7f84c60fc7a00",
+  "kind": "preserved existing captures only; no new capture on pause",
+  "files": [
+    {
+      "file": "initial-parent-dashboard-top.png",
+      "sha256": "5dd54e7e8fe8272c3c3a00d37599d0f1f8aa09c81da880e245d71c01728f8a25",
+      "source": "/workspace/scratch/b4fb31747e8d/review-evidence/refinement-initial-partial/visual-evidence/candidate/390x844/parent-dashboard-top.png",
+      "limitations": "Synthetic API/artwork; dirty39ab source before final footer/grammar fixes; initial partial browser batch, not current final acceptance."
+    },
+    {
+      "file": "initial-parent-library-full.png",
+      "sha256": "0461ddee17874ed6f48b3ee898ae2cc7d0f5bd89abd394963f26a06427c1a93b",
+      "source": "/workspace/scratch/b4fb31747e8d/review-evidence/refinement-initial-partial/visual-evidence/candidate/390x844/parent-library-full.png",
+      "limitations": "Synthetic API/artwork; dirty39ab source before final footer/grammar fixes; initial partial browser batch, not current final acceptance."
+    }
+  ]
+}

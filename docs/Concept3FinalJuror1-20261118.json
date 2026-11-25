@@ -1,0 +1,1153 @@
+{
+  "reviewer": "Concept3FinalJuror1",
+  "frozenAt": "2026-11-18T07:12:02.462Z",
+  "verdict": "PASS",
+  "sourceCommit": "ef4c4bb30a16ae273f04a426d979480a808930ab",
+  "applicationSourceTree": "9771c2e229ff3e286f7443d9146d31ff22405303",
+  "sourceTree": "d57c0f675876bec6b19779dfd9229ccb1267c314",
+  "scope": "Sampled synthetic Chromium visual/UX only",
+  "materialDefects": [],
+  "nonblockingSuggestions": [
+    {
+      "id": "N1",
+      "topic": "Long repeated phone cards",
+      "evidence": [
+        "E09",
+        "E10",
+        "E14",
+        "E15",
+        "E18"
+      ]
+    },
+    {
+      "id": "N2",
+      "topic": "Search result vertical travel",
+      "evidence": [
+        "J13",
+        "E16",
+        "E17"
+      ]
+    },
+    {
+      "id": "N3",
+      "topic": "Secondary icon/overflow discoverability",
+      "evidence": [
+        "J02",
+        "J05",
+        "J11",
+        "J13",
+        "J17",
+        "J19",
+        "J21"
+      ]
+    },
+    {
+      "id": "N4",
+      "topic": "Inline Ask Parent in empty library",
+      "evidence": [
+        "E25"
+      ]
+    }
+  ],
+  "independence": {
+    "peerReportsRead": false,
+    "peerConsultation": false,
+    "builderRationaleRead": false,
+    "repairHistoryRead": false
+  },
+  "consumedEntries": 50,
+  "journal": [
+    {
+      "id": "J01",
+      "state": "family-profile-picker",
+      "route": "/watch",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/family-profile-picker-full.png",
+      "sha256": "873aa4b6fc0938e98135e6b5bebf69ba645b978f47db2b0690e3fa3b48032344",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J02",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-top.png",
+      "sha256": "9e28c5802a3447fcf63d14118f60b24d5149032f4ddc6096a9d113366d47e8ea",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J03",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-middle-1.png",
+      "sha256": "273e205ef2d92a0b8fe14e4131fcc9d7a74c97c9172999f7c0e1c1b9d2ab7d04",
+      "region": "Readable viewport: LEFT RIGHT, document y=944",
+      "scroll": {
+        "x": 0,
+        "y": 944
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J04",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/child-library-top.png",
+      "sha256": "0fd20a85571b6ad7dc7906759ff1df65de670642dc71e02ceb993381468b6141",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J05",
+      "state": "child-simple-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/child-simple-library-top.png",
+      "sha256": "a8149c815cfb4906bfa844285bc55530f6377db6d3fa35680d2c5417a23ee522",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J06",
+      "state": "child-search-results",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/child-search-results-top.png",
+      "sha256": "f5e49ce096a2c90ef8e3b7f575ef46c7634b004267f0f0773fc7d233c8ac33f9",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J07",
+      "state": "child-search-empty",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-search-empty-full.png",
+      "sha256": "7aef971ce060e3f4e230e781412c429210f4295fbcc9772a94298da106f37f55",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J08",
+      "state": "child-discover-results",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-discover-results-top.png",
+      "sha256": "cf5993fe369e9e4d79dfa25d49b14b97dd39c904ee3c183d566e6a9582de1a94",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J09",
+      "state": "child-discover-results",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-discover-results-bottom.png",
+      "sha256": "cf39f9d640ef37b9b9f3e78062356b855fba44533ded920ac0c2543a72481bbc",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 146
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J10",
+      "state": "child-times-up",
+      "route": "/watch/player/10000000-0000-4000-8000-000000000001",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-times-up-full.png",
+      "sha256": "85d37f76d28e60a62af2525f0938b797bee5d11763436ff94d300bae80869ea6",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J11",
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-dashboard-top.png",
+      "sha256": "e13cd0964e028bee31d568044420554a950d65d55f672ec8ea7aa5bbb62b4fd1",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J12",
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-dashboard-top.png",
+      "sha256": "d8c38c7bb9214b44bfaf12f9085ae87a259aefa8f593903b1e47b374dd697b27",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J13",
+      "state": "parent-add-video",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-add-video-top.png",
+      "sha256": "21660ab4540836623f737c4ec081e25ee642659b0b980366b3a1373c38f7532a",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J14",
+      "state": "parent-add-video",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-add-video-full.png",
+      "sha256": "ab7d931a0136a1286ab23d34d7e1b10a7a6a1f41bae9ba10606f802d402ebb76",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J15",
+      "state": "parent-approval-assignment",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-approval-assignment-bottom.png",
+      "sha256": "dccbf19943254b21a9309a6774371f9ec67285437e99e14b993330f5976e0960",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1113
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J16",
+      "state": "parent-approval-assignment",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/parent-approval-assignment-bottom.png",
+      "sha256": "8359db83acd87f3b7736cfd8eca3d9454014ee1acd9f8fc9d41f955ebc36521c",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 491
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J17",
+      "state": "parent-inbox",
+      "route": "/parent/inbox",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-inbox-top.png",
+      "sha256": "10036df11bbf35034b579b0b9344a070782482dc62c36c54052a03ef75e7afbb",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J18",
+      "state": "parent-inbox",
+      "route": "/parent/inbox",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-inbox-full.png",
+      "sha256": "4ff94edbd8e4ca10fbb6dda04f746e55f62f91b2a52b2ae28f67eb7b96c19139",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J19",
+      "state": "parent-remote-timer-active",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-remote-timer-active-top.png",
+      "sha256": "a07c38aceee011f577b4cc80c9b863278211431c2f0d5b3ee5c91cc88e904388",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J20",
+      "state": "parent-remote-timer-active",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/parent-remote-timer-active-top.png",
+      "sha256": "d742ef6116fe58936f02adcbdb5c5c6e632bf64b6ad03c5d6bec995d0708cf42",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J21",
+      "state": "parent-children",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-children-top.png",
+      "sha256": "f804711cd08b2f947d20d390171bedbc03e272aec746db3510b1a1f1b0d66514",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J22",
+      "state": "parent-children",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-children-top.png",
+      "sha256": "16a3bb0692189350d4998c5041f29513002fd6914aaa5806c447b2a9641b6b83",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J23",
+      "state": "parent-approval-assignment",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/parent-details/parent-approval-assignment-bottom.png",
+      "sha256": "3ad7e53ae8e9ffce0d99327f62bfe5e39aa977895469b740d9cb8fdc6b19890a",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 887
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "J24",
+      "state": "parent-controls",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/parent-controls-top.png",
+      "sha256": "e10fd837fcc6fe17cc9f165a3e9e0d272a13779166808588786da0c964e4eb96",
+      "region": "Readable viewport: LEFT RIGHT TOP",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E01",
+      "state": "child-collection",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-collection-full.png",
+      "sha256": "496a64a17a534c46abc1efa9e9961b411f38f627cd2961961393fbd8fe021279",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E02",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-full.png",
+      "sha256": "0f328b93981e058ed464accbf231160052cce5b3e313d5baad65a4b90ed61683",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Full-document overview; detailed readable conclusions also use viewport/bottom captures where listed."
+    },
+    {
+      "id": "E03",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-bottom.png",
+      "sha256": "b9849322f988ac6587e4acaf6b0e1f845ff1ea5680d9271fdda88ef7332fec48",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1793
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E04",
+      "state": "child-request-form",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/child-request-form-full.png",
+      "sha256": "d116db5ddfca0d05901402b5d130df94e7d5f53fd23a92bd6ea231f1d6049cc4",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E05",
+      "state": "child-pin-error",
+      "route": "/watch",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/child-entry/child-pin-error-full.png",
+      "sha256": "fd46d8875830ce96c532495cd70d9cfc220b002b7929dd31cea97ba4a58cfc1a",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E06",
+      "state": "player-synthetic-ready-next",
+      "route": "/watch/player/10000000-0000-4000-8000-000000000002",
+      "viewport": {
+        "name": "ipad-landscape",
+        "width": 1024,
+        "height": 768
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/player-states/player-synthetic-ready-next-full.png",
+      "sha256": "04c6056a71b602d9f20d30d0f3960ff89db6f8dd3c83f71c40447fba0214d588",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E07",
+      "state": "player-startup-error",
+      "route": "/watch/player/10000000-0000-4000-8000-000000000002",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/player-states/player-startup-error-full.png",
+      "sha256": "3407bfb2facb3d30f62ecaf493c3e2847f2285fc4587ab7696753d859dda5c21",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E08",
+      "state": "child-library-timer-expired",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/player-states/child-library-timer-expired-full.png",
+      "sha256": "d172f706e2a7fff3909dcf3e6a70c9eff797c3de900f263b4b75650cd66da196",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E09",
+      "state": "parent-controls",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-controls-full.png",
+      "sha256": "19004c2b9b6f38cad22790e7d3d929738cc5446d42d335cde76945801d3dbebf",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Full-document overview; detailed readable conclusions also use viewport/bottom captures where listed."
+    },
+    {
+      "id": "E10",
+      "state": "parent-controls",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-controls-bottom.png",
+      "sha256": "fec369099cffd40e3706dc4cfc1f086e206e2d13ef8cc714e71f44dc3f9f551e",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 2185
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E11",
+      "state": "parent-library",
+      "route": "/parent/library",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-library-full.png",
+      "sha256": "fff5ff00b1e089e9a8b01d931e9d03e0556265f5fe878c2482b4871b9e4d2900",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Full-document overview; detailed readable conclusions also use viewport/bottom captures where listed."
+    },
+    {
+      "id": "E12",
+      "state": "parent-library",
+      "route": "/parent/library",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-library-bottom.png",
+      "sha256": "19ea61e279e0ca4091c0c1ab9213c8e95912112cefa2d19ae3cdd4affce4a714",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 5085
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E13",
+      "state": "parent-collection-edit",
+      "route": "/parent/collections",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-collection-edit-full.png",
+      "sha256": "46cb193743b4660bfcef734e5f6e388fab4d6811dc33c424d5e813e2aa06f13f",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E14",
+      "state": "parent-profile-photo-avatar-settings",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-profile-photo-avatar-settings-full.png",
+      "sha256": "1988b8c9e42a2c19c0dd435eb2fdf4cf96a31490edc4bdb9abe6645502d146e0",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Full-document overview; detailed readable conclusions also use viewport/bottom captures where listed."
+    },
+    {
+      "id": "E15",
+      "state": "parent-profile-photo-avatar-settings",
+      "route": "/parent/children",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-profile-photo-avatar-settings-bottom.png",
+      "sha256": "6c7d23344f8b6cb4dc2e29e63bec69e91d834b01efdcd0dcc27832d939ce4f3c",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 2310
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E16",
+      "state": "parent-youtube-search-results",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-youtube-search-results-full.png",
+      "sha256": "8a67b552e74a3708d335ca0183a0c853781988892b9cd953c4ea33e2464967dc",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E17",
+      "state": "parent-youtube-search-results",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-youtube-search-results-bottom.png",
+      "sha256": "8ca0df4e5fa6b82d32ccd702427cafc1815242019b05e5c1758af94f5a28dda3",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 1030
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E18",
+      "state": "parent-remote-timer-offline",
+      "route": "/parent/controls",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/recovery-states/parent-remote-timer-offline-full.png",
+      "sha256": "9d60b929054fa3b33b0402219abc231816819f9f58c414d74faf36e764b23810",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Full-document overview; detailed readable conclusions also use viewport/bottom captures where listed."
+    },
+    {
+      "id": "E19",
+      "state": "parent-approval-success",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/parent-approval-success-full.png",
+      "sha256": "594161b4b4127588eded7aac30ca0c6482a83ca8af6333a7605c4374ae715638",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E20",
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "responsive-360",
+        "width": 360,
+        "height": 800
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/parent-dashboard-full.png",
+      "sha256": "ae299d6ae0ea538ef2152a023f9f0a27be9ed397611696f12fb8a04b728bb0f0",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E21",
+      "state": "parent-add-video",
+      "route": "/parent/add-video",
+      "viewport": {
+        "name": "responsive-640",
+        "width": 640,
+        "height": 900
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/parent-add-video-full.png",
+      "sha256": "c65876b37a53d7b3ce3ab002ce615b0ffcd3fb271647c772caacc4d59cba9db6",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E22",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "responsive-900",
+        "width": 900,
+        "height": 900
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/900x900/supplemental-responsive/child-library-full.png",
+      "sha256": "a85fce83d2da2dc901f7469022e056f59c051757cc875722372585a25dbe4175",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Full-document overview; detailed readable conclusions also use viewport/bottom captures where listed."
+    },
+    {
+      "id": "E23",
+      "state": "child-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "responsive-900",
+        "width": 900,
+        "height": 900
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/900x900/supplemental-responsive/child-library-bottom.png",
+      "sha256": "9954138c1cb4a13d67dbac9baa11cb5e31f90f4700c1daca5fb9b9c6322f4e0d",
+      "region": "Readable viewport: LEFT RIGHT BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 2124
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E24",
+      "state": "parent-dashboard",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "responsive-1180",
+        "width": 1180,
+        "height": 820
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1180x820/supplemental-responsive/parent-dashboard-full.png",
+      "sha256": "f1822242f8c59203e79bad1ddf8bbebf1110a2f201c00e6934363083ef0dab8f",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E25",
+      "state": "child-empty-library",
+      "route": "/watch/home",
+      "viewport": {
+        "name": "ipad-portrait",
+        "width": 768,
+        "height": 1024
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-empty-library-full.png",
+      "sha256": "466bc23e3d6fb7a6df4f75bf380e210f2ee93bb1b6a54a7807dd76fe31543e53",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    },
+    {
+      "id": "E26",
+      "state": "parent-dashboard-empty",
+      "route": "/parent/dashboard",
+      "viewport": {
+        "name": "parent-phone",
+        "width": 390,
+        "height": 844
+      },
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/recovery-states/parent-dashboard-empty-full.png",
+      "sha256": "c4d8cbde82e420061b4a812663047228c47e7bd9be9c11057ded4d6ae22f64d1",
+      "region": "Complete document: LEFT RIGHT TOP BOTTOM",
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "consumption": "Opened original PNG via view_image and visually inspected; no montage or DOM substitution.",
+      "depth": "Readable original image inspection."
+    }
+  ],
+  "manifestInventoryRead": [
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/child-details/manifest.json",
+      "sha256": "3d079ab25bc08096f2e10e85ea0dc59692f390ad782b862e96ed4ebba3bc3f4d",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/child-entry/manifest.json",
+      "sha256": "20c6903202e3f9fe6fdfa82ad6f7bfbc0ff30533d20c415aaac5f4222bdd1405",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/manifest.json",
+      "sha256": "b808e923bb51d1cd397fc4dd47c6c876b0476bef382fba2d299e218615153dff",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/parent-details/manifest.json",
+      "sha256": "69761f561c09fc830f9ca381e18efbff161da3495e2c7da333e92f78adcaefa7",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/player-states/manifest.json",
+      "sha256": "3377047b8579a9d7539ddad24698302970d2f088af4d9778bc566c0bede32b92",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1024x768/recovery-states/manifest.json",
+      "sha256": "da51eb3f2d8c60b235edd805400fd482709fe7e0ac59a12a3ec5a9c5dfcf66af",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1180x820/supplemental-responsive/manifest.json",
+      "sha256": "01db0472b8b988ab914ad4560dab4317a108e9a2fbbe6effae1e5e2a7c6d65dc",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1280x800/supplemental-responsive/manifest.json",
+      "sha256": "62fa42e0a5dbe62823e447857c05684e14aa1f706771bae63f5d24a56575d0fe",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/manifest.json",
+      "sha256": "68697e7356dcc4bc3d7fa6db0f1620e8f3d410711a42ca0be8ed26879f7db8fa",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/parent-details/manifest.json",
+      "sha256": "0ac86ce48f6214e557b0897ec42368494b19a085680e2e1d6c171c04a417cfa5",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/player-states/manifest.json",
+      "sha256": "2edec5d43258cd103de308899e53577dae65d2e14c59b8def384021b1bba768d",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/1440x1000/recovery-states/manifest.json",
+      "sha256": "635d140c94d0f9d0431e3ffc622e360a15bca927accc19f945d4880f0fde00eb",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/360x800/supplemental-responsive/manifest.json",
+      "sha256": "4b6aa1df1a4f52e8c40e3e70afc2d67d85f3f064d2e261371be473f75451f706",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/manifest.json",
+      "sha256": "8b877882a5671a9e3165a529e6af5afbdf2235332ac6f8e8c54bd780b7352023",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/parent-details/manifest.json",
+      "sha256": "06d47ff720f395e453ee34a729968acce031d75e89d5b70df85c6a7f9c03e25b",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/player-states/manifest.json",
+      "sha256": "c3fe554b2d4c1885cf3480d450ca8895aedf07b7e4c5872f2ead4328b23d688a",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/390x844/recovery-states/manifest.json",
+      "sha256": "4ccaf02ff01007b752fb9206ec65780e5a2fb23e43532098b05795b4beda42cf",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/412x915/supplemental-responsive/manifest.json",
+      "sha256": "d461187f69770f6a491c3e95db35af801bf551b2021f91b3ea8957a4c1cd26e0",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/520x900/supplemental-responsive/manifest.json",
+      "sha256": "9e7613ccf100265b7392132334a1c60e483aafa82e7e725476bfac8c3f8297db",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/640x900/supplemental-responsive/manifest.json",
+      "sha256": "253004fba499153c9a87f969462d7b1374b7169b0c276839d8538c8abeae5430",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-details/manifest.json",
+      "sha256": "3e3857c1754e0fd7cb00ff91e6507ebeb25380d3fe3b3c9314b38de36541f095",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-entry/manifest.json",
+      "sha256": "9c7c52683d29f42541e514ea4f09df50d656ad875c46e343341c94886591c401",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/manifest.json",
+      "sha256": "b2fb81a0bf12d32a79bdd772c6fe335ee0fef690e8e05afd24d93153a0df8be0",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/parent-details/manifest.json",
+      "sha256": "bba24778b6a1b44a41fac6f5e58fdad554a73edc7528889a448bb040e3e30e75",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/player-states/manifest.json",
+      "sha256": "a2a17d251c5b5cf9f82881ddc7b275e7e5768b978f33884e86c49bc3732f287b",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/recovery-states/manifest.json",
+      "sha256": "33e3ce88f9df840176030d18270780f37f2b6844a34a71768ecab74017983864",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/820x1180/supplemental-responsive/manifest.json",
+      "sha256": "f7f33c9dba72831dd9da906fb520187a990c0a2d561635b4b4f359824055da37",
+      "pixelConsumptionImplied": false
+    },
+    {
+      "path": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/900x900/supplemental-responsive/manifest.json",
+      "sha256": "f321b91738f1019fed4550201bdcf1386155e31439a0aaa42c5f9a550d796570",
+      "pixelConsumptionImplied": false
+    }
+  ]
+}

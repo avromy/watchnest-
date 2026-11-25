@@ -1,0 +1,44 @@
+[
+  {
+    "step": "search",
+    "text": "Skip to content\nWatchNest\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nVideos\nCollections\nAdd videos\n\nPARENT LIBRARY\n\nAdd videos\n\nFind a video, take a look, then share it with the children.\n\nSearch YouTube\nPaste video links\nWhat would they love to watch?\nVideos\nChannels\nPlaylists\nSearch\nSearch\nMove existing family picks\nVideo thumbnail unavailable\n3 min\nBuild a paper rocket\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n4 min\nA gentle piano lesson\n\nMusic Room\n\nAlready approved\nAri\n\nSelect this video\nPreview\nVideo thumbnail unavailable\n5 min\nDraw a friendly fox\n\nLittle Makers\n\nAlready approved\nAri\n\nSelect this video\nPreview\n\nAPPROVAL\n\nChoose videos to approve\n3 videos found\nWho can watch?\nSelect all children\nMiri\nAri\nBenny\nEli\nCollection (optional)\nNo collection\nLittle Makers\n+ New Collection\nApprove selected videos"
+  },
+  {
+    "step": "pin-mismatch",
+    "alerts": [
+      "The PINs do not match.",
+      ""
+    ],
+    "text": "Skip to content\nWatchNest\nAdd videos\nSwitch profile\nOverview\nLibrary\nRequests\n1\nTime\nFamily\nProfiles\nSettings\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\n\nThe PINs do not match.\n\nSave changes\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli"
+  },
+  {
+    "step": "child-search",
+    "text": "Skip to content\nWatchNest\nAri\nLibrary\nAsk Parent\nYour library\n\n1 video to explore\n\nSearch your library\nAll videos\nFavorites\nHidden\nSort videos\nRecently added\nA–Z\n3:00\nBuild a paper rocket\n\nLittle Makers"
+  },
+  {
+    "step": "child-title",
+    "url": "http://127.0.0.1:3007/watch/player/10000000-0000-4000-8000-000000000001",
+    "text": "Skip to content\nWatchNest\n← Back to Library\n\nLET’S PICK SOMETHING ELSE\n\nThe video player didn’t start\n\nThe video player could not start safely. Please try again.\n\nBack to Library\nAsk Parent for help",
+    "buttons": [
+      "Ask Parent for help"
+    ],
+    "links": [
+      {
+        "text": "Skip to content",
+        "href": "#main-content"
+      },
+      {
+        "text": "WatchNest",
+        "href": "/watch/home"
+      },
+      {
+        "text": "← Back to Library",
+        "href": "/watch/home"
+      },
+      {
+        "text": "Back to Library",
+        "href": "/watch/home"
+      }
+    ]
+  }
+]

@@ -4,17 +4,54 @@ import { useRouter } from "next/navigation";
 import { api, Profile } from "./model";
 import ProfileImage from "../ProfileImage";
 import Icon from "../ui/Icon";
+import "./ChildExperience.css";
 
 export default function ChildLogin() {
   const router = useRouter();
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [selected, setSelected] = useState<Profile | null>(null);
   const [parentMode, setParentMode] = useState(false);
+  const [activeProfileId, setActiveProfileId] = useState<string | null>(null);
+  const [handoff, setHandoff] = useState(false);
   const [parentPinSet, setParentPinSet] = useState(false);
   const [pin, setPin] = useState("");
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
   const submittedPin = useRef("");
+  const modalRef = useRef<HTMLDivElement>(null);
+  const modalTrigger = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!selected && !parentMode) return;
+    const dialog = modalRef.current;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setSelected(null);
+        setParentMode(false);
+        setPin("");
+        setError("");
+        submittedPin.current = "";
+      }
+      if (event.key !== "Tab" || !dialog) return;
+      const controls = Array.from(
+        dialog.querySelectorAll<HTMLElement>("input, button:not(:disabled)"),
+      );
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      modalTrigger.current?.focus();
+    };
+  }, [selected, parentMode]);
 
   useEffect(() => {
     let cancelled = false;
@@ -24,10 +61,12 @@ export default function ChildLogin() {
         const result = await api<{
           profiles: Profile[];
           parent_pin_set: boolean;
+          active_profile_id: string | null;
         }>("/api/auth/device");
         if (cancelled) return;
         setProfiles(result.profiles);
         setParentPinSet(result.parent_pin_set);
+        setActiveProfileId(result.active_profile_id ?? null);
         await api("/api/auth/parent-lock", {});
       } catch {
         if (!cancelled) router.replace("/login");
@@ -47,7 +86,8 @@ export default function ChildLogin() {
     try {
       await api("/api/auth/child", {
         profileId: profile.id,
-        passcode: enteredPin || undefined,
+        passcode: !handoff ? enteredPin || undefined : undefined,
+        parentPin: handoff ? enteredPin || undefined : undefined,
       });
       router.replace("/watch/home");
     } catch (reason) {
@@ -83,7 +123,7 @@ export default function ChildLogin() {
 
   if (busy && !profiles.length)
     return (
-      <main id="main-content" className="profile-picker">
+      <main id="main-content" className="profile-picker premium-profile-picker">
         <div className="picker-loading" role="status">
           <img src="/icon.svg" alt="" width="58" height="58" />
           <span>Opening WatchNest…</span>
@@ -92,7 +132,7 @@ export default function ChildLogin() {
     );
 
   return (
-    <main id="main-content" className="profile-picker">
+    <main id="main-content" className="profile-picker premium-profile-picker">
       <header className="picker-header">
         <span className="brand">
           <img src="/icon.svg" alt="" width="42" height="42" />
@@ -102,11 +142,28 @@ export default function ChildLogin() {
       <section className="picker-content" aria-labelledby="picker-title">
         <div className="picker-heading">
           <h1 id="picker-title">Who’s watching?</h1>
+          <p>
+            Choose your library. A parent helps when it’s someone else’s turn.
+          </p>
         </div>
-        {error && (
+        {error && !selected && !parentMode && (
           <p role="alert" className="error picker-error">
             {error}
           </p>
+        )}
+        {!profiles.length && (
+          <div className="picker-empty">
+            <p>
+              No profiles are available. Refresh to check again, or open Parent
+              Mode for family settings.
+            </p>
+            <button
+              className="button-secondary"
+              onClick={() => window.location.reload()}
+            >
+              Refresh profiles
+            </button>
+          </div>
         )}
         <div className="profile-grid">
           {profiles.map((profile) => (
@@ -114,11 +171,17 @@ export default function ChildLogin() {
               key={profile.id}
               className="profile-choice"
               disabled={busy}
-              onClick={() => {
+              onClick={(event) => {
+                modalTrigger.current = event.currentTarget;
                 setError("");
                 setPin("");
                 submittedPin.current = "";
-                if (profile.pin_enabled) setSelected(profile);
+                const needsHandoff = activeProfileId !== profile.id;
+                setHandoff(needsHandoff);
+                if (needsHandoff && !parentPinSet) {
+                  router.push("/login?parent=1");
+                } else if (needsHandoff || profile.pin_enabled)
+                  setSelected(profile);
                 else void enterChild(profile);
               }}
             >
@@ -129,20 +192,34 @@ export default function ChildLogin() {
                 size="large"
               />
               <strong>{profile.display_name}</strong>
-              {profile.pin_enabled && (
-                <span className="profile-lock">
-                  <Icon name="lock" width="15" /> PIN
-                </span>
-              )}
+              <span className="profile-enter">
+                Open my library <span aria-hidden="true">↗</span>
+              </span>
+              <span className="profile-lock">
+                {(activeProfileId !== profile.id || profile.pin_enabled) && (
+                  <Icon name="lock" width="15" />
+                )}
+                {activeProfileId !== profile.id
+                  ? "Parent handoff"
+                  : profile.pin_enabled
+                    ? "PIN"
+                    : "Selected profile"}
+              </span>
             </button>
           ))}
         </div>
+        {busy && !selected && !parentMode && (
+          <p role="status">Opening library…</p>
+        )}
         <button
           className="parent-entry"
-          onClick={() => {
+          disabled={busy}
+          onClick={(event) => {
+            modalTrigger.current = event.currentTarget;
             setError("");
             setPin("");
             submittedPin.current = "";
+            setHandoff(false);
             if (parentPinSet) setParentMode(true);
             else router.push("/login?parent=1");
           }}
@@ -150,9 +227,13 @@ export default function ChildLogin() {
           <Icon name="lock" width="18" /> Parent Mode
         </button>
       </section>
+      <footer className="picker-footer">
+        <Icon name="library" width="18" /> Approved videos for your family
+      </footer>
       {(selected || parentMode) && (
         <div
           className="picker-modal"
+          ref={modalRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby="pin-title"
@@ -165,9 +246,7 @@ export default function ChildLogin() {
             }
           }}
         >
-          <div
-            className="pin-card"
-          >
+          <div className="pin-card">
             {selected && (
               <ProfileImage
                 name={selected.display_name}
@@ -177,11 +256,17 @@ export default function ChildLogin() {
               />
             )}
             <h2 id="pin-title">
-              {parentMode ? "Parent Mode" : `${selected?.display_name}’s PIN`}
+              {parentMode
+                ? "Parent Mode"
+                : handoff
+                  ? `Open ${selected?.display_name}’s library`
+                  : `${selected?.display_name}’s PIN`}
             </h2>
             <p>
-              {parentMode
-                ? "Enter the 4-digit Parent PIN."
+              {parentMode || handoff
+                ? handoff
+                  ? "Parent: enter your 4-digit PIN to hand over this device. This doesn’t change anyone’s time limit."
+                  : "Enter the 4-digit Parent PIN."
                 : "Enter the 4-digit PIN."}
             </p>
             <label className="sr-only" htmlFor="profile-pin">

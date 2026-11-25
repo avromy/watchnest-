@@ -97,7 +97,7 @@ type Playback = {
     remainingSeconds: number | null;
     pausedSeconds: number | null;
     revision: number;
-    state: "unlimited" | "active" | "paused" | "expired";
+    state: "unlimited" | "active" | "paused" | "expired" | "ready" | "blocked";
     serverNow: string;
   };
 };
@@ -134,7 +134,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   >("unknown");
   const [started, setStarted] = useState(false);
   const [timeUp, setTimeUp] = useState(false);
-  const [timeBlockKind, setTimeBlockKind] = useState<"paused" | "expired">("expired");
+  const [timeBlockKind, setTimeBlockKind] = useState<"paused" | "expired">(
+    "expired",
+  );
   const [sessionAccessState, setSessionAccessState] =
     useState<PlaybackAccess | null>(null);
   const [ended, setEnded] = useState(false);
@@ -148,12 +150,16 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
   const volumeRef = useRef(60);
   useEffect(() => () => leaveImmersivePlayback(), []);
   useEffect(() => {
-    const saved = Number(
-      window.localStorage.getItem("watchnest-player-volume"),
-    );
-    if (Number.isFinite(saved) && saved >= 0 && saved <= 100) {
-      volumeRef.current = saved;
-      setVolume(saved);
+    try {
+      const stored = window.localStorage.getItem("watchnest-player-volume");
+      if (stored === null || stored.trim() === "") return;
+      const saved = Number(stored);
+      if (Number.isFinite(saved) && saved >= 0 && saved <= 100) {
+        volumeRef.current = saved;
+        setVolume(saved);
+      }
+    } catch {
+      // Volume persistence is optional; storage policy must not break playback.
     }
   }, []);
   async function askForHelp() {
@@ -188,7 +194,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
     const doc = document as Document & {
       webkitExitFullscreen?: () => void;
     };
-    if (document.fullscreenElement) void document.exitFullscreen().catch(() => {});
+    if (document.fullscreenElement)
+      void document.exitFullscreen().catch(() => {});
     else doc.webkitExitFullscreen?.();
     setTimeUp(true);
     setTimeBlockKind(kind);
@@ -230,7 +237,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               : null,
           );
           if (d.session_access && !d.session_access.allowed) {
-            setTimeBlockKind(d.session_access.state === "paused" ? "paused" : "expired");
+            setTimeBlockKind(
+              d.session_access.state === "paused" ? "paused" : "expired",
+            );
             setTimeUp(true);
           }
         }
@@ -413,7 +422,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         reason,
         videoId: data?.video.id,
       });
-      try { player.current?.destroy(); } catch {}
+      try {
+        player.current?.destroy();
+      } catch {}
       player.current = null;
       mount.current?.replaceChildren();
       host.remove();
@@ -422,11 +433,17 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
       setReady(false);
       active.current = false;
     }
-    const startupTimer = window.setTimeout(() => failStartup("youtube-ready-timeout"), 20000);
+    const startupTimer = window.setTimeout(
+      () => failStartup("youtube-ready-timeout"),
+      20000,
+    );
     loadPlayer()
       .then((YT) => {
         if (!isLive()) return;
-        if (!host.isConnected) { failStartup("detached-frame"); return; }
+        if (!host.isConnected) {
+          failStartup("detached-frame");
+          return;
+        }
         startupPhase = "player-construction";
         const constructed = new YT.Player(host, {
           events: {
@@ -436,7 +453,8 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 const frame = event.target.getIframe();
                 if (
                   frame !== host ||
-                  new URL(frame.src).origin !== "https://www.youtube-nocookie.com" ||
+                  new URL(frame.src).origin !==
+                    "https://www.youtube-nocookie.com" ||
                   new URL(frame.src).pathname !== `/embed/${approvedVideoId}`
                 ) {
                   stopUnauthorized(event.target);
@@ -487,7 +505,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                 setEnded(true);
                 void save();
                 active.current = false;
-                e.target.destroy();
+                try {
+                  e.target.destroy();
+                } catch {}
                 player.current = null;
               }
             },
@@ -495,7 +515,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               if (isLive()) {
                 stopped = true;
                 window.clearTimeout(startupTimer);
-                try { player.current?.destroy(); } catch {}
+                try {
+                  player.current?.destroy();
+                } catch {}
                 player.current = null;
                 host.remove();
                 const failure = classifyYouTubePlayerError(event.data);
@@ -520,12 +542,14 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
               }
             },
             onAutoplayBlocked: () => {
-              if (isLive())
-                setPlayerNotice("Tap Play in the video to begin.");
+              if (isLive()) setPlayerNotice("Tap Play in the video to begin.");
             },
           },
         });
-        if (!isLive()) { constructed.destroy(); return; }
+        if (!isLive()) {
+          constructed.destroy();
+          return;
+        }
         player.current = constructed;
         if (constructed.getIframe() !== host || !host.isConnected) {
           failStartup("unexpected-frame-replacement");
@@ -591,7 +615,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         });
         const latest = await response.json();
         if (!response.ok)
-          throw new Error(latest.error || "WatchNest could not confirm session time.");
+          throw new Error(
+            latest.error || "WatchNest could not confirm session time.",
+          );
         const access = latest.session_access as PlaybackAccess;
         if (disposed || !access) return;
         if (access.revision < latestRevision) return;
@@ -623,7 +649,9 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           player.current?.destroy();
           player.current = null;
           setErrorKind("network");
-          setError("WatchNest could not confirm session time. Ask Parent for help.");
+          setError(
+            "WatchNest could not confirm session time. Ask Parent for help.",
+          );
         }
       } finally {
         inFlight = false;
@@ -659,17 +687,25 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
         </div>
       </header>
       {timeUp ? (
-        <section className="panel time-up-card" aria-labelledby="time-up-heading">
+        <section
+          className="panel time-up-card"
+          aria-labelledby="time-up-heading"
+        >
           <p className="eyebrow">WatchNest session</p>
           <h1 id="time-up-heading" tabIndex={-1}>
-            {timeBlockKind === "paused" ? "Parent paused WatchNest" : "Time’s up for now"}
+            {timeBlockKind === "paused"
+              ? "Parent paused WatchNest"
+              : "Time’s up for now"}
           </h1>
           <p>
             {timeBlockKind === "paused"
               ? "Video has stopped. Parent can resume when it’s time."
-              : "Video has stopped. Ask Parent when you’re ready for more time."}
+              : "Video has stopped. Check your library for available time, or ask Parent."}
           </p>
-          <Link className="button" href="/watch">
+          <Link className="button" href="/watch/home">
+            Back to Library
+          </Link>
+          <Link className="button button-quiet" href="/watch">
             Choose profile
           </Link>
         </section>
@@ -692,6 +728,15 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
           <p role="alert" className="error">
             {error}
           </p>
+          {(errorKind === "network" || errorKind === "initialization" || errorKind === "unknown") && (
+            <button
+              className="button button-secondary"
+              style={{ marginRight: 12 }}
+              onClick={() => setReplay((value) => value + 1)}
+            >
+              Try again
+            </button>
+          )}
           <Link className="button" href="/watch/home">
             Back to Library
           </Link>
@@ -787,11 +832,21 @@ export default function ChildPlayer({ videoId }: { videoId: string }) {
                   const next = Number(event.target.value);
                   volumeRef.current = next;
                   setVolume(next);
-                  player.current?.setVolume(next);
-                  window.localStorage.setItem(
-                    "watchnest-player-volume",
-                    String(next),
-                  );
+                  try {
+                    player.current?.setVolume(next);
+                  } catch {
+                    setPlayerNotice(
+                      "Could not change the volume. Try the video’s volume controls.",
+                    );
+                  }
+                  try {
+                    window.localStorage.setItem(
+                      "watchnest-player-volume",
+                      String(next),
+                    );
+                  } catch {
+                    // Keep the selected volume in memory when storage is unavailable.
+                  }
                 }}
               />
             </label>

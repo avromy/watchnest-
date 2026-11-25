@@ -1,0 +1,52 @@
+[
+  {
+    "width": "390",
+    "candidate": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-32d2f-and-same-profile-return-390/wrong-pin.png",
+    "reference": "docs/evidence/profile-handoff/final-pixels/390-wrong-pin.png",
+    "candidate_sha256": "d8bd40c87722f5488b32ca1672842733fd2952dede3347b1e20be0efa026cac2",
+    "reference_sha256": "917204a6e085dd544f07e59801eacfcbe2ce2d47e19c009d7fd7d16630b693e9",
+    "size": [
+      390,
+      942
+    ],
+    "bbox": [
+      337,
+      641,
+      338,
+      642
+    ],
+    "changed_pixels": 1,
+    "max_channel_delta": 1,
+    "changed_rows": [
+      [
+        641,
+        1
+      ]
+    ]
+  },
+  {
+    "width": "768",
+    "candidate": "docs/evidence/profile-handoff/decd-final-captures/profile-handoff-profile-ha-53a17-and-same-profile-return-768/wrong-pin.png",
+    "reference": "docs/evidence/profile-handoff/final-pixels/768-wrong-pin.png",
+    "candidate_sha256": "cca014ff4127133d48af08484cdc0bd2972d202dd4ea944f2e45c7f5959cc41a",
+    "reference_sha256": "134b4685e0ccdb946b82093cccc2a612c870eb3616148a16908d80d77df24dea",
+    "size": [
+      768,
+      1039
+    ],
+    "bbox": [
+      556,
+      731,
+      557,
+      732
+    ],
+    "changed_pixels": 1,
+    "max_channel_delta": 1,
+    "changed_rows": [
+      [
+        731,
+        1
+      ]
+    ]
+  }
+]

@@ -1,3 +1,342 @@
+# Current · Builder 3 authenticated QA
+
+| Capability | Trigger and action | Evidence | Result for this scope |
+|---|---|---|---|
+| Project OS, routing and continuity | Reconciled eight attached governance files, live authorities, PR, frozen source and retained independent reports. | [Recovery](builder-3/Recovery.md) and [successor checkpoint](builder-3/AutonomousQA.md) | PASS for recovery |
+| Supabase v0.1.2 and deployment operations | Applied official CLI/local-stack and branching guidance, verified project/branch inventory and signed-in Vercel settings, created exact noncanonical production-configured stages and read back aliases. | Provider IDs, ordinary QA runs and differences in checkpoint | PASS for runner/stage identity; managed backend binding BLOCKED |
+| Security and functional QA | Independent read-only source review plus real isolated sign-in, genuine PIN and distinct-device control checks. Compared effective schema/RLS grants and exact source. | GitHub Actions and retained review in checkpoint | PASS only for observed controls; hosted/physical release BLOCKED |
+| Human-Eye / Blind Jury v1.0 | Two independent optical reads of identical eight-image CI176 manifest. Comparator and reporter separately froze findings. Two targeted product-copy repairs. | Manifest, findings, current receipt and limitations in checkpoint | Initial visual FAIL; all five held 8bef5a86 and subsequently passed repaired d597122 synthetic visuals. Integrated release BLOCKED |
+| Continuous Learning and Founder Attention | Applied current continuous-learning authority at project scope, and verified the designated Founder email route. | LearningPropagation and Founder/CTO checkpoint | Project calibration recorded. See the private CTO and Founder records for the current attention receipt. |
+| Final integrated / Founder Ready | Held until genuine deployed and physical evidence is available. Five independent jurors froze the 8bef5a86 HOLD. All five passed the scoped CI182 recheck. CI183 and isolated Auth run 7 passed. Managed/physical gates are open. | Current scope-specific release holds | BLOCKED |
+
+---
+
+# CURRENT — Builder 3 recovery receipts
+
+Founder Attention protocol applied to the current run. Founder Gmail profile readback passed preflight. Project recovery and exact candidate guard checks are in [Builder 3 recovery](builder-3/Recovery.md). Scope is read-only verification. Current final independent reviews and coverage remain open. Existing exact-candidate receipts retain their original scopes.
+
+---
+
+# CURRENT — exact69 authenticated hosted checks verified; Parent return PIN declined
+
+Fresh sameCloud Parent settings survived fullreload. Actual69 Preview click/retry/close/keyboard/focus and matchingvideoiframe verified; noapproval. Timer1/5/10/custom37 andDaily7AM testedunsaved. AriCheckaccess saysPINoff/noPINwait/deviceentryavailable. ParentopenAri andoneordinarysameprofileentry leadTime’sup, stopintact; Miri pickerexplicitParentPINhandoff required/cancelled. These browser/device session transitions areNOTpurelyreadonly, butnofamilysettings/budget/PIN/content/counterreset. ParallelParenttabs laterlostauthority; exactfailuretimingvsroletransitionunknown, notestablishedregression. IndependentD1/2/3renderedcorrectionsPASSwithin scope; securitysourcecontinuityPASS/integratedHOLD.
+
+NormalParentModereturn nowrequiresprotectedParentPIN. One nativePINrequest returneddeclined802.4s; freshbrowserstillPINdialog. Noretry/workaround/secretread. Awaitexplicitresumeduserintent orpositivecontext. Exactrootreceipt: docs/login-policy-20261124/AuthenticatedHostedAcceptance.md (b23038704bb22bf9c560ef3fb40c2ee92e60c1e0). Independentcold/securityreports alongside. This supersedespreviousno-positiveParentauthrecords, butnotcurrentPINhold.69source/CI176unchanged, canonical77unchangedperindependentreview, norelease/phase2. Historicalcrashes/physicalFAIL/finalacceptancepending.
+
+Learning: providerrequestdeclinedalonecannotdescribefuturebrowserstate; freshpositiveUIcanlaterestablishauth. SharedbrowsercookiesmeanparallelroletransitioninvalidatesotherParenttabs; qualifyrolessequentially. Do notlabelautherrorregressionwithouttemporalcorrelation. PreservefamilyParentstopwhiletestingadmission.
+
+---
+
+# CURRENT VERIFIED — CI176 PASS; source69 staged; protected access and safety release hold
+
+November24,2026: CI176/run45453253200 all3jobs completedSUCCESS. Completed quality-job logs independently read:430unit/database tests31files,112synthetic browser flows, build/lint/typecheck and productionaudit0 vulnerabilities. Baselinevisual job alsoSUCCESS. Local exact69build/type/scopedlintPASS. This is synthetic/engineering evidence, not actual authenticated-hosted or physical acceptance.
+Frozen runtime69a023a8ee143513d24ac8af7284f9c6d365d192, src treecf9a507335c8cc8a1dc586abd357b1b8b48e21a0. READY isolated production-configured dpl_GiqgvG8eDZHe4WsVvznGe7UD4aY2 / https://watchnest-dbybelcbs-avromy.vercel.app . Canonical77a5017d / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac unchanged, no release.
+Fresh readonly Supabase migration history confirms20261118192923daily_session_allowance and20261119042334device_profile_handoff remainlatest. Catalog query found no noninternal triggers on public.child_sessions; phase2retirement hasNOTbeenapplied. No writes.
+ACTIONNEEDED email actuallysent via authorizedFounderroute: message/thread1a20eb3a332ea0dc. It requests only renewedpermission forone protected Cloud accesssequence, notsecrets orroutineapproval. Chatpermissionquestionpending; no new auth action or prompt after auto-reviewrejection.
+Local modified source matchedremote69 exactly beforepreservingstashandfastforwardingSAMEbranch to868e6a947a7333b41821666fa3c434ddd8f02121; cleanworktreeverified, stash retained, no workdiscarded. Remote completehistory/receiptsverified; NotionFounder/CTOhandoffreadbacksverified. Preserve this status atop historical running-CI notes below.
+CurrentproductHOLD: exact69freshauthenticatedhostedacceptance, affectedphysicalfamilyiPad/phonesafety andfinalindependentintegratedgates. Earlier0cParentUI/coldjourneyisvalidonlywithinitsscope; cachelaterfailedfreshcheck. CurrentCloudtab7isVercellogin targetingexact69stage; no credentialsread/exported. No retry/workaroundwithout explicitnewpermission. Historicalcrashesunresolved; physicalsiblingbypassFAILnotwaived; Ariexplicitstopunchanged.
+
+---
+
+# CURRENT — integrated69 candidate staged; hosted authentication and safety gates HOLD
+
+Runtime69a023a8ee143513d24ac8af7284f9c6d365d192, exact isolated production-configured READY stage dpl_GiqgvG8eDZHe4WsVvznGe7UD4aY2 / https://watchnest-dbybelcbs-avromy.vercel.app . Final premium-branch alias only. All3canonicals checked pre/immediate/postREADY unchanged77a5017d / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No merge/promotion/phase2/family change.
+
+Login repair0c CI175/run45447491797 all3jobs SUCCESS. Independent actual0c cold Parent hosted slice found request Preview open/close/focus and safe metadata review working within scope, plus3objective UI copy/label/count issues corrected in69 with independent narrow source review.69localbuild/type/eslintPASS; CI176/run45453253200 still running browser gates at this write. Do not transfer0c CI or browser acceptance to changed69 without affected requalification.
+
+Actual0c ParentUI observed once, later provider-protected session-status redirectedVercel; Time status error disabled actions. CachedParentUI did not survive fresh reload. Fresh69 SAMEWorkCloudtab7 /login?parent=1 currently Vercel login; no positive currentParent. Additional WatchNest native auth request was AUTOMATIC-APPROVAL-REVIEW REJECTED because priorone-retryauthorization consumed; no prompt created. Require explicit renewed Founderpermission before ONE further protected access sequence; no workaround/sessiontransfer/localChrome/secretcollection. Do not claim appcredentialfailure or botblock from normalproviderlogin.
+
+Historicallive/priorstagecrashes unresolved; oldphysical siblingFAIL retained; exact69 hosted/physical/final independent gates pending. No realcounter/PIN/budget/content/reset and Ari explicitstop retained. Full findings/authtransitions/rollback/learning/deterministiccontinuation: docs/login-policy-20261124/FinalRecovery.md . Independent ColdParentAudit.md and ColdParentCorrections.md remain scoped, notwholeproductPASS.
+
+---
+
+# November24 auth validation defect receipt
+
+Actual81CloudbrowserAuthsubmitted→visible12characterloginerror, NOTauthenticated. Supabase0.1.2 fullinstructions/currentofficialsignInWithPassword/changelogconsumed; sourceboundaryactualdispatch3regressionsRED then7casesGREEN. Full430unit/DB,type,buildPASS; lint0errors3archivalwarnings/audit0. Independent incident_security_review exactdeltaPASS +31dispatchtestsindependentPASS, limitedscope. No visualmutation or finalphysicalPASS. Browser/hostedCIrenewalpending; newexactstageactualauthneeded. Evidence login-policy-20261124/Incident.md and independentreport. ProjectPROCESSlearningcreationpolicyisnotexistingloginpolicy.
+
+# Controlled authentication retry and checkpoint recovery receipt
+
+ProjectOS/registry/8governance/Founder/CTO/repository/deploymentstate recovered. Native browserAuth instructions and actualformconsumed; oneauthorizedrequest INTERRUPTEDBYUSER, firstfreshsameoriginParentpage→login. No credentialretry or externalbrowserfallback. Deployment/live/schema inspectedreadonly; CI174success preserved/no rerun. Authenticatedhosted/physical/finalgatesBLOCKED, no acceptanceclaim. Threecheckpointfiles restored from immutable3d115 after literalundefinedfound; validatepresence/length/historyandreadback beforeclearance. Evidence ControlledAuthRetry.md. No new source/security/visualskillPASS claimed merelyfromrecovery.
+
+# Successor qualification closeout receipt
+
+CI173 and174 all3jobsPASS verified after timed-out secure credential tool; local422/112 plus strengthenedroute37 preserved. Narrow independent security/functional source reviewsPASS; exactnewhost auth/physical/finalgatesBLOCKED. BrowserAuth nativeinvokedthenTIMEOUT; firstfreshsameoriginParentpage→login, noauthsuccessclaimed/noautomaticretry. FounderAttention3ed584c4f747819bb6cdd24c15664007 read/applied; actualACTIONemail1a209262d3dfc751 sent, no repeatspam. GitHub/Notion checkpoint verification required. No new visual mutation or inherited wholeappPASS. See FinalRecovery.md.
+
+# November23 physical handoff correction receipt
+
+Actual family-device handoff FAIL at5859; source synthetic residual Parent cookie regressions reproduced then fixed. Independent incident_security_review reviewed exact5859 delta, narrowSOURCEPASS; historical method attributionUNKNOWN, integratedHOLD. Supabase0.1.2 instructions consumed, read-only session chronology and deployed RPC definition inspected; no schema/data mutation. Functional79focused/422full unit+DB, build/type/lint/audit0 localPASS; renewed browser/hosted/device gates open. No visual mutation; previous rendered evidence retains only visual scope. Evidence PhysicalHandoffFailure.md and ResidualParentHandoffReview.md. Founder communication directly here; no unnecessary repeat ACTIONemail/auth. Learning: credentials retained by a stale/shared tab cannot substitute for explicit target handoff in PIN-configured picker.\n\n# CURRENT — independent returning-Parent rendered receipt
+
+Current Stranger instructions consumed, V008 cold context-firewall applied; separate fork-none reviewer cold_hosted_parent_1123 had only exactcandidate/ordinarycaregivercontext, then froze journey before eightappauthorities. Actual Cloud rendered navigation/Preview/Escape/search/editcancel/Time/Family/status/settings diagnostics exercised read-only. Qualified positive/no observedP0 within bounded role; fullgate INCOMPLETE due mutation/Child/allpersona/responsive/physical/persistentvisualpacket gaps. Exactreceipt no-pin-lockout-20261123/ColdHostedParentReview.md. No Builder self-certification or reused approval. ParentPIN success separate receipt, next physicalgate in PhysicalAcceptance.md. Final highriskjury notmarkedPASS.
+
+# CURRENT — secure PIN return and cold review continuation
+
+Native browserAuth capability documentation freshly consumed after its runtime read gate. Protected existing Parent PIN field only; submitted result followed by positive sameCloud Parent dashboard. Parent return VERIFIED, no credential values read or written into chat. Actual manual takeover was user-reported unusable; native chat form succeeded. Bounded auth receipt: no-pin-lockout-20261123/ParentPinReturn.md. Current independent Stranger instructions and V008 context-firewall consumed; a separate fresh-context returning-Parent read-only rendered auditor was invoked without builder conclusions/history. Its report is pending, not PASS. Product/physical/final gates remain open.
+
+# CURRENT — actual hosted Cloud authentication and acceptance receipt
+
+Native Cloud browserAuth guidance consumed and applied to Builder-opened exact stage; actual Parent UI and independent same-cloud session confirmed. Scoped Product/App functional/security acceptance applied to actual Preview, library, collections, unsaved timer UI, explicit audited recovery, one no-PIN return/persistence, sibling denial, volume60 keyboard/persistence and safe handoff boundaries. Actual independent evidence review in no-pin-lockout-20261123/HostedEvidenceIndependentReview.md accepted bounded evidence, integrated HOLD. Native screenshot fallback inspected current desktop Child view; no full Human-Eye/Stranger/five-jury/physical PASS. No new skill version or source certification claimed. Interrupted native Parent PIN result UNKNOWN; recovery verified guardedpicker; no retry. Exact binding/failed observations/remaining gates: no-pin-lockout-20261123/HostedAuthenticated.md.
+
+# CURRENT — provider deployment workflow receipt
+
+Vercel deployments-cicd current authority consumed this continuation. Applied exact project/team/source/environment verification, observed saved manual promotion guard through authenticated WorkCloud, bound isolated productionstage to5859ade and independent canonical readbacks. BoundedPASS stage traffic isolation; authenticated product/physical/finalintegrated gatesBLOCKED. Receipt: no-pin-lockout-20261123/HostedStage.md and ProviderReleaseSafetyReview.md. No old application reviews recertified; unchangedCI172 retained at originalscope.
+
+# CURRENT — Founder Cloud Browser correction — November20,2026
+
+Authentication and hosted acceptance MUST use this same Work Builder's CLOUD BROWSER (cdp), never connected/local Chrome or an extension. This supersedes every earlier connected-Chrome instruction and the prior email's browser direction. Do not transfer sessions, read/export credentials/cookies, mint accounts or bypass ParentPIN.
+
+Reverified PR49 open/draft/unmerged, branch premium-ui-ux-20261103 head4717166841b7e7e306ae70672123971751aee309 at recovery. Application146a672f5b0744a13869dc29983e5942a0d7a233, READY stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB at https://watchnest-pq53jywae-avromy.vercel.app/login?parent=1 . Canonical remains77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac; no merge/promotion/migration/data/settings changes.
+
+Actually opened exactstage in Work Cloud Browser cdp tab20. Visible Sign in, Email and Password; not authenticated. Current cloud-desktop and actual browserAuth instructions consumed. Supported secure browserAuth request is available; credentials are filled by browser-client without returning values to the agent. No Chrome session used in this correction. User action is existing Parent sign-in and existingPIN directly through secure cloud authentication if prompted. A submitted form is not success: verify fresh positive Parent UI in SAME cloud session before hosted QA. If request cancelled, respect it; if unavailable use documented Cloud Browser takeover only, not local Chrome.
+
+After positive auth continue separate live/stage incident RCA and actual hosted preview open/close/retry/identity/no-approval-side-effects, Parent/Child controls, errors, persistence/isolation/handoff and timers. Keep real family settings read-only. Storage-denial injection may need existing regression harness if unsupported by live read-only browser; label that limitation, never claim hosted injection from synthetic results. No device certification from Cloud Browser. One conditional physical iPad/phone safety session remains after hosted qualification; high-risk final independent gates and qualified autonomous promotion/phase2/rollback controls remain binding.
+
+Earlier source396unit/96browser/independent scoped receipts remain valid within exact source/synthetic scope only. No new hosted PASS or physical PASS. Release HOLD. Resume only from verified positive Cloud Parent session; tabs may expire and must be reopened at exactstage if needed.
+
+---
+
+# CURRENT — exact corrected build qualified; authenticated hosted / physical release hold
+
+Application decd2681e693de7ef33ea067610117c7467123b4, source tree 2d1d0370ac94b35d195d16a5be5696a5202f14e6. Exact final 396 unit / 84 browser (zero skipped, unexpected, flaky), lint/type/build PASS, full and production audits zero, CI166 / 44456800307 all three jobs SUCCESS. Independent security 97 targeted +16 SQL checks; five fresh unanimous Child-entry jurors; two lean reviews; cold Stranger P3 singular-minute copy repaired and fresh affected recheck PASS. Child carry-forward is bound to component hashes and measured seven identical / two one-pixel capture differences, not a fabricated new jury.
+
+Compatible phase1 actually APPLIED as provider migration 20261119042334/device_profile_handoff (source filename 20261119034107). Actual hosted rolled-back synthetic probe22/22 PASS, fixtures zero, family profile/household/assignment digests unchanged. Prior daily migration not reapplied. Advisors unchanged (18 existing INFO table findings; one pre-existing password-protection WARN). Phase2 legacy-session retirement NOT APPLIED; explicit post-qualified-promotion operation, never for checkpoint. See ProfileHandoffHostedOutcome-20261119 and ProfileHandoffResume-20261119.
+
+Configured stage READY: dpl_Gy16rRsVjrcVEAkjg6WuwYja2fcg / https://watchnest-ngz5hkjr4-avromy.vercel.app, exact decd source, target production WITHOUT canonical promotion. Actual post-READY all three production aliases remain 77a5017d938ded03b1530c2b72978cef27273d61 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Canonical https://watchnest-rho.vercel.app NOT UPDATED. Auto-assign production domains visibly unchecked; no setting/header/secret changes. Guest configured:true and auth denials observed; authenticated Parent/Child hosted workflows OPEN. Recent warning/error/fatal grouped runtime query returned no groups in its bounded window; not blanket health proof.
+
+Owner-only next dependency: securely sign into the existing Parent account in this Builder's shared browser, exact stage /login?parent=1. Never send passwords/PINs in chat. Complete real authenticated QA without changing real child budgets; then request ONE minimal consolidated family-iPad/phone test of affected profile handoff/timer/fullscreen stop. Historical ef4 picture+sound and observed recommendation containment PASS remain historical; remote stop PARTIAL FAIL, not new-stage certification. No new physical PASS.
+
+Release HOLD — no merge/promotion until actual hosted and physical gates pass. Then autonomously merge/promote existing PR49→product-completion-20260930, verify aliases/auth/runtime/data, execute atomic phase2 and verify legacy denial/v2 preservation. After phase2 old artifacts are forensic only; rollback must retain guarded v2 admission or fail closed. No routine Founder approval. Recovery clearance requires verified final Git/Notion checkpoint; independent of product readiness.
+
+---
+
+# Current phase2/cold/final-jury receipt — awaiting final-source/hosted/device gates
+
+CanonicalcurrentAVPV008.2/Strangerv1.1/BlindJury1.0 andHumanEyeV2 used, exacthashroutingreceipt retained. Two separateleanreviews PASSwithfinal9actualrasters/readablecrops/96asset384edge receipts; comparatorpriorhistoryexposurehonest. Five FRESHfinaljurors eachactual18PNG+9structure/27hash/96assets384edge complete finite V2receipt, unanimously5PASS on a4cChildentryscope; nopeer/Builderhistory exposure. No backend/hosted/physicalpass inferred. Currentdecd grammar-onlyParent3branchcorrectiondoesnotalterChildentry; affectedParentactualcoldrecheckpending, Childreceiptswillcarryonlyafterexactcomponent/pixelcomparison. No5juryredoofunaffectedChildstates.
+
+FreshStrangeractuallyusedsyntheticcompiledtabletChildandphoneParentwithclickjournals/nativekeyboard, priorfirstpassfrozenbeforeauthority. Statictimerfixturelimitationidentifiedandsecondpassstatefulsupportexplicit. SoleP3Add1minutesfoundandfixed3states; noP0/P1foundinboundedscope. ActualhostedParentaccount/physicalrealdevice remainOPEN. Securitynew97targeted+16SQLchecksPASSforversionedphase1/postpromotionphase2, no trueoverlapclaim. Exactreleaseplan recordsrollback/transaction/legacyoriginthreatcoverage; noWAF/newspending/mintedcredentials. Newdecd lint/type/unit/build/audit/full84browserandCI pending; a4c396/83/CI165 allPASS retainedaspredecessoronly.
+
+Autonomy/Attentionapplied: userproductionmandateadded, currentpersonalchannelpreflightverified, continueautonomousgateswithoutapproval, noOwneractionuntilnewfrozenlogin/device dependency. ContinuousLearning project/process: budgetscope≠identityscope, sessionexit≠newchoiceauthority, retireoldruntimes'heldtokensaswellasfutureadmission, testfixturesmustmodelreturningidentity, coldUI1mincopyclassification. Finalnewlearning/Notionreadback stillpending; noFounderReadyclaim.
+
+---
+
+# Current receipt — profile identity handoff repair (in progress)
+
+Scope Founder November18 physical findings, exactrecovered43c2ae8/app306. All8attachedWatchNestfiles read, currentNotionWorkspace/Handoff/OSRouter/MasterRegistry/migrationadapter/Attention/skillrouting/HumanEyeV2 recovered; livePR49/source/Vercelcanonical+306stage/Supabasedailymigration reconciled. Currentosregistry datedNov3 supersedesolderSep25HumanEyev1.1 entry. PersonalOwnerGmailnotificationpreflightverified, no newactionnotificationyet.
+
+ProductIntelligence applied to identity-vs-budget/rootcause; projectprivacy separation retained, no newproductpitch. Supabaseskill currentread/checklist/currentchangelog+securityinvokerdocs used; localonlyadditivebinding/RPC migrationactualCLIgenerated, nohostedwriteor dailyreapply. Independentsecurityinvestigator actualsource baselineFAIL recorded; route26/SQL18tests apply denial/revocation/ownership/lock invariants, reviews stillpending.
+
+CurrentcanonicalAVPV008.2/Strangerv1.1/BlindJuryv1.0 exactDropboxpackages consumedbyseparateresolverandhashverified; ProfileHandoffReviewRouting recordsidentities/requiredscopedtieredgates. OlderinstalledAVP/Stranger roots readbutNOTsubstitutedascurrentauthority. ExistingConcept3brand/tokens/icons/ParenttimerUX preserved; newbrandresearch/iconproduction nottriggered. Pickerhandoffcopy/modalusingcurrentcomponentsneedsactualresponsive/typography/spacing/focus/contrast/regionedgeinspection+independentconvergence+5freshhighriskjurors+freshrenderedStranger. Matchreferenceisexisting306implementedConcept3, authorizedidentitygate/copydelta, notinventedpixelmockup. Unaffectedprior55timer/wholeConcept3evidenceretainsboundedvalidity; changedentry/auth/visualgatesstaleuntilrerun. NoFounderReadyclaim; executivegateHOLDforqualifiedhosted/newphysicalproof. ContinuousLearning/durabilityfinalreceiptpendingnewexactcandidate.
+
+---
+
+# CURRENT — hosted/owner-gate timer receipts
+
+FounderReadyexecutivegateactuallyappliedaftercurrentmanualread: RETURNONLYFORUNAVOIDABLEEXISTINGACCOUNT/HARDWAREACTION, notREADY. RemainingParentauthenticatednewstage/realdevicepaths cannotbeclosedbysource/mocks. Routinechoices/QAdefects/dependencies/qualifiedadditivebackend/staging handledautonomously; no Founderdesignapprovalrequested. CurrentattentionprotocolandpersonalFounderchannelpreflightverified; sendACTIONNEEDEDonlyafterfinaldurablecheckpoint.
+
+Actualhostedmigration20261118192923/functionhash+grants/RLS/Safechecks verified; actual17PostgresrollbackcasesPASS, noclockoverride/realsettingwrite/proberesidue. Actual2sessionreadlockattemptINCONCLUSIVE(nonoverlap), notconcurrencycertification. Actualstagedruntime306/dpl2W1READYconfiguredtrue/unauthguardbodies, Parent/ChildpositiveauthOPEN; canonical77unchanged. Finalrawcustody84MB/8100paths/1822blobs/allCRC/SHA +actualsyntheticBefore/After saved. CurrentnarrowlearningTimerDailyLearning; privateNotioncustody/notificationfinalverificationpending. Allpriorfullsource/independentproofs andfailuresremainbound.
+
+---
+
+# CURRENT306 final dependency/pixel/security receipts
+
+Actualnew306full343/80/allmechanicalgatesPASS, FULL+PRODaudit0; CI161SUCCESS. Independent147fresh+fullaudit0 verifiedexact306source/packagehashes. App/e2e/SQLunchangedaa2. Comparatornew55actualrastergate:49exactcarry,6freshinspectednonmaterialdeltas,CLEANfinite/MatchPASS.5freshaa2juryvotesnotrerun; reuseexplicitlyboundedunchangedUI/source+actualrendercomparison. DocumentationneverclaimsnewjurorsorphysicalPASS. CurrentSourceParentformworkflowcoldPASS supportsunchangedapp. DetailedexactreceiptsinTimerDailyDependencySecurityReview/VisualEquivalence306/Jury/FinalFormColdUX.
+
+Hostedmigration/stagecurrentlyPLANONLY; verifyrealoperationsbeforeclaimingcomplete. FounderReadyremainsHOLDfornewhostedauthandphysicaliPadgates. Rawarchive/NotioncustodypendingDO NOT DELETE YET. AllpriorfailuresandContinuousLearninghistorypreserved.
+
+---
+
+# CURRENT — final timer finite review receipts and dependency qualification
+
+aa2 final55referenceHumanEyeCLEAN/MatchPASS (48exactSHAcarries+7freshdifferentrasters), independentcold9tasks/6visualunitsPASS. Sourceboundfivefreshblindjurors5/5PASS38/35/35/35/35actualPNGinspection afterleanconvergence; nopeervotesbeforefreeze. ReportsandhashesinTimerDailyVisualFinal-aa2/FinalFormColdUX/Jury/evidencejury-aa2. Previous866editorFAILsTD-V02Savegap/TD-V03persistentselection missing retained and repairedbeforejury; previous6619contrastFAIL/11b4FAILjury retained. FounderReady remainsHOLD becausehosted/physical gatesOPEN. Newdependency-onlysuccessor needsfullgates andactual-pixelequivalence to carrysameApp acceptance, neverassume.
+
+---
+
+# CURRENT timer correction receipts — November18
+
+Founder timer mandate authorizes narrow necessary backendwork, preservingConcept3. Supabasecurrentmanual applied, actualmigrationnewCLIgenerated,119PGliteDBcases; nohostedDDLyet. Source992independentsecurity147targetedPASS including21newcalendaractual-dispatch tests; no physical/hosted grant. PriorTSEC01FAIL and calibrationrepair retained. ActualhostedPG.002 staleVancouverboundary observed; currentNYcorrect, trustedserverguardfailsclosed. Numeric/69legacyalias semantics tested, nofallback/secretcopy.
+
+Finitevisual6619FAILcountdown3.24→992actual9.17contrastPASS; current11b55refs fullyconsumed withNOTCLEANprecisioncaveat. Coldinitial26steps/10captures scopedPASS, expiredAddtoday/singular1/currentmode recheckPASS.5freshblindjurors11b actual35/31/31/31/35PNGs,4FAIL/1PASS, no peer findings beforefreeze; rootacceptedactionhierarchyrepair. ModeC finaljury NOTaccepted. Newcompact UI gates stale untilrerun. Detailed originalreceipts in TimerDailySecurityReview/VisualReview/VisualRecheck/VisualFinal/ColdUX/Jury docs. ExistingConcept3unaffected findings remain scoped, never globallyborrowed fornewtimer.
+
+ContinuousLearning: lower-tier “nonblocking” density can become final material task-friction rejection; do not waive. Pair displaydeadlinewithmatchingserverclock andcoherentsyntheticinstant. Preserve native fixture/anomaly evidence; don'tfixvisualstorybyerasingassertions. FounderReady remains held bynewqualification+hosted+physical gates. Durability pendingfinalcurrentrawpacket/Notionclosure, original6619historyarchive verified privateNotioncustody.
+
+---
+
+# CURRENT — authenticated hosted read-only QA complete; physical-device hold — November18
+
+Exact ef4 stage dpl_4D5qjPzrJ6iR9U2XhXBhESt7fTyW actually owner-signed-in/unlocked; Root completed bounded Parent/Child read-only hosted journeys and reload/isolation checks. Full sanitized receipt and limits: Concept3HostedQualification-20261118.md. No actual family records/settings/timer commands changed. No app/harness changes; ef4 local/CI/final independent acceptance remains applicable. Canonical77/dpl_GiR reverified READY, autoAssignFALSE held. Physical picture+sound, normal/nativefullscreen recommendation containment and Parent-phone fullscreen End-now remain OPEN. Next is ONE consolidated conditional real iPad+phone session on exact frozen stage; startup failure stops the later tests. No production promotion/FounderReady claim. Existing source/asset custody and recovery checkpoint2ac remain preserved; current documentation successor records this transition.
+
+---
+
+# CURRENT — Concept3 independent qualification complete; hosted/device release hold — November18
+
+Frozen app/harness ef4c4bb30a16ae273f04a426d979480a808930ab, tree d57c0f675876bec6b19779dfd9229ccb1267c314, appsrc9771c2e229ff3e286f7443d9146d31ff22405303. Local lint/type/200unit/build/audit0/full73 and exact CI154 all3jobs PASS. Independent bounded62-protected-source PASS. Child finite154-state Human-Eye CLEAN/MatchPASS; Parent201-state finalPASS; five fresh final jurors unanimously scopedPASS, receipts and firewall in Concept3FinalJury. No source change after freeze. OriginalFAILs preserved.
+
+Exact final production-configured stage READY dpl_4D5qjPzrJ6iR9U2XhXBhESt7fTyW / https://watchnest-7sr8rb8rf-avromy.vercel.app , ef4. Actual public session role:null/configured:true, /login; authenticated hosted QA OPEN. ALL3canonicalhosts still77a5017/dpl_GiR. Keep autoAssignFALSE, rollback77; no merge/promotion. Physical picture+sound, normal/nativefullscreen recommendations, fullscreen phoneEnd-now remain OPEN. State WATCHNEST_CONCEPT3_QUALIFICATION_RELEASE_HOLD; not FounderReady/productReady. Next exact step: secure existing Parent sign-in on unique finalstage, then bounded hostedQA, then ONE conditional genuine physical session. No routine design/PR/deploy approval.
+
+Evidence archives/upload identities verified in docs/evidence/concept3-ef4c4bb/archive-receipts.json; individual reviewers and exact restart in Concept3ReleaseHold-20261118.md. Raw and derivative evidence is synthetic only, no familyphotos/credentials exported. Final GitHub/Notion durability/clearance receipt will bind exact documentation successor.
+
+---
+
+# CURRENT — ef4 mechanical/source gates passed, final review mapping pending — November18
+
+Exactef4c4bb/tree d57c0f6/appsrc9771c2e frozen, no source changes planned absent confirmed material defect. Local lint/type/200unit/build/audit0/full73 PASS; read-back73expected/0unexpected/skipped/flaky249945.471ms. Exact CI154/run44253438924 all3jobsSUCCESS. Independent ef4 source/security review PASS within62-protected-blob scope. [Coverage and boundaries](Concept3SourceSkillCoverage-20261118.md); compact capture/index+CI receipts under docs/evidence/concept3-ef4c4bb.
+
+Stable external packet concept3-evidence/ef4c4bb has28families355states956visualPNGs+40other testPNGs (996total). All declared capture hashes recomputed0mismatches. Not visualacceptance: HumanEye finalef4mapping/nonidenticaldeltas ongoing; final5freshjury NOTSTARTED. OriginalFAILs/rounds preserved. Parent/Child complete priorpacket consumption does not certify uninspected finaldeltas. Raw Library archive upload remains Root-pending.
+
+Current production-configured APIstage NZvsource0f predatesef4, not finalef4hostedacceptance. Allcanonical77 stable, autoAssignFALSE held. Hostedauthenticated/physicalpicture-sound/recommendation containment/nativefullscreen phoneEndnow remainOPEN. FounderReady/productReadyBLOCKED. This is doc-only checkpoint, no app/harness/config changes, tests/jobs/manualdeploy/notification/promotion. Root completes finalreviewfreeze next.
+
+---
+
+# CURRENT — success-icon/capture-coherence successor freeze — November18
+
+Exacta8c0dbe full73/local lint/type/200unit/build/audit0PASS is preserved outside default output at concept3-evidence/a8c0dbe. Read-back browser stats73expected/0unexpected/skipped/flaky,237176.538ms. Independent Child D2finalPASS232native-key transitions/16actualPNGs binds a8; source-security handler review62protectedblobsPASS remains scoped. Original D2FAILs/repair history remain. HumanEye fullChild+Parentmapping is ongoing, not finalCLEAN.
+
+Root froze ONLY3paths: ChildExperience.css fixes confirmed C3V02 success-check SVG to centered block/lavender; premium/supplemental captures park pointer0,0 and await finite running animations before inventory/raster, explicitly recorded as intervention. Existing scroll/correctness predicates unchanged. Hover-transition metadata/raster mismatches are evidence-coherence issues, not demonstrated app defects. New exactfull73/28families355states capture/completeHumanEye/Jury/hosted/physical gates PENDING; olda8PASS cannot certify newbytes. Parent/protected sources unchanged. No furtherappchange absent confirmed materialdefect. KeepautoAssignFALSE/production77rollback; no promotion or notification.
+
+Root fresh aggregate-only DB read verified SafePlayback CHECK true, unsafe0, latestmigration20261027134442; no rowidentifiers/auth/familydata or mutation recorded. Publisher writes only authorized frozen source/docs, never raw historicalPNG/logs/unfinishedbulk reviewJSON. Root next rebuilds/fullcaptures and preserves packet before another test.
+
+---
+
+# CURRENT — native-Tab D2 repair and expanded tablet evidence freeze — November18
+
+0f full71/local lint/type/200unit/build/audit0PASS and exactCI151/run44250643904 all3jobsSUCCESS are preserved facts, not new-source acceptance. Independent native-Tab recheck stillFAIL D2on0f; original report retained. Root now froze THREEpaths: ChildLibrary explicit nearest/instant onFocus scrolling; product regression uses19actualTabs, focusedlastitem and complete horizontalcard containment rather than programmatic last.focus; visual harness adds Parent details atALL4anchors (+2tests→73). Root optimizedbuild+nativeTabtarget diagnosticPASS; new exactfull73/actual-pixel/finalHumanEye/Jury/hosted/device gates PENDING. No all-newPASS.
+
+New API-staged0f build READY dpl_NZv8bccyrmLXyo5MknhuKr54oQ18 at unique watchnest-sv32lq236-avromy.vercel.app, productiontarget/configured:true/role:null. Direct fresh resolution ofALL3canonicalhostnames remains77/dpl_GiR; initialmetadataaliasarray does not supersede actualhostnamereadback. autoAssignFALSE stays; no promotion. Stage0fpredatescallback/newsource. Parent finalvisualreview started against unchanged0fParentbytes; expanded tablet detail gates NOT waived. Root runs fullfrozen73 and preservespacket before another test. Publisher does not editapp, merge/manualdeploy/settings or touchhistoricalPNGs/logs.
+
+---
+
+# CURRENT — D2 focus repair frozen, renewed exact71 pending — November18
+
+Exactea5 full71/local lint/type/200unit/build/audit0PASS and CI150/run44249693504 all3jobsSUCCESS retained as prior-source evidence. Original bd8 local69 vs CI149FAIL/auditSKIPPED and independentFAIL history preserved. ea5 full packet safely copied outside test-results at concept3-evidence/ea5e213/test-results. Independent Child recheck D1/R1/R2PASS, but D2keyboardfocusvisibility HOLD remains until fresh successor verification; no final Child signoff.
+
+Root now froze ONLY ChildExperience.css +product.spec.ts focus repair: remove shelf snap,8px scrollpadding/margin, inside-card outline-4px; stronger focusedlastcard horizontalbounds assertion+focusPNG. Earlier diagnostic build/targetPASS precedes final outline offset and is not final acceptance. New exactfull71/build/security/render/independent gates PENDING. Source publisher makes no app edits, merge/manualdeploy/config changes. Protected backend/player/CSP/timer and Parent source stay unchanged. Root runs rebuilt frozen gates and copies packet before another test.
+
+---
+
+# CURRENT — bounded Concept3 repair successor frozen for qualification — November18
+
+Root froze Child-only R1 content reach/R2 Discover hierarchy/D1 Simple-mode repair for publication. Baseline firstConcept3bd8d local69/200/build/lint/type/audit0PASS remains separate from actual CI149FAIL (one Requests-selector ambiguity; auditSKIPPED) and original Visual/Reporter/ChildStrangerFAIL. Original Parent boundedPASS retains unchanged Parent blobs only, not new global acceptance. Root's new targeted8-state reach/disclosure diagnostic PASS retained its initialtwo failures/thresholds. New FULL71 exact-source/browser/render/security/independent/hosted/device gates PENDING, not PASS.
+
+Source publication scope:8changedChildsrc/e2e files +CIworkflow. Product Requests selector now Parent-nav scoped; historical baseline workflow uses immutable671b77 harness with immutable77application, never Concept3-only labels on oldsource. No candidate correctness assertion removed. Parent production files and protected backend/player/CSP/RLS/timer code unchanged by repair. Round1 receipts/compactCI149byteindex and originalFAIL reports are preserved; original LOCAL26manifest packet was lost to default test-results cleanup, distinct verified CI ZIP is not its recovery. Root will copy next full packet outside test-results BEFORE any subsequent test command.
+
+Root fresh Vercel UI readback: autoAssign Custom Production Domains checkbox0/manualpromotion warning; no mutation. KeepFALSE. Production77 and oldgreenHHstage remain preserved. Oldgreen hosted Parent read-only metadata/preview/pages worked, then normal Parent expiry returned device role/sign-in denial; no timerbackend failure or command proven. Not Concept3 acceptance. No family data/auth artifacts retained. Root owns frozen71gates next; no merge/manualdeploy/settingschange.
+
+---
+
+# First Concept3 WIP publication receipt — November18
+
+Actual current authority recovery receipt and Parent UX implementation receipt consumed; three Concept3 documents retained. Root integrated child/global/icon and Parent-owner changes under disjoint scope. Publishing lane reviewed six harness diffs and eslint delta: semantic headings/navigation updated; stronger no-Home/two-primary-child-nav assertions and disclosure captures added; no correctness/security/scroll predicate removed. ESLint new ignores limited to exactly three historical docs audit-script folders, no application exclusion.
+
+Root reports200unit/build/lint/type draft diagnostics PASS and30browser flows PASS on an EARLIER draft. New exact frozen full-suite/security/actual-pixel/HumanEye/MatchCheck/Stranger/jury/hosted/device receipts remain PENDING, not PASS. Old green visual acceptance STALE for affected properties. Explicit WIP publication authorized for changed src/public/e2e +eslint.config.mjs +three Concept3 receipts/RunState/Ledger only; no historic docs/evidence artifacts, app edits by publisher, merge/manualdeploy/project-setting change. Root owns next frozen qualification and final source identity readback.
+
+---
+
+# CURRENT Concept3 invocation checkpoint — November18 (LOCAL WIP)
+
+| Route | Actual evidence/receipt consumed or work performed | Status / limit |
+| --- | --- | --- |
+| Founder authority / supersession | Explicit Concept3/Premium Family Streaming/no dominant green; exact baseline671b77 recovered | Applied; prior green-led target superseded, no artwork approval dependency invented |
+| Current authority resolver | Concept3AuthorityRecovery-20261118.md read in full by documentation lane; authored current canonical routing/preflight/package provenance retained | Actual receipt consumed; not a claim this lane independently re-read every private package |
+| Exact state recovery | Remote branch/PR49/head671b77, canonical77, HHstage6be0cab, baseline appsrc461eb4; current RunState/pause/source/evidence read; notification profile available, nothing sent | Read-only recovery; project APIs omit autoAssign field, do not infer fresh UI proof |
+| Product/brand/type/icon/responsive/component implementation | Root child/global/icon; concept3_ux ParentApp/module only, disjoint writable scope and protected-source contract in Concept3Implementation-20261118.md | IN PROGRESS / UNFROZEN; no current PASS |
+| Deterministic renders/HumanEye/MatchCheck/Reporter/Stranger/BlindJury | Current resolver plan requires new source-bound affected actual pixels and independent review | NOT YET EXECUTED for Concept3; previous green visual PASS STALE for affected properties |
+| Functional/security/release gates | Historical382 tests preserved, no player/auth/PIN/CSP/timer/data rewrite; new exact freeze/tests come from Root | Current Concept3 gates NOT YET RUN; old staged deployment not new candidate |
+| Founder Ready / notification | Current independent work can continue; PIN handoff unavailable, do not repeat auth/notification or premature physical requests | BLOCKED; no routine Founder design approval or new notification issued |
+| Durability/learning | Local implementation/scope/evidence receipt prepared; previous records retained below | LOCAL ONLY, not committed/pushed; no durable-write/clearance claim |
+
+---
+
+# CURRENT — trusted-device hosted progress; existing Parent PIN handoff — November18
+
+Fresh staged `/api/session` established role:device,configured:true, superseding the stale login-view/password interpretation below. Unique candidate remains https://watchnest-5ens0lo6f-avromy.vercel.app /dpl_HH939UpRsidw913WvZocu6qkZv6v/source6be0cab; app/harness unchanged382. Root completed bounded hosted Child read-only/metadata checks:4 matching identities,1 expired session stayed denied,3 eligible Home views,one library/search/Collections/scoped-recovery path,Favorites/Hidden labels and allowed-topic non-playable discovery. No real Play/fullscreen/media/timer command or family-content/settings mutation. [Exact sanitized evidence and limits](HostedReadOnlyQA-20261118.md).
+
+MINIMUM OWNER ACTION NOW: enter the EXISTING4-digit Parent PIN in the handed-over Cloud browser's open Parent Mode modal. No PIN was entered/guessed. Do not send credentials in chat/notification, request another email/password, or repeat automated credential retrieval/direct entry. Vercel MFA/CLI are not current blockers. Root returned picker→ParentModePIN after child checks. After entry, continue hosted Parent read-only/metadata QA at the UNIQUE staged URL, not a branch alias/doc preview. Physical conditional testing comes only AFTER hosted QA completes.
+
+Canonical77/dpl_GiR remains unchanged; autoAssignCustomDomains FALSE MUST remain OFF through hold. All source/automated/independent synthetic gates stay scoped PASS. Parent hosted qualification and physical approved-playback/containment/fullscreen remote-stop gates remain OPEN; no merge/promotion or Founder Ready. This current entry supersedes earlier sign-in/MFA/CLI handoffs, whose history remains below.
+
+---
+
+# Current staged build / sign-in boundary — November18
+
+Supported Vercel project-setting staging route actually succeeded: saved autoAssignCustomDomainsFALSE, explicit no-domain confirmation, owner-authorized fresh verification followed by independently observed READY/STAGED exact6be0cab deployment dpl_HH939UpRsidw913WvZocu6qkZv6v. Fresh read-only API stage+canonical readbacks performed before this checkpoint. Current source/harness remain382,69/200/CI148 plus all final independent lanes qualified only within stated synthetic limits.
+
+Vercel/CLI blocker superseded: no new CLI grant, no further infrastructure authorization required. Stage browserconfigured:true but role:null and Parent→login. Managed Parent credential attempt unavailable; fresh UI Sign in/noautherror/noauthenticatedsession. Stop automaticcredentialrequests/directentry; owner manual existing-Parent-account sign-in in handed-over Cloud browser is minimum current action. No credentials/auth artifacts preserved. FounderReady BLOCKED pending hostedauthenticated QA then consolidated physical acceptance. StagedDeployment-20261117.md and current ResumeCheckpoint govern.
+
+---
+
+# Current supported-staging correction — November18
+
+All independent source/visual/jury/cold lanes remain qualified within recorded synthetic scope. Current Vercel official staging/project-update sources and exposed autoAssignCustomDomains boolean independently verified before mutation. Root alone changed project autoAssignCustomDomains TRUE→FALSE, verified savedUI checkbox0/manual-promotion warning and actual no-domain Redeploy confirmation. One6be0cab staged Redeploy submitted, then email verification rejected invalid/expired; no automaticretry/Resend, no stagedID confirmed, canonical77 unchanged. Current owner-only action is existing providerverification, not CLIgrant. KeepsettingOFF through pendingstage/hold. Historical CLI-only records superseded, not erased. FounderReady remains BLOCKED; hostedauthenticated/physical acceptance OPEN. Exact restart in ResumeCheckpoint-20261117.md; no code/auth artifacts changed or retained.
+
+---
+
+# Final current receipts — November 18
+
+Exact qualified source382; appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Final independent HumanEye/MatchCheck repair report+finitecoverage/binding PASS; priorFAIL preserved. Five fresh final BlindJury reports frozen sampledvisualPASS (104/79/93/83/88), actual PNG inventories and neutral source binding attached. Final Child/Parent Stranger reports frozen bounded syntheticinteractionPASS, blindfirstimpressions/scripts/statefuljournals/rawscreens preserved. Source/security382 review PASS; local69/200/build/lint/type and CI148PASS.
+
+FounderReady current method read/applied to real evidence: BLOCKED, not OutcomeReady. Root live probes show previewconfigured:false/productionconfigured:true, no hostedauthenticated acceptance. CLI accountgrant pending owner-only providerstep; physicalfamily-iPad gates OPEN. ResumeCheckpoint-20261117.md and FounderReadyGate-20261117.md carry exact restart/escalation boundaries. QualificationLearning current project-level findings updated; no package/other-app brand changes. Final archive and Notion custody root verification required for deletion clearance. No absentgate self-certified.
+
+---
+
+# Final independent convergence update — November 18
+
+Exactsource38244d2c6ea6b7bb113f3e39338b63cf4eae1e82 unchanged. Completed Security382 sourceaddendum/comparison and final focused visual repair verification report/coverage/binding published; original materialFAIL and Strangeractions preserved. Visual targetedfinitePASS does not replace fivefreshfinaljurors, whose decisions are ongoing. Vercel human sign-in succeeded; staging/authenticatedhostedruntime not yet qualified. Physicaldevice and FounderReady gates remainOPEN/BLOCKED. See currentRunState and exact authoredreports; no Builder selfcertification.
+
+---
+
+# Current frozen qualification — November 18
+
+Exactsource38244d2c6ea6b7bb113f3e39338b63cf4eae1e82 /appsrc461eb4dc14b9a5adb79047d681a8c85478e740ad. Current canonical routing and finite plan recovered; actual independent originalvisual/UX/Stranger/security receipts preserved. Visual comparator raised material V01/V02; Stranger raised SI01; bounded repairs implemented and renewed actual69browser evidence, sourcebinding,26manifestfamilies293states931images available forfocusedreview. New runtime dependency patched minimally to16.4.6 with vendorbasis/audit evidence. Local lint/type/200unit/build/69PASS; exactCI148ALL3JOBSSUCCESS.
+
+Final HumanEye eligibility/edge recheck, Strangerrepairrecheck and5freshBlindJury gates remain INPROGRESS, not inherited fromNov4. Hostedphysicalgates OPEN; FounderReady BLOCKED. QualificationLearning-20261117.md records false-positiveharness, scopedsearchrecovery andbytecustody distinctions. Root owns finalNotion/ContinuousLearning/privatearchive custody and declaration; no absentgate self-certified here.
+
+---
+
+# ACTIVE November 17/18 resumed evidence
+
+Current entry supersedes November10 pause below. All eight app controls/current runtime0.2.1/live router/HumanEyeV2 recovered; canonical current package recovery and independent-review plan in PremiumQualificationReviewPlan-20261117.md. Existing selected directionA/research remain durable and were not restarted. Actual bounded source/runtime qualification: dependency vendor-advisory investigation, minimum16.4.6 patch; lint/type/200unit/build/auditPASS; repaired syntheticfixture/test false positive then complete64browserPASS atcf764cb6087b394fbb9d97b687413c2084e2e708. Exact logs/sourcebinding in docs/evidence/qualification-20261117.
+
+Current fresh actual-pixel/Stranger/HumanEye/BlindJury/security review lanes are in progress; no old pixelPASS inherited for changed copy/runtime. Hosted authenticated/physical iPad gates OPEN. FounderReady BLOCKED. Root owns final verified durability and ContinuousLearning propagation; no missing receipt certified here.
+
+---
+
+# USER PAUSED refinement checkpoint — November 10, 2026
+
+Current authority recovery/research/three-direction comparison/independent
+selectionA and bounded source review recorded in the new dated receipts.
+Final copy/template build including TypeScript PASS; earlier200tests/lint PASS
+before final footer/grammar adjustments. Initial local64batch INCOMPLETE:14PASS,
+1capture-predicate failure then interrupted130. Final-source browser, visual/UX,
+jury and physical/hosted release gates remain UNRESOLVED. No overallPASS.
+[Pause state](PauseCheckpoint-20261110.md) governs; launch no further work
+until explicit resume. Preserve old receipts as historical scoped evidence.
+
+---
+
+# Current premium transformation receipts — 2026-11-04
+
+This section supersedes historical readiness headings below. Frozen application
+`c670d55a9bf22aa493f685fa62f79fda89151247`; evidence descendants preserve the
+same application tree. Production remains77a5017. No overall Founder Ready.
+
+| Capability | Actual application / evidence | Current result |
+| --- | --- | --- |
+| Authority recovery / handoff | Current operating authority, all eight app controls, live registry and canonical packages; existing repository/deployment/rollback reconciled | Recovered; sole owner retained, no restart |
+| Product Intelligence / research | Official Netflix, Apple TV, YouTube Kids sources and bounded first-hand frustrations; PremiumResearch-20261103.md | Applied to distinctive family-library IA; no competitor cloning |
+| Visual production / Website methods adapted to app | Shared tokens; login, child, Parent implementations; R1–R3 comparator and adversarial reports preserved | Built and independently converged R1–R5; final five-juror PASS |
+| Typography / spacing / icons / components | Existing WatchNest/SVG family, shared ivory/evergreen/amber tokens, 44px controls; exact browser renders and independent shards | Final source-bound anchor and supplemental visual scope CLEAN |
+| Human-Eye / Match Check | Four fresh independent phone, portrait, landscape and desktop actual-pixel reviews, manifests and per-asset edge receipts | Final binding receipt resolved all4315IDs/17260edge outcomes; synthetic scope only |
+| Independent functional / security | Protected64-file comparison and source receipt; CI139200 unit/64 browser flows, lint/type/build/audit | PASS in stated source/synthetic scope; physical playback/containment/remote fullscreen stop open |
+| Blind Jury | Canonical current authority recovered; five fresh unanimous reviewers required | INVOKED: five fresh isolated contexts, unanimous5/5 design PASS; PremiumFinalJury-20261104.md |
+| Stranger | Fresh-context Parent/child testers froze impressions and independently authored6 executable journeys; CI137 failures retained, test adapters independently corrected | Six executed journeys PASS; original FAIL retained; independent fresh repaired-request recheck PASS |
+| Founder Ready / release gate | Explicit current physical playback, recommendation and native-fullscreen remote-stop evidence boundary | BLOCKED; no routine design approval required |
+| Continuous Learning / durability | PremiumLearning-20261104.md, project Notion CTO checkpoint and Continuous Learning record, PR49 source/receipts/comparison images | Updated; raw and derivative evidence privately archived, final verified CTO checkpoint controls deletion clearance |
+
+Synthetic artwork/family fixtures and Chromium renders never certify genuine
+YouTube, authenticated hosted data, Safari/PWA or a physical iPad. Failed review
+and CI evidence stays historical, not rewritten as final PASS.
+
+---
+
 # Final device acceptance and Founder Ready receipt — 2026-10-07
 
 ## 2026-10-27 — P0 recommendation containment receipts
@@ -365,3 +704,70 @@ Security/data/API changes invalidate affected previous build, tests, CI and brow
   source hypotheses are not physical causes, mock API readiness is not genuine
   startup qualification, stopped generations cannot revive. No global skill
   authority overwritten.
+
+
+### Frozen-release receipt — 2026-11-02
+
+Exact application `77a5017d938ded03b1530c2b72978cef27273d61` /
+`dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac`. CI125 executable gates PASS, including
+32/32 browser flows; independent source review conditions satisfied. Hosted
+session/CSP/API denials and runtime health verified. Complete bounded coverage,
+reviewer separation, applicability decisions, evidence hierarchy, unresolved
+physical gates and learning propagation are recorded in
+[IPadStartupRelease-20261102.md](IPadStartupRelease-20261102.md). This receipt
+is not full family-beta/physical acceptance. Founder Ready BLOCKED; physical
+observation required. No evidence category promoted.
+
+
+## Premium transformation — 2026-11-03 — in progress
+
+Current authority/package consumption receipt and mandatory rendered-review
+contract: PremiumReviewContract-20261103.md. AVP V008.2, HumanEyeV2,
+MatchCheckv1, BlindJuryv1 and Stranger v1.1 resolved from canonical sources;
+installed superseded adapters are not certification authority. Applied to
+independent production/evidence lanes; final gates remain PENDING, not PASS.
+Product Intelligence/Founder Ready/Continuous Learning and existing infrastructure
+preflight govern this continued project. Independent documentation-based
+Netflix/Apple/YouTubeKids research informed PremiumDesignAuthority-20261103.md.
+
+Design production covers parent/child/login, shared palette/spacing/control tokens,
+existing SVG icon consistency, responsive/accessibility and actual state capture.
+Player/backend mutations prohibited. Candidate and production claims require
+exact frozen source, executable checks, genuine rendered independent receipts.
+The physical P0 gate remains unresolved; no inherited device PASS claimed.
+# P0 stability / requested Preview recovery — November19 ET / November20 UTC
+
+Current source146a672f/src464c41e3, stage dpl_6smmoFJWQdRMz4uRzfRqfzjMadKB. Full recovered authority/mutation contract: incident-20261120/authority-and-preflight.md. Evidence statuses are scoped; no prior final jury is transferred.
+
+| Capability | Current authority consumed | Applied work / evidence | Result |
+|---|---|---|---|
+| Universal/project routing and infrastructure autonomy | Live Universal Router, Registry, OS, CTO and eight app files; InfrastructureV1.1 | Recovered exact existing branch/PR/aliases/migrations before mutation; supported connector publication after shell push lacked credentials; no duplicate DB operation; configured unaliased stage with native aliases readbacks | PASS bounded recovery/staging; product hold |
+| Founder Attention | Live3ed584c4f747819bb6cdd24c15664007 | Personal Gmail profile preflight succeeded; newstage auth boundary; final receipt in Resume | Active; only genuine owner auth notification |
+| Product Intelligence | Current adapter read; live app locks | Solved immediate incident, classified demonstrated optional-storage versus suspected provider causes; reusable lessons kept separate from family specifics | PASS bounded application; no commercial expansion |
+| AVP V008.2 / AppUI / reusable Website methods | DropboxALrdg ZIP hash2f40be4a... verified; full relevant modules read | Preserved Concept3/modal/player tokens; finite pointer/touch/keyboard/loading/error/close and responsive evidence; no Figma/redesign/asset import | PASS bounded production; final overall acceptance unresolved |
+| Functional/security independent review | Separate incident_security_review context; actual changed source | source-investigation/final-review;89targeted checks; original P2 found, repaired, final src semantic equivalence verified | PASS SOURCE+AUTOMATED only |
+| Mechanical/browser regression | Existing actual test harness and new incident regressions |396unit; local95full +19finalaffected +2touch; exact CI167 bound in Resume; no hosted fixture inference | PASS scoped; see qualification |
+| Browser | Current control-browser instructions read, connected Chrome | Live picker, oldstage/newstage sign-in and newstage configured:true; separate bounded console/server checks; native production safeguards read | BLOCKED authenticated Parent; no device PASS |
+| Human-Eye V2.0 | Live production authority3ea584c4f74781f5946bef30a54c86c5 | Independent exact2viewport/14asset/56edge finite receipt, neutral hashes/geometry, original incomplete receipt preserved | CLEAN only static synthetic dialog layout |
+| Cold Stranger v1.1 | DropboxALrSg ZIP20f37c4d... verified; complete skill/directive read | Fresh cold_parent_journey context, ordinary fixture access only before freeze; independent clicks/screens/journal | Final bounded result in cold report; actual hosted gate OPEN |
+| Match / Blind Jury / Founder Ready | Live router + current AVP variable-jury instructions | No old review recycled; five-person final high-risk jury and final acceptance deferred while actual authenticated incident investigation may change candidate | UNRESOLVED / release-blocking; no final invocation/PASS claim |
+| New brand/icons/assets | Existing Concept3 unchanged | No new identity/icon/type/photography system created | NOT TRIGGERED |
+| Continuous Learning/durability | Live3e6584c4f74781b7989cf9d1ffd88c9a | IncidentRCA/regressions/failed evidence, app learning, Notion/current checkpoint and deterministic Resume | See verified final durability receipt; not product readiness |
+
+---
+
+## Integrity continuation — November20,2026
+
+Same Builder2, PR49. Existing authority/package receipts remain in prior incident ledger; no new universal package version claimed. Independent security reviewer invoked actual Supabase SDK controlled-transport red/green tests for refresh authority and dependency failure. Independent client reviewer inspected Parent/Child async paths and reproduced actual unhandled sign-out rejection against frozen146 built artifact; narrow fix and network/HTTP/hung/pending regressions authored. Human-Eye reviewer inspected changed source with exact hashes; final4state rebuilt screenshots and freshsource/build/geometry bindings independently checked:12regions/26assets/4readable/4structural/104edges,0conflicts/defects,CLEAN within exact finitevisualscope. Keyboard/AT/physical/fullapp acceptance excluded. Full400unit/database integration PASS; exact CI168 all3jobsSUCCESS with100browser/build/lint/type/prodaudit0; final local4logout+1geometry PASS. Scopes explicitly separate local/synthetic, previous146 hosted observations and open physical gates. See docs/integrity-20261120 for raw/final receipts. No old jury or hosted approval extended to changed code.
+
+## November21/22 integrated release continuation
+
+All8governancefiles/currentNotionOSRegistryAttention+CTO recovered. AVPV008.2 ZIP freshlydownloaded/sha2f40be4a... verified; AppUI/runtime/variablejury consumed. ModeAconvergence actualindependentgapdiscovery->Simplemodecontrolrepair->rendererrorfeedbackrepair->regression. ModeC5freshfinaljurors reserved forstablehostedfinalcandidate,0newrounds, nooldjuryPASS. ProductIntelligenceadapter readandappliedreachabilitylesson; MatchCheckcurrentadapter read, independentnonblindfiniteinitial/finalcomparison assigned; HumanEyeV2authority refetchedbyseparatereviewer; freshcoldcontextwithnodefectorpriorverdictbrief assigned. IndependentsecuritysourceandactualruntimeRCAreceipts saved. FounderReadyadapter applied:BLOCKEDonprovider/hosted/physical/currentfinalgates,nooutcomeREADY. No skillnamedwithoutscope/evidence. Newbrand/icons/assetsNOTTRIGGEREDbecauseexistingConcept3tokens/assetsretained.
+
+Finalsource2fba8871 CI170all3PASS400unit/103browser/build/type/lint/prodaudit0, exacttreeequivalenceverified. Independent source/securitysuccessorPASS. HumanEyeV2nonblindfinitefollowupPASS12regions/34assets/12readable/6neutral/136edges0conflicts/defects; boundedMatch actualinitial/finalpixelcomparisonPASSonlyauthorizedlocalerrorflow, noGolden/globalPASS. FreshColdcontextisolatedforknonewithoutpeerfindings, actualboundedjourneysSCOPEDPASS; cold/stranger-review.md. ModeC5finaljury remainsdependentongenuinelystablehostedqualification;0newrounds/nofabricatedverdict. FounderReadyBLOCKED, no paidservice/production/personaldatawrite.
+
+## No-PIN lockout correction — November22/23
+
+Live CTO/Registry/AppRouter/OS/Attention recovered; versions unchanged from verified prior routing. Founder correction controls incident facts; no PIN-guess attribution. Independent security reviewer traced exact77+2fba source/SQL and repeated successful admission budget; separate implementer produced count-aware red/green tests, preserving sharedParentPIN/childPIN/ownership/window/time protections. Independent security75 focused cases include unauthorized/foreign recovery, auditfailure and downstream ParentStopped/window403. Parent recovery implemented by separate lane, rootbuilt/tested419fullunit+9browser; isolatedbrowser7cases realpointer/slow/network/offline/reload/sibling/Endnow only synthetic. HumanEyeV2 finiteindependentParentrasterreceipt16assets/64edges CLEAN. No oldscope repurposed as hosted/device proof. CurrentFounderReady release gate remains BLOCKED on provider/hosted/physical/final acceptance; no newfinaljuryPASS. Brand/icons unchanged, creation nottriggered. Full raw receipts docs/no-pin-lockout-20261123 and release-20261122/no-pin.
+
+Final frozen source9c247f77 independentlybound to1c1228fa/a2aa711a. CI172/run45088393241 all3SUCCESS419unit/112browser/build/lint/type/prodaudit0; CImerge5be75e97/tree de2b47e6 equals a2aa711a, fetched diff0. Parentcapture2/2 adds test-only neutral proof afterfreeze; no new application mutation. HumanEye16assets/64edges finiteCLEAN. CloudprovidercheckstillLogin; securebrowserAuthdocs reviewed and requireowner method/credential choice, no silent reusableaccount or automaticmethodselection available. No new authentication request or repeated handoff initiated. Originalcrash and actualfamilyeventattribution remain open.

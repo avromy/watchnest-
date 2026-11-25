@@ -1,0 +1,311 @@
+{
+  "state": "saved-simple",
+  "viewport": {
+    "width": 820,
+    "height": 1180
+  },
+  "coordinateSystem": "document pixels; full-page screenshot",
+  "records": [
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 462.203125,
+      "y": 422.734375,
+      "width": 45.59375,
+      "height": 45.59375,
+      "disabled": false
+    },
+    {
+      "tag": "H2",
+      "text": "Ari",
+      "x": 539,
+      "y": 419.8125,
+      "width": 91,
+      "height": 27.359375,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "4-digit PIN on",
+      "x": 539,
+      "y": 450.171875,
+      "width": 91,
+      "height": 21.0625,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 447,
+      "y": 598.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 457.203125,
+      "y": 608.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 503,
+      "y": 598.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 513.203125,
+      "y": 608.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 559,
+      "y": 598.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 569.203125,
+      "y": 608.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 615,
+      "y": 598.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 625.203125,
+      "y": 608.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 671,
+      "y": 598.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 681.203125,
+      "y": 608.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 447,
+      "y": 662.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 457.203125,
+      "y": 672.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 503,
+      "y": 662.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 513.203125,
+      "y": 672.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 559,
+      "y": 662.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 569.203125,
+      "y": 672.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "x": 615,
+      "y": 662.53125,
+      "width": 48,
+      "height": 48,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 625.203125,
+      "y": 672.734375,
+      "width": 27.59375,
+      "height": 27.59375,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Upload photo",
+      "x": 447,
+      "y": 734.53125,
+      "width": 316,
+      "height": 71.4375,
+      "disabled": false
+    },
+    {
+      "tag": "svg",
+      "text": "",
+      "x": 557,
+      "y": 747.53125,
+      "width": 18,
+      "height": 18,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "Photos are cropped and compressed on this device, then stored privately. JPG, PNG, or WebP; up to 25 MB before processing.",
+      "x": 447,
+      "y": 829.96875,
+      "width": 316,
+      "height": 58.03125,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Library experienceStandardSimple",
+      "x": 447,
+      "y": 586.53125,
+      "width": 316,
+      "height": 82.796875,
+      "disabled": false
+    },
+    {
+      "tag": "SELECT",
+      "text": "StandardSimple",
+      "x": 447,
+      "y": 619.328125,
+      "width": 316,
+      "height": 50,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "Simple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.",
+      "x": 447,
+      "y": 681.328125,
+      "width": 316,
+      "height": 74.390625,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Require a PINAsk for a 4-digit PIN before opening Ari’s library.",
+      "x": 447,
+      "y": 771.71875,
+      "width": 316,
+      "height": 97.453125,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "New PIN (optional)",
+      "x": 447,
+      "y": 893.171875,
+      "width": 151,
+      "height": 83.59375,
+      "disabled": false
+    },
+    {
+      "tag": "LABEL",
+      "text": "Confirm PIN",
+      "x": 612,
+      "y": 893.171875,
+      "width": 151,
+      "height": 83.59375,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Save changes",
+      "x": 447,
+      "y": 996.765625,
+      "width": 134,
+      "height": 46,
+      "disabled": false
+    },
+    {
+      "tag": "P",
+      "text": "Changes saved.",
+      "x": 447,
+      "y": 1042.765625,
+      "width": 316,
+      "height": 58.796875,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "View as Ari",
+      "x": 447,
+      "y": 1137.5625,
+      "width": 316,
+      "height": 46,
+      "disabled": false
+    }
+  ],
+  "buildId": "wICT7dc10sArd3kGmfb-q",
+  "parentSourceSha256": "c19696be0220260df6c26dea2bd1ff2bb640c454c6621aece622f7fa1c076c93",
+  "imageSha256": "0722f965ed2ed41d9d2daf552cf1bb3be6f8b999fdf6ad0a37307ad5ecf8044f",
+  "scope": "synthetic browser, not hosted/device or independent visual acceptance"
+}

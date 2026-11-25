@@ -1,0 +1,23 @@
+{
+  "candidate": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+  "working_head": "83ecc0931bcae18d5c3f14e4f9461be6e9c72969",
+  "src_tree": "461eb4dc14b9a5adb79047d681a8c85478e740ad",
+  "checks": {
+    "src/components/child/ChildPlayer.tsx": true,
+    "src/components/parent/ParentApp.tsx": true,
+    "src/components/parent/Parent.module.css": true,
+    "src/components/child/ChildLibrary.tsx": true,
+    "src/components/child/ChildLogin.tsx": true,
+    "e2e/fixtures.ts": true,
+    "e2e/product.spec.ts": true,
+    "e2e/premium-visual.spec.ts": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "next.config.mjs": true,
+    "src/components/child/ChildExperience.css": true,
+    "e2e/supplemental-responsive.spec.ts": true
+  },
+  "all_match": true,
+  "build_id": "YcMG9j-STQkVPjPsQSsef",
+  "build_id_sha256": "cbfecc6313e10b48c9a0e6bc11332787bfb172f96cb60b0e2a50fcb9f455c0e6"
+}

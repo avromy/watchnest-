@@ -1,0 +1,64 @@
+{
+  "branchSource": "aa2ba2b0c0e9cb977f6dc803e60742c2d4253542",
+  "appTree": "1eed93961f1ce9b53d5bf3ec8c77f6909a2e0392",
+  "runId": 44373842750,
+  "runNumber": 160,
+  "checkout": "19c6789cecf744a0931015ae7c0c6b457b69632a",
+  "checkoutKind": "GitHub pull-request synthetic merge into production base77",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 135047562956,
+      "name": "qualification-mode",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135047727284,
+      "name": "quality-checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135047727477,
+      "name": "baseline-visual-evidence",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "gates": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unit": {
+      "files": 27,
+      "tests": 343,
+      "result": "PASS"
+    },
+    "build": "PASS",
+    "browser": {
+      "passed": 80,
+      "result": "PASS"
+    },
+    "productionAudit": {
+      "vulnerabilities": 0,
+      "result": "PASS"
+    },
+    "installAudit": {
+      "vulnerabilities": 10,
+      "moderate": 8,
+      "high": 2,
+      "scope": "npm ci full dependency installation summary; not production-only audit"
+    }
+  },
+  "artifact": {
+    "id": 14461101966,
+    "bytes": 57087632,
+    "sha256": "6045ffa0c102a1ae750b6c2788c83c379f283e0ad49f4a989948a587ebff5775",
+    "retentionDays": 14
+  },
+  "boundaries": [
+    "Optional second followup command skipped; full browser command passed80.",
+    "Synthetic CI does not certify hosted database, physical iPad or release readiness.",
+    "Decoded quality log preserved outside repository; patch write adds terminal newline if necessary."
+  ]
+}

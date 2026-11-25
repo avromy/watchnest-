@@ -1,0 +1,32 @@
+# Integrated stability and Concept3 release qualification
+
+Frozen application2fba88712bd74c868e27ff5d0e0f067332340507, src c7aa895727fa7301c4f6d39835c42b7dce5e44c0. Existing premium-ui-ux-20261103/PR49 remains sole implementation. 0aac originalrepair andCI168 receipts preserved; newmodecontrol/localerror renders invalidate affectedParentcard evidence, not unrelatedhistoricalwork.
+
+## Delivered source behavior
+
+Concept3 navy/lavender/coral/warm-neutral streaming experience retained: existing kid-first library modes/collections/search, Parentnavigation/library/requests/Preview/time/profiles. Sourcegap discovered: API+childSimplemode existed but noParentsetting. Added ParentLibraryexperience selector, defaultStandard, explicitSaveonly, states/errors; syntheticstatefulsave/reload demonstrates reachableexistingSimplechildlibrary. No realfamilysettingwritten. GlobalprofileSaveerrorcouldbeoffscreen; nowlocalaccurate uncertainconfirmation error besideSave, >=50%viewportvisibility asserted390/820. Serverincidentlogconstants distinguish childsessionack andprogress fromotherfailures without loggingprivatevalues orweakening guards.
+
+## Evidence
+
+-3/3oldbuildred for absentmodecontrol, rawcontexts retained.
+-Firstrebuiltselectorfailurewas testharness exactlabelmatching despitevisibleAXcombobox; correctedrolequeryandpreservedfailedlog. Concurrenttestartifactcollision producedtraceENOENT; serial19/19PASS aftercorrectingharnessmethod. Thisiscontrollerlearning, notappcrash.
+-400unit/database testsPASS, lint0errors (2existing evidence-scriptwarnings), typecheckPASS, rebuiltproductionPASS.
+-Newmode3/3PASS statefulsyntheticpersistence/default/error/retry; finalchangederror/logout7/7PASS includingphone/tabletviewportfeedback.
+-CI170/run44975023134 all3jobsSUCCESS:400unit/103browser/build/lint/type/prodaudit0. Merge d9286be fulltree b54f73d exactlymatchesapplication2fba; fetchedgitdiffexit0.
+-IndependentsecuritysourcePASS includes exactsuccessor+unchangedserverguards. FiniteHumanEye nonblindfollowupPASS:12regions/34assets/12readable/6neutral/136edges,0defects/conflicts. BoundedMatchinitial98f->final2fba:4/6fullPNGsidentical,2authorizedlocalerrorflows; no globalGoldenPASS. FreshColdSCOPEDPASS at390/820; parent/child/error/statefulsyntheticsave-reload, nohosted/devicecert.
+
+## Separate incident RCA
+
+Stage146/session42501 signature andactualSDKreproduction confirms refresh-clientauthoritydefect repairedat0aac. Doesnotproveallhistoricalstagecrashes. Live77/session-accessunknown503Nov19 andprogressP0001upstream400Nov15 are actualbackendfailures, notbrowsercrashproof. Oldsessionroute doesnotcalldailyresolver; progressatomicRPCmaycorrectlyrejectrevoked/expired/unassigned content. Missinghistoricaloperation/messagepreventsuniquecause. Newcontextlabels improvefutureclassificationwithoutsecretlogging. Originalreportsremainopen, no crash-freeclaim.
+
+## Precise release hold
+
+ProviderAPI omitsautoAssignCustomDomains; actualCloudproductionsettings andexact0aacpreview hitVercelLogin/SSOwall, noexistingauthenticatedcontextverified. No newlogin/PINrequest, perFounder. NOnewconfiguredstage, deploymentattempt, alias/configwrite, merge/promotionorphase2migrationthisrun. All3canonicalhostsreverified77a5017d/dplGiR. ThereforecurrentliveURLdoesNOTserveintegratedConcept3repair.
+
+Unsafealiasassumptionwillnotbetestedbydeployment. Firstunblock verifyprovider'ssavedmanualassignment/productiondomainexclusionandreviewactualnoncanonicalaliasplan. Thenconfiguredexactcandidate, sameCloud authenticatedParent/Childread-onlyacceptance; onlyafterhostedqualificationoneboundedfamilyiPad+phone safetytest (approvedpicture/sound,recommendationcontainment,Parentauthorizedswitching,fullscreenremoteEndnow,timers). Finalfresh5highriskjury/Cold/FounderReady acceptance bindsthatstableintegratedhostedcandidate; nooldreviewrecycled.
+
+Routineproductionapprovalalreadyauthorized; child-safety/authenticatedhosted/physicalgatesNOTwaived. NoFounderReady/productcompleteclaim. Rollbackpreservespriorcanonicaldeployment/familydata/compatibleschema, withguardedv2orfailclosedmandatoryaftereventualphase2; neverrestorelegacybypass.
+
+## Notification and continuation
+
+GmailprofileandMultiGmailmailboxpreflightfailedmissinglink_id, noneexposed; FOUNDER_NOTIFICATION_PENDING, noemailsentclaimed. No repeatedauthhandoffrequestednow. Genuineprovideraccountaccessiscurrentexternalgate; existingParentPINgateandphysicaltestcomeonlyafterstageisqualified, notbefore. ContinuefromRecovery.md+freeze.json; preservefailedreceiptsandcurrentGit/Notionhead.

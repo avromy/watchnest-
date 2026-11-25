@@ -1,3 +1,121 @@
+# Current · interrupted pilot and release QA calibration
+
+PROJECT / PROCESS. Keep a cleanup-only scheduled response separate from the interactive Builder. The former can correctly find no matching branch while the latter still owes the Founder a substantive outcome. Publish the case-sensitive provider identity or a precreation checkpoint before starting asynchronous work. A same-thread immediate run proves dispatch, not unattended teardown or branch billing. Treat inventory, attributable invoices, visual packets, hosted Auth and physical results as distinct evidence. Retire a bounded cleanup schedule after its window and exact negative provider readback. The original reporting failure and scope-specific evidence are retained in [the pilot recovery](builder-3/AutonomousQA.md).
+
+PROJECT / PROCESS. Observe provider authentication, per-origin app session, device role and protected PIN consent separately. The older parallel-role incident's exact timing is unknown. Run routine sign-in and sequential role changes on a fresh local Supabase Auth service in CI, exercise a separate browser for remote controls, and retain a distinct hosted and physical gate. An ordinary recovery test with a second configured identity exposed a hard-coded account in the client. Use the verified callback identity and test the complete email flow. Restrict public failure logs and independently remove ephemeral keys on failure. Fixture-black player pixels cannot establish a provider playback defect. Capture enabled approvals after both required selections, and make transient retry return through normal authorization. When no timer is running, name the persistent effect on future viewing. These findings and their limits are recorded [with the candidate](builder-3/AutonomousQA.md). No changes to shared specialist packages.
+
+---
+
+# CURRENT — Builder 3 project learning
+
+The staged deploy can retain Vercel access and a linked device context while Parent authorization is absent. Record the three states separately. A protected staging origin backed by production is unsuitable for writable synthetic QA. Require an independently verified QA backend before testing synthetic timer, PIN, or recovery writes. See [Builder 3 recovery](builder-3/Recovery.md).
+
+---
+
+# CURRENT — exact69 authenticated hosted checks verified; Parent return PIN declined
+
+Fresh sameCloud Parent settings survived fullreload. Actual69 Preview click/retry/close/keyboard/focus and matchingvideoiframe verified; noapproval. Timer1/5/10/custom37 andDaily7AM testedunsaved. AriCheckaccess saysPINoff/noPINwait/deviceentryavailable. ParentopenAri andoneordinarysameprofileentry leadTime’sup, stopintact; Miri pickerexplicitParentPINhandoff required/cancelled. These browser/device session transitions areNOTpurelyreadonly, butnofamilysettings/budget/PIN/content/counterreset. ParallelParenttabs laterlostauthority; exactfailuretimingvsroletransitionunknown, notestablishedregression. IndependentD1/2/3renderedcorrectionsPASSwithin scope; securitysourcecontinuityPASS/integratedHOLD.
+
+NormalParentModereturn nowrequiresprotectedParentPIN. One nativePINrequest returneddeclined802.4s; freshbrowserstillPINdialog. Noretry/workaround/secretread. Awaitexplicitresumeduserintent orpositivecontext. Exactrootreceipt: docs/login-policy-20261124/AuthenticatedHostedAcceptance.md (b23038704bb22bf9c560ef3fb40c2ee92e60c1e0). Independentcold/securityreports alongside. This supersedespreviousno-positiveParentauthrecords, butnotcurrentPINhold.69source/CI176unchanged, canonical77unchangedperindependentreview, norelease/phase2. Historicalcrashes/physicalFAIL/finalacceptancepending.
+
+Learning: providerrequestdeclinedalonecannotdescribefuturebrowserstate; freshpositiveUIcanlaterestablishauth. SharedbrowsercookiesmeanparallelroletransitioninvalidatesotherParenttabs; qualifyrolessequentially. Do notlabelautherrorregressionwithouttemporalcorrelation. PreservefamilyParentstopwhiletestingadmission.
+
+---
+
+# CURRENT VERIFIED — CI176 PASS; source69 staged; protected access and safety release hold
+
+November24,2026: CI176/run45453253200 all3jobs completedSUCCESS. Completed quality-job logs independently read:430unit/database tests31files,112synthetic browser flows, build/lint/typecheck and productionaudit0 vulnerabilities. Baselinevisual job alsoSUCCESS. Local exact69build/type/scopedlintPASS. This is synthetic/engineering evidence, not actual authenticated-hosted or physical acceptance.
+Frozen runtime69a023a8ee143513d24ac8af7284f9c6d365d192, src treecf9a507335c8cc8a1dc586abd357b1b8b48e21a0. READY isolated production-configured dpl_GiqgvG8eDZHe4WsVvznGe7UD4aY2 / https://watchnest-dbybelcbs-avromy.vercel.app . Canonical77a5017d / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac unchanged, no release.
+Fresh readonly Supabase migration history confirms20261118192923daily_session_allowance and20261119042334device_profile_handoff remainlatest. Catalog query found no noninternal triggers on public.child_sessions; phase2retirement hasNOTbeenapplied. No writes.
+ACTIONNEEDED email actuallysent via authorizedFounderroute: message/thread1a20eb3a332ea0dc. It requests only renewedpermission forone protected Cloud accesssequence, notsecrets orroutineapproval. Chatpermissionquestionpending; no new auth action or prompt after auto-reviewrejection.
+Local modified source matchedremote69 exactly beforepreservingstashandfastforwardingSAMEbranch to868e6a947a7333b41821666fa3c434ddd8f02121; cleanworktreeverified, stash retained, no workdiscarded. Remote completehistory/receiptsverified; NotionFounder/CTOhandoffreadbacksverified. Preserve this status atop historical running-CI notes below.
+CurrentproductHOLD: exact69freshauthenticatedhostedacceptance, affectedphysicalfamilyiPad/phonesafety andfinalindependentintegratedgates. Earlier0cParentUI/coldjourneyisvalidonlywithinitsscope; cachelaterfailedfreshcheck. CurrentCloudtab7isVercellogin targetingexact69stage; no credentialsread/exported. No retry/workaroundwithout explicitnewpermission. Historicalcrashesunresolved; physicalsiblingbypassFAILnotwaived; Ariexplicitstopunchanged.
+
+---
+
+# CURRENT — integrated69 candidate staged; hosted authentication and safety gates HOLD
+
+Runtime69a023a8ee143513d24ac8af7284f9c6d365d192, exact isolated production-configured READY stage dpl_GiqgvG8eDZHe4WsVvznGe7UD4aY2 / https://watchnest-dbybelcbs-avromy.vercel.app . Final premium-branch alias only. All3canonicals checked pre/immediate/postREADY unchanged77a5017d / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. No merge/promotion/phase2/family change.
+
+Login repair0c CI175/run45447491797 all3jobs SUCCESS. Independent actual0c cold Parent hosted slice found request Preview open/close/focus and safe metadata review working within scope, plus3objective UI copy/label/count issues corrected in69 with independent narrow source review.69localbuild/type/eslintPASS; CI176/run45453253200 still running browser gates at this write. Do not transfer0c CI or browser acceptance to changed69 without affected requalification.
+
+Actual0c ParentUI observed once, later provider-protected session-status redirectedVercel; Time status error disabled actions. CachedParentUI did not survive fresh reload. Fresh69 SAMEWorkCloudtab7 /login?parent=1 currently Vercel login; no positive currentParent. Additional WatchNest native auth request was AUTOMATIC-APPROVAL-REVIEW REJECTED because priorone-retryauthorization consumed; no prompt created. Require explicit renewed Founderpermission before ONE further protected access sequence; no workaround/sessiontransfer/localChrome/secretcollection. Do not claim appcredentialfailure or botblock from normalproviderlogin.
+
+Historicallive/priorstagecrashes unresolved; oldphysical siblingFAIL retained; exact69 hosted/physical/final independent gates pending. No realcounter/PIN/budget/content/reset and Ari explicitstop retained. Full findings/authtransitions/rollback/learning/deterministiccontinuation: docs/login-policy-20261124/FinalRecovery.md . Independent ColdParentAudit.md and ColdParentCorrections.md remain scoped, notwholeproductPASS.
+
+---
+
+# PROJECT/DOMAIN auth learning — creation policy must not block verification of existing credentials
+
+Observedactualhosted12charactererror afterprotectedsubmission. Sharedlogin/signupguardpreventedproviderverification. Separateempty/maxbounds forsignin fromnewpasswordstrength; preserveproviderfailure/accountconfirmation/throttles/no cookies onfailure. Beforeescalatingauthenticationhandoffissues, distinguishtransportunknown fromactualwebsitevalidation. Neverforceusercredentialreset asworkaround forapplicationvalidationbug. Source/unitPASS remainsnotactualauthenticatedPASS. Projectrecordonly; no universalpackagechangeclaimed.
+
+# PROCESS correction — runtime reset must fail closed on checkpoint input
+
+Threepriorprependoperations wrote validnewprefix plus literalundefined afterstoredvalueswerecleared. Exact-contentreadback matchedcorruptintendedtext butdidnotprovecompleteness. Restore fullpriorcontents from immutable3d115; assert loadedstringtype/nonempty/minimumlength and no undefinedsentinel beforewrite; verify preservedhistory aswellasbytes. Protectedauthenticationabortedrequest isunknownsubmission, freshlogin meansnoverifiedParentaccess, neverwrongPIN/appfailure byinference. No automaticauthretryafterconsumedauthorization. Projectscopelearningonly.
+
+# PROCESS learning — protected authentication timeouts require fresh evidence
+
+A native secure request timing out is unknown credential submission, not a failed password or authenticated access. First fresh sameoriginParentpage then login is explicit absence of positiveParentaccess; preservehold, no automaticpromptloop. Staged repair and CI173/174 success do not certify actualphysicalhandoff. Keepchildstopintentional; nevergranttime to manufacturePASS. Lesson durably recordedatprojectscope, no universal packagechangeclaimed.
+
+# November23 PROJECT/SECURITY learning — visible handoff versus ambient Parent authority
+
+A device test found sibling playback without a visible Parent PIN even though return-to-stopped-child remained blocked. Separate these gates: timer persistence is not sibling handoff PASS. Read-only chronology showing recent ParentMode does not establish a matched RCA. Reproduced source fallback admitted sibling with each residual Parent cookie; require explicit target PIN for PIN-configured profile-entry route, preserve deliberate Parent management and no-PIN own entry. Actual-dispatch tests must cover residual Parent access/refresh/mode authority, beyond a missing-child-cookie test. New physical evidence overrides broad synthetic readiness; preserve exact candidate failure and requalify successor. No universal package changed or propagation claimed beyond project record.\n\n# CURRENT — PROJECT / DOMAIN / PROCESS: cold Parent workload and scope
+
+A separate returning-Parent rendered auditor discovered high-volume queue friction (93requests) and collection membership scanning (96choices) without Builder conclusions. Treat search/triage improvements as product recommendations, not unproven P0. Preserve click journal before authority comparison. Prefilled-link helper text can create an expectation mismatch even while manualLoad works; distinguish recoverable polish from dead controls. Capture bytes saved browser-side were not available in executor shared path, so no persistent visual packet was fabricated. Scoped visual observation does not satisfy full Stranger/all-persona/device gates. See no-pin-lockout-20261123/ColdHostedParentReview.md. No wider universal manuals modified.
+
+# CURRENT — PROCESS / ROUTING: native protected form recovered failed manual handoff
+
+A manual Cloud Browser takeover may not render on a user's current client even when the remote page is usable. Do not generalize that to unsupported Cloud Browser or request secrets in chat. After explicit return of control, recover the same-origin page and use the advertised native browserAuth form. Read capability documentation within the active runtime: a remembered earlier read may not satisfy its runtime guard. Here no credential was submitted by the local documentation rejection; the subsequent protected PIN submission and positive Parent dashboard resolved the gate. No universal system changes from this bounded observation.
+
+# CURRENT — PROJECT / PROCESS / ROUTING learning from hosted acceptance
+
+Builder must open the exact Cloud tab and initiate native protected authentication itself. A submitted form becomes authenticated evidence only after positive app UI/server session. Parent-authorized child recovery intentionally revokes Parent authority; record legitimate device/audit writes rather than promising an all-read-only run. Do not manufacture PIN abuse/family resets. An interrupted PIN request remains unknown; first recover fresh same-origin Cloud state without a credential retry. Marking a page is not takeover. Crop Page.captureScreenshot timeouts did not make native getScreenshot unavailable; verify documented fallbacks before generalizing. An unpaused provider with currentTime0/readyState0 does not prove media playback or identify the cause. Locator failure alone does not prove broken controls/accessibility; independently verified implicit label avoided an unjustified source change. Wider skill manuals were not modified from this bounded project evidence. See no-pin-lockout-20261123/HostedAuthenticated.md and independent review.
+
+# CURRENT — PROJECT / PROCESS provider staging lesson
+
+Authenticated provider account is separate from authenticated application account. Project latestDeployment may identify an unpromoted production-target stage: only canonical alias readbacks identify live traffic. Initial planned aliases are not finalassignment evidence; savedmanualguard plus finalREADY/aliasreadbacks must be reconciled. Domainisolation does not isolate productiondatabase. Connector autherrorwrappers can misclassify legitimate app401; actualCloudvisible denial clarifies without bypass. No appauthretry after Founder no-repeat instruction. Current Gmailrouting now advertises explicit authorized account link IDs; older missinglink failures do not establish permanent notification unavailability. See no-pin-lockout-20261123/HostedStage.md; no universal skillmanual modified.
+
+# Concept3 qualification learning — November18
+
+Classification: PROJECT / PROCESS / CALIBRATION. No universal skill rewrite. Current Founder Concept3 supersedes earlier internal green choice while retaining engineering and unaffected task research; technical review is not authority to override explicit taste direction.
+
+A programmatic focus check passed while real Tab navigation clipped a horizontal Collection card. Preserve that failed check; regression now uses actual forward/reverse keyboard events, whole-card containment and activation. Explicit nearest/instant focus scrolling repaired the real defect; independent232 transitions and current73 suite preserve the calibration.
+
+Paint eligibility and PNG capture must describe the same settled instant. Hover transitions produced metadata/raster disagreement. Disclosed pointer parking/finite-animation settling fixed capture coherence while retaining correctness and scroll assertions. Camera overlap under fixed navigation left tiny edges unobserved; supplemental real viewport images close them. A first supplemental fixture reordered videos because Date.now millisecond ties changed sort order. Reject its equivalence; explicit fixture relative timestamps then match original title order and every image URL/bounds. Original absolute timestamps were unavailable and were never claimed recovered. Geometry/hash equality supports mapping; independent actual pixels close visual acceptance.
+
+Snapshot raw output before another Playwright run cleans it. First local rejected packet was not recovered; a separately bound same-source CI artifact and surviving derivatives retain distinct provenance. Final raw, historical repairs, review journals and initial generated working-tree overlays now have verified durable custody, not just expiring CI links. Source equality, CI success, public configured:true and actual hosted authentication are separate evidence claims. Fresh final jury contexts preserve independence; a lean reviewer’s late peer-summary exposure is disclosed rather than hidden.
+
+Exact ef4 has local200unit/73browser, lint/type/build/audit0 and CI154 success; finite Child/Parent visual acceptance and five fresh unanimous scoped jury PASS. Hosted authenticated and genuine iPad/YouTube/fullscreen remote-stop remain open. Keep canonical77 and manual promotion through the release hold. API staging uses existing reviewed source/config without CLI-token or privileged-secret copying. READY targetproduction is staging when canonical aliases remain old; verify actual hostname resolution, not early intended alias arrays. No family data/security mutation was used to manufacture test success.
+
+---
+
+# Premium qualification — project/process propagation — 2026-11-04
+
+See PremiumLearning-20261104.md and final source-bound receipts. This checkpoint
+supersedes pending premium review statuses, not historical incident evidence.
+
+Applied lessons: inspect successful empty responses and actual recurring Parent
+request completion; fix UI gaps through existing authorized APIs instead of
+relaxing frozen task outcomes. Distinguish ambiguous test locators/fixtures from
+real UI failures, preserving both. Fresh contexts are required for cold verdicts;
+inherited history cannot be erased by a role label. Verified instant capture
+scroll and finite overlapping readable views resolve screenshot occlusion gaps.
+Exact PNG/asset equivalence supports bounded reuse only when mapping and source
+identity are proved; every changed patch requires actual independent inspection.
+
+R1–R5 failures/repairs and five fresh final design PASS votes are preserved.
+CI139200/64/14 and CI140200/14 PASS; independent security protected64 equality
+PASS. Raw evidence and post-CI neutral review derivatives are privately archived
+with byte hashes and custody in the existing Notion handoff. Do not rely on
+14-day CI retention or conversation memory. No private skill package copied to
+public GitHub, no global skill rewrite from one project.
+
+Production remains77a5017; physical playback/containment/native-fullscreen remote
+stop and authenticated hosted candidate gates remain open. A READY unconfigured
+preview must never be promoted as production. No final-product/physical claim.
+
+---
+
 # UX redesign learning propagation — 2026-10-02
 
 ## 2026-10-27 — PROJECT / PROCESS: safety promises cannot be optional state
@@ -261,3 +379,40 @@ The remote timer records a prospective wall-clock access deadline and ephemeral
 device acknowledgement. It does not require video identity, progress, viewed
 minutes or engagement history. This preserves the separation between Parent
 access control and Made-for-Kids viewing analytics.
+# Incident recovery learning — November19 ET / November20 UTC
+
+PROJECT / demonstrated regression: optional localStorage access in a React mount effect escaped to the application error boundary. A persisted numeric preference also converted missing null into zero. Guard property/read/write access, retain the in-memory default on missing/invalid persistence, and preserve intentional zero. Baseline failed browser receipt plus denied-storage/quota/default/zero tests are in incident-20261120 and e2e/startup.spec.ts. This path exists in both live77 and oldstage decd, but actual Founder incident causation is not established; do not promote source reproduction to physical RCA.
+
+PROJECT / demonstrated failure recovery: Parent event promises outside shared action handling can reject without actionable feedback. A successful resource creation followed by a failed list refresh can leave a confirmed ID absent from the visible select even though a later action sends it. Preserve confirmed resource identity/title visibly until reconciliation and distinguish mutation failure from refresh failure. Independent reviewer caught this P2; original report and repaired visible-option/payload browser regression remain preserved.
+
+PROJECT / source fact and hypothesis boundary: requested-video Inbox disclosure mounted eager provider frames even when unopened; new preview mounts only on demand. Original native disclosure opened in local tests, so a report of an inert hosted click still requires actual authenticated click/console/network evidence. Resource exhaustion is a hypothesis, not a measured cause.
+
+PROCESS / calibration: testing topic-request search→preview does not cover direct requested-video Preview. Keep both journeys. Source presence, synthetic iframe load and server log absence cannot establish provider playback or physical-device health. A full-page modal screenshot may include below-viewport document pixels; preserve original concern and use actual viewport capture plus source/build/geometry/image binding before optical judgment. Never silently erase incomplete/failed review receipts.
+
+Reusable DOMAIN observations are retained as proposals through the current learning system, with no private family data and no uncontrolled universal skill revision. New application/source identity invalidates affected hosted/cold/physical acceptance; previous controls remain scoped evidence, never blanket certification.
+
+---
+
+## Integrity learning — November20,2026
+
+Observed stage GET/session42501 and independent realSDK reproduction exposed service-role client contamination: persistSession:false does not prevent in-memory user session installation by refreshSession. Keep user-auth mutations on a separate auth client, verify identity, then perform server-authorized database operations on an untouched service client. Do not solve by granting client roles family-table access. Session probes must distinguish expected auth denial from dependency outage; returning role:null on a database/Auth503 silently manufactures sign-out. Regression uses actual SDK with controlled HTTP, no credentials.
+
+Independent rendered network fault also exposed unhandled Sign out rejection. Access-removal UI needs honest uncertain-state feedback, bounded pending, duplicate suppression and explicit retry; never claim successful sign-out based on a click or clear visible state while server outcome is unknown.
+
+Founder correction: stop repeated sign-in handoffs when requested and continue all independent integrity work. Preserve exact release hold and remaining hosted/device scope. New configured-stage attempt was cancelled when planned alias list conflicted with hold; current all3canonical mappings reverified unchanged. No blind retry from ambiguous filtered configuration. App-level findings propagated here and Notion handoff; no unverified global skill update or family data mutation.
+
+## IntegratedConcept3 continuation learning
+
+PROJECT/PROCESS: featureimplementedinAPIandchildfixturesisnotParentreachablefeature. Addexplicitconfigurationworkflowcoverage(default,noimplicitwrite,successreload,errorretainsdraft). FIELDfeedbackmustbelocatednearactualscrolledinteraction; globalalertalonecanbeoffviewport. UncertainSavecopymustnotclaimmutationfailedwhenpost-saverefreshmayhavefailed.
+
+PROCESS: Playwright exactgetByLabelonimplicitselectlabelcanmisscomputedAXcombobox; confirmactualAXandqueryrole/namebeforecallingproductdefect. Neverrunrunnerssharingartifactdirectoryconcurrently; preserveharnessFAILandrerunserially.
+
+ROUTING: providerAPIsettingsprojectionnotshowingguardflagcannotcertifysafealiasassignment; testproductionaliasassumptionneverbya live deployment. Sourcegatesremainusablewhileprovideraccessblocked; identityandphysicalgatesarenotwaived.
+
+## Credential budget incorrectly applied to credential-free entry
+
+PROJECT/DOMAIN: select throttle semantics from authoritative profile requirements, not merely the endpoint name. Counting all successful credential-free admissions as credential guesses creates a false lockout. Separate abuse budgets from actual credential-verification budgets, preserve ownership and timer gates, and expose accurate Parent-scoped status rather than a generic account-lockout explanation.
+
+PROCESS: a mock rate RPC returning one boolean cannot detect accumulated successful-attempt exhaustion. Use per-key/window count-aware regressions, old-spent-bucket cases and actual no-PIN UI journeys. Keep actual Founder evidence separate from synthetic wrong-PIN security cases. Source threshold/text is not the unseen family's established attempt count/message.
+
+Recovery must be explicit, scoped, audited and honest about outcome. Parent admission must not clear counters or grant time; test downstream playback denial after recovery, not merely session admission success. Read-only status must avoid unrelated cleanup writes. No family-specific private facts propagated into universal skill packages.

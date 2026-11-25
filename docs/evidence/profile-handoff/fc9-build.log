@@ -1,0 +1,57 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 build
+> next build
+
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.mjs took 13ms
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1965ms
+  Running TypeScript ...
+  Finished TypeScript in 2.8s ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/20) ...
+  Generating static pages using 8 workers (5/20) 
+  Generating static pages using 8 workers (10/20) 
+  Generating static pages using 8 workers (15/20) 
+✓ Generating static pages using 8 workers (20/20) in 507ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/[...path]
+├ ƒ /api/parent/profile-photo/[profileId]
+├ ○ /login
+├ ○ /login/reset
+├ ○ /parent
+├ ○ /parent/add-video
+├ ○ /parent/assignments
+├ ○ /parent/children
+├ ○ /parent/collections
+├ ○ /parent/controls
+├ ○ /parent/dashboard
+├ ○ /parent/inbox
+├ ○ /parent/library
+├ ○ /parent/profiles
+├ ƒ /parent/profiles/[profileId]/edit
+├ ○ /parent/profiles/new
+├ ○ /parent/settings
+├ ○ /privacy
+├ ○ /watch
+├ ○ /watch/home
+├ ƒ /watch/player/[videoId]
+├ ƒ /watch/profile/[profileId]/home
+├ ƒ /watch/profile/[profileId]/player/[videoId]
+└ ƒ /watch/profile/[profileId]/search
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

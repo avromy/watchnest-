@@ -1,0 +1,10 @@
+{
+  "scope": "synthetic browser contract, no hosted/device/auth-counter claim",
+  "buildId": "aYe4z0JOy0gpJ3IlJFL44",
+  "childLoginSha256": "a8dcb36c915947e2c8d01baced28cb1d2fa7bd7e0dc1f911fe5cfcb4cac48e1e",
+  "screenshotSha256": "276ab57569446afea49b944f80fbe679be578f609b6b1f67881833d866ae4a7f",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  }
+}

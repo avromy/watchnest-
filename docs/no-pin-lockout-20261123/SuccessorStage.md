@@ -1,0 +1,12 @@
+# Successor staging and qualification receipt — November23,2026
+
+Frozen runtime archive81c56380a7d78c61485c4f8628a1f5a20c3a19b6; src treef130618fa5ce7183cd7978a9476dfb4719e4ca4f; tree08d46eb54b802d66ce78959076ef350fdec69015.
+Automatic preview dpl_34hDHoBpaR9uFWvWwUUkzMGJwxe2 READY. Under previously positively verified saved Auto-Assign Custom Production Domains OFF/manual promotion safeguard, created production-configured isolated redeploy of that exact deployment withLatestCommit:false, no source/env/schema overrides.
+Successor dpl_Hhrt3UMETpP6qJMhumTnHUt6w7LH, https://watchnest-g5a882nq0-avromy.vercel.app, READY, source81c5638, targetproduction. Initial plannedalias included watchnest-avromy; actual finalalias only watchnest-git-premium-ui-ux-20261103-avromy.vercel.app. All3canonicalaliases independently read before, immediatelyaftercreation and afterREADY, each unchanged77a5017d938ded03b1530c2b72978cef27273d61/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac. Lateststage is not canonicallive. No promotion or merge.
+
+Local exact81 runtime qualification:422unit/database31files,112synthetic browser flows5.3minutes, build/type/full lint/audit0 PASS. Raw sanitized receipts under evidence/residual-parent. CI173/run45211197571 pending at checkpoint, not claimedPASS. Independent safety and functional source reviews PASS scoped; foreignParent noPINfallback test strengthened afterreview and new noPINunauthenticated denial test, route37/37PASS. These extra tests/docs do not change runtime source; stage remains81, do not rebuild merely to change documentation. Record CI conclusion when available.
+
+Actual SAME Work Cloud Browser successor /login?parent=1 rendered expected Concept3 login with email/password. No authenticated Parent session on newhostname; no attempted password/PIN entry, cookies/token export or session transfer. Prior old5859 session cannot certify thishost. Native protected sign-in is the unavoidable next Owner action, once independentchecks complete; never asksecretinchat. Existing oldstage physicalFAIL remains; newexactstage authenticated hostedhandoff/noPIN/Preview/timer/read-onlysafety and bounded affecteddevice test then final integrated gates required.
+Ari remains Parent-stopped from explicittest. No Allow/Give/Daily/save approval/family content command sent. Do not silently reset this restriction.
+
+Rollback/live: old77canonicalunchanged, no phase2. If successor fails keep77 and preservefailedstage. Futurephase2onlyafterqualifiedcanonicalpromotionandspecificgates; rollbackthereafterguardedv2/failclosed.

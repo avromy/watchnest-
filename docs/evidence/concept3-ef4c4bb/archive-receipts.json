@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "local_path": "/workspace/scratch/b4fb31747e8d/concept3-durable/WatchNest_Concept3_Synthetic_History_20261118.tar.gz",
+      "purpose": "create_library_file",
+      "status": "succeeded",
+      "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "file_name": "WatchNest_Concept3_Synthetic_History_20261118.tar.gz",
+      "local_metadata_applied": true,
+      "path": "/WatchNest_Concept3_Synthetic_History_20261118.tar.gz",
+      "current_version_number": 0,
+      "bytes": 230683804,
+      "sha256": "11c6062b8dbdbb74169d56cdd9092f88ccf5164d4cd00f5de0e92c788832e290"
+    },
+    {
+      "local_path": "/workspace/scratch/b4fb31747e8d/concept3-durable/WatchNest_Concept3_Final_Synthetic_Pixels_20261118.tar.gz",
+      "purpose": "create_library_file",
+      "status": "succeeded",
+      "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "file_name": "WatchNest_Concept3_Final_Synthetic_Pixels_20261118.tar.gz",
+      "local_metadata_applied": true,
+      "path": "/WatchNest_Concept3_Final_Synthetic_Pixels_20261118.tar.gz",
+      "current_version_number": 0,
+      "bytes": 113727586,
+      "sha256": "35616769c1fa0531a90241baca34e33606f7db1d92ba2602c9f5414312bd7e74"
+    },
+    {
+      "local_path": "/workspace/scratch/b4fb31747e8d/concept3-durable/WatchNest_Concept3_Synthetic_History_20261118_inventory.json",
+      "purpose": "create_library_file",
+      "status": "succeeded",
+      "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "file_name": "WatchNest_Concept3_Synthetic_History_20261118_inventory.json",
+      "local_metadata_applied": true,
+      "path": "/WatchNest_Concept3_Synthetic_History_20261118_inventory.json",
+      "current_version_number": 0,
+      "bytes": 1111047,
+      "sha256": "301e18d540c5a5fc30892212d2dbb524569cde7076d6f05f253110ff9efe3c0f"
+    },
+    {
+      "local_path": "/workspace/scratch/b4fb31747e8d/concept3-durable/WatchNest_Concept3_Final_Synthetic_Pixels_20261118_inventory.json",
+      "purpose": "create_library_file",
+      "status": "succeeded",
+      "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "file_name": "WatchNest_Concept3_Final_Synthetic_Pixels_20261118_inventory.json",
+      "local_metadata_applied": true,
+      "path": "/WatchNest_Concept3_Final_Synthetic_Pixels_20261118_inventory.json",
+      "current_version_number": 0,
+      "bytes": 562249,
+      "sha256": "38ee6a88f539484a6f705fbbcc18321b7d1496cf42990f35384b34888db46acd"
+    },
+    {
+      "local_path": "/workspace/scratch/b4fb31747e8d/concept3-final-jury/before-after-1.png",
+      "purpose": "create_library_file",
+      "status": "succeeded",
+      "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "file_name": "before-after-1.png",
+      "local_metadata_applied": true,
+      "path": "/before-after-1.png",
+      "current_version_number": 0,
+      "bytes": 111797,
+      "sha256": "e4185e3892a71c0b140175e62a50d7f4da0987376ce70840bce20c81265e0c4f"
+    },
+    {
+      "local_path": "/workspace/scratch/b4fb31747e8d/concept3-final-jury/before-after-2.png",
+      "purpose": "create_library_file",
+      "status": "succeeded",
+      "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+      "file_name": "before-after-2.png",
+      "local_metadata_applied": true,
+      "path": "/before-after-2.png",
+      "current_version_number": 0,
+      "bytes": 166590,
+      "sha256": "39fb8161a82363bfef312e9bae030b6df73c1dc50ccfcf7413bae9bde3cd3fb2"
+    }
+  ],
+  "source": "ef4c4bb30a16ae273f04a426d979480a808930ab",
+  "scope": "Synthetic test fixture evidence only; excludes real hosted family screenshots/credentials/private authority manuals. Successful exact ordered helper upload and local identity persistence."
+}

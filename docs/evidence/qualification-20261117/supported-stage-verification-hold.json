@@ -1,0 +1,33 @@
+{
+  "kind": "current supported staging verification hold; root observations",
+  "qualifiedSource": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+  "submittedStageSource": "6be0cabd7c53ef6f9d7cfa8ed0014617a36ba436",
+  "applicationSourceTree": "461eb4dc14b9a5adb79047d681a8c85478e740ad",
+  "projectId": "prj_tQi2cBAosldposlx61FcwnwDJ8OG",
+  "autoAssignCustomDomains": {
+    "before": true,
+    "current": false,
+    "readback": "Reloaded Production Environment UI checkbox0 and manual-promotion warning",
+    "restoreRule": "Keep FALSE through pending verification/staging/hold; original TRUE rollback recorded, do not restore while intent may resume."
+  },
+  "confirmation": "Canonical domains removed from actual Production Redeploy confirmation; warning states custom domains will not be assigned because auto-assignment disabled.",
+  "redeploySubmissionCount": 1,
+  "verification": "Email identity verification required; secure attempt rejected invalid or expired. No automatic retry or Resend. Existing provider intent awaits owner.",
+  "confirmedStagedDeploymentId": null,
+  "productionPostChallenge": {
+    "source": "77a5017d938ded03b1530c2b72978cef27273d61",
+    "deployment": "dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+    "aliases": [
+      "watchnest-rho.vercel.app",
+      "watchnest-avromy.vercel.app",
+      "watchnest-git-product-completion-20260930-avromy.vercel.app"
+    ],
+    "latest10ProductionListing": "No new6be0cab production deployment observed"
+  },
+  "next": "Owner completes current verification/Resend personally if needed; inspect resulting actual deployment/listing before any new submission.",
+  "supersedes": "CLI-only blocker; CLI attempt cancelled without authorization/token.",
+  "noAuthArtifactsPersisted": true,
+  "hostedPass": false,
+  "physicalPass": false,
+  "ready": false
+}

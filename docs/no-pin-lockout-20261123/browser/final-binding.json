@@ -1,0 +1,29 @@
+{
+  "buildId": "aYe4z0JOy0gpJ3IlJFL44",
+  "sourceSha256": {
+    "src/components/child/ChildLogin.tsx": "a8dcb36c915947e2c8d01baced28cb1d2fa7bd7e0dc1f911fe5cfcb4cac48e1e",
+    "src/components/parent/ParentApp.tsx": "481d38751ffe040e815f14e97ac12cda3b0304572235210668a9cf8337fb9a61",
+    "src/lib/server/product.ts": "9431d13f8281a9f67076659c6733b3b3082737278bdc3eb9729192e9cbe12bcc",
+    "e2e/no-pin-entry.spec.ts": "2c3c85e04ee2131b18c631fec844b6984b7fe1e3b9d63ae9dd4155854b4e4707",
+    "docs/no-pin-lockout-20261123/browser/no-pin.config.mts": "435956842850edc322843106e5fcb71e111f87b053f4cfe5873a5d81508f8038"
+  },
+  "resultsSha256": "2857e21b2200a9c95870187377a1feae9dc6f0335712783687faac2c28defa82",
+  "screenshots": [
+    {
+      "path": "docs/no-pin-lockout-20261123/browser/own-no-pin-network-retry.png",
+      "sha256": "eddeb989b9069896b269c29632f806e11050dfa3428c690bf738d595eafd4f1d"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/browser/own-no-pin-slow-pending.png",
+      "sha256": "c90b90f3ac30281afae2bf48d75574200b4bf73a4721020b1aa002f6d087e48a"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/browser/own-no-pin-home-reloaded.png",
+      "sha256": "276ab57569446afea49b944f80fbe679be578f609b6b1f67881833d866ae4a7f"
+    },
+    {
+      "path": "docs/no-pin-lockout-20261123/browser/own-no-pin-parent-ended.png",
+      "sha256": "fa613375bce8a441f74f07cd2e57fb92e0d1ec0235be51ab95e8606473284569"
+    }
+  ]
+}

@@ -110,7 +110,7 @@ it.each(["valid", "invalid", "different-identity"])(
         body: JSON.stringify({
           type: "recovery",
           access_token: founderToken,
-          refresh_token: "supplied-refresh-token",
+          refresh_token: "testref12345",
         }),
       }),
       ["auth", "callback"],
@@ -119,7 +119,7 @@ it.each(["valid", "invalid", "different-identity"])(
       [
         {
           path: "/auth/v1/token?grant_type=refresh_token",
-          body: { refresh_token: "supplied-refresh-token" },
+          body: { refresh_token: "testref12345" },
         },
       ],
     );

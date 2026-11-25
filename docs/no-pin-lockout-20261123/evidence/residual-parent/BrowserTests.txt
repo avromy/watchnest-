@@ -1,0 +1,187 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs
+
+[WebServer] (node:43) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+[WebServer] (node:56) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 112 tests using 1 worker
+
+(node:68) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    1 e2e/concept3-experience-mode.spec.ts:60:5 › existing Standard profiles remain Standard until explicitly saved (1.0s)
+  ✓    2 e2e/concept3-experience-mode.spec.ts:69:5 › Parent can save Simple, reload its persisted fixture value, and open the existing Simple library (1.2s)
+  ✓    3 e2e/concept3-experience-mode.spec.ts:90:5 › failed experience save preserves the draft for retry without changing stored fixture mode (739ms)
+  ✓    4 e2e/daily-timer.spec.ts:23:5 › custom one-minute grant, validation and explicit daily mode (2.8s)
+  ✓    5 e2e/daily-timer.spec.ts:90:5 › each Parent countdown pairs its deadline with its own server snapshot (454ms)
+  ✓    6 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 390x844 (16.8s)
+  ✓    7 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 768x1024 (17.2s)
+  ✓    8 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 1024x768 (16.8s)
+  ✓    9 e2e/daily-timer.spec.ts:139:7 › daily timer real pixels 1440x1000 (17.0s)
+  ✓   10 e2e/daily-timer.spec.ts:254:5 › daily library denies exhausted access, renews only from a server response, and retains Parent block (360ms)
+  ✓   11 e2e/daily-timer.spec.ts:327:5 › one-minute extensions use singular copy while active, paused and blocked (1.8s)
+  ✓   12 e2e/independent-client-integrity.spec.ts:7:7 › logout network failure is visible and retryable without an unhandled error (414ms)
+  ✓   13 e2e/independent-client-integrity.spec.ts:7:7 › logout http failure is visible and retryable without an unhandled error (419ms)
+  ✓   14 e2e/independent-client-integrity.spec.ts:33:5 › logout holds a single pending request and recovers after completion (271ms)
+  ✓   15 e2e/independent-client-integrity.spec.ts:53:5 › logout times out a hung request with honest feedback and permits retry (701ms)
+  ✓   16 e2e/no-pin-entry.spec.ts:76:5 › own active no-PIN profile opens without credentials and survives picker/library reload (515ms)
+  ✓   17 e2e/no-pin-entry.spec.ts:92:5 › repeated real pointer taps while no-PIN admission is slow send one request (312ms)
+  ✓   18 e2e/no-pin-entry.spec.ts:114:5 › network failure is visible and no-PIN retry succeeds without a passcode (456ms)
+  ✓   19 e2e/no-pin-entry.spec.ts:133:5 › offline admission and reconnect retain credential-free own-profile entry (570ms)
+  ✓   20 e2e/no-pin-entry.spec.ts:150:5 › a sibling with PIN off still requires explicit Parent PIN handoff (340ms)
+  ✓   21 e2e/no-pin-entry.spec.ts:164:5 › Parent Mode remains PIN gated from own no-PIN profile picker (261ms)
+  ✓   22 e2e/no-pin-entry.spec.ts:178:5 › remote End now refusal persists across no-PIN retry and reload (500ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/manifest.json
+  ✓   23 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-phone 390x844 (12.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/player-states/manifest.json
+  ✓   24 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-phone 390x844 (2.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/recovery-states/manifest.json
+  ✓   25 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-phone 390x844 (3.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/parent-details/manifest.json
+  ✓   26 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-phone 390x844 (13.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/manifest.json
+  ✓   27 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-portrait 768x1024 (11.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/player-states/manifest.json
+  ✓   28 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-portrait 768x1024 (2.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/recovery-states/manifest.json
+  ✓   29 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-portrait 768x1024 (2.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/parent-details/manifest.json
+  ✓   30 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details ipad-portrait 768x1024 (11.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-details/manifest.json
+  ✓   31 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-portrait 768x1024 (2.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-entry/manifest.json
+  ✓   32 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-portrait 768x1024 (924ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/manifest.json
+  ✓   33 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-landscape 1024x768 (12.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/player-states/manifest.json
+  ✓   34 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-landscape 1024x768 (2.7s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/recovery-states/manifest.json
+  ✓   35 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states ipad-landscape 1024x768 (3.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/parent-details/manifest.json
+  ✓   36 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details ipad-landscape 1024x768 (13.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-details/manifest.json
+  ✓   37 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-landscape 1024x768 (3.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-entry/manifest.json
+  ✓   38 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-landscape 1024x768 (916ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/manifest.json
+  ✓   39 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-desktop 1440x1000 (11.7s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/player-states/manifest.json
+  ✓   40 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-desktop 1440x1000 (3.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/recovery-states/manifest.json
+  ✓   41 e2e/premium-visual.spec.ts:57:7 › premium evidence: recovery-states parent-desktop 1440x1000 (3.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/parent-details/manifest.json
+  ✓   42 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-desktop 1440x1000 (13.9s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓   43 e2e/product.spec.ts:31:5 › real HTTP: absent infrastructure fails closed; no sample family or iframe (255ms)
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ✓   44 e2e/product.spec.ts:52:5 › real HTTP: public entry, protected parent redirect, and unknown page (335ms)
+  ✓   45 e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access (615ms)
+  ✓   46 e2e/product.spec.ts:102:5 › synthetic UI: child searches local library and asks parent on no match (433ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓   47 e2e/product.spec.ts:140:5 › synthetic UI: a video-card tap requests immersive playback before navigation (307ms)
+BROWSER Failed to load resource: the server responded with a status of 403 (Forbidden)
+  ✓   48 e2e/product.spec.ts:172:5 › synthetic UI: WatchNest deadline destroys playback and blocks reload (1.2s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓   49 e2e/product.spec.ts:244:5 › synthetic UI: Parent phone controls one remote profile timer (4.3s)
+  ✓   50 e2e/product.spec.ts:333:5 › synthetic UI: bounded Discover creates a request without a playable result (409ms)
+  ✓   51 e2e/product.spec.ts:367:5 › synthetic UI: shared device opens the profile picker and Parent Mode stays protected (283ms)
+  ✓   52 e2e/product.spec.ts:387:5 › synthetic UI: mobile and tablet pages fit viewport (8.4s)
+  ✓   53 e2e/product.spec.ts:457:5 › synthetic UI: Safe Playback is a mandatory Child Mode boundary (224ms)
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/watch?v=escape' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+  ✓   54 e2e/product.spec.ts:478:5 › synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored (933ms)
+  ✓   55 e2e/product.spec.ts:602:5 › synthetic UI: a stale false flag cannot disable mandatory containment (208ms)
+  ✓   56 e2e/product.spec.ts:653:5 › synthetic UI: post-ready same-frame recommendation navigation fails closed (288ms)
+  ✓   57 e2e/product.spec.ts:697:5 › synthetic UI: pre-ready same-frame recommendation navigation fails closed (188ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓   58 e2e/product.spec.ts:738:5 › synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize (201ms)
+  ✓   59 e2e/product.spec.ts:756:5 › synthetic UI: transiently missing iPad player identity does not reject the approved video (220ms)
+  ✓   60 e2e/product.spec.ts:816:5 › synthetic UI: permanently unreadable player identity fails closed (3.0s)
+  ✓   61 e2e/product.spec.ts:856:5 › synthetic UI: mobile share text auto-resolves and retains a manual fallback (857ms)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓   62 e2e/product.spec.ts:885:5 › synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure (334ms)
+  ✓   63 e2e/product.spec.ts:915:5 › synthetic UI: mobile channel selection immediately loads individual videos (366ms)
+  ✓   64 e2e/product.spec.ts:961:5 › synthetic UI: mobile playlist selection immediately loads individual videos (570ms)
+  ✓   65 e2e/product.spec.ts:1008:5 › synthetic UI: Parent Library offers an obvious playback preview (314ms)
+  ✓   66 e2e/product.spec.ts:1035:5 › synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics (230ms)
+  ✓   67 e2e/product.spec.ts:1071:5 › synthetic UI: a child finds approved videos in a 240-item library (1.1s)
+  ✓   68 e2e/product.spec.ts:1100:5 › synthetic UI: intermediate widths keep parent tools and child browsing within reach (4.6s)
+  ✓   69 e2e/product.spec.ts:1140:5 › synthetic UI: password visibility and recovery work with a keyboard (309ms)
+  ✓   70 e2e/product.spec.ts:1166:5 › synthetic UI: phone parent actions and collection choices remain touchable (432ms)
+  ✓   71 e2e/product.spec.ts:1194:5 › synthetic UI: collection search expands to approved library without requesting again (1.8s)
+CONTENT_REACH {"mode":"standard","viewport":{"width":360,"height":800},"artworkTop":576.5625,"titleBottom":696.46875,"limit":710.203125}
+CONTENT_REACH {"mode":"standard","viewport":{"width":390,"height":844},"artworkTop":576.5625,"titleBottom":704.90625,"limit":754.203125}
+CONTENT_REACH {"mode":"standard","viewport":{"width":768,"height":1024},"artworkTop":587.203125,"titleBottom":818.5625,"limit":1024}
+CONTENT_REACH {"mode":"standard","viewport":{"width":1024,"height":768},"artworkTop":506.34375,"titleBottom":713.546875,"limit":768}
+CONTENT_REACH {"mode":"simple","viewport":{"width":360,"height":800},"artworkTop":449.53125,"titleBottom":668.40625,"limit":710.203125}
+CONTENT_REACH {"mode":"simple","viewport":{"width":390,"height":844},"artworkTop":449.53125,"titleBottom":685.28125,"limit":754.203125}
+CONTENT_REACH {"mode":"simple","viewport":{"width":768,"height":1024},"artworkTop":499.171875,"titleBottom":733.46875,"limit":1024}
+CONTENT_REACH {"mode":"simple","viewport":{"width":1024,"height":768},"artworkTop":438.671875,"titleBottom":739.203125,"limit":768}
+  ✓   72 e2e/product.spec.ts:1223:5 › synthetic UI: initial child choices are visible and Simple controls stay secondary (1.6s)
+  ✓   73 e2e/product.spec.ts:1256:5 › synthetic UI: many Collections remain keyboard reachable without pushing videos away (1.7s)
+  ✓   74 e2e/profile-access.spec.ts:6:5 › synthetic Parent access: PIN-off status is distinct from device wait (805ms)
+  ✓   75 e2e/profile-access.spec.ts:53:5 › synthetic Parent access: failed checks and denied recovery remain visible (351ms)
+  ✓   76 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 390 (889ms)
+  ✓   77 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 768 (965ms)
+  ✓   78 e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 1024 (926ms)
+  ✓   79 e2e/request-preview.spec.ts:13:7 › requested video Preview opens on 390px without approval (384ms)
+  ✓   80 e2e/request-preview.spec.ts:13:7 › requested video Preview opens on 820px without approval (576ms)
+  ✓   81 e2e/request-preview.spec.ts:122:5 › request preview slow frame has retry and never mutates approval (367ms)
+  ✓   82 e2e/request-preview.spec.ts:162:5 › Inbox collection creation failures are visible and retry retains input (573ms)
+  ✓   83 e2e/request-preview.spec.ts:204:5 › Library collection and removal failures surface without losing selection (423ms)
+  ✓   84 e2e/request-preview.spec.ts:253:5 › confirmed Inbox collection stays visibly selected after a failed refresh (378ms)
+  ✓   85 e2e/startup.spec.ts:33:5 › synthetic startup: denied preference storage cannot crash approved playback (223ms)
+  ✓   86 e2e/startup.spec.ts:61:7 › synthetic startup: volume preference null preserves intentional sound (224ms)
+  ✓   87 e2e/startup.spec.ts:61:7 › synthetic startup: volume preference "0" preserves intentional sound (216ms)
+  ✓   88 e2e/startup.spec.ts:61:7 › synthetic startup: volume preference "75" preserves intentional sound (237ms)
+  ✓   89 e2e/startup.spec.ts:61:7 › synthetic startup: volume preference "invalid" preserves intentional sound (239ms)
+  ✓   90 e2e/startup.spec.ts:61:7 › synthetic startup: volume preference "" preserves intentional sound (227ms)
+  ✓   91 e2e/startup.spec.ts:94:5 › synthetic startup: API attaches before delayed iframe document load (287ms)
+  ✓   92 e2e/startup.spec.ts:129:5 › synthetic startup: late API cannot reconstruct a containment-stopped player (222ms)
+  ✓   93 e2e/startup.spec.ts:165:5 › synthetic startup: late onReady and state events cannot reverse containment (395ms)
+  ✓   94 e2e/startup.spec.ts:200:5 › synthetic startup: missing provider readiness times out and removes frame (20.3s)
+  ✓   95 e2e/startup.spec.ts:225:7 › synthetic startup: __replaceFrame fails closed without unmonitored frame (219ms)
+  ✓   96 e2e/startup.spec.ts:225:7 › synthetic startup: __throwOnReady fails closed without unmonitored frame (339ms)
+  ✓   97 e2e/startup.spec.ts:245:5 › synthetic startup: provider error before ready is terminal (316ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/360x800/supplemental-responsive/manifest.json
+  ✓   98 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 360x800 (3.4s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/412x915/supplemental-responsive/manifest.json
+  ✓   99 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 412x915 (3.2s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/520x900/supplemental-responsive/manifest.json
+  ✓  100 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 520x900 (3.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/640x900/supplemental-responsive/manifest.json
+  ✓  101 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 640x900 (3.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/820x1180/supplemental-responsive/manifest.json
+  ✓  102 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 820x1180 (2.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/900x900/supplemental-responsive/manifest.json
+  ✓  103 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 900x900 (2.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1180x820/supplemental-responsive/manifest.json
+  ✓  104 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1180x820 (2.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1280x800/supplemental-responsive/manifest.json
+  ✓  105 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1280x800 (2.5s)
+  ✓  106 e2e/visual.spec.ts:4:5 › synthetic visual evidence: parent and child surfaces (1.5s)
+(node:1951) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  107 e2e/fresh-child-stranger.spec.ts:48:5 › fresh younger child chooses a picture and returns to own library (1.3s)
+  ✓  108 e2e/fresh-child-stranger.spec.ts:68:5 › fresh older child retrieves saves and requests (960ms)
+  ✓  109 e2e/fresh-child-stranger.spec.ts:94:5 › fresh shared family switch PIN recovery and parent boundary (1.0s)
+FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+  ✓  110 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (1.1s)
+FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+  ✓  111 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (1.8s)
+  ✓  112 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (676ms)
+
+  112 passed (5.3m)
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

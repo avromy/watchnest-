@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Reset() {
   const router = useRouter();
   const started = useRef(false);
-  const [verified, setVerified] = useState(false),
+  const [verifiedEmail, setVerifiedEmail] = useState(""),
     [error, setError] = useState(""),
     [password, setPassword] = useState(""),
     [confirm, setConfirm] = useState(""),
@@ -40,8 +40,10 @@ export default function Reset() {
         const d = await r.json();
         if (!r.ok)
           throw Error(d.error || "This link has expired. Request a new link.");
+        if (typeof d.email !== "string" || !d.email)
+          throw Error("Unable to verify your account. Request a new link.");
         window.history.replaceState({}, "", window.location.pathname);
-        setVerified(true);
+        setVerifiedEmail(d.email);
       })
       .catch((e) => setError(e.message));
   }, []);
@@ -59,7 +61,7 @@ export default function Reset() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "update-password",
-          email: "Avromy@gmail.com",
+          email: verifiedEmail,
           password,
         }),
       });
@@ -90,8 +92,8 @@ export default function Reset() {
             {error}
           </p>
         )}
-        {!verified && !error && <p role="status">Checking your secure link…</p>}
-        {verified && (
+        {!verifiedEmail && !error && <p role="status">Checking your secure link…</p>}
+        {verifiedEmail && (
           <form onSubmit={submit} style={{ display: "grid", gap: 14 }}>
             <label htmlFor="new-password">New password</label>
             <input

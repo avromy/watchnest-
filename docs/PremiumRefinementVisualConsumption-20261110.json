@@ -1,0 +1,82 @@
+{
+  "status": "PARTIAL \u2014 NOT PASS; user pause",
+  "authority": "live Final Visual Inspection V2.0 3ea584c4f74781f5946bef30a54c86c5 and docs/PremiumReviewContract-20261103.md read",
+  "source_identity": {
+    "sourceCommit": "39ab79fe808bcac4f5eb343156d7f84c60fc7a00",
+    "sourceTree": "be0b2d9cd7c295ee90d4f9413e5d613346792843",
+    "sourceWorktreeStatus": "M src/components/child/ChildLibrary.tsx\n M src/components/child/ChildLogin.tsx\n M src/components/parent/Parent.module.css\n M src/components/parent/ParentApp.tsx",
+    "workingDiffSha256": "d1cea711126c204155d78e369e7613f43dc28ffd250b7920526b5ecd8a18b441",
+    "harnessSha256": "3522c787a356688502fb5d677c82eaafb938979de74f51ae166ee8afaeb7a946",
+    "fixtureSourceSha256": "1ca783a07ac4d5916fc2f0c6bfedf63c7aa9f8481b31a7a594472442bce06275",
+    "runtimeBaseUrl": "http://127.0.0.1:3001"
+  },
+  "consumed_files": [
+    {
+      "path": "test-results/visual-evidence/candidate/390x844/parent-dashboard-full.png",
+      "sha256_at_pause": "842ae407e96b11829ff2cbc5112835988b43bab24545ed83b6de4a14995d3195"
+    },
+    {
+      "path": "test-results/fresh-child-stranger-fresh-b698c--and-returns-to-own-library/younger-home.png",
+      "sha256_at_pause": "32d901305f83ce3bb56ee16ba94d0b53fe6a4529100095668a6a78ab1a5c971c"
+    },
+    {
+      "path": "test-results/fresh-parent-stranger-fres-9e1bd-word-visibility-reassurance/signed-in-profile-picker.png",
+      "sha256_at_pause": "0ff61427f65d72a5a0ed4c280697d44f332dd463e58da77c983e682000b5af78"
+    },
+    {
+      "path": "test-results/fresh-parent-stranger-fres-ae5cd-views-and-assigns-one-child/new-parent-one-child.png",
+      "sha256_at_pause": "ed5299de7726141eb259234048c69991c1a000de1219023e7f54465cd1245e4a"
+    },
+    {
+      "path": "test-results/fresh-parent-stranger-fres-9e1bd-word-visibility-reassurance/signed-in-dashboard.png",
+      "sha256_at_pause": "842ae407e96b11829ff2cbc5112835988b43bab24545ed83b6de4a14995d3195"
+    }
+  ],
+  "source_files_at_pause": [
+    {
+      "path": "src/components/child/ChildLibrary.tsx",
+      "sha256": "b13712d1254f17253206b333eb81d84b8f48f3a768f4c25d9f565228a6012686"
+    },
+    {
+      "path": "src/components/child/ChildLogin.tsx",
+      "sha256": "710aa9c478d04de254192251dae75308f3bcbfb2dc50ae8a2100c5704ba0f3ce"
+    },
+    {
+      "path": "src/components/parent/Parent.module.css",
+      "sha256": "ac3498f94d89dd4a8c21894a224138dea9ac13bd118071a11f8cd5a3e8f0f900"
+    },
+    {
+      "path": "src/components/parent/ParentApp.tsx",
+      "sha256": "d5b375f5d58c31c8060982ec3bbd4f134c69107fc55e332f17c0f203eb11fbae"
+    }
+  ],
+  "binding_limit": "Manifest binds dashboard capture to HEAD39ab plus dirty four source files. Fresh journey PNGs lack separately consumed exact capture manifest; source hashes at pause do not retroactively establish their capture identity.",
+  "region_coverage": "5 full-page raster views inspected; required cross-viewport/state packet incomplete",
+  "bounded_assets": "Finite full asset inventory/edge receipt not completed",
+  "readable_views": "5 consumed full-page views; no new crops or additional captures after pause",
+  "structural_records": "390x844 core manifest consumed, remainder incomplete",
+  "edge_gates": "No clipping seen in the five views; per-asset four-edge resolution incomplete, CLEAN prohibited",
+  "application_binding": "Local Chromium synthetic fixture; dashboard390x844, fresh phone390 and child768 image widths. No hosted/device/playback certification.",
+  "unresolved_conflicts": [
+    "Exact binding of fresh journey PNGs incomplete",
+    "Required cross-viewport/state/asset coverage incomplete"
+  ],
+  "human_gates": {
+    "alignment": "Observed views coherent",
+    "spacing_rhythm": "Comfortable spacing, prominent primary actions",
+    "grouping_hierarchy": "Overview metrics/request/children/timer understandable",
+    "crop_story": "Synthetic placeholders; genuine artwork not qualified",
+    "contrast": "Visually readable on inspected views; no computed contrast audit",
+    "gestalt": "Warm professional visual system in inspected scope"
+  },
+  "confirmed_defects": [
+    "Authenticated profile picker retains promotional footer: A little library. A world to explore. Conflicts no authenticated marketing copy requirement.",
+    "Parent Overview Ari status reads 1 requests; pluralization correction needed."
+  ],
+  "possible_concerns": [
+    "No independent measurement completed for all 44px targets",
+    "Add approval action precedes selected card in long phone page; observed labeling adequate, behavioral qualification belongs functional review"
+  ],
+  "recheck": "Builder notified; any repairs await independent pixel recheck.",
+  "final_result": "PARTIAL \u2014 NOT PASS; no candidate acceptance or release qualification"
+}

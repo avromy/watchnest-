@@ -30,7 +30,7 @@
 }
 .illustration {
   position: relative;
-  background: #e1eee5;
+  background: #e1e1ee;
   border-radius: 48px;
   padding: 56px 32px 28px;
   min-height: 405px;
@@ -53,11 +53,11 @@
 }
 .card {
   background: #fff;
-  border: 1px solid #d5dfd6;
+  border: 1px solid #d5d5df;
   border-radius: 23px;
   padding: 12px;
   width: 33.33%;
-  box-shadow: 0 12px 24px #193f3510;
+  box-shadow: 0 12px 24px #1c1b3d10;
   transform: rotate(-6deg);
 }
 .card:nth-child(2) {

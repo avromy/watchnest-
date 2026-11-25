@@ -1,0 +1,172 @@
+{
+  "status": "SCOPED SOURCE PASS \u2014 exact immutable source; not hosted/physical release approval",
+  "reviewer": "daily_timer_security_review",
+  "baseline": "784fbfe078727c597562c1d49ac49b9df6074121",
+  "candidate": "6619bf920b0ea69fece24b4ada4b6901035cbc55",
+  "capturedAt": "2026-11-18T17:52:48.331685+00:00",
+  "sourceSha256": {
+    "supabase/migrations/20261118173600_daily_session_allowance.sql": "95d27cc0acd2a7757b2891f624b2f65b9762981be69f21f1bbf144df4e4cd6df",
+    "src/lib/server/daily-session-database.test.ts": "fc12b0500bc0edd4c4a420fde7a8680d9455417cbddb63e4a9e426a378371c15",
+    "src/lib/server/product.ts": "01556261a6318fd428d99d29a7b2ce8d51ee41a29f27667d9d4c1f80845ffd41",
+    "src/lib/session-access.ts": "4767a38933211931d0deb5cb3706cec8d4d8484787c2c671db03a829034abc93",
+    "src/lib/session-access.test.ts": "74833e90d8b6486dea295d71154a8273d0494ce9342a5022ec4bd30410f16856",
+    "src/components/child/ChildLibrary.tsx": "b043e4abc2e37f17c8b74ea2bd594b9924898baaa8331481b7249d8c886bfd58",
+    "src/components/child/ChildPlayer.tsx": "d3b8d088a59ec8f17424b644d4a50926d23f43e137614dd2763021f406eb74b6",
+    "src/components/parent/ParentApp.tsx": "97013414048f01b76ce10fc0dcbe10ba2fc335d7f4c995adb2d5de6a80f2d3f8"
+  },
+  "tests": {
+    "command": "npm test -- --run src/lib/server/daily-session-database.test.ts src/lib/session-access.test.ts",
+    "exit": 0,
+    "passed": 126,
+    "logOutsideRepo": "/workspace/scratch/b4fb31747e8d/daily-timer-security-reacceptance.log",
+    "logSha256": "377a3d11b6ab469c063c1619268aec720296cb773f5eb849baaa45936464e0fa",
+    "limits": "Independent targeted SQL+TS snapshot execution. Not full application/browser CI or actual two-connection PostgreSQL contention."
+  },
+  "materialFindings": [
+    {
+      "id": "TSEC01",
+      "state": "CLOSED AFTER REPAIR/REACCEPTANCE",
+      "class": "configured timezone semantics",
+      "evidence": "Historical original implementation mismatch reproduced independently; numeric forms, all 69 measured legacy aliases, and single-clock transitions repaired and reaccepted by 126 targeted tests.",
+      "reproduction": {
+        "numeric": "Intl +03:00:12UTC\u219215:00; original SQL:12UTC\u219209:00; 7AM original SQL\u219210UTC vs correct04UTC",
+        "alias": "Intl CST canonicalizes America/Chicago: July12UTC\u219207:00; SQL CST\u219206:00; PST IntlLosAngeles05:00 vsSQL04:00"
+      },
+      "historicalState": "OPEN REACCEPTANCE",
+      "repair": "ISO numeric offset forms use interval overload;69 measured legacy no-slash aliases map to actual Intl canonical region meanings; future API writes canonicalize. Tests use actual Intl at returned reset instant in summer/winter, exact CST/PST/EST/MST instants, offset variants and Etc/GMT+3. Single post-lock server instant reused throughout Parent transition closes an intra-function 7AM boundary gap."
+    }
+  ],
+  "verifiedScope": [
+    "server-owned clock read after row lock",
+    "ownership predicate and archived-profile rejection",
+    "service-role-only RPC/helper grants and SECURITY INVOKER",
+    "atomic daily reset/activation with persisted boundary and no rollover",
+    "Parent block/Pause precedence and logical off marker",
+    "legacy v1/start/end adapters preserve physical deny markers",
+    "prospective wall-clock budget, not watched-minute analytics",
+    "Child playback and progress checks await fresh authoritative access",
+    "ChildPlayer diff is state-type union and TimeUp copy/navigation links only; iframe lifecycle/containment unchanged"
+  ],
+  "nonblocking": [
+    "Parent commands retain defined existing server-arrival linearizable authority. Delayed but authenticated Parent Start/Resume executes on arrival and may clear a block; no expected-revision/CAS rejection or exactly-once transport claim. Automatic reset and Child requests cannot clear that block.",
+    "PGlite serializes simultaneous calls. Its Promise.all specimen proves idempotence, while FOR UPDATE source plus PostgreSQL documented row-lock semantics supplies the contention design rationale; no actual two-connection stress proof."
+  ],
+  "limits": [
+    "No hosted migration applied by reviewer",
+    "No production or family data mutation",
+    "No credentials read",
+    "No physical iPad/WebKit/fullscreen/YouTube certification",
+    "PGlite serializes simultaneous calls; does not certify multi-connection contention"
+  ],
+  "historicalPreliminaryStatus": "PRELIMINARY FAIL \u2014 TSEC01 reacceptance pending",
+  "historicalSourceSha256": {
+    "supabase/migrations/20261118173600_daily_session_allowance.sql": "f936b7a25517df3d8183364361bb9fed498fdc473e03696d623181834c03800b",
+    "src/lib/server/daily-session-database.test.ts": "a8777e20c49b90dee7b4c90d2557de67d4317ca4b2e3ae6b2825e2e827d92c62",
+    "src/lib/server/product.ts": "01556261a6318fd428d99d29a7b2ce8d51ee41a29f27667d9d4c1f80845ffd41",
+    "src/lib/session-access.ts": "4767a38933211931d0deb5cb3706cec8d4d8484787c2c671db03a829034abc93",
+    "src/lib/session-access.test.ts": "74833e90d8b6486dea295d71154a8273d0494ce9342a5022ec4bd30410f16856",
+    "src/components/child/ChildLibrary.tsx": "b043e4abc2e37f17c8b74ea2bd594b9924898baaa8331481b7249d8c886bfd58",
+    "src/components/child/ChildPlayer.tsx": "d3b8d088a59ec8f17424b644d4a50926d23f43e137614dd2763021f406eb74b6",
+    "src/components/parent/ParentApp.tsx": "97013414048f01b76ce10fc0dcbe10ba2fc335d7f4c995adb2d5de6a80f2d3f8"
+  },
+  "historicalTests": {
+    "command": "npm test -- --run src/lib/server/daily-session-database.test.ts src/lib/session-access.test.ts",
+    "exit": 0,
+    "passed": 50,
+    "logOutsideRepo": "/workspace/scratch/b4fb31747e8d/daily-timer-security-targeted.log",
+    "limits": "Targeted PGlite+TS snapshot tests only; no true simultaneous-connection PostgreSQL or physical media proof."
+  },
+  "reacceptedAt": "2026-11-18T17:57:58.749991+00:00",
+  "primarySource": "https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-ROWS",
+  "scopeConditions": [
+    "Source PASS covers exact recorded files/hashes; materially changed source requires targeted reacceptance.",
+    "Reviewed file bytes independently matched immutable commit 6619bf920b0ea69fece24b4ada4b6901035cbc55; Root documentation-only successor may preserve this application candidate.",
+    "Root owns full mechanical/E2E/visual/hosted and release gates; this is not production-ready acceptance."
+  ],
+  "sourceTree": "1c30d36bcc26a90ad141f8082fd08e7f65d55e29",
+  "sourceSubtrees": {
+    "src": "1dca2590e6ca5043a3c37b30309b923204162fd6",
+    "e2e": "184d14641719524e82599e374a173ed5e73bcdb9",
+    "supabase": "2a36c8a7c89bb4413086bfa19686ea90695af54b"
+  },
+  "immutableBoundAt": "2026-11-18T17:59:54.187586+00:00",
+  "affectedGuardReview": {
+    "status": "SCOPED SOURCE PASS \u2014 exact immutable guard candidate; not hosted/physical release approval",
+    "candidate": "99239ee38de7f8509f1016e6e1d03bb42d3999bf",
+    "reviewedAt": "2026-11-18T18:20:27.759005+00:00",
+    "sourceSha256": {
+      "src/lib/server/product.ts": "e9af5fd70d64715c776e034091e66241d443a22322ff55f39e5e7596d903f34b",
+      "src/lib/server/daily-period-validation.ts": "3bdf2dc7f5e8dd6c757a8b1edbc84a6d19eb3800f5f150f1e519169a3c9cc1c4",
+      "src/lib/server/daily-period-validation.test.ts": "fe49bfa59bcfdc1df4f13318c4065710da4f65c08f303a1c9dff52086bc9abed",
+      "src/components/parent/ParentApp.tsx": "4a53e4582acc41ab60e510c48edfce64c7b98359f356a6da8e32c206c14642f4",
+      "src/components/child/ChildLibrary.tsx": "ca68649dc4dc47d9eb38e50ef7ba5aa227b59b32f3f4d074cbb553e33363ca8c",
+      "src/components/child/ChildExperience.css": "e82ee00d7ae391d04e944172c9f539ef15195cc4a92acd21b8b455a656074007",
+      "src/components/child/ChildPlayer.tsx": "d3b8d088a59ec8f17424b644d4a50926d23f43e137614dd2763021f406eb74b6",
+      "src/lib/session-access.ts": "4767a38933211931d0deb5cb3706cec8d4d8484787c2c671db03a829034abc93",
+      "supabase/migrations/20261118173600_daily_session_allowance.sql": "95d27cc0acd2a7757b2891f624b2f65b9762981be69f21f1bbf144df4e4cd6df"
+    },
+    "tests": {
+      "command": "npm test -- --run src/lib/server/daily-period-validation.test.ts src/lib/server/daily-session-database.test.ts src/lib/session-access.test.ts",
+      "passed": 147,
+      "exit": 0,
+      "breakdown": {
+        "periodGuard": 21,
+        "database": 119,
+        "sessionSnapshot": 7
+      },
+      "logOutsideRepo": "/workspace/scratch/b4fb31747e8d/daily-timer-security-guard-reacceptance.log",
+      "logSha256": "950993ebf6734154e11213125c9901fc13438a2970ba2877f4bb6e423fe05a6c"
+    },
+    "findings": [],
+    "verifiedScope": [
+      "Trusted server Intl validates PostgreSQL period start/end local7AM, adjacent dates and DB-clock enclosure; malformed or stale rules fail closed.",
+      "Actual dispatcher tests retain Parent/profile authorization before daily preflight; mismatched config cannot reach control RPC; settings mismatch rejected before writes when existing daily profiles.",
+      "Access validates stored resolver timezone rather than potentially different current Parent settings; all existing accessView callers inherit the guard.",
+      "Give Time remains bounded recovery path; Parent lock semantics and SQL unchanged. Expired Add today dispatches existing authorized Extend.",
+      "Child banner change is CSS class/color only. ChildPlayer remains unchanged from 6619."
+    ],
+    "limits": [
+      "Guard validates current period; no promise of future tzdata equivalence. Future inconsistency denies daily access until repaired or Parent switches to Give Time.",
+      "Resolver materialization/activation occurs before access validation; denied access does not roll back that state, and grants no playback.",
+      "No hosted DDL/write or real-device certification; Node trusted Intl versus PostgreSQL consistency is checked, not database tzdata repaired.",
+      "Earlier exact6619 scoped PASS and original TSEC01 FAIL preserved; current affected receipt independently bound to immutable99239ee."
+    ],
+    "sourceTree": "21ffb2fa01b9cdf7fc36dd4b2a9e48b4506f74ca",
+    "sourceSubtrees": {
+      "src": "6f223458b04a6ae684889597ad48d6e7866b6c88",
+      "e2e": "a1ac3acf31742c210c5c4f8d9d405d33e933539e",
+      "supabase": "2a36c8a7c89bb4413086bfa19686ea90695af54b"
+    },
+    "immutableBoundAt": "2026-11-18T18:20:52.779591+00:00"
+  },
+  "compactParentReview": {
+    "status": "SCOPED SOURCE PASS \u2014 exact immutable source; not hosted/physical release approval",
+    "candidate": "86693712f4abb3ada8d89d9e01e66ab10f228b4d",
+    "srcTree": "88f287278391ad894ea70fe737e24362153f18e7",
+    "reviewedAt": "2026-11-18T18:41:32.869451+00:00",
+    "parentAppSha256": "7318919c6cde93c7995769ca5d8ab1dd55e5f2934214ab818afb55fbd9d39581",
+    "unchangedProtectedFiles": [
+      "src/lib/server/product.ts",
+      "src/lib/server/daily-period-validation.ts",
+      "src/lib/server/daily-period-validation.test.ts",
+      "src/components/child/ChildLibrary.tsx",
+      "src/components/child/ChildExperience.css",
+      "src/components/child/ChildPlayer.tsx",
+      "src/lib/session-access.ts",
+      "supabase/migrations/20261118173600_daily_session_allowance.sql"
+    ],
+    "testEvidence": "Reuse147 independent targeted PASS: all participating server/SQL/snapshot files unchanged byte-for-byte versus99239ee; Parent UI browser/full gates Root-owned.",
+    "findings": [],
+    "verifiedScope": [
+      "Only Parent layout/action order and per-profile server clock display anchor changed; existing command names/profile IDs/origin/server authorization unchanged.",
+      "End now remains immediate explicit authenticated End; native details only discloses settings, no mutation on toggle.",
+      "Arbitrary1\u2013240 minutes retains integer validation; daily and one-time mode dispatch unchanged.",
+      "Per-profile resolver serverNow anchors countdown, outer serverNow fallback retained; display estimate cannot authorize access.",
+      "Existing reset revalidation may recreate approved iframe after allowed server response. Source embed has autoplay:false and onReady does not call playVideo; no auto-start intent or newly introduced player lifecycle change."
+    ],
+    "limits": [
+      "No actual YouTube media/autoplay/fullscreen proof; physical gates held.",
+      "147 prior tests reused only for exact unchanged server/test bytes; no new Parent-browser test execution claimed by this reviewer."
+    ]
+  }
+}

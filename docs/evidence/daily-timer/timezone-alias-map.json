@@ -1,0 +1,464 @@
+{
+  "node": "v24.22.1",
+  "icu": "78.3",
+  "tz": "2026e",
+  "postgres": "PostgreSQL 17.5 on aarch64-unknown-linux-gnu, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit",
+  "pgCandidateCount": 783,
+  "commonCandidateSource": "Oracle Java25 ZoneId.SHORT_IDS names; canonical values measured using Node Intl, not copied from Java",
+  "candidateCount": 798,
+  "acceptedNoSlash": [
+    {
+      "input": "ACT",
+      "canonical": "Australia/Darwin"
+    },
+    {
+      "input": "AET",
+      "canonical": "Australia/Sydney"
+    },
+    {
+      "input": "AGT",
+      "canonical": "America/Buenos_Aires"
+    },
+    {
+      "input": "ART",
+      "canonical": "Africa/Cairo"
+    },
+    {
+      "input": "AST",
+      "canonical": "America/Anchorage"
+    },
+    {
+      "input": "BET",
+      "canonical": "America/Sao_Paulo"
+    },
+    {
+      "input": "BST",
+      "canonical": "Asia/Dhaka"
+    },
+    {
+      "input": "CAT",
+      "canonical": "Africa/Maputo"
+    },
+    {
+      "input": "CET",
+      "canonical": "Europe/Brussels"
+    },
+    {
+      "input": "CNT",
+      "canonical": "America/St_Johns"
+    },
+    {
+      "input": "CST",
+      "canonical": "America/Chicago"
+    },
+    {
+      "input": "CST6CDT",
+      "canonical": "CST6CDT"
+    },
+    {
+      "input": "CTT",
+      "canonical": "Asia/Shanghai"
+    },
+    {
+      "input": "CUBA",
+      "canonical": "America/Havana"
+    },
+    {
+      "input": "EAT",
+      "canonical": "Africa/Nairobi"
+    },
+    {
+      "input": "ECT",
+      "canonical": "Europe/Paris"
+    },
+    {
+      "input": "EET",
+      "canonical": "Europe/Athens"
+    },
+    {
+      "input": "EGYPT",
+      "canonical": "Africa/Cairo"
+    },
+    {
+      "input": "EIRE",
+      "canonical": "Europe/Dublin"
+    },
+    {
+      "input": "EST",
+      "canonical": "America/Panama"
+    },
+    {
+      "input": "EST5EDT",
+      "canonical": "EST5EDT"
+    },
+    {
+      "input": "GB",
+      "canonical": "Europe/London"
+    },
+    {
+      "input": "GB-EIRE",
+      "canonical": "Europe/London"
+    },
+    {
+      "input": "GMT",
+      "canonical": "UTC"
+    },
+    {
+      "input": "GMT-0",
+      "canonical": "UTC"
+    },
+    {
+      "input": "GMT+0",
+      "canonical": "UTC"
+    },
+    {
+      "input": "GMT0",
+      "canonical": "UTC"
+    },
+    {
+      "input": "GREENWICH",
+      "canonical": "UTC"
+    },
+    {
+      "input": "HONGKONG",
+      "canonical": "Asia/Hong_Kong"
+    },
+    {
+      "input": "HST",
+      "canonical": "Pacific/Honolulu"
+    },
+    {
+      "input": "ICELAND",
+      "canonical": "Atlantic/Reykjavik"
+    },
+    {
+      "input": "IET",
+      "canonical": "America/Indianapolis"
+    },
+    {
+      "input": "IRAN",
+      "canonical": "Asia/Tehran"
+    },
+    {
+      "input": "ISRAEL",
+      "canonical": "Asia/Jerusalem"
+    },
+    {
+      "input": "IST",
+      "canonical": "Asia/Calcutta"
+    },
+    {
+      "input": "JAMAICA",
+      "canonical": "America/Jamaica"
+    },
+    {
+      "input": "JAPAN",
+      "canonical": "Asia/Tokyo"
+    },
+    {
+      "input": "JST",
+      "canonical": "Asia/Tokyo"
+    },
+    {
+      "input": "KWAJALEIN",
+      "canonical": "Pacific/Kwajalein"
+    },
+    {
+      "input": "LIBYA",
+      "canonical": "Africa/Tripoli"
+    },
+    {
+      "input": "MET",
+      "canonical": "Europe/Brussels"
+    },
+    {
+      "input": "MIT",
+      "canonical": "Pacific/Apia"
+    },
+    {
+      "input": "MST",
+      "canonical": "America/Phoenix"
+    },
+    {
+      "input": "MST7MDT",
+      "canonical": "MST7MDT"
+    },
+    {
+      "input": "NAVAJO",
+      "canonical": "America/Denver"
+    },
+    {
+      "input": "NET",
+      "canonical": "Asia/Yerevan"
+    },
+    {
+      "input": "NST",
+      "canonical": "Pacific/Auckland"
+    },
+    {
+      "input": "NZ",
+      "canonical": "Pacific/Auckland"
+    },
+    {
+      "input": "NZ-CHAT",
+      "canonical": "Pacific/Chatham"
+    },
+    {
+      "input": "PLT",
+      "canonical": "Asia/Karachi"
+    },
+    {
+      "input": "PNT",
+      "canonical": "America/Phoenix"
+    },
+    {
+      "input": "POLAND",
+      "canonical": "Europe/Warsaw"
+    },
+    {
+      "input": "PORTUGAL",
+      "canonical": "Europe/Lisbon"
+    },
+    {
+      "input": "PRC",
+      "canonical": "Asia/Shanghai"
+    },
+    {
+      "input": "PRT",
+      "canonical": "America/Puerto_Rico"
+    },
+    {
+      "input": "PST",
+      "canonical": "America/Los_Angeles"
+    },
+    {
+      "input": "PST8PDT",
+      "canonical": "PST8PDT"
+    },
+    {
+      "input": "ROC",
+      "canonical": "Asia/Taipei"
+    },
+    {
+      "input": "ROK",
+      "canonical": "Asia/Seoul"
+    },
+    {
+      "input": "SINGAPORE",
+      "canonical": "Asia/Singapore"
+    },
+    {
+      "input": "SST",
+      "canonical": "Pacific/Guadalcanal"
+    },
+    {
+      "input": "TURKEY",
+      "canonical": "Europe/Istanbul"
+    },
+    {
+      "input": "UCT",
+      "canonical": "UTC"
+    },
+    {
+      "input": "UNIVERSAL",
+      "canonical": "UTC"
+    },
+    {
+      "input": "UTC",
+      "canonical": "UTC"
+    },
+    {
+      "input": "VST",
+      "canonical": "Asia/Saigon"
+    },
+    {
+      "input": "W-SU",
+      "canonical": "Europe/Moscow"
+    },
+    {
+      "input": "WET",
+      "canonical": "Europe/Lisbon"
+    },
+    {
+      "input": "ZULU",
+      "canonical": "UTC"
+    }
+  ],
+  "rejectedNoSlash": [
+    "ACDT",
+    "ACSST",
+    "ACST",
+    "ACWST",
+    "ADT",
+    "AEDT",
+    "AESST",
+    "AEST",
+    "AFT",
+    "AKDT",
+    "AKST",
+    "ALMST",
+    "ALMT",
+    "AMST",
+    "AMT",
+    "ANAST",
+    "ANAT",
+    "ARST",
+    "AWSST",
+    "AWST",
+    "AZOST",
+    "AZOT",
+    "AZST",
+    "AZT",
+    "BDST",
+    "BDT",
+    "BNT",
+    "BORT",
+    "BOT",
+    "BRA",
+    "BRST",
+    "BRT",
+    "BTT",
+    "CADT",
+    "CAST",
+    "CCT",
+    "CDT",
+    "CEST",
+    "CETDST",
+    "CHADT",
+    "CHAST",
+    "CHUT",
+    "CKT",
+    "CLST",
+    "CLT",
+    "COT",
+    "CXT",
+    "DAVT",
+    "DDUT",
+    "EASST",
+    "EAST",
+    "EDT",
+    "EEST",
+    "EETDST",
+    "EGST",
+    "EGT",
+    "FET",
+    "FJST",
+    "FJT",
+    "FKST",
+    "FKT",
+    "FNST",
+    "FNT",
+    "Factory",
+    "GALT",
+    "GAMT",
+    "GEST",
+    "GET",
+    "GFT",
+    "GILT",
+    "GYT",
+    "HKT",
+    "ICT",
+    "IDT",
+    "IOT",
+    "IRKST",
+    "IRKT",
+    "IRT",
+    "JAYT",
+    "KDT",
+    "KGST",
+    "KGT",
+    "KOST",
+    "KRAST",
+    "KRAT",
+    "KST",
+    "LHDT",
+    "LHST",
+    "LIGT",
+    "LINT",
+    "LKT",
+    "MAGST",
+    "MAGT",
+    "MART",
+    "MAWT",
+    "MDT",
+    "MEST",
+    "MESZ",
+    "METDST",
+    "MEZ",
+    "MHT",
+    "MMT",
+    "MPT",
+    "MSD",
+    "MSK",
+    "MUST",
+    "MUT",
+    "MVT",
+    "MYT",
+    "NDT",
+    "NFT",
+    "NOVST",
+    "NOVT",
+    "NPT",
+    "NUT",
+    "NZDT",
+    "NZST",
+    "NZT",
+    "OMSST",
+    "OMST",
+    "PDT",
+    "PET",
+    "PETST",
+    "PETT",
+    "PGT",
+    "PHT",
+    "PKST",
+    "PKT",
+    "PMDT",
+    "PMST",
+    "PONT",
+    "PWT",
+    "PYST",
+    "PYT",
+    "RET",
+    "SADT",
+    "SAST",
+    "SCT",
+    "SGT",
+    "TAHT",
+    "TFT",
+    "TJT",
+    "TKT",
+    "TMT",
+    "TOT",
+    "TRUT",
+    "TVT",
+    "ULAST",
+    "ULAT",
+    "UT",
+    "UYST",
+    "UYT",
+    "UZST",
+    "UZT",
+    "VET",
+    "VLAST",
+    "VLAT",
+    "VOLT",
+    "VUT",
+    "WADT",
+    "WAKT",
+    "WAST",
+    "WAT",
+    "WDT",
+    "WETDST",
+    "WFT",
+    "WGST",
+    "WGT",
+    "XJT",
+    "YAKST",
+    "YAKT",
+    "YAPT",
+    "YEKST",
+    "YEKT",
+    "Z"
+  ]
+}

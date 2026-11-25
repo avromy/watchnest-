@@ -71,26 +71,26 @@ test("synthetic UI: parent navigation covers management, inbox, and independent 
     page.getByRole("heading", { name: "Family overview" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Library and requests" }),
+    page.getByRole("heading", { name: "Their libraries" }),
   ).toBeVisible();
   await expect(
-    page.getByRole("region", { name: "Ari library status" }),
+    page.locator("article").filter({ has: page.getByRole("heading", { name: "Ari", exact: true }) }),
   ).toContainText("3 approved videos");
   await expect(
-    page.getByRole("region", { name: "Miri library status" }),
+    page.locator("article").filter({ has: page.getByRole("heading", { name: "Miri", exact: true }) }),
   ).toContainText("0 approved videos");
   await expect(
-    page.getByText("Shared with children", { exact: true }),
+    page.getByRole("heading", { name: "Their libraries", exact: true }),
   ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
-  await page.getByRole("link", { name: "Children", exact: true }).click();
+  await page.getByRole("link", { name: "Family", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Miri", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Eli", exact: true }),
   ).toBeVisible();
-  await page.getByRole("link", { name: /Inbox/ }).click();
+  await page.getByRole("navigation", { name: "Parent navigation" }).getByRole("link", { name: /Requests/ }).click();
   await expect(
     page.getByRole("heading", { name: "Lego trains" }),
   ).toBeVisible();
@@ -104,16 +104,26 @@ test("synthetic UI: child searches local library and asks parent on no match", a
 }) => {
   const changes = await fixture(page, "child");
   await page.goto("/watch/home");
-  await expect(page.getByText("Hi, Ari", { exact: true })).toBeVisible();
+  await expect(page.getByText("Ari", { exact: true })).toBeVisible();
+  // Recurring entry lands directly in the approved library: no duplicate Home.
+  await expect(page.getByRole("heading", { name: "Your library", exact: true })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "WatchNest", exact: true }).getByRole("button")).toHaveCount(2);
+  await expect(page.getByRole("button", { name: "Home", exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Library", exact: true }).click();
   const search = page.getByPlaceholder("Search your library");
+  await search.fill("paper");
+  await expect(page.getByRole("link", { name: "Play Build a paper rocket", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Collections", exact: true })).toHaveCount(0);
+  await search.fill("");
+  await expect(page.getByRole("heading", { name: "Collections", exact: true })).toBeVisible();
   await search.fill("no matching dinosaur");
+  await expect(page.getByRole("heading", { name: "Collections", exact: true })).toHaveCount(0);
   await expect(
     page.getByRole("heading", { name: "Nothing found" }),
   ).toBeVisible();
   await page.getByRole("button", { name: /Ask Parent for/ }).click();
   await expect(
-    page.getByRole("heading", { name: "Ask Parent", exact: true }),
+    page.getByRole("heading", { name: "What would you love to watch?", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Send request" }).click();
   await expect(
@@ -330,13 +340,13 @@ test("synthetic UI: bounded Discover creates a request without a playable result
   const discoveryProfile = { ...dashboard.profiles[1], discover_enabled: true, discovery_topics: ["Drawing"], discovery_channels: [] };
   let requested = false;
   await page.route("**/api/child/library", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: discoveryProfile, videos: dashboard.videos, collections: dashboard.collections }) }));
-  await page.route("**/api/child/discover?**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ results: [{ youtube_video_id: "abcdefghijk", title: "Draw a fox", channel_title: "Little Makers", thumbnail_url: "", duration_seconds: 600, request_token: "signed-candidate-token-that-is-long-enough" }] }) }));
+  await page.route("**/api/child/discover?**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ results: [{ youtube_video_id: "newvideo123", title: "Draw a fox", channel_title: "Little Makers", thumbnail_url: "", duration_seconds: 600, request_token: "signed-candidate-token-that-is-long-enough" }] }) }));
   await page.route("**/api/child/requests", async (route) => {
     if (route.request().method() === "POST") {
       requested = true;
       return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
     }
-    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ requests: requested ? [{ id: "request-1", kind: "video", message: "Draw a fox", status: "pending", created_at: new Date().toISOString(), youtube_video_id: "abcdefghijk", video_title: "Draw a fox" }] : [] }) });
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ requests: requested ? [{ id: "request-1", kind: "video", message: "Draw a fox", status: "pending", created_at: new Date().toISOString(), youtube_video_id: "newvideo123", video_title: "Draw a fox" }] : [] }) });
   });
   await page.goto("/watch/home");
   await page.getByRole("button", { name: "Discover", exact: true }).click();
@@ -412,10 +422,10 @@ test("synthetic UI: mobile and tablet pages fit viewport", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 900 });
   await page.goto("/parent/children");
   const dashboardBox = await page
-    .getByRole("link", { name: "Dashboard", exact: true })
+    .getByRole("link", { name: "Overview", exact: true })
     .boundingBox();
   const settingsBox = await page
-    .getByRole("link", { name: "Settings", exact: true })
+    .getByRole("link", { name: "Family", exact: true })
     .boundingBox();
   expect(dashboardBox).not.toBeNull();
   expect(settingsBox).not.toBeNull();
@@ -858,6 +868,7 @@ test("synthetic UI: mobile share text auto-resolves and retains a manual fallbac
   });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/parent/add-video");
+  await page.getByRole("button", { name: "Paste video links", exact: true }).click();
   const links = page.getByLabel("Paste one YouTube video link per line");
   await links.fill(
     "Shared from my phone https://youtu.be/dQw4w9WgXcQ?si=mobile",
@@ -890,6 +901,7 @@ test("synthetic UI: mobile URL fallback retries the same link after an automatic
   });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/parent/add-video");
+  await page.getByRole("button", { name: "Paste video links", exact: true }).click();
   const links = page.getByLabel("Paste one YouTube video link per line");
   await links.fill("https://youtu.be/dQw4w9WgXcQ");
   await expect(page.getByText("YouTube is temporarily unavailable.")).toBeVisible();
@@ -1024,14 +1036,19 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
   page,
 }) => {
   await fixture(page, "parent");
+  const analyticsOnlyTitle = "Synthetic analytics-only title must not be shown";
+  await page.route("**/api/parent/dashboard", route => route.fulfill({
+    status: 200, contentType: "application/json",
+    body: JSON.stringify({ ...dashboard, analytics: { ...dashboard.analytics, popular: [{ title: analyticsOnlyTitle, seconds: 1200 }] } }),
+  }));
   // Fixture contains fake eligible watch time, recent videos and popularity data.
   // None may become a parent-facing YouTube engagement report.
   await page.goto("/parent/dashboard");
   await expect(
-    page.getByRole("region", { name: "Ari library status" }),
+    page.locator("article").filter({ has: page.getByRole("heading", { name: "Ari", exact: true }) }),
   ).toContainText("3 approved videos");
   await expect(
-    page.getByText("Shared with children", { exact: true }),
+    page.getByRole("heading", { name: "Their libraries", exact: true }),
   ).toBeVisible();
   await expect(page.getByText(/assignments/i)).toHaveCount(0);
   await expect(
@@ -1047,6 +1064,224 @@ test("synthetic UI: dashboard reports workflow and suppresses supplied viewing a
     page.getByText(/^(Eligible watch time|Watched today|Last 7 days)/),
   ).toHaveCount(0);
   await expect(
-    page.getByText(dashboard.analytics.popular[0].title, { exact: true }),
+    page.getByText(analyticsOnlyTitle, { exact: true }),
   ).toHaveCount(0);
+});
+
+test("synthetic UI: a child finds approved videos in a 240-item library", async ({ page }) => {
+  await fixture(page, "child");
+  const manyVideos = Array.from({ length: 240 }, (_, index) => ({
+    ...dashboard.videos[index % dashboard.videos.length],
+    id: `10000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
+    title: index === 173 ? "The hidden otter drawing lesson" : `Everyday video ${String(240 - index).padStart(3, "0")}`,
+    favorite: index === 173 || index === 7,
+    progress: undefined,
+    added_at: new Date(Date.UTC(2026, 8, 30, 0, index)).toISOString(),
+  }));
+  await page.route("**/api/child/library", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ profile: dashboard.profiles[1], videos: manyVideos, collections: [] }) }));
+  await page.goto("/watch/home");
+  await page.getByRole("button", { name: "Library", exact: true }).click();
+  const search = page.getByPlaceholder("Search your library");
+  await search.fill("hidden otter");
+  await expect(page.getByRole("link", { name: "Play The hidden otter drawing lesson", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Play / })).toHaveCount(1);
+  await search.fill("");
+  await page.getByRole("button", { name: "Favorites", exact: true }).click();
+  await expect(page.getByRole("link", { name: /^Play / })).toHaveCount(2);
+  await page.getByLabel("Sort videos").selectOption("title");
+  await expect(page.getByRole("link", { name: /^Play / }).first()).toHaveAttribute("aria-label", "Play Everyday video 233");
+  await page.getByRole("button", { name: "All videos", exact: true }).click();
+  await expect(page.getByRole("link", { name: /^Play / })).toHaveCount(240);
+  await expect(page.getByRole("link", { name: /^Play / }).first()).toHaveAttribute("aria-label", "Play Everyday video 001");
+  // Only approved-library data is searched: discovery/player providers remain absent.
+  await expect(page.locator("iframe")).toHaveCount(0);
+});
+
+test("synthetic UI: intermediate widths keep parent tools and child browsing within reach", async ({ page }) => {
+  await fixture(page, "parent");
+  const runtimeErrors: string[] = [];
+  page.on("pageerror", error => runtimeErrors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") runtimeErrors.push(message.text()); });
+  const assertWithinViewport = async () => {
+    await expect(page.locator("main h1")).toBeVisible();
+    const clipping = await page.evaluate(() => {
+      const elements = Array.from(document.querySelectorAll("main button,main input:not([type=hidden]),main select,main textarea"));
+      return {
+        documentOverflow: document.documentElement.scrollWidth > innerWidth + 1,
+        clippedControls: elements.filter(element => {
+          const rect = element.getBoundingClientRect();
+          return rect.width > 0 && rect.height > 0 && (rect.left < -1 || rect.right > innerWidth + 1);
+        }).map(element => element.getAttribute("aria-label") || element.textContent?.trim() || element.tagName),
+      };
+    });
+    expect(clipping).toEqual({ documentOverflow: false, clippedControls: [] });
+  };
+  for (const width of [360, 412, 520, 640, 820, 900, 1180, 1280]) {
+    await page.setViewportSize({ width, height: width < 520 ? 915 : 820 });
+    for (const route of ["/parent/add-video", "/parent/controls"]) {
+      await page.goto(route);
+      await expect(page.getByRole("heading", { level: 1, name: route === "/parent/controls" ? "Time controls" : "Add videos", exact: true })).toBeVisible();
+      if (route === "/parent/controls") await expect(page.getByRole("heading", { name: "Miri", exact: true })).toBeVisible();
+      await assertWithinViewport();
+    }
+  }
+  await page.unroute("**/api/**");
+  await fixture(page, "child");
+  for (const width of [360, 412, 520, 640, 820, 900, 1180, 1280]) {
+    await page.setViewportSize({ width, height: width < 520 ? 915 : 820 });
+    await page.goto("/watch/home");
+    await page.getByRole("button", { name: "Library", exact: true }).click();
+    await expect(page.getByRole("heading", { level: 1, name: "Your library", exact: true })).toBeVisible();
+    await assertWithinViewport();
+  }
+  expect(runtimeErrors).toEqual([]);
+});
+
+test("synthetic UI: password visibility and recovery work with a keyboard", async ({ page }) => {
+  await page.route("**/api/auth/parent", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ message: "If this address has an account, a reset link is on its way." }) }));
+  await page.goto("/login");
+  await page.getByLabel("Email", { exact: true }).fill("synthetic@example.test");
+  const password = page.getByLabel("Password", { exact: true });
+  await password.fill("synthetic-not-a-real-password");
+  await expect(password).toHaveAttribute("type", "password");
+  await password.focus();
+  await page.keyboard.press("Tab");
+  const toggle = page.getByRole("button", { name: "Show password", exact: true });
+  await expect(toggle).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(password).toHaveAttribute("type", "text");
+  await page.getByRole("button", { name: "Hide password", exact: true }).press("Enter");
+  await expect(password).toHaveAttribute("type", "password");
+  await page.getByRole("button", { name: "Forgot password?", exact: true }).press("Enter");
+  await expect(page.getByRole("heading", { name: "Reset your password", exact: true })).toBeVisible();
+  await expect(password).toHaveCount(0);
+  await expect(page.getByLabel("Email", { exact: true })).toHaveValue("synthetic@example.test");
+  await page.getByRole("button", { name: "Send reset link", exact: true }).press("Enter");
+  await expect(page.getByText("If this address has an account, a reset link is on its way.")).toBeVisible();
+  await page.getByRole("button", { name: "Back to sign in", exact: true }).press("Enter");
+  await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeVisible();
+});
+
+
+test("synthetic UI: phone parent actions and collection choices remain touchable", async ({ page }) => {
+  await fixture(page, "parent");
+  for (const width of [360, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/parent/collections");
+    const header = page.locator("header.topbar");
+    for (const control of [header.getByRole("link", { name: "Add videos", exact: true }), header.getByRole("button", { name: "Switch profile", exact: true })]) {
+      const bounds = await control.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.width).toBeGreaterThanOrEqual(44);
+      expect(bounds!.height).toBeGreaterThanOrEqual(44);
+      expect(bounds!.x).toBeGreaterThanOrEqual(0);
+      expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    }
+    const option = page.locator("label").filter({ hasText: dashboard.videos[0].title });
+    await expect(option).toHaveCount(1);
+    const labelBounds = await option.boundingBox();
+    const titleBounds = await option.getByText(dashboard.videos[0].title, { exact: true }).boundingBox();
+    expect(labelBounds).not.toBeNull();
+    expect(titleBounds).not.toBeNull();
+    expect(titleBounds!.y).toBeGreaterThanOrEqual(labelBounds!.y);
+    expect(titleBounds!.y + titleBounds!.height).toBeLessThanOrEqual(labelBounds!.y + labelBounds!.height + 1);
+    await option.click();
+    await expect(option.getByRole("checkbox")).toBeChecked();
+  }
+});
+
+
+test("synthetic UI: collection search expands to approved library without requesting again", async ({ page }, info) => {
+  test.setTimeout(60000);
+  for (const viewport of [{width:390,height:844},{width:768,height:1024},{width:1024,height:768},{width:1440,height:1000}]) {
+  await page.setViewportSize(viewport);
+  const changes = await fixture(page, "child");
+  await page.goto("/watch/home");
+  await page.getByRole("button", { name: "Library", exact: true }).click();
+  await page.getByRole("button", { name: /Little Makers/ }).click();
+  const search = page.getByRole("searchbox", { name: "Search this collection", exact: true });
+  await search.fill("piano");
+  await expect(page.getByRole("heading", { name: "Nothing found", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Ask Parent for/ })).toHaveCount(0);
+  await page.getByRole("button", { name: "Search all videos", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search your library", exact: true })).toHaveValue("piano");
+  await expect(page.getByRole("link", { name: "Play A gentle piano lesson", exact: true })).toBeVisible();
+  await expect(page.locator("iframe")).toHaveCount(0);
+  expect(changes.some(change => change.path === "/api/child/requests")).toBe(false);
+  await page.getByRole("button", { name: "Favorites", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search Favorites", exact: true })).toHaveValue("piano");
+  await expect(page.getByRole("button", { name: "Search all videos", exact: true })).toBeVisible();
+  await page.screenshot({ path: info.outputPath(`scoped-favorites-${viewport.width}.png`), fullPage: true });
+  await page.getByRole("button", { name: "Hidden", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search hidden videos", exact: true })).toHaveValue("piano");
+  await expect(page.getByRole("button", { name: "Search all videos", exact: true })).toBeVisible();
+  expect(changes.some(change => change.path === "/api/child/requests")).toBe(false);
+  await page.screenshot({ path: info.outputPath(`scoped-hidden-${viewport.width}.png`), fullPage: true });
+  }
+});
+
+test("synthetic UI: initial child choices are visible and Simple controls stay secondary", async ({ page }, info) => {
+  for (const mode of ["standard", "simple"] as const) {
+    await page.unroute("**/api/**");
+    await fixture(page, "child", mode);
+    for (const viewport of [{width:360,height:800},{width:390,height:844},{width:768,height:1024},{width:1024,height:768}]) {
+      await page.setViewportSize(viewport);
+      await page.goto("/watch/home");
+      const title = page.locator(".child-video-card h3").first();
+      await expect(title).toBeVisible();
+      const content = await page.evaluate(() => {
+        const link = document.querySelector(".child-video-card > a")!.getBoundingClientRect();
+        const title = document.querySelector(".child-video-card h3")!.getBoundingClientRect();
+        const navigation = document.querySelector(".child-nav")!.getBoundingClientRect();
+        const limit = innerWidth <= 700 ? navigation.top : innerHeight;
+        return { artworkTop: link.top, titleBottom: title.bottom, limit };
+      });
+      console.log("CONTENT_REACH", JSON.stringify({mode,viewport,...content}));
+      await page.screenshot({path:info.outputPath(`${mode}-${viewport.width}.png`),fullPage:false});
+      expect(content.artworkTop).toBeGreaterThanOrEqual(0);
+      expect(content.titleBottom).toBeLessThan(content.limit - 6);
+      if (mode === "simple") {
+        await expect(page.getByRole("button", {name:"Hidden",exact:true})).toBeHidden();
+        await expect(page.getByRole("combobox", {name:"Sort videos",exact:true})).toBeHidden();
+        await page.locator("summary").filter({hasText:"More"}).click();
+        await expect(page.getByRole("button", {name:"Hidden",exact:true})).toBeVisible();
+        await expect(page.getByRole("combobox", {name:"Sort videos",exact:true})).toBeVisible();
+      } else {
+        await expect(page.getByRole("combobox", {name:"Sort videos",exact:true})).toBeVisible();
+      }
+    }
+  }
+});
+
+test("synthetic UI: many Collections remain keyboard reachable without pushing videos away", async ({ page }, info) => {
+  await fixture(page, "child");
+  const collections = Array.from({length:20},(_,index)=>({...dashboard.collections[0],id:`collection-${index}`,title:`Collection ${index+1}`}));
+  await page.route("**/api/child/library", route=>route.fulfill({json:{profile:dashboard.profiles[1],videos:dashboard.videos,collections}}));
+  for (const viewport of [{width:360,height:800},{width:390,height:844},{width:768,height:1024},{width:1024,height:768}]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/watch/home");
+    const shelf=page.getByRole("group",{name:"Collections",exact:true});
+    await expect(shelf.getByRole("button")).toHaveCount(20);
+    const buttons=shelf.getByRole("button");
+    const assertFullyVisible=async(index:number)=>{
+      const button=buttons.nth(index);
+      await expect(button).toBeFocused();
+      await expect.poll(async()=>{
+        const [item,container]=await Promise.all([button.boundingBox(),shelf.boundingBox()]);
+        return !!item && !!container && item.x>=container.x-1 && item.x+item.width<=container.x+container.width+1;
+      }).toBe(true);
+    };
+    await buttons.first().focus();
+    for(let index=1;index<20;index++) await page.keyboard.press("Tab");
+    await assertFullyVisible(19);
+    for(let index=0;index<10;index++) await page.keyboard.press("Shift+Tab");
+    await assertFullyVisible(9);
+    for(let index=0;index<10;index++) await page.keyboard.press("Tab");
+    await assertFullyVisible(19);
+    await page.screenshot({path:info.outputPath(`focused-collection20-${viewport.width}.png`),fullPage:false});
+    await buttons.last().press("Enter");
+    await expect(page.getByRole("heading",{name:"Collection 20",exact:true})).toBeVisible();
+    await expect(page.locator("iframe")).toHaveCount(0);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  }
 });

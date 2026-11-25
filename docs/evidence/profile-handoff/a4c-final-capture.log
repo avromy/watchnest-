@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs e2e/profile-handoff.spec.ts --output=docs/evidence/profile-handoff/a4c-final-captures --reporter=json
+
+[WebServer] (node:43) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+[WebServer] (node:56) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 3 tests using 1 worker
+
+(node:68) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/3] e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 390
+[2/3] e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 768
+[3/3] e2e/profile-handoff.spec.ts:51:7 › profile handoff: Parent approval and same-profile return 1024
+  3 passed (5.6s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

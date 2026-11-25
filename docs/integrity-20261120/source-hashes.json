@@ -1,0 +1,8 @@
+{
+  "applicationCommit": "0aac62ea0dd42d1f1301d98a4651d8b8f05e7394",
+  "buildId": "16cAFLfVdU9apUomQC7jN",
+  "sha256": {
+    "src/lib/server/product.ts": "791bc2b7cccc16c01263eb0edca2d83b2179f1d054a4aff59549db7f2818e973",
+    "src/components/parent/ParentApp.tsx": "de974d847096242dfc27c30f50bac11a10be926483f7952ea24a15469f5a2dd8"
+  }
+}

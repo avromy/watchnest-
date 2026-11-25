@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "ef4c4bb30a16ae273f04a426d979480a808930ab",
+  "archive": "WatchNest_Concept3_Frozen_Review_Receipts_20261118.tar.gz",
+  "bytes": 1158116,
+  "sha256": "27a831f722f2d3bee6890c4c24ae7433b0325a554e255204ce2c1896c6911651",
+  "files": [
+    {
+      "path": "Concept3ChildVisualFinal-20261118.json",
+      "bytes": 5153484,
+      "sha256": "5c4b96425b1ff93770c2dd35f715226984415b911ced350f37abe5752c6a5bbc"
+    },
+    {
+      "path": "Concept3FinalJuror1-20261118.json",
+      "bytes": 47329,
+      "sha256": "421c20953719f7c797ccdb2cf5fbd20c6648532556c5095f385d8ead342ecc9f"
+    },
+    {
+      "path": "Concept3FinalJuror2-20261118.json",
+      "bytes": 42396,
+      "sha256": "756f62cb20bfdc037dabed9d751d9518245df2db86b875590585a31c21c6cfd0"
+    },
+    {
+      "path": "Concept3FinalJuror3-20261118.json",
+      "bytes": 40988,
+      "sha256": "c508522db20add41715d3c43225cfac93b959b7e92757348dda109e19a023c96"
+    },
+    {
+      "path": "Concept3FinalJuror4-20261118.json",
+      "bytes": 40129,
+      "sha256": "b995fb02f458f22c57bd80ce83eabc2a20c88a9dafba2a9dc4238ed69bf17e18"
+    },
+    {
+      "path": "Concept3FinalJuror5-20261118.json",
+      "bytes": 55549,
+      "sha256": "55197dba13de6883b772f2476944393534ff3847597ad3947d1075f7078a1ddb"
+    },
+    {
+      "path": "Concept3FinalJury-20261118.json",
+      "bytes": 1806,
+      "sha256": "0738ea30986fbccd72a576c5db4c36abc9e93c4ea16fb7f2b3581b7083a75900"
+    },
+    {
+      "path": "Concept3ParentAssetJournal-0f31835.json",
+      "bytes": 2226319,
+      "sha256": "4a06c8f980b1a205558e7cbf0e6cf266aafced007c6317fd7828187d5421d66e"
+    },
+    {
+      "path": "Concept3ParentAssetJournal-a8c0dbe-tablet.json",
+      "bytes": 1420592,
+      "sha256": "9ba59f7c0731417fa6baa4940ee626ed5546f38ade0610463a65860410970050"
+    },
+    {
+      "path": "Concept3ParentFinalPixelAssetJournal-ef4c4bb.json",
+      "bytes": 18738350,
+      "sha256": "79e404c0f0932c4a69b6be342706ff1d6d2fcdbeac80b4baef47a14503bd1c47"
+    },
+    {
+      "path": "Concept3ParentPixelJournal-0f31835.json",
+      "bytes": 341299,
+      "sha256": "ccb9f041d5fb71f0bfcc725a49719e386c8b6d6c5842bd34debd608ef1d1927c"
+    },
+    {
+      "path": "Concept3ParentPixelJournal-a8c0dbe-tablet.json",
+      "bytes": 2797129,
+      "sha256": "ff50759c0ea852fcd8d42a5e8e502c074382adb49d0dda925012f88b557a35d5"
+    }
+  ],
+  "scope": "Frozen complete raw pixel/asset journals and final independent jury receipts. Not physical/hosted certification.",
+  "library_file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+  "file_id": "PRIVATE_CUSTODY_IN_EXISTING_CTO_HANDOFF",
+  "version": 0,
+  "localMetadataApplied": true
+}

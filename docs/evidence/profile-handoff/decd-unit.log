@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test
+> vitest --run
+
+
+ RUN  v5.0.3 /workspace/scratch/b4fb31747e8d/watchnest
+
+
+ Test Files  29 passed (29)
+      Tests  396 passed (396)
+   Start at  23:13:37
+   Duration  6.66s (tests 84%, import 9%, transform 6%, worker 1%)
+
+    Isolate  29 workers spawned · ~191ms startup each (spawn + environment, per file)
+             at least ~501ms faster with isolate: false — reuses workers across files instead of one per file
+

@@ -1,0 +1,66 @@
+{
+  "stage": "dpl_CfHzBU3X4rHMv7zn3w7tNRQMNk1C",
+  "sha": "5859ade14dc053aac877ec992f9431c170abacf1",
+  "sourceTree": "9c247f77cf64143c320b204587e2f3d1e7f487e4",
+  "guest": [
+    {
+      "path": "/api/session",
+      "status": 200,
+      "success": true,
+      "code": null,
+      "text": "{\"role\":null,\"configured\":true}",
+      "deploymentHtmlBound": false,
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "/api/parent/dashboard",
+      "status": 401,
+      "success": false,
+      "code": "deployment_authentication_required",
+      "deploymentHtmlBound": false
+    },
+    {
+      "path": "/api/child/library",
+      "status": 401,
+      "success": false,
+      "code": "deployment_authentication_required",
+      "deploymentHtmlBound": false
+    },
+    {
+      "path": "/api/parent/profile-access",
+      "status": 401,
+      "success": false,
+      "code": "deployment_authentication_required",
+      "deploymentHtmlBound": false
+    },
+    {
+      "path": "/parent/inbox",
+      "status": 200,
+      "success": true,
+      "code": null,
+      "deploymentHtmlBound": true,
+      "cacheControl": "public, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/child/library",
+      "status": 404,
+      "success": true,
+      "code": null,
+      "deploymentHtmlBound": true,
+      "cacheControl": "public, max-age=0, must-revalidate"
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "success": true,
+      "code": null,
+      "deploymentHtmlBound": true,
+      "cacheControl": "public, max-age=0, must-revalidate"
+    }
+  ],
+  "appAuth": "UNAUTHENTICATED",
+  "physical": "NOT_TESTED",
+  "canonicalDeployment": "dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+  "familyMutations": false,
+  "phase2": false
+}

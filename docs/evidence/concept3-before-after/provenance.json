@@ -1,0 +1,48 @@
+{
+  "kind": "representative actual rendered before/after source comparison",
+  "synthetic": true,
+  "artwork": "Synthetic API/artwork; no real family photographs or records",
+  "limitations": [
+    "Separate source-bound viewports, not an exact pixel Golden",
+    "Ordering/timing may differ between fixture executions",
+    "Before is preserved greenWIP382, not production77",
+    "After is ef4 candidate, not production promotion",
+    "No physical-iPad acceptance inferred"
+  ],
+  "images": [
+    {
+      "copiedPath": "docs/evidence/concept3-before-after/before-green-child-library-ipad-portrait.png",
+      "originalPath": "/workspace/scratch/b4fb31747e8d/qualification-evidence/382-final/test-results/visual-evidence/candidate/768x1024/child-library-top.png",
+      "sourceCommit": "38244d2c6ea6b7bb113f3e39338b63cf4eae1e82",
+      "sourceTree": "a4b851b4230bf5b649d9ff32c9588db74b87a4d6",
+      "applicationSourceTree": "461eb4dc14b9a5adb79047d681a8c85478e740ad",
+      "state": "child-library",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "region": "top readable viewport",
+      "sha256": "ab9d10efeb6c60d6190034885a5f6efa18dc5c94ef179d329dc098e375345877",
+      "bytes": 57676,
+      "copyByteIdentical": true,
+      "description": "Previous green qualified-WIP UI, NOT a screenshot of current canonical production77"
+    },
+    {
+      "copiedPath": "docs/evidence/concept3-before-after/after-concept3-child-library-ipad-portrait.png",
+      "originalPath": "/workspace/scratch/b4fb31747e8d/concept3-evidence/ef4c4bb/test-results/visual-evidence/concept3-ef4c4bb/768x1024/child-library-top.png",
+      "sourceCommit": "ef4c4bb30a16ae273f04a426d979480a808930ab",
+      "sourceTree": "d57c0f675876bec6b19779dfd9229ccb1267c314",
+      "applicationSourceTree": "9771c2e229ff3e286f7443d9146d31ff22405303",
+      "state": "child-library",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "region": "top readable viewport",
+      "sha256": "9e28c5802a3447fcf63d14118f60b24d5149032f4ddc6096a9d113366d47e8ea",
+      "bytes": 63327,
+      "copyByteIdentical": true,
+      "description": "Current Concept3 ef4 candidate; staged/held, not canonical production"
+    }
+  ]
+}

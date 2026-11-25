@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #f5f1e8;
+  --background: #f7f6fb;
   --paper: #fff;
-  --ink: #172b27;
-  --forest: #173c35;
-  --muted: #61716c;
-  --mint: #e2eee8;
-  --yellow: #f1cc6f;
-  --coral: #cf7058;
-  --border: #d7dfd9;
-  --focus: #9a7110;
+  --ink: #20243c;
+  --forest: #6552b8;
+  --muted: #656b80;
+  --mint: #efecfb;
+  --yellow: #ffad96;
+  --coral: #b9533d;
+  --border: #dddfea;
+  --focus: #7862db;
   color-scheme: light;
 }
 * {
@@ -77,7 +77,7 @@ h3 {
 }
 h1 {
   font-size: clamp(2rem, 4vw, 3.6rem);
-  font-weight: 750;
+  font-weight: 700;
 }
 h2 {
   font-size: 1.65rem;
@@ -191,7 +191,7 @@ legend {
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 28px;
-  box-shadow: 0 4px 24px #193f3504;
+  box-shadow: 0 4px 24px #1c1b3d04;
 }
 .button,
 .button-secondary,
@@ -213,7 +213,7 @@ legend {
   color: #fff;
 }
 .button:hover {
-  background: #285247;
+  background: #292852;
 }
 .button-secondary {
   background: #fff;
@@ -235,7 +235,7 @@ legend {
   width: 100%;
   min-height: 50px;
   background: #fff;
-  border: 1px solid #a8b8ac;
+  border: 1px solid #a7a7b9;
   border-radius: 13px;
   padding: 12px 15px;
   color: var(--ink);
@@ -245,7 +245,7 @@ textarea.field {
   resize: vertical;
 }
 .field::placeholder {
-  color: #6b7871;
+  color: #65647f;
 }
 .form-row {
   display: flex;
@@ -286,7 +286,7 @@ textarea.field {
 }
 .video-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px #193f3510;
+  box-shadow: 0 10px 24px #1c1b3d10;
 }
 .video-card img {
   width: 100%;
@@ -305,7 +305,7 @@ textarea.field {
   background: var(--mint);
   padding: 5px 11px;
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 700;
   color: var(--forest);
 }
 .muted {
@@ -329,7 +329,7 @@ textarea.field {
   padding: 50px 24px;
   text-align: center;
   background: #fff;
-  border: 1px dashed #b8c6bd;
+  border: 1px dashed #b8b7c7;
   border-radius: 24px;
 }
 .empty p {
@@ -346,7 +346,7 @@ textarea.field {
   border-radius: 24px;
   background: var(--mint);
   font-size: 30px;
-  font-weight: 750;
+  font-weight: 700;
 }
 .stats {
   display: grid;
@@ -381,7 +381,7 @@ textarea.field {
 }
 .progress-track {
   height: 5px;
-  background: #e5ebe5;
+  background: #e5e5eb;
   border-radius: 99px;
   overflow: hidden;
 }
@@ -419,8 +419,8 @@ textarea.field {
   place-items: center;
   overflow: hidden;
   border-radius: 31%;
-  background: linear-gradient(145deg, #f6d77c, #e3eee8);
-  color: #173c35;
+  background: #ebe6fb;
+  color: #1b1a39;
   flex: none;
 }
 .profile-image img {

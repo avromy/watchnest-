@@ -1,4 +1,5 @@
 import "server-only";
+import { throttleStatus } from "../profile-access-status";
 import { isWithinAccessWindow } from "@/lib/access-window";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
@@ -18,6 +19,10 @@ import {
 import { extractYouTubeVideoId } from "../youtube";
 import { sessionAccess } from "../session-access";
 import {
+  DAILY_TIMEZONE_UNAVAILABLE,
+  dailyPeriodMatchesServerRules,
+} from "./daily-period-validation";
+import {
   createDiscoveryCandidateToken,
   discoveryBoundaryAllowed,
   readDiscoveryCandidateToken,
@@ -29,7 +34,7 @@ const youtubeId = z.string().regex(/^[A-Za-z0-9_-]{11}$/);
 const founder = () =>
   (process.env.FOUNDER_EMAIL || "Avromy@gmail.com").toLowerCase();
 const selectProfile =
-  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at,discover_enabled,discovery_topics,discovery_channels";
+  "id,display_name,avatar_key,color_key,experience_mode,pin_enabled,photo_path,available_from_minute,available_until_minute,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at,session_mode,daily_allowance_minutes,daily_period_start,daily_reset_at,daily_started,daily_period_timezone,session_parent_blocked,session_limit_disabled,discover_enabled,discovery_topics,discovery_channels";
 export function configured() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -127,12 +132,23 @@ export async function parent(allowMode = true) {
   }
   const client = db();
   let { data, error } = await client.auth.getUser(token);
+  if (error && (!error.status || error.status >= 500))
+    throw new Failure("Sign-in service is unavailable. Please retry.", 503);
   if (error) {
     const refresh = (await cookies()).get("wn_refresh")?.value;
     if (refresh) {
-      const fresh = await client.auth.refreshSession({
+      // Refresh installs a user session on its client. Keep that session off the
+      // service-role client used for server-authorized family database access.
+      const auth = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        { auth: { persistSession: false, autoRefreshToken: false } },
+      );
+      const fresh = await auth.auth.refreshSession({
         refresh_token: refresh,
       });
+      if (fresh.error && (!fresh.error.status || fresh.error.status >= 500))
+        throw new Failure("Sign-in service is unavailable. Please retry.", 503);
       if (fresh.data.session) {
         await cookie(
           "wn_parent",
@@ -148,6 +164,8 @@ export async function parent(allowMode = true) {
       }
     }
   }
+  if (error && (!error.status || error.status >= 500))
+    throw new Failure("Sign-in service is unavailable. Please retry.", 503);
   if (error || !data.user?.email)
     throw new Failure("Please sign in again.", 401);
   requireConfirmedFounder(data.user);
@@ -159,6 +177,17 @@ export async function parent(allowMode = true) {
       .single(),
   );
   return row;
+}
+
+async function revokeParentMode() {
+  const token = (await cookies()).get("wn_parent_mode")?.value;
+  if (token)
+    check(
+      await db()
+        .from("parent_mode_sessions")
+        .update({ revoked_at: new Date().toISOString() })
+        .eq("token_hash", digest(token)),
+    );
 }
 
 async function issueDevice(parentId: string) {
@@ -207,7 +236,7 @@ async function device() {
   const row = check(
     await db()
       .from("household_devices")
-      .select("id,parent_id,expires_at")
+      .select("id,parent_id,expires_at,active_profile_id")
       .eq("token_hash", digest(token))
       .is("revoked_at", null)
       .gt("expires_at", new Date().toISOString())
@@ -278,6 +307,13 @@ async function child() {
       .maybeSingle(),
   );
   if (!profile) throw new Failure("Profile unavailable.", 401);
+  const linked = await device();
+  if (
+    session.device_id !== linked.id ||
+    linked.parent_id !== profile.parent_id ||
+    linked.active_profile_id !== profile.id
+  )
+    throw new Failure("Ask a parent to open this profile on this device.", 401);
   const household = check(
     await client
       .from("parents")
@@ -324,7 +360,12 @@ async function metadataMaintenance(client: ReturnType<typeof db>) {
       status: expiredCache.status || 503,
     });
 }
-async function limit(key: string, max: number, seconds = 900) {
+async function limit(
+  key: string,
+  max: number,
+  seconds = 900,
+  message = "Too many attempts. Please wait before trying again.",
+) {
   const allowed = check(
     await db().rpc("wn_rate_limit", {
       p_key: digest(key),
@@ -332,11 +373,7 @@ async function limit(key: string, max: number, seconds = 900) {
       p_seconds: seconds,
     }),
   );
-  if (!allowed)
-    throw new Failure(
-      "Too many attempts. Please wait before trying again.",
-      429,
-    );
+  if (!allowed) throw new Failure(message, 429);
 }
 async function ownedProfiles(parentId: string, profileIds: string[]) {
   if (!profileIds.length) return;
@@ -531,8 +568,59 @@ async function metadata(videoIds: string[], force = false) {
     tags: [],
   }));
 }
-function accessView(profile: any) {
-  return { ...sessionAccess(profile), serverNow: new Date().toISOString() };
+async function requireConsistentDailyTimezone(
+  client: ReturnType<typeof db>,
+  timezone: string,
+) {
+  const serverNow = new Date().toISOString();
+  const rows = check(
+    await client.rpc("wn_daily_session_period", {
+      p_at: serverNow,
+      p_timezone: timezone,
+    }),
+    "daily-timezone-preflight",
+    DAILY_TIMEZONE_UNAVAILABLE,
+  );
+  if (
+    !dailyPeriodMatchesServerRules({
+      periodStart: rows?.[0]?.period_start,
+      resetAt: rows?.[0]?.reset_at,
+      serverNow,
+      timezone,
+    })
+  )
+    throw new Failure(DAILY_TIMEZONE_UNAVAILABLE, 503);
+}
+
+async function accessView(
+  profile: any,
+  activate = true,
+  parentId = profile.parent_id,
+) {
+  const resolved = check(
+    await db().rpc("wn_resolve_profile_session", {
+      p_parent: parentId,
+      p_profile: profile.id,
+      p_activate: activate,
+    }),
+    "session-resolve",
+    "WatchNest could not confirm session time. Please retry.",
+  );
+  const fresh = { ...profile, ...resolved.profile_state };
+  if (
+    fresh.session_mode === "daily" &&
+    !dailyPeriodMatchesServerRules({
+      periodStart: resolved.period_start,
+      resetAt: resolved.reset_at,
+      serverNow: resolved.server_now,
+      timezone: resolved.timezone,
+    })
+  )
+    throw new Failure(DAILY_TIMEZONE_UNAVAILABLE, 503);
+  return {
+    ...sessionAccess(fresh, Date.parse(resolved.server_now)),
+    serverNow: resolved.server_now,
+  };
 }
 
 function discoveryCandidateToken(
@@ -670,15 +758,21 @@ export async function handle(request: globalThis.Request, path: string[]) {
           },
           configured: true,
         });
-      } catch {}
+      } catch (reason) {
+        if (!(reason instanceof Failure) || reason.status >= 500) throw reason;
+      }
       try {
         const c = await child();
         return reply({ role: "child", profile: c.profile, configured: true });
-      } catch {}
+      } catch (reason) {
+        if (!(reason instanceof Failure) || reason.status >= 500) throw reason;
+      }
       try {
         await device();
         return reply({ role: "device", configured: true });
-      } catch {}
+      } catch (reason) {
+        if (!(reason instanceof Failure) || reason.status >= 500) throw reason;
+      }
       return reply({ role: null, configured: true });
     }
     // Session exit must never depend on an anonymous caller's rate budget.
@@ -751,7 +845,9 @@ export async function handle(request: globalThis.Request, path: string[]) {
           z
             .object({
               access_token: z.string().min(20).max(8192),
-              refresh_token: z.string().min(20).max(1024),
+              // Supabase also issues 12-character opaque refresh tokens.
+              // The provider grant and identity checks below verify them.
+              refresh_token: z.string().min(12).max(1024),
               type: z.literal("recovery"),
             })
             .strict(),
@@ -807,7 +903,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       await cookie("wn_refresh", result.data.session.refresh_token, 2592000);
       await cookie("wn_child", "", 0);
       await issueDevice(callbackHousehold.id);
-      return reply({ ok: true });
+      return reply({ ok: true, email: result.data.user.email });
     }
     if (route === "auth/parent" && method === "POST") {
       const b = z
@@ -858,7 +954,10 @@ export async function handle(request: globalThis.Request, path: string[]) {
           message: "Check your email for account recovery.",
         });
       }
-      if (!b.password || b.password.length < 12)
+      if (!b.password) throw new Failure("Enter your password.");
+      // Sign-in verifies an existing credential with the identity provider;
+      // the new-password policy applies only when creating a credential.
+      if (b.action === "signup" && b.password.length < 12)
         throw new Failure("Use a password with at least 12 characters.");
       const result =
         b.action === "signup"
@@ -923,6 +1022,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       return reply({
         profiles: await profileViews(profiles),
         parent_pin_set: Boolean(household.parent_pin_hash),
+        active_profile_id: linked.active_profile_id ?? null,
       });
     }
     if (route === "auth/parent-lock" && method === "POST") {
@@ -1016,19 +1116,63 @@ export async function handle(request: globalThis.Request, path: string[]) {
           family: z.string().min(12).max(64).optional(),
           profileId: id,
           passcode: z.string().max(100).optional(),
+          parentPin: z
+            .string()
+            .regex(/^\d{4}$/)
+            .optional(),
         })
         .parse(body);
-      const linked = b.family ? null : await device();
-      await limit("child:" + (b.family || linked!.id) + ":" + b.profileId, 5);
-      const household = b.family
-        ? check(
-            await client
-              .from("parents")
-              .select("id")
-              .eq("family_code", b.family)
-              .maybeSingle(),
-          )
-        : { id: linked!.parent_id };
+      // A family link is a locator, never authority to discard a device's
+      // previous child identity. Enrollment still requires a Parent sign-in.
+      const linked = await device();
+      // Routine PIN-off returns are admissions, not credential guesses. Keep
+      // device abuse bounded separately from the tighter PIN budgets below.
+      await limit(
+        "child-entry:" + linked.id,
+        120,
+        60,
+        "This device is opening profiles too quickly. Ask Parent to check access on this device.",
+      );
+      const household = check(
+        await client
+          .from("parents")
+          .select("id,family_code,parent_pin_hash")
+          .eq("id", linked.parent_id)
+          .single(),
+      );
+      if (b.family && b.family !== household.family_code)
+        throw new Failure("This family link does not match this device.", 403);
+      let parentAuthorized = false;
+      if (b.parentPin !== undefined) {
+        // Share the Parent-mode bucket: two routes must not double PIN guesses.
+        await limit("parent-mode:" + linked.id, 5);
+        if (
+          !household.parent_pin_hash ||
+          !verifyPin(b.parentPin, household.parent_pin_hash)
+        )
+          throw new Failure("That Parent PIN is not correct.", 401);
+        parentAuthorized = true;
+      } else if (
+        linked.active_profile_id !== b.profileId &&
+        !household.parent_pin_hash
+      ) {
+        // A PIN-configured family requires a deliberate, target-specific PIN
+        // handoff even if a stale tab still carries a valid Parent session.
+        // Explicit Parent management uses parent/view-as-child instead. Families
+        // without a Parent PIN retain verified full sign-in enrollment.
+        try {
+          const verified = await parent();
+          parentAuthorized = verified.id === linked.parent_id;
+        } catch (reason) {
+          if (!(reason instanceof Failure) || reason.status !== 401)
+            throw reason;
+        }
+      }
+      if (linked.active_profile_id !== b.profileId && !parentAuthorized)
+        throw new Failure(
+          "Ask a parent to open this profile on this device.",
+          403,
+        );
       const p =
         household &&
         check(
@@ -1055,13 +1199,19 @@ export async function handle(request: globalThis.Request, path: string[]) {
           "WatchNest is not available for this profile right now.",
           403,
         );
-      if (p.pin_enabled) {
+      if (p.pin_enabled && !parentAuthorized) {
+        await limit("child:" + linked.id + ":" + b.profileId, 5);
         if (!b.passcode || !verifyPin(b.passcode, p.pin_hash || ""))
           throw new Failure("Incorrect passcode.", 401);
       }
       const token = opaque();
       const admitted = check(
-        await client.rpc("wn_admit_child_session", {
+        await client.rpc("wn_admit_device_child_session", {
+          p_device: linked.id,
+          p_parent: linked.parent_id,
+          p_parent_authorized: parentAuthorized,
+          p_expected_parent_pin_hash: household.parent_pin_hash ?? null,
+          p_bypass_child_pin: parentAuthorized,
           p_profile: p.id,
           p_expected_pin_enabled: p.pin_enabled,
           p_expected_pin_hash: p.pin_enabled ? p.pin_hash : null,
@@ -1071,14 +1221,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       );
       if (!admitted)
         throw new Failure("Profile settings changed. Please try again.", 409);
-      if (linked) {
-        check(
-          await client
-            .from("child_sessions")
-            .update({ device_id: linked.id })
-            .eq("token_hash", digest(token)),
-        );
-      }
+      await revokeParentMode();
       await cookie("wn_child", token, 86400);
       await cookie("wn_parent", "", 0);
       await cookie("wn_refresh", "", 0);
@@ -1090,7 +1233,11 @@ export async function handle(request: globalThis.Request, path: string[]) {
     if (route.startsWith("parent/")) {
       const p = await parent();
       await limit("parent-actions:" + p.id, 300, 60);
-      if (route !== "parent/session-status") await metadataMaintenance(client);
+      if (
+        route !== "parent/session-status" &&
+        route !== "parent/profile-access"
+      )
+        await metadataMaintenance(client);
       return await parentRoute(route, method, body, p, request);
     }
     if (route.startsWith("child/")) {
@@ -1128,18 +1275,112 @@ async function parentRoute(
   request: globalThis.Request,
 ) {
   const client = db();
+  if (route === "parent/profile-access" && method === "GET") {
+    const profileId = id.parse(
+      new URL(request.url).searchParams.get("profileId"),
+    );
+    await ownedProfiles(p.id, [profileId]);
+    // Inspection validates the existing device without renewing or mutating it.
+    const deviceToken = (await cookies()).get("wn_device")?.value;
+    if (!deviceToken)
+      throw new Failure("Sign in to connect this family device.", 401);
+    const linked = check(
+      await client
+        .from("household_devices")
+        .select("id,parent_id")
+        .eq("token_hash", digest(deviceToken))
+        .is("revoked_at", null)
+        .gt("expires_at", new Date().toISOString())
+        .maybeSingle(),
+    );
+    if (!linked)
+      throw new Failure(
+        "This family device session expired. Sign in again.",
+        401,
+      );
+    if (linked.parent_id !== p.id)
+      throw new Failure("This device belongs to another family.", 403);
+    const target = check(
+      await client
+        .from("profiles")
+        .select("pin_enabled")
+        .eq("id", profileId)
+        .eq("parent_id", p.id)
+        .is("archived_at", null)
+        .single(),
+    );
+    const readWindow = async (key: string) =>
+      check(
+        await client
+          .from("login_limits")
+          .select("window_started,attempts")
+          .eq("key", digest(key))
+          .maybeSingle(),
+      );
+    // A historical PIN bucket has no authority over a profile with its PIN off.
+    const pinWindow = target.pin_enabled
+      ? await readWindow("child:" + linked.id + ":" + profileId)
+      : null;
+    const entryWindow = await readWindow("child-entry:" + linked.id);
+    const now = Date.now();
+    return reply({
+      serverNow: new Date(now).toISOString(),
+      pin: {
+        required: target.pin_enabled,
+        ...throttleStatus(pinWindow, 5, 900, now),
+      },
+      admission: throttleStatus(entryWindow, 120, 60, now),
+    });
+  }
   if (route === "parent/view-as-child" && method === "POST") {
     const profileId = id.parse(body.profile_id);
     await ownedProfiles(p.id, [profileId]);
     const token = opaque();
-    check(
-      await client.from("child_sessions").insert({
-        profile_id: profileId,
-        device_id: (await device()).id,
-        token_hash: digest(token),
-        expires_at: new Date(Date.now() + 86400000).toISOString(),
+    const linked = await device();
+    if (linked.parent_id !== p.id)
+      throw new Failure("This device belongs to another family.", 403);
+    const target = check(
+      await client
+        .from("profiles")
+        .select("id,pin_enabled,pin_hash")
+        .eq("id", profileId)
+        .eq("parent_id", p.id)
+        .is("archived_at", null)
+        .single(),
+    );
+    // Record explicit Parent recovery before admission; a failed audit prevents
+    // recovery from proceeding. No rate-limit, PIN, or timer state is cleared.
+    if (body.recovery === true)
+      check(
+        await client.from("audit_events").insert({
+          parent_id: p.id,
+          actor_type: "parent",
+          action: "parent_profile_recovery_requested",
+          entity_type: "profile",
+          entity_id: profileId,
+          metadata_json: {
+            device_id: linked.id,
+            method: "verified_parent_admission",
+          },
+        }),
+      );
+    const admitted = check(
+      await client.rpc("wn_admit_device_child_session", {
+        p_device: linked.id,
+        p_parent: p.id,
+        p_profile: profileId,
+        p_expected_pin_enabled: target.pin_enabled,
+        p_expected_pin_hash: target.pin_enabled ? target.pin_hash : null,
+        p_token_hash: digest(token),
+        p_expires: new Date(Date.now() + 86400000).toISOString(),
+        p_parent_authorized: true,
+        p_expected_parent_pin_hash: p.parent_pin_hash ?? null,
+        p_bypass_child_pin: true,
       }),
     );
+    if (!admitted)
+      throw new Failure("Profile settings changed. Please try again.", 409);
+    await revokeParentMode();
     await cookie("wn_child", token, 86400);
     await cookie("wn_parent", "", 0);
     await cookie("wn_refresh", "", 0);
@@ -1300,24 +1541,48 @@ async function parentRoute(
     const b = z
       .object({
         profile_id: id,
-        action: z.enum(["start", "extend", "pause", "resume", "end", "disable"]),
+        action: z.enum([
+          "start",
+          "daily",
+          "extend",
+          "pause",
+          "resume",
+          "end",
+          "disable",
+        ]),
         duration_minutes: z.number().int().min(1).max(240).optional(),
       })
+      .refine(
+        (value) =>
+          !["start", "daily", "extend"].includes(value.action) ||
+          value.duration_minutes !== undefined,
+        "Choose a duration in minutes.",
+      )
       .parse(body);
     await ownedProfiles(p.id, [b.profile_id]);
-    const controlled = check(await client.rpc("wn_control_profile_session", {
-      p_parent: p.id,
-      p_profile: b.profile_id,
-      p_action: b.action,
-      p_minutes: b.duration_minutes ?? null,
-    }));
+    if (b.action === "daily") {
+      await requireConsistentDailyTimezone(
+        client,
+        p.timezone || "America/New_York",
+      );
+    }
+    const controlled = check(
+      await client.rpc("wn_control_profile_session_v2", {
+        p_parent: p.id,
+        p_profile: b.profile_id,
+        p_action: b.action,
+        p_minutes: b.duration_minutes ?? null,
+      }),
+    );
     return reply({ ok: true, session: controlled });
   }
   if (route === "parent/session-status" && method === "GET") {
     const profiles = check(
       await client
         .from("profiles")
-        .select("id,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at")
+        .select(
+          "id,session_duration_minutes,session_expires_at,session_paused_seconds,session_state_revision,session_updated_at",
+        )
         .eq("parent_id", p.id)
         .is("archived_at", null),
     );
@@ -1326,20 +1591,28 @@ async function parentRoute(
       ? check(
           await client
             .from("child_sessions")
-            .select("profile_id,device_id,timer_last_seen_at,timer_ack_revision,timer_playback_active")
+            .select(
+              "profile_id,device_id,timer_last_seen_at,timer_ack_revision,timer_playback_active",
+            )
             .in("profile_id", profileIds)
             .is("revoked_at", null)
             .gt("expires_at", new Date().toISOString())
             .order("timer_last_seen_at", { ascending: false }),
         )
       : [];
-    return reply({
-      serverNow: new Date().toISOString(),
-      profiles: profiles.map((profile: any) => ({
+    const resolvedProfiles = await Promise.all(
+      profiles.map(async (profile: any) => ({
         ...profile,
-        access: accessView(profile),
-        devices: sessions.filter((session: any) => session.profile_id === profile.id),
+        access: await accessView(profile, false, p.id),
+        devices: sessions.filter(
+          (session: any) => session.profile_id === profile.id,
+        ),
       })),
+    );
+    return reply({
+      serverNow:
+        resolvedProfiles[0]?.access.serverNow || new Date().toISOString(),
+      profiles: resolvedProfiles,
     });
   }
   if (route === "parent/settings") {
@@ -1360,6 +1633,29 @@ async function parentRoute(
           safe_playback_enabled: z.literal(true).optional(),
         })
         .parse(body);
+      let familyTimezone: string | undefined;
+      if (b.timezone) {
+        try {
+          familyTimezone = new Intl.DateTimeFormat("en", {
+            timeZone: b.timezone,
+          }).resolvedOptions().timeZone;
+        } catch {
+          throw new Failure("Choose a valid time zone.");
+        }
+        const dailyProfiles = check(
+          await client
+            .from("profiles")
+            .select("id")
+            .eq("parent_id", p.id)
+            .eq("session_mode", "daily")
+            .is("archived_at", null)
+            .limit(1),
+          "daily-timezone-profiles",
+        );
+        if (dailyProfiles.length) {
+          await requireConsistentDailyTimezone(client, familyTimezone);
+        }
+      }
       if (b.parent_pin) {
         try {
           const signedInParent = await parent(false);
@@ -1379,16 +1675,11 @@ async function parentRoute(
         );
         if (!updated) throw new Failure("Parent settings unavailable.", 404);
       }
-      if (b.timezone) {
-        try {
-          new Intl.DateTimeFormat("en", { timeZone: b.timezone }).format();
-        } catch {
-          throw new Failure("Choose a valid time zone.");
-        }
+      if (familyTimezone) {
         check(
           await client
             .from("parents")
-            .update({ timezone: b.timezone })
+            .update({ timezone: familyTimezone })
             .eq("id", p.id),
         );
       }
@@ -1874,21 +2165,29 @@ async function childRoute(
 ) {
   const client = db(),
     profile = c.profile;
-  if (route === "child/session-access" && method === "POST") {
-    const b = z
-      .object({
-        revision: z.number().int().min(0),
-        playback_active: z.boolean(),
-      })
-      .parse(body);
-    const access = accessView(profile);
-    check(
-      await client.rpc("wn_ack_profile_session", {
-        p_session: c.session.id,
-        p_revision: Math.min(b.revision, access.revision),
-        p_playback_active: b.playback_active && access.allowed,
-      }),
-    );
+  if (
+    route === "child/session-access" &&
+    (method === "POST" || method === "GET")
+  ) {
+    const b =
+      method === "POST"
+        ? z
+            .object({
+              revision: z.number().int().min(0),
+              playback_active: z.boolean(),
+            })
+            .parse(body)
+        : null;
+    const access = await accessView(profile);
+    if (b)
+      check(
+        await client.rpc("wn_ack_profile_session", {
+          p_session: c.session.id,
+          p_revision: Math.min(b.revision, access.revision),
+          p_playback_active: b.playback_active && access.allowed,
+        }),
+        "child-session-ack",
+      );
     return reply({ session_access: access });
   }
   const own = await videos(profile.parent_id, profile.id);
@@ -1922,7 +2221,7 @@ async function childRoute(
         hidden: hiddenIds.has(video.id),
       })),
       collections,
-      session_access: accessView(profile),
+      session_access: await accessView(profile),
     });
   }
   if (route === "child/hidden" && method === "POST") {
@@ -1965,9 +2264,11 @@ async function childRoute(
     let searchParams: Record<string, string>;
     if (boundaryKind === "topic") {
       const topic = topics.find(
-        (item: string) => item.toLocaleLowerCase() === boundary.toLocaleLowerCase(),
+        (item: string) =>
+          item.toLocaleLowerCase() === boundary.toLocaleLowerCase(),
       );
-      if (!topic) throw new Failure("Choose one of Parent’s search topics.", 403);
+      if (!topic)
+        throw new Failure("Choose one of Parent’s search topics.", 403);
       searchParams = { q: `${topic} ${query}`.trim() };
     } else {
       const channel = channels.find((item: any) => item.id === boundary);
@@ -2046,7 +2347,10 @@ async function childRoute(
       );
       const stillAllowed = discoveryBoundaryAllowed(profile, candidate);
       if (!stillAllowed)
-        throw new Failure("Parent changed the Discover choices. Search again.", 403);
+        throw new Failure(
+          "Parent changed the Discover choices. Search again.",
+          403,
+        );
       const [video] = await metadata([candidate.videoId], true);
       if (
         !video ||
@@ -2066,7 +2370,8 @@ async function childRoute(
       };
     }
     const inserted = await client.from("child_requests").insert(values);
-    if (inserted.error?.code === "23505") return reply({ ok: true, duplicate: true });
+    if (inserted.error?.code === "23505")
+      return reply({ ok: true, duplicate: true });
     check(inserted);
     return reply({ ok: true });
   }
@@ -2095,7 +2400,7 @@ async function childRoute(
     return reply({ ok: true });
   }
   if (route === "child/player" && method === "GET") {
-    const access = accessView(profile);
+    const access = await accessView(profile);
     if (!access.allowed)
       throw new Failure("Time’s up for now. Ask Parent for more time.", 403);
     const videoId = id.parse(new URL(request.url).searchParams.get("videoId"));
@@ -2128,7 +2433,7 @@ async function childRoute(
     });
   }
   if (route === "child/progress" && method === "POST") {
-    if (!accessView(profile).allowed)
+    if (!(await accessView(profile)).allowed)
       throw new Failure("Time’s up for now. Ask Parent for more time.", 403);
     const b = z
       .object({
@@ -2158,6 +2463,7 @@ async function childRoute(
         p_watched: 0,
         p_completed: b.completed,
       }),
+      "child-progress-record",
     );
     return reply({ ok: true });
   }

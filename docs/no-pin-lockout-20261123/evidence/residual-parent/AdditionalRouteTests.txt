@@ -1,0 +1,18 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+ RUN  v5.0.3 /workspace/scratch/b4fb31747e8d/watchnest-integrity
+
+··························stderr | src/lib/server/profile-handoff-route.test.ts > actual route profile handoff enforcement (synthetic Auth/DB) > fails closed before issuing a child cookie if outstanding Parent Mode revocation fails
+[watchnest-data] operation failed {
+  context: 'family-data',
+  code: 'SYNTHETIC_REVOKE_FAILED',
+  status: 503
+}
+
+···········
+
+ Test Files  1 passed (1)
+      Tests  37 passed (37)
+   Start at  11:02:07
+   Duration  2.06s (tests 73%, import 14%, transform 12%)
+

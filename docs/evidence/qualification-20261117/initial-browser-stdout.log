@@ -1,0 +1,213 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> watchnest@0.1.0 test:e2e
+> node scripts/run-browser-tests.mjs
+
+[WebServer] (node:43) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:56) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 64 tests using 1 worker
+
+(node:68) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/fresh-child-stranger.spec.ts:45:5 › fresh younger child chooses a picture and returns to own library (1.1s)
+  ✓   2 e2e/fresh-child-stranger.spec.ts:65:5 › fresh older child retrieves saves and requests (1.0s)
+  ✓   3 e2e/fresh-child-stranger.spec.ts:91:5 › fresh shared family switch PIN recovery and parent boundary (1.0s)
+FRESH_PARENT_APPROVAL [{"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000002"]}}]
+  ✓   4 e2e/fresh-parent-stranger.spec.ts:32:5 › fresh busy Parent follows a child topic request to preview and approval (1.3s)
+FRESH_PARENT_APPROVAL {"path":"/api/parent/videos","body":{"youtube_video_ids":["newvideo123"],"profile_ids":["00000000-0000-4000-8000-000000000001"]}}
+  ✓   5 e2e/fresh-parent-stranger.spec.ts:59:5 › fresh low-confidence Parent corrects a pasted link then previews and assigns one child (2.1s)
+  ✓   6 e2e/fresh-parent-stranger.spec.ts:89:5 › fresh Parent signs in with password visibility reassurance (859ms)
+(node:223) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/manifest.json
+  ✓   7 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-phone 390x844 (10.4s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/player-states/manifest.json
+  ✓   8 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-phone 390x844 (2.1s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/390x844/parent-details/manifest.json
+  ✓   9 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-phone 390x844 (13.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/manifest.json
+  ✓  10 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-portrait 768x1024 (10.4s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/player-states/manifest.json
+  ✓  11 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-portrait 768x1024 (2.4s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-details/manifest.json
+  ✓  12 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-portrait 768x1024 (3.7s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/768x1024/child-entry/manifest.json
+  ✓  13 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-portrait 768x1024 (1.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/manifest.json
+  ✓  14 e2e/premium-visual.spec.ts:57:7 › premium evidence: core ipad-landscape 1024x768 (10.9s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/player-states/manifest.json
+  ✓  15 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states ipad-landscape 1024x768 (2.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-details/manifest.json
+  ✓  16 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-details ipad-landscape 1024x768 (3.6s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1024x768/child-entry/manifest.json
+  ✓  17 e2e/premium-visual.spec.ts:57:7 › premium evidence: child-entry ipad-landscape 1024x768 (789ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/manifest.json
+  ✓  18 e2e/premium-visual.spec.ts:57:7 › premium evidence: core parent-desktop 1440x1000 (10.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/player-states/manifest.json
+  ✓  19 e2e/premium-visual.spec.ts:57:7 › premium evidence: player-states parent-desktop 1440x1000 (2.5s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1440x1000/parent-details/manifest.json
+  ✓  20 e2e/premium-visual.spec.ts:57:7 › premium evidence: parent-details parent-desktop 1440x1000 (14.0s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  21 e2e/product.spec.ts:31:5 › real HTTP: absent infrastructure fails closed; no sample family or iframe (264ms)
+BROWSER Failed to load resource: the server responded with a status of 404 (Not Found)
+  ✓  22 e2e/product.spec.ts:52:5 › real HTTP: public entry, protected parent redirect, and unknown page (351ms)
+  ✓  23 e2e/product.spec.ts:65:5 › synthetic UI: parent navigation covers management, inbox, and independent access (584ms)
+  ✓  24 e2e/product.spec.ts:102:5 › synthetic UI: child searches local library and asks parent on no match (436ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓  25 e2e/product.spec.ts:136:5 › synthetic UI: a video-card tap requests immersive playback before navigation (301ms)
+BROWSER Failed to load resource: the server responded with a status of 403 (Forbidden)
+  ✓  26 e2e/product.spec.ts:168:5 › synthetic UI: WatchNest deadline destroys playback and blocks reload (1.3s)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  27 e2e/product.spec.ts:240:5 › synthetic UI: Parent phone controls one remote profile timer (4.8s)
+  ✓  28 e2e/product.spec.ts:329:5 › synthetic UI: bounded Discover creates a request without a playable result (410ms)
+  ✓  29 e2e/product.spec.ts:363:5 › synthetic UI: shared device opens the profile picker and Parent Mode stays protected (263ms)
+  ✓  30 e2e/product.spec.ts:383:5 › synthetic UI: mobile and tablet pages fit viewport (9.0s)
+  ✓  31 e2e/product.spec.ts:453:5 › synthetic UI: Safe Playback is a mandatory Child Mode boundary (237ms)
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+BROWSER Unsafe attempt to initiate navigation for frame with URL 'http://127.0.0.1:3001/watch/player/10000000-0000-4000-8000-000000000002' from frame with URL 'https://www.youtube-nocookie.com/embed/lmnopqrstuv?controls=1&iv_load_policy=3&playsinline=1&rel=0&origin=http%3A%2F%2F127.0.0.1%3A3001&enablejsapi=1'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.
+
+BROWSER Blocked opening 'https://www.youtube.com/watch?v=escape' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.
+  ✓  32 e2e/product.spec.ts:474:5 › synthetic UI: Made-for-Kids playback is manual, contained, and identity-monitored (1.0s)
+  ✓  33 e2e/product.spec.ts:598:5 › synthetic UI: a stale false flag cannot disable mandatory containment (210ms)
+  ✓  34 e2e/product.spec.ts:649:5 › synthetic UI: post-ready same-frame recommendation navigation fails closed (276ms)
+  ✓  35 e2e/product.spec.ts:693:5 › synthetic UI: pre-ready same-frame recommendation navigation fails closed (424ms)
+BROWSER Failed to load resource: net::ERR_FAILED
+  ✓  36 e2e/product.spec.ts:734:5 › synthetic UI: Safe Playback still fails closed when monitored playback cannot initialize (211ms)
+  ✓  37 e2e/product.spec.ts:752:5 › synthetic UI: transiently missing iPad player identity does not reject the approved video (219ms)
+  ✓  38 e2e/product.spec.ts:812:5 › synthetic UI: permanently unreadable player identity fails closed (3.1s)
+  ✓  39 e2e/product.spec.ts:852:5 › synthetic UI: mobile share text auto-resolves and retains a manual fallback (869ms)
+BROWSER Failed to load resource: the server responded with a status of 503 (Service Unavailable)
+  ✓  40 e2e/product.spec.ts:881:5 › synthetic UI: mobile URL fallback retries the same link after an automatic lookup failure (343ms)
+  ✓  41 e2e/product.spec.ts:911:5 › synthetic UI: mobile channel selection immediately loads individual videos (385ms)
+  ✓  42 e2e/product.spec.ts:957:5 › synthetic UI: mobile playlist selection immediately loads individual videos (399ms)
+  ✓  43 e2e/product.spec.ts:1004:5 › synthetic UI: Parent Library offers an obvious playback preview (351ms)
+  ✓  44 e2e/product.spec.ts:1031:5 › synthetic UI: dashboard reports workflow and suppresses supplied viewing analytics (239ms)
+  ✓  45 e2e/product.spec.ts:1067:5 › synthetic UI: a child finds approved videos in a 240-item library (1.4s)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+BROWSER TypeError: Cannot read properties of undefined (reading 'find')
+    at http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34372
+    at Array.map (<anonymous>)
+    at e.s.data (http://127.0.0.1:3001/_next/static/chunks/28swwg_vjjge7.js:1:34324)
+    at ax (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:75226)
+    at o4 (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:95519)
+    at ih (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:107208)
+    at sw (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151513)
+    at http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151358
+    at sb (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:151366)
+    at su (http://127.0.0.1:3001/_next/static/chunks/39_j1bdzreq0m.js:1:147316)
+  ✓  46 e2e/product.spec.ts:1096:5 › synthetic UI: intermediate widths keep parent tools and child browsing within reach (4.4s)
+  ✓  47 e2e/product.spec.ts:1129:5 › synthetic UI: password visibility and recovery work with a keyboard (354ms)
+  ✓  48 e2e/product.spec.ts:1155:5 › synthetic UI: phone parent actions and collection choices remain touchable (605ms)
+  ✓  49 e2e/startup.spec.ts:29:5 › synthetic startup: API attaches before delayed iframe document load (302ms)
+  ✓  50 e2e/startup.spec.ts:49:5 › synthetic startup: late API cannot reconstruct a containment-stopped player (287ms)
+  ✓  51 e2e/startup.spec.ts:68:5 › synthetic startup: late onReady and state events cannot reverse containment (385ms)
+  ✓  52 e2e/startup.spec.ts:86:5 › synthetic startup: missing provider readiness times out and removes frame (20.3s)
+  ✓  53 e2e/startup.spec.ts:99:7 › synthetic startup: __replaceFrame fails closed without unmonitored frame (293ms)
+  ✓  54 e2e/startup.spec.ts:99:7 › synthetic startup: __throwOnReady fails closed without unmonitored frame (290ms)
+  ✓  55 e2e/startup.spec.ts:109:5 › synthetic startup: provider error before ready is terminal (334ms)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/360x800/supplemental-responsive/manifest.json
+  ✓  56 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 360x800 (3.1s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/412x915/supplemental-responsive/manifest.json
+  ✓  57 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 412x915 (2.7s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/520x900/supplemental-responsive/manifest.json
+  ✓  58 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 520x900 (3.1s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/640x900/supplemental-responsive/manifest.json
+  ✓  59 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 640x900 (2.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/820x1180/supplemental-responsive/manifest.json
+  ✓  60 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 820x1180 (2.3s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/900x900/supplemental-responsive/manifest.json
+  ✓  61 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 900x900 (2.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1180x820/supplemental-responsive/manifest.json
+  ✓  62 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1180x820 (2.8s)
+VISUAL_EVIDENCE test-results/visual-evidence/candidate/1280x800/supplemental-responsive/manifest.json
+  ✓  63 e2e/supplemental-responsive.spec.ts:51:7 › responsive pixels 1280x800 (2.8s)
+  ✓  64 e2e/visual.spec.ts:4:5 › synthetic visual evidence: parent and child surfaces (1.8s)
+
+  64 passed (3.0m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

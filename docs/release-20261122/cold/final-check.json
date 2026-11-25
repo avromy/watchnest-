@@ -1,0 +1,30 @@
+[
+  {
+    "step": "parent responsive",
+    "width": 820,
+    "overflow": false
+  },
+  {
+    "step": "child responsive",
+    "width": 390,
+    "overflow": false
+  },
+  {
+    "step": "empty search",
+    "text": "WatchNest\nAri\nLibrary\nAsk Parent\nYour library\n\n0 videos to explore\n\nSearch your library\nAll videos\nFavorites\nHidden\nSort videos\nRecently added\nA–Z\nNothing found\n\nTry another word or ask Parent.\n\nAsk Parent for “nothing-matches-this”"
+  },
+  {
+    "step": "reload library",
+    "text": "WatchNest\nAri\nLibrary\nAsk Parent\nYour library\n\n3 videos to explore\n\nSearch your library\nAll videos\nFavorites\nHidden\nSort videos\nRecently added\nA–Z\nCollections\n2 videos\nLittle Makers\nAll videos\n4:00\nA gentle piano lesson\n\nMusic Room\n\n5:00\nDraw a friendly fox\n\nLittle Makers\n\n3:00\nBuild a paper rocket\n\nLittle Makers"
+  },
+  {
+    "step": "save server error",
+    "mutations": [],
+    "alerts": [
+      "Synthetic save unavailable. Try again. ",
+      "Save could not be confirmed. Please retry.",
+      ""
+    ],
+    "text": "Synthetic save unavailable. Try again.\n\nFAMILY\n\nChild profiles\n\nChoose a photo or avatar, manage PINs, and check each child’s experience.\n\nMiri\n\n4-digit PIN on\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Miri’s library.\nNew PIN (optional)\nConfirm PIN\n\nSave could not be confirmed. Please retry.\n\nSave changes\nView as Miri\nAri\n\n4-digit PIN on\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Ari’s library.\nNew PIN (optional)\nConfirm PIN\nSave changes\nView as Ari\nBenny\n\nOpens without a PIN\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Benny’s library.\nSave changes\nView as Benny\nEli\n\nOpens without a PIN\n\nPhoto or avatar\nLibrary experience\nStandard\nSimple\n\nSimple uses larger video choices and keeps extra controls under More. Standard shows those controls directly.\n\nRequire a PIN\nAsk for a 4-digit PIN before opening Eli’s library.\nSave changes\nView as Eli"
+  }
+]

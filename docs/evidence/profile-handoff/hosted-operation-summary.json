@@ -1,0 +1,62 @@
+{
+  "source": "decd2681e693de7ef33ea067610117c7467123b4",
+  "migration_history_version": "20261119042334",
+  "migration_name": "device_profile_handoff",
+  "generated_source_file": "supabase/migrations/20261119034107_device_profile_handoff.sql",
+  "source_sha256": "266de6effc88c8322a9f37da5314ed37d2afa9d3dd744071c31ac718fa453b6d",
+  "payload_sha256": "b56ee078894d3304058405f61f16b816da31dbaff808b4d183db8f3c238ebff1",
+  "function_body_md5": "e784fe8682f88d03493b04764e39e1cf",
+  "phase1": "APPLIED/verified",
+  "phase2": "NOT APPLIED; only after qualified canonical promotion",
+  "advisor_comparison": {
+    "same_excluding_observed_timestamps": true,
+    "scope": "Existing advisor notices retained; no zero-existing-findings claim.",
+    "before_shape": [
+      "result"
+    ],
+    "after_shape": [
+      "result"
+    ],
+    "groups": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 18,
+        "scope": "intentional service-only RLS tables; no public policies added"
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1,
+        "scope": "pre-existing notice; no paid upgrade/settings change"
+      }
+    ]
+  },
+  "canonical_actual_after_ready": {
+    "watchnest-rho.vercel.app": "77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+    "watchnest-avromy.vercel.app": "77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac",
+    "watchnest-git-product-completion-20260930-avromy.vercel.app": "77a5017/dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac"
+  },
+  "stage": {
+    "id": "dpl_Gy16rRsVjrcVEAkjg6WuwYja2fcg",
+    "url": "https://watchnest-ngz5hkjr4-avromy.vercel.app",
+    "source": "decd2681e693de7ef33ea067610117c7467123b4",
+    "state": "READY",
+    "target": "production",
+    "canonical_promotion": false
+  },
+  "hosted_browser": {
+    "configured": true,
+    "role": null,
+    "parent_body": "Parent sign-in required.",
+    "child_body": "Child sign-in required.",
+    "observed_login": "https://watchnest-ngz5hkjr4-avromy.vercel.app/login?parent=1",
+    "parent_authenticated": false,
+    "physical_acceptance": false
+  },
+  "runtime_query": {
+    "scope": "stage, preceding 30 minutes, warning/error/fatal, grouped by level, top25 limit",
+    "result": "no groups returned",
+    "not_proven": "blanket runtime health or authenticated workflows"
+  }
+}

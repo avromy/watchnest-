@@ -1,0 +1,240 @@
+{
+  "verdict": "PASS",
+  "scope": "Bounded independent compact Parent timer interactive UX re-review",
+  "source": "86693712f4abb3ada8d89d9e01e66ab10f228b4d",
+  "appTree": "88f287278391ad894ea70fe737e24362153f18e7",
+  "buildId": "pR1M32CPBRQOq6q2S1HSl",
+  "environment": "Root BUILD_PASS optimized .next reused read-only; own port3023; Chromium390x844; synthetic mixed active/paused/blocked/unlimited profiles",
+  "independence": "Current screenshots first experienced before current implementation/tests or peer reports. Bounded revision, with prior task/audit knowledge; not wholly blind or full-app review. first-impression.md frozen before task checks.",
+  "objectiveDefects": [],
+  "recommendations": [
+    {
+      "id": "CUX-R1-compact",
+      "priority": "P1/nonblocking",
+      "finding": "Collapsed-card urgent-action density is repaired. Expanded custom form still places primary ~414px below numeric input through presets/consequence text.",
+      "observation": "Input began at viewport bottom after editing; one600px swipe put input and primary together in same844px viewport. No dead end, ambiguous action or off-width clipping.",
+      "recommendation": "Consider tightening optional presets/repeated renewal detail around the expanded editor in a later approved polish pass; preserve mode consequences."
+    }
+  ],
+  "passed": [
+    "Immediate first-child Pause/End, without settings",
+    "Resume on paused second child",
+    "All4children controls reachable through ordinary vertical scroll",
+    "All exercised urgent action targets46\u201350px high",
+    "Native disclosure keyboard Enter open/close and Tab to SELECT",
+    "Custom GiveTime1 start dispatch",
+    "Daily5 daily dispatch",
+    "Invalid0 disabled primary and integer correction",
+    "Expired collapsed Add5minutes today extend dispatch, current short mode remainsDaily",
+    "No horizontal overflow390px"
+  ],
+  "journal": [
+    {
+      "step": 1,
+      "task": "Miri Pause",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "pause"
+      },
+      "buttonBox": {
+        "x": 37,
+        "y": 456.46875,
+        "width": 154,
+        "height": 46
+      },
+      "settingsOpened": false
+    },
+    {
+      "step": 2,
+      "task": "Miri End now",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "end"
+      },
+      "buttonBox": {
+        "x": 37,
+        "y": 398.46875,
+        "width": 316,
+        "height": 50
+      },
+      "settingsOpened": false
+    },
+    {
+      "step": 3,
+      "task": "Ari Resume",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000002",
+        "action": "resume"
+      },
+      "buttonBox": {
+        "x": 37,
+        "y": 399.421875,
+        "width": 154,
+        "height": 46
+      },
+      "settingsOpened": false
+    },
+    {
+      "step": 4,
+      "task": "Benny Allow access",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000003",
+        "action": "resume"
+      },
+      "buttonBox": {
+        "x": 37,
+        "y": 798.375,
+        "width": 154,
+        "height": 46
+      },
+      "settingsOpened": false
+    },
+    {
+      "step": 5,
+      "task": "Eli End now",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000004",
+        "action": "end"
+      },
+      "buttonBox": {
+        "x": 37,
+        "y": 397.265625,
+        "width": 316,
+        "height": 50
+      },
+      "settingsOpened": false
+    },
+    {
+      "step": 6,
+      "task": "Keyboard opens disclosure and reaches mode",
+      "focusedTag": "SELECT",
+      "focusedLabel": "Time mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM"
+    },
+    {
+      "step": 7,
+      "task": "Expanded Give Time form reach",
+      "inputBox": {
+        "x": 37,
+        "y": 794.0625,
+        "width": 316,
+        "height": 50
+      },
+      "giveBox": {
+        "x": 37,
+        "y": 1208.5625,
+        "width": 316,
+        "height": 46
+      },
+      "scrollState": {
+        "scrollY": 28,
+        "viewport": 844
+      },
+      "observation": "Input and primary separated by ~414px; from input at bottom of viewport, one 600px swipe exposes both. Extra editor scroll remains a nonblocking recommendation."
+    },
+    {
+      "step": 8,
+      "task": "Give custom1",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "start",
+        "duration_minutes": 1
+      }
+    },
+    {
+      "step": 9,
+      "task": "Daily5",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "daily",
+        "duration_minutes": 5
+      },
+      "copy": "Miri\n\n5 min left\n\nDaily Allowance \u00b7 5 min daily \u00b7 renews at 7 AM\n\nEnd now\nPause\nAdd 15 minutes\nAdd 5 minutes\n\nNo child device has checked in yet.\n\nGive time or set daily allowance\nTime mode\nGive Time \u00b7 one-time\nDaily Allowance \u00b7 renews at 7 AM\nCustom minutes\n\nChoose 1\u2013240 whole minutes.\n\n1 min\n5 min\n10 min\n20 min\n30 min\n45 min\n60 min\n\nRenews each day at 7 AM in your family\u2019s time zone. The time window starts when the child opens their library. Unused time doesn\u2019t carry over.\n\nDaily Allowance: 5 min \u00b7 Next renewal: Nov 19, 7:00 AM (America/New_York). A Parent stop or pause stays in place.\n\nSave 5 min daily allowance\nRemove time limit\n\nTime counts down while video is paused or WatchNest is in the background. Parent Pause saves the remaining time."
+    },
+    {
+      "step": 10,
+      "task": "Invalid0",
+      "disabled": true,
+      "error": "Enter a whole number from 1 to 240."
+    },
+    {
+      "step": 11,
+      "task": "Keyboard closes disclosure",
+      "closed": true
+    },
+    {
+      "step": 12,
+      "task": "Expired extraToday collapsed",
+      "actual": {
+        "profile_id": "00000000-0000-4000-8000-000000000001",
+        "action": "extend",
+        "duration_minutes": 5
+      },
+      "shortMode": "Miri\n\nTime\u2019s up\n\nDaily Allowance \u00b7 5 min daily \u00b7 renews at 7 AM\n\nAdd 5 minutes today\nEnd now\n\nNo child device has checked in yet.\n\nGive time or set daily allowance",
+      "settingsClosed": true
+    },
+    {
+      "step": 13,
+      "task": "Phone width",
+      "width": 390,
+      "scrollWidth": 390
+    }
+  ],
+  "visualUnits": [
+    {
+      "path": "daily-timer-cold-ux/8669371/01-entry-viewport.png",
+      "screen": "Compact entry",
+      "observation": "Urgent End and Pause above fold for active first child; no settings disclosure required.",
+      "sha256": "10d628574c536c16b1e089dc1e8e0b5e440dd6d96576a3add43f6b45902c7d0e"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/02-compact-allchildren.png",
+      "screen": "Four-child reachability",
+      "observation": "Distinct active, paused, blocked and unlimited states remain identifiable; all controls reachable by ordinary vertical scroll.",
+      "sha256": "0dbad1a1ff10bb8a5104c47a2b02862d66a57ca1767435de246c466cddc5bc44"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/05-Ari-action.png",
+      "screen": "Paused child Resume",
+      "observation": "Resume remains a 46px target independent of settings.",
+      "sha256": "aa083a5b277f01220fd26c91d9e373d262c002404fa153a4f17fe5a37bc99c56"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/07-Eli-action.png",
+      "screen": "Fourth child action",
+      "observation": "Last child\u2019s End action remains reachable without opening earlier editors.",
+      "sha256": "2bdbf3eb956cf50d7b09752b2bc02f099ca41db186a07524bd9092cdcc77d9b2"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/08a-custom-input-focus.png",
+      "screen": "Custom input focus",
+      "observation": "One-off selection and custom1 keyboard entry; input focus at bottom of viewport means another swipe is needed.",
+      "sha256": "792e94ce1415d7071dfcbca4689b7979987f6b87903954ba119c6251e8fcb8a0"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/08-give-one-visible.png",
+      "screen": "Expanded one-off form action",
+      "observation": "After 600px swipe, custom input, pre-action consequences and Start new1minsession fit together within viewport.",
+      "sha256": "cfcdd9de20b1fb1b97419d845a5925805e404ce7a08aba4b3a87b16236bfa742"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/09-invalid0.png",
+      "screen": "Invalid daily duration",
+      "observation": "Whole-number inline correction and disabled daily save.",
+      "sha256": "712d05be54570bba545154e09b39f30d652f7bd7ff1a5e978314a47cbd56ae97"
+    },
+    {
+      "path": "daily-timer-cold-ux/8669371/10-expired-viewport.png",
+      "screen": "Expired daily urgent action",
+      "observation": "Add5minutes today is available directly in collapsed card; mode summary still Daily.",
+      "sha256": "a64f637229200c34bed5a74a9f9a579f2072c45e5f701505e5843c2373581b47"
+    }
+  ],
+  "history": "Original6619bf9 scopedPASS and99239ee boundedPASS remain unchanged and bound to their exact sources. Earlier jury history is not rewritten by this limited audit.",
+  "releaseAuthority": "FAIL / HELD: this does not certify FounderReady, hosted migration, realDB, backend lock persistence or physical playback.",
+  "limitations": [
+    "Explicit synthetic statuses and successful mocked commands prove UI and exact requests only; real authorization/state transitions not asserted.",
+    "No physical phone software keyboard, tap reach or actual playback/sound/fullscreen evidence.",
+    "No broad app/persona/full regression review; Root owns mechanical suite and separate gate integration."
+  ],
+  "mutations": "No app edits, rebuild, shared test-results writes, external mutations, agents, commits or deployments."
+}

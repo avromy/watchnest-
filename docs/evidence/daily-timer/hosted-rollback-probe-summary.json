@@ -1,0 +1,28 @@
+{
+  "source": "30681533551d916c08161f29bbb9ba821f6c92f9",
+  "sql_sha256": "63afc9268cd483e9b4ba826f116f4f69505551232dff3cf32f5bdfe92e81af38",
+  "checks": [
+    "custom_one_minute",
+    "daily_parent_read_pending_no_activation",
+    "same_daily_configuration_idempotent",
+    "sequential_child_activation_idempotent_not_concurrency",
+    "exhausted_daily_no_same_period_renewal",
+    "passed_boundary_renews_pending_without_autoplay_no_carry",
+    "legacy_end_persists_across_reset_and_denies_old_reader",
+    "disable_does_not_unlock_parent_block_legacy_denial",
+    "explicit_resume_disabled_limit_allows_unlimited",
+    "repeated_pause_idempotent",
+    "pause_survives_daily_reset_then_deliberate_resume",
+    "one_time_grant_never_recurs_legacy_start_adapter",
+    "wrong_parent_ownership_denied",
+    "new_york_spring_dst_23h",
+    "new_york_fall_dst_25h",
+    "current_new_york_seven_am",
+    "fixture_absent_after_rollback"
+  ],
+  "status": "PASS",
+  "mutations": "one_generated_fixture_only_rolled_back",
+  "check_count": 17,
+  "device_scope": "database functional probe only, not physical iPad proof",
+  "concurrency_scope": "sequential activation idempotence only, not concurrent sessions"
+}
