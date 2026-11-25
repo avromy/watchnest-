@@ -1,3 +1,13 @@
+# CURRENT — exact69 authenticated hosted checks verified; Parent return PIN declined
+
+Fresh sameCloud Parent settings survived fullreload. Actual69 Preview click/retry/close/keyboard/focus and matchingvideoiframe verified; noapproval. Timer1/5/10/custom37 andDaily7AM testedunsaved. AriCheckaccess saysPINoff/noPINwait/deviceentryavailable. ParentopenAri andoneordinarysameprofileentry leadTime’sup, stopintact; Miri pickerexplicitParentPINhandoff required/cancelled. These browser/device session transitions areNOTpurelyreadonly, butnofamilysettings/budget/PIN/content/counterreset. ParallelParenttabs laterlostauthority; exactfailuretimingvsroletransitionunknown, notestablishedregression. IndependentD1/2/3renderedcorrectionsPASSwithin scope; securitysourcecontinuityPASS/integratedHOLD.
+
+NormalParentModereturn nowrequiresprotectedParentPIN. One nativePINrequest returneddeclined802.4s; freshbrowserstillPINdialog. Noretry/workaround/secretread. Awaitexplicitresumeduserintent orpositivecontext. Exactrootreceipt: docs/login-policy-20261124/AuthenticatedHostedAcceptance.md (b23038704bb22bf9c560ef3fb40c2ee92e60c1e0). Independentcold/securityreports alongside. This supersedespreviousno-positiveParentauthrecords, butnotcurrentPINhold.69source/CI176unchanged, canonical77unchangedperindependentreview, norelease/phase2. Historicalcrashes/physicalFAIL/finalacceptancepending.
+
+Learning: providerrequestdeclinedalonecannotdescribefuturebrowserstate; freshpositiveUIcanlaterestablishauth. SharedbrowsercookiesmeanparallelroletransitioninvalidatesotherParenttabs; qualifyrolessequentially. Do notlabelautherrorregressionwithouttemporalcorrelation. PreservefamilyParentstopwhiletestingadmission.
+
+---
+
 # CURRENT VERIFIED — CI176 PASS; source69 staged; protected access and safety release hold
 
 November24,2026: CI176/run45453253200 all3jobs completedSUCCESS. Completed quality-job logs independently read:430unit/database tests31files,112synthetic browser flows, build/lint/typecheck and productionaudit0 vulnerabilities. Baselinevisual job alsoSUCCESS. Local exact69build/type/scopedlintPASS. This is synthetic/engineering evidence, not actual authenticated-hosted or physical acceptance.
