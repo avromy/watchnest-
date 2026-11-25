@@ -16,6 +16,7 @@ major_version = 17
 enabled = false
 [auth]
 site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/login/reset"]
 jwt_expiry = 120
 [auth.email]
 enable_confirmations = true

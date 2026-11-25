@@ -44,18 +44,11 @@ execFileSync("npm", ["run", "build"], { env: appEnv, stdio: "inherit" });
 const app = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "localhost"], {
   env: appEnv, stdio: "ignore",
 });
-let browser;
-try {
-  await expect.poll(async () => fetch(origin + "/login").then(r => r.status).catch(() => 0), { timeout: 45000 }).toBe(200);
-  const signup = await fetch(origin + "/api/auth/parent", {
-    method: "POST", headers: { "Content-Type": "application/json", Origin: origin },
-    body: JSON.stringify({ action: "signup", email, password }),
-  });
-  assert.equal(signup.status, 200, "ordinary signup");
+async function readVerificationEmail(previousId) {
   let message;
   await expect.poll(async () => {
     const inbox = await fetch(new URL("/api/v1/messages", mail)).then(r => r.json());
-    message = inbox.messages.find(m => m.To?.some(t => t.Address === email));
+    message = inbox.messages.find(m => m.To?.some(t => t.Address === email) && m.ID !== previousId);
     return Boolean(message);
   }, { timeout: 15000 }).toBe(true);
   const body = await fetch(new URL("/api/v1/message/" + encodeURIComponent(message.ID), mail)).then(r => r.json());
@@ -64,6 +57,18 @@ try {
   assert.ok(verify, "missing local confirmation link");
   const url = new URL(verify);
   assert.ok(["127.0.0.1", "localhost"].includes(url.hostname) && url.port === api.port);
+  return { url, messageId: message.ID };
+}
+
+let browser;
+try {
+  await expect.poll(async () => fetch(origin + "/login").then(r => r.status).catch(() => 0), { timeout: 45000 }).toBe(200);
+  const signup = await fetch(origin + "/api/auth/parent", {
+    method: "POST", headers: { "Content-Type": "application/json", Origin: origin },
+    body: JSON.stringify({ action: "signup", email, password }),
+  });
+  assert.equal(signup.status, 200, "ordinary signup");
+  const { url, messageId } = await readVerificationEmail();
   const confirmation = await fetch(url, { redirect: "manual" });
   assert.ok([302, 303].includes(confirmation.status), "confirmation response");
   browser = await chromium.launch({ executablePath: await browserRuntime(), args: ["--no-sandbox"] });
@@ -153,6 +158,27 @@ try {
   await call("auth/logout", "POST", {});
   assert.equal((await call("session")).role, null);
   console.log("PASS authorized sibling handoff, Daily at entry, Parent PIN return and sign-out");
+  await page.goto(origin + "/login");
+  await page.getByRole("button", { name: "Forgot password?" }).click();
+  await page.getByLabel("Email", { exact: true }).fill(email);
+  await page.getByRole("button", { name: "Send reset link" }).click();
+  await expect(page.getByText("Check your email for account recovery.")).toBeVisible();
+  const recovery = await readVerificationEmail(messageId);
+  const redirect = await fetch(recovery.url, { redirect: "manual" });
+  assert.ok([302, 303].includes(redirect.status));
+  const landing = new URL(redirect.headers.get("location"));
+  assert.ok(landing.origin === origin && landing.pathname === "/login/reset");
+  await page.goto(landing.href);
+  const replacement = randomBytes(24).toString("base64url");
+  await page.getByLabel("New password", { exact: true }).fill(replacement);
+  await page.getByLabel("Confirm new password").fill(replacement);
+  await page.getByRole("button", { name: "Save password" }).click();
+  await page.waitForURL("**/parent/dashboard");
+  await call("auth/logout", "POST", {});
+  await call("auth/parent", "POST", { action: "login", email, password: replacement });
+  assert.equal((await call("session")).role, "parent");
+  await call("auth/logout", "POST", {});
+  console.log("PASS verified recovery email, replacement password and new sign-in");
 } finally {
   if (browser) await browser.close();
   app.kill("SIGTERM");

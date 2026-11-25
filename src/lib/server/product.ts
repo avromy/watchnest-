@@ -901,7 +901,7 @@ export async function handle(request: globalThis.Request, path: string[]) {
       await cookie("wn_refresh", result.data.session.refresh_token, 2592000);
       await cookie("wn_child", "", 0);
       await issueDevice(callbackHousehold.id);
-      return reply({ ok: true });
+      return reply({ ok: true, email: result.data.user.email });
     }
     if (route === "auth/parent" && method === "POST") {
       const b = z
