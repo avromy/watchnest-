@@ -1,3 +1,16 @@
+# Current · Builder 3 authenticated QA
+
+| Capability | Trigger and action | Evidence | Result for this scope |
+|---|---|---|---|
+| Project OS, routing and continuity | Reconciled eight attached governance files, live authorities, PR, frozen source and retained independent reports. | [Recovery](builder-3/Recovery.md) and [successor checkpoint](builder-3/AutonomousQA.md) | PASS for recovery |
+| Supabase v0.1.2 and deployment operations | Applied official CLI/local-stack and branching guidance, verified project/branch inventory and signed-in Vercel settings, created exact noncanonical production-configured stages and read back aliases. | Provider IDs, ordinary QA runs and differences in checkpoint | PASS for runner/stage identity; managed backend binding BLOCKED |
+| Security and functional QA | Independent read-only source review plus real isolated sign-in, genuine PIN and distinct-device control checks. Compared effective schema/RLS grants and exact source. | GitHub Actions and retained review in checkpoint | PASS only for observed controls; hosted/physical release BLOCKED |
+| Human-Eye / Blind Jury v1.0 | Two independent optical reads of identical eight-image CI176 manifest. Comparator and reporter separately froze findings. Two targeted product-copy repairs. | Manifest, findings, current receipt and limitations in checkpoint | Initial visual FAIL; all five held 8bef5a86 and subsequently passed repaired d597122 synthetic visuals. Integrated release BLOCKED |
+| Continuous Learning and Founder Attention | Applied current continuous-learning authority at project scope, and verified the designated Founder email route. | LearningPropagation and Founder/CTO checkpoint | Project calibration recorded. See the private CTO and Founder records for the current attention receipt. |
+| Final integrated / Founder Ready | Held until genuine deployed and physical evidence is available. Five independent jurors froze the 8bef5a86 HOLD. All five passed the scoped CI182 recheck. CI183 and isolated Auth run 7 passed. Managed/physical gates are open. | Current scope-specific release holds | BLOCKED |
+
+---
+
 # CURRENT — Builder 3 recovery receipts
 
 Founder Attention protocol applied to the current run. Founder Gmail profile readback passed preflight. Project recovery and exact candidate guard checks are in [Builder 3 recovery](builder-3/Recovery.md). Scope is read-only verification. Current final independent reviews and coverage remain open. Existing exact-candidate receipts retain their original scopes.

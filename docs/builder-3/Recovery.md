@@ -1,5 +1,7 @@
 # Builder 3 recovery and release boundary
 
+The November 25 [interrupted-pilot and release recovery](AutonomousQA.md) supersedes the historical head, CI and infrastructure findings below.
+
 ## November 24, 2026, New York
 
 Builder 3 is the execution successor identified by the Founder. Builder 2 is retired and HQ remains separate. The branch and target were read twice before this documentation checkpoint. No competing branch activity surfaced. Control Tower supplied no WatchNest writer record, so it cannot independently attest to the absence of all competing sessions.

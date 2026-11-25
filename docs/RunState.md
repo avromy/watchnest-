@@ -1,3 +1,11 @@
+# Current · November 25, 2026 · Builder 3 recovered, release held
+
+Start at [Autonomous QA and release recovery](builder-3/AutonomousQA.md). Frozen application d59712271e059e5ea41580b3bb62d1687cfd6c26, source 3eca3fa55518e3fe93560aaa8a3678a7d4789ae8, migration tree 3975015a2c78f87cfc8caf17df1a56e01ec9f393. Test-only head 2336393 passed CI183 (430 unit/database, 113 browser) and isolated Auth run 7 (8 groups and teardown). Five independent jurors passed repaired synthetic visuals after the prior unanimous HOLD. Stage dpl_AX76pTDgLryAfW9gMPLHj8o3cA3a is READY. All three production aliases serve old77 / dpl_GiRnmGhHRYnnq16jHEUGyxtjRNac.
+
+The managed pilot reached preflight. The exact branch is absent after its time window. No returned child ID, managed test or deletion receipt was recovered. Final pilot cost remains unverified. The obsolete same-conversation fallback was paused and verified. The current mandate permits no new spending. Hosted ordinary-auth qualification, reconciled production-specific checks, one real-device session, promotion and phase 2 remain open. Ari's stop persists as a release requirement.
+
+---
+
 # CURRENT — Builder 3 recovery verified, release held
 
 [Builder 3 recovery](builder-3/Recovery.md) records the fresh exact candidate, CI, aliases, manual promotion, migration, browser, runtime error and QA infrastructure readbacks. Stage reached the linked picker without new Vercel sign-in. Parent authority remains unverified. No competing branch activity surfaced. Hosted synthetic backend, final independent and real-device gates remain open.

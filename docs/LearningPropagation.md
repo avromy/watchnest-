@@ -1,3 +1,11 @@
+# Current · interrupted pilot and release QA calibration
+
+PROJECT / PROCESS. Keep a cleanup-only scheduled response separate from the interactive Builder. The former can correctly find no matching branch while the latter still owes the Founder a substantive outcome. Publish the case-sensitive provider identity or a precreation checkpoint before starting asynchronous work. A same-thread immediate run proves dispatch, not unattended teardown or branch billing. Treat inventory, attributable invoices, visual packets, hosted Auth and physical results as distinct evidence. Retire a bounded cleanup schedule after its window and exact negative provider readback. The original reporting failure and scope-specific evidence are retained in [the pilot recovery](builder-3/AutonomousQA.md).
+
+PROJECT / PROCESS. Observe provider authentication, per-origin app session, device role and protected PIN consent separately. The older parallel-role incident's exact timing is unknown. Run routine sign-in and sequential role changes on a fresh local Supabase Auth service in CI, exercise a separate browser for remote controls, and retain a distinct hosted and physical gate. An ordinary recovery test with a second configured identity exposed a hard-coded account in the client. Use the verified callback identity and test the complete email flow. Restrict public failure logs and independently remove ephemeral keys on failure. Fixture-black player pixels cannot establish a provider playback defect. Capture enabled approvals after both required selections, and make transient retry return through normal authorization. When no timer is running, name the persistent effect on future viewing. These findings and their limits are recorded [with the candidate](builder-3/AutonomousQA.md). No changes to shared specialist packages.
+
+---
+
 # CURRENT — Builder 3 project learning
 
 The staged deploy can retain Vercel access and a linked device context while Parent authorization is absent. Record the three states separately. A protected staging origin backed by production is unsuitable for writable synthetic QA. Require an independently verified QA backend before testing synthetic timer, PIN, or recovery writes. See [Builder 3 recovery](builder-3/Recovery.md).
